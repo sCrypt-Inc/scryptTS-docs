@@ -1,6 +1,6 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Tutorial 2: Stateful Contract
+# Tutorial 3: Stateful Contract
 

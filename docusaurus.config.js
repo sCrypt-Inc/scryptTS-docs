@@ -63,6 +63,12 @@ const config = {
             label: 'Tutorial',
           },
           {
+            type: 'doc',
+            docId: 'References/README',
+            position: 'left',
+            label: 'References',
+          },
+          {
             href: 'https://github.com/sCrypt-Inc',
             label: 'GitHub',
             position: 'right',
@@ -79,6 +85,10 @@ const config = {
                 label: 'Tutorial',
                 to: '/docs/intro',
               },
+              {
+                label: 'References',
+                to: '/docs/References/modules',
+              },
             ],
           },
           {
@@ -91,7 +101,7 @@ const config = {
 
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/sinoTrinity',
               },
               {
                 label: 'GitHub',
@@ -103,6 +113,10 @@ const config = {
             title: 'Contract Us',
             items: [
               {
+                label: 'Official Website',
+                href: 'https://scrypt.io',
+              },
+              {
                 label: 'Telegram',
                 href: 'https://t.me/joinchat/GwaRAxKT16JjXyHt5PuhHw',
               },
@@ -110,7 +124,6 @@ const config = {
                 label: 'Slack',
                 href: 'https://join.slack.com/t/scryptworkspace/shared_invite/enQtNzQ1OTMyNDk1ODU3LTJmYjE5MGNmNDZhYmYxZWM4ZGY2MTczM2NiNTIxYmFhNTVjNjE5MGYwY2UwNDYxMTQyNGU2NmFkNTY5MmI1MWM',
               },
-              
             ],
           },
         ],
