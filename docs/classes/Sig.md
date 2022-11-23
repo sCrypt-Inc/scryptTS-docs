@@ -1,10 +1,12 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / Sig
+[scrypt-ts](../README.md) / [Exports](../modules.md) / Sig
 
 # Class: Sig
 
+a signature type in [DER](https://docs.moneybutton.com/docs/bsv-signature.html) format, including [signature hash type](https://github.com/libbitcoin/libbitcoin-system/wiki/Sighash-and-TX-Signing), which is `SIGHASH_ALL | SIGHASH_FORKID (0x41)` in the below example.
+
 ## Hierarchy
 
-- `ScryptType`
+- `Sig`
 
   ↳ **`Sig`**
 
@@ -53,9 +55,9 @@
 | :------ | :------ |
 | `bytesVal` | `string` |
 
-#### Overrides
+#### Inherited from
 
-ScryptType.constructor
+Sig\_.constructor
 
 #### Defined in
 
@@ -69,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:79
 
 #### Inherited from
 
-ScryptType.\_asm
+Sig\_.\_asm
 
 #### Defined in
 
@@ -83,7 +85,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_literal
+Sig\_.\_literal
 
 #### Defined in
 
@@ -97,7 +99,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_type
+Sig\_.\_type
 
 #### Defined in
 
@@ -111,7 +113,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_typeResolver
+Sig\_.\_typeResolver
 
 #### Defined in
 
@@ -125,7 +127,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_value
+Sig\_.\_value
 
 #### Defined in
 
@@ -143,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-ScryptType.finalType
+Sig\_.finalType
 
 #### Defined in
 
@@ -161,7 +163,7 @@ ___
 
 #### Inherited from
 
-ScryptType.literal
+Sig\_.literal
 
 #### Defined in
 
@@ -179,7 +181,7 @@ ___
 
 #### Inherited from
 
-ScryptType.type
+Sig\_.type
 
 #### Defined in
 
@@ -197,7 +199,7 @@ ___
 
 #### Inherited from
 
-ScryptType.value
+Sig\_.value
 
 #### Defined in
 
@@ -221,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-ScryptType.checkValue
+Sig\_.checkValue
 
 #### Defined in
 
@@ -239,7 +241,7 @@ ___
 
 #### Inherited from
 
-ScryptType.clone
+Sig\_.clone
 
 #### Defined in
 
@@ -263,7 +265,7 @@ ___
 
 #### Inherited from
 
-ScryptType.equals
+Sig\_.equals
 
 #### Defined in
 
@@ -279,9 +281,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.serialize
+Sig\_.serialize
 
 #### Defined in
 
@@ -299,7 +301,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toASM
+Sig\_.toASM
 
 #### Defined in
 
@@ -317,7 +319,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toHex
+Sig\_.toHex
 
 #### Defined in
 
@@ -335,7 +337,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toJSON
+Sig\_.toJSON
 
 #### Defined in
 
@@ -351,9 +353,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.toLiteral
+Sig\_.toLiteral
 
 #### Defined in
 
@@ -377,7 +379,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toString
+Sig\_.toString
 
 #### Defined in
 

@@ -1,6 +1,16 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / SmartContract
+[scrypt-ts](../README.md) / [Exports](../modules.md) / SmartContract
 
 # Class: SmartContract
+
+The main contract class. To write a contract, extend this class as such:
+
+**`Example`**
+
+```ts
+class YourSmartContract extends SmartContract {
+  // your smart contract code here
+}
+```
 
 ## Table of contents
 
@@ -49,7 +59,7 @@
 
 #### Defined in
 
-[src/contract.ts:61](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L61)
+[src/contract.ts:80](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L80)
 
 ## Properties
 
@@ -59,7 +69,7 @@
 
 #### Defined in
 
-[src/contract.ts:28](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L28)
+[src/contract.ts:47](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L47)
 
 ___
 
@@ -69,7 +79,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:159](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L159)
+[src/contract.ts:178](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L178)
 
 ___
 
@@ -79,7 +89,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:24](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L24)
+[src/contract.ts:42](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L42)
 
 ___
 
@@ -89,7 +99,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:160](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L160)
+[src/contract.ts:179](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L179)
 
 ___
 
@@ -99,7 +109,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:25](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L25)
+[src/contract.ts:44](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L44)
 
 ___
 
@@ -109,7 +119,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:27](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L27)
+[src/contract.ts:46](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L46)
 
 ## Accessors
 
@@ -123,7 +133,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:109](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L109)
+[src/contract.ts:128](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L128)
 
 ## Methods
 
@@ -137,7 +147,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:120](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L120)
+[src/contract.ts:139](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L139)
 
 ___
 
@@ -158,7 +168,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:155](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L155)
+[src/contract.ts:174](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L174)
 
 ___
 
@@ -172,7 +182,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:137](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L137)
+[src/contract.ts:156](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L156)
 
 ___
 
@@ -192,7 +202,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:104](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L104)
+[src/contract.ts:123](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L123)
 
 ___
 
@@ -206,7 +216,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:128](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L128)
+[src/contract.ts:147](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L147)
 
 ___
 
@@ -226,7 +236,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:162](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L162)
+[src/contract.ts:181](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L181)
 
 ___
 
@@ -247,7 +257,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:142](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L142)
+[src/contract.ts:161](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L161)
 
 ___
 
@@ -269,7 +279,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:132](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L132)
+[src/contract.ts:151](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L151)
 
 ___
 
@@ -289,7 +299,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:77](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L77)
+[src/contract.ts:96](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L96)
 
 ___
 
@@ -303,18 +313,18 @@ ___
 
 #### Defined in
 
-[src/contract.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L43)
+[src/contract.ts:62](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L62)
 
 ___
 
 ### compile
 
-▸ `Static` **compile**(): `Promise`<`CompileError`[]\>
+▸ `Static` **compile**(): `Promise`<`void`\>
 
 #### Returns
 
-`Promise`<`CompileError`[]\>
+`Promise`<`void`\>
 
 #### Defined in
 
-[src/contract.ts:30](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/contract.ts#L30)
+[src/contract.ts:49](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L49)

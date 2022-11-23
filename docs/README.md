@@ -1,9 +1,4 @@
----
-sidebar_position: 2
----
-
-
-ts-scrypt / [Exports](modules.md)
+scrypt-ts / [Exports](modules.md)
 
 # scrypt-ts
 

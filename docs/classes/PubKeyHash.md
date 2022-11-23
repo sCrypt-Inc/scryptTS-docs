@@ -1,10 +1,12 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / PubKeyHash
+[scrypt-ts](../README.md) / [Exports](../modules.md) / PubKeyHash
 
 # Class: PubKeyHash
 
+an alias for Ripemd160` type. Usually represent a bitcoin address.
+
 ## Hierarchy
 
-- [`Ripemd160`](Ripemd160.md)
+- `PubKeyHash`
 
   ↳ **`PubKeyHash`**
 
@@ -55,7 +57,7 @@
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[constructor](Ripemd160.md#constructor)
+PubKeyHash\_.constructor
 
 #### Defined in
 
@@ -69,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:84
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[_asm](Ripemd160.md#_asm)
+PubKeyHash\_.\_asm
 
 #### Defined in
 
@@ -83,7 +85,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[_literal](Ripemd160.md#_literal)
+PubKeyHash\_.\_literal
 
 #### Defined in
 
@@ -97,7 +99,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[_type](Ripemd160.md#_type)
+PubKeyHash\_.\_type
 
 #### Defined in
 
@@ -111,7 +113,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[_typeResolver](Ripemd160.md#_typeresolver)
+PubKeyHash\_.\_typeResolver
 
 #### Defined in
 
@@ -125,7 +127,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[_value](Ripemd160.md#_value)
+PubKeyHash\_.\_value
 
 #### Defined in
 
@@ -143,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-Ripemd160.finalType
+PubKeyHash\_.finalType
 
 #### Defined in
 
@@ -161,7 +163,7 @@ ___
 
 #### Inherited from
 
-Ripemd160.literal
+PubKeyHash\_.literal
 
 #### Defined in
 
@@ -179,7 +181,7 @@ ___
 
 #### Inherited from
 
-Ripemd160.type
+PubKeyHash\_.type
 
 #### Defined in
 
@@ -197,7 +199,7 @@ ___
 
 #### Inherited from
 
-Ripemd160.value
+PubKeyHash\_.value
 
 #### Defined in
 
@@ -221,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[checkValue](Ripemd160.md#checkvalue)
+PubKeyHash\_.checkValue
 
 #### Defined in
 
@@ -239,7 +241,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[clone](Ripemd160.md#clone)
+PubKeyHash\_.clone
 
 #### Defined in
 
@@ -263,7 +265,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[equals](Ripemd160.md#equals)
+PubKeyHash\_.equals
 
 #### Defined in
 
@@ -281,7 +283,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[serialize](Ripemd160.md#serialize)
+PubKeyHash\_.serialize
 
 #### Defined in
 
@@ -299,7 +301,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[toASM](Ripemd160.md#toasm)
+PubKeyHash\_.toASM
 
 #### Defined in
 
@@ -317,7 +319,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[toHex](Ripemd160.md#tohex)
+PubKeyHash\_.toHex
 
 #### Defined in
 
@@ -335,7 +337,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[toJSON](Ripemd160.md#tojson)
+PubKeyHash\_.toJSON
 
 #### Defined in
 
@@ -353,7 +355,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[toLiteral](Ripemd160.md#toliteral)
+PubKeyHash\_.toLiteral
 
 #### Defined in
 
@@ -377,7 +379,7 @@ ___
 
 #### Inherited from
 
-[Ripemd160](Ripemd160.md).[toString](Ripemd160.md#tostring)
+PubKeyHash\_.toString
 
 #### Defined in
 

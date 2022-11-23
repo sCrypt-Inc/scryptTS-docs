@@ -1,10 +1,12 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / SigHashType
+[scrypt-ts](../README.md) / [Exports](../modules.md) / SigHashType
 
 # Class: SigHashType
 
+a sighash type.
+
 ## Hierarchy
 
-- `ScryptType`
+- `SigHashType`
 
   ↳ **`SigHashType`**
 
@@ -53,9 +55,9 @@
 | :------ | :------ |
 | `intVal` | `number` |
 
-#### Overrides
+#### Inherited from
 
-ScryptType.constructor
+SigHashType\_.constructor
 
 #### Defined in
 
@@ -69,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:114
 
 #### Inherited from
 
-ScryptType.\_asm
+SigHashType\_.\_asm
 
 #### Defined in
 
@@ -83,7 +85,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_literal
+SigHashType\_.\_literal
 
 #### Defined in
 
@@ -97,7 +99,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_type
+SigHashType\_.\_type
 
 #### Defined in
 
@@ -111,7 +113,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_typeResolver
+SigHashType\_.\_typeResolver
 
 #### Defined in
 
@@ -125,7 +127,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_value
+SigHashType\_.\_value
 
 #### Defined in
 
@@ -143,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-ScryptType.finalType
+SigHashType\_.finalType
 
 #### Defined in
 
@@ -161,7 +163,7 @@ ___
 
 #### Inherited from
 
-ScryptType.literal
+SigHashType\_.literal
 
 #### Defined in
 
@@ -179,7 +181,7 @@ ___
 
 #### Inherited from
 
-ScryptType.type
+SigHashType\_.type
 
 #### Defined in
 
@@ -197,7 +199,7 @@ ___
 
 #### Inherited from
 
-ScryptType.value
+SigHashType\_.value
 
 #### Defined in
 
@@ -221,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-ScryptType.checkValue
+SigHashType\_.checkValue
 
 #### Defined in
 
@@ -239,7 +241,7 @@ ___
 
 #### Inherited from
 
-ScryptType.clone
+SigHashType\_.clone
 
 #### Defined in
 
@@ -263,7 +265,7 @@ ___
 
 #### Inherited from
 
-ScryptType.equals
+SigHashType\_.equals
 
 #### Defined in
 
@@ -279,9 +281,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.serialize
+SigHashType\_.serialize
 
 #### Defined in
 
@@ -299,7 +301,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toASM
+SigHashType\_.toASM
 
 #### Defined in
 
@@ -317,7 +319,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toHex
+SigHashType\_.toHex
 
 #### Defined in
 
@@ -335,7 +337,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toJSON
+SigHashType\_.toJSON
 
 #### Defined in
 
@@ -351,9 +353,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.toLiteral
+SigHashType\_.toLiteral
 
 #### Defined in
 
@@ -369,9 +371,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.toString
+SigHashType\_.toString
 
 #### Defined in
 

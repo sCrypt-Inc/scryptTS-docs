@@ -1,10 +1,12 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / SigHashPreimage
+[scrypt-ts](../README.md) / [Exports](../modules.md) / SigHashPreimage
 
 # Class: SigHashPreimage
 
+a sighash preimage type.
+
 ## Hierarchy
 
-- `ScryptType`
+- `SigHashPreimage`
 
   ↳ **`SigHashPreimage`**
 
@@ -17,12 +19,10 @@
 ### Properties
 
 - [\_asm](SigHashPreimage.md#_asm)
-- [\_buf](SigHashPreimage.md#_buf)
 - [\_literal](SigHashPreimage.md#_literal)
 - [\_type](SigHashPreimage.md#_type)
 - [\_typeResolver](SigHashPreimage.md#_typeresolver)
 - [\_value](SigHashPreimage.md#_value)
-- [getReader](SigHashPreimage.md#getreader)
 
 ### Accessors
 
@@ -66,9 +66,9 @@
 | :------ | :------ |
 | `bytesVal` | `string` |
 
-#### Overrides
+#### Inherited from
 
-ScryptType.constructor
+SigHashPreimage\_.constructor
 
 #### Defined in
 
@@ -82,21 +82,11 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:125
 
 #### Inherited from
 
-ScryptType.\_asm
+SigHashPreimage\_.\_asm
 
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:23
-
-___
-
-### \_buf
-
-• `Private` **\_buf**: `any`
-
-#### Defined in
-
-node_modules/scryptlib/dist/scryptTypes.d.ts:126
 
 ___
 
@@ -106,7 +96,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_literal
+SigHashPreimage\_.\_literal
 
 #### Defined in
 
@@ -120,7 +110,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_type
+SigHashPreimage\_.\_type
 
 #### Defined in
 
@@ -134,7 +124,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_typeResolver
+SigHashPreimage\_.\_typeResolver
 
 #### Defined in
 
@@ -148,21 +138,11 @@ ___
 
 #### Inherited from
 
-ScryptType.\_value
+SigHashPreimage\_.\_value
 
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:21
-
-___
-
-### getReader
-
-• `Private` **getReader**: `any`
-
-#### Defined in
-
-node_modules/scryptlib/dist/scryptTypes.d.ts:127
 
 ## Accessors
 
@@ -173,6 +153,10 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:127
 #### Returns
 
 `number`
+
+#### Inherited from
+
+SigHashPreimage\_.amount
 
 #### Defined in
 
@@ -190,7 +174,7 @@ ___
 
 #### Inherited from
 
-ScryptType.finalType
+SigHashPreimage\_.finalType
 
 #### Defined in
 
@@ -206,6 +190,10 @@ ___
 
 `string`
 
+#### Inherited from
+
+SigHashPreimage\_.hashOutputs
+
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:135
@@ -220,6 +208,10 @@ ___
 
 `string`
 
+#### Inherited from
+
+SigHashPreimage\_.hashPrevouts
+
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:129
@@ -233,6 +225,10 @@ ___
 #### Returns
 
 `string`
+
+#### Inherited from
+
+SigHashPreimage\_.hashSequence
 
 #### Defined in
 
@@ -250,7 +246,7 @@ ___
 
 #### Inherited from
 
-ScryptType.literal
+SigHashPreimage\_.literal
 
 #### Defined in
 
@@ -266,6 +262,10 @@ ___
 
 `number`
 
+#### Inherited from
+
+SigHashPreimage\_.nLocktime
+
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:136
@@ -279,6 +279,10 @@ ___
 #### Returns
 
 `number`
+
+#### Inherited from
+
+SigHashPreimage\_.nSequence
 
 #### Defined in
 
@@ -294,6 +298,10 @@ ___
 
 `number`
 
+#### Inherited from
+
+SigHashPreimage\_.nVersion
+
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:128
@@ -307,6 +315,10 @@ ___
 #### Returns
 
 `Outpoint`
+
+#### Inherited from
+
+SigHashPreimage\_.outpoint
 
 #### Defined in
 
@@ -322,6 +334,10 @@ ___
 
 `string`
 
+#### Inherited from
+
+SigHashPreimage\_.scriptCode
+
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:132
@@ -335,6 +351,10 @@ ___
 #### Returns
 
 `number`
+
+#### Inherited from
+
+SigHashPreimage\_.sighashType
 
 #### Defined in
 
@@ -352,7 +372,7 @@ ___
 
 #### Inherited from
 
-ScryptType.type
+SigHashPreimage\_.type
 
 #### Defined in
 
@@ -370,7 +390,7 @@ ___
 
 #### Inherited from
 
-ScryptType.value
+SigHashPreimage\_.value
 
 #### Defined in
 
@@ -394,7 +414,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-ScryptType.checkValue
+SigHashPreimage\_.checkValue
 
 #### Defined in
 
@@ -412,7 +432,7 @@ ___
 
 #### Inherited from
 
-ScryptType.clone
+SigHashPreimage\_.clone
 
 #### Defined in
 
@@ -436,7 +456,7 @@ ___
 
 #### Inherited from
 
-ScryptType.equals
+SigHashPreimage\_.equals
 
 #### Defined in
 
@@ -452,9 +472,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.serialize
+SigHashPreimage\_.serialize
 
 #### Defined in
 
@@ -472,7 +492,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toASM
+SigHashPreimage\_.toASM
 
 #### Defined in
 
@@ -490,7 +510,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toHex
+SigHashPreimage\_.toHex
 
 #### Defined in
 
@@ -508,7 +528,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toJSON
+SigHashPreimage\_.toJSON
 
 #### Defined in
 
@@ -537,6 +557,10 @@ ___
 | `scriptCode` | `string` |
 | `sighashType` | `string` |
 
+#### Inherited from
+
+SigHashPreimage\_.toJSONObject
+
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:140
@@ -551,9 +575,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.toLiteral
+SigHashPreimage\_.toLiteral
 
 #### Defined in
 
@@ -575,9 +599,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.toString
+SigHashPreimage\_.toString
 
 #### Defined in
 

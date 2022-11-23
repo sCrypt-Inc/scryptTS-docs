@@ -1,10 +1,12 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / PrivKey
+[scrypt-ts](../README.md) / [Exports](../modules.md) / PrivKey
 
 # Class: PrivKey
 
+a private key type.
+
 ## Hierarchy
 
-- [`Int`](Int.md)
+- `PrivKey`
 
   ↳ **`PrivKey`**
 
@@ -54,9 +56,9 @@
 | :------ | :------ |
 | `intVal` | `string` \| `number` \| `bigint` |
 
-#### Overrides
+#### Inherited from
 
-[Int](Int.md).[constructor](Int.md#constructor)
+PrivKey\_.constructor
 
 #### Defined in
 
@@ -70,7 +72,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:68
 
 #### Inherited from
 
-[Int](Int.md).[_asm](Int.md#_asm)
+PrivKey\_.\_asm
 
 #### Defined in
 
@@ -84,7 +86,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[_literal](Int.md#_literal)
+PrivKey\_.\_literal
 
 #### Defined in
 
@@ -98,7 +100,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[_type](Int.md#_type)
+PrivKey\_.\_type
 
 #### Defined in
 
@@ -112,7 +114,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[_typeResolver](Int.md#_typeresolver)
+PrivKey\_.\_typeResolver
 
 #### Defined in
 
@@ -126,7 +128,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[_value](Int.md#_value)
+PrivKey\_.\_value
 
 #### Defined in
 
@@ -144,7 +146,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-Int.finalType
+PrivKey\_.finalType
 
 #### Defined in
 
@@ -162,7 +164,7 @@ ___
 
 #### Inherited from
 
-Int.literal
+PrivKey\_.literal
 
 #### Defined in
 
@@ -180,7 +182,7 @@ ___
 
 #### Inherited from
 
-Int.type
+PrivKey\_.type
 
 #### Defined in
 
@@ -198,7 +200,7 @@ ___
 
 #### Inherited from
 
-Int.value
+PrivKey\_.value
 
 #### Defined in
 
@@ -222,7 +224,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-[Int](Int.md).[checkValue](Int.md#checkvalue)
+PrivKey\_.checkValue
 
 #### Defined in
 
@@ -240,7 +242,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[clone](Int.md#clone)
+PrivKey\_.clone
 
 #### Defined in
 
@@ -264,7 +266,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[equals](Int.md#equals)
+PrivKey\_.equals
 
 #### Defined in
 
@@ -280,9 +282,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-[Int](Int.md).[serialize](Int.md#serialize)
+PrivKey\_.serialize
 
 #### Defined in
 
@@ -300,7 +302,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[toASM](Int.md#toasm)
+PrivKey\_.toASM
 
 #### Defined in
 
@@ -318,7 +320,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[toHex](Int.md#tohex)
+PrivKey\_.toHex
 
 #### Defined in
 
@@ -334,9 +336,9 @@ ___
 
 `unknown`
 
-#### Overrides
+#### Inherited from
 
-[Int](Int.md).[toJSON](Int.md#tojson)
+PrivKey\_.toJSON
 
 #### Defined in
 
@@ -352,9 +354,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-[Int](Int.md).[toLiteral](Int.md#toliteral)
+PrivKey\_.toLiteral
 
 #### Defined in
 
@@ -372,7 +374,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[toNumber](Int.md#tonumber)
+PrivKey\_.toNumber
 
 #### Defined in
 
@@ -396,7 +398,7 @@ ___
 
 #### Inherited from
 
-[Int](Int.md).[toString](Int.md#tostring)
+PrivKey\_.toString
 
 #### Defined in
 

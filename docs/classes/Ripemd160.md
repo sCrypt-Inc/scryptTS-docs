@@ -1,14 +1,14 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / Ripemd160
+[scrypt-ts](../README.md) / [Exports](../modules.md) / Ripemd160
 
 # Class: Ripemd160
 
+a RIPEMD-160 hash type.
+
 ## Hierarchy
 
-- `ScryptType`
+- `Ripemd160`
 
   ↳ **`Ripemd160`**
-
-  ↳↳ [`PubKeyHash`](PubKeyHash.md)
 
 ## Table of contents
 
@@ -55,9 +55,9 @@
 | :------ | :------ |
 | `bytesVal` | `string` |
 
-#### Overrides
+#### Inherited from
 
-ScryptType.constructor
+Ripemd160\_.constructor
 
 #### Defined in
 
@@ -71,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:84
 
 #### Inherited from
 
-ScryptType.\_asm
+Ripemd160\_.\_asm
 
 #### Defined in
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_literal
+Ripemd160\_.\_literal
 
 #### Defined in
 
@@ -99,7 +99,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_type
+Ripemd160\_.\_type
 
 #### Defined in
 
@@ -113,7 +113,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_typeResolver
+Ripemd160\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +127,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_value
+Ripemd160\_.\_value
 
 #### Defined in
 
@@ -145,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-ScryptType.finalType
+Ripemd160\_.finalType
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-ScryptType.literal
+Ripemd160\_.literal
 
 #### Defined in
 
@@ -181,7 +181,7 @@ ___
 
 #### Inherited from
 
-ScryptType.type
+Ripemd160\_.type
 
 #### Defined in
 
@@ -199,7 +199,7 @@ ___
 
 #### Inherited from
 
-ScryptType.value
+Ripemd160\_.value
 
 #### Defined in
 
@@ -223,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-ScryptType.checkValue
+Ripemd160\_.checkValue
 
 #### Defined in
 
@@ -241,7 +241,7 @@ ___
 
 #### Inherited from
 
-ScryptType.clone
+Ripemd160\_.clone
 
 #### Defined in
 
@@ -265,7 +265,7 @@ ___
 
 #### Inherited from
 
-ScryptType.equals
+Ripemd160\_.equals
 
 #### Defined in
 
@@ -281,9 +281,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.serialize
+Ripemd160\_.serialize
 
 #### Defined in
 
@@ -301,7 +301,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toASM
+Ripemd160\_.toASM
 
 #### Defined in
 
@@ -319,7 +319,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toHex
+Ripemd160\_.toHex
 
 #### Defined in
 
@@ -337,7 +337,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toJSON
+Ripemd160\_.toJSON
 
 #### Defined in
 
@@ -353,9 +353,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.toLiteral
+Ripemd160\_.toLiteral
 
 #### Defined in
 
@@ -379,7 +379,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toString
+Ripemd160\_.toString
 
 #### Defined in
 

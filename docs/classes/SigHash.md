@@ -1,4 +1,4 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / SigHash
+[scrypt-ts](../README.md) / [Exports](../modules.md) / SigHash
 
 # Class: SigHash
 
@@ -10,11 +10,11 @@
 
 ### Properties
 
-- [ALL\_ANYONECANPAY\_FORKID](SigHash.md#all_anyonecanpay_forkid)
 - [ALL\_FORKID](SigHash.md#all_forkid)
-- [NONE\_ANYONECANPAY\_ORKID](SigHash.md#none_anyonecanpay_orkid)
+- [ANYONECANPAY\_ALL\_FORKID](SigHash.md#anyonecanpay_all_forkid)
+- [ANYONECANPAY\_NONE\_FORKID](SigHash.md#anyonecanpay_none_forkid)
+- [ANYONECANPAY\_SINGLE\_FORKID](SigHash.md#anyonecanpay_single_forkid)
 - [NONE\_FORKID](SigHash.md#none_forkid)
-- [SINGLE\_ANYONECANPAY\_FORKID](SigHash.md#single_anyonecanpay_forkid)
 - [SINGLE\_FORKID](SigHash.md#single_forkid)
 
 ### Methods
@@ -41,33 +41,43 @@
 
 ## Properties
 
-### ALL\_ANYONECANPAY\_FORKID
-
-▪ `Static` `Readonly` **ALL\_ANYONECANPAY\_FORKID**: [`SigHashType`](SigHashType.md)
-
-#### Defined in
-
-[src/builtins/functions.ts:291](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L291)
-
-___
-
 ### ALL\_FORKID
 
 ▪ `Static` `Readonly` **ALL\_FORKID**: [`SigHashType`](SigHashType.md)
 
 #### Defined in
 
-[src/builtins/functions.ts:288](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L288)
+[src/builtins/functions.ts:463](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L463)
 
 ___
 
-### NONE\_ANYONECANPAY\_ORKID
+### ANYONECANPAY\_ALL\_FORKID
 
-▪ `Static` `Readonly` **NONE\_ANYONECANPAY\_ORKID**: [`SigHashType`](SigHashType.md)
+▪ `Static` `Readonly` **ANYONECANPAY\_ALL\_FORKID**: [`SigHashType`](SigHashType.md)
 
 #### Defined in
 
-[src/builtins/functions.ts:292](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L292)
+[src/builtins/functions.ts:466](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L466)
+
+___
+
+### ANYONECANPAY\_NONE\_FORKID
+
+▪ `Static` `Readonly` **ANYONECANPAY\_NONE\_FORKID**: [`SigHashType`](SigHashType.md)
+
+#### Defined in
+
+[src/builtins/functions.ts:467](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L467)
+
+___
+
+### ANYONECANPAY\_SINGLE\_FORKID
+
+▪ `Static` `Readonly` **ANYONECANPAY\_SINGLE\_FORKID**: [`SigHashType`](SigHashType.md)
+
+#### Defined in
+
+[src/builtins/functions.ts:468](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L468)
 
 ___
 
@@ -77,17 +87,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:289](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L289)
-
-___
-
-### SINGLE\_ANYONECANPAY\_FORKID
-
-▪ `Static` `Readonly` **SINGLE\_ANYONECANPAY\_FORKID**: [`SigHashType`](SigHashType.md)
-
-#### Defined in
-
-[src/builtins/functions.ts:293](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L293)
+[src/builtins/functions.ts:464](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L464)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:290](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L290)
+[src/builtins/functions.ts:465](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L465)
 
 ## Methods
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:320](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L320)
+[src/builtins/functions.ts:495](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L495)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:303](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L303)
+[src/builtins/functions.ts:478](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L478)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:305](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L305)
+[src/builtins/functions.ts:480](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L480)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:324](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L324)
+[src/builtins/functions.ts:499](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L499)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:322](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L322)
+[src/builtins/functions.ts:497](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L497)
 
 ___
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:318](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L318)
+[src/builtins/functions.ts:493](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L493)
 
 ___
 
@@ -237,7 +237,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:316](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L316)
+[src/builtins/functions.ts:491](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L491)
 
 ___
 
@@ -257,7 +257,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:301](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L301)
+[src/builtins/functions.ts:476](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L476)
 
 ___
 
@@ -277,7 +277,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:307](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L307)
+[src/builtins/functions.ts:482](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L482)
 
 ___
 
@@ -297,7 +297,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:310](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L310)
+[src/builtins/functions.ts:485](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L485)
 
 ___
 
@@ -317,7 +317,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:326](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L326)
+[src/builtins/functions.ts:501](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L501)
 
 ___
 
@@ -337,7 +337,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:314](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L314)
+[src/builtins/functions.ts:489](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L489)
 
 ___
 
@@ -357,4 +357,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:312](https://github.com/sCrypt-Inc/ts-sCrypt/blob/8356f43/src/builtins/functions.ts#L312)
+[src/builtins/functions.ts:487](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L487)

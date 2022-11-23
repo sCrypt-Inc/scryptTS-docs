@@ -1,10 +1,12 @@
-[ts-scrypt](../README.md) / [Exports](../modules.md) / PubKey
+[scrypt-ts](../README.md) / [Exports](../modules.md) / PubKey
 
 # Class: PubKey
 
+a public key type.
+
 ## Hierarchy
 
-- `ScryptType`
+- `PubKey`
 
   ↳ **`PubKey`**
 
@@ -53,9 +55,9 @@
 | :------ | :------ |
 | `bytesVal` | `string` |
 
-#### Overrides
+#### Inherited from
 
-ScryptType.constructor
+PubKey\_.constructor
 
 #### Defined in
 
@@ -69,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:74
 
 #### Inherited from
 
-ScryptType.\_asm
+PubKey\_.\_asm
 
 #### Defined in
 
@@ -83,7 +85,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_literal
+PubKey\_.\_literal
 
 #### Defined in
 
@@ -97,7 +99,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_type
+PubKey\_.\_type
 
 #### Defined in
 
@@ -111,7 +113,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_typeResolver
+PubKey\_.\_typeResolver
 
 #### Defined in
 
@@ -125,7 +127,7 @@ ___
 
 #### Inherited from
 
-ScryptType.\_value
+PubKey\_.\_value
 
 #### Defined in
 
@@ -143,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-ScryptType.finalType
+PubKey\_.finalType
 
 #### Defined in
 
@@ -161,7 +163,7 @@ ___
 
 #### Inherited from
 
-ScryptType.literal
+PubKey\_.literal
 
 #### Defined in
 
@@ -179,7 +181,7 @@ ___
 
 #### Inherited from
 
-ScryptType.type
+PubKey\_.type
 
 #### Defined in
 
@@ -197,7 +199,7 @@ ___
 
 #### Inherited from
 
-ScryptType.value
+PubKey\_.value
 
 #### Defined in
 
@@ -221,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-ScryptType.checkValue
+PubKey\_.checkValue
 
 #### Defined in
 
@@ -239,7 +241,7 @@ ___
 
 #### Inherited from
 
-ScryptType.clone
+PubKey\_.clone
 
 #### Defined in
 
@@ -263,7 +265,7 @@ ___
 
 #### Inherited from
 
-ScryptType.equals
+PubKey\_.equals
 
 #### Defined in
 
@@ -279,9 +281,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.serialize
+PubKey\_.serialize
 
 #### Defined in
 
@@ -299,7 +301,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toASM
+PubKey\_.toASM
 
 #### Defined in
 
@@ -317,7 +319,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toHex
+PubKey\_.toHex
 
 #### Defined in
 
@@ -335,7 +337,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toJSON
+PubKey\_.toJSON
 
 #### Defined in
 
@@ -351,9 +353,9 @@ ___
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-ScryptType.toLiteral
+PubKey\_.toLiteral
 
 #### Defined in
 
@@ -377,7 +379,7 @@ ___
 
 #### Inherited from
 
-ScryptType.toString
+PubKey\_.toString
 
 #### Defined in
 
