@@ -9,7 +9,7 @@ const config = {
   title: 'scrypt-ts',
   tagline: 'scrypt-ts is a Typescript framework to write smart contracts on Bitcoin SV.',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: '/scrypt-ts-docs',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
