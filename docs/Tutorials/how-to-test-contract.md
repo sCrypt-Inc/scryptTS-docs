@@ -61,9 +61,11 @@ First we call `await Demo.compile()` to get [bitcoin script](https://wiki.bitcoi
 
 ## Instantiate the contract
 
-It's no different than instantiating a normal TypeScript class, you just declare it with new and pass the correct constructor arguments.
+Different from instantiating a normal TypeScript class, you must first compile the `Demo` contract before instantiating the `Demo` class.
+
 
 ```ts
+await Demo.compile(); // compiling to get bitcoin script 
 let demo = new Demo(1n, 2n);
 ```
 
