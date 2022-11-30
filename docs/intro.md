@@ -19,32 +19,11 @@ Get started by **creating a hello world contract**.
 
 Use this command to install `scrypt-ts` to your project:
 
-`npm install -S scrypt-ts`
+`npm install -D scrypt-ts`
 
 # Setup
 
-`scrypt-ts` depends on [ts-patch](https://github.com/nonara/ts-patch) to provide a custom plugin support for typescript. So `ts-patch` should be installed and prepared first.
-
-## 1. Install `ts-patch`
-
-`npm install -D ts-patch`
-
-**Note**: `ts-patch` currently has an issue with typescript version `4.9.x`, so make sure to use the version `4.8.4`.
-
-## 2. Update `package.json`
-
-Add prepare script (keeps patch persisted after npm install):
-
-```json
-{
- /* ... */
- "scripts": {
-   "prepare": "ts-patch install -s"
- }
-}
-```
-
-## 3. Update `tsconfig.json`
+## 1. Update `tsconfig.json`
 
 Add `scrypt-ts` plugin and enable decorators:
 
@@ -65,7 +44,7 @@ Add `scrypt-ts` plugin and enable decorators:
 }
 ```
 
-## 4. Download sCrypt compiler
+## 2. Download sCrypt compiler
 
 `scrypt-ts` also depends on the native sCrypt compiler which could be downloaded with command:
 
