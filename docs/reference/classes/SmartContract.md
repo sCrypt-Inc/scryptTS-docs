@@ -1,4 +1,4 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / SmartContract
+[scrypt-ts](../README.md) / SmartContract
 
 # Class: SmartContract
 
@@ -21,10 +21,10 @@ class YourSmartContract extends SmartContract {
 ### Properties
 
 - [delegateInstance](SmartContract.md#delegateinstance)
+- [enableUpdateEMC](SmartContract.md#enableupdateemc)
 - [entryMethodCall](SmartContract.md#entrymethodcall)
-- [lockingTo](SmartContract.md#lockingto)
-- [txContext](SmartContract.md#txcontext)
-- [unlockingFrom](SmartContract.md#unlockingfrom)
+- [lockTo](SmartContract.md#lockto)
+- [unlockFrom](SmartContract.md#unlockfrom)
 - [DelegateClazz](SmartContract.md#delegateclazz)
 
 ### Accessors
@@ -33,12 +33,12 @@ class YourSmartContract extends SmartContract {
 
 ### Methods
 
+- [buildEntryMethodCall](SmartContract.md#buildentrymethodcall)
+- [callDelegatedMethod](SmartContract.md#calldelegatedmethod)
 - [clone](SmartContract.md#clone)
-- [delegateCall](SmartContract.md#delegatecall)
 - [getStateScript](SmartContract.md#getstatescript)
 - [getUnlockingScript](SmartContract.md#getunlockingscript)
 - [markAsGenesis](SmartContract.md#markasgenesis)
-- [runEntryMethodCall](SmartContract.md#runentrymethodcall)
 - [updateState](SmartContract.md#updatestate)
 - [updateStateSigHashType](SmartContract.md#updatestatesighashtype)
 - [verify](SmartContract.md#verify)
@@ -59,7 +59,7 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-[src/contract.ts:80](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L80)
+[src/contract.ts:78](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L78)
 
 ## Properties
 
@@ -69,47 +69,47 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-[src/contract.ts:47](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L47)
+[src/contract.ts:45](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L45)
+
+___
+
+### enableUpdateEMC
+
+• `Private` **enableUpdateEMC**: `boolean` = `false`
+
+#### Defined in
+
+[src/contract.ts:182](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L182)
 
 ___
 
 ### entryMethodCall
 
-• `Private` **entryMethodCall**: `FunctionCall`
+• `Private` `Optional` **entryMethodCall**: `FunctionCall`
 
 #### Defined in
 
-[src/contract.ts:178](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L178)
+[src/contract.ts:180](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L180)
 
 ___
 
-### lockingTo
+### lockTo
 
-• `Optional` **lockingTo**: [`TxOutputRef`](../modules.md#txoutputref)
+• `Optional` **lockTo**: [`TxOutputRef`](../README.md#txoutputref)
 
 #### Defined in
 
-[src/contract.ts:42](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L42)
+[src/contract.ts:41](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L41)
 
 ___
 
-### txContext
+### unlockFrom
 
-• `Private` **txContext**: `TxContext`
-
-#### Defined in
-
-[src/contract.ts:179](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L179)
-
-___
-
-### unlockingFrom
-
-• `Optional` **unlockingFrom**: `TxInputRef`
+• `Optional` **unlockFrom**: `TxInputRef`
 
 #### Defined in
 
-[src/contract.ts:44](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L44)
+[src/contract.ts:42](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L42)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:46](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L46)
+[src/contract.ts:44](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L44)
 
 ## Accessors
 
@@ -133,27 +133,33 @@ ___
 
 #### Defined in
 
-[src/contract.ts:128](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L128)
+[src/contract.ts:124](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L124)
 
 ## Methods
 
-### clone
+### buildEntryMethodCall
 
-▸ **clone**(): [`SmartContract`](SmartContract.md)
+▸ `Private` **buildEntryMethodCall**(`callPub`): `FunctionCall`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `callPub` | (`self`: [`SmartContract`](SmartContract.md)) => `void` |
 
 #### Returns
 
-[`SmartContract`](SmartContract.md)
+`FunctionCall`
 
 #### Defined in
 
-[src/contract.ts:139](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L139)
+[src/contract.ts:184](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L184)
 
 ___
 
-### delegateCall
+### callDelegatedMethod
 
-▸ `Private` **delegateCall**(`methodName`, ...`args`): `any`
+▸ `Private` **callDelegatedMethod**(`methodName`, ...`args`): `any`
 
 #### Parameters
 
@@ -168,7 +174,21 @@ ___
 
 #### Defined in
 
-[src/contract.ts:174](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L174)
+[src/contract.ts:170](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L170)
+
+___
+
+### clone
+
+▸ **clone**(): [`SmartContract`](SmartContract.md)
+
+#### Returns
+
+[`SmartContract`](SmartContract.md)
+
+#### Defined in
+
+[src/contract.ts:135](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L135)
 
 ___
 
@@ -182,7 +202,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:156](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L156)
+[src/contract.ts:152](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L152)
 
 ___
 
@@ -202,7 +222,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:123](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L123)
+[src/contract.ts:120](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L120)
 
 ___
 
@@ -216,27 +236,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:147](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L147)
-
-___
-
-### runEntryMethodCall
-
-▸ `Private` **runEntryMethodCall**(`callPub`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `callPub` | (`self`: [`SmartContract`](SmartContract.md)) => `void` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/contract.ts:181](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L181)
+[src/contract.ts:143](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L143)
 
 ___
 
@@ -257,7 +257,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:161](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L161)
+[src/contract.ts:157](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L157)
 
 ___
 
@@ -279,7 +279,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:151](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L151)
+[src/contract.ts:147](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L147)
 
 ___
 
@@ -299,7 +299,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:96](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L96)
+[src/contract.ts:94](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L94)
 
 ___
 
@@ -313,7 +313,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:62](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L62)
+[src/contract.ts:60](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L60)
 
 ___
 
@@ -327,4 +327,4 @@ ___
 
 #### Defined in
 
-[src/contract.ts:49](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L49)
+[src/contract.ts:47](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L47)

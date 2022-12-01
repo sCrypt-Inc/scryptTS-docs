@@ -1,53 +1,53 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / PubKey
+[scrypt-ts](../README.md) / Ripemd160
 
-# Class: PubKey
+# Class: Ripemd160
 
-a public key type.
+a RIPEMD-160 hash type.
 
 ## Hierarchy
 
-- `PubKey`
+- `Ripemd160`
 
-  ↳ **`PubKey`**
+  ↳ **`Ripemd160`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](PubKey.md#constructor)
+- [constructor](Ripemd160.md#constructor)
 
 ### Properties
 
-- [\_asm](PubKey.md#_asm)
-- [\_literal](PubKey.md#_literal)
-- [\_type](PubKey.md#_type)
-- [\_typeResolver](PubKey.md#_typeresolver)
-- [\_value](PubKey.md#_value)
+- [\_asm](Ripemd160.md#_asm)
+- [\_literal](Ripemd160.md#_literal)
+- [\_type](Ripemd160.md#_type)
+- [\_typeResolver](Ripemd160.md#_typeresolver)
+- [\_value](Ripemd160.md#_value)
 
 ### Accessors
 
-- [finalType](PubKey.md#finaltype)
-- [literal](PubKey.md#literal)
-- [type](PubKey.md#type)
-- [value](PubKey.md#value)
+- [finalType](Ripemd160.md#finaltype)
+- [literal](Ripemd160.md#literal)
+- [type](Ripemd160.md#type)
+- [value](Ripemd160.md#value)
 
 ### Methods
 
-- [checkValue](PubKey.md#checkvalue)
-- [clone](PubKey.md#clone)
-- [equals](PubKey.md#equals)
-- [serialize](PubKey.md#serialize)
-- [toASM](PubKey.md#toasm)
-- [toHex](PubKey.md#tohex)
-- [toJSON](PubKey.md#tojson)
-- [toLiteral](PubKey.md#toliteral)
-- [toString](PubKey.md#tostring)
+- [checkValue](Ripemd160.md#checkvalue)
+- [clone](Ripemd160.md#clone)
+- [equals](Ripemd160.md#equals)
+- [serialize](Ripemd160.md#serialize)
+- [toASM](Ripemd160.md#toasm)
+- [toHex](Ripemd160.md#tohex)
+- [toJSON](Ripemd160.md#tojson)
+- [toLiteral](Ripemd160.md#toliteral)
+- [toString](Ripemd160.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new PubKey**(`bytesVal`)
+• **new Ripemd160**(`bytesVal`)
 
 #### Parameters
 
@@ -57,11 +57,11 @@ a public key type.
 
 #### Inherited from
 
-PubKey\_.constructor
+Ripemd160\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:74
+node_modules/scryptlib/dist/scryptTypes.d.ts:84
 
 ## Properties
 
@@ -71,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:74
 
 #### Inherited from
 
-PubKey\_.\_asm
+Ripemd160\_.\_asm
 
 #### Defined in
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.\_literal
+Ripemd160\_.\_literal
 
 #### Defined in
 
@@ -99,7 +99,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.\_type
+Ripemd160\_.\_type
 
 #### Defined in
 
@@ -113,7 +113,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.\_typeResolver
+Ripemd160\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +127,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.\_value
+Ripemd160\_.\_value
 
 #### Defined in
 
@@ -145,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-PubKey\_.finalType
+Ripemd160\_.finalType
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.literal
+Ripemd160\_.literal
 
 #### Defined in
 
@@ -181,7 +181,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.type
+Ripemd160\_.type
 
 #### Defined in
 
@@ -199,7 +199,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.value
+Ripemd160\_.value
 
 #### Defined in
 
@@ -223,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-PubKey\_.checkValue
+Ripemd160\_.checkValue
 
 #### Defined in
 
@@ -241,7 +241,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.clone
+Ripemd160\_.clone
 
 #### Defined in
 
@@ -265,7 +265,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.equals
+Ripemd160\_.equals
 
 #### Defined in
 
@@ -283,11 +283,11 @@ ___
 
 #### Inherited from
 
-PubKey\_.serialize
+Ripemd160\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:76
+node_modules/scryptlib/dist/scryptTypes.d.ts:86
 
 ___
 
@@ -301,7 +301,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.toASM
+Ripemd160\_.toASM
 
 #### Defined in
 
@@ -319,7 +319,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.toHex
+Ripemd160\_.toHex
 
 #### Defined in
 
@@ -337,7 +337,7 @@ ___
 
 #### Inherited from
 
-PubKey\_.toJSON
+Ripemd160\_.toJSON
 
 #### Defined in
 
@@ -355,32 +355,32 @@ ___
 
 #### Inherited from
 
-PubKey\_.toLiteral
+Ripemd160\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:75
+node_modules/scryptlib/dist/scryptTypes.d.ts:85
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-PubKey\_.toString
+Ripemd160\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:113](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L113)

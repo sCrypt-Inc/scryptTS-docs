@@ -1,68 +1,67 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / PrivKey
+[scrypt-ts](../README.md) / Sig
 
-# Class: PrivKey
+# Class: Sig
 
-a private key type.
+a signature type in [DER](https://docs.moneybutton.com/docs/bsv-signature.html) format, including [signature hash type](https://github.com/libbitcoin/libbitcoin-system/wiki/Sighash-and-TX-Signing), which is `SIGHASH_ALL | SIGHASH_FORKID (0x41)` in the below example.
 
 ## Hierarchy
 
-- `PrivKey`
+- `Sig`
 
-  ↳ **`PrivKey`**
+  ↳ **`Sig`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](PrivKey.md#constructor)
+- [constructor](Sig.md#constructor)
 
 ### Properties
 
-- [\_asm](PrivKey.md#_asm)
-- [\_literal](PrivKey.md#_literal)
-- [\_type](PrivKey.md#_type)
-- [\_typeResolver](PrivKey.md#_typeresolver)
-- [\_value](PrivKey.md#_value)
+- [\_asm](Sig.md#_asm)
+- [\_literal](Sig.md#_literal)
+- [\_type](Sig.md#_type)
+- [\_typeResolver](Sig.md#_typeresolver)
+- [\_value](Sig.md#_value)
 
 ### Accessors
 
-- [finalType](PrivKey.md#finaltype)
-- [literal](PrivKey.md#literal)
-- [type](PrivKey.md#type)
-- [value](PrivKey.md#value)
+- [finalType](Sig.md#finaltype)
+- [literal](Sig.md#literal)
+- [type](Sig.md#type)
+- [value](Sig.md#value)
 
 ### Methods
 
-- [checkValue](PrivKey.md#checkvalue)
-- [clone](PrivKey.md#clone)
-- [equals](PrivKey.md#equals)
-- [serialize](PrivKey.md#serialize)
-- [toASM](PrivKey.md#toasm)
-- [toHex](PrivKey.md#tohex)
-- [toJSON](PrivKey.md#tojson)
-- [toLiteral](PrivKey.md#toliteral)
-- [toNumber](PrivKey.md#tonumber)
-- [toString](PrivKey.md#tostring)
+- [checkValue](Sig.md#checkvalue)
+- [clone](Sig.md#clone)
+- [equals](Sig.md#equals)
+- [serialize](Sig.md#serialize)
+- [toASM](Sig.md#toasm)
+- [toHex](Sig.md#tohex)
+- [toJSON](Sig.md#tojson)
+- [toLiteral](Sig.md#toliteral)
+- [toString](Sig.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new PrivKey**(`intVal`)
+• **new Sig**(`bytesVal`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `intVal` | `string` \| `number` \| `bigint` |
+| `bytesVal` | `string` |
 
 #### Inherited from
 
-PrivKey\_.constructor
+Sig\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:68
+node_modules/scryptlib/dist/scryptTypes.d.ts:79
 
 ## Properties
 
@@ -72,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:68
 
 #### Inherited from
 
-PrivKey\_.\_asm
+Sig\_.\_asm
 
 #### Defined in
 
@@ -86,7 +85,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.\_literal
+Sig\_.\_literal
 
 #### Defined in
 
@@ -100,7 +99,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.\_type
+Sig\_.\_type
 
 #### Defined in
 
@@ -114,7 +113,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.\_typeResolver
+Sig\_.\_typeResolver
 
 #### Defined in
 
@@ -128,7 +127,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.\_value
+Sig\_.\_value
 
 #### Defined in
 
@@ -146,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-PrivKey\_.finalType
+Sig\_.finalType
 
 #### Defined in
 
@@ -164,7 +163,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.literal
+Sig\_.literal
 
 #### Defined in
 
@@ -182,7 +181,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.type
+Sig\_.type
 
 #### Defined in
 
@@ -200,7 +199,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.value
+Sig\_.value
 
 #### Defined in
 
@@ -224,11 +223,11 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-PrivKey\_.checkValue
+Sig\_.checkValue
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:45
+node_modules/scryptlib/dist/scryptTypes.d.ts:37
 
 ___
 
@@ -242,7 +241,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.clone
+Sig\_.clone
 
 #### Defined in
 
@@ -266,7 +265,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.equals
+Sig\_.equals
 
 #### Defined in
 
@@ -284,11 +283,11 @@ ___
 
 #### Inherited from
 
-PrivKey\_.serialize
+Sig\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:71
+node_modules/scryptlib/dist/scryptTypes.d.ts:81
 
 ___
 
@@ -302,7 +301,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.toASM
+Sig\_.toASM
 
 #### Defined in
 
@@ -320,7 +319,7 @@ ___
 
 #### Inherited from
 
-PrivKey\_.toHex
+Sig\_.toHex
 
 #### Defined in
 
@@ -338,11 +337,11 @@ ___
 
 #### Inherited from
 
-PrivKey\_.toJSON
+Sig\_.toJSON
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:70
+node_modules/scryptlib/dist/scryptTypes.d.ts:35
 
 ___
 
@@ -356,50 +355,32 @@ ___
 
 #### Inherited from
 
-PrivKey\_.toLiteral
+Sig\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:69
-
-___
-
-### toNumber
-
-▸ **toNumber**(): `string` \| `number`
-
-#### Returns
-
-`string` \| `number`
-
-#### Inherited from
-
-PrivKey\_.toNumber
-
-#### Defined in
-
-node_modules/scryptlib/dist/scryptTypes.d.ts:48
+node_modules/scryptlib/dist/scryptTypes.d.ts:80
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-PrivKey\_.toString
+Sig\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:89](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L89)

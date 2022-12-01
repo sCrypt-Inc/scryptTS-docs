@@ -1,4 +1,4 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / SigHashPreimage
+[scrypt-ts](../README.md) / SigHashPreimage
 
 # Class: SigHashPreimage
 
@@ -591,18 +591,18 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format?` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
 SigHashPreimage\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:138
+[src/builtins/types.ts:100](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L100)

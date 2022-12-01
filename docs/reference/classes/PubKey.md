@@ -1,53 +1,53 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / Sha1
+[scrypt-ts](../README.md) / PubKey
 
-# Class: Sha1
+# Class: PubKey
 
-a SHA-1 hash type.
+a public key type.
 
 ## Hierarchy
 
-- `Sha1`
+- `PubKey`
 
-  ↳ **`Sha1`**
+  ↳ **`PubKey`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Sha1.md#constructor)
+- [constructor](PubKey.md#constructor)
 
 ### Properties
 
-- [\_asm](Sha1.md#_asm)
-- [\_literal](Sha1.md#_literal)
-- [\_type](Sha1.md#_type)
-- [\_typeResolver](Sha1.md#_typeresolver)
-- [\_value](Sha1.md#_value)
+- [\_asm](PubKey.md#_asm)
+- [\_literal](PubKey.md#_literal)
+- [\_type](PubKey.md#_type)
+- [\_typeResolver](PubKey.md#_typeresolver)
+- [\_value](PubKey.md#_value)
 
 ### Accessors
 
-- [finalType](Sha1.md#finaltype)
-- [literal](Sha1.md#literal)
-- [type](Sha1.md#type)
-- [value](Sha1.md#value)
+- [finalType](PubKey.md#finaltype)
+- [literal](PubKey.md#literal)
+- [type](PubKey.md#type)
+- [value](PubKey.md#value)
 
 ### Methods
 
-- [checkValue](Sha1.md#checkvalue)
-- [clone](Sha1.md#clone)
-- [equals](Sha1.md#equals)
-- [serialize](Sha1.md#serialize)
-- [toASM](Sha1.md#toasm)
-- [toHex](Sha1.md#tohex)
-- [toJSON](Sha1.md#tojson)
-- [toLiteral](Sha1.md#toliteral)
-- [toString](Sha1.md#tostring)
+- [checkValue](PubKey.md#checkvalue)
+- [clone](PubKey.md#clone)
+- [equals](PubKey.md#equals)
+- [serialize](PubKey.md#serialize)
+- [toASM](PubKey.md#toasm)
+- [toHex](PubKey.md#tohex)
+- [toJSON](PubKey.md#tojson)
+- [toLiteral](PubKey.md#toliteral)
+- [toString](PubKey.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new Sha1**(`bytesVal`)
+• **new PubKey**(`bytesVal`)
 
 #### Parameters
 
@@ -57,11 +57,11 @@ a SHA-1 hash type.
 
 #### Inherited from
 
-Sha1\_.constructor
+PubKey\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:91
+node_modules/scryptlib/dist/scryptTypes.d.ts:74
 
 ## Properties
 
@@ -71,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:91
 
 #### Inherited from
 
-Sha1\_.\_asm
+PubKey\_.\_asm
 
 #### Defined in
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.\_literal
+PubKey\_.\_literal
 
 #### Defined in
 
@@ -99,7 +99,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.\_type
+PubKey\_.\_type
 
 #### Defined in
 
@@ -113,7 +113,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.\_typeResolver
+PubKey\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +127,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.\_value
+PubKey\_.\_value
 
 #### Defined in
 
@@ -145,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-Sha1\_.finalType
+PubKey\_.finalType
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.literal
+PubKey\_.literal
 
 #### Defined in
 
@@ -181,7 +181,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.type
+PubKey\_.type
 
 #### Defined in
 
@@ -199,7 +199,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.value
+PubKey\_.value
 
 #### Defined in
 
@@ -223,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-Sha1\_.checkValue
+PubKey\_.checkValue
 
 #### Defined in
 
@@ -241,7 +241,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.clone
+PubKey\_.clone
 
 #### Defined in
 
@@ -265,7 +265,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.equals
+PubKey\_.equals
 
 #### Defined in
 
@@ -283,11 +283,11 @@ ___
 
 #### Inherited from
 
-Sha1\_.serialize
+PubKey\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:93
+node_modules/scryptlib/dist/scryptTypes.d.ts:76
 
 ___
 
@@ -301,7 +301,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.toASM
+PubKey\_.toASM
 
 #### Defined in
 
@@ -319,7 +319,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.toHex
+PubKey\_.toHex
 
 #### Defined in
 
@@ -337,7 +337,7 @@ ___
 
 #### Inherited from
 
-Sha1\_.toJSON
+PubKey\_.toJSON
 
 #### Defined in
 
@@ -355,32 +355,32 @@ ___
 
 #### Inherited from
 
-Sha1\_.toLiteral
+PubKey\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:92
+node_modules/scryptlib/dist/scryptTypes.d.ts:75
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-Sha1\_.toString
+PubKey\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:79](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L79)

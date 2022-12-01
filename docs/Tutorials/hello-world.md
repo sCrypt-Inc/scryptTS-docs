@@ -2,7 +2,6 @@
 sidebar_position: 1
 ---
 
-
 # Tutorial 1: Hello World
 
 
@@ -12,7 +11,7 @@ In this tutorial, we will code a smart contract step by step, from start to fini
 
 ## Setup
 
-First go [setup](../intro.md#setup) to install all dependencies.
+First go [setup](../overview.md) to install all dependencies.
 
 ## Create a new project
 

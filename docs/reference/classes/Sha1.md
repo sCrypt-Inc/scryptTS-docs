@@ -1,53 +1,53 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / Sig
+[scrypt-ts](../README.md) / Sha1
 
-# Class: Sig
+# Class: Sha1
 
-a signature type in [DER](https://docs.moneybutton.com/docs/bsv-signature.html) format, including [signature hash type](https://github.com/libbitcoin/libbitcoin-system/wiki/Sighash-and-TX-Signing), which is `SIGHASH_ALL | SIGHASH_FORKID (0x41)` in the below example.
+a SHA-1 hash type.
 
 ## Hierarchy
 
-- `Sig`
+- `Sha1`
 
-  ↳ **`Sig`**
+  ↳ **`Sha1`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Sig.md#constructor)
+- [constructor](Sha1.md#constructor)
 
 ### Properties
 
-- [\_asm](Sig.md#_asm)
-- [\_literal](Sig.md#_literal)
-- [\_type](Sig.md#_type)
-- [\_typeResolver](Sig.md#_typeresolver)
-- [\_value](Sig.md#_value)
+- [\_asm](Sha1.md#_asm)
+- [\_literal](Sha1.md#_literal)
+- [\_type](Sha1.md#_type)
+- [\_typeResolver](Sha1.md#_typeresolver)
+- [\_value](Sha1.md#_value)
 
 ### Accessors
 
-- [finalType](Sig.md#finaltype)
-- [literal](Sig.md#literal)
-- [type](Sig.md#type)
-- [value](Sig.md#value)
+- [finalType](Sha1.md#finaltype)
+- [literal](Sha1.md#literal)
+- [type](Sha1.md#type)
+- [value](Sha1.md#value)
 
 ### Methods
 
-- [checkValue](Sig.md#checkvalue)
-- [clone](Sig.md#clone)
-- [equals](Sig.md#equals)
-- [serialize](Sig.md#serialize)
-- [toASM](Sig.md#toasm)
-- [toHex](Sig.md#tohex)
-- [toJSON](Sig.md#tojson)
-- [toLiteral](Sig.md#toliteral)
-- [toString](Sig.md#tostring)
+- [checkValue](Sha1.md#checkvalue)
+- [clone](Sha1.md#clone)
+- [equals](Sha1.md#equals)
+- [serialize](Sha1.md#serialize)
+- [toASM](Sha1.md#toasm)
+- [toHex](Sha1.md#tohex)
+- [toJSON](Sha1.md#tojson)
+- [toLiteral](Sha1.md#toliteral)
+- [toString](Sha1.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new Sig**(`bytesVal`)
+• **new Sha1**(`bytesVal`)
 
 #### Parameters
 
@@ -57,11 +57,11 @@ a signature type in [DER](https://docs.moneybutton.com/docs/bsv-signature.html) 
 
 #### Inherited from
 
-Sig\_.constructor
+Sha1\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:79
+node_modules/scryptlib/dist/scryptTypes.d.ts:91
 
 ## Properties
 
@@ -71,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:79
 
 #### Inherited from
 
-Sig\_.\_asm
+Sha1\_.\_asm
 
 #### Defined in
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-Sig\_.\_literal
+Sha1\_.\_literal
 
 #### Defined in
 
@@ -99,7 +99,7 @@ ___
 
 #### Inherited from
 
-Sig\_.\_type
+Sha1\_.\_type
 
 #### Defined in
 
@@ -113,7 +113,7 @@ ___
 
 #### Inherited from
 
-Sig\_.\_typeResolver
+Sha1\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +127,7 @@ ___
 
 #### Inherited from
 
-Sig\_.\_value
+Sha1\_.\_value
 
 #### Defined in
 
@@ -145,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-Sig\_.finalType
+Sha1\_.finalType
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-Sig\_.literal
+Sha1\_.literal
 
 #### Defined in
 
@@ -181,7 +181,7 @@ ___
 
 #### Inherited from
 
-Sig\_.type
+Sha1\_.type
 
 #### Defined in
 
@@ -199,7 +199,7 @@ ___
 
 #### Inherited from
 
-Sig\_.value
+Sha1\_.value
 
 #### Defined in
 
@@ -223,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-Sig\_.checkValue
+Sha1\_.checkValue
 
 #### Defined in
 
@@ -241,7 +241,7 @@ ___
 
 #### Inherited from
 
-Sig\_.clone
+Sha1\_.clone
 
 #### Defined in
 
@@ -265,7 +265,7 @@ ___
 
 #### Inherited from
 
-Sig\_.equals
+Sha1\_.equals
 
 #### Defined in
 
@@ -283,11 +283,11 @@ ___
 
 #### Inherited from
 
-Sig\_.serialize
+Sha1\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:81
+node_modules/scryptlib/dist/scryptTypes.d.ts:93
 
 ___
 
@@ -301,7 +301,7 @@ ___
 
 #### Inherited from
 
-Sig\_.toASM
+Sha1\_.toASM
 
 #### Defined in
 
@@ -319,7 +319,7 @@ ___
 
 #### Inherited from
 
-Sig\_.toHex
+Sha1\_.toHex
 
 #### Defined in
 
@@ -337,7 +337,7 @@ ___
 
 #### Inherited from
 
-Sig\_.toJSON
+Sha1\_.toJSON
 
 #### Defined in
 
@@ -355,32 +355,32 @@ ___
 
 #### Inherited from
 
-Sig\_.toLiteral
+Sha1\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:80
+node_modules/scryptlib/dist/scryptTypes.d.ts:92
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-Sig\_.toString
+Sha1\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:156](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L156)

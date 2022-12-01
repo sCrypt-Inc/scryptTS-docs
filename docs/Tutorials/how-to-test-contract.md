@@ -71,7 +71,7 @@ let demo = new Demo(1n, 2n);
 
 ## Execute the contract
 
-We call `verify()` function to execute the contract, which is a function defined in the base class [SmartContract](../References/classes/SmartContract.md#verify). You need to call the public function of the contract you want to test in the callback function of the `verify()` function.
+We call `verify()` function to execute the contract, which is a function defined in the base class [SmartContract](../reference/classes/SmartContract.md#verify). You need to call the public function of the contract you want to test in the callback function of the `verify()` function.
 
 
 ```ts

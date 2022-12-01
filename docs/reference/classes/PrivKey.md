@@ -1,67 +1,68 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / PubKeyHash
+[scrypt-ts](../README.md) / PrivKey
 
-# Class: PubKeyHash
+# Class: PrivKey
 
-an alias for Ripemd160` type. Usually represent a bitcoin address.
+a private key type.
 
 ## Hierarchy
 
-- `PubKeyHash`
+- `PrivKey`
 
-  ↳ **`PubKeyHash`**
+  ↳ **`PrivKey`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](PubKeyHash.md#constructor)
+- [constructor](PrivKey.md#constructor)
 
 ### Properties
 
-- [\_asm](PubKeyHash.md#_asm)
-- [\_literal](PubKeyHash.md#_literal)
-- [\_type](PubKeyHash.md#_type)
-- [\_typeResolver](PubKeyHash.md#_typeresolver)
-- [\_value](PubKeyHash.md#_value)
+- [\_asm](PrivKey.md#_asm)
+- [\_literal](PrivKey.md#_literal)
+- [\_type](PrivKey.md#_type)
+- [\_typeResolver](PrivKey.md#_typeresolver)
+- [\_value](PrivKey.md#_value)
 
 ### Accessors
 
-- [finalType](PubKeyHash.md#finaltype)
-- [literal](PubKeyHash.md#literal)
-- [type](PubKeyHash.md#type)
-- [value](PubKeyHash.md#value)
+- [finalType](PrivKey.md#finaltype)
+- [literal](PrivKey.md#literal)
+- [type](PrivKey.md#type)
+- [value](PrivKey.md#value)
 
 ### Methods
 
-- [checkValue](PubKeyHash.md#checkvalue)
-- [clone](PubKeyHash.md#clone)
-- [equals](PubKeyHash.md#equals)
-- [serialize](PubKeyHash.md#serialize)
-- [toASM](PubKeyHash.md#toasm)
-- [toHex](PubKeyHash.md#tohex)
-- [toJSON](PubKeyHash.md#tojson)
-- [toLiteral](PubKeyHash.md#toliteral)
-- [toString](PubKeyHash.md#tostring)
+- [checkValue](PrivKey.md#checkvalue)
+- [clone](PrivKey.md#clone)
+- [equals](PrivKey.md#equals)
+- [serialize](PrivKey.md#serialize)
+- [toASM](PrivKey.md#toasm)
+- [toHex](PrivKey.md#tohex)
+- [toJSON](PrivKey.md#tojson)
+- [toLiteral](PrivKey.md#toliteral)
+- [toNumber](PrivKey.md#tonumber)
+- [toString](PrivKey.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new PubKeyHash**(`bytesVal`)
+• **new PrivKey**(`intVal`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `bytesVal` | `string` |
+| `intVal` | `string` \| `number` \| `bigint` |
 
 #### Inherited from
 
-PubKeyHash\_.constructor
+PrivKey\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:84
+node_modules/scryptlib/dist/scryptTypes.d.ts:68
 
 ## Properties
 
@@ -71,7 +72,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:84
 
 #### Inherited from
 
-PubKeyHash\_.\_asm
+PrivKey\_.\_asm
 
 #### Defined in
 
@@ -85,7 +86,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.\_literal
+PrivKey\_.\_literal
 
 #### Defined in
 
@@ -99,7 +100,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.\_type
+PrivKey\_.\_type
 
 #### Defined in
 
@@ -113,7 +114,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.\_typeResolver
+PrivKey\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +128,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.\_value
+PrivKey\_.\_value
 
 #### Defined in
 
@@ -145,7 +146,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-PubKeyHash\_.finalType
+PrivKey\_.finalType
 
 #### Defined in
 
@@ -163,7 +164,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.literal
+PrivKey\_.literal
 
 #### Defined in
 
@@ -181,7 +182,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.type
+PrivKey\_.type
 
 #### Defined in
 
@@ -199,7 +200,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.value
+PrivKey\_.value
 
 #### Defined in
 
@@ -223,11 +224,11 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-PubKeyHash\_.checkValue
+PrivKey\_.checkValue
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:37
+node_modules/scryptlib/dist/scryptTypes.d.ts:45
 
 ___
 
@@ -241,7 +242,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.clone
+PrivKey\_.clone
 
 #### Defined in
 
@@ -265,7 +266,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.equals
+PrivKey\_.equals
 
 #### Defined in
 
@@ -283,11 +284,11 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.serialize
+PrivKey\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:86
+node_modules/scryptlib/dist/scryptTypes.d.ts:71
 
 ___
 
@@ -301,7 +302,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.toASM
+PrivKey\_.toASM
 
 #### Defined in
 
@@ -319,7 +320,7 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.toHex
+PrivKey\_.toHex
 
 #### Defined in
 
@@ -337,11 +338,11 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.toJSON
+PrivKey\_.toJSON
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:35
+node_modules/scryptlib/dist/scryptTypes.d.ts:70
 
 ___
 
@@ -355,32 +356,50 @@ ___
 
 #### Inherited from
 
-PubKeyHash\_.toLiteral
+PrivKey\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:85
+node_modules/scryptlib/dist/scryptTypes.d.ts:69
+
+___
+
+### toNumber
+
+▸ **toNumber**(): `string` \| `number`
+
+#### Returns
+
+`string` \| `number`
+
+#### Inherited from
+
+PrivKey\_.toNumber
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:48
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-PubKeyHash\_.toString
+PrivKey\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:196](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L196)

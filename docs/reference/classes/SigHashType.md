@@ -1,67 +1,67 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / Ripemd160
+[scrypt-ts](../README.md) / SigHashType
 
-# Class: Ripemd160
+# Class: SigHashType
 
-a RIPEMD-160 hash type.
+a sighash type.
 
 ## Hierarchy
 
-- `Ripemd160`
+- `SigHashType`
 
-  ↳ **`Ripemd160`**
+  ↳ **`SigHashType`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Ripemd160.md#constructor)
+- [constructor](SigHashType.md#constructor)
 
 ### Properties
 
-- [\_asm](Ripemd160.md#_asm)
-- [\_literal](Ripemd160.md#_literal)
-- [\_type](Ripemd160.md#_type)
-- [\_typeResolver](Ripemd160.md#_typeresolver)
-- [\_value](Ripemd160.md#_value)
+- [\_asm](SigHashType.md#_asm)
+- [\_literal](SigHashType.md#_literal)
+- [\_type](SigHashType.md#_type)
+- [\_typeResolver](SigHashType.md#_typeresolver)
+- [\_value](SigHashType.md#_value)
 
 ### Accessors
 
-- [finalType](Ripemd160.md#finaltype)
-- [literal](Ripemd160.md#literal)
-- [type](Ripemd160.md#type)
-- [value](Ripemd160.md#value)
+- [finalType](SigHashType.md#finaltype)
+- [literal](SigHashType.md#literal)
+- [type](SigHashType.md#type)
+- [value](SigHashType.md#value)
 
 ### Methods
 
-- [checkValue](Ripemd160.md#checkvalue)
-- [clone](Ripemd160.md#clone)
-- [equals](Ripemd160.md#equals)
-- [serialize](Ripemd160.md#serialize)
-- [toASM](Ripemd160.md#toasm)
-- [toHex](Ripemd160.md#tohex)
-- [toJSON](Ripemd160.md#tojson)
-- [toLiteral](Ripemd160.md#toliteral)
-- [toString](Ripemd160.md#tostring)
+- [checkValue](SigHashType.md#checkvalue)
+- [clone](SigHashType.md#clone)
+- [equals](SigHashType.md#equals)
+- [serialize](SigHashType.md#serialize)
+- [toASM](SigHashType.md#toasm)
+- [toHex](SigHashType.md#tohex)
+- [toJSON](SigHashType.md#tojson)
+- [toLiteral](SigHashType.md#toliteral)
+- [toString](SigHashType.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new Ripemd160**(`bytesVal`)
+• **new SigHashType**(`intVal`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `bytesVal` | `string` |
+| `intVal` | `number` |
 
 #### Inherited from
 
-Ripemd160\_.constructor
+SigHashType\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:84
+node_modules/scryptlib/dist/scryptTypes.d.ts:114
 
 ## Properties
 
@@ -71,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:84
 
 #### Inherited from
 
-Ripemd160\_.\_asm
+SigHashType\_.\_asm
 
 #### Defined in
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.\_literal
+SigHashType\_.\_literal
 
 #### Defined in
 
@@ -99,7 +99,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.\_type
+SigHashType\_.\_type
 
 #### Defined in
 
@@ -113,7 +113,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.\_typeResolver
+SigHashType\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +127,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.\_value
+SigHashType\_.\_value
 
 #### Defined in
 
@@ -145,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-Ripemd160\_.finalType
+SigHashType\_.finalType
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.literal
+SigHashType\_.literal
 
 #### Defined in
 
@@ -181,7 +181,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.type
+SigHashType\_.type
 
 #### Defined in
 
@@ -199,7 +199,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.value
+SigHashType\_.value
 
 #### Defined in
 
@@ -223,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-Ripemd160\_.checkValue
+SigHashType\_.checkValue
 
 #### Defined in
 
@@ -241,7 +241,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.clone
+SigHashType\_.clone
 
 #### Defined in
 
@@ -265,7 +265,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.equals
+SigHashType\_.equals
 
 #### Defined in
 
@@ -283,11 +283,11 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.serialize
+SigHashType\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:86
+node_modules/scryptlib/dist/scryptTypes.d.ts:116
 
 ___
 
@@ -301,7 +301,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.toASM
+SigHashType\_.toASM
 
 #### Defined in
 
@@ -319,7 +319,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.toHex
+SigHashType\_.toHex
 
 #### Defined in
 
@@ -337,7 +337,7 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.toJSON
+SigHashType\_.toJSON
 
 #### Defined in
 
@@ -355,32 +355,32 @@ ___
 
 #### Inherited from
 
-Ripemd160\_.toLiteral
+SigHashType\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:85
+node_modules/scryptlib/dist/scryptTypes.d.ts:115
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-Ripemd160\_.toString
+SigHashType\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:170](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L170)

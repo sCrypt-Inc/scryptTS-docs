@@ -1,4 +1,4 @@
-[scrypt-ts](README.md) / Exports
+scrypt-ts
 
 # scrypt-ts
 
@@ -33,70 +33,66 @@
 
 ### Array Type Aliases
 
-- [FixedArray](modules.md#fixedarray)
+- [FixedArray](README.md#fixedarray)
 
 ### Other Type Aliases
 
-- [TxOutputRef](modules.md#txoutputref)
+- [TxOutputRef](README.md#txoutputref)
 
 ### Types Type Aliases
 
-- [auto](modules.md#auto)
+- [auto](README.md#auto)
 
 ### Bytes Operations Functions
 
-- [len](modules.md#len)
-- [num2bin](modules.md#num2bin)
-- [pack](modules.md#pack)
-- [reverseBytes](modules.md#reversebytes)
-- [unpack](modules.md#unpack)
+- [len](README.md#len)
+- [num2bin](README.md#num2bin)
+- [pack](README.md#pack)
+- [reverseBytes](README.md#reversebytes)
+- [unpack](README.md#unpack)
 
 ### Hashing Functions
 
-- [hash160](modules.md#hash160)
-- [hash256](modules.md#hash256)
-- [ripemd160](modules.md#ripemd160)
-- [sha1](modules.md#sha1)
-- [sha256](modules.md#sha256)
+- [hash160](README.md#hash160)
+- [hash256](README.md#hash256)
+- [ripemd160](README.md#ripemd160)
+- [sha1](README.md#sha1)
+- [sha256](README.md#sha256)
 
 ### Math Functions
 
-- [abs](modules.md#abs)
-- [max](modules.md#max)
-- [min](modules.md#min)
-- [within](modules.md#within)
+- [abs](README.md#abs)
+- [max](README.md#max)
+- [min](README.md#min)
+- [within](README.md#within)
 
 ### Other Functions
 
-- [b](modules.md#b)
+- [b](README.md#b)
 
 ### Signature Verification Functions
 
-- [checkMultiSig](modules.md#checkmultisig)
-- [checkSig](modules.md#checksig)
+- [checkMultiSig](README.md#checkmultisig)
+- [checkSig](README.md#checksig)
 
 ### assert Functions
 
-- [assert](modules.md#assert)
+- [assert](README.md#assert)
 
 ### decorator Functions
 
-- [method](modules.md#method)
-- [prop](modules.md#prop)
+- [method](README.md#method)
+- [prop](README.md#prop)
 
 ### exit() Functions
 
-- [exit](modules.md#exit)
-
-### loop Functions
-
-- [loop](modules.md#loop)
+- [exit](README.md#exit)
 
 ## Array Type Aliases
 
 ### FixedArray
 
-Ƭ **FixedArray**<`T`, `N`\>: `GrowToSize`<`T`, [], `N`\>
+Ƭ **FixedArray**<`T`, `LEN`\>: `GrowToSize`<`T`, [], `LEN`\>
 
 An array is a fixed-size list of values of the same basic type.
 When you declare an array you have to declare it like this:
@@ -116,11 +112,11 @@ let bbb: FixedArray<FixedArray<FixedArray<bigint, 1>, 2>, 3> = [[[1n], [1n]], [[
 | Name | Type |
 | :------ | :------ |
 | `T` | `T` |
-| `N` | extends `number` |
+| `LEN` | extends `number` |
 
 #### Defined in
 
-[src/builtins/types.ts:69](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/types.ts#L69)
+[src/builtins/types.ts:69](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L69)
 
 ___
 
@@ -141,7 +137,7 @@ The transaction output point bound by the smart contract
 
 #### Defined in
 
-[src/contract.ts:23](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/contract.ts#L23)
+[src/contract.ts:23](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L23)
 
 ___
 
@@ -155,7 +151,7 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 #### Defined in
 
-[src/builtins/types.ts:44](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/types.ts#L44)
+[src/builtins/types.ts:44](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L44)
 
 ## Bytes Operations Functions
 
@@ -179,7 +175,7 @@ The length of the string bytes.
 
 #### Defined in
 
-[src/builtins/functions.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L43)
+[src/builtins/functions.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L43)
 
 ___
 
@@ -204,7 +200,7 @@ A string .
 
 #### Defined in
 
-[src/builtins/functions.ts:33](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L33)
+[src/builtins/functions.ts:33](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L33)
 
 ___
 
@@ -226,7 +222,7 @@ bigint can be converted to string with pack
 
 #### Defined in
 
-[src/builtins/functions.ts:12](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L12)
+[src/builtins/functions.ts:12](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L12)
 
 ___
 
@@ -251,7 +247,7 @@ The length of the string bytes.
 
 #### Defined in
 
-[src/builtins/functions.ts:53](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L53)
+[src/builtins/functions.ts:53](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L53)
 
 ___
 
@@ -273,7 +269,7 @@ string can be converted to bigint using function unpack.
 
 #### Defined in
 
-[src/builtins/functions.ts:21](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L21)
+[src/builtins/functions.ts:21](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L21)
 
 ___
 
@@ -304,7 +300,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:177](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L177)
+[src/builtins/functions.ts:177](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L177)
 
 ___
 
@@ -333,7 +329,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:192](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L192)
+[src/builtins/functions.ts:192](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L192)
 
 ___
 
@@ -359,7 +355,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:135](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L135)
+[src/builtins/functions.ts:135](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L135)
 
 ___
 
@@ -386,7 +382,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:148](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L148)
+[src/builtins/functions.ts:148](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L148)
 
 ___
 
@@ -413,7 +409,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:162](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L162)
+[src/builtins/functions.ts:162](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L162)
 
 ___
 
@@ -437,7 +433,7 @@ The input `a` is made positive.
 
 #### Defined in
 
-[src/builtins/functions.ts:96](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L96)
+[src/builtins/functions.ts:96](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L96)
 
 ___
 
@@ -460,7 +456,7 @@ Returns the larger of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:115](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L115)
+[src/builtins/functions.ts:115](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L115)
 
 ___
 
@@ -483,7 +479,7 @@ Returns the smaller of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:107](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L107)
+[src/builtins/functions.ts:107](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L107)
 
 ___
 
@@ -507,7 +503,7 @@ Returns true if `x` is within the specified range (left-inclusive), false otherw
 
 #### Defined in
 
-[src/builtins/functions.ts:123](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L123)
+[src/builtins/functions.ts:123](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L123)
 
 ___
 
@@ -538,7 +534,7 @@ Represents a hex literal string.
 
 #### Defined in
 
-[src/builtins/types.ts:35](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/types.ts#L35)
+[src/builtins/types.ts:35](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L35)
 
 ___
 
@@ -567,7 +563,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/builtins/functions.ts:78](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L78)
+[src/builtins/functions.ts:78](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L78)
 
 ___
 
@@ -594,7 +590,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/builtins/functions.ts:71](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L71)
+[src/builtins/functions.ts:71](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L71)
 
 ___
 
@@ -616,7 +612,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:204](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L204)
+[src/builtins/functions.ts:204](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L204)
 
 ___
 
@@ -642,7 +638,7 @@ Indicates whether the method is a contract method, and ordinary methods do not a
 
 #### Defined in
 
-[src/decorators.ts:7](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/decorators.ts#L7)
+[src/decorators.ts:7](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/decorators.ts#L7)
 
 ___
 
@@ -677,7 +673,7 @@ Indicates whether the property is an property of a contract, and ordinary class 
 
 #### Defined in
 
-[src/decorators.ts:50](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/decorators.ts#L50)
+[src/decorators.ts:50](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/decorators.ts#L50)
 
 ___
 
@@ -701,79 +697,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:89](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L89)
-
-___
-
-## loop Functions
-
-### loop
-
-▸ **loop**(`maxLoopCount`): (`fn`: (`i`: `number`) => `void`) => `void`
-
-Bitcoin script does not provide looping constructs natively for security reasons. sCrypt achieves looping by repeating the loop body maxLoopCount times. For example, the loop
-
-**`Example`**
-
-```ts
-loop (5n) (() => {
-  x = x * 2;
-})
-```
-is equivalently unrolled to
-
-**`Example`**
-
-```ts
-x = x * 2;
-x = x * 2;
-x = x * 2;
-x = x * 2;
-x = x * 2;
-x = x * 2;
-x = x * 2;
-x = x * 2;
-x = x * 2;
-x = x * 2;
-```
-If `maxLoopCount` is set too small, the contract may not work correctly. If `maxLoopCount` is set too large, the resulting script is bloated unnecessarily and costs more to execute. There are a number of ways to choose the right `maxLoopCount` judiciously. One way is to simulate the contract off chain and find the number of loops. Another way is to exploit the characteristics of the looping itself. For example, if a loop iterates over each bit of a sha256 hash, `maxLoopCount` is 256.
-## Induction variable
-Induction variable can be defined when loop index is needed.
-
-**`Example`**
-
-```ts
-loop (5n) ((i: number) => {
-    // i is the outer loop index
-    loop (5n) ((k: number) => {
-    // j is the inner loop index
-        a += BigInt(i + k);
-    })
-})
-```
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `maxLoopCount` | `bigint` |
-
-#### Returns
-
-`fn`
-
-▸ (`fn`): `void`
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fn` | (`i`: `number`) => `void` |
-
-##### Returns
-
-`void`
-
-#### Defined in
-
-[src/builtins/functions.ts:250](https://github.com/sCrypt-Inc/ts-sCrypt/blob/02966bf/src/builtins/functions.ts#L250)
+[src/builtins/functions.ts:89](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L89)

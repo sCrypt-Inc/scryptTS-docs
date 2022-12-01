@@ -1,53 +1,53 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / OpCodeType
+[scrypt-ts](../README.md) / PubKeyHash
 
-# Class: OpCodeType
+# Class: PubKeyHash
 
-a OpCode type.
+an alias for Ripemd160` type. Usually represent a bitcoin address.
 
 ## Hierarchy
 
-- `OpCodeType`
+- `PubKeyHash`
 
-  ↳ **`OpCodeType`**
+  ↳ **`PubKeyHash`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](OpCodeType.md#constructor)
+- [constructor](PubKeyHash.md#constructor)
 
 ### Properties
 
-- [\_asm](OpCodeType.md#_asm)
-- [\_literal](OpCodeType.md#_literal)
-- [\_type](OpCodeType.md#_type)
-- [\_typeResolver](OpCodeType.md#_typeresolver)
-- [\_value](OpCodeType.md#_value)
+- [\_asm](PubKeyHash.md#_asm)
+- [\_literal](PubKeyHash.md#_literal)
+- [\_type](PubKeyHash.md#_type)
+- [\_typeResolver](PubKeyHash.md#_typeresolver)
+- [\_value](PubKeyHash.md#_value)
 
 ### Accessors
 
-- [finalType](OpCodeType.md#finaltype)
-- [literal](OpCodeType.md#literal)
-- [type](OpCodeType.md#type)
-- [value](OpCodeType.md#value)
+- [finalType](PubKeyHash.md#finaltype)
+- [literal](PubKeyHash.md#literal)
+- [type](PubKeyHash.md#type)
+- [value](PubKeyHash.md#value)
 
 ### Methods
 
-- [checkValue](OpCodeType.md#checkvalue)
-- [clone](OpCodeType.md#clone)
-- [equals](OpCodeType.md#equals)
-- [serialize](OpCodeType.md#serialize)
-- [toASM](OpCodeType.md#toasm)
-- [toHex](OpCodeType.md#tohex)
-- [toJSON](OpCodeType.md#tojson)
-- [toLiteral](OpCodeType.md#toliteral)
-- [toString](OpCodeType.md#tostring)
+- [checkValue](PubKeyHash.md#checkvalue)
+- [clone](PubKeyHash.md#clone)
+- [equals](PubKeyHash.md#equals)
+- [serialize](PubKeyHash.md#serialize)
+- [toASM](PubKeyHash.md#toasm)
+- [toHex](PubKeyHash.md#tohex)
+- [toJSON](PubKeyHash.md#tojson)
+- [toLiteral](PubKeyHash.md#toliteral)
+- [toString](PubKeyHash.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new OpCodeType**(`bytesVal`)
+• **new PubKeyHash**(`bytesVal`)
 
 #### Parameters
 
@@ -57,11 +57,11 @@ a OpCode type.
 
 #### Inherited from
 
-OpCodeType\_.constructor
+PubKeyHash\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:155
+node_modules/scryptlib/dist/scryptTypes.d.ts:84
 
 ## Properties
 
@@ -71,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:155
 
 #### Inherited from
 
-OpCodeType\_.\_asm
+PubKeyHash\_.\_asm
 
 #### Defined in
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.\_literal
+PubKeyHash\_.\_literal
 
 #### Defined in
 
@@ -99,7 +99,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.\_type
+PubKeyHash\_.\_type
 
 #### Defined in
 
@@ -113,7 +113,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.\_typeResolver
+PubKeyHash\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +127,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.\_value
+PubKeyHash\_.\_value
 
 #### Defined in
 
@@ -145,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-OpCodeType\_.finalType
+PubKeyHash\_.finalType
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.literal
+PubKeyHash\_.literal
 
 #### Defined in
 
@@ -181,7 +181,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.type
+PubKeyHash\_.type
 
 #### Defined in
 
@@ -199,7 +199,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.value
+PubKeyHash\_.value
 
 #### Defined in
 
@@ -223,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-OpCodeType\_.checkValue
+PubKeyHash\_.checkValue
 
 #### Defined in
 
@@ -241,7 +241,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.clone
+PubKeyHash\_.clone
 
 #### Defined in
 
@@ -265,7 +265,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.equals
+PubKeyHash\_.equals
 
 #### Defined in
 
@@ -283,11 +283,11 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.serialize
+PubKeyHash\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:157
+node_modules/scryptlib/dist/scryptTypes.d.ts:86
 
 ___
 
@@ -301,7 +301,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.toASM
+PubKeyHash\_.toASM
 
 #### Defined in
 
@@ -319,7 +319,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.toHex
+PubKeyHash\_.toHex
 
 #### Defined in
 
@@ -337,7 +337,7 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.toJSON
+PubKeyHash\_.toJSON
 
 #### Defined in
 
@@ -355,32 +355,32 @@ ___
 
 #### Inherited from
 
-OpCodeType\_.toLiteral
+PubKeyHash\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:156
+node_modules/scryptlib/dist/scryptTypes.d.ts:85
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-OpCodeType\_.toString
+PubKeyHash\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:128](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L128)

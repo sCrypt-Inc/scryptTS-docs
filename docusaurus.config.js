@@ -33,11 +33,12 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -58,15 +59,21 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'overview',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Overview',
           },
           {
             type: 'doc',
-            docId: 'References/README',
+            docId: 'tutorials/hello-world',
             position: 'left',
-            label: 'References',
+            label: 'Tutorials',
+          },
+          {
+            type: 'doc',
+            docId: 'reference/README',
+            position: 'left',
+            label: 'Reference',
           },
           {
             href: 'https://github.com/sCrypt-Inc',
@@ -82,12 +89,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Overview',
+                to: '/overview',
               },
               {
-                label: 'References',
-                to: '/docs/References/modules',
+                label: 'Reference',
+                to: '/reference',
               },
             ],
           },

@@ -1,53 +1,53 @@
-[scrypt-ts](../README.md) / [Exports](../modules.md) / Sha256
+[scrypt-ts](../README.md) / OpCodeType
 
-# Class: Sha256
+# Class: OpCodeType
 
-a SHA-256 hash type.
+a OpCode type.
 
 ## Hierarchy
 
-- `Sha256`
+- `OpCodeType`
 
-  ↳ **`Sha256`**
+  ↳ **`OpCodeType`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Sha256.md#constructor)
+- [constructor](OpCodeType.md#constructor)
 
 ### Properties
 
-- [\_asm](Sha256.md#_asm)
-- [\_literal](Sha256.md#_literal)
-- [\_type](Sha256.md#_type)
-- [\_typeResolver](Sha256.md#_typeresolver)
-- [\_value](Sha256.md#_value)
+- [\_asm](OpCodeType.md#_asm)
+- [\_literal](OpCodeType.md#_literal)
+- [\_type](OpCodeType.md#_type)
+- [\_typeResolver](OpCodeType.md#_typeresolver)
+- [\_value](OpCodeType.md#_value)
 
 ### Accessors
 
-- [finalType](Sha256.md#finaltype)
-- [literal](Sha256.md#literal)
-- [type](Sha256.md#type)
-- [value](Sha256.md#value)
+- [finalType](OpCodeType.md#finaltype)
+- [literal](OpCodeType.md#literal)
+- [type](OpCodeType.md#type)
+- [value](OpCodeType.md#value)
 
 ### Methods
 
-- [checkValue](Sha256.md#checkvalue)
-- [clone](Sha256.md#clone)
-- [equals](Sha256.md#equals)
-- [serialize](Sha256.md#serialize)
-- [toASM](Sha256.md#toasm)
-- [toHex](Sha256.md#tohex)
-- [toJSON](Sha256.md#tojson)
-- [toLiteral](Sha256.md#toliteral)
-- [toString](Sha256.md#tostring)
+- [checkValue](OpCodeType.md#checkvalue)
+- [clone](OpCodeType.md#clone)
+- [equals](OpCodeType.md#equals)
+- [serialize](OpCodeType.md#serialize)
+- [toASM](OpCodeType.md#toasm)
+- [toHex](OpCodeType.md#tohex)
+- [toJSON](OpCodeType.md#tojson)
+- [toLiteral](OpCodeType.md#toliteral)
+- [toString](OpCodeType.md#tostring)
 
 ## Constructors
 
 ### constructor
 
-• **new Sha256**(`bytesVal`)
+• **new OpCodeType**(`bytesVal`)
 
 #### Parameters
 
@@ -57,11 +57,11 @@ a SHA-256 hash type.
 
 #### Inherited from
 
-Sha256\_.constructor
+OpCodeType\_.constructor
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:96
+node_modules/scryptlib/dist/scryptTypes.d.ts:155
 
 ## Properties
 
@@ -71,7 +71,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:96
 
 #### Inherited from
 
-Sha256\_.\_asm
+OpCodeType\_.\_asm
 
 #### Defined in
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.\_literal
+OpCodeType\_.\_literal
 
 #### Defined in
 
@@ -99,7 +99,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.\_type
+OpCodeType\_.\_type
 
 #### Defined in
 
@@ -113,7 +113,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.\_typeResolver
+OpCodeType\_.\_typeResolver
 
 #### Defined in
 
@@ -127,7 +127,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.\_value
+OpCodeType\_.\_value
 
 #### Defined in
 
@@ -145,7 +145,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:21
 
 #### Inherited from
 
-Sha256\_.finalType
+OpCodeType\_.finalType
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.literal
+OpCodeType\_.literal
 
 #### Defined in
 
@@ -181,7 +181,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.type
+OpCodeType\_.type
 
 #### Defined in
 
@@ -199,7 +199,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.value
+OpCodeType\_.value
 
 #### Defined in
 
@@ -223,7 +223,7 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:28
 
 #### Inherited from
 
-Sha256\_.checkValue
+OpCodeType\_.checkValue
 
 #### Defined in
 
@@ -241,7 +241,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.clone
+OpCodeType\_.clone
 
 #### Defined in
 
@@ -265,7 +265,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.equals
+OpCodeType\_.equals
 
 #### Defined in
 
@@ -283,11 +283,11 @@ ___
 
 #### Inherited from
 
-Sha256\_.serialize
+OpCodeType\_.serialize
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:98
+node_modules/scryptlib/dist/scryptTypes.d.ts:157
 
 ___
 
@@ -301,7 +301,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.toASM
+OpCodeType\_.toASM
 
 #### Defined in
 
@@ -319,7 +319,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.toHex
+OpCodeType\_.toHex
 
 #### Defined in
 
@@ -337,7 +337,7 @@ ___
 
 #### Inherited from
 
-Sha256\_.toJSON
+OpCodeType\_.toJSON
 
 #### Defined in
 
@@ -355,32 +355,32 @@ ___
 
 #### Inherited from
 
-Sha256\_.toLiteral
+OpCodeType\_.toLiteral
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:97
+node_modules/scryptlib/dist/scryptTypes.d.ts:156
 
 ___
 
 ### toString
 
-▸ **toString**(`format`): `string`
+▸ **toString**(`format?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `format` | `string` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `format` | ``"hex"`` | `'hex'` |
 
 #### Returns
 
 `string`
 
-#### Inherited from
+#### Overrides
 
-Sha256\_.toString
+OpCodeType\_.toString
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:34
+[src/builtins/types.ts:183](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L183)
