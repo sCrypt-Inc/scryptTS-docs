@@ -33,13 +33,13 @@ cd scrypt-ts-hello-world
 Set up a new npm project.
 
 ```bash
-npm init
+npm init -y
 ```
 
 Install scrypt-ts:
 
 ```bash
-npm i -D scrypt-ts@0.1.3-alpha
+npm i scrypt-ts@latest
 ```
 
 Create a `contracts` directory to store contract source code:
