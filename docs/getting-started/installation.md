@@ -17,7 +17,7 @@ curl -Ls https://scrypt.io/setup | sh -s --
 Use this command to install `scrypt-ts` to your project:
 
 ```sh
-npm i scrypt-ts@latest
+npm install scrypt-ts
 ```
 
 ## Configuration
