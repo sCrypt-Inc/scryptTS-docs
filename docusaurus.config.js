@@ -9,7 +9,7 @@ const config = {
   title: 'scryptTS',
   tagline: 'scryptTS is a Typescript framework to write smart contracts on Bitcoin.',
   url: 'https://scrypt.io',
-  baseUrl: '/scryptTS',
+  baseUrl: '/scrypt-ts',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
