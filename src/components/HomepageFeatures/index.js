@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Write Bitcoin smart contracts in a modern high-level programming language.
+        Write Bitcoin smart contracts in TypeScript/JavaScript.
       </>
     ),
   },
