@@ -136,22 +136,13 @@ let invalid_str = "hello world";  // invalid, string literal without wrapper fun
 let invalid_str2 = hexToString('012'); // invalid, odd number of hex characters
 ```
 
-Also only two methods of `string` can be used in `@method`s:
+Also there are only a few methods of `string` can be used in `@method`s:
 
-* `String.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `String` is a byte array, `indexStart` and `indexEnd` must be even numbers.
-
-For example:
-
-
-```js
-let s0 = utf8ToString('hello world');  // s0 value is "68656c6c6f20776f726c64"
-
-let s1 = s0.slice(0, 4)       // s1 value is "6865"
-
-let invalid_s2 = s0.slice(0, 3)  // invalid, `indexEnd` must be even numbers.
-```
+* `String.==` / `String.===`: compare two strings, like `str1 == str2` or `str1 === str2`.
 
 * `String.+`: concat two strings, like `str1 + str2`.
+
+* `String.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `String` is a byte array, `indexStart` and `indexEnd` must be even numbers.
 
 #### `number` Type
 
@@ -323,6 +314,7 @@ Note that the initial value `0` and the `<` operator and `++` in the incremental
 
 * `$i` can be whatever you name the induction/iteration variable.
 
+Notice that `break` and `continue` expression can not be used in the `for` statement in `@method`s right now.
 ### `return` statement
 
 Due to the lack of native return semantics support in Bitcoin Script, a function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future. 

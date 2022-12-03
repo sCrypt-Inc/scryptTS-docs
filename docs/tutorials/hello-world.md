@@ -17,7 +17,7 @@ First go [setup](../overview.md) to install all dependencies.
 
 After all toolings installed, we can start building our application.
 
-scryptTS is a Typescript framework to write smart contracts on Bitcoin. We use *npm* to start a new TypeScript Project.
+scryptTS is a Typescript framework to write smart contracts on Bitcoin SV. We use *npm* to start a new TypeScript Project.
 
 
 ```bash

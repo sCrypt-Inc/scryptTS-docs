@@ -1,6 +1,4 @@
-scrypt-ts
-
-# scrypt-ts
+# scryptTS
 
 ## Table of contents
 
