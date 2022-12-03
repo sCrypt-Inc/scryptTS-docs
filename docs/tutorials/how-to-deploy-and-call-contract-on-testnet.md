@@ -44,12 +44,12 @@ You can fund its address '${newPrivKey.toAddress()}' from sCrypt faucet https://
 export const privateKey = bsv.PrivateKey.fromWIF(privKey);
 ```
 
-<center><a href="https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/privateKey.ts">privateKey.ts</a></center>
+<center><a href="https://github.com/sCrypt-Inc/scryptTS-example/blob/master/privateKey.ts">privateKey.ts</a></center>
 
 After the privatekey is generated, you can get some testnet bitcoins from our [faucet](https://scrypt.io/#faucet).
 
 
-Deploy contracts and trigger contract execution by constructing transactions and sending them to the Bitcoin blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/f85dcf7a5d96979f39b5f512466bd9f4bdd22693/txHelper.ts#L32) for building transactions.
+Deploy contracts and trigger contract execution by constructing transactions and sending them to the Bitcoin blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scryptTS-example/blob/f85dcf7a5d96979f39b5f512466bd9f4bdd22693/txHelper.ts#L32) for building transactions.
 
 ## Instantiate the contract
 

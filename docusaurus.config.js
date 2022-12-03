@@ -6,10 +6,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'scrypt-ts',
-  tagline: 'scrypt-ts is a Typescript framework to write smart contracts on Bitcoin.',
+  title: 'scryptTS',
+  tagline: 'scryptTS is a Typescript framework to write smart contracts on Bitcoin.',
   url: 'https://scrypt.io',
-  baseUrl: '/scrypt-ts',
+  baseUrl: '/scryptTS',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -17,7 +17,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'sCrypt-Inc', // Usually your GitHub org/user name.
-  projectName: 'scrypt-ts', // Usually your repo name.
+  projectName: 'scryptTS', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -51,7 +51,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'scrypt-ts',
+        title: 'scryptTS',
         logo: {
           alt: 'scrypt Logo',
           src: 'img/logo.svg',

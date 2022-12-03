@@ -6,7 +6,7 @@ sidebar_position: 3
  
 Before using your contract code in production, you should always test it carefully, especially because it may cause **real economic losses** if there were bugs or safety issues.
  
-There are two different kinds of test recommended for every project using `scrypt-ts`:
+There are two different kinds of test recommended for every project using `scryptTS`:
  
 * **Local Testing**
 * **Testnet Testing**
@@ -69,7 +69,7 @@ In order to do so, you should meet these requirements:
  
 * Get a private key with some amount of BSV tokens on testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
  
-* Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scrypt-ts-example), or build your own.
+* Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scryptTS-example/blob/master/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scryptTS-example), or build your own.
  
 Then you could write some tests like this:
  

@@ -17,7 +17,7 @@ First go [setup](../overview.md) to install all dependencies.
 
 After all toolings installed, we can start building our application.
 
-scrypt-ts is a Typescript framework to write smart contracts on Bitcoin. We use *npm* to start a new TypeScript Project.
+scryptTS is a Typescript framework to write smart contracts on Bitcoin. We use *npm* to start a new TypeScript Project.
 
 
 ```bash
@@ -36,7 +36,7 @@ Set up a new npm project.
 npm init -y
 ```
 
-Install scrypt-ts:
+Install `scryptTS`:
 
 ```bash
 npm i scrypt-ts@latest
@@ -91,7 +91,7 @@ Update the `tsconfig.json` with following config:
 
 ## Write a Smart Contract
 
-Now, the fun part! Let's write our smart contract: `contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/contracts/demo.ts).
+Now, the fun part! Let's write our smart contract: `contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scryptTS-example/blob/master/contracts/demo.ts).
 
 First, open `contracts/demo.ts` in your editor, then add the following at the top of the file:
 
@@ -183,7 +183,7 @@ You must initialize the property in the constructor, it is not allowed to initia
 
 ### Non-Public Functions
 
-**scrypt-ts** enables developers to define their own functions.
+**scryptTS** enables developers to define their own functions.
 
 Let's add a sum function to the `Demo` contract.
 
@@ -297,7 +297,7 @@ If succeeded, you wiil see:
 
 ```
 $npx tsc                                                     
-activate scrypt-ts transformer plugin
+activate scryptTS transformer plugin
 ...
 transpiling errors []
 ```
@@ -307,7 +307,7 @@ The tsc compiling process may output diagnostic informations in console about th
 
 # Conclusion
 
-Congrats! We have finished building our first smart contract with **scrypt-ts**.
+Congrats! We have finished building our first smart contract with **scryptTS**.
 
 Checkout [Tutorial 2](./how-to-test-contract.md) to learn how to test contract.
 

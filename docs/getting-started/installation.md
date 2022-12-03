@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Requirements
 
-`scrypt-ts` depends on the native [sCrypt](https://scrypt.io) compiler, which could be downloaded with this command:
+`scryptTS` depends on the native [sCrypt](https://scrypt.io) compiler, which could be downloaded with this command:
 
 ```sh
 curl -Ls https://scrypt.io/setup | sh -s --
@@ -14,7 +14,7 @@ curl -Ls https://scrypt.io/setup | sh -s --
 
 ## Installation
 
-Use this command to install `scrypt-ts` to your project:
+Use this command to install `scryptTS` to your project:
 
 ```sh
 npm install scrypt-ts
@@ -22,7 +22,7 @@ npm install scrypt-ts
 
 ## Configuration
 
-`scrypt-ts` also depends on [ts-patch](https://github.com/nonara/ts-patch) to provide a custom plugin support for typescript. 
+`scryptTS` also depends on [ts-patch](https://github.com/nonara/ts-patch) to provide a custom plugin support for typescript. 
 
 This configuration should be added to `compilerOptions` in `tsconfig.json` file:
 

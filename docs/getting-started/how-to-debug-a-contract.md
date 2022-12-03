@@ -104,7 +104,7 @@ As with [debugging TypeScript programs](https://code.visualstudio.com/docs/types
 Now you can start setting breakpoints and press **F5** to start the debugger.
 
 
-![](https://github.com/sCrypt-Inc/image-hosting/blob/master/scrypt-ts-docs/debugging.gif?raw=true)
+![](https://github.com/sCrypt-Inc/image-hosting/blob/master/scryptTS-docs/debugging.gif?raw=true)
 
 If you want to debug a unit test written with **mocha**, use the following configuration:
 
