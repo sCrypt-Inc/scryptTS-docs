@@ -89,9 +89,9 @@ Update the `tsconfig.json` with following config:
 }
 ```
 
-## Write the bitcoin Smart Contract
+## Write a Smart Contract
 
-Now, the fun part! Let's write our bitcoin smart contract: `contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/contracts/demo.ts).
+Now, the fun part! Let's write our smart contract: `contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/contracts/demo.ts).
 
 First, open `contracts/demo.ts` in your editor, then add the following at the top of the file:
 
@@ -102,7 +102,7 @@ import { method, prop, SmartContract, assert } from "scrypt-ts";
 What each of these are:
 
 
-- `SmartContract`: The class that creates bitcoin smart contracts.
+- `SmartContract`: The class that creates smart contracts.
 
 - `method`: The decorator on class methods to mark them as contract methods. The logic implemented in these methods would be serialized into [bitcoin transactions](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions) and be executed on chain.
 
@@ -113,7 +113,7 @@ What each of these are:
 
 ## Smart Contract Class
 
-All bitcoin smart contracts should extends the `SmartContract` class. Write the following in your file:
+All smart contracts should extends the `SmartContract` class. Write the following in your file:
 
 ```ts
 export class Demo extends SmartContract {
@@ -137,6 +137,12 @@ export class Demo extends SmartContract {
 
   @prop()
   y: bigint;
+
+  @prop()
+  on: boolean;
+
+  @prop()
+  str: string;
 }
 ```
 
@@ -146,17 +152,9 @@ Their types are all `bigint`. Only three primitive types are allowed by `@prop` 
 2. `bigint`
 3. `string`
 
-You can try to add other primitive types of properties, such as:
 
-```ts
-@prop()
-on: boolean;
 
-@prop()
-str: string;
-```
-
-*Note*: the type `number` is not allowed in `@prop` decorator.
+*Note*: The `number` type is not also allowed except in some [special cases](../getting-started/how-to-write-a-contract.md#number-type).
 
 
 ### Constructor
@@ -309,7 +307,7 @@ The tsc compiling process may output diagnostic informations in console about th
 
 # Conclusion
 
-Congrats! We have finished building our first bitcoin smart contract with **scrypt-ts**.
+Congrats! We have finished building our first smart contract with **scrypt-ts**.
 
 Checkout [Tutorial 2](./how-to-test-contract.md) to learn how to test contract.
 

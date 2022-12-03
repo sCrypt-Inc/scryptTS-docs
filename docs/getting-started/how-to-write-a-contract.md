@@ -140,6 +140,17 @@ Also only two methods of `string` can be used in `@method`s:
 
 * `String.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `String` is a byte array, `indexStart` and `indexEnd` must be even numbers.
 
+For example:
+
+
+```js
+let s0 = utf8ToString('hello world');  // s0 value is "68656c6c6f20776f726c64"
+
+let s1 = s0.slice(0, 4)       // s1 value is "6865"
+
+let invalid_s2 = s0.slice(0, 3)  // invalid, `indexEnd` must be even numbers.
+```
+
 * `String.+`: concat two strings, like `str1 + str2`.
 
 #### `number` Type
