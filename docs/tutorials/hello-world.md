@@ -183,7 +183,7 @@ export class Demo extends SmartContract {
 
 You must initialize the property in the constructor, it is not allowed to initialize when the property is declared.
 
-### User-Defined Functions
+### Non-Public Functions
 
 **scrypt-ts** enables developers to define their own functions.
 
@@ -212,11 +212,14 @@ export class Demo extends SmartContract {
 }
 ```
 
+It can return any valid types described later. The return type must be explicitly declared. 
+
 ### Public Functions
 
 The public function is the interface for calling the contract externally. The main logic code contained in the function body can be regarded as a locking script; the function parameters can be regarded as the corresponding unlocking script. Miners actually verify the execution results of this combination.
 
-Now we add an `add` public function to the demo contract, which provides a verification function for the contract whether the input `z` is the sum of two properties `x` and `y`.
+Now we add an `add` public function to the demo contract, which provides a verification function for the contract whether the input `z` is the sum of two properties `x` and `y`. The return type of public methods is `void`. The return type need not be explicitly declared.
+
 
 
 ```ts
@@ -240,7 +243,6 @@ export class Demo extends SmartContract {
 
 }
 ```
-
 
 Each contract has at least one public function. Let's add another public function `sub` to the Demo contract.
 

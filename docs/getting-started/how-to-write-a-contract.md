@@ -94,7 +94,7 @@ A public function can be called from an external transaction. The call succeeds 
 
 Without a `public` modifier, a `@method` is an internal function and can only be called within the contract class. 
 
-It can return any valid types described later, e.g., 
+It can return any valid types described later. The return type must be explicitly declared. e.g.,
 
 ```js
   @method
@@ -102,6 +102,10 @@ It can return any valid types described later, e.g.,
     return x0 + x1;
   }
 ```
+
+
+Note: Recursion is disallowed. Both **Non-Public Function** and **Public Function** cannot call itself in its body, either directly or indirectly.
+
 
 ## Types
 
@@ -117,19 +121,19 @@ In a smart contract context (i.e., in `@method`s or `@prop`s), a `string` type r
 
 Literal `string` is not allowed to be used directly without being wrapped in these functions below:
 
-* `b(input: string)`: return the raw value of `input` as a byte array while validating it as hex bytes.
-* `u8b(input: string)`: return a value in hex bytes format representing the utf8 encoding of `input`.
+* `hexToString(input: string)`: return the raw value of `input` as a byte array while validating it as hex bytes.
+* `utf8ToString(input: string)`: return a value in hex bytes format representing the utf8 encoding of `input`.
 
 For example:
 
 ```js
-let s0 = u8b('hello world');  // valid, s0 === "68656c6c6f20776f726c64"
+let s0 = utf8ToString('hello world');  // valid, s0 === "68656c6c6f20776f726c64"
 
-let s1 = b('01ab23ef');       // valid, s1 === '01ab23ef'
+let s1 = hexToString('01ab23ef');       // valid, s1 === '01ab23ef'
 
 let invalid_str = "hello world";  // invalid, string literal without wrapper function
 
-let invalid_str2 = b('012'); // invalid, odd number of hex characters
+let invalid_str2 = hexToString('012'); // invalid, odd number of hex characters
 ```
 
 Also only two methods of `string` can be used in `@method`s:
