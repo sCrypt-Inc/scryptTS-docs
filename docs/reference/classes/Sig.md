@@ -383,4 +383,4 @@ Sig\_.toString
 
 #### Defined in
 
-[src/builtins/types.ts:89](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L89)
+[src/builtins/types.ts:100](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L100)

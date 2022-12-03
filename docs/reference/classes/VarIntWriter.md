@@ -12,8 +12,8 @@
 
 - [serializeState](VarIntWriter.md#serializestate)
 - [writeBool](VarIntWriter.md#writebool)
+- [writeBytes](VarIntWriter.md#writebytes)
 - [writeInt](VarIntWriter.md#writeint)
-- [writestring](VarIntWriter.md#writestring)
 
 ## Constructors
 
@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:494](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L494)
+[src/builtins/functions.ts:650](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L650)
 
 ___
 
@@ -59,7 +59,27 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:489](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L489)
+[src/builtins/functions.ts:641](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L641)
+
+___
+
+### writeBytes
+
+▸ `Static` **writeBytes**(`buf`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `buf` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/builtins/functions.ts:615](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L615)
 
 ___
 
@@ -79,24 +99,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:492](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L492)
-
-___
-
-### writestring
-
-▸ `Static` **writestring**(`buf`): `string`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `buf` | `string` |
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[src/builtins/functions.ts:486](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L486)
+[src/builtins/functions.ts:646](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L646)

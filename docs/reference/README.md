@@ -68,12 +68,12 @@ scrypt-ts
 
 ### Other Functions
 
-- [b](README.md#b)
+- [hexToString](README.md#hextostring)
+- [utf8ToString](README.md#utf8tostring)
 
 ### Signature Verification Functions
 
 - [checkMultiSig](README.md#checkmultisig)
-- [checkSig](README.md#checksig)
 
 ### assert Functions
 
@@ -116,7 +116,7 @@ let bbb: FixedArray<FixedArray<FixedArray<bigint, 1>, 2>, 3> = [[[1n], [1n]], [[
 
 #### Defined in
 
-[src/builtins/types.ts:69](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L69)
+[src/builtins/types.ts:80](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L80)
 
 ___
 
@@ -137,7 +137,7 @@ The transaction output point bound by the smart contract
 
 #### Defined in
 
-[src/contract.ts:23](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L23)
+[src/contract.ts:24](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L24)
 
 ___
 
@@ -151,7 +151,7 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 #### Defined in
 
-[src/builtins/types.ts:44](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L44)
+[src/builtins/types.ts:55](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L55)
 
 ## Bytes Operations Functions
 
@@ -175,7 +175,7 @@ The length of the string bytes.
 
 #### Defined in
 
-[src/builtins/functions.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L43)
+[src/builtins/functions.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L43)
 
 ___
 
@@ -200,7 +200,7 @@ A string .
 
 #### Defined in
 
-[src/builtins/functions.ts:33](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L33)
+[src/builtins/functions.ts:33](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L33)
 
 ___
 
@@ -222,7 +222,7 @@ bigint can be converted to string with pack
 
 #### Defined in
 
-[src/builtins/functions.ts:12](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L12)
+[src/builtins/functions.ts:12](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L12)
 
 ___
 
@@ -247,7 +247,7 @@ The length of the string bytes.
 
 #### Defined in
 
-[src/builtins/functions.ts:53](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L53)
+[src/builtins/functions.ts:53](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L53)
 
 ___
 
@@ -269,7 +269,7 @@ string can be converted to bigint using function unpack.
 
 #### Defined in
 
-[src/builtins/functions.ts:21](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L21)
+[src/builtins/functions.ts:21](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L21)
 
 ___
 
@@ -300,7 +300,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:177](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L177)
+[src/builtins/functions.ts:169](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L169)
 
 ___
 
@@ -329,7 +329,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:192](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L192)
+[src/builtins/functions.ts:184](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L184)
 
 ___
 
@@ -355,7 +355,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:135](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L135)
+[src/builtins/functions.ts:127](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L127)
 
 ___
 
@@ -382,7 +382,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:148](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L148)
+[src/builtins/functions.ts:140](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L140)
 
 ___
 
@@ -409,7 +409,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:162](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L162)
+[src/builtins/functions.ts:154](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L154)
 
 ___
 
@@ -433,7 +433,7 @@ The input `a` is made positive.
 
 #### Defined in
 
-[src/builtins/functions.ts:96](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L96)
+[src/builtins/functions.ts:88](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L88)
 
 ___
 
@@ -456,7 +456,7 @@ Returns the larger of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:115](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L115)
+[src/builtins/functions.ts:107](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L107)
 
 ___
 
@@ -479,7 +479,7 @@ Returns the smaller of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:107](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L107)
+[src/builtins/functions.ts:99](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L99)
 
 ___
 
@@ -503,30 +503,23 @@ Returns true if `x` is within the specified range (left-inclusive), false otherw
 
 #### Defined in
 
-[src/builtins/functions.ts:123](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L123)
+[src/builtins/functions.ts:115](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L115)
 
 ___
 
 ## Other Functions
 
-### b
+### hexToString
 
-▸ **b**<`T`, `IsHexBytes`\>(`hexStr`): `string`
+▸ **hexToString**(`hexStr`): `string`
 
-Represents a hex literal string.
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `string` |
-| `IsHexBytes` | `MatchesPattern`<``"10"`` \| ``"11"`` \| ``"12"`` \| ``"13"`` \| ``"14"`` \| ``"15"`` \| ``"16"`` \| ``"17"`` \| ``"18"`` \| ``"19"`` \| ``"20"`` \| ``"21"`` \| ``"ec"`` \| ``"BE"`` \| ``"ca"`` \| ``"be"`` \| ``"00"`` \| ``"01"`` \| ``"02"`` \| ``"03"`` \| ``"04"`` \| ``"05"`` \| ``"06"`` \| ``"07"`` \| ``"08"`` \| ``"09"`` \| ``"0d"`` \| ``"0e"`` \| ``"0A"`` \| ``"0a"`` \| ``"0b"`` \| ``"0c"`` \| ``"0f"`` \| ``"0B"`` \| ``"0C"`` \| ``"0D"`` \| ``"0E"`` \| ``"0F"`` \| ``"1d"`` \| ``"1e"`` \| ``"1A"`` \| ``"1a"`` \| ``"1b"`` \| ``"1c"`` \| ``"1f"`` \| ``"1B"`` \| ``"1C"`` \| ``"1D"`` \| ``"1E"`` \| ``"1F"`` \| ``"22"`` \| ``"23"`` \| ``"24"`` \| ``"25"`` \| ``"26"`` \| ``"27"`` \| ``"28"`` \| ``"29"`` \| ``"2d"`` \| ``"2e"`` \| ``"2A"`` \| ``"2a"`` \| ``"2b"`` \| ``"2c"`` \| ``"2f"`` \| ``"2B"`` \| ``"2C"`` \| ``"2D"`` \| ``"2E"`` \| ``"2F"`` \| ``"30"`` \| ``"31"`` \| ``"32"`` \| ``"33"`` \| ``"34"`` \| ``"35"`` \| ``"36"`` \| ``"37"`` \| ``"38"`` \| ``"39"`` \| ``"3d"`` \| ``"3e"`` \| ``"3A"`` \| ``"3a"`` \| ``"3b"`` \| ``"3c"`` \| ``"3f"`` \| ``"3B"`` \| ``"3C"`` \| ``"3D"`` \| ``"3E"`` \| ``"3F"`` \| ``"40"`` \| ``"41"`` \| ``"42"`` \| ``"43"`` \| ``"44"`` \| ``"45"`` \| ``"46"`` \| ``"47"`` \| ``"48"`` \| ``"49"`` \| ``"4d"`` \| ``"4e"`` \| ``"4A"`` \| ``"4a"`` \| ``"4b"`` \| ``"4c"`` \| ``"4f"`` \| ``"4B"`` \| ``"4C"`` \| ``"4D"`` \| ``"4E"`` \| ``"4F"`` \| ``"50"`` \| ``"51"`` \| ``"52"`` \| ``"53"`` \| ``"54"`` \| ``"55"`` \| ``"56"`` \| ``"57"`` \| ``"58"`` \| ``"59"`` \| ``"5d"`` \| ``"5e"`` \| ``"5A"`` \| ``"5a"`` \| ``"5b"`` \| ``"5c"`` \| ``"5f"`` \| ``"5B"`` \| ``"5C"`` \| ``"5D"`` \| ``"5E"`` \| ``"5F"`` \| ``"60"`` \| ``"61"`` \| ``"62"`` \| ``"63"`` \| ``"64"`` \| ``"65"`` \| ``"66"`` \| ``"67"`` \| ``"68"`` \| ``"69"`` \| ``"6d"`` \| ``"6e"`` \| ``"6A"`` \| ``"6a"`` \| ``"6b"`` \| ``"6c"`` \| ``"6f"`` \| ``"6B"`` \| ``"6C"`` \| ``"6D"`` \| ``"6E"`` \| ``"6F"`` \| ``"70"`` \| ``"71"`` \| ``"72"`` \| ``"73"`` \| ``"74"`` \| ``"75"`` \| ``"76"`` \| ``"77"`` \| ``"78"`` \| ``"79"`` \| ``"7d"`` \| ``"7e"`` \| ``"7A"`` \| ``"7a"`` \| ``"7b"`` \| ``"7c"`` \| ``"7f"`` \| ``"7B"`` \| ``"7C"`` \| ``"7D"`` \| ``"7E"`` \| ``"7F"`` \| ``"80"`` \| ``"81"`` \| ``"82"`` \| ``"83"`` \| ``"84"`` \| ``"85"`` \| ``"86"`` \| ``"87"`` \| ``"88"`` \| ``"89"`` \| ``"8d"`` \| ``"8e"`` \| ``"8A"`` \| ``"8a"`` \| ``"8b"`` \| ``"8c"`` \| ``"8f"`` \| ``"8B"`` \| ``"8C"`` \| ``"8D"`` \| ``"8E"`` \| ``"8F"`` \| ``"90"`` \| ``"91"`` \| ``"92"`` \| ``"93"`` \| ``"94"`` \| ``"95"`` \| ``"96"`` \| ``"97"`` \| ``"98"`` \| ``"99"`` \| ``"9d"`` \| ``"9e"`` \| ``"9A"`` \| ``"9a"`` \| ``"9b"`` \| ``"9c"`` \| ``"9f"`` \| ``"9B"`` \| ``"9C"`` \| ``"9D"`` \| ``"9E"`` \| ``"9F"`` \| ``"d0"`` \| ``"d1"`` \| ``"d2"`` \| ``"d3"`` \| ``"d4"`` \| ``"d5"`` \| ``"d6"`` \| ``"d7"`` \| ``"d8"`` \| ``"d9"`` \| ``"dd"`` \| ``"de"`` \| ``"dA"`` \| ``"da"`` \| ``"db"`` \| ``"dc"`` \| ``"df"`` \| ``"dB"`` \| ``"dC"`` \| ``"dD"`` \| ``"dE"`` \| ``"dF"`` \| ``"e0"`` \| ``"e1"`` \| ``"e2"`` \| ``"e3"`` \| ``"e4"`` \| ``"e5"`` \| ``"e6"`` \| ``"e7"`` \| ``"e8"`` \| ``"e9"`` \| ``"ed"`` \| ``"ee"`` \| ``"eA"`` \| ``"ea"`` \| ``"eb"`` \| ``"ef"`` \| ``"eB"`` \| ``"eC"`` \| ``"eD"`` \| ``"eE"`` \| ``"eF"`` \| ``"A0"`` \| ``"A1"`` \| ``"A2"`` \| ``"A3"`` \| ``"A4"`` \| ``"A5"`` \| ``"A6"`` \| ``"A7"`` \| ``"A8"`` \| ``"A9"`` \| ``"Ad"`` \| ``"Ae"`` \| ``"AA"`` \| ``"Aa"`` \| ``"Ab"`` \| ``"Ac"`` \| ``"Af"`` \| ``"AB"`` \| ``"AC"`` \| ``"AD"`` \| ``"AE"`` \| ``"AF"`` \| ``"a0"`` \| ``"a1"`` \| ``"a2"`` \| ``"a3"`` \| ``"a4"`` \| ``"a5"`` \| ``"a6"`` \| ``"a7"`` \| ``"a8"`` \| ``"a9"`` \| ``"ad"`` \| ``"ae"`` \| ``"aA"`` \| ``"aa"`` \| ``"ab"`` \| ``"ac"`` \| ``"af"`` \| ``"aB"`` \| ``"aC"`` \| ``"aD"`` \| ``"aE"`` \| ``"aF"`` \| ``"b0"`` \| ``"b1"`` \| ``"b2"`` \| ``"b3"`` \| ``"b4"`` \| ``"b5"`` \| ``"b6"`` \| ``"b7"`` \| ``"b8"`` \| ``"b9"`` \| ``"bd"`` \| ``"bA"`` \| ``"ba"`` \| ``"bb"`` \| ``"bc"`` \| ``"bf"`` \| ``"bB"`` \| ``"bC"`` \| ``"bD"`` \| ``"bE"`` \| ``"bF"`` \| ``"c0"`` \| ``"c1"`` \| ``"c2"`` \| ``"c3"`` \| ``"c4"`` \| ``"c5"`` \| ``"c6"`` \| ``"c7"`` \| ``"c8"`` \| ``"c9"`` \| ``"cd"`` \| ``"ce"`` \| ``"cA"`` \| ``"cb"`` \| ``"cc"`` \| ``"cf"`` \| ``"cB"`` \| ``"cC"`` \| ``"cD"`` \| ``"cE"`` \| ``"cF"`` \| ``"f0"`` \| ``"f1"`` \| ``"f2"`` \| ``"f3"`` \| ``"f4"`` \| ``"f5"`` \| ``"f6"`` \| ``"f7"`` \| ``"f8"`` \| ``"f9"`` \| ``"fd"`` \| ``"fe"`` \| ``"fA"`` \| ``"fa"`` \| ``"fb"`` \| ``"fc"`` \| ``"ff"`` \| ``"fB"`` \| ``"fC"`` \| ``"fD"`` \| ``"fE"`` \| ``"fF"`` \| ``"B0"`` \| ``"B1"`` \| ``"B2"`` \| ``"B3"`` \| ``"B4"`` \| ``"B5"`` \| ``"B6"`` \| ``"B7"`` \| ``"B8"`` \| ``"B9"`` \| ``"Bd"`` \| ``"Be"`` \| ``"BA"`` \| ``"Ba"`` \| ``"Bb"`` \| ``"Bc"`` \| ``"Bf"`` \| ``"BB"`` \| ``"BC"`` \| ``"BD"`` \| ``"BF"`` \| ``"C0"`` \| ``"C1"`` \| ``"C2"`` \| ``"C3"`` \| ``"C4"`` \| ``"C5"`` \| ``"C6"`` \| ``"C7"`` \| ``"C8"`` \| ``"C9"`` \| ``"Cd"`` \| ``"Ce"`` \| ``"CA"`` \| ``"Ca"`` \| ``"Cb"`` \| ``"Cc"`` \| ``"Cf"`` \| ``"CB"`` \| ``"CC"`` \| ``"CD"`` \| ``"CE"`` \| ``"CF"`` \| ``"D0"`` \| ``"D1"`` \| ``"D2"`` \| ``"D3"`` \| ``"D4"`` \| ``"D5"`` \| ``"D6"`` \| ``"D7"`` \| ``"D8"`` \| ``"D9"`` \| ``"Dd"`` \| ``"De"`` \| ``"DA"`` \| ``"Da"`` \| ``"Db"`` \| ``"Dc"`` \| ``"Df"`` \| ``"DB"`` \| ``"DC"`` \| ``"DD"`` \| ``"DE"`` \| ``"DF"`` \| ``"E0"`` \| ``"E1"`` \| ``"E2"`` \| ``"E3"`` \| ``"E4"`` \| ``"E5"`` \| ``"E6"`` \| ``"E7"`` \| ``"E8"`` \| ``"E9"`` \| ``"Ed"`` \| ``"Ee"`` \| ``"EA"`` \| ``"Ea"`` \| ``"Eb"`` \| ``"Ec"`` \| ``"Ef"`` \| ``"EB"`` \| ``"EC"`` \| ``"ED"`` \| ``"EE"`` \| ``"EF"`` \| ``"F0"`` \| ``"F1"`` \| ``"F2"`` \| ``"F3"`` \| ``"F4"`` \| ``"F5"`` \| ``"F6"`` \| ``"F7"`` \| ``"F8"`` \| ``"F9"`` \| ``"Fd"`` \| ``"Fe"`` \| ``"FA"`` \| ``"Fa"`` \| ``"Fb"`` \| ``"Fc"`` \| ``"Ff"`` \| ``"FB"`` \| ``"FC"`` \| ``"FD"`` \| ``"FE"`` \| ``"FF"``, `T`\> |
+Converts a hex literal to string.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `hexStr` | `T` | should be in format of hex bytes, i.e. `/^([0-9a-fA-F]{2})*$/` |
+| `hexStr` | `string` | should be in format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/` |
 
 #### Returns
 
@@ -534,7 +527,29 @@ Represents a hex literal string.
 
 #### Defined in
 
-[src/builtins/types.ts:35](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L35)
+[src/builtins/types.ts:19](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L19)
+
+___
+
+### utf8ToString
+
+▸ **utf8ToString**(`str`): `string`
+
+Converts a utf8 literal to string.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `str` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/builtins/types.ts:46](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L46)
 
 ___
 
@@ -563,34 +578,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/builtins/functions.ts:78](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L78)
-
-___
-
-### checkSig
-
-▸ **checkSig**(`signature`, `publickey`): `boolean`
-
-verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with sighash flags. It outputs true or false on the stack based on whether the signature check passes or fails.
-
-**`See`**
-
-https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `signature` | [`Sig`](classes/Sig.md) |
-| `publickey` | [`PubKey`](classes/PubKey.md) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/builtins/functions.ts:71](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L71)
+[src/builtins/functions.ts:70](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L70)
 
 ___
 
@@ -612,7 +600,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:204](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L204)
+[src/builtins/functions.ts:196](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L196)
 
 ___
 
@@ -638,7 +626,7 @@ Indicates whether the method is a contract method, and ordinary methods do not a
 
 #### Defined in
 
-[src/decorators.ts:7](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/decorators.ts#L7)
+[src/decorators.ts:7](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/decorators.ts#L7)
 
 ___
 
@@ -673,7 +661,7 @@ Indicates whether the property is an property of a contract, and ordinary class 
 
 #### Defined in
 
-[src/decorators.ts:50](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/decorators.ts#L50)
+[src/decorators.ts:51](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/decorators.ts#L51)
 
 ___
 
@@ -697,4 +685,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:89](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L89)
+[src/builtins/functions.ts:81](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L81)

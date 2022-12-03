@@ -383,4 +383,4 @@ PubKey\_.toString
 
 #### Defined in
 
-[src/builtins/types.ts:79](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L79)
+[src/builtins/types.ts:90](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L90)

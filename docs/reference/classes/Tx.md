@@ -20,15 +20,12 @@ library to access current tx
 
 ### Methods
 
-- [checkPreimage](Tx.md#checkpreimage)
-- [checkPreimageAdvanced](Tx.md#checkpreimageadvanced)
 - [checkPreimageAdvancedOCS](Tx.md#checkpreimageadvancedocs)
 - [checkPreimageOCS](Tx.md#checkpreimageocs)
 - [checkPreimageOpt](Tx.md#checkpreimageopt)
 - [checkPreimageOptOCS](Tx.md#checkpreimageoptocs)
 - [checkPreimageOptOCS\_](Tx.md#checkpreimageoptocs_)
 - [checkPreimageOpt\_](Tx.md#checkpreimageopt_)
-- [checkPreimageSigHashType](Tx.md#checkpreimagesighashtype)
 - [checkPreimageSigHashTypeOCS](Tx.md#checkpreimagesighashtypeocs)
 - [fromBEUnsigned](Tx.md#frombeunsigned)
 - [isFirstCall](Tx.md#isfirstcall)
@@ -49,7 +46,7 @@ library to access current tx
 
 #### Defined in
 
-[src/builtins/functions.ts:511](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L511)
+[src/builtins/functions.ts:671](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L671)
 
 ___
 
@@ -59,7 +56,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:508](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L508)
+[src/builtins/functions.ts:668](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L668)
 
 ___
 
@@ -69,7 +66,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:509](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L509)
+[src/builtins/functions.ts:669](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L669)
 
 ___
 
@@ -79,7 +76,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:513](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L513)
+[src/builtins/functions.ts:673](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L673)
 
 ___
 
@@ -89,55 +86,9 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:515](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L515)
+[src/builtins/functions.ts:675](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L675)
 
 ## Methods
-
-### checkPreimage
-
-▸ `Static` **checkPreimage**(`txPreimage`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](SigHashPreimage.md) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/builtins/functions.ts:524](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L524)
-
-___
-
-### checkPreimageAdvanced
-
-▸ `Static` **checkPreimageAdvanced**(`txPreimage`, `privKey`, `pubKey`, `inverseK`, `r`, `rBigEndian`, `sigHashType`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](SigHashPreimage.md) |
-| `privKey` | [`PrivKey`](PrivKey.md) |
-| `pubKey` | [`PubKey`](PubKey.md) |
-| `inverseK` | `bigint` |
-| `r` | `bigint` |
-| `rBigEndian` | `string` |
-| `sigHashType` | [`SigHashType`](SigHashType.md) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/builtins/functions.ts:533](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L533)
-
-___
 
 ### checkPreimageAdvancedOCS
 
@@ -161,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:538](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L538)
+[src/builtins/functions.ts:729](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L729)
 
 ___
 
@@ -181,7 +132,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:540](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L540)
+[src/builtins/functions.ts:731](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L731)
 
 ___
 
@@ -201,7 +152,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:527](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L527)
+[src/builtins/functions.ts:720](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L720)
 
 ___
 
@@ -221,7 +172,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:545](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L545)
+[src/builtins/functions.ts:736](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L736)
 
 ___
 
@@ -241,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:549](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L549)
+[src/builtins/functions.ts:740](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L740)
 
 ___
 
@@ -261,28 +212,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:530](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L530)
-
-___
-
-### checkPreimageSigHashType
-
-▸ `Static` **checkPreimageSigHashType**(`txPreimage`, `sigHashType`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](SigHashPreimage.md) |
-| `sigHashType` | [`SigHashType`](SigHashType.md) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/builtins/functions.ts:536](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L536)
+[src/builtins/functions.ts:723](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L723)
 
 ___
 
@@ -303,19 +233,19 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:542](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L542)
+[src/builtins/functions.ts:733](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L733)
 
 ___
 
 ### fromBEUnsigned
 
-▸ `Static` **fromBEUnsigned**(`b`): `bigint`
+▸ `Static` **fromBEUnsigned**(`bytes`): `bigint`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `string` |
+| `bytes` | `string` |
 
 #### Returns
 
@@ -323,7 +253,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:522](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L522)
+[src/builtins/functions.ts:712](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L712)
 
 ___
 
@@ -343,7 +273,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:552](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L552)
+[src/builtins/functions.ts:743](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L743)
 
 ___
 
@@ -364,7 +294,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:518](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L518)
+[src/builtins/functions.ts:678](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L678)
 
 ___
 
@@ -389,4 +319,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:520](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L520)
+[src/builtins/functions.ts:685](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L685)

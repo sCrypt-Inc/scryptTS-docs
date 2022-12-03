@@ -383,4 +383,4 @@ Sha1\_.toString
 
 #### Defined in
 
-[src/builtins/types.ts:156](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L156)
+[src/builtins/types.ts:167](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L167)

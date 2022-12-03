@@ -29,21 +29,37 @@ class YourSmartContract extends SmartContract {
 
 ### Accessors
 
+- [codePart](SmartContract.md#codepart)
+- [dataPart](SmartContract.md#datapart)
 - [lockingScript](SmartContract.md#lockingscript)
 
-### Methods
+### Other Methods
 
 - [buildEntryMethodCall](SmartContract.md#buildentrymethodcall)
 - [callDelegatedMethod](SmartContract.md#calldelegatedmethod)
+- [checkPreimage](SmartContract.md#checkpreimage)
+- [checkPreimageAdvanced](SmartContract.md#checkpreimageadvanced)
+- [checkPreimageSigHashType](SmartContract.md#checkpreimagesighashtype)
+- [checkPubkeyEncoding](SmartContract.md#checkpubkeyencoding)
+- [checkSignatureEncoding](SmartContract.md#checksignatureencoding)
 - [clone](SmartContract.md#clone)
 - [getStateScript](SmartContract.md#getstatescript)
 - [getUnlockingScript](SmartContract.md#getunlockingscript)
 - [markAsGenesis](SmartContract.md#markasgenesis)
+- [next](SmartContract.md#next)
+- [setDataPartInASM](SmartContract.md#setdatapartinasm)
+- [setDataPartInHex](SmartContract.md#setdatapartinhex)
 - [updateState](SmartContract.md#updatestate)
 - [updateStateSigHashType](SmartContract.md#updatestatesighashtype)
 - [verify](SmartContract.md#verify)
 - [\_getScryptFile](SmartContract.md#_getscryptfile)
 - [compile](SmartContract.md#compile)
+- [loadDesc](SmartContract.md#loaddesc)
+
+### Signature Verification Methods
+
+- [checkMultiSig](SmartContract.md#checkmultisig)
+- [checkSig](SmartContract.md#checksig)
 
 ## Constructors
 
@@ -59,7 +75,7 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-[src/contract.ts:78](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L78)
+[src/contract.ts:92](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L92)
 
 ## Properties
 
@@ -69,7 +85,7 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-[src/contract.ts:45](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L45)
+[src/contract.ts:46](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L46)
 
 ___
 
@@ -79,7 +95,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:182](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L182)
+[src/contract.ts:368](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L368)
 
 ___
 
@@ -89,7 +105,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:180](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L180)
+[src/contract.ts:354](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L354)
 
 ___
 
@@ -99,7 +115,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:41](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L41)
+[src/contract.ts:42](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L42)
 
 ___
 
@@ -109,7 +125,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:42](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L42)
+[src/contract.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L43)
 
 ___
 
@@ -119,9 +135,37 @@ ___
 
 #### Defined in
 
-[src/contract.ts:44](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L44)
+[src/contract.ts:45](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L45)
 
 ## Accessors
+
+### codePart
+
+• `get` **codePart**(): `string`
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/contract.ts:149](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L149)
+
+___
+
+### dataPart
+
+• `get` **dataPart**(): `Script`
+
+#### Returns
+
+`Script`
+
+#### Defined in
+
+[src/contract.ts:364](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L364)
+
+___
 
 ### lockingScript
 
@@ -133,9 +177,9 @@ ___
 
 #### Defined in
 
-[src/contract.ts:124](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L124)
+[src/contract.ts:138](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L138)
 
-## Methods
+## Other Methods
 
 ### buildEntryMethodCall
 
@@ -153,7 +197,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:184](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L184)
+[src/contract.ts:370](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L370)
 
 ___
 
@@ -174,7 +218,114 @@ ___
 
 #### Defined in
 
-[src/contract.ts:170](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L170)
+[src/contract.ts:344](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L344)
+
+___
+
+### checkPreimage
+
+▸ `Protected` **checkPreimage**(`txPreimage`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `txPreimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/contract.ts:274](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L274)
+
+___
+
+### checkPreimageAdvanced
+
+▸ `Protected` **checkPreimageAdvanced**(`txPreimage`, `privKey`, `pubKey`, `inverseK`, `r`, `rBigEndian`, `sigHashType`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `txPreimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `privKey` | [`PrivKey`](PrivKey.md) |
+| `pubKey` | [`PubKey`](PubKey.md) |
+| `inverseK` | `bigint` |
+| `r` | `bigint` |
+| `rBigEndian` | `string` |
+| `sigHashType` | [`SigHashType`](SigHashType.md) |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/contract.ts:262](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L262)
+
+___
+
+### checkPreimageSigHashType
+
+▸ `Protected` **checkPreimageSigHashType**(`txPreimage`, `sigHashType`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `txPreimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `sigHashType` | [`SigHashType`](SigHashType.md) |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/contract.ts:270](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L270)
+
+___
+
+### checkPubkeyEncoding
+
+▸ `Private` **checkPubkeyEncoding**(`publickey`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `publickey` | [`PubKey`](PubKey.md) |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/contract.ts:292](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L292)
+
+___
+
+### checkSignatureEncoding
+
+▸ `Private` **checkSignatureEncoding**(`signature`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `signature` | [`Sig`](Sig.md) |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/contract.ts:300](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L300)
 
 ___
 
@@ -188,7 +339,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:135](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L135)
+[src/contract.ts:153](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L153)
 
 ___
 
@@ -202,7 +353,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:152](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L152)
+[src/contract.ts:178](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L178)
 
 ___
 
@@ -222,13 +373,47 @@ ___
 
 #### Defined in
 
-[src/contract.ts:120](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L120)
+[src/contract.ts:134](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L134)
 
 ___
 
 ### markAsGenesis
 
-▸ **markAsGenesis**(): `void`
+▸ **markAsGenesis**(): [`SmartContract`](SmartContract.md)
+
+#### Returns
+
+[`SmartContract`](SmartContract.md)
+
+#### Defined in
+
+[src/contract.ts:164](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L164)
+
+___
+
+### next
+
+▸ **next**(): [`SmartContract`](SmartContract.md)
+
+#### Returns
+
+[`SmartContract`](SmartContract.md)
+
+#### Defined in
+
+[src/contract.ts:158](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L158)
+
+___
+
+### setDataPartInASM
+
+▸ **setDataPartInASM**(`dataPart`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dataPart` | `string` |
 
 #### Returns
 
@@ -236,20 +421,40 @@ ___
 
 #### Defined in
 
-[src/contract.ts:143](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L143)
+[src/contract.ts:356](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L356)
+
+___
+
+### setDataPartInHex
+
+▸ **setDataPartInHex**(`dataPart`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dataPart` | `string` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/contract.ts:360](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L360)
 
 ___
 
 ### updateState
 
-▸ `Protected` **updateState**(`preimage`, `balance`): `boolean`
+▸ `Protected` **updateState**(`preimage`, `amount`): `boolean`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
-| `balance` | `bigint` |
+| `amount` | `bigint` |
 
 #### Returns
 
@@ -257,7 +462,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:157](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L157)
+[src/contract.ts:340](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L340)
 
 ___
 
@@ -279,7 +484,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:147](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L147)
+[src/contract.ts:170](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L170)
 
 ___
 
@@ -299,7 +504,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:94](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L94)
+[src/contract.ts:108](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L108)
 
 ___
 
@@ -313,7 +518,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:60](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L60)
+[src/contract.ts:74](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L74)
 
 ___
 
@@ -327,4 +532,80 @@ ___
 
 #### Defined in
 
-[src/contract.ts:47](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/contract.ts#L47)
+[src/contract.ts:48](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L48)
+
+___
+
+### loadDesc
+
+▸ `Static` **loadDesc**(`desc`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `desc` | `ContractDescription` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/contract.ts:61](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L61)
+
+___
+
+## Signature Verification Methods
+
+### checkMultiSig
+
+▸ `Protected` **checkMultiSig**(`signatures`, `publickeys`): `boolean`
+
+Compares the first signature against each public key until it finds an ECDSA match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result. All signatures need to match a public key. Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the scriptSig using the same order as their corresponding public keys were placed in the scriptPubKey or redeemScript. If all signatures are valid, 1 is returned, 0 otherwise. Due to a bug, one extra unused value is removed from the stack.
+
+**`See`**
+
+https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `signatures` | [`Sig`](Sig.md)[] |
+| `publickeys` | [`PubKey`](PubKey.md)[] |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/contract.ts:284](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L284)
+
+___
+
+### checkSig
+
+▸ `Protected` **checkSig**(`signature`, `publickey`): `boolean`
+
+verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with sighash flags. It outputs true or false on the stack based on whether the signature check passes or fails.
+
+**`See`**
+
+https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `signature` | [`Sig`](Sig.md) |
+| `publickey` | [`PubKey`](PubKey.md) |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/contract.ts:224](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L224)

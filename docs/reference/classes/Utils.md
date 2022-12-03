@@ -37,7 +37,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:375](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L375)
+[src/builtins/functions.ts:362](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L362)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:377](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L377)
+[src/builtins/functions.ts:364](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L364)
 
 ## Methods
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:404](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L404)
+[src/builtins/functions.ts:442](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L442)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:395](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L395)
+[src/builtins/functions.ts:432](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L432)
 
 ___
 
@@ -108,19 +108,19 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:398](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L398)
+[src/builtins/functions.ts:437](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L437)
 
 ___
 
 ### fromLEUnsigned
 
-▸ `Static` **fromLEUnsigned**(`b`): `bigint`
+▸ `Static` **fromLEUnsigned**(`bytes`): `bigint`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `string` |
+| `bytes` | `string` |
 
 #### Returns
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:382](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L382)
+[src/builtins/functions.ts:373](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L373)
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:388](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L388)
+[src/builtins/functions.ts:381](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L381)
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:379](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L379)
+[src/builtins/functions.ts:366](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L366)
 
 ___
 
@@ -189,4 +189,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:392](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L392)
+[src/builtins/functions.ts:409](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L409)

@@ -10,6 +10,8 @@
 
 ### Properties
 
+- [buf](VarIntReader.md#buf)
+- [pos](VarIntReader.md#pos)
 - [StateLen](VarIntReader.md#statelen)
 - [Version](VarIntReader.md#version)
 - [VersionLen](VarIntReader.md#versionlen)
@@ -18,8 +20,8 @@
 
 - [eof](VarIntReader.md#eof)
 - [readBool](VarIntReader.md#readbool)
+- [readBytes](VarIntReader.md#readbytes)
 - [readInt](VarIntReader.md#readint)
-- [readstring](VarIntReader.md#readstring)
 - [getStateStart](VarIntReader.md#getstatestart)
 
 ## Constructors
@@ -36,9 +38,29 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:465](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L465)
+[src/builtins/functions.ts:540](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L540)
 
 ## Properties
+
+### buf
+
+• **buf**: `string`
+
+#### Defined in
+
+[src/builtins/functions.ts:537](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L537)
+
+___
+
+### pos
+
+• **pos**: `bigint`
+
+#### Defined in
+
+[src/builtins/functions.ts:538](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L538)
+
+___
 
 ### StateLen
 
@@ -46,7 +68,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:459](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L459)
+[src/builtins/functions.ts:531](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L531)
 
 ___
 
@@ -56,7 +78,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:463](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L463)
+[src/builtins/functions.ts:535](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L535)
 
 ___
 
@@ -66,7 +88,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:461](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L461)
+[src/builtins/functions.ts:533](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L533)
 
 ## Methods
 
@@ -80,7 +102,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:469](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L469)
+[src/builtins/functions.ts:545](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L545)
 
 ___
 
@@ -94,7 +116,21 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:473](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L473)
+[src/builtins/functions.ts:585](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L585)
+
+___
+
+### readBytes
+
+▸ **readBytes**(): `string`
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/builtins/functions.ts:549](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L549)
 
 ___
 
@@ -108,21 +144,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:475](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L475)
-
-___
-
-### readstring
-
-▸ **readstring**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[src/builtins/functions.ts:471](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L471)
+[src/builtins/functions.ts:591](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L591)
 
 ___
 
@@ -142,4 +164,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:477](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/functions.ts#L477)
+[src/builtins/functions.ts:595](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L595)

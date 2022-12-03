@@ -402,4 +402,4 @@ PrivKey\_.toString
 
 #### Defined in
 
-[src/builtins/types.ts:196](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L196)
+[src/builtins/types.ts:207](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L207)

@@ -605,4 +605,4 @@ SigHashPreimage\_.toString
 
 #### Defined in
 
-[src/builtins/types.ts:100](https://github.com/sCrypt-Inc/ts-sCrypt/blob/bed02a6/src/builtins/types.ts#L100)
+[src/builtins/types.ts:111](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L111)
