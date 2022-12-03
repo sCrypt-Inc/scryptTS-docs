@@ -271,6 +271,18 @@ class X {
 }
 ```
 
+Only numeric literal can be used to initialize CTC. Expressions are not allowed.
+
+```ts
+const N = 3; // valid
+const N = 3 + 3; // invalid
+class X {
+  static readonly N = 3; // valid
+  static readonly N = 3 + 3; // invalid
+}
+```
+
+
 They can be used at places where a CTC is required, including:
 
 * Array length in declaration
@@ -304,6 +316,8 @@ for(let $i = 0; $i < $maxLoopCount; $i++) {
 ```
 
 Note that the initial value `0` and the `<` operator and `++` in the incremental update cannot be changed.
+
+`break` and `continue` are currently not allowed.
 
 * `$maxLoopCount` must be a [CTC](#compile-time-constant).
 
