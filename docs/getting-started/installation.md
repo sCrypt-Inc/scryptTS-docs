@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Requirements
 
-`scrypt-ts` depends on the native [sCrypt](https://scrypt.io) compiler which could be downloaded with this command:
+`scrypt-ts` depends on the native [sCrypt](https://scrypt.io) compiler, which could be downloaded with this command:
 
 ```sh
 curl -Ls https://scrypt.io/setup | sh -s --

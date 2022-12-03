@@ -61,7 +61,7 @@ describe('Test SmartContract `Demo`', () => {
  
 ## Test a Contract on testnet
  
-After passing local tests, you'd better test your contract on the [testnet](https://test.whatsonchain.com/) of Bitcoin SV. 
+After passing local tests, you'd better test your contract on the [testnet](https://test.whatsonchain.com/) of Bitcoin. 
 
 The main purpose of testing a contract on testnet is to make sure a contract instance can be successfully integrated with a transaction, and it functions as expected along with the deploy and call transactions.
  
@@ -69,7 +69,7 @@ In order to do so, you should meet these requirements:
  
 * Get a private key with some amount of BSV tokens on testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
  
-* Get an accessible Bitcoin SV testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scrypt-ts-example), or build your own.
+* Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scrypt-ts-example), or build your own.
  
 Then you could write some tests like this:
  

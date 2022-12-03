@@ -9,7 +9,7 @@ Congratulations on choosing `scrypt-ts` as a tool to build Smart Contract based 
 
 ## What is `scrypt-ts`?
 
-`scrypt-ts` is a Typescript framework to write smart contracts on Bitcoin SV.
+`scrypt-ts` is a Typescript framework to write smart contracts on Bitcoin.
 
 
 

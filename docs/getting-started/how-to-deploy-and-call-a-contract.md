@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Concepts
 
-To simplify and better understand how Bitcoin SV smart contract works, we shall clarify some basic concepts first. 
+To simplify and better understand how Bitcoin smart contract works, we shall clarify some basic concepts first. 
 
 ### Contract Deployment
 
