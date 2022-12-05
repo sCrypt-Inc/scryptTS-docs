@@ -97,51 +97,76 @@ The final step is to sign and send the tx to the network. If everything is fine,
 
 Here is a complete example code to deploy & call the `Demo` contract.
 
-```js
+```ts
+export class Demo extends SmartContract {
+
+    @prop()
+    x: bigint;
+
+    @prop()
+    y: bigint;
+
+    constructor(x: bigint, y: bigint) {
+        super(x, y);
+        this.x = x;
+        this.y = y;
+    }
+
+    @method
+    sum(a: bigint, b: bigint): bigint {
+        return a + b;
+    }
+
+    @method
+    public add(z: bigint) {
+        assert(z == this.sum(this.x, this.y));
+    }
+
+    @method
+    public sub(z: bigint) {
+        assert(z == this.x - this.y);
+    }
+
+    getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
+        return new bsv.Transaction().from(utxos)
+            .addOutput(new bsv.Transaction.Output({
+                script: this.lockingScript,
+                satoshis: satoshis,
+            }))
+    }
+
+    getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
+        return new bsv.Transaction()
+            .addInputFromPrevTx(prevTx)
+            .setInputScript(0, () => {
+                return this.getUnlockingScript(self => self.add(z));
+            })
+    }
+}
+
 // compile contract to get low-level asm
 await Demo.compile();
 
-// build contract instance
-const demo = new Demo(2n);
-const balance = 1000;
+let demo = new Demo(1n, 2n);
 
-// build contract deploy tx
-const utxos = await fetchUtxos();
-const unsignedDeployTx =
-  new bsv.Transaction()
-    .from(utxos)
-    .addOutput(new bsv.Transaction.Output({
-      // get the locking script for `demo` instance
-      script: demo.lockingScript, 
-      satoshis: balance,
-    }));
-
-// send contract deploy tx
+// contract deployment
+// 1. get the available utxos for the privatekey
+const utxos = await utxoMgr.getUtxos();
+// 2. construct a transaction for deployment
+const unsignedDeployTx = demo.getDeployTx(utxos, 1000);
+// 3. sign and broadcast the transaction
 const deployTx = await signAndSend(unsignedDeployTx);
-console.log('contract deployed: ', deployTx.id)
+console.log('Demo contract deployed: ', deployTx.id);
 
-// build contract call tx
-const unsignedCallTx =
-  new bsv.Transaction()
-    .addInput(new bsv.Transaction.Input({
-      prevTxId: deployTx.id,
-      outputIndex: outputIdx,
-      script: demo.getUnlockingScript(() => {
-        // call public method to get the unlocking script for `demo` instance.
-        demo.unlock(3n);
-      }),
-      output: deployTx.outputs[outputIdx]
-    }))
-    .addOutput(
-      new bsv.Transaction.Output({
-        script: bsv.Script.buildPublicKeyHashOut(publicKey.toAddress()),
-        satoshis: balance / 2
-      })
-    );
-
-// send contract call tx
+// contract call
+// 1. construct a transaction for call
+const unsignedCallTx = demo.getCallTx(3n, deployTx);
+// 2. sign and broadcast the transaction
 const callTx = await signAndSend(unsignedCallTx);
-console.log('contract called: ', callTx.id)
+console.log('Demo contract called: ', callTx.id);
+
+// collect the new p2pkh utxo if it exists in `callTx`
+utxoMgr.collectUtxoFrom(callTx);
 ```
 
 
