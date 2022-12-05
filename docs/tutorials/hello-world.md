@@ -21,13 +21,13 @@ scryptTS is a Typescript framework to write smart contracts on Bitcoin SV. We us
 
 
 ```bash
-mkdir scrypt-ts-hello-world
+mkdir hello-world
 ```
 
 Now change into your project directory:
 
 ```bash
-cd scrypt-ts-hello-world
+cd hello-world
 ```
 
 Set up a new npm project.

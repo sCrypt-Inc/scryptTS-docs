@@ -9,7 +9,7 @@ sidebar_position: 4
 
 In previous tutorials, we've seen how to test and run contract locally. In this tutorial, we will show how to deploy and call contract on the testnet. 
 
-We continue to develop on our *scrypt-ts-hello-world* project.
+We continue to develop on our *hello-world* project.
 
 ## Setup
 
