@@ -104,7 +104,7 @@ As with [debugging TypeScript programs](https://code.visualstudio.com/docs/types
 Now you can start setting breakpoints and press **F5** to start the debugger.
 
 
-![](../../static/img/debugging.gif)
+![](../../static/img/debugging1.gif)
 
 If you want to debug a unit test written with **mocha**, use the following configuration:
 
@@ -119,7 +119,7 @@ If you want to debug a unit test written with **mocha**, use the following confi
     ],
     "program": "${workspaceRoot}/node_modules/.bin/_mocha",
     "args": [
-        "${workspaceRoot}/dist/tests/**/*.js",
+        "${workspaceRoot}/dist/tests/**/demo.test.js",
         "--colors",
         "-t",
         "100000"
@@ -129,4 +129,5 @@ If you want to debug a unit test written with **mocha**, use the following confi
 }
 ```
 
+![](../../static/img/debugging2.gif)
 
