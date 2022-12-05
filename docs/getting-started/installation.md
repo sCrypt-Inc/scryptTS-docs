@@ -4,16 +4,6 @@ sidebar_position: 1
 
 # Installation
 
-## Requirements
-
-`scryptTS` depends on the native [sCrypt](https://scrypt.io) compiler which could be downloaded with this command:
-
-```sh
-curl -Ls https://scrypt.io/setup | sh -s --
-```
-
-## Installation
-
 Use this command to install `scryptTS` to your project:
 
 ```sh
