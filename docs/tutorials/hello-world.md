@@ -78,13 +78,12 @@ Update the `tsconfig.json` with following config:
       {
         "transform": "scrypt-ts/dist/transformer",
         "outDir": "./scrypts",
-        "transformProgram": true,
-        "debug": true
+        "transformProgram": true
       }
     ]
   },
   "include": [
-    "contracts/**/*.ts"
+    "src/**/*.ts"
   ]
 }
 ```

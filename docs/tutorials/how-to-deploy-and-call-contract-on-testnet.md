@@ -44,7 +44,7 @@ You can fund its address '${newPrivKey.toAddress()}' from sCrypt faucet https://
 export const privateKey = bsv.PrivateKey.fromWIF(privKey);
 ```
 
-<center><a href="https://github.com/sCrypt-Inc/scryptTS-example/blob/master/privateKey.ts">privateKey.ts</a></center>
+<center><a href="https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/privateKey.ts">privateKey.ts</a></center>
 
 After the privatekey is generated, you can get some testnet bitcoins from our [faucet](https://scrypt.io/#faucet).
 
@@ -64,50 +64,41 @@ Demo.compile().then(async ()=> {
 ## Deploy
 
 
-Next, we implement the `deploy()` function for the `Demo` contract, which implements the following main steps:
+Deploying a contract usually requires the completion of the following `3` steps:
 
 - Get the available utxos for the privatekey
 - Construct a transaction: the input of which is the acquired utxos, and the first output of the transaction contains the lockingScript corresponding to the Demo contract
-- Sign and broadcast transaction with privatekey
-
-The final code is as follows:
+- Sign and broadcast transaction with the privatekey
 
 ```ts
-async deploy(satoshis: number) {
+// contract deployment
+// 1. get the available utxos for the privatekey
+const utxos = await utxoMgr.getUtxos();
+// 2. construct a transaction for deployment
+const unsignedDeployTx = demo.getDeployTx(utxos, 1000);
+// 3. sign and broadcast the transaction
+const deployTx = await signAndSend(unsignedDeployTx);
+console.log('Demo contract deployed: ', deployTx.id);
+```
 
-    // 1. Get the available utxos for the privatekey
-    const utxos = await fetchUtxos();
+The method `getDeployTx()` of `Demo` contract implemented constructing a deployment transaction, which first output contains the locking script corresponding to the `Demo` contract:
 
-    // 2. Construct a transaction: the input of which is the acquired utxos, and the first output of the transaction contains the lockingScript corresponding to the Demo contract
-    const tx = newTx(utxos);
-    tx.addOutput(new bsv.Transaction.Output({
-        script: this.lockingScript,
-        satoshis: satoshis,
-    }));
-
-    // 3. Sign and broadcast transaction with privatekey
-    return signAndSend(tx);
+```ts
+getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
+    return new bsv.Transaction().from(utxos)
+        .addOutput(new bsv.Transaction.Output({
+            script: this.lockingScript,
+            satoshis: satoshis,
+        }))
 }
 ```
 
-**NOTE:** The deploy function implements the function of deploying the contract, not the logic of the contract itself, so `@method` decorator should not be added.
+**NOTE:** The `getDeployTx` function implements the function of deploying the contract, not the logic of the contract itself, so `@method` decorator should not be added.
 
-Call `deploy()` function to deploy the `Demo` contract to the network:
-
-```ts
-Demo.compile().then(async ()=> {
-    let demo = new Demo(1n, 2n);
-
-    const deployTx = await demo.deploy(1000);
-
-    console.log('contract deployed: ', deployTx.id)
-})
-```
-
-You will see the following output:
+After sign and broadcast the transaction, you will see the following output:
 
 ```
-contract deployed:  e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28
+Demo contract deployed:  e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28
 ```
 
 Visit `https://test.whatsonchain.com/tx/e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28` to see the transaction in the testnet.
@@ -119,49 +110,41 @@ Once a smart contract is successfully deployed, it must be executed with the cor
 Now we implement a function that calls the `add` public function of the `Demo` contract:
 
 ```ts
-async callAdd(z: bigint, prevTx: bsv.Transaction) {
-
-    let tx: bsv.Transaction = new bsv.Transaction()
-        .addInput(createInputFromPrevTx(prevTx))
-        .setInputScript(0, (tx: bsv.Transaction, prevOutput: bsv.Transaction.Output) => {
-            return this.getUnlockingScript(() => {
-                // call previous demo's public method to get the unlocking script.
-                this.add(z)
-            })
+getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
+    return new bsv.Transaction()
+        .addInputFromPrevTx(prevTx)
+        .setInputScript(0, () => {
+            return this.getUnlockingScript(self => self.add(z));
         })
-
-    return signAndSend(tx);
 }
 ```
 
-This code uses `prevTx` as input for the current transaction and sets the unlockingScript via `setInputScript`. Note that you need to call the public function of the contract in the callback method of `getUnlockingScript()` to get the corresponding unlockingScript.
+This code uses `prevTx` as input for the current transaction and sets the unlocking script via `setInputScript`. In the current example, `prevTx` is the transaction where we deploy the `Demo` contract. Note that you need to call the public function `add` of the contract in the callback of `getUnlockingScript(callback: (self: typeof this) => void): bsv.Script;` to get the corresponding unlocking script.
 
-Only transactions containing the correct unlockingScript can be accepted by the blockchain, and the transaction can spend the utxo where the contract is located (that is, execute the contract).
+Only transactions containing the correct unlocking script can be accepted by the blockchain, and the transaction can spend the utxo where the contract is located (that is, execute the contract).
 
 Then, also call `signAndSend` to sign and broadcast the transaction.
 
-Call `callAdd()` function to run the `Demo` contract:
-
 ```ts
-Demo.compile().then(async ()=> {
-    let demo = new Demo(1n, 2n);
+// contract call
+// 1. construct a transaction for call
+const unsignedCallTx = demo.getCallTx(3n, deployTx);
+// 2. sign and broadcast the transaction
+const callTx = await signAndSend(unsignedCallTx);
+console.log('Demo contract called: ', callTx.id);
 
-    const deployTx = await demo.deploy(1000);
-
-    console.log('contract deployed: ', deployTx.id);
-
-    const calledTx = await demo.callAdd(3n, deployTx);
-
-    console.log('contract called: ', calledTx.id);
-})
+// collect the new p2pkh utxo if it exists in `callTx`
+utxoMgr.collectUtxoFrom(callTx);
 ```
 
 You will see the following output:
 
 ```
-contract called:  fd1e276ba344f51fa972366b6eed60fae99bce7c3d339b9e2389067a92bc7648
+Demo contract called:  fd1e276ba344f51fa972366b6eed60fae99bce7c3d339b9e2389067a92bc7648
 ```
 
+
+The full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/demo.ts).
 # Conclusion
 
 We have finished deploying and calling `Demo` contract on the testnet.

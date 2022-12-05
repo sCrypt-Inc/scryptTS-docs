@@ -15,14 +15,14 @@ Install test framework, We recommend using [mocha](https://mochajs.org).
 npm install -D mocha chai @types/chai @types/mocha
 ```
 
-Create `tests\demo.test.ts` file with the editor.
+Create `tests\local\demo.test.ts` file with the editor.
 
 Include test file in the `tsconfig.json`:
 
 ```json
 {
   "include": [
-    "contracts/**/*.ts",
+    "src/**/*.ts",
     "tests/**/*.ts"
   ]
 }
@@ -35,7 +35,7 @@ Testing the public function of Demo with the following code:
 
 ```ts
 import { expect } from 'chai';
-import { Demo } from '../contracts/demo';
+import { Demo } from '../../src/contracts/demo';
 
 describe('Test SmartContract `Demo`', () => {
 
@@ -96,7 +96,7 @@ npm run build
 Use mocha to run tests:
 
 ```bash
-npx mocha ./dist/tests/demo.test.js
+npx mocha ./dist/tests/**/*.test.js
 ```
 
 Or just put it in the *package.json*:
@@ -104,7 +104,7 @@ Or just put it in the *package.json*:
 ```json
 {
     "scripts": {
-        "test": "mocha ./dist/tests/*.test.js"
+        "test": "npm run build && mocha 'dist/tests/**/*.test.js' --timeout 1200000"
     }
 }
 ```
