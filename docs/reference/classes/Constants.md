@@ -31,7 +31,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:758](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L758)
+[src/builtins/functions.ts:758](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L758)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:768](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L768)
+[src/builtins/functions.ts:768](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L768)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:760](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L760)
+[src/builtins/functions.ts:760](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L760)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:764](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L764)
+[src/builtins/functions.ts:764](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L764)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:762](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L762)
+[src/builtins/functions.ts:762](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L762)
 
 ___
 
@@ -81,4 +81,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:766](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L766)
+[src/builtins/functions.ts:766](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L766)

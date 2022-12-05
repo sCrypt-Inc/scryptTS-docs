@@ -43,6 +43,8 @@ class YourSmartContract extends SmartContract {
 - [checkPubkeyEncoding](SmartContract.md#checkpubkeyencoding)
 - [checkSignatureEncoding](SmartContract.md#checksignatureencoding)
 - [clone](SmartContract.md#clone)
+- [genLaunchConfig](SmartContract.md#genlaunchconfig)
+- [getDelegateClazz](SmartContract.md#getdelegateclazz)
 - [getStateScript](SmartContract.md#getstatescript)
 - [getUnlockingScript](SmartContract.md#getunlockingscript)
 - [markAsGenesis](SmartContract.md#markasgenesis)
@@ -65,7 +67,7 @@ class YourSmartContract extends SmartContract {
 
 ### constructor
 
-• **new SmartContract**(...`args`)
+• **new SmartContract**(`...args`)
 
 #### Parameters
 
@@ -75,7 +77,7 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-[src/contract.ts:92](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L92)
+[src/contract.ts:96](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L96)
 
 ## Properties
 
@@ -85,7 +87,7 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-[src/contract.ts:46](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L46)
+[src/contract.ts:46](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L46)
 
 ___
 
@@ -95,7 +97,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:368](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L368)
+[src/contract.ts:372](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L372)
 
 ___
 
@@ -105,7 +107,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:354](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L354)
+[src/contract.ts:358](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L358)
 
 ___
 
@@ -115,7 +117,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:42](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L42)
+[src/contract.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L42)
 
 ___
 
@@ -125,17 +127,17 @@ ___
 
 #### Defined in
 
-[src/contract.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L43)
+[src/contract.ts:43](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L43)
 
 ___
 
 ### DelegateClazz
 
-▪ `Static` **DelegateClazz**: typeof `AbstractContract`
+▪ `Static` `Private` **DelegateClazz**: typeof `AbstractContract`
 
 #### Defined in
 
-[src/contract.ts:45](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L45)
+[src/contract.ts:45](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L45)
 
 ## Accessors
 
@@ -149,35 +151,35 @@ ___
 
 #### Defined in
 
-[src/contract.ts:149](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L149)
+[src/contract.ts:158](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L158)
 
 ___
 
 ### dataPart
 
-• `get` **dataPart**(): `Script`
+• `get` **dataPart**(): [`Script`](bsv.Script-1.md)
 
 #### Returns
 
-`Script`
+[`Script`](bsv.Script-1.md)
 
 #### Defined in
 
-[src/contract.ts:364](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L364)
+[src/contract.ts:368](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L368)
 
 ___
 
 ### lockingScript
 
-• `get` **lockingScript**(): `Script`
+• `get` **lockingScript**(): [`Script`](bsv.Script-1.md)
 
 #### Returns
 
-`Script`
+[`Script`](bsv.Script-1.md)
 
 #### Defined in
 
-[src/contract.ts:138](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L138)
+[src/contract.ts:147](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L147)
 
 ## Other Methods
 
@@ -197,13 +199,13 @@ ___
 
 #### Defined in
 
-[src/contract.ts:370](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L370)
+[src/contract.ts:374](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L374)
 
 ___
 
 ### callDelegatedMethod
 
-▸ `Private` **callDelegatedMethod**(`methodName`, ...`args`): `any`
+▸ `Private` **callDelegatedMethod**(`methodName`, `...args`): `any`
 
 #### Parameters
 
@@ -218,7 +220,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:344](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L344)
+[src/contract.ts:348](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L348)
 
 ___
 
@@ -238,7 +240,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:274](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L274)
+[src/contract.ts:278](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L278)
 
 ___
 
@@ -264,7 +266,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:262](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L262)
+[src/contract.ts:266](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L266)
 
 ___
 
@@ -285,7 +287,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:270](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L270)
+[src/contract.ts:274](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L274)
 
 ___
 
@@ -305,7 +307,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:292](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L292)
+[src/contract.ts:296](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L296)
 
 ___
 
@@ -325,7 +327,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:300](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L300)
+[src/contract.ts:304](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L304)
 
 ___
 
@@ -339,7 +341,43 @@ ___
 
 #### Defined in
 
-[src/contract.ts:153](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L153)
+[src/contract.ts:162](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L162)
+
+___
+
+### genLaunchConfig
+
+▸ **genLaunchConfig**(`a`, `tx`, `inputIndex?`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `any` |
+| `tx` | [`Transaction`](bsv.Transaction-1.md) |
+| `inputIndex?` | `number` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/contract.ts:143](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L143)
+
+___
+
+### getDelegateClazz
+
+▸ `Private` **getDelegateClazz**(): typeof `AbstractContract`
+
+#### Returns
+
+typeof `AbstractContract`
+
+#### Defined in
+
+[src/contract.ts:92](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L92)
 
 ___
 
@@ -353,13 +391,13 @@ ___
 
 #### Defined in
 
-[src/contract.ts:178](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L178)
+[src/contract.ts:187](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L187)
 
 ___
 
 ### getUnlockingScript
 
-▸ **getUnlockingScript**(`callPub`): `Script`
+▸ **getUnlockingScript**(`callPub`): [`Script`](bsv.Script-1.md)
 
 #### Parameters
 
@@ -369,11 +407,11 @@ ___
 
 #### Returns
 
-`Script`
+[`Script`](bsv.Script-1.md)
 
 #### Defined in
 
-[src/contract.ts:134](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L134)
+[src/contract.ts:139](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L139)
 
 ___
 
@@ -387,7 +425,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:164](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L164)
+[src/contract.ts:173](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L173)
 
 ___
 
@@ -401,7 +439,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:158](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L158)
+[src/contract.ts:167](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L167)
 
 ___
 
@@ -421,7 +459,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:356](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L356)
+[src/contract.ts:360](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L360)
 
 ___
 
@@ -441,7 +479,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:360](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L360)
+[src/contract.ts:364](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L364)
 
 ___
 
@@ -462,7 +500,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:340](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L340)
+[src/contract.ts:344](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L344)
 
 ___
 
@@ -484,13 +522,13 @@ ___
 
 #### Defined in
 
-[src/contract.ts:170](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L170)
+[src/contract.ts:179](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L179)
 
 ___
 
 ### verify
 
-▸ **verify**(`entryMethodInvoking`): `VerifyResult`
+▸ **verify**(`entryMethodInvoking`): [`VerifyResult`](../interfaces/VerifyResult.md)
 
 #### Parameters
 
@@ -500,11 +538,11 @@ ___
 
 #### Returns
 
-`VerifyResult`
+[`VerifyResult`](../interfaces/VerifyResult.md)
 
 #### Defined in
 
-[src/contract.ts:108](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L108)
+[src/contract.ts:113](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L113)
 
 ___
 
@@ -518,7 +556,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:74](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L74)
+[src/contract.ts:74](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L74)
 
 ___
 
@@ -532,7 +570,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:48](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L48)
+[src/contract.ts:48](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L48)
 
 ___
 
@@ -544,7 +582,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `desc` | `ContractDescription` |
+| `desc` | [`ContractDescription`](../interfaces/ContractDescription.md) |
 
 #### Returns
 
@@ -552,7 +590,7 @@ ___
 
 #### Defined in
 
-[src/contract.ts:61](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L61)
+[src/contract.ts:61](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L61)
 
 ___
 
@@ -581,7 +619,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/contract.ts:284](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L284)
+[src/contract.ts:288](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L288)
 
 ___
 
@@ -608,4 +646,4 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/contract.ts:224](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L224)
+[src/contract.ts:233](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L233)

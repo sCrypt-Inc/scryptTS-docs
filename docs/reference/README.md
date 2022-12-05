@@ -1,6 +1,12 @@
-# scryptTS
+scrypt-ts
+
+# scrypt-ts
 
 ## Table of contents
+
+### Namespaces
+
+- [bsv](modules/bsv.md)
 
 ### SmartContract Classes
 
@@ -28,6 +34,12 @@
 - [Sig](classes/Sig.md)
 - [SigHashPreimage](classes/SigHashPreimage.md)
 - [SigHashType](classes/SigHashType.md)
+
+### Interfaces
+
+- [ContractDescription](interfaces/ContractDescription.md)
+- [TxContext](interfaces/TxContext.md)
+- [VerifyResult](interfaces/VerifyResult.md)
 
 ### Array Type Aliases
 
@@ -66,7 +78,10 @@
 
 ### Other Functions
 
+- [buildOpreturnScript](README.md#buildopreturnscript)
+- [buildPublicKeyHashScript](README.md#buildpublickeyhashscript)
 - [hexToString](README.md#hextostring)
+- [toHex](README.md#tohex)
 - [utf8ToString](README.md#utf8tostring)
 
 ### Signature Verification Functions
@@ -114,7 +129,7 @@ let bbb: FixedArray<FixedArray<FixedArray<bigint, 1>, 2>, 3> = [[[1n], [1n]], [[
 
 #### Defined in
 
-[src/builtins/types.ts:80](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L80)
+[src/builtins/types.ts:80](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L80)
 
 ___
 
@@ -131,11 +146,11 @@ The transaction output point bound by the smart contract
 | Name | Type |
 | :------ | :------ |
 | `outputIndex` | `number` |
-| `tx` | `bsv.Transaction` |
+| `tx` | [`Transaction`](classes/bsv.Transaction-1.md) |
 
 #### Defined in
 
-[src/contract.ts:24](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/contract.ts#L24)
+[src/contract.ts:24](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L24)
 
 ___
 
@@ -149,7 +164,7 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 #### Defined in
 
-[src/builtins/types.ts:55](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L55)
+[src/builtins/types.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L55)
 
 ## Bytes Operations Functions
 
@@ -173,7 +188,7 @@ The length of the string bytes.
 
 #### Defined in
 
-[src/builtins/functions.ts:43](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L43)
+[src/builtins/functions.ts:43](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L43)
 
 ___
 
@@ -198,7 +213,7 @@ A string .
 
 #### Defined in
 
-[src/builtins/functions.ts:33](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L33)
+[src/builtins/functions.ts:33](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L33)
 
 ___
 
@@ -220,7 +235,7 @@ bigint can be converted to string with pack
 
 #### Defined in
 
-[src/builtins/functions.ts:12](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L12)
+[src/builtins/functions.ts:12](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L12)
 
 ___
 
@@ -245,7 +260,7 @@ The length of the string bytes.
 
 #### Defined in
 
-[src/builtins/functions.ts:53](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L53)
+[src/builtins/functions.ts:53](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L53)
 
 ___
 
@@ -267,7 +282,7 @@ string can be converted to bigint using function unpack.
 
 #### Defined in
 
-[src/builtins/functions.ts:21](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L21)
+[src/builtins/functions.ts:21](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L21)
 
 ___
 
@@ -298,7 +313,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:169](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L169)
+[src/builtins/functions.ts:169](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L169)
 
 ___
 
@@ -327,7 +342,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:184](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L184)
+[src/builtins/functions.ts:184](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L184)
 
 ___
 
@@ -353,7 +368,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:127](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L127)
+[src/builtins/functions.ts:127](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L127)
 
 ___
 
@@ -380,7 +395,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:140](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L140)
+[src/builtins/functions.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L140)
 
 ___
 
@@ -407,7 +422,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:154](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L154)
+[src/builtins/functions.ts:154](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L154)
 
 ___
 
@@ -431,7 +446,7 @@ The input `a` is made positive.
 
 #### Defined in
 
-[src/builtins/functions.ts:88](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L88)
+[src/builtins/functions.ts:88](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L88)
 
 ___
 
@@ -454,7 +469,7 @@ Returns the larger of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:107](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L107)
+[src/builtins/functions.ts:107](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L107)
 
 ___
 
@@ -477,7 +492,7 @@ Returns the smaller of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:99](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L99)
+[src/builtins/functions.ts:99](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L99)
 
 ___
 
@@ -501,11 +516,51 @@ Returns true if `x` is within the specified range (left-inclusive), false otherw
 
 #### Defined in
 
-[src/builtins/functions.ts:115](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L115)
+[src/builtins/functions.ts:115](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L115)
 
 ___
 
 ## Other Functions
+
+### buildOpreturnScript
+
+▸ **buildOpreturnScript**(`data`): `Script`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `string` |
+
+#### Returns
+
+`Script`
+
+#### Defined in
+
+node_modules/scryptlib/dist/utils.d.ts:165
+
+___
+
+### buildPublicKeyHashScript
+
+▸ **buildPublicKeyHashScript**(`pubKeyHash`): `Script`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `pubKeyHash` | `Ripemd160` |
+
+#### Returns
+
+`Script`
+
+#### Defined in
+
+node_modules/scryptlib/dist/utils.d.ts:166
+
+___
 
 ### hexToString
 
@@ -525,7 +580,28 @@ Converts a hex literal to string.
 
 #### Defined in
 
-[src/builtins/types.ts:19](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L19)
+[src/builtins/types.ts:19](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L19)
+
+___
+
+### toHex
+
+▸ **toHex**(`x`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `x` | `Object` |
+| `x.toString` | (`format`: ``"hex"``) => `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+node_modules/scryptlib/dist/utils.d.ts:44
 
 ___
 
@@ -547,7 +623,7 @@ Converts a utf8 literal to string.
 
 #### Defined in
 
-[src/builtins/types.ts:46](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/types.ts#L46)
+[src/builtins/types.ts:46](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L46)
 
 ___
 
@@ -576,7 +652,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/builtins/functions.ts:70](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L70)
+[src/builtins/functions.ts:70](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L70)
 
 ___
 
@@ -598,7 +674,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:196](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L196)
+[src/builtins/functions.ts:196](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L196)
 
 ___
 
@@ -624,7 +700,7 @@ Indicates whether the method is a contract method, and ordinary methods do not a
 
 #### Defined in
 
-[src/decorators.ts:7](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/decorators.ts#L7)
+[src/decorators.ts:7](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/decorators.ts#L7)
 
 ___
 
@@ -659,7 +735,7 @@ Indicates whether the property is an property of a contract, and ordinary class 
 
 #### Defined in
 
-[src/decorators.ts:51](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/decorators.ts#L51)
+[src/decorators.ts:51](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/decorators.ts#L51)
 
 ___
 
@@ -683,4 +759,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:81](https://github.com/sCrypt-Inc/ts-sCrypt/blob/c724703/src/builtins/functions.ts#L81)
+[src/builtins/functions.ts:81](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L81)
