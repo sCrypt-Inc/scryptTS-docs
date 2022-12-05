@@ -90,7 +90,7 @@ Update the `tsconfig.json` with following config:
 
 ## Write a Smart Contract
 
-Now, the fun part! Let's write our smart contract: `contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scryptTS-example/blob/master/contracts/demo.ts).
+Now, the fun part! Let's write our smart contract: `contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/contracts/demo.ts).
 
 First, open `contracts/demo.ts` in your editor, then add the following at the top of the file:
 

@@ -69,7 +69,7 @@ In order to do so, you should meet these requirements:
  
 * Get a private key with some amount of BSV tokens on testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
  
-* Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scryptTS-example/blob/master/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scryptTS-example), or build your own.
+* Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scryptTS-examples), or build your own.
  
 Then you could write some tests like this:
  
