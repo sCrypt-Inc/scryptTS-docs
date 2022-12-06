@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Installation
 
+## Requirements
+
+Using `scrypt-ts` requires a node version `>=16.0`.
+
+## Installation
+
 Use this command to install `scryptTS` to your project:
 
 ```sh
