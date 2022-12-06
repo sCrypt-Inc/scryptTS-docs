@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Concepts
 
-To simplify and better understand how smart contract works, we shall clarify some basic concepts first. 
+To simplify and better understand how smart contracts work, we shall clarify some basic concepts first.
 
 ### Contract Deployment
 
@@ -95,7 +95,7 @@ The final step is to sign and send the tx to the network. If everything is fine,
 
 ## Example
 
-Here is a complete example code to deploy & call the `Demo` contract.
+Here is a complete code to deploy & call the `Demo` contract. Notice that we put the tx building logics also into the contract as normal methods.
 
 ```ts
 export class Demo extends SmartContract {
@@ -135,7 +135,7 @@ export class Demo extends SmartContract {
             }))
     }
 
-    getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
+    getCallTxForAdd(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
         return new bsv.Transaction()
             .addInputFromPrevTx(prevTx)
             .setInputScript(0, () => {
@@ -160,13 +160,11 @@ console.log('Demo contract deployed: ', deployTx.id);
 
 // contract call
 // 1. construct a transaction for call
-const unsignedCallTx = demo.getCallTx(3n, deployTx);
+const unsignedCallTx = demo.getCallTxForAdd(3n, deployTx);
 // 2. sign and broadcast the transaction
 const callTx = await signAndSend(unsignedCallTx);
 console.log('Demo contract called: ', callTx.id);
 
-// collect the new p2pkh utxo if it exists in `callTx`
-utxoMgr.collectUtxoFrom(callTx);
 ```
 
-
+The full code can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/demo.ts).

@@ -29,8 +29,8 @@ instance.verify(entryMethodInvoking: (self: SmartContract) => void): VerifyResul
 Notice that it’s actually a callback function named `entryMethodInvoking` being passed to the call of `instance.verify`. You should call the testing target method in this callback, like:
 
 ```ts
-instance.verify(() => {
-   instance.entryMethod(...args);
+instance.verify(self => {
+   self.entryMethod(...args);
 } )
 ```
 
@@ -42,20 +42,24 @@ You could use whatever testing framework you like to write unit tests for your c
  
 ```js
 describe('Test SmartContract `Demo`', () => {
- before(async () => {
-   await Demo.compile();
- })
- 
- it('should pass the public method unit test successfully.', async () => {
-   let demo = new Demo(1n);
- 
-   let result = demo.verify(() => demo.unlock(2n));
-   expect(result.success, result.error).to.eq(true);
- 
-   expect(() => {
-     demo.unlock(3n);
-   }).to.throw(/Execution failed/)
- })
+
+  before(async () => {
+    await Demo.compile();
+  })
+
+  it('should pass the public method unit test successfully.', async () => {
+    let demo = new Demo(1n, 2n);
+
+    let result = demo.verify(() => demo.add(3n));
+    expect(result.success, result.error).to.eq(true);
+
+    result = demo.verify(() => demo.sub(-1n));
+    expect(result.success, result.error).to.eq(true);
+
+    expect(() => {
+      demo.add(4n);
+    }).to.throw(/Execution failed/)
+  })
 })
 ```
  
@@ -69,42 +73,6 @@ In order to do so, you should meet these requirements:
  
 * Get a private key with some amount of BSV tokens on testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
  
-* Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scryptTS-examples), or build your own.
- 
-Then you could write some tests like this:
- 
-```ts
-async function main() {
-    const utxoMgr = await getUtxoManager();
-    await Demo.compile();
+* Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scryptTS-examples), or build your own.
 
-    let demo = new Demo(1n, 2n);
-
-    // contract deployment
-    // 1. get the available utxos for the privatekey
-    const utxos = await utxoMgr.getUtxos();
-    // 2. construct a transaction for deployment
-    const unsignedDeployTx = demo.getDeployTx(utxos, 1000);
-    // 3. sign and broadcast the transaction
-    const deployTx = await signAndSend(unsignedDeployTx);
-    console.log('Demo contract deployed: ', deployTx.id);
-
-    // contract call
-    // 1. construct a transaction for call
-    const unsignedCallTx = demo.getCallTx(3n, deployTx);
-    // 2. sign and broadcast the transaction
-    const callTx = await signAndSend(unsignedCallTx);
-    console.log('Demo contract called: ', callTx.id);
-
-    // collect the new p2pkh utxo if it exists in `callTx`
-    utxoMgr.collectUtxoFrom(callTx);
-}
-
-describe('Test SmartContract `Demo` on testnet', () => {
-    it('should success', async () => {
-        await main();
-    })
-})
-```
- 
 You may visit [here](./how-to-deploy-and-call-a-contract.md) to see more details on contract deploy and call.
