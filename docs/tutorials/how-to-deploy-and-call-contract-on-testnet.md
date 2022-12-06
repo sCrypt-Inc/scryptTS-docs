@@ -49,7 +49,7 @@ export const privateKey = bsv.PrivateKey.fromWIF(privKey);
 After the privatekey is generated, you can get some testnet bitcoins from our [faucet](https://scrypt.io/#faucet).
 
 
-Deploy contracts and trigger contract execution by constructing transactions and sending them to the Bitcoin blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scryptTS-examples/blob/f85dcf7a5d96979f39b5f512466bd9f4bdd22693/txHelper.ts#L32) for building transactions.
+Deploy contracts and trigger contract execution by constructing transactions and sending them to the Bitcoin SV blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/txHelper.ts) for building and sending transactions.
 
 ## Instantiate the contract
 
