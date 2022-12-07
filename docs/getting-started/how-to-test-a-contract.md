@@ -4,50 +4,57 @@ sidebar_position: 3
  
 # How to Test a Contract
  
-Before using your contract code in production, you should always test it carefully, especially because it may cause **real economic losses** if there were bugs or safety issues.
+Before using a smart contract in production, one should always test it carefully, especially because any bug in it may cause **real economic losses**.
  
-There are two different kinds of test recommended for every project using `scryptTS`:
+There are two different kinds of tests recommended for every project using `scryptTS`:
  
-* **Local Testing**
-* **Testnet Testing**
+* **Local Unit Testing**
+* **Testnet Integration Testing**
  
-## Test a Contract locally
- 
-The main purpose of local testing for a contract is to make sure its public/entry `@method`s will function as designed. That should be considered from two perspectives:
+## Test a Contract Locally
 
-1. If given the right parameters, a public/entry `@method` call should always be successful.
-2. If given any wrong parameters, a public/entry `@method` call should never be successful.
+Compare to other blockchains, smart contracts on Bitcoin are **pure**.
+* Given the same input, its public function always returns the same boolean output: success or failure. It has no internal state.
+* A public function call causes no side effects.
+
+Smart contracts are similar to mathematical functions. Thus, we can test a contract locally without touching the Bitcoin blockchain. If it passes tests off chain, we are confident it will behave the same on chain.
+
+For each public `@method`, we test it in two ways:
+
+1. If given the right arguments, it should succeed.
+2. If given any wrong ones, it should fail.
 
 ### Use `SmartContact.verify` method
  
-The method is dedicated to test a contract call. The function signature is like this:
+The method tests a contract call. The function signature is as follows:
  
 ```ts
-instance.verify(entryMethodInvoking: (self: SmartContract) => void): VerifyResult
+SmartContact.verify(entryMethodInvoking: (self: SmartContract) => void): VerifyResult
 ```
 
-Notice that it’s actually a callback function named `entryMethodInvoking` being passed to the call of `instance.verify`. You should call the testing target method in this callback, like:
+Notice that it actually accepts a callback function named `entryMethodInvoking`. You should call the testing target method in this callback, like:
 
 ```ts
-instance.verify(self => {
+fooSmartContact.verify(self => {
    self.entryMethod(...args);
-} )
+})
 ```
 
-What it does underground is to transform the public function call to a pair of locking script and unlocking script, then execute the joint script on the Bitcoin Virtual Machine and return the result.
+If the call succeeds, it returns a `VerifyResult`; otherwise, it throws an error.
+
+### Use a testing framework
  
-### Integrate with testing framework
- 
-You could use whatever testing framework you like to write unit tests for your contract, take `mocha` for example, the local tests may look like this:
+You can use whatever testing framework you like to write unit tests for your contract. For example, a local test using [Mocha](https://mochajs.org/) is shown below:
  
 ```js
 describe('Test SmartContract `Demo`', () => {
 
   before(async () => {
+    // compile to Script
     await Demo.compile();
   })
 
-  it('should pass the public method unit test successfully.', async () => {
+  it('should return true', () => {
     let demo = new Demo(1n, 2n);
 
     let result = demo.verify(() => demo.add(3n));
@@ -55,24 +62,26 @@ describe('Test SmartContract `Demo`', () => {
 
     result = demo.verify(() => demo.sub(-1n));
     expect(result.success, result.error).to.eq(true);
+  });
+
+  it('should throw error', () => {
+    let demo = new Demo(1n, 2n);
 
     expect(() => {
       demo.add(4n);
     }).to.throw(/Execution failed/)
-  })
+  });
 })
 ```
  
 ## Test a Contract on testnet
  
-After passing local tests, you'd better test your contract on the [testnet](https://test.whatsonchain.com/) of Bitcoin. 
-
-The main purpose of testing a contract on testnet is to make sure a contract instance can be successfully integrated with a transaction, and it functions as expected along with the deploy and call transactions.
+After passing local tests, it is strongly recommended to test your contract on a [testnet](https://test.whatsonchain.com/). It to ensure a contract can be successfully integrated with a transaction, and it functions as expected along with the deploy and call transactions.
  
-In order to do so, you should meet these requirements:
+Before testing, you need to:
  
-* Get a private key with some amount of BSV tokens on testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
+* Get a private key with some test coins on testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
  
 * Get an accessible Bitcoin testnet APIs for querying and sending transactions. You could use our [tool functions](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/txHelper.ts) in the [example project](https://github.com/sCrypt-Inc/scryptTS-examples), or build your own.
 
-You may visit [here](./how-to-deploy-and-call-a-contract.md) to see more details on contract deploy and call.
+You may visit [here](./how-to-deploy-and-call-a-contract.md) to see more details on contract deployment and call.
