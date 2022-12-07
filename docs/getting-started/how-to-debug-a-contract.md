@@ -4,9 +4,7 @@ sidebar_position: 4
 
 # How to Debug a Contract
 
-In the process of writing contracts and testing contracts, it will not be successful once. Usually it is necessary to debug it.
-
-As with debugging TypeScript, there are two ways to debug it:
+Debugging a scryptTS contract is as easy as debugging Typescript, since it is just Typescript.
 
 
 ## Use console.log()
@@ -48,7 +46,7 @@ Demo.compile().then(()=> {
 })
 ```
 
-Build and run with following CLI:
+Run this command in this [example](https://github.com/sCrypt-Inc/scryptTS-examples):
 
 ```bash
 npm run build && node ./dist/contracts/demo.js
@@ -61,10 +59,10 @@ z: 3
 sum: 3
 ```
 
-## Use debugging feature of Visual Studio Code
+## Use Visual Studio Code debugger
 
 
-First make sure you have turned on the `sourceMap` setting in your tsconfig:
+First make sure you have turned on the `sourceMap` setting in your `tsconfig.json`:
 
 ```json
 {
@@ -78,7 +76,7 @@ First make sure you have turned on the `sourceMap` setting in your tsconfig:
 }
 ```
 
-As with [debugging TypeScript programs](https://code.visualstudio.com/docs/typescript/typescript-debugging), you need to create `launch.json`.
+As with [debugging TypeScript programs](https://code.visualstudio.com/docs/typescript/typescript-debugging), you need to create a `launch.json`.
 
 ```json
 {
@@ -106,7 +104,7 @@ Now you can start setting breakpoints and press **F5** to start the debugger.
 
 ![](../../static/img/debugging1.gif)
 
-If you want to debug a unit test written with **mocha**, use the following configuration:
+If you want to debug a unit test written with **Mocha**, use the following configuration:
 
 ```json
 {
