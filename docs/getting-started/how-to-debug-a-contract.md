@@ -49,7 +49,7 @@ Demo.compile().then(()=> {
 Run this command in this [example](https://github.com/sCrypt-Inc/scryptTS-examples):
 
 ```bash
-npm run build && node ./dist/contracts/demo.js
+ts-node src/contracts/demo.ts
 ```
 
 You will see the following output:
@@ -90,7 +90,7 @@ As with [debugging TypeScript programs](https://code.visualstudio.com/docs/types
                 "<node_internals>/**",
                 "${workspaceFolder}/node_modules/**/*.js",
             ],
-            "program": "${workspaceRoot}/contracts/demo.ts",
+            "program": "${workspaceRoot}/src/contracts/demo.ts",
             "preLaunchTask": "tsc: build - tsconfig.json",
             "outFiles": ["${workspaceRoot}/dist/**/*.js"]
         },
