@@ -68,6 +68,11 @@ describe('Test SmartContract `Demo`', () => {
     let demo = new Demo(1n, 2n);
 
     expect(() => {
+      demo.verify(() => demo.add(4n));
+    }).to.throw(/Execution failed/)
+
+    // or 
+    expect(() => {
       demo.add(4n);
     }).to.throw(/Execution failed/)
   });

@@ -2,14 +2,14 @@
 sidebar_position: 2
 ---
 
-# Tutorial 2: How to test contract locally
+# Tutorial 2: How to Test a Contract
 
 
 After the contract code is written, the next step is to verify whether its function is implemented correctly.
 
 ## Setup
 
-Install test framework, We recommend using [mocha](https://mochajs.org).
+Install test framework, We recommend using [Mocha](https://mochajs.org).
 
 ```bash
 npm install -D mocha chai @types/chai @types/mocha
@@ -51,8 +51,20 @@ describe('Test SmartContract `Demo`', () => {
 
     result = demo.verify(() => demo.sub(-1n));
     expect(result.success, result.error).to.eq(true);
-
   })
+
+  it('should throw error', () => {
+    let demo = new Demo(1n, 2n);
+
+    expect(() => {
+      demo.verify(() => demo.add(4n));
+    }).to.throw(/Execution failed/)
+
+    // or 
+    expect(() => {
+      demo.add(4n);
+    }).to.throw(/Execution failed/)
+  });
 })
 ```
 

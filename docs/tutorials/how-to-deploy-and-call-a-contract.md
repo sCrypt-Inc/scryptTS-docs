@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Tutorial 4: How to deploy and call contract on the testnet
+# Tutorial 4: How to Deploy & Call a Contract
 
 
 ## Overview

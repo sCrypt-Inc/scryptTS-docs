@@ -308,7 +308,7 @@ The tsc compiling process may output diagnostic informations in console about th
 
 Congrats! We have finished building our first smart contract with **scryptTS**.
 
-Checkout [Tutorial 2](./how-to-test-contract.md) to learn how to test contract.
+Checkout [Tutorial 2](./how-to-test-a-contract.md) to learn how to test contract.
 
 
 
