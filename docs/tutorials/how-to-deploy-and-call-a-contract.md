@@ -53,7 +53,7 @@ Deploy contracts and trigger contract execution by constructing transactions and
 
 ## Instantiate the contract
 
-This is the same as instantiating the contract in the [Tutorial 2](./how-to-test-contract.md#instantiate-the-contract):
+This is the same as instantiating the contract in the [Tutorial 2](./how-to-test-a-contract.md#instantiate-the-contract):
 
 ```ts
 Demo.compile().then(async ()=> {
