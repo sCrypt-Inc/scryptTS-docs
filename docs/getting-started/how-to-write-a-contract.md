@@ -226,7 +226,7 @@ There are several domain types, specific to the Bitcoin context, used to further
 
 ### `SmartContract` subclasses Types
 
-They can be imported as dependencies and use as libraries.
+Libraries derived from `SmartContract` can be imported as dependencies and reused by other `SmartContract`s.
 
 ## Variable declarations
 

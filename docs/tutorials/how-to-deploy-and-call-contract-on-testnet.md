@@ -13,7 +13,7 @@ We continue to develop on our *hello-world* project.
 
 ## Setup
 
-Before we start writing the code to deploy the contract, we need to generate a [bitcoin privatekey](https://en.bitcoin.it/wiki/Private_key) and recharge some bitcoins to the address corresponding to the privatekey. You can use the following code to generate and save the privatekey:
+Before we start writing the code to deploy the contract, we need to generate a [bitcoin private key](https://en.bitcoin.it/wiki/Private_key) and recharge some bitcoins to the address corresponding to the private key. You can use the following code to generate and save the private key:
 
 ```ts
 import { exit } from 'process';
@@ -46,7 +46,7 @@ export const privateKey = bsv.PrivateKey.fromWIF(privKey);
 
 <center><a href="https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/privateKey.ts">privateKey.ts</a></center>
 
-After the privatekey is generated, you can get some testnet bitcoins from our [faucet](https://scrypt.io/#faucet).
+After the private key is generated, you can get some testnet bitcoins from our [faucet](https://scrypt.io/#faucet).
 
 
 Deploy contracts and trigger contract execution by constructing transactions and sending them to the Bitcoin SV blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/txHelper.ts) for building and sending transactions.
