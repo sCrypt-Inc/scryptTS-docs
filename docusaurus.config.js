@@ -76,7 +76,7 @@ const config = {
             label: 'Reference',
           },
           {
-            href: 'https://github.com/sCrypt-Inc',
+            href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
             label: 'GitHub',
             position: 'right',
           },
