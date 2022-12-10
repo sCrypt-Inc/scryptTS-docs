@@ -42,6 +42,12 @@ Install `scryptTS`:
 npm i scrypt-ts@latest
 ```
 
+Install *TypeScript definitions for Node.js.*:
+
+```bash
+npm i -D @types/node
+```
+
 Create a `contracts` directory to store contract source code:
 
 ```bash
