@@ -50,11 +50,10 @@ You can use whatever testing framework you like to write unit tests for your con
 describe('Test SmartContract `Demo`', () => {
 
   before(async () => {
-    // compile to Script
     await Demo.compile();
   })
 
-  it('should return true', () => {
+  it('should pass the public method unit test successfully.', async () => {
     let demo = new Demo(1n, 2n);
 
     let result = demo.verify(() => demo.add(3n));
@@ -62,20 +61,28 @@ describe('Test SmartContract `Demo`', () => {
 
     result = demo.verify(() => demo.sub(-1n));
     expect(result.success, result.error).to.eq(true);
-  });
+
+  })
+
+  it('should pass the non-public method unit test', () => {
+    let demo = new Demo(1n, 2n);
+    expect(demo.sum(3n, 4n)).to.be.eq(7n);
+  })
+
 
   it('should throw error', () => {
-    let demo = new Demo(1n, 2n);
 
     expect(() => {
-      demo.verify(() => demo.add(4n));
+      let demo = new Demo(1n, 2n);
+      demo.add(4n)
     }).to.throw(/Execution failed/)
 
-    // or 
     expect(() => {
-      demo.add(4n);
+      let demo = new Demo(-1n, -2n);
+      demo.add(-4n)
     }).to.throw(/Execution failed/)
   });
+
 })
 ```
  
