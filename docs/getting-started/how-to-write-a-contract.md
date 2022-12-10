@@ -399,7 +399,7 @@ All operators that can be used directly are listed below:
 | `<` | Less than: `true` if the left operand is less than the right operand |  `x < y` |
 | `<=` | Less than or equal to: `true` if the left operand is less than or equal to the right operand |  `x <= y` |
 | `&&` | Logical AND: `true` if both the operands are `true`, else returns `false` |  `x && y` |
-| `||` | Logical OR: `true` if either of the operands is `true`; returns `false` if both are `false` |  `x || y` |
+| <code>&#124;&#124;</code> | Logical OR: `true` if either of the operands is `true`; returns `false` if both are `false` |  <code>x &#124;&#124; y</code> |
 | `!` | Logical NOT: `true` if the operand is `false` and vice-versa. | `!x` |
 | `condition ? expression : expression ` | returns value based on the condition | `(5 > 3) ? 'success' : 'error'; // "success"` |
 
@@ -411,7 +411,7 @@ typescript's bitwise operator cannot be used in scryptTS. But you can use the bi
 | Operator | Description | built-in function| 
 | :-----| :----: | :----: | 
 | `&` | Bitwise AND | `and(x,y)`| 
-| `|` | Bitwise OR | `or(x,y)`| 
+| <code> &#124; </code> | Bitwise OR | `or(x,y)`| 
 | `^` | Bitwise XOR | `xor(x,y)`| 
 | `~` | Bitwise NOT | `invert(x,y)`| 
 | `<<` | Left shift | `lshift(x,y)`| 
