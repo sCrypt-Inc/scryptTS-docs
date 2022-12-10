@@ -373,3 +373,52 @@ add(x0: bigint, x1:bigint) : bigint {
 }
 ```
 
+
+## Operators
+
+**scryptTS** is a subset of typescript, not all typescript operators can be used directly.
+
+All operators that can be used directly are listed below:
+
+
+| Operator | Description | Example |
+| :-----| :----: | :----: | 
+| `+` | Addition | `x + y` |
+| `-` | Subtraction | `x - y` |
+| `*` | Multiplication | `x * y` |
+| `/` | Division | `x / y` |
+| `%` | Remainder | `x % y` |
+| `++` | Increment (increments by 1) | `++x` or `x++` |
+| `--` | Decrement (decrements by 1) | `--x` or `x--` |
+| `==` | Equal to: returns `true` if the operands are equal |  `x == y` |
+| `!=` | Not equal to: returns `true` if the operands are not equal |  `x != y` |
+| `===` | Same as `==` in **scryptTS** |  `x === y` |
+| `!==` | Same as `!=` in **scryptTS** |  `x !== y` |
+| `>` | Greater than: `true` if left operand is greater than the right operand |  `x > y` |
+| `>=` | Greater than or equal to: `true` if left operand is greater than or equal to the right operand |  `x >= y` |
+| `<` | Less than: `true` if the left operand is less than the right operand |  `x < y` |
+| `<=` | Less than or equal to: `true` if the left operand is less than or equal to the right operand |  `x <= y` |
+| `&&` | Logical AND: `true` if both the operands are `true`, else returns `false` |  `x && y` |
+| `\|\|` | Logical OR: `true` if either of the operands is `true`; returns `false` if both are `false` |  `x \|\| y` |
+| `!` | Logical NOT: `true` if the operand is `false` and vice-versa. | `!x` |
+| `condition ? expression : expression ` | returns value based on the condition | `(5 > 3) ? 'success' : 'error'; // "success"` |
+
+### Bitwise Operators
+
+typescript's bitwise operator cannot be used in scryptTS. But you can use the bitwise built-in function provided by scryptTS.
+
+
+| Operator | Description | built-in function| 
+| :-----| :----: | :----: | 
+| `&` | Bitwise AND | `and(x,y)`| 
+| `\|` | Bitwise OR | `or(x,y)`| 
+| `^` | Bitwise XOR | `xor(x,y)`| 
+| `~` | Bitwise NOT | `invert(x,y)`| 
+| `<<` | Left shift | `lshift(x,y)`| 
+| `>>` | 	Sign-propagating right shift | `rshift(x,y)`|
+
+If the operands participating in the operation are all positive numbers, the result of the operation is consistent with Typescript's bitwise operator. (except `~`). Otherwise, the operation results may be inconsistent.
+
+
+
+
