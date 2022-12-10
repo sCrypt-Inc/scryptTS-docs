@@ -88,7 +88,10 @@ As with [debugging TypeScript programs](https://code.visualstudio.com/docs/types
             "name": "Launch demo",
             "skipFiles": [
                 "<node_internals>/**",
-                "${workspaceFolder}/node_modules/**/*.js",
+                "**/node_modules/**",
+            ],
+            "resolveSourceMapLocations": [
+                "!**/node_modules/**",
             ],
             "program": "${workspaceRoot}/src/contracts/demo.ts",
             "preLaunchTask": "tsc: build - tsconfig.json",
@@ -110,10 +113,13 @@ If you want to debug a unit test written with **Mocha**, use the following confi
 {
     "type": "node",
     "request": "launch",
-    "name": "Launch mocha",
+    "name": "Launch Mocha",
     "skipFiles": [
         "<node_internals>/**",
-        "${workspaceFolder}/node_modules/**/*.js",
+        "**/node_modules/**",
+    ],
+    "resolveSourceMapLocations": [
+        "!**/node_modules/**",
     ],
     "program": "${workspaceRoot}/node_modules/.bin/_mocha",
     "args": [
