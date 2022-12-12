@@ -417,7 +417,7 @@ typescript's bitwise operator cannot be used in scryptTS. But you can use the bi
 | `<<` | Left shift | `lshift(x,y)`| 
 | `>>` | 	Sign-propagating right shift | `rshift(x,y)`|
 
-If the operands participating in the operation are all positive numbers, the result of the operation is consistent with Typescript's bitwise operator. (except `~`). Otherwise, the operation results may be inconsistent.
+The number in the Bitcoin virtual machine is saved in the [Sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations) in stack, not the [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations) commonly used by computers. If the operands participating in the operation are all positive numbers, the result of the operation is consistent with Typescript's bitwise operator. (except `~`). Otherwise, the operation results may be inconsistent.
 
 
 
