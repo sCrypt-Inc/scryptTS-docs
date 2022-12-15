@@ -13,43 +13,18 @@ We continue to develop on our *hello-world* project.
 
 ## Setup
 
-Before we start writing the code to deploy the contract, we need to generate a [bitcoin private key](https://en.bitcoin.it/wiki/Private_key) and recharge some bitcoins to the address corresponding to the private key. You can use the following code to generate and save the private key:
+Before we deploy the contract, we need to generate a [private key](https://en.bitcoin.it/wiki/Private_key) and send some bitcoins to the address derived from it. You can use the following code to generate a private key and derive its address:
 
 ```ts
-import { exit } from 'process';
-import { bsv } from 'scryptlib';
-import * as dotenv from 'dotenv';
-import * as fs from 'fs';
-
-const dotenvConfigPath = ".env";
-dotenv.config({path: dotenvConfigPath});
-
-// fill in private key on testnet in WIF here
-const privKey : string = process.env.PRIVATE_KEY || '';
-if (!privKey) {
-  genPrivKey();
-}
-
-export function genPrivKey() {
-  const newPrivKey = bsv.PrivateKey.fromRandom('testnet')
-  console.log(`Missing private key, generating a new one ...
-Private key generated: '${newPrivKey.toWIF()}'
-You can fund its address '${newPrivKey.toAddress()}' from sCrypt faucet https://scrypt.io/#faucet`);
-  // auto generate .env file with new generated key
-  fs.writeFileSync(dotenvConfigPath, `# You can fund its address '${newPrivKey.toAddress()}' from sCrypt faucet https://scrypt.io/#faucet
-  PRIVATE_KEY="${newPrivKey}"`);
-  exit(-1)
-}
-
-export const privateKey = bsv.PrivateKey.fromWIF(privKey);
+const newPrivKey = bsv.PrivateKey.fromRandom('testnet')
+console.log(`its address is: '${newPrivKey.toAddress()}'`)
 ```
-
 <center><a href="https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/privateKey.ts">privateKey.ts</a></center>
 
-After the private key is generated, you can get some testnet bitcoins from our [faucet](https://scrypt.io/#faucet).
+After the private key is generated, you can get some testnet bitcoins from [this faucet](https://scrypt.io/#faucet).
 
 
-Deploy contracts and trigger contract execution by constructing transactions and sending them to the Bitcoin SV blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/txHelper.ts) for building and sending transactions.
+To deploy a contract and trigger its execution, we need to build transactions and send them to the Bitcoin blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/txHelper.ts) for doing so.
 
 ## Instantiate the contract
 
@@ -64,15 +39,15 @@ Demo.compile().then(async ()=> {
 ## Deploy
 
 
-Deploying a contract usually requires the completion of the following `3` steps:
+Deploying a contract consists of the following steps:
 
-- Get the available utxos for the privatekey
-- Construct a transaction: the input of which is the acquired utxos, and the first output of the transaction contains the lockingScript corresponding to the Demo contract
-- Sign and broadcast transaction with the privatekey
+1. Fetch the available UTXOs for the private key
+2. Construct a transaction: the inputs are the fetched UTXOs and the first output contains the Demo contract
+3. Sign the transaction with the private key and broadcast it.
 
 ```ts
 // contract deployment
-// 1. get the available utxos for the privatekey
+// 1. get the available utxos for the private key
 const utxos = await utxoMgr.getUtxos();
 // 2. construct a transaction for deployment
 const unsignedDeployTx = demo.getDeployTx(utxos, 1000);
@@ -81,7 +56,7 @@ const deployTx = await signAndSend(unsignedDeployTx);
 console.log('Demo contract deployed: ', deployTx.id);
 ```
 
-The method `getDeployTx()` of `Demo` contract implemented constructing a deployment transaction, which first output contains the locking script corresponding to the `Demo` contract:
+The method `getDeployTx()` of `Demo` contract constructs a deployment transaction, whose first output contains the `Demo` contract:
 
 ```ts
 getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
@@ -93,19 +68,19 @@ getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
 }
 ```
 
-**NOTE:** The `getDeployTx` function implements the function of deploying the contract, not the logic of the contract itself, so `@method` decorator should not be added.
+**NOTE:** The `getDeployTx` function implements the function of deploying the contract, not the logic of the contract itself, so `@method` decorator should not be added and the function will be only be run off chain.
 
-After sign and broadcast the transaction, you will see the following output:
+After signing and broadcasting the transaction, you should see a message like the following:
 
 ```
 Demo contract deployed:  e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28
 ```
 
-Visit `https://test.whatsonchain.com/tx/e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28` to see the transaction in the testnet.
+Visit a [block explorer](https://test.whatsonchain.com/tx/e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28) to see the transaction on the testnet.
 
 ## Call
 
-Once a smart contract is successfully deployed, it must be executed with the correct parameters. We construct the transaction and set the correct unlocking parameters to call the contract.
+Once a smart contract is deployed, we can construct a transaction and set the correct unlocking arguments to call it.
 
 Now we implement a function that calls the `add` public function of the `Demo` contract:
 
@@ -119,11 +94,11 @@ getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
 }
 ```
 
-This code uses `prevTx` as input for the current transaction and sets the unlocking script via `setInputScript`. In the current example, `prevTx` is the transaction where we deploy the `Demo` contract. Note that you need to call the public function `add` of the contract in the callback of `getUnlockingScript(callback: (self: typeof this) => void): bsv.Script;` to get the corresponding unlocking script.
+This code uses `prevTx` as input for the current transaction and sets the unlocking script via `setInputScript`. In the current example, `prevTx` is the transaction where we deployed the `Demo` contract. Note that you need to call the public function `add` of the contract in the callback of `getUnlockingScript(callback: (self: typeof this) => void): bsv.Script;` to get the corresponding unlocking script.
 
-Only transactions containing the correct unlocking script can be accepted by the blockchain, and the transaction can spend the utxo where the contract is located (that is, execute the contract).
+Only transactions containing the correct unlocking script can be accepted by the blockchain, and the transaction can spend the UTXO where the contract is located. That is, call the contract successfully.
 
-Then, also call `signAndSend` to sign and broadcast the transaction.
+Again, we call `signAndSend` to sign and broadcast the transaction.
 
 ```ts
 // contract call
@@ -137,7 +112,7 @@ console.log('Demo contract called: ', callTx.id);
 utxoMgr.collectUtxoFrom(callTx);
 ```
 
-You will see the following output:
+You will see something similar to the following:
 
 ```
 Demo contract called:  fd1e276ba344f51fa972366b6eed60fae99bce7c3d339b9e2389067a92bc7648
@@ -147,7 +122,7 @@ Demo contract called:  fd1e276ba344f51fa972366b6eed60fae99bce7c3d339b9e2389067a9
 The full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/demo.ts).
 # Conclusion
 
-We have finished deploying and calling `Demo` contract on the testnet.
+We have finished deploying and calling `Demo` contract on the testnet. The approache also applies to the mainnet.
 
 
 
