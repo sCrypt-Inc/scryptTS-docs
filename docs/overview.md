@@ -23,13 +23,11 @@ Each Bitcoin [Transaction](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transacti
 
 An input is a reference to an output from a previous transaction, or in another word it spends the referenced output. 
 
-An important part in Input is called **ScriptSig** or **Unlocking Script**, which is a piece of  [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script). The script provides information that can be used to **unlock** the referenced output.
+An important part in input is called **unlocking script**, which is a piece of  [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script). The script provides information that can be used to **unlock** the referenced output.
 
 #### Outputs
 
-An output also contains a piece of Bitcoin Script called **ScriptPubKey** or **Locking Script**, which can be used to **lock** some bitcoins which are represented by the `value` field of the output .
-
-Outputs can also be used to inscribe data onto the ledger.
+An output also contains a piece of Bitcoin Script called **locking script**, which can be used to **lock** some bitcoins which are represented by the `value` field of the output .
 
 #### Transaction Validation
 
