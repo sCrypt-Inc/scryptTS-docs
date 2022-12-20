@@ -51,7 +51,7 @@ npm i -D @types/node
 Create a `contracts` directory to store contract source code:
 
 ```bash
-mkdir contracts
+mkdir -p src/contracts
 ```
 
 With TypeScript installed, you can initialize your TypeScript project by using the following command:
@@ -96,7 +96,7 @@ Update the `tsconfig.json` with following config:
 
 ## Write a Smart Contract
 
-Now, the fun part! Let's write our smart contract: `contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/demo.ts).
+Now, the fun part! Let's write our smart contract: `src/contracts/demo.ts`. A final version of what we're writing can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/demo.ts).
 
 First, open `contracts/demo.ts` in your editor, then add the following at the top of the file:
 
