@@ -134,4 +134,4 @@ import { MyLib } from “my_package”;
 
 ### `scrypt-ts-lib`
 
-It’s a collection of smart contract libraries provided by us. You can find some useful tools [here](https://github.com/sCrypt-Inc/scrypt-ts-lib). Also you’re welcomed to contribute.
+It’s a collection of smart contract libraries provided by us. You can find some useful tools [here](https://github.com/sCrypt-Inc/scrypt-ts-lib). Also you are welcome to contribute.
