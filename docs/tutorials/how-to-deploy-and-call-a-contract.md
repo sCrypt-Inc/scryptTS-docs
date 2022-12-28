@@ -20,7 +20,7 @@ The command will generate a private key which will be stored in the `.env` file 
 
 The command will also output the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. This address will need to be funded with testnet bitcoins. You can get some for free of charge from [this faucet](https://scrypt.io/#faucet).
 
-Now we will take a look at the file `tests/testnet/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public function call on the contract.
+Now we will take a look at the file `tests/testnet/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
 
 ## Deployment of the smart contract
 
@@ -53,14 +53,14 @@ getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
 }
 ```
 
-**NOTE:** The `getDeployTx` function implements the function of deploying the contract, not the logic of the contract itself, so the `@method` decorator should not be added and the function will be only be run off chain.
+**NOTE:** The `getDeployTx` method implements the method of deploying the contract, not the logic of the contract itself, so the `@method` decorator should not be added and the method will be only be run off chain.
 
 
 ## Call a smart contract
 
 Once a smart contract is deployed, we can construct a transaction and set the correct unlocking arguments to call it.
 
-If we take a look at our smart contracts code, we see a function that calls the `add` public function of the `Demo` contract:
+If we take a look at our smart contracts code, we see a method that calls the `add` public method of the `Demo` contract:
 
 ```ts
 getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
@@ -72,9 +72,9 @@ getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
 }
 ```
 
-This code uses `prevTx` as input for the current transaction and sets the unlocking script via `setInputScript`. In the current example, `prevTx` is the transaction where the initial deployment of the `Demo` contract is. Note that you need to call the public function `add` of the contract in the callback of `getUnlockingScript(callback: (self: typeof this) => void): bsv.Script;` to get the corresponding unlocking script.
+This code uses `prevTx` as input for the current transaction and sets the unlocking script via `setInputScript`. In the current example, `prevTx` is the transaction where the initial deployment of the `Demo` contract is. Note that you need to call the public method `add` of the contract in the callback of `getUnlockingScript(callback: (self: typeof this) => void): bsv.Script;` to get the corresponding unlocking script.
 
-Only transactions containing the correct unlocking script can be accepted by the blockchain. The unlocking script unlocks the UTXO which contains our contracts script code, which is defined in its public functions. This is the process we have in mind when we refer to "calling the deployed smart contract".
+Only transactions containing the correct unlocking script can be accepted by the blockchain. The unlocking script unlocks the UTXO which contains our contracts script code, which is defined in its public methods. This is the process we have in mind when we refer to "calling the deployed smart contract".
 
 Again, we call `signAndSend` to sign and broadcast the transaction.
 

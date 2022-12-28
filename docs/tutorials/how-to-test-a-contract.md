@@ -34,12 +34,12 @@ let result = demo.verify(() => {
 });
 ```
 
-If the contracts function is successfully evaluated, the returned result `result.success` will be `true`. Otherwise it will throw an exception.
+If the contracts method is successfully evaluated, the returned result `result.success` will be `true`. Otherwise it will throw an exception.
 
 
-### Testing public functions
+### Testing public methods
 
-Testing the public functions of a contract by calling it's `verify(callPub: (self: this) => {})` method:
+Testing the public methods of a contract by calling it's `verify(callPub: (self: this) => {})` method:
 
 ```ts
 describe('Test SmartContract `Demo`', () => {
@@ -61,12 +61,12 @@ describe('Test SmartContract `Demo`', () => {
 })
 ```
 
-A contract public function must be called on the `self` parameter within the `callPub` callback. It is not recommended to test multiple public functions in the `callPub` callack.
+A contract public method must be called on the `self` parameter within the `callPub` callback. It is not recommended to test multiple public method in the `callPub` callack.
 
 
-### Testing non-public functions
+### Testing non-public methods
 
-Non-public functions have a return value. You can test it directly by asserting its return value. No need to call the verify method.
+Non-public methods have a return value. You can test it directly by asserting its return value. No need to call the verify method.
 
 ```ts
 describe('Test SmartContract `Demo`', () => {
@@ -75,7 +75,7 @@ describe('Test SmartContract `Demo`', () => {
     await Demo.compile();
   })
 
-  it('should pass the non-public function unit test', () => {
+  it('should pass the non-public method unit test', () => {
     let demo = new Demo(1n, 2n);
     expect(demo.sum(3n, 4n)).to.be.eq(7n);
   })

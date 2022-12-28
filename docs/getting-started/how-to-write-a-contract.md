@@ -79,9 +79,9 @@ Use this decorator to mark any function that intends to be stored on chain.
 
 ### Public `@method`s
 
-Each contract has at least one public function. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the entry point into the contract (like main in C and Java).
+Each contract has at least one public method. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the entry point into the contract (like main in C and Java).
 
-A public function can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](#`assert`). An example is shown below.
+A public method can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](#`assert`). An example is shown below.
 
 ```js
   @method
@@ -92,7 +92,7 @@ A public function can be called from an external transaction. The call succeeds 
 
 ### Non-Public `@method`s
 
-Without a `public` modifier, a `@method` is an internal function and can only be called within the contract class. 
+Without a `public` modifier, a `@method` is an internal method and can only be called within the contract class. 
 
 It can return any valid types described later. The return type must be explicitly declared. e.g.,
 
@@ -104,7 +104,7 @@ It can return any valid types described later. The return type must be explicitl
 ```
 
 
-Note: Recursion is disallowed. Both **Non-Public Function** and **Public Function** cannot call itself in its body, either directly or indirectly.
+Note: Recursion is disallowed. Both **Non-Public Methods** and **Public Methods** cannot call themselves in their body, either directly or indirectly.
 
 
 ## Types

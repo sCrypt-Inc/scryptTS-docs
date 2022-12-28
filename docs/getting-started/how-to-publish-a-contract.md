@@ -7,7 +7,7 @@ sidebar_position: 6
 
 ## What is a Smart Contract Library?
 
-A smart contract library can provide functions which can be reused in many contracts. Developers can use existing libraries to reduce the cost of developing their own contracts.
+A smart contract library can provide methods which can be reused in many contracts. Developers can use existing libraries to reduce the cost of developing their own contracts.
 
 A smart contract library is different from a smart contract in these ways:
 

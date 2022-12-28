@@ -85,7 +85,7 @@ First the `Counter` gets instantiated to get an instance with the initial `count
 const counter = new Counter(0n).markAsGenesis();
 ``` 
 
-The `Counter` class defines the function `getDeployTx` which builds the deployment tx for the instance.
+The `Counter` class defines the method `getDeployTx` which builds the deployment tx for the instance.
 
 ```js
 getDeployTx(utxos: UTXO[], initBalance: number): bsv.Transaction {
