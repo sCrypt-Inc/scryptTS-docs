@@ -3,7 +3,7 @@ sidebar_position: 6
 ---
 
 
-# How to Write a Library
+# How to Publish a Contract to NPM
 
 ## What is a Smart Contract Library?
 
@@ -94,7 +94,7 @@ describe('Test SmartContractLib `Lib`', () => {
 
 ## Publish a Smart Contract Library
 
-If you have built a smart contract library, you could consider publishing it as a npm package. Please note that for the import system working properly, you should always publish the auto-generated sCrypt contracts (including `scrypt.index.json` file) along with the javascript outputs. The structure of the package could be like this:
+If you have built a smart contract library, you could consider publishing it as an npm package. Please note that for the import system working properly, you should always publish the auto-generated sCrypt contracts (including `scrypt.index.json` file) along with the javascript outputs. The structure of the package could be like this:
 
 ```
 node_modules
