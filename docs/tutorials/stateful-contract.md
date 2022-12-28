@@ -1,12 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# Tutorial 3: Stateful Contract
+# Tutorial 4: Stateful Contract
 
 ## Overview
 
-In this tutorial we will introduce a concept called `stateful contract` and how to write / test a stateful contract.
+In this tutorial we will introduce a concept called `stateful contract` and how to create a stateful contract.
 
 ## What is a Stateful Contract?
 
@@ -20,30 +20,32 @@ There are a lot of use cases for non-stateful contracts. For example, puzzle res
  
 ### Stateful Contract
 
-If a contract instance was called multi-times on-chain after deployment, and generates new UTXO(s) that contain the locking script of the contract. We can call this kind of contract stateful, which means it can maintain its inner states correctly on-chain after each calling.
+If a contract instance was called multiple times on-chain after deployment, and generates new UTXO(s) that contain the locking script of the contract. We can call this kind of contract stateful, which means it can maintain its inner states correctly on-chain after each calling.
 
 Stateful contracts are commonly used if you want some properties of your contract to be changed by calling `@method`s, which will be verified by miners.
 
-## Write a Stateful Contract
+## Creating a Stateful Contract
 
-We’re going to write a simple stateful contract named `Counter` to implement a very easy state changing case: Increasing the count by one for every contract call.
+We can use the `scrypt` command to create a demo stateful contract with all the needed scaffolding. Let's run the following command:
 
-First we declared a class like this:
-
-```ts
-export class Counter extends SmartContract { }
+```sh
+scrypt project --state my-project
 ```
 
+This will create a project containing a demo stateful contract named `Counter`. This contract implements a very easy state changing case: Increasing the value of a counter by one for every contract call.
+
+Let's take a look at the contract source file `src/contracts/counter.ts`.
+
 ### Add `@prop(true)` on stateful property
-As shown [before](../getting-started/how-to-write-a-contract.md#properties), we can use `@prop(true)` to make the property `count` stateful. 
+As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make the property `count` stateful. 
 
 ```ts
 @prop(true) count: bigint;
 ```
 
-### Define an entry method 
+### The entry method 
 
-Then we can define an entry method named `increment` for the stateful contract like this:
+The contract code defines an entry method named `increment` for the stateful contract like this:
 
 ```ts
 @method public increment(txPreimage: SigHashPreimage)
@@ -55,55 +57,35 @@ Here are the explanations for the input parameters:
 
 ### Update properties and validate changes
 
-Next we need to implement the entry method, which mainly do two things:
+The implementation of the entry method mainly does two things:
 
-* Update the property `count` with a statement: 
+* Updates the property `count` with a statement: 
 
 ```js
 this.count++;
 ```
 
-* Valid this update has been correctly recorded into the `txPreimage`, or in another word, the new state of `count` has been serialized into current tx by calling:
+* Validates this update has been correctly recorded into the `txPreimage`, or in another word, the new state of `count` has been serialized into current tx by calling:
 
 ```js
 assert(this.updateState(txPreimage, SigHash.value(txPreimage)));
-```
-
-Finally we can get a complete stateful contract `Counter` as below:
-
-```ts
-export class Counter extends SmartContract {
-  @prop(true)
-  count: bigint;
-
-  constructor(count: bigint) {
-    super(count);
-    this.count = count;
-  }
-
-  @method
-  public increment(txPreimage: SigHashPreimage) {
-    this.count++;
-    assert(this.updateState(txPreimage, SigHash.value(txPreimage)));
-  }
-}
 ```
 
 ## Test a Stateful Contract
 
 ### Test calls locally
 
-In order to test our stateful contract `Counter`, we can follow these steps:
+Let's take a look at the local test code in `tests/local/counter.test.ts`. The code can be broken down into the phases described below.
 
 #### 1. Build a tx and a genesis instance for contract deployment
 
-First we should instantiate the `Counter` to get an instance with the initial `count` value `0`. Also it's marked as the genesis instance.
+First the `Counter` gets instantiated to get an instance with the initial `count` value `0`. Also it's marked as the genesis instance.
 
 ```js
 const counter = new Counter(0n).markAsGenesis();
 ``` 
 
-Then we can build the deployment tx for the instance, for which we will add a new method `getDeployTx` in `Counter` class:
+The `Counter` class defines the function `getDeployTx` which builds the deployment tx for the instance.
 
 ```js
 getDeployTx(utxos: UTXO[], initBalance: number): bsv.Transaction {
@@ -119,25 +101,25 @@ getDeployTx(utxos: UTXO[], initBalance: number): bsv.Transaction {
 }
 ```
 
-We build a tx from a `utxos` set passed in, then adding an output with script from `counter.lockingScript` and `initBalance` as its value. Also we bind `this` instance `lockTo` the `tx` with the `outputIndex` of `0`.
+It builds a tx from a `utxos` list passed in, then adding an output with script from `counter.lockingScript` and `initBalance` as its value. Also it binds `this` instance `lockTo` the `tx` with the `outputIndex` of `0`.
 
 #### 2. Build a tx and an instance for contract call
 
 As we described [before](../getting-started/how-to-deploy-and-call-a-contract#concepts), when we call an entry method of a contract instance, a new tx and a new contract instance will be built together.
 
-We can start by building a new instance from the previous one by calling its `next` method, which will make a deep copy of all properties except the `isGenesis` flag:
+A new instance from the previous contract can be created by calling its `next` method, which will make a deep copy of all properties except the `isGenesis` flag:
 
 ```ts
 const newCounter = counter.next();
 ```
 
-Then we can apply the updates on this `newCounter` like:
+The properties value on this `newCounter` can be updated like:
 
 ```ts
 newCounter.count++;
 ```
 
-After that we want to build a tx for calling the entry method `increment`. It can also be implemented in a new contract method called `getCallTx`:
+Our contract also implements a method called `getCallTx` which builds a tx for calling the entry method:
 
 ```ts
 getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transaction {
@@ -182,7 +164,7 @@ Notice that we build the argument `txPreimage` for the method `increment` by cal
 
 #### 3. Verify the entry method call
 
-Finally we can the [`SmartContract.verify`](../getting-started/how-to-test-a-contract.md#use-smartcontactverify-method) method to test the entry call like this:
+Finally, the [`SmartContract.verify`](../getting-started/how-to-test-a-contract.md#use-smartcontactverify-method) method is used to test the entry call like this:
 
 ```ts
 counter.verify(() => {
@@ -191,73 +173,18 @@ counter.verify(() => {
 })
 ```
 
-A complete example code looks like:
+### Running the tests
 
-```ts
-// 1.0 build genesis instance
-const counter = new Counter(0n).markAsGenesis();
-// 1.1 build the deploy tx
-const deployTx = counter.getDeployTx(dummyUTXO, 1);
+Same as with our `Demo` project we can just use the following commands:
 
-// 2.0 build the next instance
-const newCounter = counter.next();
-// 2.1 apply updates on the next instance
-newCounter.count++;
-// 2.2 build the call tx for genesis instance `counter`
-const callTx = counter.getCallTx(dummyUTXO, deployTx, newCounter);
-
-// 3. test the entry method call on `counter`
-counter.verify(self => {
-  self.increment(new SigHashPreimage(callTx.getPreimage(1)));
-})
+```sh
+npm run test
 ```
 
-#### Test multiple calls
+to run the local tests and
 
-Also we can easily modify the above code to support testing multiple calls like this:
-
-```ts
-const utxos = [dummyUTXO];
-
-// create a genesis instance
-const counter = new Counter(0n).markAsGenesis();
-// construct a transaction for deployment
-const deployTx = counter.getDeployTx(utxos, 1);
-
-let prevTx = deployTx;
-let prevInstance = counter;
-
-// multiple calls    
-for (let i = 0; i < 3; i++) {
-  // 1. build a new contract instance
-  const newCounter = prevInstance.next();
-  // 2. apply the updates on the new instance.
-  newCounter.count++;
-  // 3. construct a transaction for contract call
-  const callTx = prevInstance.getCallTx(utxos, prevTx, newCounter);
-  // 4. run `verify` method on `prevInstance`
-  const result = prevInstance.verify( self => {
-    self.increment(new SigHashPreimage(callTx.getPreimage(1)));
-  });
-
-  expect(result.success, result.error).to.be.true;
-
-  // prepare for the next iteration
-  prevTx = callTx;
-  prevInstance = newCounter;
-}
+```sh
+npm run testnet
 ```
 
-### Test calls on testnet
-
-If we want to put it on testnet just need to make these minor changes:
-
-* Prepare a private key with some amount of test BSVs for testnet；
-
-* Replace the  `dummyUTXO` with real UTXOs for the private key；
-
-* Replace the local `SmartContract.verify` method call with signing and sending the tx to the testnet;
-
-You can try to make these changes by yourself.
-
-The full example is available at [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/counter.ts)
+to test the contract deployment on the Bitcoin testnet. Don't forget to generate and fund your private key before running the testnet command.

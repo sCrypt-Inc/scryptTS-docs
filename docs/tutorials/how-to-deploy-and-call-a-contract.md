@@ -1,43 +1,28 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
-# Tutorial 4: How to Deploy & Call a Contract
-
+# Tutorial 3: How to Deploy & Call a Contract
 
 ## Overview
 
-In previous tutorials, we've seen how to test and run contract locally. In this tutorial, we will show how to deploy and call contract on the testnet. 
-
-We continue to develop on our *hello-world* project.
+In the previous tutorials we've generated a project and ran its tests locally. In this tutorial we will deploy and call our contract on the Bitcoin testnet.
 
 ## Setup
 
-Before we deploy the contract, we need to generate a [private key](https://en.bitcoin.it/wiki/Private_key) and send some bitcoins to the address derived from it. You can use the following code to generate a private key and derive its address:
+Before we deploy the contract, we need to generate a [private key](https://en.bitcoin.it/wiki/Private_key) and send some bitcoins to the address derived from it. Let's run the following command:
 
-```ts
-const newPrivKey = bsv.PrivateKey.fromRandom('testnet')
-console.log(`its address is: '${newPrivKey.toAddress()}'`)
-```
-<center><a href="https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/privateKey.ts">privateKey.ts</a></center>
-
-After the private key is generated, you can get some testnet bitcoins from [this faucet](https://scrypt.io/#faucet).
-
-
-To deploy a contract and trigger its execution, we need to build transactions and send them to the Bitcoin blockchain. We provide a tool library [txHelper.ts](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/txHelper.ts) for doing so.
-
-## Instantiate the contract
-
-This is the same as instantiating the contract in the [Tutorial 2](./how-to-test-a-contract.md#instantiate-the-contract):
-
-```ts
-Demo.compile().then(async ()=> {
-    let demo = new Demo(1n, 2n);
-})
+```sh
+npm run genprivkey
 ```
 
-## Deploy
+The command will generate a private key which will be stored in the `.env` file in our project root directory. Keep this key secret as whoever has access to it can take the funds!
 
+The command will also output the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. This address will need to be funded with testnet bitcoins. You can get some for free of charge from [this faucet](https://scrypt.io/#faucet).
+
+Now we will take a look at the file `tests/testnet/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public function call on the contract.
+
+## Deployment of the smart contract
 
 Deploying a contract consists of the following steps:
 
@@ -68,21 +53,14 @@ getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
 }
 ```
 
-**NOTE:** The `getDeployTx` function implements the function of deploying the contract, not the logic of the contract itself, so `@method` decorator should not be added and the function will be only be run off chain.
+**NOTE:** The `getDeployTx` function implements the function of deploying the contract, not the logic of the contract itself, so the `@method` decorator should not be added and the function will be only be run off chain.
 
-After signing and broadcasting the transaction, you should see a message like the following:
 
-```
-Demo contract deployed:  e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28
-```
-
-Visit a [block explorer](https://test.whatsonchain.com/tx/e5924840a74280d0313c7ff5964370cc203d728120c9145288a579ac6848ea28) to see the transaction on the testnet.
-
-## Call
+## Call a smart contract
 
 Once a smart contract is deployed, we can construct a transaction and set the correct unlocking arguments to call it.
 
-Now we implement a function that calls the `add` public function of the `Demo` contract:
+If we take a look at our smart contracts code, we see a function that calls the `add` public function of the `Demo` contract:
 
 ```ts
 getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
@@ -94,9 +72,9 @@ getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
 }
 ```
 
-This code uses `prevTx` as input for the current transaction and sets the unlocking script via `setInputScript`. In the current example, `prevTx` is the transaction where we deployed the `Demo` contract. Note that you need to call the public function `add` of the contract in the callback of `getUnlockingScript(callback: (self: typeof this) => void): bsv.Script;` to get the corresponding unlocking script.
+This code uses `prevTx` as input for the current transaction and sets the unlocking script via `setInputScript`. In the current example, `prevTx` is the transaction where the initial deployment of the `Demo` contract is. Note that you need to call the public function `add` of the contract in the callback of `getUnlockingScript(callback: (self: typeof this) => void): bsv.Script;` to get the corresponding unlocking script.
 
-Only transactions containing the correct unlocking script can be accepted by the blockchain, and the transaction can spend the UTXO where the contract is located. That is, call the contract successfully.
+Only transactions containing the correct unlocking script can be accepted by the blockchain. The unlocking script unlocks the UTXO which contains our contracts script code, which is defined in its public functions. This is the process we have in mind when we refer to "calling the deployed smart contract".
 
 Again, we call `signAndSend` to sign and broadcast the transaction.
 
@@ -111,31 +89,28 @@ console.log('Demo contract called: ', callTx.id);
 // collect the new p2pkh utxo if it exists in `callTx`
 utxoMgr.collectUtxoFrom(callTx);
 ```
+# Running the code
 
-You will see something similar to the following:
+The deployment code is wrapped into a simple NPM command:
 
+```sh
+npm run testnet
 ```
-Demo contract called:  fd1e276ba344f51fa972366b6eed60fae99bce7c3d339b9e2389067a92bc7648
+
+Make sure you funded your address before running this command.
+
+After a successful run you should see something like tho following:
+```
+Demo contract deployed:  f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3
+Demo contract called:  dc53da3e80aadcdefdedbeb6367bb8552e381e92b226ab1dc3dc9b3325d8a8ee
 ```
 
+These are the TXIDs of the transaction which deployed the smart contract code and then the transaction which unlocked it.
 
-The full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/demo.ts).
+You can see the structure of the transactions using a [block explorer](https://test.whatsonchain.com/tx/f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3)
+
 # Conclusion
 
-We have finished deploying and calling `Demo` contract on the testnet. The approache also applies to the mainnet.
+We have finished deploying and calling `Demo` contract on the testnet. The same approach also applies to the mainnet.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Jump over to [Tutorial 4](./stateful-contract.md) to see how we can create a project with a stateful contract.

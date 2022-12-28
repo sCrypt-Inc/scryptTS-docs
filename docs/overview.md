@@ -11,7 +11,7 @@ Congratulations on choosing `scryptTS` as a tool to build Smart Contract based a
 
 `scryptTS` is a Typescript framework to write smart contracts on Bitcoin SV.
 
-## How Bitcoin SV Smart Contracts work?
+## How do Bitcoin SV Smart Contracts work?
 
 Smart contracts on the Bitcoin SV network are based on the Bitcoin UTXO model, which is very different from an account model like Ethereum used.
 
@@ -55,4 +55,9 @@ A smart contract can be called through a Bitcoin transaction if one of the tx in
 
 Backed by these underlying techniques, developers could use their most familiar language Typescript to build Bitcoin SV smart contract applications.
 
+## Learn sCryptTS
+
+Jump over to the [Getting Started](./getting-started/installation.md) section to learn how to create an sCryptTS project from scratch one by one.
+
+If you're impatient you can jump straight to the [Tutorials](./tutorials/hello-world.md) section where you will use the sCrypt CLI tool to generate all the boilerplate for you.
 
