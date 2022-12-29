@@ -10,21 +10,15 @@ In this tutorial, we will go over how to quickly create an sCrypt project and ex
 
 ## Create a new project
 
-First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-Inc/scrypt-cli) is installed. If it's not install it using the following command:
+First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-Inc/scrypt-cli) is installed. Check the [installation section](../getting-started/installation.md) if you don't have it installed yet.
 
-```sh
-npm install -g scrypt-cli
-```
-
-You may need to re-open your console in order for the `scrypt` command to be available.
-
-Then we can run the following command to create a new sCrypt project:
+We can run the following command to create a new sCrypt project:
 
 ```sh
 scrypt project my-project
 ```
 
-The resulting project will contain a demo sCrypt smart contract along with all the scaffolding that we need.
+The resulting project will contain a demo smart contract along with all the scaffolding.
 
 
 ## The Smart Contract

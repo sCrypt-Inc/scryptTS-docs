@@ -6,13 +6,13 @@ sidebar_position: 2
 
 We have taken a look at the smart contract code of the project we created in tutorial 1. Now we will take a look at the test code and try to run the tests themselves.
 
-## Testing sCrypt code
+## Testing smart contract code
 
-The generated will already have a dependency on a testing framework called [Mocha](https://mochajs.org).
+We will use a testing framework called [Mocha](https://mochajs.org).
 
 Let's open the `tests\local\demo.test.ts` file.
 
-### Instantiation of the smart contract
+### Instantiate the smart contract
 
 Different from instantiating a normal TypeScript class, the `Demo` contract must be compiled before instantiation.
 
@@ -23,7 +23,7 @@ let demo = new Demo(1n, 2n);
 
 This compilation gets done in the `before`hook of Mocha to get the resulting [bitcoin script](https://wiki.bitcoinsv.io/index.php/Script), which will be evaluated when we run our tests.
 
-### Evaluating the contract
+### Evaluate the contract
 
 We call the `verify()` method to evaluate the contract. `verify()` is a function defined in the base class [SmartContract](../reference/classes/SmartContract.md#verify). 
 
@@ -34,12 +34,12 @@ let result = demo.verify(() => {
 });
 ```
 
-If the contracts method is successfully evaluated, the returned result `result.success` will be `true`. Otherwise it will throw an exception.
+If the contracts method is successfully evaluated, `result.success` will be `true`. Otherwise it will throw an exception.
 
 
-### Testing public methods
+### Test public methods
 
-Testing the public methods of a contract by calling it's `verify(callPub: (self: this) => {})` method:
+Testing the public methods of a contract by calling its `verify(callPub: (self: this) => {})` method:
 
 ```ts
 describe('Test SmartContract `Demo`', () => {
@@ -64,9 +64,9 @@ describe('Test SmartContract `Demo`', () => {
 A contract public method must be called on the `self` parameter within the `callPub` callback. It is not recommended to test multiple public method in the `callPub` callack.
 
 
-### Testing non-public methods
+### Test non-public methods
 
-Non-public methods have a return value. You can test it directly by asserting its return value. No need to call the verify method.
+Non-public methods have a return value, which can be tested directly. You do not need to call the verify method.
 
 ```ts
 describe('Test SmartContract `Demo`', () => {
@@ -86,8 +86,8 @@ describe('Test SmartContract `Demo`', () => {
 
 ## Build and Run tests
 
-Alright, now that we know what our generated tests are made of we will try to run them. 
-To do that, we just simply run a single command:
+Alright, now that we know what our generated tests are made of, we will try to run them. 
+We just run a single command:
 
 ```sh
 npm run test

@@ -22,7 +22,7 @@ The command will also output the [Bitcoin address](https://wiki.bitcoinsv.io/ind
 
 Now we will take a look at the file `tests/testnet/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
 
-## Deployment of the smart contract
+## Deploying of the smart contract
 
 Deploying a contract consists of the following steps:
 

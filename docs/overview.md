@@ -55,9 +55,9 @@ A smart contract can be called through a Bitcoin transaction if one of the tx in
 
 Backed by these underlying techniques, developers could use their most familiar language Typescript to build Bitcoin SV smart contract applications.
 
-## Learn sCryptTS
+## Learn scryptTS
 
-Jump over to the [Getting Started](./getting-started/installation.md) section to learn how to create an sCryptTS project from scratch one by one.
+Jump over to the [Getting Started](./getting-started/installation.md) section to learn how to create an scryptTS project from scratch one by one.
 
-If you're impatient you can jump straight to the [Tutorials](./tutorials/hello-world.md) section where you will use the sCrypt CLI tool to generate all the boilerplate for you.
+If you're already experienced, you can jump straight to the [Tutorials](./tutorials/hello-world.md) section where you will use the sCrypt CLI tool to generate all the boilerplate for you.
 

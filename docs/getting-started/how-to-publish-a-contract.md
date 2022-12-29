@@ -92,6 +92,14 @@ describe('Test SmartContractLib `Lib`', () => {
 
 ```
 
+## Create a Library Project Using sCrypt CLI
+
+The following command will create a demo scryptTS library along with tests and  scaffolding:
+
+```sh
+scrypt project --lib <your-lib-name>
+```
+
 ## Publish a Smart Contract Library
 
 If you have built a smart contract library, you could consider publishing it as an npm package. Please note that for the import system working properly, you should always publish the auto-generated sCrypt contracts (including `scrypt.index.json` file) along with the javascript outputs. The structure of the package could be like this:
@@ -122,9 +130,15 @@ The `scrypt.index.json` file will be generated at typescript compile time in the
 }
 ```
 
-The library user could just use `npm install` to install the dependency, and then use the exported smart contract library as a normal module in their smart contracts.
+You can publish the library on [NPM](https://www.npmjs.com/) by running the following command in the projects root directory:
 
-**Please Note** that named imports is not supported yet. You should only use an import statement like this:
+```sh
+scrypt publish
+```
+
+This will check the projects structure, build it and publish it. After the library is published, users can just import it in any other project just like regular NPM packages.
+
+**Please Note** that named imports are not supported yet. You should only use an import statement like this:
 ```ts
 import { MyLib } from “my_package”;
 ```

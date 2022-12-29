@@ -24,7 +24,7 @@ If a contract instance was called multiple times on-chain after deployment, and 
 
 Stateful contracts are commonly used if you want some properties of your contract to be changed by calling `@method`s, which will be verified by miners.
 
-## Creating a Stateful Contract
+## Create a Stateful Contract
 
 We can use the `scrypt` command to create a demo stateful contract with all the needed scaffolding. Let's run the following command:
 
@@ -32,7 +32,9 @@ We can use the `scrypt` command to create a demo stateful contract with all the 
 scrypt project --state my-project
 ```
 
-This will create a project containing a demo stateful contract named `Counter`. This contract implements a very easy state changing case: Increasing the value of a counter by one for every contract call.
+Note the `state` option is turned on.
+
+This will create a project containing a demo stateful contract named `Counter`. This contract implements a very easy state changing case: Increase a counter by one for every contract call.
 
 Let's take a look at the contract source file `src/contracts/counter.ts`.
 
@@ -57,9 +59,9 @@ Here are the explanations for the input parameters:
 
 ### Update properties and validate changes
 
-The implementation of the entry method mainly does two things:
+The entry method mainly does two things:
 
-* Updates the property `count` with a statement: 
+* Increment the property `count`: 
 
 ```js
 this.count++;
