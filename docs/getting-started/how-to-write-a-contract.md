@@ -18,12 +18,12 @@ class Demo extends SmartContract {
     this.x = x;
   }
 
-  @method
+  @method()
   public unlock(x: bigint) {
     assert(this.add(this.x, 1n) === x);
   }
 
-  @method
+  @method()
   add(x0: bigint, x1:bigint) : bigint {
     return x0 + x1;
   }
@@ -84,7 +84,7 @@ Each contract has at least one public function. It is denoted with the `public` 
 A public function can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](#`assert`). An example is shown below.
 
 ```js
-  @method
+  @method()
   public unlock(x: bigint) {
     assert(this.add(this.x, 1n) === x);
   }
@@ -97,7 +97,7 @@ Without a `public` modifier, a `@method` is an internal function and can only be
 It can return any valid types described later. The return type must be explicitly declared. e.g.,
 
 ```js
-  @method
+  @method()
   add(x0: bigint, x1:bigint) : bigint {
     return x0 + x1;
   }
@@ -115,34 +115,34 @@ The types used in `@prop` and `@method` are restricted to these kinds:
 
 The most basic types allowed are: `boolean` / `string` / `bigint`, along with their wrapper types `Boolean` / `String` / `Bigint`.
 
-#### `string` Type
+#### `ByteString` Type
 
-In a smart contract context (i.e., in `@method`s or `@prop`s), a `string` type represents a byte array in hex format. It must be able be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`.
+In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` type represents a byte array in hex format. It must be able be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`.
 
 Literal `string` is not allowed to be used directly without being wrapped in these functions below:
 
-* `hexToString(input: string)`: return the raw value of `input` as a byte array while validating it as hex bytes.
-* `utf8ToString(input: string)`: return a value in hex bytes format representing the utf8 encoding of `input`.
+* `toByteString(input: string)`: return the raw value of `input` as a byte array while validating it as hex bytes.
+* `utf8ToByteString(input: string)`: return a value in hex bytes format representing the utf8 encoding of `input`.
 
 For example:
 
 ```js
-let s0 = utf8ToString('hello world');  // valid, s0 === "68656c6c6f20776f726c64"
+let s0 = utf8ToByteString('hello world');  // valid, s0 === "68656c6c6f20776f726c64"
 
-let s1 = hexToString('01ab23ef');       // valid, s1 === '01ab23ef'
+let s1 = toByteString('01ab23ef');       // valid, s1 === '01ab23ef'
 
 let invalid_str = "hello world";  // invalid, string literal without wrapper function
 
-let invalid_str2 = hexToString('012'); // invalid, odd number of hex characters
+let invalid_str2 = toByteString('012'); // invalid, odd number of hex characters
 ```
 
-Also there are only a few methods of `string` can be used in `@method`s:
+Also there are only a few methods of `ByteString` can be used in `@method`s:
 
-* `String.==` / `String.===`: compare two strings, like `str1 == str2` or `str1 === str2`.
+* `ByteString.==` / `ByteString.===`: compare two strings, like `str1 == str2` or `str1 === str2`.
 
-* `String.+`: concat two strings, like `str1 + str2`.
+* `ByteString.+`: concat two strings, like `str1 + str2`.
 
-* `String.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `String` is a byte array, `indexStart` and `indexEnd` must be even numbers.
+* `ByteString.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `ByteString` is a byte array, `indexStart` and `indexEnd` must be even numbers.
 
 #### `number` Type
 
@@ -320,7 +320,7 @@ Notice that `break` and `continue` expression can not be used in the `for` state
 Due to the lack of native return semantics support in Bitcoin Script, a function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future. 
 
 ```ts
-@method m(x: bigint): bigint {
+@method() m(x: bigint): bigint {
    if (x > 2n) return x; // invalid
    return x + 1n;  // valid
 }
@@ -328,7 +328,7 @@ Due to the lack of native return semantics support in Bitcoin Script, a function
 
 This is usually not a problem since it can be circumvented as follows:
 ```ts
-@method
+@method()
 abs(a: bigint): bigint {
     if (a > 0) {
         return a;
@@ -339,7 +339,7 @@ abs(a: bigint): bigint {
 ```
 can be rewritten as
 ```ts
-@method
+@method()
 abs(a: bigint): bigint {
     let ret : bigint = 0;
 
@@ -366,7 +366,7 @@ Be default, all Javascript/Typescript built-in functions/global variables are no
 
 `console.log` can be used for debugging purposes.
 ```ts
-@method
+@method()
 add(x0: bigint, x1:bigint) : bigint {
   console.log(x0);
   return x0 + x1;

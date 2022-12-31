@@ -208,7 +208,7 @@ export class Demo extends SmartContract {
     this.y = y;
   }
 
-  @method
+  @method()
   sum(a: bigint, b: bigint): bigint {
       return a + b;
   }
@@ -234,12 +234,12 @@ export class Demo extends SmartContract {
     @prop()
     y: bigint;
 
-    @method
+    @method()
     sum(a: bigint, b: bigint): bigint {
         return a + b;
     }
 
-    @method
+    @method()
     public add(z: bigint) {
         assert(z == this.sum(this.x, this.y));
     }
@@ -259,17 +259,17 @@ export class Demo extends SmartContract {
     @prop()
     y: bigint;
 
-    @method
+    @method()
     sum(a: bigint, b: bigint): bigint {
         return a + b;
     }
 
-    @method
+    @method()
     public add(z: bigint) {
         assert(z == this.sum(this.x, this.y));
     }
 
-    @method
+    @method()
     public sub(z: bigint) {
         assert(z == this.x - this.y);
     }

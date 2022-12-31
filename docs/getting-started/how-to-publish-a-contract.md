@@ -30,12 +30,12 @@ class MyLib extends SmartContractLib {
     this.buf = buf;
   }
 
-  @method
+  @method()
   append(content: ByteString) {
     this.buf += content;
   }
 
-  @method
+  @method()
   static add(x: bigint, y: bigint): bigint {
     return x + y;
   }
@@ -47,7 +47,7 @@ A smart contract library can be declared as a  class that extends `SmartContract
 
 ```ts
 class MyContract extends SmartContract {
-  @method
+  @method()
   public unlock(x: ByteString) {
     let myLib = new MyLib(hexToByteString('0123'));
     myLib.append(x);

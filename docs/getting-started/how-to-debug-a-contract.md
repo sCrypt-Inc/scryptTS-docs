@@ -27,12 +27,12 @@ export class Demo extends SmartContract {
         this.y = y;
     }
 
-    @method
+    @method()
     sum(a: bigint, b: bigint): bigint {
         return a + b;
     }
 
-    @method
+    @method()
     public add(z: bigint) {
         console.log(`z: ${z}`) // print the value of z
         console.log(`sum: ${this.x + this.y}`) // print the value of this.x + this.y

@@ -46,27 +46,28 @@ As shown [before](../getting-started/how-to-write-a-contract.md#properties), we 
 Then we can define an entry method named `increment` for the stateful contract like this:
 
 ```ts
-@method public increment(txPreimage: SigHashPreimage)
+@method public increment(amount: bigint)
 ```
 
-Here are the explanations for the input parameters:
-
-* `txPreimage` is an instance of a  builtin class [`SigHashPreimage`](../reference/classes/SigHashPreimage), which can provide some context information about the current tx according to [BIP143](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md). 
 
 ### Update properties and validate changes
 
 Next we need to implement the entry method, which mainly do two things:
 
-* Update the property `count` with a statement: 
+* Update the property `counter` with a statement: 
 
 ```js
-this.count++;
+this.counter++;
 ```
 
-* Valid this update has been correctly recorded into the `txPreimage`, or in another word, the new state of `count` has been serialized into current tx by calling:
+ScriptContext `this.ctx` contains all the information in the [transaction's preimage](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md). 
+The preimage is automatically generated during the user's construction of the transaction, 
+and the user does not need to calculate it explicitly.
+
+* Make sure the new state of `counter` has been serialized into current tx by calling:
 
 ```js
-assert(this.updateState(txPreimage, SigHash.value(txPreimage)));
+assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
 ```
 
 Finally we can get a complete stateful contract `Counter` as below:
@@ -74,17 +75,17 @@ Finally we can get a complete stateful contract `Counter` as below:
 ```ts
 export class Counter extends SmartContract {
   @prop(true)
-  count: bigint;
+  counter: bigint;
 
-  constructor(count: bigint) {
-    super(count);
-    this.count = count;
+  constructor(counter: bigint) {
+    super(counter);
+    this.counter = counter;
   }
 
-  @method
-  public increment(txPreimage: SigHashPreimage) {
-    this.count++;
-    assert(this.updateState(txPreimage, SigHash.value(txPreimage)));
+  @method()
+  public increment(amount: bigint) {
+    this.counter++;
+    assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
   }
 }
 ```
@@ -154,7 +155,7 @@ getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transa
     .setInputScript(inputIndex, (tx: bsv.Transaction) => {
       this.unlockFrom = { tx, inputIndex };
       return this.getUnlockingScript(self => {
-        self.increment(new SigHashPreimage(tx.getPreimage(inputIndex)));
+        self.increment();
       })
     });
 }
@@ -171,10 +172,9 @@ The `callTx` has a structure like this:
 
   ```ts
   return this.getUnlockingScript(self => {
-    self.increment(new SigHashPreimage(tx.getPreimage(inputIndex)));
+    self.increment();
   })
   ```
-Notice that we build the argument `txPreimage` for the method `increment` by calling `tx.getPreimage`, which will just return the `SigHashPreimage` for the given `inputIndex`.
 
 * Outputs
 
@@ -186,8 +186,7 @@ Finally we can the [`SmartContract.verify`](../getting-started/how-to-test-a-con
 
 ```ts
 counter.verify(() => {
-  const preimage = getPreimage(callTx, counter.lockingScript, balance, inputIndex);
-  counter.increment(preimage);
+  counter.increment();
 })
 ```
 
@@ -208,7 +207,7 @@ const callTx = counter.getCallTx(dummyUTXO, deployTx, newCounter);
 
 // 3. test the entry method call on `counter`
 counter.verify(self => {
-  self.increment(new SigHashPreimage(callTx.getPreimage(1)));
+  self.increment();
 })
 ```
 
@@ -237,7 +236,7 @@ for (let i = 0; i < 3; i++) {
   const callTx = prevInstance.getCallTx(utxos, prevTx, newCounter);
   // 4. run `verify` method on `prevInstance`
   const result = prevInstance.verify( self => {
-    self.increment(new SigHashPreimage(callTx.getPreimage(1)));
+    self.increment();
   });
 
   expect(result.success, result.error).to.be.true;
