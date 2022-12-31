@@ -6,7 +6,7 @@ sidebar_position: 2
 
 We have taken a look at the smart contract code of the project we created in tutorial 1. Now we will take a look at the test code and try to run the tests themselves.
 
-## Testing smart contract code
+## Test smart contract code
 
 We will use a testing framework called [Mocha](https://mochajs.org).
 
@@ -66,7 +66,7 @@ A contract public method must be called on the `self` parameter within the `call
 
 ### Test non-public methods
 
-Non-public methods have a return value, which can be tested directly. You do not need to call the verify method.
+Non-public methods have a return value, which can be tested directly. You do not have to call the `verify` method.
 
 ```ts
 describe('Test SmartContract `Demo`', () => {
