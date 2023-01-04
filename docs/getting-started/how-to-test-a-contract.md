@@ -14,8 +14,8 @@ There are two different kinds of tests recommended for every project using `scry
 ## Test a Contract Locally
 
 Compare to other blockchains, smart contracts on Bitcoin are **pure**.
-* Given the same input, its public function always returns the same boolean output: success or failure. It has no internal state.
-* A public function call causes no side effects.
+* Given the same input, its public method always returns the same boolean output: success or failure. It has no internal state.
+* A public method call causes no side effects.
 
 Smart contracts are similar to mathematical functions. Thus, we can test a contract locally without touching the Bitcoin blockchain. If it passes tests off chain, we are confident it will behave the same on chain.
 
@@ -88,7 +88,7 @@ describe('Test SmartContract `Demo`', () => {
  
 ## Test a Contract on testnet
  
-After passing local tests, it is strongly recommended to test your contract on a [testnet](https://test.whatsonchain.com/). It to ensure a contract can be successfully integrated with a transaction, and it functions as expected along with the deploy and call transactions.
+After passing local tests, it is strongly recommended to test your contract on a [testnet](https://test.whatsonchain.com/). It to ensure a contract can be successfully integrated with a transaction, and it methods as expected along with the deploy and call transactions.
  
 Before testing, you need to:
  
