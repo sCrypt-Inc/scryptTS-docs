@@ -129,6 +129,11 @@ The library user could just use `npm install` to install the dependency, and the
 import { MyLib } from “my_package”;
 ```
 
+### Advanced
+
+As we mentioned above, you should always publish the auto-generated sCrypt files along with the package. If you are familiar with sCrypt development and want to apply some improvements to the auto-generated files, for example using an inline asm function to replace an ordinary function to reduce the final script size, you could just modify the auto-generated file as you wish before publishing it.
+
+**Note**: You should modify the auto-generated files with caution and make sure that the modification passes the tests.
 
 ## Related Tools
 
