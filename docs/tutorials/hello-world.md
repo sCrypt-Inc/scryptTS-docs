@@ -128,7 +128,7 @@ export class Demo extends SmartContract {
     this.y = y;
   }
 
-  @method
+  @method()
   sum(a: bigint, b: bigint): bigint {
       return a + b;
   }

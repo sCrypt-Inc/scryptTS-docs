@@ -30,12 +30,12 @@ class MyLib extends SmartContractLib {
     this.buf = buf;
   }
 
-  @method
+  @method()
   append(content: ByteString) {
     this.buf += content;
   }
 
-  @method
+  @method()
   static add(x: bigint, y: bigint): bigint {
     return x + y;
   }
@@ -47,7 +47,7 @@ A smart contract library can be declared as a  class that extends `SmartContract
 
 ```ts
 class MyContract extends SmartContract {
-  @method
+  @method()
   public unlock(x: ByteString) {
     let myLib = new MyLib(hexToByteString('0123'));
     myLib.append(x);
@@ -145,6 +145,11 @@ This will check the projects structure, build it and publish it. After the libra
 import { MyLib } from “my_package”;
 ```
 
+### Advanced
+
+As we mentioned above, you should always publish the auto-generated sCrypt files along with the package. If you are familiar with sCrypt development and want to apply some improvements to the auto-generated files, for example using an inline asm function to replace an ordinary function to reduce the final script size, you could just modify the auto-generated file as you wish before publishing it.
+
+**Note**: You should modify the auto-generated files with caution and make sure that the modification passes the tests.
 
 ## Related Tools
 

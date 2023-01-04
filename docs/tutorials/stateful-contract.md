@@ -50,12 +50,9 @@ As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `
 The contract code defines an entry method named `increment` for the stateful contract like this:
 
 ```ts
-@method public increment(txPreimage: SigHashPreimage)
+@method public increment(amount: bigint)
 ```
 
-Here are the explanations for the input parameters:
-
-* `txPreimage` is an instance of a  builtin class [`SigHashPreimage`](../reference/classes/SigHashPreimage), which can provide some context information about the current tx according to [BIP143](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md). 
 
 ### Update properties and validate changes
 
@@ -64,13 +61,13 @@ The entry method mainly does two things:
 * Increment the property `count`: 
 
 ```js
-this.count++;
+this.counter++;
 ```
 
 * Validates this update has been correctly recorded into the `txPreimage`, or in another word, the new state of `count` has been serialized into current tx by calling:
 
 ```js
-assert(this.updateState(txPreimage, SigHash.value(txPreimage)));
+assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
 ```
 
 ## Test a Stateful Contract
@@ -138,7 +135,7 @@ getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transa
     .setInputScript(inputIndex, (tx: bsv.Transaction) => {
       this.unlockFrom = { tx, inputIndex };
       return this.getUnlockingScript(self => {
-        self.increment(new SigHashPreimage(tx.getPreimage(inputIndex)));
+        self.increment();
       })
     });
 }
@@ -155,10 +152,9 @@ The `callTx` has a structure like this:
 
   ```ts
   return this.getUnlockingScript(self => {
-    self.increment(new SigHashPreimage(tx.getPreimage(inputIndex)));
+    self.increment();
   })
   ```
-Notice that we build the argument `txPreimage` for the method `increment` by calling `tx.getPreimage`, which will just return the `SigHashPreimage` for the given `inputIndex`.
 
 * Outputs
 
@@ -170,8 +166,7 @@ Finally, the [`SmartContract.verify`](../getting-started/how-to-test-a-contract.
 
 ```ts
 counter.verify(() => {
-  const preimage = getPreimage(callTx, counter.lockingScript, balance, inputIndex);
-  counter.increment(preimage);
+  counter.increment();
 })
 ```
 
