@@ -118,7 +118,7 @@ node_modules
     …
 ```
 
-The `scrypt.index.json` file will be generated at typescript compile time in the same directory of your `tsconfig.json` which should be placed in the root folder. It shall not be moved or modified manually. The folder for auto-generated sCrypt files can be changed by configuring the `outDir` option in `tsconfig.json`, like:
+The `scrypt.index.json` file will be generated at TypeScript compile time in the same directory of your `tsconfig.json` which should be placed in the root folder. It shall not be moved or modified manually. The folder for auto-generated sCrypt files can be changed by configuring the `outDir` option in `tsconfig.json`, like:
 
 ```json
 "compilerOptions": {

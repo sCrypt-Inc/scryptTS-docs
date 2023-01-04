@@ -36,7 +36,7 @@ A smart contract can have two kinds of properties:
 
 1. Properties with `@prop` decorator. These properties are **only allowed to have [types](#Types) specified below** and they shall only be initialized in the constructor.
 
-2.  Properties without `@prop` decorator. These properties are normal typescript class properties without any special requirement.
+2.  Properties without `@prop` decorator. These properties are normal TypeScript class properties without any special requirement.
 
 
 ### `@prop(stateful: boolean = false)` decorator 
@@ -69,7 +69,7 @@ class A extends SmartContract {
 
 Like properties, a smart contract can also have two kinds of methods:
 
-1. Methods without `@method` decorator. These methods are just like normal typescript class methods with no special restraints.
+1. Methods without `@method` decorator. These methods are just like normal TypeScript class methods with no special restraints.
 
 2. Methods with `@method` decorator. These methods can only call **methods also decorated by `@method` or [functions](#Functions) specified below**. Similarly, **only the properties decorated by `@prop` can be accessed**.
 
@@ -186,7 +186,7 @@ interface ST1 {
 
 ### Array Types
 
-The common array types in Typescript like `T[]` or `Array<T>` are not allowed to be used in `@prop`s and `@method`s. 
+The common array types in TypeScript like `T[]` or `Array<T>` are not allowed to be used in `@prop`s and `@method`s. 
 
 An array **must** be declared as type of `FixedArray<T, LENGTH>`, whose `LENGTH` must be a [CTC](#compile-time-constant) value described later, like:
 
@@ -230,7 +230,7 @@ Libraries derived from `SmartContract` can be imported as dependencies and reuse
 
 ## Variable declarations
 
-Variables can be declared in `@method`s by keywords `const` / `var` / `let`, like in normal Typescript.
+Variables can be declared in `@method`s by keywords `const` / `var` / `let`, like in normal TypeScript.
 
 ```ts
 let a : bigint = 1n;
@@ -357,7 +357,7 @@ abs(a: bigint): bigint {
 The most commonly used built-in function is `assert(cond: boolean)`. It throws an  error if `cond` is false. A contract call is successful if and only if all arugments passed to the `assert` functions are true.
 
 ### Whitelisted Functions
-Be default, all Javascript/Typescript built-in functions/global variables are not allowed in `@method`s, except the following kinds.
+Be default, all Javascript/TypeScript built-in functions/global variables are not allowed in `@method`s, except the following kinds.
 
 #### `console.log`
 
@@ -373,7 +373,7 @@ add(x0: bigint, x1:bigint) : bigint {
 
 ## Operators
 
-**scryptTS** is a subset of typescript. Only the following typescript operators can be used directly.
+**scryptTS** is a subset of TypeScript. Only the following TypeScript operators can be used directly.
 
 
 | Operator | Description | Example |
@@ -402,7 +402,7 @@ Note `**` is not supported currently.
 
 ### Bitwise Operators
 
-typescript's bitwise operator cannot be used in scryptTS. But you can use the bitwise built-in function provided by scryptTS.
+TypeScript's bitwise operator cannot be used in scryptTS. But you can use the bitwise built-in function provided by scryptTS.
 
 
 | Operator | Description | built-in function| 
@@ -414,7 +414,7 @@ typescript's bitwise operator cannot be used in scryptTS. But you can use the bi
 | `<<` | Left shift | `lshift(x,y)`| 
 | `>>` | 	Sign-propagating right shift | `rshift(x,y)`|
 
-The number in the Bitcoin virtual machine is saved in the [Sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations) in stack, not the [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations) commonly used by computers. If the operands participating in the operation are all positive numbers, the result of the operation is consistent with Typescript's bitwise operator. (except `~`). Otherwise, the operation results may be inconsistent.
+The number in the Bitcoin virtual machine is saved in the [Sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations) in stack, not the [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations) commonly used by computers. If the operands participating in the operation are all positive numbers, the result of the operation is consistent with TypeScript's bitwise operator. (except `~`). Otherwise, the operation results may be inconsistent.
 
 
 

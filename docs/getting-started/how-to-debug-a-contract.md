@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # How to Debug a Contract
 
-Debugging a scryptTS contract is as easy as debugging Typescript, since it is just Typescript.
+Debugging a scryptTS contract is as easy as debugging TypeScript, since it is just TypeScript.
 
 
 ## Use console.log()
@@ -76,7 +76,7 @@ First make sure you have turned on the `sourceMap` setting in your `tsconfig.jso
 }
 ```
 
-As with [debugging TypeScript programs](https://code.visualstudio.com/docs/typescript/typescript-debugging), you need to create a `launch.json`.
+As with [debugging TypeScript programs](https://code.visualstudio.com/docs/TypeScript/TypeScript-debugging), you need to create a `launch.json`.
 
 ```json
 {
