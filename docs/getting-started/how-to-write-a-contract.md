@@ -373,9 +373,7 @@ add(x0: bigint, x1:bigint) : bigint {
 
 ## Operators
 
-**scryptTS** is a subset of typescript, not all typescript operators can be used directly.
-
-All operators that can be used directly are listed below:
+**scryptTS** is a subset of typescript. Only the following typescript operators can be used directly.
 
 
 | Operator | Description | Example |
@@ -399,6 +397,8 @@ All operators that can be used directly are listed below:
 | <code>&#124;&#124;</code> | Logical OR: `true` if either of the operands is `true`; returns `false` if both are `false` |  <code>x &#124;&#124; y</code> |
 | `!` | Logical NOT: `true` if the operand is `false` and vice-versa. | `!x` |
 | `condition ? expression : expression ` | returns value based on the condition | `(5 > 3) ? 'success' : 'error'; // "success"` |
+
+Note `**` is not supported currently.
 
 ### Bitwise Operators
 
