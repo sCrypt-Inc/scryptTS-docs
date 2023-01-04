@@ -10,7 +10,7 @@ In this tutorial we will introduce a concept called `stateful contract` and how 
 
 ## What is a Stateful Contract?
 
-Generally speaking, there are two different kinds of Bitcoin SV smart contracts:
+Generally speaking, there are two different kinds of Bitcoin smart contracts:
 
 ### Non-stateful Contract
 

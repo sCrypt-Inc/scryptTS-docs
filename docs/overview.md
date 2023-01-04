@@ -9,11 +9,11 @@ Congratulations on choosing `scryptTS` as a tool to build Smart Contract based a
 
 ## What is `scryptTS`?
 
-`scryptTS` is a TypeScript framework to write smart contracts on Bitcoin SV.
+`scryptTS` is a TypeScript framework to write smart contracts on Bitcoin.
 
-## How do Bitcoin SV Smart Contracts work?
+## How do Bitcoin Smart Contracts work?
 
-Smart contracts on the Bitcoin SV network are based on the Bitcoin UTXO model, which is very different from an account model like Ethereum used.
+Smart contracts on the Bitcoin network are based on the Bitcoin UTXO model, which is very different from an account model like Ethereum used.
 
 ### UTXO model
 
@@ -51,9 +51,9 @@ A smart contract can be called through a Bitcoin transaction if one of the tx in
 
 ## How does `scryptTS` work?
 
-`scryptTS` provides a feature that can transpile smart contracts written in TypeScript into equivalents written in a dedicated Bitcoin SV smart contract language named [`sCrypt`](https://scrypt.io) at TypeScript compile time. Those sCrypt contracts can be compiled into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script) by the native compiler, and then the low-level scripts could be used as locking / unlocking scripts when building transactions.
+`scryptTS` provides a feature that can transpile smart contracts written in TypeScript into equivalents written in a dedicated Bitcoin smart contract language named [`sCrypt`](https://scrypt.io) at TypeScript compile time. Those sCrypt contracts can be compiled into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script) by the native compiler, and then the low-level scripts could be used as locking / unlocking scripts when building transactions.
 
-Backed by these underlying techniques, developers could use their most familiar language TypeScript to build Bitcoin SV smart contract applications.
+Backed by these underlying techniques, developers could use their most familiar language TypeScript to build Bitcoin smart contract applications.
 
 ## Learn scryptTS
 
