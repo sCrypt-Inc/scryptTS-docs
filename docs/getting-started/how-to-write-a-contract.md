@@ -298,7 +298,7 @@ There are some other constraints on statements that could be used within the `@m
 
 ### `for` statement
 
-Bitcoin Script does not provide looping constructs natively for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must use the following format:
+Bitcoin Script does not provide looping constructs natively for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
 
 ```ts
 for(let $i = 0; $i < $maxLoopCount; $i++) {
@@ -306,15 +306,12 @@ for(let $i = 0; $i < $maxLoopCount; $i++) {
 }
 ```
 
-Note that the initial value `0` and the `<` operator and `++` in the incremental update cannot be changed.
-
-`break` and `continue` are currently not allowed.
-
+Note:
+* the initial value must be `0`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
 * `$maxLoopCount` must be a [CTC](#compile-time-constant).
+* `$i` can be arbitrary name, e.g., `i`, `j`, or `k`.
+* `break` and `continue` are currently not allowed.
 
-* `$i` can be whatever you name the induction/iteration variable.
-
-Notice that `break` and `continue` expression can not be used in the `for` statement in `@method`s right now.
 ### `return` statement
 
 Due to the lack of native return semantics support in Bitcoin Script, a function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future. 
