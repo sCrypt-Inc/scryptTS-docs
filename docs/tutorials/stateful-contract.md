@@ -39,10 +39,10 @@ This will create a project containing a demo stateful contract named `Counter`. 
 Let's take a look at the contract source file `src/contracts/counter.ts`.
 
 ### Add `@prop(true)` on stateful property
-As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make the property `count` stateful. 
+As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make the property `counter` stateful. 
 
 ```ts
-@prop(true) count: bigint;
+@prop(true) counter: bigint;
 ```
 
 ### The entry method 
@@ -50,7 +50,7 @@ As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `
 The contract code defines an entry method named `increment` for the stateful contract like this:
 
 ```ts
-@method public increment(amount: bigint)
+@method public increment()
 ```
 
 
@@ -64,10 +64,30 @@ The entry method mainly does two things:
 this.counter++;
 ```
 
-* Validates this update has been correctly recorded into the `txPreimage`, or in another word, the new state of `count` has been serialized into current tx by calling:
+* Validates this update has been correctly recorded into the `txPreimage`, or in another word, the new state of `counter` has been serialized into current tx by calling:
 
-```js
+```ts
 assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
+```
+
+Finally we can get a complete stateful contract `Counter` as below:
+
+```ts
+export class Counter extends SmartContract {
+  @prop(true)
+  counter: bigint;
+
+  constructor(counter: bigint) {
+    super(counter);
+    this.counter = counter;
+  }
+
+  @method()
+  public increment() {
+    this.counter++;
+    assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
+  }
+}
 ```
 
 ## Test a Stateful Contract
