@@ -92,7 +92,7 @@ describe('Test SmartContractLib `Lib`', () => {
 
 ```
 
-## Create a Library Project Using sCrypt CLI
+## Create and Publish a Library Project Using sCrypt CLI
 
 The following command will create a demo scryptTS library along with tests and  scaffolding:
 
@@ -102,9 +102,22 @@ scrypt project --lib <your-lib-name>
 
 Note the `lib` option is turned on.
 
-## Publish a Smart Contract Library
+You can publish the library on [NPM](https://www.npmjs.com/) by running the following command in the project's root directory:
 
-If you have built a smart contract library, you could consider publishing it as an npm package. Please note that for the import system working properly, you should always publish the auto-generated sCrypt contracts (including `scrypt.index.json` file) along with the javascript outputs. The structure of the package could be like this:
+```sh
+scrypt publish
+```
+
+This will check the projects structure, build it and publish it. After the library is published, users can just import it in any other project just like regular NPM packages.
+
+**Please Note** that named imports are not supported yet. You should only import like this:
+```ts
+import { MyLib } from “my_package”;
+```
+
+### Advanced
+
+For the import system working properly, you should always publish the auto-generated sCrypt contracts (including `scrypt.index.json` file) along with the javascript outputs. The structure of the package could be like this:
 
 ```
 node_modules
@@ -132,22 +145,7 @@ The `scrypt.index.json` file will be generated at TypeScript compile time in the
 }
 ```
 
-You can publish the library on [NPM](https://www.npmjs.com/) by running the following command in the project's root directory:
-
-```sh
-scrypt publish
-```
-
-This will check the projects structure, build it and publish it. After the library is published, users can just import it in any other project just like regular NPM packages.
-
-**Please Note** that named imports are not supported yet. You should only import like this:
-```ts
-import { MyLib } from “my_package”;
-```
-
-### Advanced
-
-As we mentioned above, you should always publish the auto-generated sCrypt files along with the package. If you are familiar with sCrypt development and want to apply some improvements to the auto-generated files, for example using an inline asm function to replace an ordinary function to reduce the final script size, you could just modify the auto-generated file as you wish before publishing it.
+You should always publish the auto-generated sCrypt files along with the package. If you are familiar with sCrypt development and want to apply some improvements to the auto-generated files, for example using an inline asm function to replace an ordinary function to reduce the final script size, you could just modify the auto-generated file as you wish before publishing it.
 
 **Note**: You should modify the auto-generated files with caution and make sure that the modification passes the tests.
 
