@@ -478,7 +478,7 @@ Correspondence between `ScriptContext` structure and transaction preimage `txPre
 
 
 
-You can directly access the relevant data of the transaction preimage through `this.ctx` in the public functions of the contract (access in non-public functions is not supported).
+You can directly access the relevant data of the transaction preimage through `this.ctx` in the public functions of the contract (access in **non-public** functions is not supported).
 
 
 ```ts
@@ -515,6 +515,58 @@ return new bsv.Transaction().from(utxos)
     })
     })
     .setInputScript(inputIndex, (tx: bsv.Transaction) => {
+    this.unlockFrom = { tx, inputIndex };
+    return this.getUnlockingScript(self => {
+        self.increment();
+    })
+    });
+}
+```
+
+
+### SigHash Type 
+
+The default [sigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) used to calculate the transation preimage is `SigHash.ALL`. You can customize the sighash type with the `@method()` decorator.
+
+```ts
+@method(SigHash.ANYONECANPAY_SINGLE)
+public increment() {
+  ...
+}
+```
+
+There are a total of 6 sigHash types to choose from:
+
+| SigHash Type | Functional Meaning |
+| ------------- | ------------- | 
+| SigHash.ALL | Sign all inputs and outputs |
+| SigHash.NONE | Sign all inputs and no output |
+| SigHash.SINGLE | Sign all inputs and the output with the same index |
+| SigHash.ANYONECANPAY_ALL | Sign its own input and all outputs |
+| SigHash.ANYONECANPAY_NONE | Sign its own input and no output |
+| SigHash.ANYONECANPAY_SINGLE | Sign its own input and the output with the same index |
+
+
+When you use a custom sighash type, you need to use the specified sighash type when constructing the transaction that calls the contract.
+
+
+
+```ts
+getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transaction {
+const inputIndex = 1;
+return new bsv.Transaction().from(utxos)
+    .addInputFromPrevTx(prevTx)
+    .setOutput(0, (tx: bsv.Transaction) => {
+    nextInst.lockTo = { tx, outputIndex: 0 };
+    return new bsv.Transaction.Output({
+        script: nextInst.lockingScript,
+        satoshis: this.balance,
+    })
+    })
+    .setInputScript({
+      inputIndex,
+      sigtype: bsv.crypto.Signature.ANYONECANPAY_SINGLE
+    }, (tx: bsv.Transaction) => {
     this.unlockFrom = { tx, inputIndex };
     return this.getUnlockingScript(self => {
         self.increment();
