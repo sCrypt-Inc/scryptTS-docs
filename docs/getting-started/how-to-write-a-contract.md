@@ -113,7 +113,13 @@ The types used in `@prop` and `@method` are restricted to these kinds:
 
 ### Basic Types
 
-The most basic types allowed are: `boolean` / `string` / `bigint`, along with their wrapper types `Boolean` / `String` / `Bigint`.
+#### `boolean` Type
+
+Basic type `boolean` is allowed, along with its wrapper type `Boolean`.
+
+#### `bigint` Type
+
+Basic type `bigint` is allowed, along with its wrapper type `Bigint`.
 
 #### `ByteString` Type
 
@@ -180,7 +186,7 @@ type ST = {
 
 interface ST1 {
   x: ST;
-  y: string;
+  y: ByteString;
 }
 ```
 
