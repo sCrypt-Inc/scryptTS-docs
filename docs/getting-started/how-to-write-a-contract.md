@@ -113,7 +113,13 @@ The types used in `@prop` and `@method` are restricted to these kinds:
 
 ### Basic Types
 
-The most basic types allowed are: `boolean` / `string` / `bigint`, along with their wrapper types `Boolean` / `String` / `Bigint`.
+#### `boolean` Type
+
+Basic type `boolean` is allowed, along with its wrapper type `Boolean`.
+
+#### `bigint` Type
+
+Basic type `bigint` is allowed, along with its wrapper type `Bigint`.
 
 #### `ByteString` Type
 
@@ -180,7 +186,7 @@ type ST = {
 
 interface ST1 {
   x: ST;
-  y: string;
+  y: ByteString;
 }
 ```
 
@@ -354,7 +360,7 @@ abs(a: bigint): bigint {
 ### Built-in Functions
 #### `assert`
 
-The most commonly used built-in function is `assert(cond: boolean)`. It throws an  error if `cond` is false. A contract call is successful if and only if all arugments passed to the `assert` functions are true.
+The most commonly used built-in function is `assert(condition: boolean, msg?: string)`. It throws an error if `condition` is false. A contract call is successful if and only if the first arugment `condition` passed to the `assert` functions is true.
 
 ### Whitelisted Functions
 Be default, all Javascript/TypeScript built-in functions/global variables are not allowed in `@method`s, except the following kinds.

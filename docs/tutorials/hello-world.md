@@ -71,15 +71,7 @@ export class Demo extends SmartContract {
 }
 ```
 
-Only three primitive types are allowed by `@prop` decorator：
-
-1. `boolean`
-2. `bigint`
-3. `string`
-
-
-
-*Note*: The `number` type is not also allowed except in some [special cases](../getting-started/how-to-write-a-contract.md#number-type).
+Note: The [types](../getting-started/how-to-write-a-contract.md#types) used in  `@prop` decorator are restricted.
 
 
 ### Constructor
