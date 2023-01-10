@@ -230,9 +230,9 @@ There are several domain types, specific to the Bitcoin context, used to further
 
 * [OpCodeType](../reference/classes/OpCodeType.md) - an OpCode
 
-### `SmartContract` subclasses Types
+### `SmartContractLib` subclasses Types
 
-Libraries derived from `SmartContract` can be imported as dependencies and reused by other `SmartContract`s.
+Libraries derived from `SmartContractLib` can be imported as dependencies and reused by other `SmartContract`s.
 
 ## Variable declarations
 
