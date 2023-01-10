@@ -5,7 +5,7 @@ sidebar_position: 7
 # What is ScriptContext
 
 `ScriptContext` allows the contract code to access the entire transaction data, including all inputs and outputs.
-This allows us to set any constraints on the data. This opens up endless possibilities for running various smart contracts on the BSV network.
+[ScriptContext](../getting-started/what-is-scriptcontext.md) allows the contract code to access the entire transaction data, including all inputs and outputs. It enables the logic of the contract to be executed correctly according to the agreement, and the state of the contract can be propagated correctly. This allows us to set any constraints on the data. This opens up endless possibilities for running various smart contracts on the BSV network.
 
 
 ```ts
@@ -122,3 +122,7 @@ return new bsv.Transaction().from(utxos)
 }
 ```
 
+
+### Debugging
+
+see [How to debug ScriptContext error](../tutorials/how-to-debug-scriptcontext-error.md)
