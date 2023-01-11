@@ -96,6 +96,10 @@ const config = {
                 label: 'Reference',
                 to: '/reference',
               },
+              {
+                label: 'Youtube',
+                to: 'https://www.youtube.com/playlist?list=PL0Kn1t30VSpGcbwN-bcbU1-x0fRAoq-GI',
+              },
             ],
           },
           {

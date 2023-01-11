@@ -34,15 +34,15 @@ scrypt project --state my-project
 
 Note the `state` option is turned on.
 
-This will create a project containing a demo stateful contract named `Counter`. This contract implements a very easy state changing case: Increase a counter by one for every contract call.
+This will create a project containing a demo stateful contract named `Counter`. This contract implements a very easy state changing case: Increase a count by one for every contract call.
 
 Let's take a look at the contract source file `src/contracts/counter.ts`.
 
 ### Add `@prop(true)` on stateful property
-As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make the property `counter` stateful. 
+As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make the property `count` stateful. 
 
 ```ts
-@prop(true) counter: bigint;
+@prop(true) count: bigint;
 ```
 
 ### The entry method 
@@ -61,30 +61,33 @@ The entry method mainly does two things:
 * Increment the property `count`: 
 
 ```js
-this.counter++;
+this.count++;
 ```
 
-* Validates this update has been correctly recorded into the `txPreimage`, or in another word, the new state of `counter` has been serialized into current tx by calling:
+* Validates this update has been correctly recorded into the contract, or in another word, the new state of `count` has been serialized into current tx by calling:
 
 ```ts
 assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
 ```
+
+In the above code, `this.ctx` accesses [ScriptContext](../getting-started/what-is-scriptcontext.md), which contains the entire transaction data.
+
 
 Finally we can get a complete stateful contract `Counter` as below:
 
 ```ts
 export class Counter extends SmartContract {
   @prop(true)
-  counter: bigint;
+  count: bigint;
 
-  constructor(counter: bigint) {
-    super(counter);
-    this.counter = counter;
+  constructor(count: bigint) {
+    super(count);
+    this.count = count;
   }
 
   @method()
   public increment() {
-    this.counter++;
+    this.count++;
     assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
   }
 }
@@ -94,14 +97,14 @@ export class Counter extends SmartContract {
 
 ### Test calls locally
 
-Let's take a look at the local test code in `tests/local/counter.test.ts`. The code can be broken down into the phases described below.
+Let's take a look at the local test code in `tests/local/count.test.ts`. The code can be broken down into the phases described below.
 
 #### 1. Build a tx and a genesis instance for contract deployment
 
 First the `Counter` gets instantiated to get an instance with the initial `count` value `0`. Also it's marked as the genesis instance.
 
 ```js
-const counter = new Counter(0n).markAsGenesis();
+const count = new Counter(0n).markAsGenesis();
 ``` 
 
 The `Counter` class defines the method `getDeployTx` which builds the deployment tx for the instance.
@@ -120,7 +123,7 @@ getDeployTx(utxos: UTXO[], initBalance: number): bsv.Transaction {
 }
 ```
 
-It builds a tx from a `utxos` list passed in, then adding an output with script from `counter.lockingScript` and `initBalance` as its value. Also it binds `this` instance `lockTo` the `tx` with the `outputIndex` of `0`.
+It builds a tx from a `utxos` list passed in, then adding an output with script from `count.lockingScript` and `initBalance` as its value. Also it binds `this` instance `lockTo` the `tx` with the `outputIndex` of `0`.
 
 #### 2. Build a tx and an instance for contract call
 
