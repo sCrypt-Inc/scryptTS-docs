@@ -18,7 +18,7 @@ eDSL stands for `embedded Domain Specific Language`.
 
 ## What is `scryptTS`?
 
-`scryptTS` is a `eDSL`, which built inside of the Typescript language,  to write smart contracts on Bitcoin.
+`scryptTS` is an `eDSL`, which is built inside of the Typescript language,  to write smart contracts on Bitcoin.
 
 ## How do Bitcoin Smart Contracts work?
 
