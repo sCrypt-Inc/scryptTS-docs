@@ -36,7 +36,7 @@ A smart contract can have two kinds of properties:
 
 1. Properties with `@prop` decorator. These properties are **only allowed to have [types](#Types) specified below** and they shall only be initialized in the constructor.
 
-2.  Properties without `@prop` decorator. These properties are normal TypeScript class properties without any special requirement.
+2. Properties without `@prop` decorator. These properties are normal TypeScript class properties without any special requirement. These properties can be initialized in the constructor. However, accessing these properties is prohibited in methods decorated with the `@method` decorator.
 
 
 ### `@prop(stateful: boolean = false)` decorator 
@@ -49,15 +49,33 @@ This decorator takes a `boolean` parameter. By default, it is set to `false`, me
 
 A smart contract must have an explicit constructor if it has at least one `@prop`. 
 
-The `super` method must be called in the constructor with all the arguments for `@prop`s in the same orders as they are passed in. For example,
+The `super` method must be called in the constructor and all the arguments of the constructor should be passed to `super`
+in the same order as they are passed into the constructor. For example,
 
-```js
+```ts
 class A extends SmartContract {
-  p0: string;
+  p0: bigint;
   @prop() p1: bigint;
   @prop() p2: boolean;
-  constructor(p0: string, p1: bigint, p2: boolean) {
-    super(p1, p2);  // Do not pass in `p0` bcoz it’s not a `@prop`, also note that `p1` & `p2` should be passed in order.
+  constructor(p0: bigint, p1: bigint, p2: boolean) {
+    super(p0, p1, p2);  // note that `p0` is property without `@prop()` and it should be passed in order.
+    this.p0 = p0;
+    this.p1 = p1;
+    this.p2 = p2;
+  }
+}
+```
+
+
+An easy way to write this is to use [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments);
+
+```ts
+class A extends SmartContract {
+  p0: bigint;
+  @prop() p1: bigint;
+  @prop() p2: boolean;
+  constructor(p0: bigint, p1: bigint, p2: boolean) {
+    super(...arguments);  // use arguments
     this.p0 = p0;
     this.p1 = p1;
     this.p2 = p2;
@@ -75,7 +93,16 @@ Like properties, a smart contract can also have two kinds of methods:
 
 ### `@method` decorator
 
-Use this decorator to mark any function that intends to be stored on chain.
+1. Use this decorator to mark any function that intends to be stored on chain.
+2. Specifies the [SigHash flag](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) to use for this method. For example,
+
+```ts
+// Specifies the SigHash flag to be SigHash.ANYONECANPAY_ALL, default to be SigHash.ALL
+@method(SigHash.ANYONECANPAY_ALL) 
+public unlock() {
+    assert(true);
+}
+```
 
 ### Public `@method`s
 
@@ -86,7 +113,7 @@ A public method can be called from an external transaction. The call succeeds if
 ```js
   @method()
   public unlock(x: bigint) {
-    assert(this.add(this.x, 1n) === x);
+    assert(this.add(this.x, 1n) === x, "unlock failed");
   }
 ```
 
@@ -119,7 +146,12 @@ Basic type `boolean` is allowed, along with its wrapper type `Boolean`.
 
 #### `bigint` Type
 
-Basic type `bigint` is allowed, along with its wrapper type `Bigint`.
+Basic type `bigint` is allowed, along with its wrapper type `Bigint`. A  bigint literal is a number with suffix `n`:
+
+```ts
+11n;
+0x33n;
+```
 
 #### `ByteString` Type
 
@@ -152,26 +184,24 @@ Also there are only a few methods of `ByteString` can be used in `@method`s:
 
 #### `number` Type
 
-By default, type `number` is not allowed in `@prop`s and `@method`s because it may cause precision issues when representing a floating point number. There are a few exceptions:
+By default, type `number` is not allowed in `@prop`s and `@method`s because it may cause precision issues when representing a floating point number. Under no circumstances should you declare a variable with type `number` except for a [A compile-time constant](#compile-time-constant).
 
-* [A compile-time constant](#compile-time-constant)
-
-```ts
-const N: number = 2;
-let arr: FixedArray<bigint, N> = [1n, 2n];
-```
+In some special cases, parameters of type `number` must be passed. In this case, we can use `Number()` function to convert `bigint` to `number`.
 
 * An array index
 
 ```ts
-let idx : number = 3;
-let item = arr[idx];
+let arr: FixedArray<bigint, 3> = [1n, 3n, 3n];
+let index: bigint = 2n;
+let item = arr[Number(idx)];
 ```
 
-* An induction variable in `for` statement
+* Calling `slice(start?: number, end?: number)` function on a `ByteString`
 
 ```ts
-for(let i: number =0; i < 5; i++) …
+let b: ByteString = toByteString("001122");
+let end: bigint = 1n;
+b.slice(0, Number(end));
 ```
 
 ### User-defined Types
@@ -241,7 +271,7 @@ Variables can be declared in `@method`s by keywords `const` / `var` / `let`, lik
 ```ts
 let a : bigint = 1n;
 var b: boolean = false;
-const N: number = 3;
+const byte: ByteString = toByteString("ff");
 ```
 
 ### Compile-time Constant
@@ -254,13 +284,14 @@ A compile-time constant, CTC for short, is a special variable whose value can be
 3;
 ```
 
-* A `const` variable:
+* A `const` variable, its value should be numeric literal:
 
 ```ts
-const N = 3;
+const N = 3; // valid
+const N: number = 3; // valid
 ```
 
-* A `readonly` property:
+* A `static` `readonly` property:
 
 ```ts
 class X {
@@ -285,9 +316,10 @@ They can be used at places where a CTC is required, including:
 * Array length in declaration
 
 ```ts
-FixedArray<bigint, 3>
-FixedArray<bigint, N>
-FixedArray<bigint, X.N>
+const N: number = 2;
+let arr1: FixedArray<bigint, N> = [1n, 2n];
+let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n];
+let arr3: FixedArray<bigint, Demo.N> = [1n, 2n, 3n]; // Demo.N is CTC
 ```
 
 * Loop count in `for` statement
