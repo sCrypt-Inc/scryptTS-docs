@@ -135,3 +135,24 @@ If you want to debug a unit test written with **Mocha**, use the following confi
 
 ![](../../static/img/debugging2.gif)
 
+# Advanced
+## DebugFunctions Interface
+
+DebugFunctions is interface that contains a set of functions for debugging contracts at runtime. All debugging functions will not affect the execution results of the contract.
+
+It contains the following functions:
+
+1. diffOutputs: Comparing the difference between the outputs argument and all the outputs of the transaction bound by `unlockFrom`, which are serialized and hashed to produce `hashOutputs` field of [scriptcontext](what-is-scriptcontext.md), see [How to debug ScriptContext error](../tutorials/how-to-debug-scriptcontext-error.md). 
+
+
+Every `SmartContract` has a `debug` property. You can call it in the `@method()` methods of the contract:
+
+```ts
+@method()
+public increment(amount: bigint) {
+    this.counter++;
+    let outputs = this.buildStateOutput(amount);
+    this.debug.diffOutputs(outputs);
+    assert(this.ctx.hashOutputs == hash256(outputs));
+}
+```
