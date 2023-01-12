@@ -240,25 +240,26 @@ let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]];
 
 There are several domain types, specific to the Bitcoin context, used to further improve type safety.
 
-* [PubKey](../reference/classes/PubKey.md) - a public key
 
-* [PrivKey](../reference/classes/PrivKey.md) - a private key
+* `PubKey` - a public key
 
-* [Sig](../reference/classes/Sig.md) - a signature type in DER format, including signature hash
+* `PrivKey` - a private key
 
-* [Ripemd160](../reference/classes/Ripemd160.md) - a RIPEMD-160 hash
+* `Sig` - a signature type in DER format, including signature hash
 
-* [PubKeyHash](../reference/classes/PubKeyHash.md) - an alias for Ripemd160`, usually representing a bitcoin address.
+* `Ripemd160` - a RIPEMD-160 hash
 
-* [Sha1](../reference/classes/Sha1.md) - a SHA-1 hash
+* `PubKeyHash` - an alias for Ripemd160`, usually representing a bitcoin address.
 
-* [Sha256](../reference/classes/Sha256.md) - a SHA-256 hash
+* `Sha1` - a SHA-1 hash
 
-* [SigHashType](../reference/classes/SigHashType.md) - a sighash
+* `Sha256` - a SHA-256 hash
 
-* [SigHashPreimage](../reference/classes/SigHashPreimage.md) - a sighash preimage
+* `SigHashType` - a sighash
 
-* [OpCodeType](../reference/classes/OpCodeType.md) - an OpCode
+* `SigHashPreimage` - a sighash preimage
+
+* `OpCodeType` - an OpCode
 
 ### `SmartContractLib` subclasses Types
 
