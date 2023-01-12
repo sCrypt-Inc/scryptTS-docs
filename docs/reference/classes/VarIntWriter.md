@@ -25,27 +25,27 @@
 
 ### serializeState
 
-▸ `Static` **serializeState**(`stateBuf`): `string`
+▸ `Static` **serializeState**(`stateBuf`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `stateBuf` | `string` |
+| `stateBuf` | `Bytes` |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:650](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L650)
+[src/builtins/functions.ts:704](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L704)
 
 ___
 
 ### writeBool
 
-▸ `Static` **writeBool**(`x`): `string`
+▸ `Static` **writeBool**(`x`): `Bytes`
 
 #### Parameters
 
@@ -55,37 +55,37 @@ ___
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:641](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L641)
+[src/builtins/functions.ts:695](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L695)
 
 ___
 
 ### writeBytes
 
-▸ `Static` **writeBytes**(`buf`): `string`
+▸ `Static` **writeBytes**(`buf`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buf` | `string` |
+| `buf` | `Bytes` |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:615](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L615)
+[src/builtins/functions.ts:669](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L669)
 
 ___
 
 ### writeInt
 
-▸ `Static` **writeInt**(`x`): `string`
+▸ `Static` **writeInt**(`x`): `Bytes`
 
 #### Parameters
 
@@ -95,8 +95,8 @@ ___
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:646](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L646)
+[src/builtins/functions.ts:700](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L700)

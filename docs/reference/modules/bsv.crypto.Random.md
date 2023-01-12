@@ -28,4 +28,4 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:293
+node_modules/bsv/index.d.ts:296

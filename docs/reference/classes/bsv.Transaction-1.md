@@ -21,6 +21,7 @@
 - [nid](bsv.Transaction-1.md#nid)
 - [outputAmount](bsv.Transaction-1.md#outputamount)
 - [outputs](bsv.Transaction-1.md#outputs)
+- [DUMMY\_PRIVATEKEY](bsv.Transaction-1.md#dummy_privatekey)
 
 ### Methods
 
@@ -34,6 +35,7 @@
 - [applySignature](bsv.Transaction-1.md#applysignature)
 - [change](bsv.Transaction-1.md#change)
 - [checkFeeRate](bsv.Transaction-1.md#checkfeerate)
+- [dummyChange](bsv.Transaction-1.md#dummychange)
 - [enableRBF](bsv.Transaction-1.md#enablerbf)
 - [fee](bsv.Transaction-1.md#fee)
 - [feePerKb](bsv.Transaction-1.md#feeperkb)
@@ -86,7 +88,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:441
+node_modules/bsv/index.d.ts:454
 
 ## Properties
 
@@ -96,7 +98,7 @@ node_modules/bsv/index.d.ts:441
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:491
+node_modules/bsv/index.d.ts:504
 
 ___
 
@@ -106,7 +108,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:435
+node_modules/bsv/index.d.ts:448
 
 ___
 
@@ -116,7 +118,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:434
+node_modules/bsv/index.d.ts:447
 
 ___
 
@@ -126,7 +128,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:436
+node_modules/bsv/index.d.ts:449
 
 ___
 
@@ -136,7 +138,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:432
+node_modules/bsv/index.d.ts:445
 
 ___
 
@@ -146,7 +148,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:439
+node_modules/bsv/index.d.ts:452
 
 ___
 
@@ -156,7 +158,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:438
+node_modules/bsv/index.d.ts:451
 
 ___
 
@@ -166,7 +168,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:437
+node_modules/bsv/index.d.ts:450
 
 ___
 
@@ -176,7 +178,17 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:433
+node_modules/bsv/index.d.ts:446
+
+___
+
+### DUMMY\_PRIVATEKEY
+
+▪ `Static` **DUMMY\_PRIVATEKEY**: [`PrivateKey`](bsv.PrivateKey.md)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:444
 
 ## Methods
 
@@ -190,7 +202,7 @@ node_modules/bsv/index.d.ts:433
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:490
+node_modules/bsv/index.d.ts:503
 
 ___
 
@@ -204,7 +216,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:489
+node_modules/bsv/index.d.ts:502
 
 ___
 
@@ -224,7 +236,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:462
+node_modules/bsv/index.d.ts:475
 
 ___
 
@@ -245,7 +257,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:509
+node_modules/bsv/index.d.ts:522
 
 ___
 
@@ -267,7 +279,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:456
+node_modules/bsv/index.d.ts:469
 
 ___
 
@@ -288,7 +300,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:508
+node_modules/bsv/index.d.ts:521
 
 ___
 
@@ -308,7 +320,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:461
+node_modules/bsv/index.d.ts:474
 
 ___
 
@@ -328,7 +340,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:454
+node_modules/bsv/index.d.ts:467
 
 ___
 
@@ -348,7 +360,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:447
+node_modules/bsv/index.d.ts:460
 
 ___
 
@@ -368,7 +380,21 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:504
+node_modules/bsv/index.d.ts:517
+
+___
+
+### dummyChange
+
+▸ **dummyChange**(): [`Transaction`](bsv.Transaction-1.md)
+
+#### Returns
+
+[`Transaction`](bsv.Transaction-1.md)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:523
 
 ___
 
@@ -382,7 +408,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:475
+node_modules/bsv/index.d.ts:488
 
 ___
 
@@ -402,7 +428,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:448
+node_modules/bsv/index.d.ts:461
 
 ___
 
@@ -422,7 +448,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:449
+node_modules/bsv/index.d.ts:462
 
 ___
 
@@ -442,7 +468,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:443
+node_modules/bsv/index.d.ts:456
 
 ___
 
@@ -456,7 +482,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:502
+node_modules/bsv/index.d.ts:515
 
 ___
 
@@ -470,7 +496,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:468
+node_modules/bsv/index.d.ts:481
 
 ___
 
@@ -484,7 +510,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:503
+node_modules/bsv/index.d.ts:516
 
 ___
 
@@ -498,7 +524,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:467
+node_modules/bsv/index.d.ts:480
 
 ___
 
@@ -518,7 +544,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:515
+node_modules/bsv/index.d.ts:529
 
 ___
 
@@ -532,7 +558,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:469
+node_modules/bsv/index.d.ts:482
 
 ___
 
@@ -552,7 +578,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:516
+node_modules/bsv/index.d.ts:530
 
 ___
 
@@ -574,7 +600,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:507
+node_modules/bsv/index.d.ts:520
 
 ___
 
@@ -594,29 +620,29 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:487
+node_modules/bsv/index.d.ts:500
 
 ___
 
 ### getSignature
 
-▸ **getSignature**(`inputIndex`, `privateKey?`, `sigtype?`): `string`
+▸ **getSignature**(`inputIndex`, `privateKey?`, `sigtype?`): `string` \| `string`[]
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `inputIndex` | `number` |
-| `privateKey?` | [`PrivateKey`](bsv.PrivateKey.md) |
+| `privateKey?` | [`PrivateKey`](bsv.PrivateKey.md) \| [`PrivateKey`](bsv.PrivateKey.md)[] |
 | `sigtype?` | `number` |
 
 #### Returns
 
-`string`
+`string` \| `string`[]
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:506
+node_modules/bsv/index.d.ts:519
 
 ___
 
@@ -630,7 +656,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:466
+node_modules/bsv/index.d.ts:479
 
 ___
 
@@ -644,7 +670,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:478
+node_modules/bsv/index.d.ts:491
 
 ___
 
@@ -658,7 +684,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:473
+node_modules/bsv/index.d.ts:486
 
 ___
 
@@ -672,7 +698,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:485
+node_modules/bsv/index.d.ts:498
 
 ___
 
@@ -686,7 +712,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:476
+node_modules/bsv/index.d.ts:489
 
 ___
 
@@ -700,7 +726,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:501
+node_modules/bsv/index.d.ts:514
 
 ___
 
@@ -720,7 +746,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:464
+node_modules/bsv/index.d.ts:477
 
 ___
 
@@ -740,7 +766,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:463
+node_modules/bsv/index.d.ts:476
 
 ___
 
@@ -754,7 +780,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:505
+node_modules/bsv/index.d.ts:518
 
 ___
 
@@ -768,7 +794,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:500
+node_modules/bsv/index.d.ts:513
 
 ___
 
@@ -788,7 +814,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:479
+node_modules/bsv/index.d.ts:492
 
 ___
 
@@ -800,7 +826,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `inputIndex` | `number` \| { `inputIndex`: `number` ; `isLowS?`: `boolean` ; `privateKey?`: [`PrivateKey`](bsv.PrivateKey.md) ; `sigtype?`: `number`  } |
+| `inputIndex` | `number` \| { `inputIndex`: `number` ; `isLowS?`: `boolean` ; `privateKey?`: [`PrivateKey`](bsv.PrivateKey.md) \| [`PrivateKey`](bsv.PrivateKey.md)[] ; `sigtype?`: `number`  } |
 | `unlockingScript` | [`Script`](bsv.Script-1.md) \| (`tx`: [`Transaction`](bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](bsv.Transaction.Output.md)) => [`Script`](bsv.Script-1.md) |
 
 #### Returns
@@ -809,7 +835,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:492
+node_modules/bsv/index.d.ts:505
 
 ___
 
@@ -830,13 +856,13 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:498
+node_modules/bsv/index.d.ts:511
 
 ___
 
 ### setLockTime
 
-▸ **setLockTime**(`t`): `void`
+▸ **setLockTime**(`t`): [`Transaction`](bsv.Transaction-1.md)
 
 #### Parameters
 
@@ -846,11 +872,11 @@ ___
 
 #### Returns
 
-`void`
+[`Transaction`](bsv.Transaction-1.md)
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:470
+node_modules/bsv/index.d.ts:483
 
 ___
 
@@ -871,7 +897,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:499
+node_modules/bsv/index.d.ts:512
 
 ___
 
@@ -892,7 +918,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:450
+node_modules/bsv/index.d.ts:463
 
 ___
 
@@ -913,7 +939,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:446
+node_modules/bsv/index.d.ts:459
 
 ___
 
@@ -927,7 +953,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:483
+node_modules/bsv/index.d.ts:496
 
 ___
 
@@ -941,7 +967,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:482
+node_modules/bsv/index.d.ts:495
 
 ___
 
@@ -955,7 +981,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:480
+node_modules/bsv/index.d.ts:493
 
 ___
 
@@ -969,7 +995,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:472
+node_modules/bsv/index.d.ts:485
 
 ___
 
@@ -995,7 +1021,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:510
+node_modules/bsv/index.d.ts:524
 
 ___
 
@@ -1020,4 +1046,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:455
+node_modules/bsv/index.d.ts:468

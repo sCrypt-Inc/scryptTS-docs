@@ -19,7 +19,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:890
+node_modules/bsv/index.d.ts:904
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:889
+node_modules/bsv/index.d.ts:903

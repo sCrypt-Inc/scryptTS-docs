@@ -13,11 +13,17 @@
 ### Properties
 
 - [nhashtype](bsv.crypto.Signature.md#nhashtype)
+- [ALL](bsv.crypto.Signature.md#all)
+- [ANYONECANPAY\_ALL](bsv.crypto.Signature.md#anyonecanpay_all)
+- [ANYONECANPAY\_NONE](bsv.crypto.Signature.md#anyonecanpay_none)
+- [ANYONECANPAY\_SINGLE](bsv.crypto.Signature.md#anyonecanpay_single)
+- [NONE](bsv.crypto.Signature.md#none)
 - [SIGHASH\_ALL](bsv.crypto.Signature.md#sighash_all)
 - [SIGHASH\_ANYONECANPAY](bsv.crypto.Signature.md#sighash_anyonecanpay)
 - [SIGHASH\_FORKID](bsv.crypto.Signature.md#sighash_forkid)
 - [SIGHASH\_NONE](bsv.crypto.Signature.md#sighash_none)
 - [SIGHASH\_SINGLE](bsv.crypto.Signature.md#sighash_single)
+- [SINGLE](bsv.crypto.Signature.md#single)
 
 ### Methods
 
@@ -46,7 +52,57 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:315
+node_modules/bsv/index.d.ts:326
+
+___
+
+### ALL
+
+▪ `Static` **ALL**: `number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:319
+
+___
+
+### ANYONECANPAY\_ALL
+
+▪ `Static` **ANYONECANPAY\_ALL**: `number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:322
+
+___
+
+### ANYONECANPAY\_NONE
+
+▪ `Static` **ANYONECANPAY\_NONE**: `number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:323
+
+___
+
+### ANYONECANPAY\_SINGLE
+
+▪ `Static` **ANYONECANPAY\_SINGLE**: `number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:324
+
+___
+
+### NONE
+
+▪ `Static` **NONE**: `number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:320
 
 ___
 
@@ -56,7 +112,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:310
+node_modules/bsv/index.d.ts:313
 
 ___
 
@@ -66,7 +122,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:314
+node_modules/bsv/index.d.ts:317
 
 ___
 
@@ -76,7 +132,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:313
+node_modules/bsv/index.d.ts:316
 
 ___
 
@@ -86,7 +142,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:311
+node_modules/bsv/index.d.ts:314
 
 ___
 
@@ -96,7 +152,17 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:312
+node_modules/bsv/index.d.ts:315
+
+___
+
+### SINGLE
+
+▪ `Static` **SINGLE**: `number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:321
 
 ## Methods
 
@@ -110,7 +176,7 @@ node_modules/bsv/index.d.ts:312
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:319
+node_modules/bsv/index.d.ts:330
 
 ___
 
@@ -124,7 +190,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:321
+node_modules/bsv/index.d.ts:332
 
 ___
 
@@ -138,7 +204,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:317
+node_modules/bsv/index.d.ts:328
 
 ___
 
@@ -152,7 +218,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:318
+node_modules/bsv/index.d.ts:329
 
 ___
 
@@ -166,7 +232,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:316
+node_modules/bsv/index.d.ts:327
 
 ___
 
@@ -180,7 +246,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:322
+node_modules/bsv/index.d.ts:333
 
 ___
 
@@ -200,7 +266,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:307
+node_modules/bsv/index.d.ts:310
 
 ___
 
@@ -220,7 +286,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:309
+node_modules/bsv/index.d.ts:312
 
 ___
 
@@ -240,7 +306,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:308
+node_modules/bsv/index.d.ts:311
 
 ___
 
@@ -260,4 +326,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:320
+node_modules/bsv/index.d.ts:331

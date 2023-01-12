@@ -17,7 +17,7 @@
 
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:18
+node_modules/scryptlib/dist/contract.d.ts:20
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:17
+node_modules/scryptlib/dist/contract.d.ts:19

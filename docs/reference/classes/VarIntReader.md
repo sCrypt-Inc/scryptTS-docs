@@ -34,21 +34,21 @@
 
 | Name | Type |
 | :------ | :------ |
-| `buf` | `string` |
+| `buf` | `Bytes` |
 
 #### Defined in
 
-[src/builtins/functions.ts:540](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L540)
+[src/builtins/functions.ts:594](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L594)
 
 ## Properties
 
 ### buf
 
-• **buf**: `string`
+• **buf**: `Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:537](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L537)
+[src/builtins/functions.ts:591](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L591)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:538](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L538)
+[src/builtins/functions.ts:592](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L592)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:531](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L531)
+[src/builtins/functions.ts:585](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L585)
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:535](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L535)
+[src/builtins/functions.ts:589](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L589)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:533](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L533)
+[src/builtins/functions.ts:587](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L587)
 
 ## Methods
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:545](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L545)
+[src/builtins/functions.ts:599](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L599)
 
 ___
 
@@ -116,21 +116,21 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:585](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L585)
+[src/builtins/functions.ts:639](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L639)
 
 ___
 
 ### readBytes
 
-▸ **readBytes**(): `string`
+▸ **readBytes**(): `Bytes`
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:549](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L549)
+[src/builtins/functions.ts:603](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L603)
 
 ___
 
@@ -144,7 +144,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:591](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L591)
+[src/builtins/functions.ts:645](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L645)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `scriptCode` | `string` |
+| `scriptCode` | `Bytes` |
 
 #### Returns
 
@@ -164,4 +164,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:595](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L595)
+[src/builtins/functions.ts:649](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L649)

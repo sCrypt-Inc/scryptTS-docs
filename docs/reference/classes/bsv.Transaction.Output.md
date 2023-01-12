@@ -24,6 +24,7 @@
 - [setScript](bsv.Transaction.Output.md#setscript)
 - [toBufferWriter](bsv.Transaction.Output.md#tobufferwriter)
 - [toObject](bsv.Transaction.Output.md#toobject)
+- [fromBufferReader](bsv.Transaction.Output.md#frombufferreader)
 
 ## Constructors
 
@@ -41,7 +42,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:347
+node_modules/bsv/index.d.ts:358
 
 ## Properties
 
@@ -51,7 +52,7 @@ node_modules/bsv/index.d.ts:347
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:344
+node_modules/bsv/index.d.ts:355
 
 ___
 
@@ -61,7 +62,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:345
+node_modules/bsv/index.d.ts:356
 
 ___
 
@@ -71,7 +72,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:343
+node_modules/bsv/index.d.ts:354
 
 ___
 
@@ -81,7 +82,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:346
+node_modules/bsv/index.d.ts:357
 
 ## Methods
 
@@ -95,7 +96,7 @@ node_modules/bsv/index.d.ts:346
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:355
+node_modules/bsv/index.d.ts:366
 
 ___
 
@@ -109,7 +110,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:353
+node_modules/bsv/index.d.ts:364
 
 ___
 
@@ -129,7 +130,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:352
+node_modules/bsv/index.d.ts:363
 
 ___
 
@@ -149,7 +150,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:356
+node_modules/bsv/index.d.ts:367
 
 ___
 
@@ -168,4 +169,24 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:354
+node_modules/bsv/index.d.ts:365
+
+___
+
+### fromBufferReader
+
+▸ `Static` **fromBufferReader**(`reader`): [`Output`](bsv.Transaction.Output.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `reader` | [`BufferReader`](bsv.encoding.BufferReader.md) |
+
+#### Returns
+
+[`Output`](bsv.Transaction.Output.md)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:368

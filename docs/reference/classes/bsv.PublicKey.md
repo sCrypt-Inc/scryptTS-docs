@@ -48,7 +48,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:569
+node_modules/bsv/index.d.ts:583
 
 ## Properties
 
@@ -58,7 +58,7 @@ node_modules/bsv/index.d.ts:569
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:572
+node_modules/bsv/index.d.ts:586
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:573
+node_modules/bsv/index.d.ts:587
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:571
+node_modules/bsv/index.d.ts:585
 
 ## Methods
 
@@ -92,7 +92,7 @@ node_modules/bsv/index.d.ts:571
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:581
+node_modules/bsv/index.d.ts:595
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:578
+node_modules/bsv/index.d.ts:592
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:577
+node_modules/bsv/index.d.ts:591
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:575
+node_modules/bsv/index.d.ts:589
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:580
+node_modules/bsv/index.d.ts:594
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:576
+node_modules/bsv/index.d.ts:590
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:579
+node_modules/bsv/index.d.ts:593
 
 ___
 
@@ -203,7 +203,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:584
+node_modules/bsv/index.d.ts:598
 
 ___
 
@@ -224,7 +224,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:585
+node_modules/bsv/index.d.ts:599
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:589
+node_modules/bsv/index.d.ts:603
 
 ___
 
@@ -264,7 +264,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:583
+node_modules/bsv/index.d.ts:597
 
 ___
 
@@ -284,7 +284,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:588
+node_modules/bsv/index.d.ts:602
 
 ___
 
@@ -304,7 +304,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:590
+node_modules/bsv/index.d.ts:604
 
 ___
 
@@ -324,4 +324,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:591
+node_modules/bsv/index.d.ts:605

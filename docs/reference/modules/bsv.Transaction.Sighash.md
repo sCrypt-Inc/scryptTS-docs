@@ -36,7 +36,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:402
+node_modules/bsv/index.d.ts:414
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:394
+node_modules/bsv/index.d.ts:406
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:410
+node_modules/bsv/index.d.ts:422
 
 ___
 
@@ -113,4 +113,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:419
+node_modules/bsv/index.d.ts:431

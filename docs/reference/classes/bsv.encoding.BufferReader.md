@@ -10,9 +10,15 @@
 
 - [constructor](bsv.encoding.BufferReader.md#constructor)
 
+### Properties
+
+- [pos](bsv.encoding.BufferReader.md#pos)
+
 ### Methods
 
+- [eof](bsv.encoding.BufferReader.md#eof)
 - [read](bsv.encoding.BufferReader.md#read)
+- [readAll](bsv.encoding.BufferReader.md#readall)
 - [readInt32LE](bsv.encoding.BufferReader.md#readint32le)
 - [readReverse](bsv.encoding.BufferReader.md#readreverse)
 - [readUInt16BE](bsv.encoding.BufferReader.md#readuint16be)
@@ -44,7 +50,31 @@
 
 node_modules/bsv/index.d.ts:160
 
+## Properties
+
+### pos
+
+• **pos**: `number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:178
+
 ## Methods
+
+### eof
+
+▸ **eof**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:177
+
+___
 
 ### read
 
@@ -63,6 +93,20 @@ node_modules/bsv/index.d.ts:160
 #### Defined in
 
 node_modules/bsv/index.d.ts:161
+
+___
+
+### readAll
+
+▸ **readAll**(): `Buffer`
+
+#### Returns
+
+`Buffer`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:176
 
 ___
 

@@ -33,7 +33,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:383
+node_modules/bsv/index.d.ts:395
 
 ## Properties
 
@@ -43,7 +43,7 @@ node_modules/bsv/index.d.ts:383
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:389
+node_modules/bsv/index.d.ts:401
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:388
+node_modules/bsv/index.d.ts:400
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:387
+node_modules/bsv/index.d.ts:399
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:386
+node_modules/bsv/index.d.ts:398
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:385
+node_modules/bsv/index.d.ts:397
 
 ___
 
@@ -93,4 +93,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:390
+node_modules/bsv/index.d.ts:402

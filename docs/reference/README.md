@@ -8,9 +8,16 @@ scrypt-ts
 
 - [bsv](modules/bsv.md)
 
+### Other Classes
+
+- [FunctionCall](classes/FunctionCall.md)
+- [HashedMap](classes/HashedMap.md)
+- [HashedSet](classes/HashedSet.md)
+
 ### SmartContract Classes
 
 - [SmartContract](classes/SmartContract.md)
+- [SmartContractLib](classes/SmartContractLib.md)
 
 ### Standard Contracts Classes
 
@@ -22,23 +29,11 @@ scrypt-ts
 - [VarIntReader](classes/VarIntReader.md)
 - [VarIntWriter](classes/VarIntWriter.md)
 
-### Types Classes
-
-- [OpCodeType](classes/OpCodeType.md)
-- [PrivKey](classes/PrivKey.md)
-- [PubKey](classes/PubKey.md)
-- [PubKeyHash](classes/PubKeyHash.md)
-- [Ripemd160](classes/Ripemd160.md)
-- [Sha1](classes/Sha1.md)
-- [Sha256](classes/Sha256.md)
-- [Sig](classes/Sig.md)
-- [SigHashPreimage](classes/SigHashPreimage.md)
-- [SigHashType](classes/SigHashType.md)
-
 ### Interfaces
 
-- [ContractDescription](interfaces/ContractDescription.md)
-- [TxContext](interfaces/TxContext.md)
+- [ContractArtifact](interfaces/ContractArtifact.md)
+- [DebugFunctions](interfaces/DebugFunctions.md)
+- [Range](interfaces/Range.md)
 - [VerifyResult](interfaces/VerifyResult.md)
 
 ### Array Type Aliases
@@ -47,7 +42,19 @@ scrypt-ts
 
 ### Other Type Aliases
 
-- [TxOutputRef](README.md#txoutputref)
+- [ByteString](README.md#bytestring)
+- [OpCodeType](README.md#opcodetype)
+- [PrivKey](README.md#privkey)
+- [PubKey](README.md#pubkey)
+- [PubKeyHash](README.md#pubkeyhash)
+- [Ripemd160](README.md#ripemd160)
+- [Sha1](README.md#sha1)
+- [Sha256](README.md#sha256)
+- [Sig](README.md#sig)
+- [SigHashPreimage](README.md#sighashpreimage)
+- [SigHashType](README.md#sighashtype)
+- [SortedItem](README.md#sorteditem)
+- [SubBytes](README.md#subbytes)
 
 ### Types Type Aliases
 
@@ -55,8 +62,8 @@ scrypt-ts
 
 ### Bytes Operations Functions
 
+- [int2str](README.md#int2str)
 - [len](README.md#len)
-- [num2bin](README.md#num2bin)
 - [pack](README.md#pack)
 - [reverseBytes](README.md#reversebytes)
 - [unpack](README.md#unpack)
@@ -65,9 +72,9 @@ scrypt-ts
 
 - [hash160](README.md#hash160)
 - [hash256](README.md#hash256)
-- [ripemd160](README.md#ripemd160)
-- [sha1](README.md#sha1)
-- [sha256](README.md#sha256)
+- [ripemd160](README.md#ripemd160-2)
+- [sha1](README.md#sha1-2)
+- [sha256](README.md#sha256-2)
 
 ### Math Functions
 
@@ -78,11 +85,33 @@ scrypt-ts
 
 ### Other Functions
 
+- [OpCodeType](README.md#opcodetype-1)
+- [PrivKey](README.md#privkey-1)
+- [PubKey](README.md#pubkey-1)
+- [PubKeyHash](README.md#pubkeyhash-1)
+- [Ripemd160](README.md#ripemd160-1)
+- [Sha1](README.md#sha1-1)
+- [Sha256](README.md#sha256-1)
+- [Sig](README.md#sig-1)
+- [SigHashPreimage](README.md#sighashpreimage-1)
+- [SigHashType](README.md#sighashtype-1)
+- [and](README.md#and)
 - [buildOpreturnScript](README.md#buildopreturnscript)
 - [buildPublicKeyHashScript](README.md#buildpublickeyhashscript)
-- [hexToString](README.md#hextostring)
+- [equals](README.md#equals)
+- [getBuildInType](README.md#getbuildintype)
+- [getPreimage](README.md#getpreimage)
+- [getSortedItem](README.md#getsorteditem)
+- [hasModifier](README.md#hasmodifier)
+- [invert](README.md#invert)
+- [isNumberLiteralExpr](README.md#isnumberliteralexpr)
+- [number2hex](README.md#number2hex)
+- [or](README.md#or)
+- [signTx](README.md#signtx)
+- [toByteString](README.md#tobytestring)
 - [toHex](README.md#tohex)
-- [utf8ToString](README.md#utf8tostring)
+- [utf8ToByteString](README.md#utf8tobytestring)
+- [xor](README.md#xor)
 
 ### Signature Verification Functions
 
@@ -91,6 +120,12 @@ scrypt-ts
 ### assert Functions
 
 - [assert](README.md#assert)
+
+### bitshift Functions
+
+- [lshift](README.md#lshift)
+- [pow2](README.md#pow2)
+- [rshift](README.md#rshift)
 
 ### decorator Functions
 
@@ -129,28 +164,172 @@ let bbb: FixedArray<FixedArray<FixedArray<bigint, 1>, 2>, 3> = [[[1n], [1n]], [[
 
 #### Defined in
 
-[src/builtins/types.ts:80](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L80)
+[src/builtins/types.ts:82](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L82)
 
 ___
 
 ## Other Type Aliases
 
-### TxOutputRef
+### ByteString
 
-Ƭ **TxOutputRef**: `Object`
+Ƭ **ByteString**: `Bytes`
 
-The transaction output point bound by the smart contract
+#### Defined in
+
+[src/builtins/types.ts:34](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L34)
+
+___
+
+### OpCodeType
+
+Ƭ **OpCodeType**: `Bytes` & { `__type`: ``"OpCodeType"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:88
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:61
+
+___
+
+### PrivKey
+
+Ƭ **PrivKey**: `Int` & { `__type`: ``"PrivKey"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:69
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:36
+
+___
+
+### PubKey
+
+Ƭ **PubKey**: `Bytes` & { `__type`: ``"PubKey"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:70
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:39
+
+___
+
+### PubKeyHash
+
+Ƭ **PubKeyHash**: [`Ripemd160`](README.md#ripemd160)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:73
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:48
+
+___
+
+### Ripemd160
+
+Ƭ **Ripemd160**: `Bytes` & { `__type`: ``"Ripemd160"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:72
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:45
+
+___
+
+### Sha1
+
+Ƭ **Sha1**: `Bytes` & { `__type`: ``"Sha1"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:74
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:49
+
+___
+
+### Sha256
+
+Ƭ **Sha256**: `Bytes` & { `__type`: ``"Sha256"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:75
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:52
+
+___
+
+### Sig
+
+Ƭ **Sig**: `Bytes` & { `__type`: ``"Sig"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:71
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:42
+
+___
+
+### SigHashPreimage
+
+Ƭ **SigHashPreimage**: `Bytes` & { `__type`: ``"SigHashPreimage"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:87
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:58
+
+___
+
+### SigHashType
+
+Ƭ **SigHashType**: `Bytes` & { `__type`: ``"SigHashType"``  }
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:86
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:55
+
+___
+
+### SortedItem
+
+Ƭ **SortedItem**<`T`\>: `Object`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `outputIndex` | `number` |
-| `tx` | [`Transaction`](classes/bsv.Transaction-1.md) |
+| `idx` | `bigint` |
+| `item` | `T` |
 
 #### Defined in
 
-[src/contract.ts:24](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/contract.ts#L24)
+[src/builtins/types.ts:478](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L478)
+
+___
+
+### SubBytes
+
+Ƭ **SubBytes**: [`PubKey`](README.md#pubkey) \| [`Sig`](README.md#sig) \| [`Sha256`](README.md#sha256) \| [`Sha1`](README.md#sha1) \| [`SigHashType`](README.md#sighashtype) \| [`Ripemd160`](README.md#ripemd160) \| [`OpCodeType`](README.md#opcodetype)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:95
 
 ___
 
@@ -164,62 +343,62 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 #### Defined in
 
-[src/builtins/types.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L55)
+[src/builtins/types.ts:56](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L56)
 
 ## Bytes Operations Functions
 
-### len
+### int2str
 
-▸ **len**(`a`): `number`
+▸ **int2str**(`num`, `size`): [`ByteString`](README.md#bytestring)
 
-Returns the length of the string bytes. Not the length of the string.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `a` | `string` | a string |
-
-#### Returns
-
-`number`
-
-The length of the string bytes.
-
-#### Defined in
-
-[src/builtins/functions.ts:43](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L43)
-
-___
-
-### num2bin
-
-▸ **num2bin**(`num`, `size`): `string`
-
-Converts a number num into a string array of certain size size, including the sign bit. It fails if the number cannot be accommodated.
+Converts a number num into a ByteString of certain size, including the sign bit. It fails if the number cannot be accommodated.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `num` | `bigint` | a number being converts |
-| `size` | `bigint` | the size of the result string array |
+| `size` | `bigint` | the size of the ByteString |
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
-A string .
+A ByteString .
 
 #### Defined in
 
-[src/builtins/functions.ts:33](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L33)
+[src/builtins/functions.ts:35](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L35)
+
+___
+
+### len
+
+▸ **len**(`a`): `number`
+
+Returns the length of the ByteString. Not the length of the string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `a` | `Bytes` | a ByteString |
+
+#### Returns
+
+`number`
+
+The length of the ByteString.
+
+#### Defined in
+
+[src/builtins/functions.ts:45](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L45)
 
 ___
 
 ### pack
 
-▸ **pack**(`n`): `string`
+▸ **pack**(`n`): [`ByteString`](README.md#bytestring)
 
 bigint can be converted to string with pack
 
@@ -231,17 +410,17 @@ bigint can be converted to string with pack
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:12](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L12)
+[src/builtins/functions.ts:14](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L14)
 
 ___
 
 ### reverseBytes
 
-▸ **reverseBytes**(`b`, `size`): `string`
+▸ **reverseBytes**(`b`, `size`): [`ByteString`](README.md#bytestring)
 
 Returns reversed bytes of b, which is of size bytes. Note size must be a compile time constant. It is often useful when converting a number between little-endian and big-endian.
 
@@ -249,18 +428,18 @@ Returns reversed bytes of b, which is of size bytes. Note size must be a compile
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `b` | `string` | a string to be reversed |
-| `size` | `number` | the size of the string bytes. |
+| `b` | `Bytes` | a ByteString to be reversed |
+| `size` | `number` | the size of the ByteString. |
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
-The length of the string bytes.
+The length of the reverse ByteString.
 
 #### Defined in
 
-[src/builtins/functions.ts:53](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L53)
+[src/builtins/functions.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L55)
 
 ___
 
@@ -268,13 +447,13 @@ ___
 
 ▸ **unpack**(`a`): `bigint`
 
-string can be converted to bigint using function unpack.
+ByteString can be converted to bigint using function unpack.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `string` |
+| `a` | `Bytes` |
 
 #### Returns
 
@@ -282,7 +461,7 @@ string can be converted to bigint using function unpack.
 
 #### Defined in
 
-[src/builtins/functions.ts:21](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L21)
+[src/builtins/functions.ts:23](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L23)
 
 ___
 
@@ -290,7 +469,7 @@ ___
 
 ### hash160
 
-▸ **hash160**(`a`): `string`
+▸ **hash160**(`a`): [`ByteString`](README.md#bytestring)
 
 A RIPEMD160 hash of a SHA256 hash, which is always 160 bits or 20 bytes long.
 This value is commonly used inside Bitcoin, particularly for Bitcoin
@@ -303,23 +482,23 @@ https://en.wikipedia.org/wiki/RIPEMD
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `string` |
+| `a` | `Bytes` |
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
 The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:169](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L169)
+[src/builtins/functions.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L171)
 
 ___
 
 ### hash256
 
-▸ **hash256**(`a`): `string`
+▸ **hash256**(`a`): [`ByteString`](README.md#bytestring)
 
 A double SHA256 hash, which is always 256 bits or 32 bytes bytes long. This
 hash function is commonly used inside Bitcoin, particularly for the hash of a
@@ -332,23 +511,23 @@ https://www.movable-type.co.uk/scripts/sha256.html
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `string` |
+| `a` | `Bytes` |
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
 The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:184](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L184)
+[src/builtins/functions.ts:186](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L186)
 
 ___
 
 ### ripemd160
 
-▸ **ripemd160**(`a`): `string`
+▸ **ripemd160**(`a`): [`ByteString`](README.md#bytestring)
 
 A RIPEMD160 hash, which is always 160 bits or 20 bytes long.
 See:
@@ -358,23 +537,23 @@ https://en.wikipedia.org/wiki/RIPEMD
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `string` |
+| `a` | `Bytes` |
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
-The hash in the form of a string.
+The hash in the form of a ByteString.
 
 #### Defined in
 
-[src/builtins/functions.ts:127](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L127)
+[src/builtins/functions.ts:129](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L129)
 
 ___
 
 ### sha1
 
-▸ **sha1**(`a`): `string`
+▸ **sha1**(`a`): [`ByteString`](README.md#bytestring)
 
 A SHA or SHA1 hash, which is always 160 bits or 20 bytes long.
 
@@ -385,23 +564,23 @@ https://en.wikipedia.org/wiki/SHA-1
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `string` |
+| `a` | `Bytes` |
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
 The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L140)
+[src/builtins/functions.ts:142](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L142)
 
 ___
 
 ### sha256
 
-▸ **sha256**(`a`): `string`
+▸ **sha256**(`a`): [`ByteString`](README.md#bytestring)
 
 A SHA256 hash, which is always 256 bits or 32 bytes long.
 
@@ -412,17 +591,17 @@ https://www.movable-type.co.uk/scripts/sha256.html
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `string` |
+| `a` | `Bytes` |
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
 The hash in the form of a string.
 
 #### Defined in
 
-[src/builtins/functions.ts:154](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L154)
+[src/builtins/functions.ts:156](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L156)
 
 ___
 
@@ -446,7 +625,7 @@ The input `a` is made positive.
 
 #### Defined in
 
-[src/builtins/functions.ts:88](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L88)
+[src/builtins/functions.ts:90](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L90)
 
 ___
 
@@ -469,7 +648,7 @@ Returns the larger of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:107](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L107)
+[src/builtins/functions.ts:109](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L109)
 
 ___
 
@@ -492,7 +671,7 @@ Returns the smaller of `a` and `b`.
 
 #### Defined in
 
-[src/builtins/functions.ts:99](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L99)
+[src/builtins/functions.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L101)
 
 ___
 
@@ -516,15 +695,236 @@ Returns true if `x` is within the specified range (left-inclusive), false otherw
 
 #### Defined in
 
-[src/builtins/functions.ts:115](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L115)
+[src/builtins/functions.ts:117](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L117)
 
 ___
 
 ## Other Functions
 
+### OpCodeType
+
+▸ **OpCodeType**(`b`): [`OpCodeType`](README.md#opcodetype)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`OpCodeType`](README.md#opcodetype)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:88
+
+___
+
+### PrivKey
+
+▸ **PrivKey**(`n`): [`PrivKey`](README.md#privkey)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `n` | `Int` |
+
+#### Returns
+
+[`PrivKey`](README.md#privkey)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:69
+
+___
+
+### PubKey
+
+▸ **PubKey**(`b`): [`PubKey`](README.md#pubkey)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`PubKey`](README.md#pubkey)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:70
+
+___
+
+### PubKeyHash
+
+▸ **PubKeyHash**(`b`): [`PubKeyHash`](README.md#pubkeyhash)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`PubKeyHash`](README.md#pubkeyhash)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:73
+
+___
+
+### Ripemd160
+
+▸ **Ripemd160**(`b`): [`Ripemd160`](README.md#ripemd160)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`Ripemd160`](README.md#ripemd160)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:72
+
+___
+
+### Sha1
+
+▸ **Sha1**(`b`): [`Sha1`](README.md#sha1)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`Sha1`](README.md#sha1)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:74
+
+___
+
+### Sha256
+
+▸ **Sha256**(`b`): [`Sha256`](README.md#sha256)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`Sha256`](README.md#sha256)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:75
+
+___
+
+### Sig
+
+▸ **Sig**(`b`): [`Sig`](README.md#sig)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`Sig`](README.md#sig)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:71
+
+___
+
+### SigHashPreimage
+
+▸ **SigHashPreimage**(`b`): [`SigHashPreimage`](README.md#sighashpreimage)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `Bytes` |
+
+#### Returns
+
+[`SigHashPreimage`](README.md#sighashpreimage)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:87
+
+___
+
+### SigHashType
+
+▸ **SigHashType**(`s`): [`SigHashType`](README.md#sighashtype)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `s` | ``0`` \| `SigHash` |
+
+#### Returns
+
+[`SigHashType`](README.md#sighashtype)
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:86
+
+___
+
+### and
+
+▸ **and**(`a`, `b`): `Int`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `Int` |
+| `b` | `Int` |
+
+#### Returns
+
+`Int`
+
+#### Defined in
+
+node_modules/scryptlib/dist/builtins.d.ts:15
+
+___
+
 ### buildOpreturnScript
 
-▸ **buildOpreturnScript**(`data`): `Script`
+▸ **buildOpreturnScript**(`data`): [`Script`](classes/bsv.Script-1.md)
 
 #### Parameters
 
@@ -534,45 +934,70 @@ ___
 
 #### Returns
 
-`Script`
+[`Script`](classes/bsv.Script-1.md)
 
 #### Defined in
 
-node_modules/scryptlib/dist/utils.d.ts:165
+node_modules/scryptlib/dist/builtins.d.ts:22
 
 ___
 
 ### buildPublicKeyHashScript
 
-▸ **buildPublicKeyHashScript**(`pubKeyHash`): `Script`
+▸ **buildPublicKeyHashScript**(`pubKeyHash`): [`Script`](classes/bsv.Script-1.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `pubKeyHash` | `Ripemd160` |
+| `pubKeyHash` | [`Ripemd160`](README.md#ripemd160) |
 
 #### Returns
 
-`Script`
+[`Script`](classes/bsv.Script-1.md)
 
 #### Defined in
 
-node_modules/scryptlib/dist/utils.d.ts:166
+node_modules/scryptlib/dist/builtins.d.ts:23
 
 ___
 
-### hexToString
+### equals
 
-▸ **hexToString**(`hexStr`): `string`
+▸ **equals**<`T`\>(`a`, `b`): `boolean`
 
-Converts a hex literal to string.
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hexStr` | `string` | should be in format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/` |
+| Name | Type |
+| :------ | :------ |
+| `a` | `T` |
+| `b` | `T` |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/builtins/types.ts:141](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L141)
+
+___
+
+### getBuildInType
+
+▸ **getBuildInType**(`type`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `type` | `string` |
 
 #### Returns
 
@@ -580,7 +1005,216 @@ Converts a hex literal to string.
 
 #### Defined in
 
-[src/builtins/types.ts:19](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L19)
+[src/utils.ts:11](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/utils.ts#L11)
+
+___
+
+### getPreimage
+
+▸ **getPreimage**(`tx`, `lockingScript`, `inputAmount`, `inputIndex?`, `sighashType?`, `flags?`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tx` | [`Transaction`](classes/bsv.Transaction-1.md) |
+| `lockingScript` | [`Script`](classes/bsv.Script-1.md) |
+| `inputAmount` | `number` |
+| `inputIndex?` | `number` |
+| `sighashType?` | `number` |
+| `flags?` | `number` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+node_modules/scryptlib/dist/utils.d.ts:26
+
+___
+
+### getSortedItem
+
+▸ **getSortedItem**<`K`, `V`\>(`collection`, `k`): `SortedItem`<`K`\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `K` |
+| `V` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `collection` | `Map`<`K`, `V`\> \| `Set`<`K`\> |
+| `k` | `K` |
+
+#### Returns
+
+`SortedItem`<`K`\>
+
+#### Defined in
+
+node_modules/scryptlib/dist/scryptTypes.d.ts:93
+
+___
+
+### hasModifier
+
+▸ **hasModifier**(`node`, `...kinds`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `node` | `Node` |
+| `...kinds` | (`ConstKeyword` \| `DefaultKeyword` \| `ExportKeyword` \| `InKeyword` \| `PrivateKeyword` \| `ProtectedKeyword` \| `PublicKeyword` \| `StaticKeyword` \| `AbstractKeyword` \| `AsyncKeyword` \| `DeclareKeyword` \| `OutKeyword` \| `ReadonlyKeyword` \| `OverrideKeyword`)[] |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/utils.ts:48](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/utils.ts#L48)
+
+___
+
+### invert
+
+▸ **invert**(`a`): `Int`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `Int` |
+
+#### Returns
+
+`Int`
+
+#### Defined in
+
+node_modules/scryptlib/dist/builtins.d.ts:18
+
+___
+
+### isNumberLiteralExpr
+
+▸ **isNumberLiteralExpr**(`expr`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `expr` | `Node` |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/utils.ts:64](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/utils.ts#L64)
+
+___
+
+### number2hex
+
+▸ **number2hex**(`val`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `val` | `number` \| `bigint` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/utils.ts:40](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/utils.ts#L40)
+
+___
+
+### or
+
+▸ **or**(`a`, `b`): `Int`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `Int` |
+| `b` | `Int` |
+
+#### Returns
+
+`Int`
+
+#### Defined in
+
+node_modules/scryptlib/dist/builtins.d.ts:16
+
+___
+
+### signTx
+
+▸ **signTx**(`tx`, `privateKey`, `lockingScript`, `inputAmount`, `inputIndex?`, `sighashType?`, `flags?`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tx` | [`Transaction`](classes/bsv.Transaction-1.md) |
+| `privateKey` | [`PrivateKey`](classes/bsv.PrivateKey.md) |
+| `lockingScript` | [`Script`](classes/bsv.Script-1.md) |
+| `inputAmount` | `number` |
+| `inputIndex?` | `number` |
+| `sighashType?` | `number` |
+| `flags?` | `number` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+node_modules/scryptlib/dist/utils.d.ts:25
+
+___
+
+### toByteString
+
+▸ **toByteString**<`T`\>(`str`): [`ByteString`](README.md#bytestring)
+
+Converts a hex literal to string.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `string` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `str` | [`SigHashPreimage`](README.md#sighashpreimage) \| [`SubBytes`](README.md#subbytes) \| `HexType`<`T`\> |
+
+#### Returns
+
+[`ByteString`](README.md#bytestring)
+
+#### Defined in
+
+[src/builtins/types.ts:39](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L39)
 
 ___
 
@@ -601,13 +1235,13 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/utils.d.ts:44
+node_modules/scryptlib/dist/utils.d.ts:18
 
 ___
 
-### utf8ToString
+### utf8ToByteString
 
-▸ **utf8ToString**(`str`): `string`
+▸ **utf8ToByteString**(`str`): [`ByteString`](README.md#bytestring)
 
 Converts a utf8 literal to string.
 
@@ -619,11 +1253,32 @@ Converts a utf8 literal to string.
 
 #### Returns
 
-`string`
+[`ByteString`](README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/types.ts:46](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/types.ts#L46)
+[src/builtins/types.ts:47](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L47)
+
+___
+
+### xor
+
+▸ **xor**(`a`, `b`): `Int`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `Int` |
+| `b` | `Int` |
+
+#### Returns
+
+`Int`
+
+#### Defined in
+
+node_modules/scryptlib/dist/builtins.d.ts:17
 
 ___
 
@@ -643,8 +1298,8 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 | Name | Type |
 | :------ | :------ |
-| `signatures` | [`Sig`](classes/Sig.md)[] |
-| `publickeys` | [`PubKey`](classes/PubKey.md)[] |
+| `signatures` | [`Sig`](README.md#sig)[] |
+| `publickeys` | [`PubKey`](README.md#pubkey)[] |
 
 #### Returns
 
@@ -652,7 +1307,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/builtins/functions.ts:70](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L70)
+[src/builtins/functions.ts:72](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L72)
 
 ___
 
@@ -660,21 +1315,86 @@ ___
 
 ### assert
 
-▸ **assert**(`cond`): `void`
+▸ **assert**(`condition`, `msg?`): asserts condition
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `cond` | `boolean` |
+| `condition` | `boolean` |
+| `msg?` | `string` |
 
 #### Returns
 
-`void`
+asserts condition
 
 #### Defined in
 
-[src/builtins/functions.ts:196](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L196)
+[src/builtins/functions.ts:198](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L198)
+
+___
+
+## bitshift Functions
+
+### lshift
+
+▸ **lshift**(`x`, `n`): `bigint`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `x` | `bigint` |
+| `n` | `bigint` |
+
+#### Returns
+
+`bigint`
+
+#### Defined in
+
+[src/builtins/functions.ts:241](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L241)
+
+___
+
+### pow2
+
+▸ **pow2**(`n`): `bigint`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `n` | `bigint` |
+
+#### Returns
+
+`bigint`
+
+#### Defined in
+
+[src/builtins/functions.ts:233](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L233)
+
+___
+
+### rshift
+
+▸ **rshift**(`x`, `n`): `bigint`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `x` | `bigint` |
+| `n` | `bigint` |
+
+#### Returns
+
+`bigint`
+
+#### Defined in
+
+[src/builtins/functions.ts:249](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L249)
 
 ___
 
@@ -682,11 +1402,23 @@ ___
 
 ### method
 
-▸ **method**(`target`, `methodName`, `descriptor`): `PropertyDescriptor`
+▸ **method**(`sigHashType?`): (`target`: `any`, `methodName`: `string`, `descriptor`: `PropertyDescriptor`) => `PropertyDescriptor`
 
 Indicates whether the method is a contract method, and ordinary methods do not affect the execution of the contract
 
 #### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `sigHashType` | [`SigHashType`](README.md#sighashtype) | `SigHash.ALL` |
+
+#### Returns
+
+`fn`
+
+▸ (`target`, `methodName`, `descriptor`): `PropertyDescriptor`
+
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
@@ -694,13 +1426,13 @@ Indicates whether the method is a contract method, and ordinary methods do not a
 | `methodName` | `string` |
 | `descriptor` | `PropertyDescriptor` |
 
-#### Returns
+##### Returns
 
 `PropertyDescriptor`
 
 #### Defined in
 
-[src/decorators.ts:7](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/decorators.ts#L7)
+[src/decorators.ts:8](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/decorators.ts#L8)
 
 ___
 
@@ -735,7 +1467,7 @@ Indicates whether the property is an property of a contract, and ordinary class 
 
 #### Defined in
 
-[src/decorators.ts:51](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/decorators.ts#L51)
+[src/decorators.ts:80](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/decorators.ts#L80)
 
 ___
 
@@ -759,4 +1491,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:81](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L81)
+[src/builtins/functions.ts:83](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L83)

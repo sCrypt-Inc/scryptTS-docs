@@ -10,12 +10,12 @@
 
 ### Properties
 
-- [ALL\_FORKID](SigHash.md#all_forkid)
-- [ANYONECANPAY\_ALL\_FORKID](SigHash.md#anyonecanpay_all_forkid)
-- [ANYONECANPAY\_NONE\_FORKID](SigHash.md#anyonecanpay_none_forkid)
-- [ANYONECANPAY\_SINGLE\_FORKID](SigHash.md#anyonecanpay_single_forkid)
-- [NONE\_FORKID](SigHash.md#none_forkid)
-- [SINGLE\_FORKID](SigHash.md#single_forkid)
+- [ALL](SigHash.md#all)
+- [ANYONECANPAY\_ALL](SigHash.md#anyonecanpay_all)
+- [ANYONECANPAY\_NONE](SigHash.md#anyonecanpay_none)
+- [ANYONECANPAY\_SINGLE](SigHash.md#anyonecanpay_single)
+- [NONE](SigHash.md#none)
+- [SINGLE](SigHash.md#single)
 
 ### Methods
 
@@ -41,123 +41,123 @@
 
 ## Properties
 
-### ALL\_FORKID
+### ALL
 
-▪ `Static` `Readonly` **ALL\_FORKID**: [`SigHashType`](SigHashType.md)
+▪ `Static` `Readonly` **ALL**: [`SigHashType`](../README.md#sighashtype)
 
 #### Defined in
 
-[src/builtins/functions.ts:453](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L453)
+[src/builtins/functions.ts:507](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L507)
 
 ___
 
-### ANYONECANPAY\_ALL\_FORKID
+### ANYONECANPAY\_ALL
 
-▪ `Static` `Readonly` **ANYONECANPAY\_ALL\_FORKID**: [`SigHashType`](SigHashType.md)
+▪ `Static` `Readonly` **ANYONECANPAY\_ALL**: [`SigHashType`](../README.md#sighashtype)
 
 #### Defined in
 
-[src/builtins/functions.ts:456](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L456)
+[src/builtins/functions.ts:510](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L510)
 
 ___
 
-### ANYONECANPAY\_NONE\_FORKID
+### ANYONECANPAY\_NONE
 
-▪ `Static` `Readonly` **ANYONECANPAY\_NONE\_FORKID**: [`SigHashType`](SigHashType.md)
+▪ `Static` `Readonly` **ANYONECANPAY\_NONE**: [`SigHashType`](../README.md#sighashtype)
 
 #### Defined in
 
-[src/builtins/functions.ts:457](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L457)
+[src/builtins/functions.ts:511](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L511)
 
 ___
 
-### ANYONECANPAY\_SINGLE\_FORKID
+### ANYONECANPAY\_SINGLE
 
-▪ `Static` `Readonly` **ANYONECANPAY\_SINGLE\_FORKID**: [`SigHashType`](SigHashType.md)
+▪ `Static` `Readonly` **ANYONECANPAY\_SINGLE**: [`SigHashType`](../README.md#sighashtype)
 
 #### Defined in
 
-[src/builtins/functions.ts:458](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L458)
+[src/builtins/functions.ts:512](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L512)
 
 ___
 
-### NONE\_FORKID
+### NONE
 
-▪ `Static` `Readonly` **NONE\_FORKID**: [`SigHashType`](SigHashType.md)
+▪ `Static` `Readonly` **NONE**: [`SigHashType`](../README.md#sighashtype)
 
 #### Defined in
 
-[src/builtins/functions.ts:454](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L454)
+[src/builtins/functions.ts:508](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L508)
 
 ___
 
-### SINGLE\_FORKID
+### SINGLE
 
-▪ `Static` `Readonly` **SINGLE\_FORKID**: [`SigHashType`](SigHashType.md)
+▪ `Static` `Readonly` **SINGLE**: [`SigHashType`](../README.md#sighashtype)
 
 #### Defined in
 
-[src/builtins/functions.ts:455](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L455)
+[src/builtins/functions.ts:509](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L509)
 
 ## Methods
 
 ### hashOutputs
 
-▸ `Static` **hashOutputs**(`preimage`): `string`
+▸ `Static` **hashOutputs**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:505](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L505)
+[src/builtins/functions.ts:559](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L559)
 
 ___
 
 ### hashPrevouts
 
-▸ `Static` **hashPrevouts**(`preimage`): `string`
+▸ `Static` **hashPrevouts**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:470](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L470)
+[src/builtins/functions.ts:524](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L524)
 
 ___
 
 ### hashSequence
 
-▸ `Static` **hashSequence**(`preimage`): `string`
+▸ `Static` **hashSequence**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:474](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L474)
+[src/builtins/functions.ts:528](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L528)
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
@@ -177,27 +177,27 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:515](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L515)
+[src/builtins/functions.ts:569](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L569)
 
 ___
 
 ### nLocktimeRaw
 
-▸ `Static` **nLocktimeRaw**(`preimage`): `string`
+▸ `Static` **nLocktimeRaw**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:510](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L510)
+[src/builtins/functions.ts:564](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L564)
 
 ___
 
@@ -209,7 +209,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:501](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L501)
+[src/builtins/functions.ts:555](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L555)
 
 ___
 
@@ -229,7 +229,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
@@ -237,87 +237,87 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:496](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L496)
+[src/builtins/functions.ts:550](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L550)
 
 ___
 
 ### nVersion
 
-▸ `Static` **nVersion**(`preimage`): `string`
+▸ `Static` **nVersion**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:466](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L466)
+[src/builtins/functions.ts:520](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L520)
 
 ___
 
 ### outpoint
 
-▸ `Static` **outpoint**(`preimage`): `string`
+▸ `Static` **outpoint**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:478](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L478)
+[src/builtins/functions.ts:532](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L532)
 
 ___
 
 ### scriptCode
 
-▸ `Static` **scriptCode**(`preimage`): `string`
+▸ `Static` **scriptCode**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:483](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L483)
+[src/builtins/functions.ts:537](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L537)
 
 ___
 
 ### sigHashType
 
-▸ `Static` **sigHashType**(`preimage`): [`SigHashType`](SigHashType.md)
+▸ `Static` **sigHashType**(`preimage`): [`SigHashType`](../README.md#sighashtype)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-[`SigHashType`](SigHashType.md)
+[`SigHashType`](../README.md#sighashtype)
 
 #### Defined in
 
-[src/builtins/functions.ts:519](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L519)
+[src/builtins/functions.ts:573](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L573)
 
 ___
 
@@ -329,7 +329,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
@@ -337,24 +337,24 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:492](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L492)
+[src/builtins/functions.ts:546](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L546)
 
 ___
 
 ### valueRaw
 
-▸ `Static` **valueRaw**(`preimage`): `string`
+▸ `Static` **valueRaw**(`preimage`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](SigHashPreimage.md) |
+| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:487](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L487)
+[src/builtins/functions.ts:541](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L541)

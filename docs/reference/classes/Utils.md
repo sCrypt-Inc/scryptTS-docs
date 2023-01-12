@@ -37,7 +37,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:362](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L362)
+[src/builtins/functions.ts:415](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L415)
 
 ___
 
@@ -47,68 +47,68 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:364](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L364)
+[src/builtins/functions.ts:417](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L417)
 
 ## Methods
 
 ### buildOpreturnScript
 
-▸ `Static` **buildOpreturnScript**(`data`): `string`
+▸ `Static` **buildOpreturnScript**(`data`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `data` | `string` |
+| `data` | `Bytes` |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:442](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L442)
+[src/builtins/functions.ts:496](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L496)
 
 ___
 
 ### buildOutput
 
-▸ `Static` **buildOutput**(`outputScript`, `outputSatoshis`): `string`
+▸ `Static` **buildOutput**(`outputScript`, `outputSatoshis`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `outputScript` | `string` |
+| `outputScript` | `Bytes` |
 | `outputSatoshis` | `bigint` |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:432](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L432)
+[src/builtins/functions.ts:485](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L485)
 
 ___
 
 ### buildPublicKeyHashScript
 
-▸ `Static` **buildPublicKeyHashScript**(`pubKeyHash`): `string`
+▸ `Static` **buildPublicKeyHashScript**(`pubKeyHash`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `pubKeyHash` | [`PubKeyHash`](PubKeyHash.md) |
+| `pubKeyHash` | `Bytes` \| [`Ripemd160`](../README.md#ripemd160) |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:437](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L437)
+[src/builtins/functions.ts:490](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L490)
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `bytes` | `string` |
+| `bytes` | `Bytes` |
 
 #### Returns
 
@@ -128,27 +128,27 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:373](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L373)
+[src/builtins/functions.ts:426](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L426)
 
 ___
 
 ### readVarint
 
-▸ `Static` **readVarint**(`buf`): `string`
+▸ `Static` **readVarint**(`buf`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buf` | `string` |
+| `buf` | `Bytes` |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:381](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L381)
+[src/builtins/functions.ts:434](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L434)
 
 ___
 
@@ -169,24 +169,24 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:366](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L366)
+[src/builtins/functions.ts:419](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L419)
 
 ___
 
 ### writeVarint
 
-▸ `Static` **writeVarint**(`buf`): `string`
+▸ `Static` **writeVarint**(`buf`): `Bytes`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buf` | `string` |
+| `buf` | `Bytes` |
 
 #### Returns
 
-`string`
+`Bytes`
 
 #### Defined in
 
-[src/builtins/functions.ts:409](https://github.com/sCrypt-Inc/scrypt-ts/blob/244c0d1/src/builtins/functions.ts#L409)
+[src/builtins/functions.ts:462](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L462)

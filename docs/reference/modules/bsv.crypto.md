@@ -34,4 +34,4 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:201
+node_modules/bsv/index.d.ts:204
