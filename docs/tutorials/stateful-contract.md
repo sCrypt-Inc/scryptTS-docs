@@ -67,7 +67,12 @@ this.count++;
 * Validates this update has been correctly recorded into the contract, or in another word, the new state of `count` has been serialized into current tx by calling:
 
 ```ts
-assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
+// make sure balance in the contract does not change
+const amount: bigint = this.ctx.utxo.value;
+// output containing the latest state
+const output: ByteString = this.buildStateOutput(amount);
+// verify current tx has this single output
+assert(this.ctx.hashOutputs == hash256(output));
 ```
 
 In the above code, `this.ctx` accesses [ScriptContext](../getting-started/what-is-scriptcontext.md), which contains the entire transaction data.
