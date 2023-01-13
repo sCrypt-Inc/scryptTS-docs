@@ -10,13 +10,13 @@ sidebar_position: 7
 
 ```ts
 export type ScriptContext = {
-    nVersion: ByteString;
+    version: ByteString;
     utxo: UTXO;
     hashPrevouts: ByteString;
     hashSequence: ByteString;
-    nSequence: bigint;
+    sequence: bigint;
     hashOutputs: ByteString;
-    nLocktime: bigint;
+    locktime: bigint;
     sigHashType: SigHashType;
 };
 ```
@@ -24,17 +24,17 @@ export type ScriptContext = {
 The meaning of each field of the `ScriptContext` structure
 
 | ScriptContext  | Functional Meaning  |
-| ------------- | ------------- | 
-| nVersion | nVersion of the transaction  |
+| ------------- | ------------- |
+| version | nVersion of the transaction  |
 | utxo.value | value of the output spent by this input (8-byte little endian)  |
-| utxo.scriptCode | scriptCode of the input (serialized as scripts inside CTxOuts) |
+| utxo.script | scriptCode of the input (serialized as scripts inside CTxOuts) |
 | utxo.outpoint.txid | prevTx id in 32-byte hash |
 | utxo.outpoint.outputIndex | outputIndex in prevTx |
 | hashPrevouts | `hashPrevouts` is the double SHA256 of the serialization of all input outpoints; |
 | hashSequence | `hashSequence` is the double SHA256 of the serialization of nSequence of all inputs; |
-| nSequence | nSequence of the input  |
+| sequence | nSequence of the input  |
 | hashOutputs | `hashOutputs` is the double SHA256 of the serialization of all output amount (8-byte little endian) with scriptPubKey (serialized as scripts inside CTxOuts); |
-| nLocktime| nLocktime of the transaction |
+| locktime | nLocktime of the transaction |
 | sigHashType| sighash type of the signature |
 
 
