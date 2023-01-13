@@ -449,7 +449,7 @@ TypeScript's bitwise operator cannot be used in scryptTS. But you can use the bi
 | `&` | Bitwise AND | `and(x,y)`| 
 | <code> &#124; </code> | Bitwise OR | `or(x,y)`| 
 | `^` | Bitwise XOR | `xor(x,y)`| 
-| `~` | Bitwise NOT | `invert(x,y)`| 
+| `~` | Bitwise NOT | `invert(x)`| 
 | `<<` | Left shift | `lshift(x,y)`| 
 | `>>` | 	Sign-propagating right shift | `rshift(x,y)`|
 
