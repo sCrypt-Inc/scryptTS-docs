@@ -458,5 +458,5 @@ The number in the Bitcoin virtual machine is saved in the [Sign–magnitude form
 
 ## ScriptContext
 
-see [what is ScriptContext](./what-is-scriptcontext.md).
+See [what is ScriptContext](./what-is-scriptcontext.md).
 
