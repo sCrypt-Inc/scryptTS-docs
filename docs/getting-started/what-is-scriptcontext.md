@@ -98,7 +98,9 @@ propagateState(outputs: ByteString) : boolean {
 
 ### SigHash Type 
 
-The default [sigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) used to calculate the transation preimage is `SigHash.ALL`. You can customize the sighash type with the `@method()` decorator.
+[SigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) decides which part of the spending transaction is included in `ScriptContext`.
+![](../../static/img/sighashtypes.png)
+It defaults to `SigHash.ALL`, including all inputs and outputs. You can customize it by setting the argument of the `@method()` decorator, e.g.,
 
 ```ts
 @method(SigHash.ANYONECANPAY_SINGLE)
@@ -108,18 +110,18 @@ public increment() {
 ```
 
 There are a total of 6 sigHash types to choose from:
-
+![](../../static/img/sighashtypes.png)
 | SigHash Type | Functional Meaning |
 | ------------- | ------------- | 
-| SigHash.ALL | Sign all inputs and outputs |
-| SigHash.NONE | Sign all inputs and no output |
-| SigHash.SINGLE | Sign all inputs and the output with the same index |
-| SigHash.ANYONECANPAY_ALL | Sign its own input and all outputs |
-| SigHash.ANYONECANPAY_NONE | Sign its own input and no output |
-| SigHash.ANYONECANPAY_SINGLE | Sign its own input and the output with the same index |
+| ALL | Sign all inputs and outputs |
+| NONE | Sign all inputs and no output |
+| SINGLE | Sign all inputs and the output with the same index |
+| ANYONECANPAY_ALL | Sign its own input and all outputs |
+| ANYONECANPAY_NONE | Sign its own input and no output |
+| ANYONECANPAY_SINGLE | Sign its own input and the output with the same index |
 
 
-When you use a custom sighash type, you need to use the specified sighash type when constructing the transaction that calls the contract.
+When you use a customed sighash type, you need to use the same sighash type when constructing the transaction calling the contract, e.g.,
 
 
 
@@ -137,7 +139,7 @@ return new bsv.Transaction().from(utxos)
     })
     .setInputScript({
       inputIndex,
-      sigtype: bsv.crypto.Signature.ANYONECANPAY_SINGLE
+      sigtype: bsv.crypto.Signature.ANYONECANPAY_SINGLE   // <----- ANYONECANPAY_SINGLE has to be passed in
     }, (tx: bsv.Transaction) => {
     this.unlockFrom = { tx, inputIndex };
     return this.getUnlockingScript(self => {
@@ -150,4 +152,4 @@ return new bsv.Transaction().from(utxos)
 
 ### Debugging
 
-see [How to debug ScriptContext error](../tutorials/how-to-debug-scriptcontext-error.md)
+See [How to debug ScriptContext error](../tutorials/how-to-debug-scriptcontext-error.md)
