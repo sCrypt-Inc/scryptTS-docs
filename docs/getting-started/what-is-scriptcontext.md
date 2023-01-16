@@ -4,64 +4,89 @@ sidebar_position: 7
 
 # What is ScriptContext
 
-`ScriptContext` allows the contract code to access the entire transaction data, including all inputs and outputs.
-[ScriptContext](../getting-started/what-is-scriptcontext.md) allows the contract code to access the entire transaction data, including all inputs and outputs. It enables the logic of the contract to be executed correctly according to the agreement, and the state of the contract can be propagated correctly. This allows us to set any constraints on the data. This opens up endless possibilities for running various smart contracts on the BSV network.
+In the UTXO model, the context of validation is the UTXO being spent and the spending transaction, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` is spending the second output of `tx0`, the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
+![](../../static/img/scriptContext.jpg)
 
-
+This context is expressed in the `ScriptContext` interface.
 ```ts
-export type ScriptContext = {
-    version: ByteString;
-    utxo: UTXO;
-    hashPrevouts: ByteString;
-    hashSequence: ByteString;
-    sequence: bigint;
-    hashOutputs: ByteString;
-    locktime: bigint;
-    sigHashType: SigHashType;
-};
+export interface ScriptContext {
+  /** version number of [transaction]{@link https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction} */
+  version: ByteString,
+  /** the specific UTXO spent by this transaction input */
+  utxo: UTXO,
+  /** double-SHA256 hash of the serialization of some/all input outpoints, see [hashPrevouts]{@link https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashprevouts} */
+  hashPrevouts: ByteString,
+  /** double-SHA256 hash of the serialization of some/all input sequence values, see [hashSequence]{@link https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashsequence} */
+  hashSequence: ByteString,
+  /** sequence number of [transaction input]{@link https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Format_of_a_Transaction_Input} */
+  sequence: bigint,
+  /** double-SHA256 hash of the serialization of some/all output amount with its locking script, see [hashOutputs]{@link https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs} */
+  hashOutputs: ByteString,
+  /** locktime of [transaction]{@link https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction} */
+  locktime: bigint,
+  /** [SIGHASH flag]{@link https://wiki.bitcoinsv.io/index.php/SIGHASH_flags} used by this input */
+  sigHashType: SigHashType,
+}
+
+export interface UTXO {
+  /** locking script */
+  script: ByteString,
+  /** amount in satoshis */
+  value: bigint,
+  /** outpoint referenced by this UTXO */
+  outpoint: Outpoint,
+}
+
+export interface Outpoint {
+  /** txid of the transaction holding the output */
+  txid: ByteString,
+  /** index of the specific output */
+  outputIndex: bigint,
+}
 ```
 
-The meaning of each field of the `ScriptContext` structure
+The table shows the meaning of each field of the `ScriptContext` structure.
 
 | ScriptContext  | Functional Meaning  |
 | ------------- | ------------- |
-| version | nVersion of the transaction  |
-| utxo.value | value of the output spent by this input (8-byte little endian)  |
-| utxo.script | scriptCode of the input (serialized as scripts inside CTxOuts) |
-| utxo.outpoint.txid | prevTx id in 32-byte hash |
-| utxo.outpoint.outputIndex | outputIndex in prevTx |
-| hashPrevouts | `hashPrevouts` is the double SHA256 of the serialization of all input outpoints; |
-| hashSequence | `hashSequence` is the double SHA256 of the serialization of nSequence of all inputs; |
-| sequence | nSequence of the input  |
-| hashOutputs | `hashOutputs` is the double SHA256 of the serialization of all output amount (8-byte little endian) with scriptPubKey (serialized as scripts inside CTxOuts); |
-| locktime | nLocktime of the transaction |
+| version | version of the transaction  |
+| utxo.value | value of the output spent by this input  |
+| utxo.script | locking script of the UTXO |
+| utxo.outpoint.txid | txid of the transaction being spent |
+| utxo.outpoint.outputIndex | index of the UTXO in the outputs |
+| hashPrevouts | `hashPrevouts` is the double SHA256 of the serialization of all input outpoints |
+| hashSequence | `hashSequence` is the double SHA256 of the serialization of sequence of all inputs |
+| sequence | sequence of the input  |
+| hashOutputs | `hashOutputs` is the double SHA256 of the serialization of all outputs |
+| locktime | locktime of the transaction |
 | sigHashType| sighash type of the signature |
 
 
 
-You can directly access the relevant data of the transaction through `this.ctx` in the public functions of the contract.
-
+You can directly access the relevant data of the transaction through `this.ctx` in any public method.
+It can be considered additional information a public method gets when called, besides its function parameters.
+The example below accesses the locktime of the spending transaction.
 
 ```ts
-export class Counter extends SmartContract {
-  @prop(true)
-  count: bigint;
+class CheckLockTimeVerify extends SmartContract {
+  @prop()
+  matureTime: bigint // Can be timestamp or block height.
 
-  constructor(count: bigint) {
-    super(count);
-    this.count = count;
+  constructor(matureTime: bigint) {
+    super(matureTime)
+    this.matureTime = matureTime
   }
 
   @method()
-  public increment() {
-    this.count++;
-    assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
+  public unlock() {
+    assert(this.ctx.locktime >= this.matureTime, "locktime too low")
   }
 }
+
 ```
 
 
-**Note** that accessing `this.ctx` in **non-public** functions is not allowed:
+**Note**: accessing `this.ctx` in **non-public** methods is not allowed:
 
 ```ts
 @method()
