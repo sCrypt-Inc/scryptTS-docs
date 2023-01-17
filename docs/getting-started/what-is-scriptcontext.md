@@ -47,7 +47,7 @@ export interface Outpoint {
 
 The table shows the meaning of each field of the `ScriptContext` structure.
 
-| ScriptContext  | Functional Meaning  |
+| Field  | Description  |
 | ------------- | ------------- |
 | version | version of the transaction  |
 | utxo.value | value of the output spent by this input  |
@@ -78,7 +78,7 @@ class CheckLockTimeVerify extends SmartContract {
   }
 
   @method()
-  public unlock() {
+  public timelock() {
     assert(this.ctx.locktime >= this.matureTime, "locktime too low")
   }
 }
@@ -115,7 +115,7 @@ class DesignatedReceivers extends SmartContract {
   }
 
   @method()
-  public increment() {
+  public payout() {
     const aliceOutput: ByteString = this.buildPubKeyHashOutput(alice, 1000n);
     const bobOutput: ByteString = this.buildPubKeyHashOutput(bob, 1000n);
     const outputs = aliceOutput + bobOutput;
@@ -147,7 +147,7 @@ public increment() {
 ```
 
 There are a total of 6 sigHash types to choose from:
-![](../../static/img/sighashtypes.png)
+
 | SigHash Type | Functional Meaning |
 | ------------- | ------------- | 
 | ALL | Sign all inputs and outputs |
