@@ -95,6 +95,43 @@ propagateState(outputs: ByteString) : boolean {
 }
 ```
 
+### Access inputs and outputs
+
+The inputs and outpus of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and then ensure they hash to the expected digest, which ensure they are actually from the spending transaction.
+The following example ensure both Alice and Bob get 1000 satoshis from the contract.
+
+```ts
+class DesignatedReceivers extends SmartContract {
+  @prop()
+  alice: PubKeyHash;
+
+  @prop()
+  bob: PubKeyHash;
+
+  constructor(alice: PubKeyHash, bob: PubKeyHash) {
+    super(...arguments);
+    this.alice = alice;
+    this.bob = bob;
+  }
+
+  @method()
+  public increment() {
+    const aliceOutput: ByteString = this.buildPubKeyHashOutput(alice, 1000n);
+    const bobOutput: ByteString = this.buildPubKeyHashOutput(bob, 1000n);
+    const outputs = aliceOutput + bobOutput;
+
+    // ensure outputs are actually from the spending transaction as expected
+    assert(this.ctx.hashOutputs == hash256(outputs));
+  }
+
+  // create an p2pkh output with the given receiver and amount
+  @method()
+  buildPubKeyHashOutput(receiver: PubKeyHash, amount: bigint): ByteString {
+    const script: ByteString = Utils.buildPublicKeyHashScript(receiver);
+    return Utils.buildOutput(script, amount);
+  }
+}
+```
 
 ### SigHash Type 
 
