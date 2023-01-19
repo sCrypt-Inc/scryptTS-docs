@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'scryptTS',
-  tagline: 'scryptTS is a Typescript framework to write smart contracts on Bitcoin SV.',
+  tagline: 'a Typescript DSL to write smart contracts on Bitcoin Satoshi Vision.',
   url: 'https://scrypt.io',
   baseUrl: '/scrypt-ts',
   onBrokenLinks: 'throw',

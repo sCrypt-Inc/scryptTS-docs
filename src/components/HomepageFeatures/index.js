@@ -4,29 +4,29 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Easiest',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Write Bitcoin smart contracts in TypeScript/JavaScript.
+        Write smart contracts directly in TypeScript.
       </>
     ),
   },
   {
-    title: 'Scalable',
+    title: 'Most Scalable',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Build on the BSV blockchain the most scalable blockchain that exists today.
+        Build on the most scalable blockchain today.
       </>
     ),
   },
   {
-    title: 'Cheap',
+    title: 'Cheapest',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Run contracts with transaction fees as low as <code>$0.0001</code>.
+        Run contracts with transaction fee as low as <code>$0.00001</code>.
       </>
     ),
   },
