@@ -2,31 +2,19 @@
 sidebar_position: 4
 ---
 
-# Tutorial 4: Stateful Contract
+# Tutorial 4: Stateful Contracts
 
 ## Overview
 
-In this tutorial we will introduce a concept called `stateful contract` and how to create a stateful contract.
+In Bitcoin's UTXO model, a smart contract is one-off and has no state by default, since the UTXO containing it is destroyed after being spent. However, a smart contract can simulate state by requiring 
+the output of the spending transaction containing the same contract but with the updated state, enabled by [ScriptContext](../getting-started/what-is-scriptcontext.md).
 
-## What is a Stateful Contract?
-
-Generally speaking, there are two different kinds of Bitcoin smart contracts:
-
-### Non-stateful Contract
-
-If a contract instance was only called once on-chain after deployment, and no longer generates new UTXO(s) that contain the locking script of the contract. We can call this kind of contract non-stateful, or in another word it's a one-off contract.
-
-There are a lot of use cases for non-stateful contracts. For example, puzzle resolving contracts.
- 
-### Stateful Contract
-
-If a contract instance was called multiple times on-chain after deployment, and generates new UTXO(s) that contain the locking script of the contract. We can call this kind of contract stateful, which means it can maintain its inner states correctly on-chain after each calling.
-
-Stateful contracts are commonly used if you want some properties of your contract to be changed by calling `@method`s, which will be verified by miners.
+We divide a smart contract in the locking script of an output into two parts: code and state as shown below. The code part contains the business logic of a contract that encodes rules for state transition and must NOT change. State transition occurs when a transaction spends the output containing the old state and creates an output containing the new state, while keeping the contract code intact.
+![](../../static/img/state.jpg)
 
 ## Create a Stateful Contract
 
-We can use the `scrypt` command to create a demo stateful contract with all the needed scaffolding. Let's run the following command:
+We can create a stateful contract using the following command:
 
 ```sh
 scrypt project --state my-project
@@ -34,37 +22,29 @@ scrypt project --state my-project
 
 Note the `state` option is turned on.
 
-This will create a project containing a demo stateful contract named `Counter`. This contract implements a very easy state changing case: Increase a count by one for every contract call.
+This will create a project containing a sample stateful contract named `Counter`. This contract implements maintains a single state: how many times it has been called since deployment.
 
 Let's take a look at the contract source file `src/contracts/counter.ts`.
 
-### Add `@prop(true)` on stateful property
-As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make the property `count` stateful. 
+### Stateful properties
+As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make a property part of the contract state, meaning it can be mutated when the contract gets called.
 
 ```ts
-@prop(true) count: bigint;
+@prop(true)
+count: bigint;
 ```
 
-### The entry method 
+### Update states
 
-The contract code defines an entry method named `increment` for the stateful contract like this:
+The `increment()` method does two things:
 
-```ts
-@method public increment()
-```
-
-
-### Update properties and validate changes
-
-The entry method mainly does two things:
-
-* Increment the property `count`: 
+1. Update the state, like any othe property:
 
 ```js
 this.count++;
 ```
 
-* Validates this update has been correctly recorded into the contract, or in another word, the new state of `count` has been serialized into current tx by calling:
+1. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
 
 ```ts
 // make sure balance in the contract does not change
@@ -75,13 +55,14 @@ const output: ByteString = this.buildStateOutput(amount);
 assert(this.ctx.hashOutputs == hash256(output));
 ```
 
-In the above code, `this.ctx` accesses [ScriptContext](../getting-started/what-is-scriptcontext.md), which contains the entire transaction data.
+[ScriptContext](../getting-started/what-is-scriptcontext.md) `this.ctx` allows us to access the outputs of the spending transaction.
 
 
-Finally we can get a complete stateful contract `Counter` as below:
+The complete stateful contract is as follows:
 
 ```ts
 export class Counter extends SmartContract {
+  // stateful
   @prop(true)
   count: bigint;
 
@@ -99,14 +80,11 @@ export class Counter extends SmartContract {
 ```
 
 ## Test a Stateful Contract
+Let's take a look at the local test code in `tests/local/count.test.ts`, which is broken into 3 phases.
 
-### Test calls locally
+### 1. Build a tx and a genesis instance for contract deployment
 
-Let's take a look at the local test code in `tests/local/count.test.ts`. The code can be broken down into the phases described below.
-
-#### 1. Build a tx and a genesis instance for contract deployment
-
-First the `Counter` gets instantiated to get an instance with the initial `count` value `0`. Also it's marked as the genesis instance.
+First the `Counter` gets initialized to `0`. Also it's marked as genesis (set flag `isGenesis` internally), the first in a chain of transactions as the contract state gets updated.
 
 ```js
 const count = new Counter(0n).markAsGenesis();
@@ -122,31 +100,31 @@ getDeployTx(utxos: UTXO[], initBalance: number): bsv.Transaction {
       script: this.lockingScript,
       satoshis: initBalance,
     }));
-  // also build the relate with tx
+  // also build the relationship between the contract and the tx
   this.lockTo = { tx, outputIndex: 0 };
   return tx;
 }
 ```
 
-It builds a tx from a `utxos` list passed in, then adding an output with script from `count.lockingScript` and `initBalance` as its value. Also it binds `this` instance `lockTo` the `tx` with the `outputIndex` of `0`.
+It builds a tx from a `utxos` list passed in as inputs. It has an output with the initial contract state. Also it binds `this` instance to the `tx` with the `outputIndex` of `0`, meaning the contract is deployed in tx's 0-th output.
 
 #### 2. Build a tx and an instance for contract call
 
-As we described [before](../getting-started/how-to-deploy-and-call-a-contract#concepts), when we call an entry method of a contract instance, a new tx and a new contract instance will be built together.
+As we described [before](../getting-started/how-to-deploy-and-call-a-contract#concepts), when we call a public method of a contract instance, a new tx and a new contract instance will be built together.
 
-A new instance from the previous contract can be created by calling its `next` method, which will make a deep copy of all properties except the `isGenesis` flag:
+A new instance from the previous contract can be created by calling its `next` method, which will make a deep copy of all properties except for the `isGenesis` flag:
 
 ```ts
 const newCounter = counter.next();
 ```
 
-The properties value on this `newCounter` can be updated like:
+Property of this `newCounter` can be updated as before:
 
 ```ts
 newCounter.count++;
 ```
 
-Our contract also implements a method called `getCallTx` which builds a tx for calling the entry method:
+Our contract also implements a method called `getCallTx`, which builds a tx to call the public method:
 
 ```ts
 getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transaction {
@@ -170,13 +148,13 @@ getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transa
 
 ```
 
-The `callTx` has a structure like this:
+The tx has the following structure:
 
 * Inputs
 	
-  * [0]: An input built from `utxos` to provide the tx fee;
+  * [0]: an input built from `utxos` to pay the tx fee;
 
-  * [1]: An input spending the UXTO from `prevTx`. Its unlocking script is generated by calling contract’s entry method like:
+  * [1]: an input spending the UXTO from `prevTx`, containing the contract. Its unlocking script is generated by calling contract’s public method like:
 
   ```ts
   return this.getUnlockingScript(self => {
@@ -190,7 +168,7 @@ The `callTx` has a structure like this:
 
 #### 3. Verify the entry method call
 
-Finally, the [`SmartContract.verify`](../getting-started/how-to-test-a-contract.md#use-smartcontactverify-method) method is used to test the entry call like this:
+Finally, the [`SmartContract.verify`](../getting-started/how-to-test-a-contract.md#use-smartcontactverify-method) method is used to test the public method:
 
 ```ts
 counter.verify(() => {
@@ -200,16 +178,9 @@ counter.verify(() => {
 
 ### Running the tests
 
-Same as with our `Demo` project we can just use the following commands:
+Same as before, we can just use the following command:
 
 ```sh
 npm run test
 ```
-
-to run the local tests and
-
-```sh
-npm run testnet
-```
-
-to test the contract deployment on the Bitcoin testnet. Don't forget to generate and fund your private key before running the testnet command.
+Full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/counter.ts).
