@@ -7,9 +7,9 @@ sidebar_position: 4
 Debugging a scryptTS contract is as easy as debugging TypeScript, since it is just TypeScript.
 
 
-## Use console.log()
+## Use `console.log()`
 
-You can use `console.log` to print the value of an expression:
+You can use `console.log()` to print to the console.
 
 
 ```ts
@@ -40,10 +40,11 @@ export class Demo extends SmartContract {
     }
 }
 
-Demo.compile().then(()=> {
-    let demo = new Demo(1n, 2n);
+(async () => {
+    await Demo.compile()
+    const demo = new Demo(1n, 2n)
     demo.add(3n);
-})
+})()
 ```
 
 Run this command in this [example](https://github.com/sCrypt-Inc/scryptTS-examples):
@@ -52,7 +53,7 @@ Run this command in this [example](https://github.com/sCrypt-Inc/scryptTS-exampl
 ts-node src/contracts/demo.ts
 ```
 
-You will see the following output:
+You should see the following output:
 
 ```
 z: 3
@@ -61,98 +62,15 @@ sum: 3
 
 ## Use Visual Studio Code debugger
 
+You can use VS Code to debug scryptTS contracts, the same way as any other TypeScript programs. If you have created a project with [the sCrypt CLI](installation.md), you should have an auto-generated [launch.json](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/.vscode/launch.json), containing everything needed for the debugger out of the box. To learn more about the VS Code TypeScript debugger, please refer to the [official documentation](https://code.visualstudio.com/docs/TypeScript/TypeScript-debugging).
 
-First make sure you have turned on the `sourceMap` setting in your `tsconfig.json`:
-
-```json
-{
-    "compilerOptions": {
-        "target": "es2021",
-        "module": "commonjs",
-        "outDir": "dist",
-        "sourceMap": true
-        ...
-    }
-}
-```
-
-As with [debugging TypeScript programs](https://code.visualstudio.com/docs/TypeScript/TypeScript-debugging), you need to create a `launch.json`.
-
-```json
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch demo",
-            "skipFiles": [
-                "<node_internals>/**",
-                "**/node_modules/**",
-            ],
-            "resolveSourceMapLocations": [
-                "!**/node_modules/**",
-            ],
-            "program": "${workspaceRoot}/src/contracts/demo.ts",
-            "preLaunchTask": "tsc: build - tsconfig.json",
-            "outFiles": ["${workspaceRoot}/dist/**/*.js"]
-        },
-        
-    ]
-}
-```
-
-Now you can start setting breakpoints and press **F5** to start the debugger.
+![](../../static/img/debug.jpg)
+You can set some breakpoints and choose `Launch demo` from the `Run and Debug` view (or press **F5**) to start the debugger instantly.
 
 
 ![](../../static/img/debugging1.gif)
 
-If you want to debug a unit test written with **Mocha**, use the following configuration:
+If you want to debug a unit test written with the [Mocha](https://mochajs.org) testing framework, choose `Launch demo test` from the `Run and Debug` view.
 
-```json
-{
-    "type": "node",
-    "request": "launch",
-    "name": "Launch Mocha",
-    "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**",
-    ],
-    "resolveSourceMapLocations": [
-        "!**/node_modules/**",
-    ],
-    "program": "${workspaceRoot}/node_modules/.bin/_mocha",
-    "args": [
-        "${workspaceRoot}/dist/tests/**/demo.test.js",
-        "--colors",
-        "-t",
-        "100000"
-    ],
-    "preLaunchTask": "tsc: build - tsconfig.json",
-    "outFiles": []
-}
-```
 
 ![](../../static/img/debugging2.gif)
-
-# Advanced
-## DebugFunctions Interface
-
-DebugFunctions is interface that contains a set of functions for debugging contracts at runtime. All debugging functions will not affect the execution results of the contract.
-
-It contains the following functions:
-
-1. diffOutputs: Comparing the difference between the outputs argument and all the outputs of the transaction bound by `unlockFrom`, which are serialized and hashed to produce `hashOutputs` field of [scriptcontext](what-is-scriptcontext.md), see [How to debug ScriptContext error](../tutorials/how-to-debug-scriptcontext-error.md). 
-
-
-Every `SmartContract` has a `debug` property. You can call it in the `@method()` methods of the contract:
-
-```ts
-@method()
-public increment(amount: bigint) {
-    this.counter++;
-    let outputs = this.buildStateOutput(amount);
-    this.debug.diffOutputs(outputs);
-    assert(this.ctx.hashOutputs == hash256(outputs));
-}
-```
