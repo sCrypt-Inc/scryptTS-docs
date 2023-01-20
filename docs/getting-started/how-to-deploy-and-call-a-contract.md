@@ -13,7 +13,6 @@ To deploy a smart contract, we first need to compile it to Script. Next, we buil
 To spend a UTXO locked by a contract, we need to call one of its public methods to unlock it. We build a new tx to reference this UTXO in one input, and we need to provide the corresponding unlocking script for this input. The unlocking script is the arguments passed into the public method so that it returns `true`, a.k.a., `witness`.
 
 A public method in this sense can be regarded as a mathematical boolean method `f` in the locking script, with `x` as its argument in the unlocking script. A contract call succeeds if and only if `f(x)` evaluates to `true`.
-![](../../static/img/utxo.jpg)
 
 ## Workflow
 

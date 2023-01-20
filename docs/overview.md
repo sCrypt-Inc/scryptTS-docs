@@ -4,69 +4,44 @@ sidebar_position: 1
 
 # Overview
 
-Congratulations on choosing `scryptTS` as a tool to build Smart Contract based applications — you’re already making good decisions!
+`scryptTS` an `embedded Domain Specific Language` ([sDSL](https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages)) based on TypeScript for writing smart contracts on Bitcoin SV. `Embedded` means that it is a language inside another language. `scryptTS` is strictly a subset of TypeScript, so all `scryptTS` code is valid TypeScript, but not vice versa.
 
-## eDSL concepts
+We choose [TypeScript](https://www.typescriptlang.org) as the host language because it provides an easy, familiar language (JavaScript), but with type safety, making it easy to get started writing safe smart contracts. There is no need to learn a new programming language or tools, if you are already familiar with TypeScript/JavaScript.
+If you're new to TypeScript, check out this helpful [introductory video](https://www.youtube.com/watch?v=ahCwqrYpIuM).
 
-eDSL stands for `embedded Domain Specific Language`.
-
-`embedded Domain Specific Language` means that you embed a Domain specific language in a language like TypeScript. What it means can be explained by analyzing the definition:
-
-- `Language` explains that is a programming language we are talking about.
-- `Domain Specific` explains that the language is meant for a specific set of tasks. The "Domain", or specific purpose of `scryptTS` is the creation of Bitcoin smart contracts.
-- `embedded` means that it is a language inside another language. While `scryptTS` is a language on its own, it is built inside of the Typescript language (which is called the host language).
-
-## What is `scryptTS`?
-
-`scryptTS` is an `eDSL`, which is built inside of the Typescript language,  to write smart contracts on Bitcoin.
 
 ## How do Bitcoin Smart Contracts work?
 
-Smart contracts on the Bitcoin network are based on the Bitcoin UTXO model, which is very different from an account model like Ethereum used.
+Smart contracts on Bitcoin are based on the UTXO model, which is very different from an account model like Ethereum used.
 
 ### UTXO model
 
-Each Bitcoin [Transaction](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions) is composed of Inputs and Outputs. Inputs provide the funds to be spent in the transaction, and Outputs define where those funds should be allocated.
+Each bitcoin transaction consists of some inputs and outputs.
+An output contains:
 
-#### Inputs
+- The amount of bitcoins it contains.
+- A piece of computer code (called the locking script).
 
-An input is a reference to an output from a previous transaction, or in another word it spends the referenced output. 
+while an input contains:
+- A reference to the previous transaction output.
+- A piece of computer code (the unlocking script).
 
-An important part in input is called **unlocking script**, which is a piece of  [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script). The script provides information that can be used to **unlock** the referenced output.
+An Unspent Transaction Output (UTXO) is an output not consumed in any transaction yet. The low-level computer code is called [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script).
 
-#### Outputs
+![](../static/img/utxo.jpg)
 
-An output also contains a piece of Bitcoin Script called **locking script**, which can be used to **lock** some bitcoins which are represented by the `value` field of the output .
+The locking script can be regarded as a boolean function `f` that specifies conditions to spend the bitcoins in the UTXO (thus the name "locking"), acting as a lock.
+The unlocking script in turns provides the function arguments that makes `f` evaluates to `true`, i.e., the "key" (also called witness) needed to unlock.
+Only when an input contains the “key” matching previous output’s “lock”, it can spend bitcoins contained in the output.
 
-#### Transaction Validation
-
-A transaction is valid if all of its inputs are valid. 
-
-To verify that inputs are authorized to collect the values of referenced outputs, Bitcoin uses a Forth-like scripting system. In simple words, the scripts from an input and its referenced output are connected (in that order) to form a complete script that will be evaluated. The evaluation returns true if the input can spend the output, otherwise it can’t.
-
-An output that has not been spent yet is called an unspent transaction output, UTXO for short.
-
-### UTXO-based Smart Contract
-
-An UTXO-based smart contract works on the foundation of the scripting system described before.
-
-A smart contract can be transformed to a locking script. It can have properties or states which will be serialized into this locking script as well. 
-
-A smart contract can be deployed through a Bitcoin transaction if any of the tx outputs contains the locking script generated from the contract. In other words, a transaction can have UTXO(s) locked by the contract(s).
-
-A smart contract can have many public(entry) methods. Each signature of them can be transformed to an unlocking script. Developers can implement any kinds of verifications in those methods for their given parameters.
-
-A smart contract can be called through a Bitcoin transaction if one of the tx inputs spends an UTXO locked by the contract.
+In [a regular Bitcoin payment](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Pay_to_Public_Key_Hash_.28P2PKH.29), the locking script, containing a [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address), checks the spender has the right private key to produce a valid signature in the unlocking script. The expressive Script enables the locking script to specify arbitrarily more complex spending conditions, i.e., Bitcoin smart contracts.
 
 ## How does `scryptTS` work?
 
-`scryptTS` provides a feature that can transpile smart contracts written in TypeScript into equivalents written in a dedicated Bitcoin smart contract language named [`sCrypt`](https://scrypt.io) at TypeScript compile time. Those sCrypt contracts can be compiled into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script) by the native compiler, and then the low-level scripts could be used as locking / unlocking scripts when building transactions.
+`scryptTS` is a high-level language to be compiled into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script). The resulting assembly-like scripts could be used as locking scripts when building transactions.
 
-Backed by these underlying techniques, developers could use their most familiar language TypeScript to build Bitcoin smart contract applications.
+## Learn `scryptTS`
 
-## Learn scryptTS
+Jump over to the [Getting Started](./getting-started/installation.md) section to learn how to create an `scryptTS` project.
 
-Jump over to the [Getting Started](./getting-started/installation.md) section to learn how to create an scryptTS project from scratch one by one.
-
-If you're already experienced, you can jump straight to the [Tutorials](./tutorials/hello-world.md) section where you will use the sCrypt CLI tool to generate all the boilerplate for you.
-
+Join the `#scrypt` channel on [Bitcoin SV Discord](https://discord.gg/bsv) or [Slack](https://join.slack.com/t/scryptworkspace/shared_invite/enQtNzQ1OTMyNDk1ODU3LTJmYjE5MGNmNDZhYmYxZWM4ZGY2MTczM2NiNTIxYmFhNTVjNjE5MGYwY2UwNDYxMTQyNGU2NmFkNTY5MmI1MWM) to ask questions.
