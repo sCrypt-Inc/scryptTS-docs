@@ -13,6 +13,7 @@ To deploy a smart contract, we first need to compile it to Script. Next, we buil
 To spend a UTXO locked by a contract, we need to call one of its public methods to unlock it. We build a new tx to reference this UTXO in one input, and we need to provide the corresponding unlocking script for this input. The unlocking script is the arguments passed into the public method so that it returns `true`, a.k.a., `witness`.
 
 A public method in this sense can be regarded as a mathematical boolean method `f` in the locking script, with `x` as its argument in the unlocking script. A contract call succeeds if and only if `f(x)` evaluates to `true`.
+![](../../static/img/utxo.jpg)
 
 ## Workflow
 
@@ -44,8 +45,8 @@ tx.addOutput(new bsv.Transaction.Output({
   ...
 }))
 ```
-
-From the perspective of `instance`, the binding can be declared like:
+The contract is in the 0-th output of `tx`.
+From the perspective of `instance`, this is equivalent to:
 
 ```js
 instance.lockTo = { tx, outputIndex: 0 };
@@ -53,21 +54,21 @@ instance.lockTo = { tx, outputIndex: 0 };
 
 #### `unlockFrom`
 
-A contract `instance` has is unlocked from a `tx` if the unlocking script in one of its inputs us a call to `instance`'s public(entry) `@method`.
+A contract `instance` is unlocked from a `tx` if one of its input calls `instance`'s public method to spend the UTXO it locks to.
 
-From the perspective of `tx`, it may look like this:
+From the perspective of `tx`, it looks like:
 
 ```js
 tx.addInput(new bsv.Transaction.Input({
-  script: instance.getUnlockingScript( inst => inst.customEntryMethod(...args) )
+  script: instance.getUnlockingScript( inst => inst.pubMethod(...args) )
   ...
 }))
 ```
-
-From the perspective of `instance`, the binding can be declared like:
+`tx`'s 0-th input spends the contract UTXO.
+From the perspective of `instance`, this is equivalent to:
 
 ```js
-instance.unlockFrom = { tx, inputIndex: 0};
+instance.unlockFrom = { tx, inputIndex: 0 };
 ```
 
 ### 3. Send the tx
@@ -76,7 +77,7 @@ The final step is to send the tx to the network. If everything is fine, the tx w
 
 ## Example
 
-Here is the complete code to deploy and call contract `Demo`. Notice that we put the tx building logic in the contract as regular methods, i.e., withut decorator `@method`.
+Here is the complete code to deploy and call contract `Demo`. Notice that we put the tx building logic in the contract as regular methods, i.e., without decorator `@method`.
 
 ```ts
 export class Demo extends SmartContract {
