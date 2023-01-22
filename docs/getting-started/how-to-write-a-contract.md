@@ -183,9 +183,9 @@ Also there are only a few methods of `ByteString` can be used in `@method`s:
 
 * `ByteString.==` / `ByteString.===`: compare two strings, like `str1 == str2` or `str1 === str2`.
 
-* `ByteString.+`: concat two strings, like `str1 + str2`.
+* `ByteString.+`: concatenate two strings, like `str1 + str2`.
 
-* `ByteString.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `ByteString` is a byte array, `indexStart` and `indexEnd` must be even numbers.
+* `ByteString.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `ByteString` is a byte array and each byte consists of two hex characters, `indexStart` and `indexEnd` must be even.
 
 #### `number` Type
 
@@ -205,8 +205,9 @@ let item = arr[Number(idx)];
 
 ```ts
 let b: ByteString = toByteString("001122");
-let end: bigint = 1n;
+let end: bigint = 4n;
 b.slice(0, Number(end));
+// "0011"
 ```
 
 ### User-defined Types
