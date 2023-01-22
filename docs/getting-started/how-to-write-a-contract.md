@@ -113,7 +113,7 @@ A public method can be called from an external transaction. The call succeeds if
 ```js
   @method()
   public unlock(x: bigint) {
-    assert(this.add(this.x, 1n) === x, "unlock failed");
+    assert(this.add(this.x, 1n) === x, "unequal");
   }
 ```
 
@@ -399,7 +399,7 @@ abs(a: bigint): bigint {
 ### Built-in Functions
 #### `assert`
 
-The most commonly used built-in function is `assert(condition: boolean, msg?: string)`. It throws an error if `condition` is false. A contract call is successful if and only if the first arugment `condition` passed to the `assert` functions is true.
+The most commonly used built-in function is `assert(condition: boolean, msg?: string)`. It throws an error if `condition` is false. A contract call is successful if and only if the first arugment `condition` passed to the functions is true for all `assert`s executed.
 
 ### Whitelisted Functions
 Be default, all Javascript/TypeScript built-in functions/global variables are not allowed in `@method`s, except the following kinds.
