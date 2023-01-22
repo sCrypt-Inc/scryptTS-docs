@@ -146,11 +146,16 @@ Basic type `boolean` is allowed, along with its wrapper type `Boolean`.
 
 #### `bigint` Type
 
-Basic type `bigint` is allowed, along with its wrapper type `Bigint`. A  bigint literal is a number with suffix `n`:
+Basic type `bigint` is allowed, along with its wrapper type `Bigint`. A  [bigint literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) is a number with suffix `n`:
 
 ```ts
 11n;
-0x33n;
+0x33FEn;
+const previouslyMaxSafeInteger = 9007199254740991n
+const alsoHuge = BigInt(9007199254740991)
+// 9007199254740991n
+const hugeHex: bigint = BigInt("0x1fffffffffffff")
+// 9007199254740991n
 ```
 
 #### `ByteString` Type
