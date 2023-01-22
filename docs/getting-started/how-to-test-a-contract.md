@@ -29,18 +29,18 @@ For each public `@method`, we test it in two ways:
 The method tests a contract call. The function signature is as follows:
  
 ```ts
-SmartContact.verify(entryMethodInvoking: (self: SmartContract) => void): VerifyResult
+SmartContact.verify(publicMethod: (self: SmartContract) => void): VerifyResult
 ```
 
-Notice that it actually accepts a callback function named `entryMethodInvoking`. You should call the testing target method in this callback, like:
+Notice that it actually accepts a callback function named `publicMethod`. You should call the testing target method in this callback, like:
 
 ```ts
 fooSmartContact.verify(self => {
-   self.entryMethod(...args);
+   self.publicMethod(...args);
 })
 ```
 
-If the call succeeds, it returns a `VerifyResult`; otherwise, it throws an error.
+`verify()` succeeds if and only if all assertions executed in `publicMethod` pass. If so, it returns a `VerifyResult`; otherwise, it throws an error.
 
 ### Use a testing framework
  
