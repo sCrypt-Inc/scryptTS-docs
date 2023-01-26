@@ -67,7 +67,7 @@ export class Counter extends SmartContract {
   count: bigint;
 
   constructor(count: bigint) {
-    super(count);
+    super(...arguments);
     this.count = count;
   }
 

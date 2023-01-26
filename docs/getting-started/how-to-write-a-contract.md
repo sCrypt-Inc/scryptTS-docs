@@ -14,7 +14,7 @@ class Demo extends SmartContract {
   x: bigint;
 
   constructor(x: bigint) {
-    super(x);
+    super(...arguments);
     this.x = x;
   }
 
@@ -58,7 +58,7 @@ class A extends SmartContract {
   @prop() p1: bigint;
   @prop() p2: boolean;
   constructor(p0: bigint, p1: bigint, p2: boolean) {
-    super(p0, p1, p2);  // note that `p0` is property without `@prop()` and it should be passed in order.
+    super(...arguments);  // note that `p0` is property without `@prop()` and it should be passed in order.
     this.p0 = p0;
     this.p1 = p1;
     this.p2 = p2;

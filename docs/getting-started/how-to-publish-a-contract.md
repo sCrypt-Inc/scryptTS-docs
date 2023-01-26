@@ -26,7 +26,7 @@ class MyLib extends SmartContractLib {
   buf: ByteString;
 
   constructor(buf: ByteString) {
-    super(buf);
+    super(...arguments);
     this.buf = buf;
   }
 
