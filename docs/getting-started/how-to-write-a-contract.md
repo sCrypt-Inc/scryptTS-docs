@@ -30,20 +30,22 @@ class Demo extends SmartContract {
 }
 ```
 
+Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `scryptTS` is that both on-chain and off-chain code are written in the same language: TypeScript.
+
 ## Properties
 
 A smart contract can have two kinds of properties:
 
-1. Properties with `@prop` decorator. These properties are **only allowed to have [types](#Types) specified below** and they shall only be initialized in the constructor.
+1. With `@prop` decorator: these properties are **only allowed to have [types](#Types) specified below** and they shall only be initialized in the constructor.
 
-2. Properties without `@prop` decorator. These properties are normal TypeScript class properties without any special requirement. These properties can be initialized in the constructor. However, accessing these properties is prohibited in methods decorated with the `@method` decorator.
+2. Without `@prop` decorator: these properties are regular TypeScript  properties without any special requirement. Accessing these properties is prohibited in methods decorated with the `@method` decorator.
 
 
 ### `@prop(stateful: boolean = false)` decorator 
 
 Use this decorator to mark any property that intends to be stored on chain.
 
-This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called `stateful` property and its value can be updated in subsequent contract calls.
+This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called [stateful](../tutorials/stateful-contract.md) property and its value can be updated in subsequent contract calls.
 
 ## Constructor
 
@@ -55,73 +57,58 @@ in the same order as they are passed into the constructor. For example,
 ```ts
 class A extends SmartContract {
   p0: bigint;
-  @prop() p1: bigint;
-  @prop() p2: boolean;
+  
+  @prop()
+  p1: bigint;
+  
+  @prop()
+  p2: boolean;
+  
   constructor(p0: bigint, p1: bigint, p2: boolean) {
-    super(...arguments);  // note that `p0` is property without `@prop()` and it should be passed in order.
+    super(...arguments);  // same as super(p0, p1, p2)
     this.p0 = p0;
     this.p1 = p1;
     this.p2 = p2;
   }
 }
 ```
+[`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) is an array containing the values of the arguments passed to that function. `...` is the [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
 
-
-An easy way to write this is to use [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments);
-
-```ts
-class A extends SmartContract {
-  p0: bigint;
-  @prop() p1: bigint;
-  @prop() p2: boolean;
-  constructor(p0: bigint, p1: bigint, p2: boolean) {
-    super(...arguments);  // use arguments
-    this.p0 = p0;
-    this.p1 = p1;
-    this.p2 = p2;
-  }
-}
-```
 
 ## Methods
 
 Like properties, a smart contract can also have two kinds of methods:
 
-1. Methods without `@method` decorator. These methods are just like normal TypeScript class methods with no special restraints.
+1. With `@method` decorator: these methods can only call **methods also decorated by `@method` or [functions](#Functions) specified below**. Also, **only the properties decorated by `@prop` can be accessed**.
 
-2. Methods with `@method` decorator. These methods can only call **methods also decorated by `@method` or [functions](#Functions) specified below**. Similarly, **only the properties decorated by `@prop` can be accessed**.
+2. Without `@method` decorator: these methods are just  regular TypeScript class methods.
+
 
 ### `@method` decorator
 
-1. Use this decorator to mark any function that intends to be stored on chain.
-2. Specifies the [SigHash flag](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) to use for this method. For example,
+1. Use this decorator to mark any method that intends to run on chain.
+2. It takes a [sighash flag](./what-is-scriptcontext.md#sighash-type) as an parameter.
 
-```ts
-// Specifies the SigHash flag to be SigHash.ANYONECANPAY_ALL, default to be SigHash.ALL
-@method(SigHash.ANYONECANPAY_ALL) 
-public unlock() {
-    assert(true);
-}
-```
 
 ### Public `@method`s
 
-Each contract has at least one public method. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the entry point into the contract (like main in C and Java).
+Each contract must have at least one public `@method`. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the main method into the contract (like `main` in C and Java).
 
-A public method can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](#`assert`). An example is shown below.
+A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](#`assert`). An example is shown below.
 
 ```js
   @method()
   public unlock(x: bigint) {
+    // only succeeds if x is 1
     assert(this.add(this.x, 1n) === x, "unequal");
   }
 ```
 
-### Non-Public `@method`s
+### Non-public `@method`s
 
-Without a `public` modifier, a `@method` is an internal method and can only be called within the contract class. 
+Without a `public` modifier, a `@method` is an internal method and can only be called within the contract class.
 
-It can return any valid types described later. The return type must be explicitly declared. e.g.,
+It can return these [types](#Types), e.g.,
 
 ```js
   @method()
@@ -131,22 +118,25 @@ It can return any valid types described later. The return type must be explicitl
 ```
 
 
-Note: Recursion is disallowed. Both **Non-Public Methods** and **Public Methods** cannot call themselves in their body, either directly or indirectly.
+Note: **Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that eventually calls itself.
 
 
-## Types
+## Data Types
 
-The types used in `@prop` and `@method` are restricted to these kinds:
+Types used in `@prop` and `@method` are restricted to these kinds:
 
 ### Basic Types
 
-#### `boolean` Type
+#### boolean
 
-Basic type `boolean` is allowed, along with its wrapper type `Boolean`.
+A simple value `true` or `false`.
+```ts
+let isDone: boolean = false;
+```
 
-#### `bigint` Type
+#### `bigint`
 
-Basic type `bigint` is allowed, along with its wrapper type `Bigint`. A  [bigint literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) is a number with suffix `n`:
+`bigint` can represent arbitrarily large integers. A  [bigint literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) is a number with suffix `n`:
 
 ```ts
 11n;
@@ -158,50 +148,72 @@ const hugeHex: bigint = BigInt("0x1fffffffffffff")
 // 9007199254740991n
 ```
 
-#### `ByteString` Type
+#### `ByteString`
 
-In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` type represents a byte array in hex format. It must be able be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`.
+In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` represents a byte array. It must be able be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`.
 
-Literal `string` is not allowed to be used directly without being wrapped in these functions below:
+A `string` can be converted in to a `ByteString`:
 
-* `toByteString(input: string)`: return the raw value of `input` as a byte array while validating it as hex bytes.
-* `utf8ToByteString(input: string)`: return a value in hex bytes format representing the utf8 encoding of `input`.
+* `toByteString(input: string)`: treat `input` as a byte array in hex format
+* `utf8ToByteString(input: string)`: treat `input` as utf8 encoded.
 
 For example:
 
 ```js
-let s0 = utf8ToByteString('hello world');  // valid, s0 === "68656c6c6f20776f726c64"
+let str0: ByteString = toByteString('01ab23ef');       // valid, s1 === '01ab23ef'
 
-let s1 = toByteString('01ab23ef');       // valid, s1 === '01ab23ef'
+let str1: ByteString = utf8ToByteString('hello world');  // valid, s0 === '68656c6c6f20776f726c64'
 
-let invalid_str = "hello world";  // invalid, string literal without wrapper function
+let invalid_str: ByteString = "hello world";  // invalid, string literal without wrapper function
 
-let invalid_str2 = toByteString('012'); // invalid, odd number of hex characters
+let invalid_str2: ByteString = toByteString('ff012'); // invalid, odd number of hex characters
+
 ```
 
-Also there are only a few methods of `ByteString` can be used in `@method`s:
+`ByteString` has the following operators and methods:
 
-* `ByteString.==` / `ByteString.===`: compare two strings, like `str1 == str2` or `str1 === str2`.
+* `==` / `===`: compare
 
-* `ByteString.+`: concatenate two strings, like `str1 + str2`.
+* `+`: concatenate
 
-* `ByteString.slice(indexStart, indexEnd?)`: return a substring like `str.slice(0, 2)`. Since `ByteString` is a byte array and each byte consists of two hex characters, `indexStart` and `indexEnd` must be even.
+* `ByteString.slice(start: number, end?: number)`: return a substring from `start` to, but not including, `end`. If `end` is not specified, the substring continues to the last byte. Since `ByteString` is a byte array and each byte consists of two hex characters, `start` and `end` must be even.
 
-#### `number` Type
+```ts
+// comparison
+str0 == str1
+str0 === str1
+// false
 
-By default, type `number` is not allowed in `@prop`s and `@method`s because it may cause precision issues when representing a floating point number. Under no circumstances should you declare a variable with type `number` except for a [A compile-time constant](#compile-time-constant).
+// concatenation
+str0 + str1
+// '01ab23ef68656c6c6f20776f726c64'
 
-In some special cases, parameters of type `number` must be passed. In this case, we can use `Number()` function to convert `bigint` to `number`.
+// slice
+str1.slice(2, 6)
+// `556c`, not '6c6c6f20', since each byte has two hex characters
+```
 
-* An array index
+#### `number`
+
+Type `number` is not allowed in `@prop`s and `@method`s, except in the following cases. We can use `Number()` function to convert `bigint` to `number`.
+
+* Array index
 
 ```ts
 let arr: FixedArray<bigint, 3> = [1n, 3n, 3n];
-let index: bigint = 2n;
+let idx: bigint = 2n;
 let item = arr[Number(idx)];
 ```
 
-* Calling `slice(start?: number, end?: number)` function on a `ByteString`
+* Loop variable
+
+``` ts
+for (let i: number = 0; i < 10; i++) {
+  let j: bigint = BigInt(i); // convert number to bigint
+}
+```
+
+* Calling `slice(start: number, end?: number)` function on a `ByteString`
 
 ```ts
 let b: ByteString = toByteString("001122");
@@ -209,6 +221,8 @@ let end: bigint = 4n;
 b.slice(0, Number(end));
 // "0011"
 ```
+It can also be used in defining [compile-time constants](#compile-time-constant).
+
 
 ### User-defined Types
 
@@ -224,13 +238,33 @@ interface ST1 {
   x: ST;
   y: ByteString;
 }
+
+type Point = {
+  x: number;
+  y: number;
+};
+ 
+// Exactly the same as the earlier example
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+
+interface Point2 {
+  x: number;
+  y: number;
+}
+ 
+function printCoord(pt: Point2) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+
 ```
 
-### Array Types
+### Array
 
-The common array types in TypeScript like `T[]` or `Array<T>` are not allowed to be used in `@prop`s and `@method`s. 
-
-An array **must** be declared as type of `FixedArray<T, LENGTH>`, whose `LENGTH` must be a [CTC](#compile-time-constant) value described later, like:
+The common TypeScript arrays declared like `T[]` or `Array<T>` are not allowed in `@prop`s and `@method`s. An array **must** be declared as type of `FixedArray<T, LENGTH>`, whose `LENGTH` must be a [CTC](#compile-time-constant) described later, like:
 
 ```ts
 let aaa: FixedArray<bigint, 3> = [1n, 3n, 3n];
@@ -244,12 +278,10 @@ let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]];
 
 ### Domain Types
 
-There are several domain types, specific to the Bitcoin context, used to further improve type safety.
+There are several domain types, specific to the Bitcoin context, used to further improve type safety. They are all subtypes of `ByteString`. That is, they can be used where a `ByteString` is expected, but not vice versa.
 
 
 * `PubKey` - a public key
-
-* `PrivKey` - a private key
 
 * `Sig` - a signature type in DER format, including signature hash
 
@@ -267,9 +299,14 @@ There are several domain types, specific to the Bitcoin context, used to further
 
 * `OpCodeType` - an OpCode
 
-### `SmartContractLib` subclasses Types
-
-Libraries derived from `SmartContractLib` can be imported as dependencies and reused by other `SmartContract`s.
+```ts
+@method()
+public unlock(sig: Sig, pubkey: PubKey) {
+    // hash160() takes a ByteString as input, but can accept pubkey here, which if of type PubKey
+    assert(hash160(pubkey) == this.pubKeyHash)
+    assert(this.checkSig(sig, pubkey), 'signature check failed')
+}
+```
 
 ## Variable declarations
 
@@ -281,69 +318,13 @@ var b: boolean = false;
 const byte: ByteString = toByteString("ff");
 ```
 
-### Compile-time Constant
-
-A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. There are three kinds:
-
-* A number literal like:
-
-```ts
-3;
-```
-
-* A `const` variable, its value should be numeric literal:
-
-```ts
-const N = 3; // valid
-const N: number = 3; // valid
-```
-
-* A `static` `readonly` property:
-
-```ts
-class X {
-  static readonly N = 3;
-}
-```
-
-Only numeric literal can be used to initialize CTC. Expressions are not allowed.
-
-```ts
-const N = 3; // valid
-const N = 3 + 3; // invalid
-class X {
-  static readonly N = 3; // valid
-  static readonly N = 3 + 3; // invalid
-}
-```
-
-
-They can be used at places where a CTC is required, including:
-
-* Array length in declaration
-
-```ts
-const N: number = 2;
-let arr1: FixedArray<bigint, N> = [1n, 2n];
-let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n];
-let arr3: FixedArray<bigint, Demo.N> = [1n, 2n, 3n]; // Demo.N is CTC
-```
-
-* Loop count in `for` statement
-
-```ts
-for(let i=0; i< 3; i++)
-for(let i=0; i< N; i++)
-for(let i=0; i< X.N; i++)
-```
-
 ## Statements
 
-There are some other constraints on statements that could be used within the `@method`s, besides previously mentioned.
+There are some constraints on these following statements within `@method`s.
 
-### `for` statement
+### `for`
 
-Bitcoin Script does not provide looping constructs natively for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
+Bitcoin does not allow unbounded loops for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
 
 ```ts
 for(let $i = 0; $i < $maxLoopCount; $i++) {
@@ -355,9 +336,22 @@ Note:
 * the initial value must be `0`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
 * `$maxLoopCount` must be a [CTC](#compile-time-constant).
 * `$i` can be arbitrary name, e.g., `i`, `j`, or `k`.
-* `break` and `continue` are currently not allowed.
+* `break` and `continue` are currently not allowed, but can be emulated like
 
-### `return` statement
+```ts
+// emulate break
+let done = false;
+for (let i = 0; i < 3; i++) {
+    if (!done) {
+        x = x * 2n;
+        if (x >= 8n) {
+            done = true;
+        }
+    }
+}
+```
+
+### `return`
 
 Due to the lack of native return semantics support in Bitcoin Script, a function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future. 
 
@@ -394,6 +388,62 @@ abs(a: bigint): bigint {
 }
 ```
 
+### Compile-time Constant
+
+A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. There are three kinds:
+
+* A number literal like:
+
+```ts
+3;
+```
+
+* A `const` variable, its value should be a numeric literal:
+
+```ts
+const N = 3; // valid
+const N: number = 3; // valid
+```
+
+* A `static` `readonly` property:
+
+```ts
+class X {
+  static readonly N = 3;
+}
+```
+
+Only a numeric literal can be used to initialize CTC. Expressions are not allowed for now.
+
+```ts
+const N = 3; // valid
+const N = 3 + 3; // invalid
+class X {
+  static readonly N = 3; // valid
+  static readonly N = 3 + 3; // invalid
+}
+```
+
+
+They can be used at places where a CTC is required, including:
+
+* Array length in declaration
+
+```ts
+const N: number = 2;
+let arr1: FixedArray<bigint, N> = [1n, 2n];
+let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n];
+let arr3: FixedArray<bigint, Demo.N> = [1n, 2n, 3n]; // Demo.N is CTC
+```
+
+* Loop bound in `for` statement
+
+```ts
+for(let i=0; i< 3; i++)
+for(let i=0; i< N; i++)
+for(let i=0; i< X.N; i++)
+```
+
 ## Functions
 
 ### Built-in Functions
@@ -402,7 +452,7 @@ abs(a: bigint): bigint {
 The most commonly used built-in function is `assert(condition: boolean, msg?: string)`. It throws an error if `condition` is false. A contract call is successful if and only if the first arugment `condition` passed to the functions is true for all `assert`s executed.
 
 ### Whitelisted Functions
-Be default, all Javascript/TypeScript built-in functions/global variables are not allowed in `@method`s, except the following kinds.
+Be default, all Javascript/TypeScript built-in functions and global variables are not allowed in `@method`s, except the following kinds.
 
 #### `console.log`
 
@@ -418,7 +468,7 @@ add(x0: bigint, x1:bigint) : bigint {
 
 ## Operators
 
-**scryptTS** is a subset of TypeScript. Only the following TypeScript operators can be used directly.
+**scryptTS** is a subset of TypeScript. Only the following operators can be used directly.
 
 
 | Operator | Description | Example |
@@ -447,7 +497,7 @@ Note `**` is not supported currently.
 
 ### Bitwise Operators
 
-TypeScript's bitwise operator cannot be used in scryptTS. But you can use the bitwise built-in function provided by scryptTS.
+TypeScript's bitwise operator cannot be used in `scryptTS`. But you can use the bitwise built-in function provided.
 
 
 | Operator | Description | built-in function| 
@@ -459,10 +509,9 @@ TypeScript's bitwise operator cannot be used in scryptTS. But you can use the bi
 | `<<` | Left shift | `lshift(x,y)`| 
 | `>>` | 	Sign-propagating right shift | `rshift(x,y)`|
 
-The number in the Bitcoin virtual machine is saved in the [Sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations) in stack, not the [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations) commonly used by computers. If the operands participating in the operation are all positive numbers, the result of the operation is consistent with TypeScript's bitwise operator. (except `~`). Otherwise, the operation results may be inconsistent.
+Bigint in the Bitcoin is stored in [Sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator (except `~`). Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to NEVER apply bitwise operations on negative numbers.
 
 
 ## ScriptContext
 
 See [what is ScriptContext](./what-is-scriptcontext.md).
-
