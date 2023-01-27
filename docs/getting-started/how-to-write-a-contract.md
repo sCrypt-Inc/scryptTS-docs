@@ -388,7 +388,7 @@ abs(a: bigint): bigint {
 }
 ```
 
-### Compile-time Constant
+## Compile-time Constant
 
 A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. There are three kinds:
 
