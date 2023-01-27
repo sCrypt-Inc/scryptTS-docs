@@ -283,11 +283,11 @@ There are several domain types, specific to the Bitcoin context, used to further
 
 * `PubKey` - a public key
 
-* `Sig` - a signature type in DER format, including signature hash
+* `Sig` - a signature type in [DER format](https://academy.bit2me.com/en/que-son-firmas-estrictas-der), including sighash flags at the end
 
 * `Ripemd160` - a RIPEMD-160 hash
 
-* `PubKeyHash` - an alias for Ripemd160`, usually representing a bitcoin address.
+* `PubKeyHash` - an alias for `Ripemd160`, usually representing a bitcoin address.
 
 * `Sha1` - a SHA-1 hash
 
@@ -297,7 +297,7 @@ There are several domain types, specific to the Bitcoin context, used to further
 
 * `SigHashPreimage` - a sighash preimage
 
-* `OpCodeType` - an OpCode
+* `OpCodeType` - a Script [opcode](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script)
 
 ```ts
 @method()
