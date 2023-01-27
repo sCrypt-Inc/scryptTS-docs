@@ -509,9 +509,9 @@ TypeScript's bitwise operator cannot be used in `scryptTS`. But you can use the 
 | `<<` | Left shift | `lshift(x,y)`| 
 | `>>` | 	Sign-propagating right shift | `rshift(x,y)`|
 
-Bigint in the Bitcoin is stored in [Sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator (except `~`). Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to NEVER apply bitwise operations on negative numbers.
+Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator (except `~`). Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to NEVER apply bitwise operations on negative numbers.
 
 
 ## ScriptContext
 
-See [what is ScriptContext](./what-is-scriptcontext.md).
+See [What is ScriptContext](./what-is-scriptcontext.md).
