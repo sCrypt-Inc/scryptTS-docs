@@ -390,7 +390,8 @@ abs(a: bigint): bigint {
 
 ## Compile-time Constant
 
-A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. There are three kinds:
+A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. There are four kinds:
+
 
 * A number literal like:
 
@@ -413,9 +414,18 @@ class X {
 }
 ```
 
+* A type which is a number literal like:
+
+```ts
+type N = 3;
+```
+
 Only a numeric literal can be used to initialize CTC. Expressions are not allowed for now.
 
 ```ts
+
+type N = 3; // valid
+type N = 3 - 1; // invalid
 const N = 3; // valid
 const N = 3 + 3; // invalid
 class X {
@@ -431,17 +441,17 @@ They can be used at places where a CTC is required, including:
 
 ```ts
 const N: number = 2;
-let arr1: FixedArray<bigint, N> = [1n, 2n];
+let arr1: FixedArray<bigint, N> = [1n, 2n];  // N is a type: type N = 3;
 let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n];
-let arr3: FixedArray<bigint, Demo.N> = [1n, 2n, 3n]; // Demo.N is CTC
+let arr3: FixedArray<bigint, typeof Demo.N> = [1n, 2n, 3n]; // Demo.N is static readonly property
 ```
 
-* Loop bound in `for` statement
+* Loop count in `for` statement
 
 ```ts
 for(let i=0; i< 3; i++)
-for(let i=0; i< N; i++)
-for(let i=0; i< X.N; i++)
+for(let i=0; i< N; i++)  // const N = 3;
+for(let i=0; i< X.N; i++)  // static readonly N = 3;
 ```
 
 ## Functions
