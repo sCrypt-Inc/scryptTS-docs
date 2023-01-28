@@ -471,27 +471,27 @@ add(x0: bigint, x1:bigint) : bigint {
 **scryptTS** is a subset of TypeScript. Only the following operators can be used directly.
 
 
-| Operator | Description | Example |
-| :-----| :----: | :----: | 
-| `+` | Addition | `x + y` |
-| `-` | Subtraction | `x - y` |
-| `*` | Multiplication | `x * y` |
-| `/` | Division | `x / y` |
-| `%` | Remainder | `x % y` |
-| `++` | Increment (increments by 1) | `++x` or `x++` |
-| `--` | Decrement (decrements by 1) | `--x` or `x--` |
-| `==` | Equal to: returns `true` if the operands are equal |  `x == y` |
-| `!=` | Not equal to: returns `true` if the operands are not equal |  `x != y` |
-| `===` | Same as `==` in **scryptTS** |  `x === y` |
-| `!==` | Same as `!=` in **scryptTS** |  `x !== y` |
-| `>` | Greater than: `true` if left operand is greater than the right operand |  `x > y` |
-| `>=` | Greater than or equal to: `true` if left operand is greater than or equal to the right operand |  `x >= y` |
-| `<` | Less than: `true` if the left operand is less than the right operand |  `x < y` |
-| `<=` | Less than or equal to: `true` if the left operand is less than or equal to the right operand |  `x <= y` |
-| `&&` | Logical AND: `true` if both the operands are `true`, else returns `false` |  `x && y` |
-| <code>&#124;&#124;</code> | Logical OR: `true` if either of the operands is `true`; returns `false` if both are `false` |  <code>x &#124;&#124; y</code> |
-| `!` | Logical NOT: `true` if the operand is `false` and vice-versa. | `!x` |
-| `condition ? expression : expression ` | returns value based on the condition | `(5 > 3) ? 'success' : 'error'; // "success"` |
+| Operator | Description |
+| :-----| :----: |
+| `+` | Addition |
+| `-` | Subtraction |
+| `*` | Multiplication |
+| `/` | Division |
+| `%` | Remainder |
+| `++` | Increment |
+| `--` | Decrement |
+| `==` | Equal to |
+| `!=` | Not equal to |
+| `===` | Same as `==` in **scryptTS** |
+| `!==` | Same as `!=` in **scryptTS** |
+| `>` | Greater than |
+| `>=` | Greater than or equal to |
+| `<` | Less than |
+| `<=` | Less than or equal to |
+| `&&` | Logical AND |
+| <code>&#124;&#124;</code> | Logical OR |
+| `!` | Logical NOT |
+| `cond ? expr1 : expr2 ` | ternary |
 
 Note `**` is not supported currently.
 
