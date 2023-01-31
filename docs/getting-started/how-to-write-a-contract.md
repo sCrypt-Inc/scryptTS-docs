@@ -510,16 +510,16 @@ Note `**` is not supported currently.
 TypeScript's bitwise operator cannot be used in `scryptTS`. But you can use the bitwise built-in function provided.
 
 
-| Operator | Description | built-in function| 
-| :-----| :----: | :----: | 
-| `&` | Bitwise AND | `and(x,y)`| 
-| <code> &#124; </code> | Bitwise OR | `or(x,y)`| 
-| `^` | Bitwise XOR | `xor(x,y)`| 
-| `~` | Bitwise NOT | `invert(x)`| 
-| `<<` | Left shift | `lshift(x,y)`| 
-| `>>` | 	Sign-propagating right shift | `rshift(x,y)`|
+| built-in function | Description |
+| :-----| :----: | 
+| `and(x,y)`| Bitwise AND | 
+| `or(x,y)` | Bitwise OR | 
+| `xor(x,y)` | Bitwise XOR | 
+| `invert(x)`| Bitwise NOT |  
+| `lshift(x,y)`| Left shift, equals x * 2^y | 
+| `rshift(x,y)`| 	Right shift, equals x / 2^y |
 
-Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator (except `~`). Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to NEVER apply bitwise operations on negative numbers.
+Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator, except `~`. Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to NEVER apply bitwise operations on negative numbers.
 
 
 ## ScriptContext
