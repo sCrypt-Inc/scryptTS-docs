@@ -30,7 +30,7 @@ class Demo extends SmartContract {
 }
 ```
 
-Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `scryptTS` is that both on-chain and off-chain code are written in the same language: TypeScript.
+Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `scryptTS` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
 ## Properties
 
