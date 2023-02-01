@@ -6,8 +6,10 @@ sidebar_position: 4
 
 ## Overview
 
-In Bitcoin's UTXO model, a smart contract is one-off and has no state by default, since the UTXO containing it is destroyed after being spent. However, a smart contract can simulate state by requiring 
+In Bitcoin's UTXO model, a smart contract is one-off and stateless by default, since the UTXO containing it is destroyed after being spent. Being stateless allows it to scale easily, the same as in [HTTP](https://stackoverflow.com/questions/5836881/stateless-protocol-and-stateful-protocol) and [REST APIs](https://www.geeksforgeeks.org/restful-statelessness/).
+A smart contract can simulate state by requiring 
 the output of the spending transaction containing the same contract but with the updated state, enabled by [ScriptContext](../getting-started/what-is-scriptcontext.md).
+This is similar to making HTTP seem stateful by using cookies.
 
 We divide a smart contract in the locking script of an output into two parts: code and state as shown below. The code part contains the business logic of a contract that encodes rules for state transition and must NOT change. State transition occurs when a transaction spends the output containing the old state and creates an output containing the new state, while keeping the contract code intact.
 ![](../../static/img/state.jpg)
