@@ -7,6 +7,8 @@ sidebar_position: 7
 In the UTXO model, the context of validation is the UTXO being spent and the spending transaction, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` is spending the second output of `tx0`, the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
 ![](../../static/img/scriptContext.jpg)
 
+The context only contains local information, different from account-based blockchains whose context consists of the global state of the entire blockchain (as in Ethereum). A single shared global state kills scalability.
+
 This context is expressed in the `ScriptContext` interface.
 ```ts
 export interface ScriptContext {
