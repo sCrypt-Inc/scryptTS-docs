@@ -103,32 +103,32 @@ The following example ensure both Alice and Bob get 1000 satoshis from the contr
 ```ts
 class DesignatedReceivers extends SmartContract {
   @prop()
-  alice: PubKeyHash;
+  alice: PubKeyHash
 
   @prop()
-  bob: PubKeyHash;
+  bob: PubKeyHash
 
   constructor(alice: PubKeyHash, bob: PubKeyHash) {
-    super(...arguments);
-    this.alice = alice;
-    this.bob = bob;
+    super(...arguments)
+    this.alice = alice
+    this.bob = bob
   }
 
   @method()
   public payout() {
-    const aliceOutput: ByteString = this.buildPubKeyHashOutput(alice, 1000n);
-    const bobOutput: ByteString = this.buildPubKeyHashOutput(bob, 1000n);
-    const outputs = aliceOutput + bobOutput;
+    const aliceOutput: ByteString = this.buildPubKeyHashOutput(alice, 1000n)
+    const bobOutput: ByteString = this.buildPubKeyHashOutput(bob, 1000n)
+    const outputs = aliceOutput + bobOutput
 
     // ensure outputs are actually from the spending transaction as expected
-    assert(this.ctx.hashOutputs == hash256(outputs));
+    assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
   }
 
   // create an p2pkh output with the given receiver and amount
   @method()
   buildPubKeyHashOutput(receiver: PubKeyHash, amount: bigint): ByteString {
-    const script: ByteString = Utils.buildPublicKeyHashScript(receiver);
-    return Utils.buildOutput(script, amount);
+    const script: ByteString = Utils.buildPublicKeyHashScript(receiver)
+    return Utils.buildOutput(script, amount)
   }
 }
 ```
@@ -164,11 +164,11 @@ When you use a customed sighash type, you need to use the same sighash type when
 
 ```ts
 getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transaction {
-const inputIndex = 1;
+const inputIndex = 1
 return new bsv.Transaction().from(utxos)
     .addInputFromPrevTx(prevTx)
     .setOutput(0, (tx: bsv.Transaction) => {
-    nextInst.lockTo = { tx, outputIndex: 0 };
+    nextInst.lockTo = { tx, outputIndex: 0 }
     return new bsv.Transaction.Output({
         script: nextInst.lockingScript,
         satoshis: this.balance,
@@ -178,11 +178,11 @@ return new bsv.Transaction().from(utxos)
       inputIndex,
       sigtype: bsv.crypto.Signature.ANYONECANPAY_SINGLE   // <----- ANYONECANPAY_SINGLE has to be passed in
     }, (tx: bsv.Transaction) => {
-    this.unlockFrom = { tx, inputIndex };
+    this.unlockFrom = { tx, inputIndex }
     return this.getUnlockingScript(self => {
-        self.increment();
+        self.increment()
     })
-    });
+    })
 }
 ```
 

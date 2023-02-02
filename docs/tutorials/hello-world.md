@@ -26,7 +26,7 @@ The resulting project will contain a demo smart contract along with all the scaf
 Open `src/contracts/demo.ts` in your editor. You will see the following among the source files imports:
 
 ```ts
-import { method, prop, SmartContract, assert } from "scrypt-ts";
+import { method, prop, SmartContract, assert } from "scrypt-ts"
 ```
 
 What each of these are:
@@ -63,10 +63,10 @@ In our generated template the smart contract is called `Demo`.
 export class Demo extends SmartContract {
 
   @prop()
-  x: bigint;
+  x: bigint
 
   @prop()
-  y: bigint;
+  y: bigint
 
 }
 ```
@@ -82,15 +82,15 @@ Each contract has at most one constructor. It is where contract member variables
 export class Demo extends SmartContract {
 
   @prop()
-  x: bigint;
+  x: bigint
 
   @prop()
-  y: bigint;
+  y: bigint
 
   constructor(x: bigint, y: bigint) {
-    super(...arguments);
-    this.x = x;
-    this.y = y;
+    super(...arguments)
+    this.x = x
+    this.y = y
   }
 
 }
@@ -109,30 +109,30 @@ Let's take a look at the methods of the `Demo` contract.
 export class Demo extends SmartContract {
 
   @prop()
-  x: bigint;
+  x: bigint
 
   @prop()
-  y: bigint;
+  y: bigint
 
   constructor(x: bigint, y: bigint) {
-    super(...arguments);
-    this.x = x;
-    this.y = y;
+    super(...arguments)
+    this.x = x
+    this.y = y
   }
 
   @method()
   sum(a: bigint, b: bigint): bigint {
-      return a + b;
+      return a + b
   }
 
   @method
   public add(z: bigint) {
-      assert(z == this.sum(this.x, this.y));
+      assert(z == this.sum(this.x, this.y), 'incorrect sum')
   }
 
   @method
   public sub(z: bigint) {
-      assert(z == this.x - this.y);
+      assert(z == this.x - this.y, 'incorrect difference')
   }
 }
 ```
@@ -147,8 +147,7 @@ The `add` public method of the demo contract provides a verification method for 
 ```ts
 @method
 public add(z: bigint) {
-    assert(z == this.sum(this.x, this.y));
-}
+    assert(z == this.sum(this.x, this.y), 'incorrect sum')
 }
 ```
 

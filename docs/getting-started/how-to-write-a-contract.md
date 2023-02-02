@@ -7,25 +7,25 @@ sidebar_position: 2
 A smart contract is a class that extends the `SmartContract` base class. A simple example is shown below.
 
 ```ts
-import { SmartContract, method, prop, assert } from "scrypt-ts";
+import { SmartContract, method, prop, assert } from "scrypt-ts"
 
 class Demo extends SmartContract {
   @prop()
-  x: bigint;
+  x: bigint
 
   constructor(x: bigint) {
-    super(...arguments);
-    this.x = x;
+    super(...arguments)
+    this.x = x
   }
 
   @method()
   public unlock(x: bigint) {
-    assert(this.add(this.x, 1n) === x);
+    assert(this.add(this.x, 1n) == x, 'incorrect sum')
   }
 
   @method()
   add(x0: bigint, x1:bigint) : bigint {
-    return x0 + x1;
+    return x0 + x1
   }
 }
 ```
@@ -56,19 +56,19 @@ in the same order as they are passed into the constructor. For example,
 
 ```ts
 class A extends SmartContract {
-  p0: bigint;
+  p0: bigint
   
   @prop()
-  p1: bigint;
+  p1: bigint
   
   @prop()
-  p2: boolean;
+  p2: boolean
   
   constructor(p0: bigint, p1: bigint, p2: boolean) {
-    super(...arguments);  // same as super(p0, p1, p2)
-    this.p0 = p0;
-    this.p1 = p1;
-    this.p2 = p2;
+    super(...arguments)  // same as super(p0, p1, p2)
+    this.p0 = p0
+    this.p1 = p1
+    this.p2 = p2
   }
 }
 ```
@@ -100,7 +100,7 @@ A public `@method` can be called from an external transaction. The call succeeds
   @method()
   public unlock(x: bigint) {
     // only succeeds if x is 1
-    assert(this.add(this.x, 1n) === x, "unequal");
+    assert(this.add(this.x, 1n) == x, "unequal")
   }
 ```
 
@@ -113,7 +113,7 @@ It can return these [types](#Types), e.g.,
 ```js
   @method()
   add(x0: bigint, x1:bigint) : bigint {
-    return x0 + x1;
+    return x0 + x1
   }
 ```
 
@@ -131,7 +131,7 @@ Types used in `@prop` and `@method` are restricted to these kinds:
 
 A simple value `true` or `false`.
 ```ts
-let isDone: boolean = false;
+let isDone: boolean = false
 ```
 
 #### `bigint`
@@ -139,8 +139,8 @@ let isDone: boolean = false;
 `bigint` can represent arbitrarily large integers. A  [bigint literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) is a number with suffix `n`:
 
 ```ts
-11n;
-0x33FEn;
+11n
+0x33FEn
 const previouslyMaxSafeInteger = 9007199254740991n
 const alsoHuge = BigInt(9007199254740991)
 // 9007199254740991n
@@ -160,13 +160,13 @@ A `string` can be converted in to a `ByteString`:
 For example:
 
 ```js
-let str0: ByteString = toByteString('01ab23ef');       // valid, s1 === '01ab23ef'
+let str0: ByteString = toByteString('01ab23ef')       // valid, s1 === '01ab23ef'
 
-let str1: ByteString = utf8ToByteString('hello world');  // valid, s0 === '68656c6c6f20776f726c64'
+let str1: ByteString = utf8ToByteString('hello world')  // valid, s0 === '68656c6c6f20776f726c64'
 
-let invalid_str: ByteString = "hello world";  // invalid, string literal without wrapper function
+let invalid_str: ByteString = "hello world"  // invalid, string literal without wrapper function
 
-let invalid_str2: ByteString = toByteString('ff012'); // invalid, odd number of hex characters
+let invalid_str2: ByteString = toByteString('ff012') // invalid, odd number of hex characters
 
 ```
 
@@ -200,25 +200,25 @@ Type `number` is not allowed in `@prop`s and `@method`s, except in the following
 * Array index
 
 ```ts
-let arr: FixedArray<bigint, 3> = [1n, 3n, 3n];
-let idx: bigint = 2n;
-let item = arr[Number(idx)];
+let arr: FixedArray<bigint, 3> = [1n, 3n, 3n]
+let idx: bigint = 2n
+let item = arr[Number(idx)]
 ```
 
 * Loop variable
 
 ``` ts
-for (let i: number = 0; i < 10; i++) {
-  let j: bigint = BigInt(i); // convert number to bigint
+for (let i: number = 0 i < 10 i++) {
+  let j: bigint = BigInt(i) // convert number to bigint
 }
 ```
 
 * Calling `slice(start: number, end?: number)` function on a `ByteString`
 
 ```ts
-let b: ByteString = toByteString("001122");
-let end: bigint = 4n;
-b.slice(0, Number(end));
+let b: ByteString = toByteString("001122")
+let end: bigint = 4n
+b.slice(0, Number(end))
 // "0011"
 ```
 It can also be used in defining [compile-time constants](#compile-time-constant).
@@ -230,34 +230,34 @@ Users can be define customized types using `type` or `interface`, made of basic 
 
 ```ts
 type ST = {
-  a: bigint;
-  b: boolean;
+  a: bigint
+  b: boolean
 }
 
 interface ST1 {
-  x: ST;
-  y: ByteString;
+  x: ST
+  y: ByteString
 }
 
 type Point = {
-  x: number;
-  y: number;
-};
+  x: number
+  y: number
+}
  
 // Exactly the same as the earlier example
 function printCoord(pt: Point) {
-  console.log("The coordinate's x value is " + pt.x);
-  console.log("The coordinate's y value is " + pt.y);
+  console.log("The coordinate's x value is " + pt.x)
+  console.log("The coordinate's y value is " + pt.y)
 }
 
 interface Point2 {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
  
 function printCoord(pt: Point2) {
-  console.log("The coordinate's x value is " + pt.x);
-  console.log("The coordinate's y value is " + pt.y);
+  console.log("The coordinate's x value is " + pt.x)
+  console.log("The coordinate's y value is " + pt.y)
 }
 
 ```
@@ -267,13 +267,13 @@ function printCoord(pt: Point2) {
 The common TypeScript arrays declared like `T[]` or `Array<T>` are not allowed in `@prop`s and `@method`s. An array **must** be declared as type of `FixedArray<T, LENGTH>`, whose `LENGTH` must be a [CTC](#compile-time-constant) described later, like:
 
 ```ts
-let aaa: FixedArray<bigint, 3> = [1n, 3n, 3n];
+let aaa: FixedArray<bigint, 3> = [1n, 3n, 3n]
 
-const N = 2;
-let aab: FixedArray<bigint, N> = [1n, 2n];
+const N = 2
+let aab: FixedArray<bigint, N> = [1n, 2n]
 
 // 2-dimensional array
-let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]];
+let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
 ### Domain Types
@@ -313,9 +313,9 @@ public unlock(sig: Sig, pubkey: PubKey) {
 Variables can be declared in `@method`s by keywords `const` / `var` / `let`, like in normal TypeScript.
 
 ```ts
-let a : bigint = 1n;
-var b: boolean = false;
-const byte: ByteString = toByteString("ff");
+let a : bigint = 1n
+var b: boolean = false
+const byte: ByteString = toByteString("ff")
 ```
 
 ## Statements
@@ -327,7 +327,7 @@ There are some constraints on these following statements within `@method`s.
 Bitcoin does not allow unbounded loops for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
 
 ```ts
-for(let $i = 0; $i < $maxLoopCount; $i++) {
+for(let $i = 0n; $i < $maxLoopCount; $i++) {
   ...
 }
 ```
@@ -335,17 +335,17 @@ for(let $i = 0; $i < $maxLoopCount; $i++) {
 Note:
 * the initial value must be `0`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
 * `$maxLoopCount` must be a [CTC](#compile-time-constant).
-* `$i` can be arbitrary name, e.g., `i`, `j`, or `k`.
+* `$i` can be arbitrary name, e.g., `i`, `j`, or `k`. It can be both a `number` or a `bigint` type.
 * `break` and `continue` are currently not allowed, but can be emulated like
 
 ```ts
 // emulate break
 let done = false;
-for (let i = 0; i < 3; i++) {
+for (let i = 0n; i < 3; i++) {
     if (!done) {
-        x = x * 2n;
+        x = x * 2n
         if (x >= 8n) {
-            done = true;
+            done = true
         }
     }
 }
@@ -357,8 +357,8 @@ Due to the lack of native return semantics support in Bitcoin Script, a function
 
 ```ts
 @method() m(x: bigint): bigint {
-   if (x > 2n) return x; // invalid
-   return x + 1n;  // valid
+   if (x > 2n) return x  // invalid
+   return x + 1n         // valid
 }
 ```
 
@@ -367,9 +367,9 @@ This is usually not a problem since it can be circumvented as follows:
 @method()
 abs(a: bigint): bigint {
     if (a > 0) {
-        return a;
+        return a
     } else {
-        return -a;
+        return -a
     }
 }
 ```
@@ -377,14 +377,14 @@ can be rewritten as
 ```ts
 @method()
 abs(a: bigint): bigint {
-    let ret : bigint = 0;
+    let ret : bigint = 0
 
     if (a > 0) {
-        ret = a;
+        ret = a
     } else {
-        ret = -a;
+        ret = -a
     }
-    return ret;
+    return ret
 }
 ```
 
@@ -396,41 +396,41 @@ A compile-time constant, CTC for short, is a special variable whose value can be
 * A number literal like:
 
 ```ts
-3;
+3
 ```
 
 * A `const` variable, its value should be a numeric literal:
 
 ```ts
-const N = 3; // valid
-const N: number = 3; // valid
+const N = 3 // valid
+const N: number = 3 // valid
 ```
 
 * A `static` `readonly` property:
 
 ```ts
 class X {
-  static readonly N = 3;
+  static readonly N = 3
 }
 ```
 
 * A type which is a number literal like:
 
 ```ts
-type N = 3;
+type N = 3
 ```
 
 Only a numeric literal can be used to initialize CTC. Expressions are not allowed for now.
 
 ```ts
 
-type N = 3; // valid
-type N = 3 - 1; // invalid
-const N = 3; // valid
-const N = 3 + 3; // invalid
+type N = 3 // valid
+type N = 3 - 1 // invalid
+const N = 3 // valid
+const N = 3 + 3 // invalid
 class X {
-  static readonly N = 3; // valid
-  static readonly N = 3 + 3; // invalid
+  static readonly N = 3 // valid
+  static readonly N = 3 + 3 // invalid
 }
 ```
 
@@ -440,10 +440,10 @@ They can be used at places where a CTC is required, including:
 * Array length in declaration
 
 ```ts
-const N: number = 2;
-let arr1: FixedArray<bigint, N> = [1n, 2n];  // N is a type: type N = 3;
-let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n];
-let arr3: FixedArray<bigint, typeof Demo.N> = [1n, 2n, 3n]; // Demo.N is static readonly property
+const N: number = 2
+let arr1: FixedArray<bigint, N> = [1n, 2n]  // N is a type: type N = 3
+let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n]
+let arr3: FixedArray<bigint, typeof Demo.N> = [1n, 2n, 3n] // Demo.N is static readonly property
 ```
 
 * Loop count in `for` statement
@@ -470,8 +470,8 @@ Be default, all Javascript/TypeScript built-in functions and global variables ar
 ```ts
 @method()
 add(x0: bigint, x1:bigint) : bigint {
-  console.log(x0);
-  return x0 + x1;
+  console.log(x0)
+  return x0 + x1
 }
 ```
 

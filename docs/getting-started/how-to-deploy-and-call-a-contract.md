@@ -23,7 +23,7 @@ Generally speaking, if you want to deploy or call a contract on the Bitcoin netw
 Initialize a contract with proper arguments to get an instance.
 
 ```ts
-let instance = new MyContract(...args);
+let instance = new MyContract(...args)
 ```
 
 ### 2. Build a tx
@@ -48,7 +48,7 @@ The contract is in the 0-th output of `tx`.
 From the perspective of `instance`, this is equivalent to:
 
 ```js
-instance.lockTo = { tx, outputIndex: 0 };
+instance.lockTo = { tx, outputIndex: 0 }
 ```
 
 #### `unlockFrom`
@@ -82,30 +82,30 @@ Here is the complete code to deploy and call contract `Demo`. Notice that we put
 export class Demo extends SmartContract {
 
     @prop()
-    x: bigint;
+    x: bigint
 
     @prop()
-    y: bigint;
+    y: bigint
 
     constructor(x: bigint, y: bigint) {
-        super(...arguments);
-        this.x = x;
-        this.y = y;
+        super(...arguments)
+        this.x = x
+        this.y = y
     }
 
     @method()
     sum(a: bigint, b: bigint): bigint {
-        return a + b;
+        return a + b
     }
 
     @method()
     public add(z: bigint) {
-        assert(z == this.sum(this.x, this.y));
+        assert(z == this.sum(this.x, this.y), 'incorrect sum')
     }
 
     @method()
     public sub(z: bigint) {
-        assert(z == this.x - this.y);
+        assert(z == this.x - this.y, 'incorrect difference')
     }
 
     getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
@@ -120,31 +120,31 @@ export class Demo extends SmartContract {
         return new bsv.Transaction()
             .addInputFromPrevTx(prevTx)
             .setInputScript(0, () => {
-                return this.getUnlockingScript(self => self.add(z));
+                return this.getUnlockingScript(self => self.add(z))
             })
     }
 }
 
 // compile contract to get low-level asm
-await Demo.compile();
+await Demo.compile()
 
-let demo = new Demo(1n, 2n);
+let demo = new Demo(1n, 2n)
 
 // contract deployment
 // 1. get the available utxos for the private key
-const utxos = await utxoMgr.getUtxos();
+const utxos = await utxoMgr.getUtxos()
 // 2. construct a transaction for deployment
-const unsignedDeployTx = demo.getDeployTx(utxos, 1000);
+const unsignedDeployTx = demo.getDeployTx(utxos, 1000)
 // 3. sign and broadcast the transaction
-const deployTx = await signAndSend(unsignedDeployTx);
-console.log('Demo contract deployed: ', deployTx.id);
+const deployTx = await signAndSend(unsignedDeployTx)
+console.log('Demo contract deployed: ', deployTx.id)
 
 // contract call
 // 1. construct a transaction for the call
-const unsignedCallTx = demo.getCallTxForAdd(3n, deployTx);
+const unsignedCallTx = demo.getCallTxForAdd(3n, deployTx)
 // 2. sign and broadcast the transaction
-const callTx = await signAndSend(unsignedCallTx);
-console.log('Demo contract called: ', callTx.id);
+const callTx = await signAndSend(unsignedCallTx)
+console.log('Demo contract called: ', callTx.id)
 
 ```
 

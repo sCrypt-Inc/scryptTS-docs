@@ -51,7 +51,7 @@ class MyContract extends SmartContract {
   public unlock(x: ByteString) {
     let myLib = new MyLib(hexToByteString('0123'));
     myLib.append(x);
-    assert(MyLib.add(1n, 2n) === 3n);
+    assert(MyLib.add(1n, 2n) === 3n, 'incorrect sum');
   }
 }
 ```
@@ -63,7 +63,7 @@ You can test your smart contract library as a normal class, for example, writing
 ```ts
 describe('Test SmartContractLib `MyLib`', () => {
   it('should pass unit test successfully.', () => {
-    expect(MyLib.add(1n, 2n)).to.eq(3n);
+    expect(MyLib.add(1n, 2n)).to.eq(3n)
   })
 })
 ```
@@ -74,19 +74,19 @@ Also you can write a smart contract using the library, then have some tests for 
 class TestLib extends SmartContract {
   @method
   public unlock(x: bigint) {
-    assert(MyLib.add(1n, 2n) === x);
+    assert(MyLib.add(1n, 2n) == x, 'incorrect sum')
   }
 }
 
 describe('Test SmartContractLib `Lib`', () => {
   before(async() => {
-    await TestLib.compile();
+    await TestLib.compile()
   })
 
   it('should pass integration test successfully.', () => {
-    let testLib = new TestLib();
-    let result = testLib.verify(self => self.unlock(3n));
-    expect(result.success, result.error).to.be.true;
+    let testLib = new TestLib()
+    let result = testLib.verify(self => self.unlock(3n))
+    expect(result.success, result.error).to.be.true
   }
 })
 
@@ -112,7 +112,7 @@ This will check the projects structure, build it and publish it. After the libra
 
 **Please Note** that named imports are not supported yet. You should only import like this:
 ```ts
-import { MyLib } from “my_package”;
+import { MyLib } from “my_package”
 ```
 
 ### Advanced

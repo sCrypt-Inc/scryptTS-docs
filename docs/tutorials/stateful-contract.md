@@ -31,7 +31,7 @@ As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `
 
 ```ts
 @prop(true)
-count: bigint;
+count: bigint
 ```
 
 ### Update states
@@ -41,18 +41,18 @@ The `increment()` method does two things:
 1. Update the state, like any othe property:
 
 ```js
-this.count++;
+this.count++
 ```
 
 1. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
 
 ```ts
 // make sure balance in the contract does not change
-const amount: bigint = this.ctx.utxo.value;
+const amount: bigint = this.ctx.utxo.value
 // output containing the latest state
-const output: ByteString = this.buildStateOutput(amount);
+const output: ByteString = this.buildStateOutput(amount)
 // verify current tx has this single output
-assert(this.ctx.hashOutputs == hash256(output));
+assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
 ```
 
 [ScriptContext](../getting-started/what-is-scriptcontext.md) `this.ctx` allows us to access the outputs of the spending transaction.
@@ -64,17 +64,22 @@ The complete stateful contract is as follows:
 export class Counter extends SmartContract {
   // stateful
   @prop(true)
-  count: bigint;
+  count: bigint
 
   constructor(count: bigint) {
-    super(...arguments);
-    this.count = count;
+    super(...arguments)
+    this.count = count
   }
 
   @method()
   public increment() {
-    this.count++;
-    assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)));
+    this.count++
+    assert(
+      this.ctx.hashOutputs == hash256(
+        this.buildStateOutput(this.ctx.utxo.value)
+      ),
+      'hashOutputs mismatch'
+    )
   }
 }
 ```
@@ -87,22 +92,22 @@ Let's take a look at the local test code in `tests/local/count.test.ts`, which i
 First the `Counter` gets initialized to `0`. Also it's marked as genesis (set flag `isGenesis` internally), the first in a chain of transactions as the contract state gets updated.
 
 ```js
-const count = new Counter(0n).markAsGenesis();
+const count = new Counter(0n).markAsGenesis()
 ``` 
 
 The `Counter` class defines the method `getDeployTx` which builds the deployment tx for the instance.
 
 ```js
 getDeployTx(utxos: UTXO[], initBalance: number): bsv.Transaction {
-  this.balance = initBalance;
+  this.balance = initBalance
   const tx = new bsv.Transaction().from(utxos)
     .addOutput(new bsv.Transaction.Output({
       script: this.lockingScript,
       satoshis: initBalance,
-    }));
+    }))
   // also build the relationship between the contract and the tx
-  this.lockTo = { tx, outputIndex: 0 };
-  return tx;
+  this.lockTo = { tx, outputIndex: 0 }
+  return tx
 }
 ```
 
@@ -115,35 +120,35 @@ As we described [before](../getting-started/how-to-deploy-and-call-a-contract#co
 A new instance from the previous contract can be created by calling its `next` method, which will make a deep copy of all properties except for the `isGenesis` flag:
 
 ```ts
-const newCounter = counter.next();
+const newCounter = counter.next()
 ```
 
 Property of this `newCounter` can be updated as before:
 
 ```ts
-newCounter.count++;
+newCounter.count++
 ```
 
 Our contract also implements a method called `getCallTx`, which builds a tx to call the public method:
 
 ```ts
 getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transaction {
-  const inputIndex = 1;
+  const inputIndex = 1
   return new bsv.Transaction().from(utxos)
     .addInputFromPrevTx(prevTx)
     .setOutput(0, (tx: bsv.Transaction) => {
-      nextInst.lockTo = { tx, outputIndex: 0 };
+      nextInst.lockTo = { tx, outputIndex: 0 }
       return new bsv.Transaction.Output({
         script: nextInst.lockingScript,
         satoshis: this.balance,
       })
     })
     .setInputScript(inputIndex, (tx: bsv.Transaction) => {
-      this.unlockFrom = { tx, inputIndex };
+      this.unlockFrom = { tx, inputIndex }
       return this.getUnlockingScript(self => {
-        self.increment();
+        self.increment()
       })
-    });
+    })
 }
 
 ```
@@ -158,7 +163,7 @@ The tx has the following structure:
 
   ```ts
   return this.getUnlockingScript(self => {
-    self.increment();
+    self.increment()
   })
   ```
 
@@ -172,7 +177,7 @@ Finally, the [`SmartContract.verify`](../getting-started/how-to-test-a-contract.
 
 ```ts
 counter.verify(() => {
-  counter.increment();
+  counter.increment()
 })
 ```
 

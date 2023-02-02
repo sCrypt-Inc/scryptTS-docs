@@ -17,7 +17,7 @@ The `hashOutputs` field of `ScriptContext` is the double SHA256 of the serializa
 If the output of the transaction is not constructed as required by the contract, then the `hashOutputs` of `ScriptContext` field will not match the the double SHA256 of the `outputs` produced in the code when the contract runs. The following assertion will fail:
 
 ```ts
-assert(this.ctx.hashOutputs == hash256(outputs));
+assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
 ```
 
 We all know that if the preimage of the hash is inconsistent, the hash value will not match. When an assertion failure occurs, we can only see two mismatched hash values, and cannot visually see the difference between the preimages of the two hash values (that is, the `outputs` in the contract and the outputs of the transaction).
@@ -28,8 +28,8 @@ A function `diffOutputs` in [DebugFunctions Interface](../getting-started/how-to
 Just call `this.debug.diffOutputs(outputs)` in the contract:
 
 ```ts
-this.debug.diffOutputs(outputs); // diff and print the comparison result
-assert(this.ctx.hashOutputs == hash256(outputs));
+this.debug.diffOutputs(outputs) // diff and print the comparison result
+assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
 ```
 
 and you will see the comparison result:

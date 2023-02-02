@@ -33,12 +33,12 @@ Deploying a contract consists of the following steps:
 ```ts
 // contract deployment
 // 1. get the available utxos for the private key
-const utxos = await utxoMgr.getUtxos();
+const utxos = await utxoMgr.getUtxos()
 // 2. construct a transaction for deployment
-const unsignedDeployTx = demo.getDeployTx(utxos, 1000);
+const unsignedDeployTx = demo.getDeployTx(utxos, 1000)
 // 3. sign and broadcast the transaction
-const deployTx = await signAndSend(unsignedDeployTx);
-console.log('Demo contract deployed: ', deployTx.id);
+const deployTx = await signAndSend(unsignedDeployTx)
+console.log('Demo contract deployed: ', deployTx.id)
 ```
 
 The method `getDeployTx()` of `Demo` contract constructs a deployment transaction, whose first output contains the `Demo` contract:
@@ -67,7 +67,7 @@ getCallTx(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
     return new bsv.Transaction()
         .addInputFromPrevTx(prevTx)
         .setInputScript(0, () => {
-            return this.getUnlockingScript(self => self.add(z));
+            return this.getUnlockingScript(self => self.add(z))
         })
 }
 ```
@@ -81,13 +81,13 @@ Again, we call `signAndSend` to sign and broadcast the transaction.
 ```ts
 // contract call
 // 1. construct a transaction for call
-const unsignedCallTx = demo.getCallTxForAdd(3n, deployTx);
+const unsignedCallTx = demo.getCallTxForAdd(3n, deployTx)
 // 2. sign and broadcast the transaction
-const callTx = await signAndSend(unsignedCallTx);
-console.log('Demo contract called: ', callTx.id);
+const callTx = await signAndSend(unsignedCallTx)
+console.log('Demo contract called: ', callTx.id)
 
 // collect the new p2pkh utxo if it exists in `callTx`
-utxoMgr.collectUtxoFrom(callTx);
+utxoMgr.collectUtxoFrom(callTx)
 ```
 # Running the code
 

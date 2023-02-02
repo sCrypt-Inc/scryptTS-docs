@@ -16,34 +16,34 @@ You can use `console.log()` to print to the console.
 export class Demo extends SmartContract {
 
     @prop()
-    x: bigint;
+    x: bigint
 
     @prop()
-    y: bigint;
+    y: bigint
 
     constructor(x: bigint, y: bigint) {
-        super(...arguments);
-        this.x = x;
-        this.y = y;
+        super(...arguments)
+        this.x = x
+        this.y = y
     }
 
     @method()
     sum(a: bigint, b: bigint): bigint {
-        return a + b;
+        return a + b
     }
 
     @method()
     public add(z: bigint) {
         console.log(`z: ${z}`) // print the value of z
         console.log(`sum: ${this.x + this.y}`) // print the value of this.x + this.y
-        assert(z == this.sum(this.x, this.y));
+        assert(z == this.sum(this.x, this.y), 'incorrect sum')
     }
 }
 
 (async () => {
     await Demo.compile()
     const demo = new Demo(1n, 2n)
-    demo.add(3n);
+    demo.add(3n)
 })()
 ```
 

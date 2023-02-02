@@ -17,8 +17,8 @@ Let's open the `tests\local\demo.test.ts` file.
 Different from instantiating a normal TypeScript class, the `Demo` contract must be compiled before instantiation.
 
 ```ts
-await Demo.compile(); // compiling to get bitcoin script 
-let demo = new Demo(1n, 2n);
+await Demo.compile() // compiling to get bitcoin script 
+let demo = new Demo(1n, 2n)
 ```
 
 This compilation gets done in the `before`hook of Mocha to get the resulting [bitcoin script](https://wiki.bitcoinsv.io/index.php/Script), which will be evaluated when we run our tests.
@@ -30,8 +30,8 @@ We call the `verify()` method to evaluate the contract. `verify()` is a function
 
 ```ts
 let result = demo.verify(() => {
-    demo.add(3n);
-});
+    demo.add(3n)
+})
 ```
 
 If the contracts method is successfully evaluated, `result.success` will be `true`. Otherwise it will throw an exception.
@@ -45,17 +45,17 @@ Testing the public methods of a contract by calling its `verify(callPub: (self: 
 describe('Test SmartContract `Demo`', () => {
 
   before(async () => {
-    await Demo.compile();
+    await Demo.compile()
   })
 
   it('should pass the public method unit test successfully.', async () => {
-    let demo = new Demo(1n, 2n);
+    let demo = new Demo(1n, 2n)
 
-    let result = demo.verify(() => demo.add(3n));
-    expect(result.success, result.error).to.eq(true);
+    let result = demo.verify(() => demo.add(3n))
+    expect(result.success, result.error).to.eq(true)
 
-    result = demo.verify(() => demo.sub(-1n));
-    expect(result.success, result.error).to.eq(true);
+    result = demo.verify(() => demo.sub(-1n))
+    expect(result.success, result.error).to.eq(true)
 
   })
 })
@@ -72,12 +72,12 @@ Non-public methods have a return value, which can be tested directly. You do not
 describe('Test SmartContract `Demo`', () => {
 
   before(async () => {
-    await Demo.compile();
+    await Demo.compile()
   })
 
   it('should pass the non-public method unit test', () => {
-    let demo = new Demo(1n, 2n);
-    expect(demo.sum(3n, 4n)).to.be.eq(7n);
+    let demo = new Demo(1n, 2n)
+    expect(demo.sum(3n, 4n)).to.be.eq(7n)
   })
 
 })
