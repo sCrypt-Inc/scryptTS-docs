@@ -20,13 +20,13 @@ Each bitcoin transaction consists of some inputs and outputs.
 An output contains:
 
 - The amount of bitcoins it contains.
-- A piece of computer code (called the locking script).
+- bytecodes (called the locking script).
 
 while an input contains:
 - A reference to the previous transaction output.
-- A piece of computer code (the unlocking script).
+- bytecodes (the unlocking script).
 
-An Unspent Transaction Output (UTXO) is an output not consumed in any transaction yet. The low-level computer code is called [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script).
+An Unspent Transaction Output (UTXO) is an output not consumed in any transaction yet. The low-level bytecode/opcode is called [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script), which is interpreted by the [Bitcoin Virtual Machine](https://xiaohuiliu.medium.com/introduction-to-bitcoin-smart-contracts-9c0ea37dc757) (BVM).
 
 ![](../static/img/utxo.jpg)
 
