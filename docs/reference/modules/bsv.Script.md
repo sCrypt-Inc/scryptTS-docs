@@ -57,7 +57,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:734
+node_modules/bsv/index.d.ts:740
 
 ## Functions
 
@@ -80,7 +80,7 @@ node_modules/bsv/index.d.ts:734
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:749
+node_modules/bsv/index.d.ts:755
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:744
+node_modules/bsv/index.d.ts:750
 
 ___
 
@@ -124,7 +124,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:769
+node_modules/bsv/index.d.ts:775
 
 ___
 
@@ -144,7 +144,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:756
+node_modules/bsv/index.d.ts:762
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:765
+node_modules/bsv/index.d.ts:771
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:759
+node_modules/bsv/index.d.ts:765
 
 ___
 
@@ -206,7 +206,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:760
+node_modules/bsv/index.d.ts:766
 
 ___
 
@@ -226,7 +226,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:764
+node_modules/bsv/index.d.ts:770
 
 ___
 
@@ -240,7 +240,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:786
+node_modules/bsv/index.d.ts:792
 
 ___
 
@@ -260,7 +260,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:776
+node_modules/bsv/index.d.ts:782
 
 ___
 
@@ -280,7 +280,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:775
+node_modules/bsv/index.d.ts:781
 
 ___
 
@@ -300,7 +300,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:779
+node_modules/bsv/index.d.ts:785
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:777
+node_modules/bsv/index.d.ts:783
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:778
+node_modules/bsv/index.d.ts:784
 
 ___
 
@@ -354,7 +354,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:781
+node_modules/bsv/index.d.ts:787
 
 ___
 
@@ -368,7 +368,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:782
+node_modules/bsv/index.d.ts:788
 
 ___
 
@@ -382,7 +382,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:783
+node_modules/bsv/index.d.ts:789
 
 ___
 
@@ -396,4 +396,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:784
+node_modules/bsv/index.d.ts:790

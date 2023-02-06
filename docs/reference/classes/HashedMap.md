@@ -64,7 +64,7 @@
 
 #### Defined in
 
-[src/builtins/types.ts:179](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L179)
+[src/smart-contract/builtins/types.ts:167](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L167)
 
 ## Properties
 
@@ -74,7 +74,7 @@
 
 #### Defined in
 
-[src/builtins/types.ts:168](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L168)
+[src/smart-contract/builtins/types.ts:156](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L156)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:162](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L162)
+[src/smart-contract/builtins/types.ts:150](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L150)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:166](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L166)
+[src/smart-contract/builtins/types.ts:154](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L154)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:164](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L164)
+[src/smart-contract/builtins/types.ts:152](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L152)
 
 ___
 
@@ -114,27 +114,27 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:160](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L160)
+[src/smart-contract/builtins/types.ts:148](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L148)
 
 ___
 
 ### H\_SIZE
 
-▪ `Static` `Readonly` **H\_SIZE**: `32n`
+▪ `Static` `Readonly` **H\_SIZE**: `Int`
 
 #### Defined in
 
-[src/builtins/types.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L157)
+[src/smart-contract/builtins/types.ts:145](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L145)
 
 ___
 
 ### ITEM\_SIZE
 
-▪ `Static` `Readonly` **ITEM\_SIZE**: `64n`
+▪ `Static` `Readonly` **ITEM\_SIZE**: `Int`
 
 #### Defined in
 
-[src/builtins/types.ts:158](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L158)
+[src/smart-contract/builtins/types.ts:146](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L146)
 
 ## Methods
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:221](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L221)
+[src/smart-contract/builtins/types.ts:210](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L210)
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:184](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L184)
+[src/smart-contract/builtins/types.ts:172](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L172)
 
 ___
 
@@ -196,7 +196,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:234](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L234)
+[src/smart-contract/builtins/types.ts:223](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L223)
 
 ___
 
@@ -216,7 +216,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:247](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L247)
+[src/smart-contract/builtins/types.ts:236](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L236)
 
 ___
 
@@ -237,7 +237,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:191](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L191)
+[src/smart-contract/builtins/types.ts:180](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L180)
 
 ___
 
@@ -257,7 +257,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:322](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L322)
+[src/smart-contract/builtins/types.ts:311](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L311)
 
 ___
 
@@ -278,7 +278,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:309](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L309)
+[src/smart-contract/builtins/types.ts:298](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L298)
 
 ___
 
@@ -292,7 +292,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:258](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L258)
+[src/smart-contract/builtins/types.ts:247](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L247)
 
 ___
 
@@ -306,7 +306,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:269](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L269)
+[src/smart-contract/builtins/types.ts:258](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L258)
 
 ___
 
@@ -326,7 +326,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:296](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L296)
+[src/smart-contract/builtins/types.ts:285](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L285)
 
 ___
 
@@ -346,7 +346,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:286](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L286)
+[src/smart-contract/builtins/types.ts:275](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L275)
 
 ___
 
@@ -367,7 +367,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:170](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L170)
+[src/smart-contract/builtins/types.ts:158](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L158)
 
 ___
 
@@ -388,7 +388,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:274](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L274)
+[src/smart-contract/builtins/types.ts:263](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L263)
 
 ___
 
@@ -402,7 +402,7 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:264](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L264)
+[src/smart-contract/builtins/types.ts:253](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L253)
 
 ___
 
@@ -416,4 +416,4 @@ ___
 
 #### Defined in
 
-[src/builtins/types.ts:318](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/types.ts#L318)
+[src/smart-contract/builtins/types.ts:307](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L307)

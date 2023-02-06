@@ -141,7 +141,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:270](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L270)
+[src/smart-contract/builtins/functions.ts:269](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L269)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:352](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L352)
+[src/smart-contract/builtins/functions.ts:351](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L351)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:277](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L277)
+[src/smart-contract/builtins/functions.ts:276](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L276)
 
 ___
 
@@ -171,7 +171,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:287](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L287)
+[src/smart-contract/builtins/functions.ts:286](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L286)
 
 ___
 
@@ -181,7 +181,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:288](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L288)
+[src/smart-contract/builtins/functions.ts:287](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L287)
 
 ___
 
@@ -191,7 +191,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:289](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L289)
+[src/smart-contract/builtins/functions.ts:288](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L288)
 
 ___
 
@@ -201,7 +201,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:290](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L290)
+[src/smart-contract/builtins/functions.ts:289](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L289)
 
 ___
 
@@ -211,7 +211,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:291](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L291)
+[src/smart-contract/builtins/functions.ts:290](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L290)
 
 ___
 
@@ -221,7 +221,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:292](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L292)
+[src/smart-contract/builtins/functions.ts:291](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L291)
 
 ___
 
@@ -231,7 +231,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:293](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L293)
+[src/smart-contract/builtins/functions.ts:292](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L292)
 
 ___
 
@@ -241,7 +241,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:345](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L345)
+[src/smart-contract/builtins/functions.ts:344](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L344)
 
 ___
 
@@ -251,7 +251,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:275](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L275)
+[src/smart-contract/builtins/functions.ts:274](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L274)
 
 ___
 
@@ -261,7 +261,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:346](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L346)
+[src/smart-contract/builtins/functions.ts:345](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L345)
 
 ___
 
@@ -271,7 +271,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:279](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L279)
+[src/smart-contract/builtins/functions.ts:278](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L278)
 
 ___
 
@@ -281,7 +281,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:348](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L348)
+[src/smart-contract/builtins/functions.ts:347](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L347)
 
 ___
 
@@ -291,7 +291,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:309](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L309)
+[src/smart-contract/builtins/functions.ts:308](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L308)
 
 ___
 
@@ -301,7 +301,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:310](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L310)
+[src/smart-contract/builtins/functions.ts:309](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L309)
 
 ___
 
@@ -311,7 +311,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:347](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L347)
+[src/smart-contract/builtins/functions.ts:346](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L346)
 
 ___
 
@@ -321,7 +321,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:312](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L312)
+[src/smart-contract/builtins/functions.ts:311](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L311)
 
 ___
 
@@ -331,7 +331,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:313](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L313)
+[src/smart-contract/builtins/functions.ts:312](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L312)
 
 ___
 
@@ -341,7 +341,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:314](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L314)
+[src/smart-contract/builtins/functions.ts:313](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L313)
 
 ___
 
@@ -351,7 +351,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:280](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L280)
+[src/smart-contract/builtins/functions.ts:279](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L279)
 
 ___
 
@@ -361,7 +361,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:311](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L311)
+[src/smart-contract/builtins/functions.ts:310](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L310)
 
 ___
 
@@ -371,7 +371,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:281](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L281)
+[src/smart-contract/builtins/functions.ts:280](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L280)
 
 ___
 
@@ -381,7 +381,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:282](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L282)
+[src/smart-contract/builtins/functions.ts:281](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L281)
 
 ___
 
@@ -391,7 +391,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:283](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L283)
+[src/smart-contract/builtins/functions.ts:282](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L282)
 
 ___
 
@@ -401,7 +401,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:284](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L284)
+[src/smart-contract/builtins/functions.ts:283](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L283)
 
 ___
 
@@ -411,7 +411,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:285](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L285)
+[src/smart-contract/builtins/functions.ts:284](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L284)
 
 ___
 
@@ -421,7 +421,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:286](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L286)
+[src/smart-contract/builtins/functions.ts:285](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L285)
 
 ___
 
@@ -431,7 +431,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:350](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L350)
+[src/smart-contract/builtins/functions.ts:349](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L349)
 
 ___
 
@@ -441,7 +441,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:354](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L354)
+[src/smart-contract/builtins/functions.ts:353](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L353)
 
 ___
 
@@ -451,7 +451,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:336](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L336)
+[src/smart-contract/builtins/functions.ts:335](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L335)
 
 ___
 
@@ -461,7 +461,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:331](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L331)
+[src/smart-contract/builtins/functions.ts:330](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L330)
 
 ___
 
@@ -471,7 +471,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:362](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L362)
+[src/smart-contract/builtins/functions.ts:361](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L361)
 
 ___
 
@@ -481,7 +481,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:363](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L363)
+[src/smart-contract/builtins/functions.ts:362](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L362)
 
 ___
 
@@ -491,7 +491,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:328](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L328)
+[src/smart-contract/builtins/functions.ts:327](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L327)
 
 ___
 
@@ -501,7 +501,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:385](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L385)
+[src/smart-contract/builtins/functions.ts:384](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L384)
 
 ___
 
@@ -511,7 +511,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:386](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L386)
+[src/smart-contract/builtins/functions.ts:385](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L385)
 
 ___
 
@@ -521,7 +521,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:383](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L383)
+[src/smart-contract/builtins/functions.ts:382](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L382)
 
 ___
 
@@ -531,7 +531,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:384](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L384)
+[src/smart-contract/builtins/functions.ts:383](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L383)
 
 ___
 
@@ -541,7 +541,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:382](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L382)
+[src/smart-contract/builtins/functions.ts:381](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L381)
 
 ___
 
@@ -551,7 +551,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:316](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L316)
+[src/smart-contract/builtins/functions.ts:315](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L315)
 
 ___
 
@@ -561,7 +561,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:357](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L357)
+[src/smart-contract/builtins/functions.ts:356](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L356)
 
 ___
 
@@ -571,7 +571,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:317](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L317)
+[src/smart-contract/builtins/functions.ts:316](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L316)
 
 ___
 
@@ -581,7 +581,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:318](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L318)
+[src/smart-contract/builtins/functions.ts:317](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L317)
 
 ___
 
@@ -591,7 +591,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:302](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L302)
+[src/smart-contract/builtins/functions.ts:301](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L301)
 
 ___
 
@@ -601,7 +601,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:303](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L303)
+[src/smart-contract/builtins/functions.ts:302](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L302)
 
 ___
 
@@ -611,7 +611,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:339](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L339)
+[src/smart-contract/builtins/functions.ts:338](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L338)
 
 ___
 
@@ -621,7 +621,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:340](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L340)
+[src/smart-contract/builtins/functions.ts:339](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L339)
 
 ___
 
@@ -631,7 +631,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:271](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L271)
+[src/smart-contract/builtins/functions.ts:270](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L270)
 
 ___
 
@@ -641,7 +641,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:308](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L308)
+[src/smart-contract/builtins/functions.ts:307](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L307)
 
 ___
 
@@ -651,7 +651,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:368](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L368)
+[src/smart-contract/builtins/functions.ts:367](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L367)
 
 ___
 
@@ -661,7 +661,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:370](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L370)
+[src/smart-contract/builtins/functions.ts:369](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L369)
 
 ___
 
@@ -671,7 +671,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:380](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L380)
+[src/smart-contract/builtins/functions.ts:379](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L379)
 
 ___
 
@@ -681,7 +681,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:381](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L381)
+[src/smart-contract/builtins/functions.ts:380](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L380)
 
 ___
 
@@ -691,7 +691,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:298](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L298)
+[src/smart-contract/builtins/functions.ts:297](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L297)
 
 ___
 
@@ -701,7 +701,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:315](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L315)
+[src/smart-contract/builtins/functions.ts:314](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L314)
 
 ___
 
@@ -711,7 +711,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:406](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L406)
+[src/smart-contract/builtins/functions.ts:405](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L405)
 
 ___
 
@@ -721,7 +721,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:335](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L335)
+[src/smart-contract/builtins/functions.ts:334](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L334)
 
 ___
 
@@ -731,7 +731,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:367](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L367)
+[src/smart-contract/builtins/functions.ts:366](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L366)
 
 ___
 
@@ -741,7 +741,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:369](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L369)
+[src/smart-contract/builtins/functions.ts:368](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L368)
 
 ___
 
@@ -751,7 +751,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:359](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L359)
+[src/smart-contract/builtins/functions.ts:358](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L358)
 
 ___
 
@@ -761,7 +761,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:372](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L372)
+[src/smart-contract/builtins/functions.ts:371](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L371)
 
 ___
 
@@ -771,7 +771,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:371](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L371)
+[src/smart-contract/builtins/functions.ts:370](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L370)
 
 ___
 
@@ -781,7 +781,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:358](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L358)
+[src/smart-contract/builtins/functions.ts:357](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L357)
 
 ___
 
@@ -791,7 +791,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:356](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L356)
+[src/smart-contract/builtins/functions.ts:355](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L355)
 
 ___
 
@@ -801,7 +801,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:349](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L349)
+[src/smart-contract/builtins/functions.ts:348](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L348)
 
 ___
 
@@ -811,7 +811,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:319](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L319)
+[src/smart-contract/builtins/functions.ts:318](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L318)
 
 ___
 
@@ -821,7 +821,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:296](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L296)
+[src/smart-contract/builtins/functions.ts:295](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L295)
 
 ___
 
@@ -831,7 +831,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:389](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L389)
+[src/smart-contract/builtins/functions.ts:388](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L388)
 
 ___
 
@@ -841,7 +841,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:398](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L398)
+[src/smart-contract/builtins/functions.ts:397](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L397)
 
 ___
 
@@ -851,7 +851,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:390](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L390)
+[src/smart-contract/builtins/functions.ts:389](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L389)
 
 ___
 
@@ -861,7 +861,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:391](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L391)
+[src/smart-contract/builtins/functions.ts:390](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L390)
 
 ___
 
@@ -871,7 +871,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:392](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L392)
+[src/smart-contract/builtins/functions.ts:391](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L391)
 
 ___
 
@@ -881,7 +881,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:393](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L393)
+[src/smart-contract/builtins/functions.ts:392](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L392)
 
 ___
 
@@ -891,7 +891,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:394](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L394)
+[src/smart-contract/builtins/functions.ts:393](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L393)
 
 ___
 
@@ -901,7 +901,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:395](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L395)
+[src/smart-contract/builtins/functions.ts:394](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L394)
 
 ___
 
@@ -911,7 +911,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:396](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L396)
+[src/smart-contract/builtins/functions.ts:395](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L395)
 
 ___
 
@@ -921,7 +921,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:397](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L397)
+[src/smart-contract/builtins/functions.ts:396](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L396)
 
 ___
 
@@ -931,7 +931,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:351](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L351)
+[src/smart-contract/builtins/functions.ts:350](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L350)
 
 ___
 
@@ -941,7 +941,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:299](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L299)
+[src/smart-contract/builtins/functions.ts:298](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L298)
 
 ___
 
@@ -951,7 +951,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:330](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L330)
+[src/smart-contract/builtins/functions.ts:329](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L329)
 
 ___
 
@@ -961,7 +961,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:364](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L364)
+[src/smart-contract/builtins/functions.ts:363](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L363)
 
 ___
 
@@ -971,7 +971,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:365](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L365)
+[src/smart-contract/builtins/functions.ts:364](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L364)
 
 ___
 
@@ -981,7 +981,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:366](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L366)
+[src/smart-contract/builtins/functions.ts:365](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L365)
 
 ___
 
@@ -991,7 +991,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:337](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L337)
+[src/smart-contract/builtins/functions.ts:336](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L336)
 
 ___
 
@@ -1001,7 +1001,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:320](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L320)
+[src/smart-contract/builtins/functions.ts:319](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L319)
 
 ___
 
@@ -1011,7 +1011,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:321](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L321)
+[src/smart-contract/builtins/functions.ts:320](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L320)
 
 ___
 
@@ -1021,7 +1021,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:405](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L405)
+[src/smart-contract/builtins/functions.ts:404](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L404)
 
 ___
 
@@ -1031,7 +1031,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:404](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L404)
+[src/smart-contract/builtins/functions.ts:403](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L403)
 
 ___
 
@@ -1041,7 +1041,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:272](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L272)
+[src/smart-contract/builtins/functions.ts:271](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L271)
 
 ___
 
@@ -1051,7 +1051,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:273](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L273)
+[src/smart-contract/builtins/functions.ts:272](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L272)
 
 ___
 
@@ -1061,7 +1061,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:274](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L274)
+[src/smart-contract/builtins/functions.ts:273](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L273)
 
 ___
 
@@ -1071,7 +1071,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:276](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L276)
+[src/smart-contract/builtins/functions.ts:275](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L275)
 
 ___
 
@@ -1081,7 +1081,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:341](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L341)
+[src/smart-contract/builtins/functions.ts:340](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L340)
 
 ___
 
@@ -1091,7 +1091,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:342](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L342)
+[src/smart-contract/builtins/functions.ts:341](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L341)
 
 ___
 
@@ -1101,7 +1101,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:305](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L305)
+[src/smart-contract/builtins/functions.ts:304](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L304)
 
 ___
 
@@ -1111,7 +1111,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:377](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L377)
+[src/smart-contract/builtins/functions.ts:376](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L376)
 
 ___
 
@@ -1121,7 +1121,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:322](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L322)
+[src/smart-contract/builtins/functions.ts:321](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L321)
 
 ___
 
@@ -1131,7 +1131,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:323](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L323)
+[src/smart-contract/builtins/functions.ts:322](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L322)
 
 ___
 
@@ -1141,7 +1141,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:360](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L360)
+[src/smart-contract/builtins/functions.ts:359](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L359)
 
 ___
 
@@ -1151,7 +1151,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:378](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L378)
+[src/smart-contract/builtins/functions.ts:377](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L377)
 
 ___
 
@@ -1161,7 +1161,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:379](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L379)
+[src/smart-contract/builtins/functions.ts:378](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L378)
 
 ___
 
@@ -1171,7 +1171,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:332](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L332)
+[src/smart-contract/builtins/functions.ts:331](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L331)
 
 ___
 
@@ -1181,7 +1181,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:329](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L329)
+[src/smart-contract/builtins/functions.ts:328](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L328)
 
 ___
 
@@ -1191,7 +1191,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:355](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L355)
+[src/smart-contract/builtins/functions.ts:354](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L354)
 
 ___
 
@@ -1201,7 +1201,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:324](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L324)
+[src/smart-contract/builtins/functions.ts:323](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L323)
 
 ___
 
@@ -1211,7 +1211,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:307](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L307)
+[src/smart-contract/builtins/functions.ts:306](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L306)
 
 ___
 
@@ -1221,7 +1221,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:278](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L278)
+[src/smart-contract/builtins/functions.ts:277](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L277)
 
 ___
 
@@ -1231,7 +1231,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:325](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L325)
+[src/smart-contract/builtins/functions.ts:324](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L324)
 
 ___
 
@@ -1241,7 +1241,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:297](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L297)
+[src/smart-contract/builtins/functions.ts:296](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L296)
 
 ___
 
@@ -1251,7 +1251,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:300](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L300)
+[src/smart-contract/builtins/functions.ts:299](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L299)
 
 ___
 
@@ -1261,7 +1261,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:304](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L304)
+[src/smart-contract/builtins/functions.ts:303](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L303)
 
 ___
 
@@ -1271,7 +1271,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:301](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L301)
+[src/smart-contract/builtins/functions.ts:300](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L300)
 
 ___
 
@@ -1281,7 +1281,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:374](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L374)
+[src/smart-contract/builtins/functions.ts:373](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L373)
 
 ___
 
@@ -1291,4 +1291,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:338](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L338)
+[src/smart-contract/builtins/functions.ts:337](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L337)

@@ -37,7 +37,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:415](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L415)
+[src/smart-contract/builtins/functions.ts:414](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L414)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:417](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L417)
+[src/smart-contract/builtins/functions.ts:416](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L416)
 
 ## Methods
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:496](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L496)
+[src/smart-contract/builtins/functions.ts:495](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L495)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:485](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L485)
+[src/smart-contract/builtins/functions.ts:484](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L484)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `pubKeyHash` | `Bytes` \| [`Ripemd160`](../README.md#ripemd160) |
+| `pubKeyHash` | [`Ripemd160`](../README.md#ripemd160) |
 
 #### Returns
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:490](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L490)
+[src/smart-contract/builtins/functions.ts:489](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L489)
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:426](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L426)
+[src/smart-contract/builtins/functions.ts:425](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L425)
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:434](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L434)
+[src/smart-contract/builtins/functions.ts:433](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L433)
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:419](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L419)
+[src/smart-contract/builtins/functions.ts:418](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L418)
 
 ___
 
@@ -189,4 +189,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:462](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L462)
+[src/smart-contract/builtins/functions.ts:461](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L461)

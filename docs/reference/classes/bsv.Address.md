@@ -23,6 +23,7 @@
 - [toHex](bsv.Address.md#tohex)
 - [toObject](bsv.Address.md#toobject)
 - [toString](bsv.Address.md#tostring)
+- [fromHex](bsv.Address.md#fromhex)
 - [fromPrivateKey](bsv.Address.md#fromprivatekey)
 - [fromPublicKey](bsv.Address.md#frompublickey)
 - [fromPublicKeyHash](bsv.Address.md#frompublickeyhash)
@@ -45,7 +46,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:927
+node_modules/bsv/index.d.ts:933
 
 ## Properties
 
@@ -55,7 +56,7 @@ node_modules/bsv/index.d.ts:927
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:923
+node_modules/bsv/index.d.ts:929
 
 ___
 
@@ -65,7 +66,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:924
+node_modules/bsv/index.d.ts:930
 
 ___
 
@@ -75,7 +76,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:925
+node_modules/bsv/index.d.ts:931
 
 ## Methods
 
@@ -97,7 +98,7 @@ node_modules/bsv/index.d.ts:925
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:946
+node_modules/bsv/index.d.ts:953
 
 ___
 
@@ -111,7 +112,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:951
+node_modules/bsv/index.d.ts:958
 
 ___
 
@@ -125,7 +126,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:952
+node_modules/bsv/index.d.ts:959
 
 ___
 
@@ -145,7 +146,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:954
+node_modules/bsv/index.d.ts:961
 
 ___
 
@@ -159,20 +160,41 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:953
+node_modules/bsv/index.d.ts:960
+
+___
+
+### fromHex
+
+▸ `Static` **fromHex**(`hex`, `network?`): [`Address`](bsv.Address.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `hex` | `string` |
+| `network?` | [`Type`](../modules/bsv.Networks.md#type) |
+
+#### Returns
+
+[`Address`](bsv.Address.md)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:939
 
 ___
 
 ### fromPrivateKey
 
-▸ `Static` **fromPrivateKey**(`privateKey`, `network`): [`Address`](bsv.Address.md)
+▸ `Static` **fromPrivateKey**(`privateKey`, `network?`): [`Address`](bsv.Address.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `privateKey` | [`PrivateKey`](bsv.PrivateKey.md) |
-| `network` | [`Type`](../modules/bsv.Networks.md#type) |
+| `network?` | [`Type`](../modules/bsv.Networks.md#type) |
 
 #### Returns
 
@@ -180,20 +202,20 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:934
+node_modules/bsv/index.d.ts:941
 
 ___
 
 ### fromPublicKey
 
-▸ `Static` **fromPublicKey**(`data`, `network`): [`Address`](bsv.Address.md)
+▸ `Static` **fromPublicKey**(`data`, `network?`): [`Address`](bsv.Address.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `data` | [`PublicKey`](bsv.PublicKey.md) |
-| `network` | [`Type`](../modules/bsv.Networks.md#type) |
+| `network?` | [`Type`](../modules/bsv.Networks.md#type) |
 
 #### Returns
 
@@ -201,20 +223,62 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:933
+node_modules/bsv/index.d.ts:940
 
 ___
 
 ### fromPublicKeyHash
 
-▸ `Static` **fromPublicKeyHash**(`hash`, `network`): [`Address`](bsv.Address.md)
+▸ `Static` **fromPublicKeyHash**(`hash`, `network?`): [`Address`](bsv.Address.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `hash` | `Uint8Array` \| `Buffer` |
-| `network` | [`Type`](../modules/bsv.Networks.md#type) |
+| `network?` | [`Type`](../modules/bsv.Networks.md#type) |
+
+#### Returns
+
+[`Address`](bsv.Address.md)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:945
+
+___
+
+### fromScriptHash
+
+▸ `Static` **fromScriptHash**(`hash`, `network?`): [`Address`](bsv.Address.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `hash` | `Uint8Array` \| `Buffer` |
+| `network?` | [`Type`](../modules/bsv.Networks.md#type) |
+
+#### Returns
+
+[`Address`](bsv.Address.md)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:949
+
+___
+
+### fromString
+
+▸ `Static` **fromString**(`address`, `network?`): [`Address`](bsv.Address.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `address` | `string` |
+| `network?` | [`Type`](../modules/bsv.Networks.md#type) |
 
 #### Returns
 
@@ -223,45 +287,3 @@ ___
 #### Defined in
 
 node_modules/bsv/index.d.ts:938
-
-___
-
-### fromScriptHash
-
-▸ `Static` **fromScriptHash**(`hash`, `network`): [`Address`](bsv.Address.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `hash` | `Uint8Array` \| `Buffer` |
-| `network` | [`Type`](../modules/bsv.Networks.md#type) |
-
-#### Returns
-
-[`Address`](bsv.Address.md)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:942
-
-___
-
-### fromString
-
-▸ `Static` **fromString**(`address`, `network`): [`Address`](bsv.Address.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `address` | `string` |
-| `network` | [`Type`](../modules/bsv.Networks.md#type) |
-
-#### Returns
-
-[`Address`](bsv.Address.md)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:932

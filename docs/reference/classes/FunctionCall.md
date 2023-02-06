@@ -155,7 +155,7 @@ node_modules/scryptlib/dist/abi.d.ts:38
 
 | Name | Type |
 | :------ | :------ |
-| `txContext?` | `TxContext` |
+| `txContext?` | [`TxContext`](../interfaces/TxContext.md) |
 
 #### Returns
 
@@ -231,7 +231,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `txContext?` | `TxContext` |
+| `txContext?` | [`TxContext`](../interfaces/TxContext.md) |
 
 #### Returns
 

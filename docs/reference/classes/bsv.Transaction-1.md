@@ -4,6 +4,12 @@
 
 [bsv](../modules/bsv.md).Transaction
 
+## Hierarchy
+
+- **`Transaction`**
+
+  ↳ [`TransactionResponse`](../interfaces/TransactionResponse.md)
+
 ## Table of contents
 
 ### Constructors
@@ -60,8 +66,10 @@
 - [lockUntilDate](bsv.Transaction-1.md#lockuntildate)
 - [prevouts](bsv.Transaction-1.md#prevouts)
 - [seal](bsv.Transaction-1.md#seal)
+- [sealAsync](bsv.Transaction-1.md#sealasync)
 - [serialize](bsv.Transaction-1.md#serialize)
 - [setInputScript](bsv.Transaction-1.md#setinputscript)
+- [setInputScriptAsync](bsv.Transaction-1.md#setinputscriptasync)
 - [setInputSequence](bsv.Transaction-1.md#setinputsequence)
 - [setLockTime](bsv.Transaction-1.md#setlocktime)
 - [setOutput](bsv.Transaction-1.md#setoutput)
@@ -257,7 +265,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:522
+node_modules/bsv/index.d.ts:528
 
 ___
 
@@ -300,7 +308,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:521
+node_modules/bsv/index.d.ts:527
 
 ___
 
@@ -380,7 +388,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:517
+node_modules/bsv/index.d.ts:523
 
 ___
 
@@ -394,7 +402,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:523
+node_modules/bsv/index.d.ts:529
 
 ___
 
@@ -482,7 +490,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:515
+node_modules/bsv/index.d.ts:521
 
 ___
 
@@ -510,7 +518,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:516
+node_modules/bsv/index.d.ts:522
 
 ___
 
@@ -544,7 +552,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:529
+node_modules/bsv/index.d.ts:535
 
 ___
 
@@ -578,7 +586,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:530
+node_modules/bsv/index.d.ts:536
 
 ___
 
@@ -600,7 +608,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:520
+node_modules/bsv/index.d.ts:526
 
 ___
 
@@ -642,7 +650,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:519
+node_modules/bsv/index.d.ts:525
 
 ___
 
@@ -726,7 +734,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:514
+node_modules/bsv/index.d.ts:520
 
 ___
 
@@ -780,7 +788,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:518
+node_modules/bsv/index.d.ts:524
 
 ___
 
@@ -794,7 +802,21 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:513
+node_modules/bsv/index.d.ts:518
+
+___
+
+### sealAsync
+
+▸ **sealAsync**(): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+
+#### Returns
+
+`Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:519
 
 ___
 
@@ -839,6 +861,27 @@ node_modules/bsv/index.d.ts:505
 
 ___
 
+### setInputScriptAsync
+
+▸ **setInputScriptAsync**(`inputIndex`, `callback`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `inputIndex` | `number` \| { `inputIndex`: `number` ; `isLowS?`: `boolean` ; `sigtype?`: `number`  } |
+| `callback` | (`tx`: [`Transaction`](bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](bsv.Transaction.Output.md)) => `Promise`<[`Script`](bsv.Script-1.md)\> |
+
+#### Returns
+
+`Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:511
+
+___
+
 ### setInputSequence
 
 ▸ **setInputSequence**(`inputIndex`, `sequence`): [`Transaction`](bsv.Transaction-1.md)
@@ -856,7 +899,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:511
+node_modules/bsv/index.d.ts:516
 
 ___
 
@@ -897,7 +940,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:512
+node_modules/bsv/index.d.ts:517
 
 ___
 
@@ -1021,7 +1064,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:524
+node_modules/bsv/index.d.ts:530
 
 ___
 
