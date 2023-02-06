@@ -308,7 +308,11 @@ public unlock(sig: Sig, pubkey: PubKey) {
 }
 ```
 
-## Variable declarations
+## Statements
+
+There are some constraints on these following statements within `@method`s, except [variable declarations](#Variable-declarations).
+
+### Variable declarations
 
 Variables can be declared in `@method`s by keywords `const` / `var` / `let`, like in normal TypeScript.
 
@@ -317,10 +321,6 @@ let a : bigint = 1n
 var b: boolean = false
 const byte: ByteString = toByteString("ff")
 ```
-
-## Statements
-
-There are some constraints on these following statements within `@method`s.
 
 ### `for`
 
