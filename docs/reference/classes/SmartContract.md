@@ -206,20 +206,6 @@ ___
 
 ## Accessors
 
-### codePart
-
-• `get` **codePart**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:378](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/contract.ts#L378)
-
-___
-
 ### ctx
 
 • `get` **ctx**(): `ScriptContext`
@@ -231,20 +217,6 @@ ___
 #### Defined in
 
 [src/smart-contract/contract.ts:803](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/contract.ts#L803)
-
-___
-
-### dataPart
-
-• `get` **dataPart**(): [`Script`](bsv.Script-1.md)
-
-#### Returns
-
-[`Script`](bsv.Script-1.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:613](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/contract.ts#L613)
 
 ___
 
