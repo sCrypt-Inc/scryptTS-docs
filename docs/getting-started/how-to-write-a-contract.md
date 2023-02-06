@@ -152,17 +152,17 @@ const hugeHex: bigint = BigInt("0x1fffffffffffff")
 
 In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` represents a byte array. It must be able be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`.
 
-A `string` can be converted in to a `ByteString`:
+A `string` can be converted in to a `ByteString` using function `toByteString(input: string, isUtf8?: true)`:
 
-* `toByteString(input: string)`: treat `input` as a byte array in hex format
-* `utf8ToByteString(input: string)`: treat `input` as utf8 encoded.
+* If is not passing `isUtf8`, then `input` should be in the format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/`
+* Otherwise, `input` should be in the format of utf8 literal, i.e. `hello world`
 
 For example:
 
 ```js
 let str0: ByteString = toByteString('01ab23ef')       // valid, s1 === '01ab23ef'
 
-let str1: ByteString = utf8ToByteString('hello world')  // valid, s0 === '68656c6c6f20776f726c64'
+let str1: ByteString = toByteString('hello world', true)  // valid, s0 === '68656c6c6f20776f726c64'
 
 let invalid_str: ByteString = "hello world"  // invalid, string literal without wrapper function
 
