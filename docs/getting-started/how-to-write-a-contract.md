@@ -173,6 +173,8 @@ toByteString('0011', false) // valid
 toByteString('0011') // valid
 
 toByteString('001') // invalid, `001` is not a valid hex literal
+
+toByteString('hello', false) // invalid, `hello` is not a valid hex literal
 ```
 
 `ByteString` has the following operators and methods:
