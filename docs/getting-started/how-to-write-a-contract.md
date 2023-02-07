@@ -150,24 +150,31 @@ const hugeHex: bigint = BigInt("0x1fffffffffffff")
 
 #### `ByteString`
 
-In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` represents a byte array. It must be able be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`.
+In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` represents a byte array.
 
-A `string` can be converted in to a `ByteString` using function `toByteString(input: string, isUtf8?: true)`:
+A literal `string` can be converted in to a `ByteString` using function `toByteString(literal: string, isUtf8: boolean = false): ByteString`:
 
-* If is not passing `isUtf8`, then `input` should be in the format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/`
-* Otherwise, `input` should be in the format of utf8 literal, i.e. `hello world`
+* If not passing `isUtf8` or `isUtf8` is `false`, then `literal` should be in the format of hex literal, which can be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`
+* Otherwise, `literal` should be in the format of utf8 literal, i.e. `hello world`
 
 For example:
 
-```js
-let str0: ByteString = toByteString('01ab23ef')       // valid, s1 === '01ab23ef'
+```typescript
+toByteString('hello', 1 === 1) // invalid, not passing boolean literal to the 2nd parameter
 
-let str1: ByteString = toByteString('hello world', true)  // valid, s0 === '68656c6c6f20776f726c64'
+let a = true
+toByteString('world', a) // invalid, not passing boolean literal to the 2nd parameter
 
-let invalid_str: ByteString = "hello world"  // invalid, string literal without wrapper function
+let b = toByteString('hello world', true) // valid
 
-let invalid_str2: ByteString = toByteString('ff012') // invalid, odd number of hex characters
+toByteString(b, true) // invalid, not passing string literal to the 1st parameter
 
+toByteString('0011', false) // valid
+toByteString('0011') // valid
+
+toByteString('001') // invalid, `001` is not a valid hex literal
+
+toByteString('hello', false) // invalid, `hello` is not a valid hex literal
 ```
 
 `ByteString` has the following operators and methods:
