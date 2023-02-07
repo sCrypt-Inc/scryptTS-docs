@@ -154,19 +154,21 @@ In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` re
 
 A `string` can be converted in to a `ByteString` using function `toByteString(input: string, isUtf8?: true)`:
 
-* If is not passing `isUtf8`, then `input` should be in the format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/`
+* If not passing `isUtf8` or `isUtf8` is `'false'`, then `str` should be in the format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/`
 * Otherwise, `input` should be in the format of utf8 literal, i.e. `hello world`
 
 For example:
 
 ```js
-let str0: ByteString = toByteString('01ab23ef')       // valid, s1 === '01ab23ef'
+let str0: ByteString = toByteString('01ab23ef', 'false')    // valid, str0 === '01ab23ef'
 
-let str1: ByteString = toByteString('hello world', true)  // valid, s0 === '68656c6c6f20776f726c64'
+let str1: ByteString = toByteString('01ab23ef')             // valid, str1 === '01ab23ef'
 
-let invalid_str: ByteString = "hello world"  // invalid, string literal without wrapper function
+let str2: ByteString = toByteString('hello world', 'true')  // valid, str2 === '68656c6c6f20776f726c64'
 
-let invalid_str2: ByteString = toByteString('ff012') // invalid, odd number of hex characters
+let invalid_str1: ByteString = "hello world"  // invalid, string literal without wrapper function
+
+let invalid_str2: ByteString = toByteString('ff012') // invalid, invalid hex literal
 
 ```
 
