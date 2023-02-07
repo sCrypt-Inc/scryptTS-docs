@@ -6,33 +6,112 @@ sidebar_position: 8
 
 ## Functions
 
-The following functions come with `scrypt-ts` and are available globally.
+The following functions come with `scryptTS` and are available globally.
 
 ### Assert
 
-- `assert(condition: boolean, msg?: string): asserts condition`
+- `assert(condition: boolean, msg?: string)`. Throw an `Error` with the optional error message `msg` if `condition` is `false`. Otherwise, nothing happens.
+
+```typescript
+assert(1 === 1)        // nothing happens
+assert(1 === 2)        // throws Error('Execution failed')
+assert(false, 'hello') // throws Error('Execution failed, hello')
+```
 
 ### Math
 
-- `abs(a: bigint): bigint  `
-- `min(a: bigint, b: bigint): bigint`
-- `max(a: bigint, b: bigint): bigint`
-- `within(x: bigint, min: bigint, max: bigint): boolean`
+- `abs(a: bigint): bigint  `, returns the absolute value of `a`.
+
+```typescript
+abs(1n)  // 1n
+abs(0n)  // 0n
+abs(-1n) // 1n
+```
+
+- `min(a: bigint, b: bigint): bigint`, returns the smallest of `a` and `b`.
+
+```typescript
+min(1n, 2n) // 1n
+```
+
+- `max(a: bigint, b: bigint): bigint`, return the lagest of `a` and `b`.
+
+```typescript
+max(1n, 2n) // 2n
+```
+
+- `within(x: bigint, min: bigint, max: bigint): boolean`, return `true` if `x` is within the specified range (left-inclusive), `false` otherwise.
+
+```typescript
+within(0n, 0n, 2n) // true
+within(1n, 0n, 2n) // true
+within(2n, 0n, 2n) // false
+```
 
 ### Hashing
 
-- `ripemd160(a: ByteString): Ripemd160`
-- `sha1(a: ByteString): Sha1`
-- `sha256(a: ByteString): Sha256`
+- `ripemd160(a: ByteString): Ripemd160`, returns the [RIPEMD160](https://en.wikipedia.org/wiki/RIPEMD) hash result of `a`.
+- `sha1(a: ByteString): Sha1`, returns the [SHA1](https://en.wikipedia.org/wiki/SHA-1) hash result of `a`.
+- `sha256(a: ByteString): Sha256`, returns the [SHA256](https://www.movable-type.co.uk/scripts/sha256.html) hash result of `a`.
 - `hash160(a: ByteString): Ripemd160`, actually returns `ripemd160(sha256(a))`
 - `hash256(a: ByteString): Sha256`, actually returns `sha256(sha256(a))`
 
 ### Bytes Operation
 
 - `int2ByteString(n: bigint, size?: bigint): ByteString`. If not passing `size`,  the number `n` is converted to a `ByteString` with as few bytes as possible. Otherwise, converts the number `n` to a `ByteString` of the specified size, including the sign bit, fails if the number cannot be accommodated.
+
+```typescript
+// as few bytes as possible
+int2ByteString(128n)   // '8000', little endian
+int2ByteString(127n)   // '7f'
+int2ByteString(1n)     // '01'
+int2ByteString(0n)     // ''
+int2ByteString(-0n)    // ''
+int2ByteString(-1n)    // '81'
+int2ByteString(-127n)  // 'ff'
+int2ByteString(-129n)  // '8180', little endian
+
+// specified size
+int2ByteString(1n, 3n)        // '010000', 3 bytes
+int2ByteString(-129n, 3n)     // '810080', 3 bytes
+
+// Error: -129 cannot fit in 1 byte[s]
+// int2ByteString(-129n, 1n)
+```
+
 - `byteString2Int(a: ByteString): bigint`
+
+```typescript
+byteString2Int(toByteString('8000'))    // 128n
+byteString2Int(toByteString('7f'))      // 127n
+byteString2Int(toByteString('01'))      // 1n
+byteString2Int(toByteString(''))        // 0n
+byteString2Int(toByteString('00'))      // 0n
+byteString2Int(toByteString('80'))      // 0n
+byteString2Int(toByteString('81'))      // -1n
+byteString2Int(toByteString('ff'))      // -127n
+byteString2Int(toByteString('8180'))    // -129n
+
+byteString2Int(toByteString('010000'))  // 1n
+byteString2Int(toByteString('810080'))  // -129n
+```
+
 - `len(a: ByteString): number`, returns the byte length of `a`
+
+```typescript
+const s1 = toByteString('0011', false) // '0011', 2 bytes
+len(s1) // 2
+
+const s2 = toByteString('hello', true) // '68656c6c6f', 5 bytes
+len(s2) // 5
+```
+
 - `reverseByteString(b: ByteString, size: number): ByteString`
+
+```typescript
+const s1 = toByteString('001122', false) // '001122'
+reverseByteString(s1, 3) // 221100
+```
 
 ### Bitshift
 
@@ -43,44 +122,17 @@ The following functions come with `scrypt-ts` and are available globally.
 
 ### Exit
 
-- `exit(status: boolean): void`. Call this function will terminate contract execution. If `status` is true then the contract succeeds; otherwise, it fails.
+- `exit(status: boolean): void`. Call this function will terminate contract execution. If `status` is `true` then the contract succeeds; otherwise, it fails.
 
-## Library
+## Standard Libraries
 
-A library is the same with a contract, except it does not contain any public function. It is only intended to be imported by a contract or other libraries. It thus cannot be independently deployed and called. It is frequently used to group related constants and static functions.
+`scryptTS` comes with standard libraries that define many commonly used contracts. They are included by default and do not require explicit `import` to be used.
 
-### Standard Libraries
-
-`scrypt-ts` comes with standard libraries that define many commonly used contracts. They are included by default and do not require explicit `import` to be used.
-
-#### Library `Utils`
+### Library `Utils`
 
 The `Utils` library provides a set of commonly used utility functions, such as function `Utils.fromLEUnsigned` converts signed integer `n` to unsigned integer of `l` bytes, in little endian. And function `buildOutput(outputScript: ByteString, outputSatoshis: bigint): ByteString` to build a tx output from its script and satoshi amount.
 
-#### Library `SigHash`
-
-`scrypt-ts` also provides a `SigHash` library to access various SigHash flags.
-
-```typescript
-export class AnyoneCanSpend extends SmartContract {
-    @prop()
-    recipient: PubKeyHash
-
-    constructor(recipient: PubKeyHash) {
-        super(...arguments)
-        this.recipient = recipient
-    }
-
-    @method(SigHash.ANYONECANPAY_SINGLE)
-    public unlock(outputAmount: bigint) {
-        const lockingScript: ByteString = Utils.buildPublicKeyHashScript(this.recipient)
-        const output: ByteString = Utils.buildOutput(lockingScript, outputAmount)
-        assert(hash256(output) == this.ctx.hashOutputs, 'hashOutputs check failed')
-    }
-}
-```
-
-#### Library `HashedMap`
+### Library `HashedMap`
 
 The HashedMap library provides a map/hashtable-like data structure. Unique keys and their corresponding values are hashed before being stored. Most functions of HashedMap require not only a key, but also its index, ranked by key hash in ascending order.
 
@@ -93,7 +145,7 @@ map.set(10n, toByteString("0111"))
 let hashedMap = new HashedMap(map)
 ```
 
-#### Library `HashedSet`
+### Library `HashedSet`
 
 The HashedSet library provides a set-like data structure. It can be regarded as a special HashedMap where a value is the same with its key and is thus omitted. Unique values are hashed before being stored. Most functions of HashedSet require an index, ranked by the value’s sha256 hash in ascending order. Similar to HashedMap, these functions also use SortedItem type parameter.
 
@@ -103,9 +155,9 @@ let set = new Set<bigint>()
 let hashedSet = new HashedSet(set)
 ```
 
-#### Library `Constants`
+### Library `Constants`
 
-`scrypt-ts` defines some commonly used constant values in the library `Constants`. You can use these constants anywhere in your code
+`scryptTS` defines some commonly used constant values in the library `Constants`. You can use these constants anywhere in your code
 
 ```typescript
 class Constants {
@@ -123,12 +175,3 @@ class Constants {
     static readonly OutpointLen: bigint = Int(36);
 }
 ```
-
-#### Full List
-
-| Contract        | **Constructor parameters** | Public access                                                |
-| --------------- | -------------------------- | ------------------------------------------------------------ |
-| Utils           | None                       | readonly OutputValueLen: bigint<br />readonly PubKeyHashLen: bigint<br /><br />toLEUnsigned(n: bigint, l: bigint): ByteString<br />fromLEUnsigned(bytes: ByteString): bigint<br />readVarint(buf: ByteString): ByteString<br />writeVarint(buf: ByteString): ByteString<br />buildOutput(outputScript: ByteString, outputSatoshis: bigint): ByteString<br />buildPublicKeyHashScript(pubKeyHash: PubKeyHash ): ByteString<br />buildOpreturnScript(data: ByteString): ByteString |
-| SigHash         | None                       | readonly ALL: SigHashType<br />readonly NONE: SigHashType<br />readonly SINGLE: SigHashType<br />readonly ANYONECANPAY_ALL: SigHashType<br />readonly ANYONECANPAY_NONE: SigHashType<br />readonly ANYONECANPAY_SINGLE: SigHashType |
-| HashedMap<K, V> | Map<K, V>                  | clear(): boolean<br />size(): bigint<br />data(): ByteString<br />set(key: SortedItem<K>, value: V): boolean<br />has(key: SortedItem<K>): boolean<br />delete(key: SortedItem<K>): boolean<br />canGet(key: SortedItem<K>, val: V): boolean<br />toMap(): Map<K, V><br />attach(map: Map<K, V>): void |
-| HashedSet<V>    | Set<E>                     | clear(): boolean<br />size(): bigint<br />data(): ByteString<br />add(key: SortedItem<E>): boolean<br />has(key: SortedItem<E>): boolean<br />delete(key: SortedItem<E>): boolean<br />toSet(): Set<E><br />attach(set: Set<E>): void |
