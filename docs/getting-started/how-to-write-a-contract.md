@@ -409,15 +409,16 @@ A compile-time constant, CTC for short, is a special variable whose value can be
 * A `const` variable, its value should be a numeric literal:
 
 ```ts
-const N = 3 // valid
-const N: number = 3 // valid
+const M = 3 // valid
+const N: number = 3 // invalid
 ```
 
 * A `static` `readonly` property:
 
 ```ts
 class X {
-  static readonly N = 3
+  static readonly M = 3 // valid
+  static readonly N: number = 3 // invalid
 }
 ```
 
@@ -430,13 +431,11 @@ type N = 3
 Only a numeric literal can be used to initialize CTC. Expressions are not allowed for now.
 
 ```ts
-
-type N = 3 // valid
-type N = 3 - 1 // invalid
-const N = 3 // valid
+const M = 3 // valid
 const N = 3 + 3 // invalid
+
 class X {
-  static readonly N = 3 // valid
+  static readonly M = 3 // valid
   static readonly N = 3 + 3 // invalid
 }
 ```
@@ -447,9 +446,10 @@ They can be used at places where a CTC is required, including:
 * Array length in declaration
 
 ```ts
-const N: number = 2
-let arr1: FixedArray<bigint, N> = [1n, 2n]  // N is a type: type N = 3
+type N = 2
+let arr1: FixedArray<bigint, N> = [1n, 2n]  // N is a type: type N = 2
 let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n]
+
 let arr3: FixedArray<bigint, typeof Demo.N> = [1n, 2n, 3n] // Demo.N is static readonly property
 ```
 
