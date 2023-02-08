@@ -451,7 +451,7 @@ for(let i=0; i< X.M1; i++) {}
 
 The most commonly used built-in function is `assert(condition: boolean, msg?: string)`. It throws an error if `condition` is false. A contract call is successful if and only if the first arugment `condition` passed to the functions is true for all `assert`s executed.
 
-You can also refer to [Built-ins](../tutorials/built-ins.md) for more detailed information.
+You can also refer to [Built-ins](../getting-started/built-ins.md) for more detailed information.
 
 ### Whitelisted Functions
 Be default, all Javascript/TypeScript built-in functions and global variables are not allowed in `@method`s, except the following kinds.
