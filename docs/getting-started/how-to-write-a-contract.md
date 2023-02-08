@@ -397,7 +397,7 @@ abs(a: bigint): bigint {
 
 ## Compile-time Constant
 
-A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. There are four kinds:
+A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. A CTC must be defined in one of the following ways.
 
 
 * A number literal like:
@@ -406,59 +406,42 @@ A compile-time constant, CTC for short, is a special variable whose value can be
 3
 ```
 
-* A `const` variable, its value should be a numeric literal:
+* A `const` variable, whose value must be a numeric literal. Expressions cannot be used for now.
 
 ```ts
-const M = 3 // valid
-const N: number = 3 // invalid
+const N1 = 3 // valid
+const N2: number = 3 // invalid, no explicit type `number` allowed
+const N3 = 3 + 3 // invalid, no expression allowed
 ```
 
 * A `static` `readonly` property:
 
 ```ts
 class X {
-  static readonly M = 3 // valid
-  static readonly N: number = 3 // invalid
-}
-```
-
-* A type which is a number literal like:
-
-```ts
-type N = 3
-```
-
-Only a numeric literal can be used to initialize CTC. Expressions are not allowed for now.
-
-```ts
-const M = 3 // valid
-const N = 3 + 3 // invalid
-
-class X {
-  static readonly M = 3 // valid
-  static readonly N = 3 + 3 // invalid
+  static readonly M1 = 3 // valid
+  static readonly M2: number = 3 // invalid
+  static readonly M3 = 3 + 3 // invalid
 }
 ```
 
 
-They can be used at places where a CTC is required, including:
+A CTC is required in these cases.
 
-* Array length in declaration
+* Array size
 
 ```ts
-type N = 2
-let arr1: FixedArray<bigint, N> = [1n, 2n]  // N is a type: type N = 2
-let arr2: FixedArray<bigint, 3> = [1n, 2n, 3n]
-
-let arr3: FixedArray<bigint, typeof Demo.N> = [1n, 2n, 3n] // Demo.N is static readonly property
+let arr1: FixedArray<bigint, 3> = [1n, 2n, 3n]
+// `typeof` is needed since FixedArray takes a type as the array size, not a value
+let arr1: FixedArray<bigint, typeof N1> = [1n, 2n, 3n]
+let arr2: FixedArray<bigint, typeof X.M1> = [1n, 2n, 3n]
 ```
 
 * Loop count in `for` statement
 
 ```ts
-for(let i=0; i< 3; i++)
-for(let i=0; i< N; i++)  // const N = 3;
-for(let i=0; i< X.N; i++)  // static readonly N = 3;
+for(let i=0; i< 3; i++) {}
+for(let i=0; i< N1; i++) {}
+for(let i=0; i< X.M1; i++) {}
 ```
 
 ## Functions
