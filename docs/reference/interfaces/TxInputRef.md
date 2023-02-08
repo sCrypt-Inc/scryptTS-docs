@@ -21,7 +21,7 @@ an index indicating the position of inputs in this transaction
 
 #### Defined in
 
-[src/smart-contract/contract.ts:29](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/contract.ts#L29)
+[src/smart-contract/contract.ts:33](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L33)
 
 ___
 
@@ -33,4 +33,4 @@ transaction object
 
 #### Defined in
 
-[src/smart-contract/contract.ts:27](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/contract.ts#L27)
+[src/smart-contract/contract.ts:31](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L31)

@@ -12,6 +12,8 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 
   ↳↳ [`WhatsonchainProvider`](WhatsonchainProvider.md)
 
+  ↳↳ [`DummyProvider`](DummyProvider.md)
+
 ## Table of contents
 
 ### Constructors
@@ -74,7 +76,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L42)
+[src/bsv/abstract-provider.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L42)
 
 ## Properties
 
@@ -84,7 +86,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L140)
+[src/bsv/abstract-provider.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L140)
 
 ___
 
@@ -199,7 +201,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:56](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L56)
+[src/bsv/abstract-provider.ts:56](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L56)
 
 ___
 
@@ -328,7 +330,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:128](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L128)
+[src/bsv/abstract-provider.ts:128](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L128)
 
 ___
 
@@ -353,7 +355,7 @@ A promise which resolves to a list of transaction UTXO.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:136](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L136)
+[src/bsv/abstract-provider.ts:136](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L136)
 
 ___
 
@@ -377,7 +379,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:79](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L79)
+[src/bsv/abstract-provider.ts:79](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L79)
 
 ___
 
@@ -393,7 +395,7 @@ The fee rate for sending transations through this provider.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:72](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L72)
+[src/bsv/abstract-provider.ts:72](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L72)
 
 ___
 
@@ -434,7 +436,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L67)
+[src/bsv/abstract-provider.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L67)
 
 ___
 
@@ -458,7 +460,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:113](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L113)
+[src/bsv/abstract-provider.ts:113](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L113)
 
 ___
 
@@ -474,7 +476,7 @@ check if provider is ready
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:50](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L50)
+[src/bsv/abstract-provider.ts:50](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L50)
 
 ___
 
@@ -499,7 +501,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:121](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L121)
+[src/bsv/abstract-provider.ts:121](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L121)
 
 ___
 
@@ -1009,7 +1011,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:93](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L93)
+[src/bsv/abstract-provider.ts:93](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L93)
 
 ___
 
@@ -1037,7 +1039,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L101)
+[src/bsv/abstract-provider.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L101)
 
 ___
 
@@ -1094,7 +1096,7 @@ update provider newwork
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:62](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L62)
+[src/bsv/abstract-provider.ts:62](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L62)
 
 ___
 
@@ -1172,7 +1174,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:147](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L147)
+[src/bsv/abstract-provider.ts:147](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L147)
 
 ___
 

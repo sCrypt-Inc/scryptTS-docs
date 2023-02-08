@@ -39,6 +39,8 @@
 - [fee](TransactionResponse.md#fee)
 - [feePerKb](TransactionResponse.md#feeperkb)
 - [from](TransactionResponse.md#from)
+- [fromBuffer](TransactionResponse.md#frombuffer)
+- [fromString](TransactionResponse.md#fromstring)
 - [getChangeAmount](TransactionResponse.md#getchangeamount)
 - [getChangeOutput](TransactionResponse.md#getchangeoutput)
 - [getEstimateFee](TransactionResponse.md#getestimatefee)
@@ -87,7 +89,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:504
+node_modules/bsv/index.d.ts:509
 
 ___
 
@@ -101,7 +103,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:448
+node_modules/bsv/index.d.ts:451
 
 ___
 
@@ -115,7 +117,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:447
+node_modules/bsv/index.d.ts:450
 
 ___
 
@@ -129,7 +131,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:449
+node_modules/bsv/index.d.ts:452
 
 ___
 
@@ -143,7 +145,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:445
+node_modules/bsv/index.d.ts:448
 
 ___
 
@@ -157,7 +159,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:452
+node_modules/bsv/index.d.ts:455
 
 ___
 
@@ -171,7 +173,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:451
+node_modules/bsv/index.d.ts:454
 
 ___
 
@@ -185,7 +187,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:450
+node_modules/bsv/index.d.ts:453
 
 ___
 
@@ -199,7 +201,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:446
+node_modules/bsv/index.d.ts:449
 
 ## Methods
 
@@ -217,7 +219,7 @@ node_modules/bsv/index.d.ts:446
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:503
+node_modules/bsv/index.d.ts:508
 
 ___
 
@@ -235,7 +237,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:502
+node_modules/bsv/index.d.ts:507
 
 ___
 
@@ -259,7 +261,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:475
+node_modules/bsv/index.d.ts:480
 
 ___
 
@@ -284,7 +286,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:528
+node_modules/bsv/index.d.ts:533
 
 ___
 
@@ -310,7 +312,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:469
+node_modules/bsv/index.d.ts:474
 
 ___
 
@@ -335,7 +337,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:527
+node_modules/bsv/index.d.ts:532
 
 ___
 
@@ -359,7 +361,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:474
+node_modules/bsv/index.d.ts:479
 
 ___
 
@@ -371,7 +373,11 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `sig` | [`Signature`](../classes/bsv.crypto.Signature.md) |
+| `sig` | `Object` |
+| `sig.inputIndex` | `number` |
+| `sig.publicKey` | [`PublicKey`](../classes/bsv.PublicKey.md) |
+| `sig.signature` | [`Signature`](../classes/bsv.crypto.Signature.md) |
+| `sig.sigtype` | `number` |
 
 #### Returns
 
@@ -383,7 +389,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:467
+node_modules/bsv/index.d.ts:472
 
 ___
 
@@ -407,7 +413,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:460
+node_modules/bsv/index.d.ts:465
 
 ___
 
@@ -431,7 +437,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:523
+node_modules/bsv/index.d.ts:528
 
 ___
 
@@ -449,7 +455,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:529
+node_modules/bsv/index.d.ts:534
 
 ___
 
@@ -467,7 +473,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:488
+node_modules/bsv/index.d.ts:493
 
 ___
 
@@ -491,7 +497,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:461
+node_modules/bsv/index.d.ts:466
 
 ___
 
@@ -515,7 +521,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:462
+node_modules/bsv/index.d.ts:467
 
 ___
 
@@ -539,7 +545,55 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:456
+node_modules/bsv/index.d.ts:459
+
+___
+
+### fromBuffer
+
+▸ **fromBuffer**(`buffer`): [`TransactionResponse`](TransactionResponse.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `buffer` | `Buffer` |
+
+#### Returns
+
+[`TransactionResponse`](TransactionResponse.md)
+
+#### Inherited from
+
+[Transaction](../classes/bsv.Transaction-1.md).[fromBuffer](../classes/bsv.Transaction-1.md#frombuffer)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:463
+
+___
+
+### fromString
+
+▸ **fromString**(`rawTxHex`): [`TransactionResponse`](TransactionResponse.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `rawTxHex` | `string` |
+
+#### Returns
+
+[`TransactionResponse`](TransactionResponse.md)
+
+#### Inherited from
+
+[Transaction](../classes/bsv.Transaction-1.md).[fromString](../classes/bsv.Transaction-1.md#fromstring)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:462
 
 ___
 
@@ -557,7 +611,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:521
+node_modules/bsv/index.d.ts:526
 
 ___
 
@@ -575,7 +629,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:481
+node_modules/bsv/index.d.ts:486
 
 ___
 
@@ -593,7 +647,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:522
+node_modules/bsv/index.d.ts:527
 
 ___
 
@@ -611,7 +665,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:480
+node_modules/bsv/index.d.ts:485
 
 ___
 
@@ -635,7 +689,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:535
+node_modules/bsv/index.d.ts:540
 
 ___
 
@@ -653,7 +707,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:482
+node_modules/bsv/index.d.ts:487
 
 ___
 
@@ -677,7 +731,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:536
+node_modules/bsv/index.d.ts:541
 
 ___
 
@@ -703,7 +757,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:526
+node_modules/bsv/index.d.ts:531
 
 ___
 
@@ -727,7 +781,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:500
+node_modules/bsv/index.d.ts:505
 
 ___
 
@@ -753,7 +807,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:525
+node_modules/bsv/index.d.ts:530
 
 ___
 
@@ -771,7 +825,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:479
+node_modules/bsv/index.d.ts:484
 
 ___
 
@@ -789,7 +843,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:491
+node_modules/bsv/index.d.ts:496
 
 ___
 
@@ -807,7 +861,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:486
+node_modules/bsv/index.d.ts:491
 
 ___
 
@@ -825,7 +879,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:498
+node_modules/bsv/index.d.ts:503
 
 ___
 
@@ -843,7 +897,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:489
+node_modules/bsv/index.d.ts:494
 
 ___
 
@@ -861,7 +915,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:520
+node_modules/bsv/index.d.ts:525
 
 ___
 
@@ -885,7 +939,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:477
+node_modules/bsv/index.d.ts:482
 
 ___
 
@@ -909,7 +963,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:476
+node_modules/bsv/index.d.ts:481
 
 ___
 
@@ -927,7 +981,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:524
+node_modules/bsv/index.d.ts:529
 
 ___
 
@@ -945,7 +999,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:518
+node_modules/bsv/index.d.ts:523
 
 ___
 
@@ -963,7 +1017,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:519
+node_modules/bsv/index.d.ts:524
 
 ___
 
@@ -987,7 +1041,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:492
+node_modules/bsv/index.d.ts:497
 
 ___
 
@@ -1012,7 +1066,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:505
+node_modules/bsv/index.d.ts:510
 
 ___
 
@@ -1037,7 +1091,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:511
+node_modules/bsv/index.d.ts:516
 
 ___
 
@@ -1062,7 +1116,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:516
+node_modules/bsv/index.d.ts:521
 
 ___
 
@@ -1086,7 +1140,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:483
+node_modules/bsv/index.d.ts:488
 
 ___
 
@@ -1111,7 +1165,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:517
+node_modules/bsv/index.d.ts:522
 
 ___
 
@@ -1136,7 +1190,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:463
+node_modules/bsv/index.d.ts:468
 
 ___
 
@@ -1161,7 +1215,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:459
+node_modules/bsv/index.d.ts:464
 
 ___
 
@@ -1179,7 +1233,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:496
+node_modules/bsv/index.d.ts:501
 
 ___
 
@@ -1197,7 +1251,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:495
+node_modules/bsv/index.d.ts:500
 
 ___
 
@@ -1215,7 +1269,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:493
+node_modules/bsv/index.d.ts:498
 
 ___
 
@@ -1233,7 +1287,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:485
+node_modules/bsv/index.d.ts:490
 
 ___
 
@@ -1263,7 +1317,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:530
+node_modules/bsv/index.d.ts:535
 
 ___
 
@@ -1292,4 +1346,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:468
+node_modules/bsv/index.d.ts:473

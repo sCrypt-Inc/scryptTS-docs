@@ -1,89 +1,78 @@
-[scrypt-ts](../README.md) / WhatsonchainProvider
+[scrypt-ts](../README.md) / DummyProvider
 
-# Class: WhatsonchainProvider
+# Class: DummyProvider
 
-A Provider is an abstraction of non-account-based operations on a blockchain and is generally not directly involved in signing transaction or data.
+A DummyProvider is build for test purpose only, it always return a dummy utxo for `listUnspent` request.
 
 ## Hierarchy
 
 - [`Provider`](Provider.md)
 
-  ↳ **`WhatsonchainProvider`**
+  ↳ **`DummyProvider`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](WhatsonchainProvider.md#constructor)
+- [constructor](DummyProvider.md#constructor)
 
 ### Properties
 
-- [\_isProvider](WhatsonchainProvider.md#_isprovider)
-- [\_network](WhatsonchainProvider.md#_network)
-- [captureRejectionSymbol](WhatsonchainProvider.md#capturerejectionsymbol)
-- [captureRejections](WhatsonchainProvider.md#capturerejections)
-- [defaultMaxListeners](WhatsonchainProvider.md#defaultmaxlisteners)
-- [errorMonitor](WhatsonchainProvider.md#errormonitor)
-
-### Accessors
-
-- [apiPrefix](WhatsonchainProvider.md#apiprefix)
+- [\_isProvider](DummyProvider.md#_isprovider)
+- [captureRejectionSymbol](DummyProvider.md#capturerejectionsymbol)
+- [captureRejections](DummyProvider.md#capturerejections)
+- [defaultMaxListeners](DummyProvider.md#defaultmaxlisteners)
+- [errorMonitor](DummyProvider.md#errormonitor)
 
 ### Methods
 
-- [addListener](WhatsonchainProvider.md#addlistener)
-- [connect](WhatsonchainProvider.md#connect)
-- [emit](WhatsonchainProvider.md#emit)
-- [eventNames](WhatsonchainProvider.md#eventnames)
-- [getBalance](WhatsonchainProvider.md#getbalance)
-- [getContractUTXOs](WhatsonchainProvider.md#getcontractutxos)
-- [getEstimateFee](WhatsonchainProvider.md#getestimatefee)
-- [getFeePerKb](WhatsonchainProvider.md#getfeeperkb)
-- [getMaxListeners](WhatsonchainProvider.md#getmaxlisteners)
-- [getNetwork](WhatsonchainProvider.md#getnetwork)
-- [getTransaction](WhatsonchainProvider.md#gettransaction)
-- [isConnected](WhatsonchainProvider.md#isconnected)
-- [listUnspent](WhatsonchainProvider.md#listunspent)
-- [listenerCount](WhatsonchainProvider.md#listenercount)
-- [listeners](WhatsonchainProvider.md#listeners)
-- [off](WhatsonchainProvider.md#off)
-- [on](WhatsonchainProvider.md#on)
-- [once](WhatsonchainProvider.md#once)
-- [prependListener](WhatsonchainProvider.md#prependlistener)
-- [prependOnceListener](WhatsonchainProvider.md#prependoncelistener)
-- [rawListeners](WhatsonchainProvider.md#rawlisteners)
-- [removeAllListeners](WhatsonchainProvider.md#removealllisteners)
-- [removeListener](WhatsonchainProvider.md#removelistener)
-- [sendRawTransaction](WhatsonchainProvider.md#sendrawtransaction)
-- [sendTransaction](WhatsonchainProvider.md#sendtransaction)
-- [setMaxListeners](WhatsonchainProvider.md#setmaxlisteners)
-- [updateNetwork](WhatsonchainProvider.md#updatenetwork)
-- [getEventListeners](WhatsonchainProvider.md#geteventlisteners)
-- [isProvider](WhatsonchainProvider.md#isprovider)
-- [listenerCount](WhatsonchainProvider.md#listenercount-1)
-- [on](WhatsonchainProvider.md#on-1)
-- [once](WhatsonchainProvider.md#once-1)
-- [setMaxListeners](WhatsonchainProvider.md#setmaxlisteners-1)
+- [addListener](DummyProvider.md#addlistener)
+- [connect](DummyProvider.md#connect)
+- [emit](DummyProvider.md#emit)
+- [eventNames](DummyProvider.md#eventnames)
+- [getBalance](DummyProvider.md#getbalance)
+- [getContractUTXOs](DummyProvider.md#getcontractutxos)
+- [getEstimateFee](DummyProvider.md#getestimatefee)
+- [getFeePerKb](DummyProvider.md#getfeeperkb)
+- [getMaxListeners](DummyProvider.md#getmaxlisteners)
+- [getNetwork](DummyProvider.md#getnetwork)
+- [getTransaction](DummyProvider.md#gettransaction)
+- [isConnected](DummyProvider.md#isconnected)
+- [listUnspent](DummyProvider.md#listunspent)
+- [listenerCount](DummyProvider.md#listenercount)
+- [listeners](DummyProvider.md#listeners)
+- [off](DummyProvider.md#off)
+- [on](DummyProvider.md#on)
+- [once](DummyProvider.md#once)
+- [prependListener](DummyProvider.md#prependlistener)
+- [prependOnceListener](DummyProvider.md#prependoncelistener)
+- [rawListeners](DummyProvider.md#rawlisteners)
+- [removeAllListeners](DummyProvider.md#removealllisteners)
+- [removeListener](DummyProvider.md#removelistener)
+- [sendRawTransaction](DummyProvider.md#sendrawtransaction)
+- [sendTransaction](DummyProvider.md#sendtransaction)
+- [setMaxListeners](DummyProvider.md#setmaxlisteners)
+- [updateNetwork](DummyProvider.md#updatenetwork)
+- [getEventListeners](DummyProvider.md#geteventlisteners)
+- [isProvider](DummyProvider.md#isprovider)
+- [listenerCount](DummyProvider.md#listenercount-1)
+- [on](DummyProvider.md#on-1)
+- [once](DummyProvider.md#once-1)
+- [setMaxListeners](DummyProvider.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new WhatsonchainProvider**(`network`)
+• **new DummyProvider**()
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `network` | [`Network`](../interfaces/bsv.Networks.Network.md) |
-
-#### Overrides
+#### Inherited from
 
 [Provider](Provider.md).[constructor](Provider.md#constructor)
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:13](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L13)
+[src/bsv/abstract-provider.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L42)
 
 ## Properties
 
@@ -98,16 +87,6 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 #### Defined in
 
 [src/bsv/abstract-provider.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L140)
-
-___
-
-### \_network
-
-• `Private` **\_network**: [`Network`](../interfaces/bsv.Networks.Network.md)
-
-#### Defined in
-
-[src/bsv/providers/whatsonchain-provider.ts:11](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L11)
 
 ___
 
@@ -175,25 +154,11 @@ regular `'error'` listener is installed.
 
 node_modules/@types/node/ts4.8/events.d.ts:327
 
-## Accessors
-
-### apiPrefix
-
-• `get` **apiPrefix**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[src/bsv/providers/whatsonchain-provider.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L18)
-
 ## Methods
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **addListener**(`eventName`, `listener`): [`DummyProvider`](DummyProvider.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -210,7 +175,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -224,13 +189,13 @@ ___
 
 ### connect
 
-▸ **connect**(): `Promise`<[`WhatsonchainProvider`](WhatsonchainProvider.md)\>
+▸ **connect**(): `Promise`<[`DummyProvider`](DummyProvider.md)\>
 
 Implement the connection provider, for example, verify the api key during the connection process.
 
 #### Returns
 
-`Promise`<[`WhatsonchainProvider`](WhatsonchainProvider.md)\>
+`Promise`<[`DummyProvider`](DummyProvider.md)\>
 
 a connected provider. Throw an exception if the connection fails.
 
@@ -240,7 +205,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:28](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L28)
+[src/bsv/providers/dummy-provider.ts:14](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L14)
 
 ___
 
@@ -351,7 +316,7 @@ ___
 
 ### getBalance
 
-▸ **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+▸ **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
 Get the balance of BSVs in satoshis for an address.
 
@@ -359,7 +324,7 @@ Get the balance of BSVs in satoshis for an address.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address?` | [`AddressOption`](../README.md#addressoption) | The query address. |
+| `address` | [`AddressOption`](../README.md#addressoption) | The query address. |
 
 #### Returns
 
@@ -373,13 +338,13 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:85](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L85)
+[src/bsv/providers/dummy-provider.ts:41](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L41)
 
 ___
 
 ### getContractUTXOs
 
-▸ **getContractUTXOs**(`genesisTxHash`, `outputIndex?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **getContractUTXOs**(`genesisTxHash`, `outputIndex`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of UTXO for a certain contract instance.
 
@@ -388,7 +353,7 @@ Get a list of UTXO for a certain contract instance.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `genesisTxHash` | `string` | The hash value of deployment transaction of the contract instance. |
-| `outputIndex?` | `number` | The output index of the deployment transaction of the contract instance. |
+| `outputIndex` | `number` | The output index of the deployment transaction of the contract instance. |
 
 #### Returns
 
@@ -402,7 +367,7 @@ A promise which resolves to a list of transaction UTXO.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L101)
+[src/bsv/providers/dummy-provider.ts:44](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L44)
 
 ___
 
@@ -450,7 +415,7 @@ The fee rate for sending transations through this provider.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:105](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L105)
+[src/bsv/providers/dummy-provider.ts:23](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L23)
 
 ___
 
@@ -459,7 +424,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](WhatsonchainProvider.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](DummyProvider.md#defaultmaxlisteners).
 
 **`Since`**
 
@@ -495,7 +460,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:39](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L39)
+[src/bsv/providers/dummy-provider.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L20)
 
 ___
 
@@ -523,7 +488,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:97](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L97)
+[src/bsv/providers/dummy-provider.ts:29](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L29)
 
 ___
 
@@ -543,13 +508,13 @@ check if provider is ready
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:24](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L24)
+[src/bsv/providers/dummy-provider.ts:11](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L11)
 
 ___
 
 ### listUnspent
 
-▸ **listUnspent**(`address`, `options`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of the P2PKH UTXOs.
 
@@ -557,8 +522,8 @@ Get a list of the P2PKH UTXOs.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | `string` \| [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `address` | [`AddressOption`](../README.md#addressoption) | The address of the returned UTXOs belongs to. |
+| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -572,7 +537,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:68](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L68)
+[src/bsv/providers/dummy-provider.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L32)
 
 ___
 
@@ -646,7 +611,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **off**(`eventName`, `listener`): [`DummyProvider`](DummyProvider.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -663,7 +628,7 @@ v10.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -677,7 +642,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **on**(`eventName`, `listener`): [`DummyProvider`](DummyProvider.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -718,7 +683,7 @@ v0.1.101
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -732,7 +697,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **once**(`eventName`, `listener`): [`DummyProvider`](DummyProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -771,7 +736,7 @@ v0.3.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -785,7 +750,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **prependListener**(`eventName`, `listener`): [`DummyProvider`](DummyProvider.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -813,7 +778,7 @@ v6.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -827,7 +792,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`DummyProvider`](DummyProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -853,7 +818,7 @@ v6.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -922,7 +887,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **removeAllListeners**(`event?`): [`DummyProvider`](DummyProvider.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -944,7 +909,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -958,7 +923,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **removeListener**(`eventName`, `listener`): [`DummyProvider`](DummyProvider.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -1050,7 +1015,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -1086,7 +1051,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:43](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L43)
+[src/bsv/providers/dummy-provider.ts:26](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L26)
 
 ___
 
@@ -1124,7 +1089,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **setMaxListeners**(`n`): [`DummyProvider`](DummyProvider.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1145,7 +1110,7 @@ v0.3.5
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`DummyProvider`](DummyProvider.md)
 
 #### Inherited from
 
@@ -1179,7 +1144,7 @@ update provider newwork
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:33](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L33)
+[src/bsv/providers/dummy-provider.ts:17](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L17)
 
 ___
 

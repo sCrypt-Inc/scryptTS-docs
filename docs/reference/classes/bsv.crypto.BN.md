@@ -10,6 +10,10 @@
 
 - [constructor](bsv.crypto.BN.md#constructor)
 
+### Properties
+
+- [One](bsv.crypto.BN.md#one)
+
 ### Methods
 
 - [abs](bsv.crypto.BN.md#abs)
@@ -83,6 +87,16 @@
 
 node_modules/bsv/index.d.ts:207
 
+## Properties
+
+### One
+
+• **One**: [`BN`](bsv.crypto.BN.md)
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:213
+
 ## Methods
 
 ### abs
@@ -95,7 +109,7 @@ node_modules/bsv/index.d.ts:207
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:237
+node_modules/bsv/index.d.ts:240
 
 ___
 
@@ -115,7 +129,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:238
+node_modules/bsv/index.d.ts:241
 
 ▸ **add**(`one`): [`BN`](bsv.crypto.BN.md)
 
@@ -131,7 +145,7 @@ node_modules/bsv/index.d.ts:238
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:263
+node_modules/bsv/index.d.ts:266
 
 ___
 
@@ -151,7 +165,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:248
+node_modules/bsv/index.d.ts:251
 
 ___
 
@@ -171,7 +185,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:255
+node_modules/bsv/index.d.ts:258
 
 ___
 
@@ -185,7 +199,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:218
+node_modules/bsv/index.d.ts:221
 
 ___
 
@@ -199,7 +213,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:220
+node_modules/bsv/index.d.ts:223
 
 ___
 
@@ -213,7 +227,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:212
+node_modules/bsv/index.d.ts:215
 
 ___
 
@@ -233,7 +247,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:225
+node_modules/bsv/index.d.ts:228
 
 ___
 
@@ -253,7 +267,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:243
+node_modules/bsv/index.d.ts:246
 
 ___
 
@@ -273,7 +287,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:245
+node_modules/bsv/index.d.ts:248
 
 ___
 
@@ -299,7 +313,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:259
+node_modules/bsv/index.d.ts:262
 
 ___
 
@@ -319,7 +333,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:230
+node_modules/bsv/index.d.ts:233
 
 ___
 
@@ -339,7 +353,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:231
+node_modules/bsv/index.d.ts:234
 
 ___
 
@@ -359,7 +373,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:258
+node_modules/bsv/index.d.ts:261
 
 ___
 
@@ -379,7 +393,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:228
+node_modules/bsv/index.d.ts:231
 
 ___
 
@@ -399,7 +413,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:229
+node_modules/bsv/index.d.ts:232
 
 ___
 
@@ -419,7 +433,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:232
+node_modules/bsv/index.d.ts:235
 
 ___
 
@@ -439,7 +453,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:260
+node_modules/bsv/index.d.ts:263
 
 ___
 
@@ -459,7 +473,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:234
+node_modules/bsv/index.d.ts:237
 
 ___
 
@@ -473,7 +487,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:222
+node_modules/bsv/index.d.ts:225
 
 ___
 
@@ -487,7 +501,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:221
+node_modules/bsv/index.d.ts:224
 
 ___
 
@@ -501,7 +515,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:223
+node_modules/bsv/index.d.ts:226
 
 ___
 
@@ -515,7 +529,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:224
+node_modules/bsv/index.d.ts:227
 
 ___
 
@@ -535,7 +549,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:226
+node_modules/bsv/index.d.ts:229
 
 ___
 
@@ -555,7 +569,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:227
+node_modules/bsv/index.d.ts:230
 
 ___
 
@@ -575,7 +589,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:233
+node_modules/bsv/index.d.ts:236
 
 ___
 
@@ -595,7 +609,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:254
+node_modules/bsv/index.d.ts:257
 
 ___
 
@@ -615,7 +629,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:244
+node_modules/bsv/index.d.ts:247
 
 ___
 
@@ -635,7 +649,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:240
+node_modules/bsv/index.d.ts:243
 
 ___
 
@@ -649,7 +663,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:236
+node_modules/bsv/index.d.ts:239
 
 ▸ **neg**(): [`BN`](bsv.crypto.BN.md)
 
@@ -659,7 +673,7 @@ node_modules/bsv/index.d.ts:236
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:262
+node_modules/bsv/index.d.ts:265
 
 ___
 
@@ -679,7 +693,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:256
+node_modules/bsv/index.d.ts:259
 
 ___
 
@@ -699,7 +713,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:247
+node_modules/bsv/index.d.ts:250
 
 ___
 
@@ -719,7 +733,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:242
+node_modules/bsv/index.d.ts:245
 
 ___
 
@@ -739,7 +753,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:250
+node_modules/bsv/index.d.ts:253
 
 ___
 
@@ -759,7 +773,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:251
+node_modules/bsv/index.d.ts:254
 
 ___
 
@@ -779,7 +793,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:252
+node_modules/bsv/index.d.ts:255
 
 ___
 
@@ -793,7 +807,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:241
+node_modules/bsv/index.d.ts:244
 
 ___
 
@@ -813,7 +827,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:239
+node_modules/bsv/index.d.ts:242
 
 ___
 
@@ -833,7 +847,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:253
+node_modules/bsv/index.d.ts:256
 
 ___
 
@@ -854,7 +868,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:216
+node_modules/bsv/index.d.ts:219
 
 ___
 
@@ -874,7 +888,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:217
+node_modules/bsv/index.d.ts:220
 
 ___
 
@@ -888,7 +902,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:215
+node_modules/bsv/index.d.ts:218
 
 ___
 
@@ -902,7 +916,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:214
+node_modules/bsv/index.d.ts:217
 
 ▸ **toNumber**(): `number`
 
@@ -912,7 +926,7 @@ node_modules/bsv/index.d.ts:214
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:265
+node_modules/bsv/index.d.ts:268
 
 ___
 
@@ -932,7 +946,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:264
+node_modules/bsv/index.d.ts:267
 
 ___
 
@@ -953,7 +967,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:213
+node_modules/bsv/index.d.ts:216
 
 ___
 
@@ -973,7 +987,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:249
+node_modules/bsv/index.d.ts:252
 
 ___
 
@@ -987,7 +1001,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:219
+node_modules/bsv/index.d.ts:222
 
 ___
 
@@ -1008,7 +1022,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:266
+node_modules/bsv/index.d.ts:269
 
 ___
 
@@ -1029,7 +1043,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:269
+node_modules/bsv/index.d.ts:272
 
 ___
 
@@ -1049,7 +1063,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:267
+node_modules/bsv/index.d.ts:270
 
 ___
 
@@ -1070,7 +1084,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:261
+node_modules/bsv/index.d.ts:264
 
 ___
 
@@ -1091,4 +1105,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:270
+node_modules/bsv/index.d.ts:273

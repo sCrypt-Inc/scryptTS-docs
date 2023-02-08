@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:506](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L506)
+[src/smart-contract/builtins/functions.ts:515](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L515)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:509](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L509)
+[src/smart-contract/builtins/functions.ts:518](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L518)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:510](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L510)
+[src/smart-contract/builtins/functions.ts:519](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L519)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:511](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L511)
+[src/smart-contract/builtins/functions.ts:520](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L520)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:507](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L507)
+[src/smart-contract/builtins/functions.ts:516](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L516)
 
 ___
 
@@ -97,13 +97,13 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:508](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L508)
+[src/smart-contract/builtins/functions.ts:517](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L517)
 
 ## Methods
 
 ### hashOutputs
 
-▸ `Static` **hashOutputs**(`preimage`): `Bytes`
+▸ `Static` **hashOutputs**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -113,17 +113,17 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:558](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L558)
+[src/smart-contract/builtins/functions.ts:567](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L567)
 
 ___
 
 ### hashPrevouts
 
-▸ `Static` **hashPrevouts**(`preimage`): `Bytes`
+▸ `Static` **hashPrevouts**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -133,17 +133,17 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:523](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L523)
+[src/smart-contract/builtins/functions.ts:532](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L532)
 
 ___
 
 ### hashSequence
 
-▸ `Static` **hashSequence**(`preimage`): `Bytes`
+▸ `Static` **hashSequence**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -153,11 +153,11 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:527](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L527)
+[src/smart-contract/builtins/functions.ts:536](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L536)
 
 ___
 
@@ -177,13 +177,13 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:568](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L568)
+[src/smart-contract/builtins/functions.ts:577](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L577)
 
 ___
 
 ### nLocktimeRaw
 
-▸ `Static` **nLocktimeRaw**(`preimage`): `Bytes`
+▸ `Static` **nLocktimeRaw**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -193,11 +193,11 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:563](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L563)
+[src/smart-contract/builtins/functions.ts:572](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L572)
 
 ___
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:554](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L554)
+[src/smart-contract/builtins/functions.ts:563](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L563)
 
 ___
 
@@ -237,13 +237,13 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:549](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L549)
+[src/smart-contract/builtins/functions.ts:558](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L558)
 
 ___
 
 ### nVersion
 
-▸ `Static` **nVersion**(`preimage`): `Bytes`
+▸ `Static` **nVersion**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -253,17 +253,17 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:519](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L519)
+[src/smart-contract/builtins/functions.ts:528](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L528)
 
 ___
 
 ### outpoint
 
-▸ `Static` **outpoint**(`preimage`): `Bytes`
+▸ `Static` **outpoint**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -273,17 +273,17 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:531](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L531)
+[src/smart-contract/builtins/functions.ts:540](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L540)
 
 ___
 
 ### scriptCode
 
-▸ `Static` **scriptCode**(`preimage`): `Bytes`
+▸ `Static` **scriptCode**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -293,11 +293,11 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:536](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L536)
+[src/smart-contract/builtins/functions.ts:545](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L545)
 
 ___
 
@@ -317,7 +317,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:572](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L572)
+[src/smart-contract/builtins/functions.ts:581](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L581)
 
 ___
 
@@ -337,13 +337,13 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:545](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L545)
+[src/smart-contract/builtins/functions.ts:554](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L554)
 
 ___
 
 ### valueRaw
 
-▸ `Static` **valueRaw**(`preimage`): `Bytes`
+▸ `Static` **valueRaw**(`preimage`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -353,8 +353,8 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:540](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L540)
+[src/smart-contract/builtins/functions.ts:549](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L549)

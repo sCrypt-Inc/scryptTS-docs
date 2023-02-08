@@ -21,7 +21,7 @@ The address(es) whose corresponding private key(s) should be used to sign the tx
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:44](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L44)
+[src/bsv/abstract-signer.ts:44](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L44)
 
 ___
 
@@ -33,4 +33,4 @@ The `SignatureRequest` for the some inputs of the transaction.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L42)
+[src/bsv/abstract-signer.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L42)

@@ -25,7 +25,7 @@ The address(es) of corresponding private key(s) required to sign the input.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:14](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L14)
+[src/bsv/abstract-signer.ts:14](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L14)
 
 ___
 
@@ -37,7 +37,7 @@ The extra information for signing.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L20)
+[src/bsv/abstract-signer.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L20)
 
 ___
 
@@ -49,7 +49,7 @@ The index of input to sign.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:10](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L10)
+[src/bsv/abstract-signer.ts:10](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L10)
 
 ___
 
@@ -61,7 +61,7 @@ The previous output satoshis value of the input to spend.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:12](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L12)
+[src/bsv/abstract-signer.ts:12](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L12)
 
 ___
 
@@ -73,7 +73,7 @@ The previous output script of input, default value is a P2PKH locking script for
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:16](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L16)
+[src/bsv/abstract-signer.ts:16](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L16)
 
 ___
 
@@ -85,4 +85,4 @@ The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L18)
+[src/bsv/abstract-signer.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L18)

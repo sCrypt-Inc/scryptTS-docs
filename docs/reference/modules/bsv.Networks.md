@@ -35,7 +35,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:913
+node_modules/bsv/index.d.ts:918
 
 ## Variables
 
@@ -45,7 +45,7 @@ node_modules/bsv/index.d.ts:913
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:918
+node_modules/bsv/index.d.ts:923
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:915
+node_modules/bsv/index.d.ts:920
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:916
+node_modules/bsv/index.d.ts:921
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:917
+node_modules/bsv/index.d.ts:922
 
 ## Functions
 
@@ -95,7 +95,7 @@ node_modules/bsv/index.d.ts:917
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:920
+node_modules/bsv/index.d.ts:925
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:922
+node_modules/bsv/index.d.ts:927
 
 ___
 
@@ -136,4 +136,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:921
+node_modules/bsv/index.d.ts:926

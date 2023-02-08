@@ -56,7 +56,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:57](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L57)
+[src/bsv/abstract-signer.ts:57](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L57)
 
 ## Properties
 
@@ -66,7 +66,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L55)
+[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L55)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L54)
+[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L54)
 
 ## Accessors
 
@@ -98,7 +98,7 @@ the connected provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L67)
+[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L67)
 
 ## Methods
 
@@ -120,7 +120,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:83](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L83)
+[src/bsv/abstract-signer.ts:83](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L83)
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:114](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L114)
+[src/bsv/abstract-signer.ts:114](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L114)
 
 ___
 
@@ -156,7 +156,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:97](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L97)
+[src/bsv/abstract-signer.ts:97](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L97)
 
 ___
 
@@ -172,7 +172,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:91](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L91)
+[src/bsv/abstract-signer.ts:91](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L91)
 
 ___
 
@@ -198,7 +198,7 @@ The public key result.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:105](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L105)
+[src/bsv/abstract-signer.ts:105](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L105)
 
 ___
 
@@ -223,7 +223,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:153](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L153)
+[src/bsv/abstract-signer.ts:153](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L153)
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:108](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L108)
+[src/bsv/abstract-signer.ts:108](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L108)
 
 ___
 
@@ -265,7 +265,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L157)
+[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L157)
 
 ___
 
@@ -290,7 +290,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:145](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L145)
+[src/bsv/abstract-signer.ts:145](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L145)
 
 ___
 
@@ -319,7 +319,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:129](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L129)
+[src/bsv/abstract-signer.ts:129](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L129)
 
 ___
 
@@ -344,7 +344,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:137](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L137)
+[src/bsv/abstract-signer.ts:137](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L137)
 
 ___
 
@@ -368,4 +368,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L171)
+[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L171)

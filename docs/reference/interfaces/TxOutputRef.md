@@ -21,7 +21,7 @@ index of an output in this transaction
 
 #### Defined in
 
-[src/smart-contract/contract.ts:39](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/contract.ts#L39)
+[src/smart-contract/contract.ts:43](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L43)
 
 ___
 
@@ -33,4 +33,4 @@ transaction object
 
 #### Defined in
 
-[src/smart-contract/contract.ts:37](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/contract.ts#L37)
+[src/smart-contract/contract.ts:41](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L41)

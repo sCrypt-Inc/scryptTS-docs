@@ -46,7 +46,7 @@ library to access current tx
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:724](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L724)
+[src/smart-contract/builtins/functions.ts:733](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L733)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:721](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L721)
+[src/smart-contract/builtins/functions.ts:730](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L730)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:722](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L722)
+[src/smart-contract/builtins/functions.ts:731](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L731)
 
 ___
 
@@ -76,17 +76,17 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:726](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L726)
+[src/smart-contract/builtins/functions.ts:735](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L735)
 
 ___
 
 ### rBigEndian
 
-▪ `Static` `Readonly` **rBigEndian**: `Bytes`
+▪ `Static` `Readonly` **rBigEndian**: [`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:728](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L728)
+[src/smart-contract/builtins/functions.ts:737](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L737)
 
 ## Methods
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:782](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L782)
+[src/smart-contract/builtins/functions.ts:791](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L791)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:784](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L784)
+[src/smart-contract/builtins/functions.ts:793](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L793)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:773](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L773)
+[src/smart-contract/builtins/functions.ts:782](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L782)
 
 ___
 
@@ -172,7 +172,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:789](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L789)
+[src/smart-contract/builtins/functions.ts:798](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L798)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:793](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L793)
+[src/smart-contract/builtins/functions.ts:802](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L802)
 
 ___
 
@@ -212,7 +212,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:776](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L776)
+[src/smart-contract/builtins/functions.ts:785](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L785)
 
 ___
 
@@ -233,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:786](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L786)
+[src/smart-contract/builtins/functions.ts:795](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L795)
 
 ___
 
@@ -245,7 +245,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `bytes` | `Bytes` |
+| `bytes` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
@@ -253,7 +253,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:765](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L765)
+[src/smart-contract/builtins/functions.ts:774](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L774)
 
 ___
 
@@ -273,7 +273,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:796](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L796)
+[src/smart-contract/builtins/functions.ts:805](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L805)
 
 ___
 
@@ -294,7 +294,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:731](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L731)
+[src/smart-contract/builtins/functions.ts:740](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L740)
 
 ___
 
@@ -310,7 +310,7 @@ ___
 | `privKey` | [`PrivKey`](../README.md#privkey) |
 | `inverseK` | `bigint` |
 | `r` | `bigint` |
-| `rBigEndian` | `Bytes` |
+| `rBigEndian` | [`ByteString`](../README.md#bytestring) |
 | `sigHashType` | [`SigHashType`](../README.md#sighashtype) |
 
 #### Returns
@@ -319,4 +319,4 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:738](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L738)
+[src/smart-contract/builtins/functions.ts:747](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L747)

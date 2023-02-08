@@ -65,7 +65,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:48](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L48)
+[src/bsv/signers/sensilet-signer.ts:50](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L50)
 
 ## Properties
 
@@ -75,7 +75,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:46](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L46)
+[src/bsv/signers/sensilet-signer.ts:48](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L48)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L55)
+[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L55)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:45](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L45)
+[src/bsv/signers/sensilet-signer.ts:47](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L47)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L54)
+[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L54)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:44](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L44)
+[src/bsv/signers/sensilet-signer.ts:46](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L46)
 
 ## Accessors
 
@@ -149,7 +149,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L67)
+[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L67)
 
 ## Methods
 
@@ -175,7 +175,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:98](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L98)
+[src/bsv/signers/sensilet-signer.ts:100](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L100)
 
 ___
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:127](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L127)
+[src/bsv/signers/sensilet-signer.ts:129](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L129)
 
 ___
 
@@ -218,7 +218,7 @@ SensiletWalletAPI
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:83](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L83)
+[src/bsv/signers/sensilet-signer.ts:85](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L85)
 
 ___
 
@@ -238,7 +238,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:116](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L116)
+[src/bsv/signers/sensilet-signer.ts:118](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L118)
 
 ___
 
@@ -258,7 +258,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:134](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L134)
+[src/bsv/signers/sensilet-signer.ts:136](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L136)
 
 ___
 
@@ -272,7 +272,7 @@ ___
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:122](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L122)
+[src/bsv/signers/sensilet-signer.ts:124](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L124)
 
 ___
 
@@ -302,7 +302,7 @@ The public key result.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L140)
+[src/bsv/signers/sensilet-signer.ts:142](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L142)
 
 ___
 
@@ -320,7 +320,7 @@ SensiletWalletAPI or undefined if the provider has not yet established a connect
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:62](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L62)
+[src/bsv/signers/sensilet-signer.ts:64](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L64)
 
 ___
 
@@ -349,7 +349,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:212](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L212)
+[src/bsv/signers/sensilet-signer.ts:212](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L212)
 
 ___
 
@@ -367,7 +367,7 @@ true | false
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:70](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L70)
+[src/bsv/signers/sensilet-signer.ts:72](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L72)
 
 ___
 
@@ -392,7 +392,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:108](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L108)
+[src/bsv/abstract-signer.ts:108](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L108)
 
 ___
 
@@ -417,7 +417,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L157)
+[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L157)
 
 ___
 
@@ -446,7 +446,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:204](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L204)
+[src/bsv/signers/sensilet-signer.ts:204](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L204)
 
 ___
 
@@ -479,7 +479,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:144](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L144)
+[src/bsv/signers/sensilet-signer.ts:146](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L146)
 
 ___
 
@@ -508,7 +508,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:165](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/signers/sensilet-signer.ts#L165)
+[src/bsv/signers/sensilet-signer.ts:167](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L167)
 
 ___
 
@@ -536,4 +536,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L171)
+[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L171)

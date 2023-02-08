@@ -25,27 +25,27 @@
 
 ### serializeState
 
-▸ `Static` **serializeState**(`stateBuf`): `Bytes`
+▸ `Static` **serializeState**(`stateBuf`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `stateBuf` | `Bytes` |
+| `stateBuf` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:703](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L703)
+[src/smart-contract/builtins/functions.ts:712](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L712)
 
 ___
 
 ### writeBool
 
-▸ `Static` **writeBool**(`x`): `Bytes`
+▸ `Static` **writeBool**(`x`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -55,37 +55,37 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:694](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L694)
+[src/smart-contract/builtins/functions.ts:703](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L703)
 
 ___
 
 ### writeBytes
 
-▸ `Static` **writeBytes**(`buf`): `Bytes`
+▸ `Static` **writeBytes**(`buf`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buf` | `Bytes` |
+| `buf` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:668](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L668)
+[src/smart-contract/builtins/functions.ts:677](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L677)
 
 ___
 
 ### writeInt
 
-▸ `Static` **writeInt**(`x`): `Bytes`
+▸ `Static` **writeInt**(`x`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -95,8 +95,8 @@ ___
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:699](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L699)
+[src/smart-contract/builtins/functions.ts:708](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L708)

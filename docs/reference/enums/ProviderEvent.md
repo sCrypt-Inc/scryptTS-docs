@@ -21,7 +21,7 @@ The provider will send a 'Connected' event after the connection is successful.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L32)
+[src/bsv/abstract-provider.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L32)
 
 ___
 
@@ -33,4 +33,4 @@ After the network connected to the provider changes, it will issue the 'NetworkC
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:34](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L34)
+[src/bsv/abstract-provider.ts:34](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L34)

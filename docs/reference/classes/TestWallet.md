@@ -45,6 +45,7 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 - [getPubKey](TestWallet.md#getpubkey)
 - [getSignatures](TestWallet.md#getsignatures)
 - [listUnspent](TestWallet.md#listunspent)
+- [pushPrivateKey](TestWallet.md#pushprivatekey)
 - [signAndsendTransaction](TestWallet.md#signandsendtransaction)
 - [signMessage](TestWallet.md#signmessage)
 - [signRawTransaction](TestWallet.md#signrawtransaction)
@@ -70,7 +71,7 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:22](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L22)
+[src/bsv/wallets/test-wallet.ts:22](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L22)
 
 ## Properties
 
@@ -84,7 +85,7 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L55)
+[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L55)
 
 ___
 
@@ -94,7 +95,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L18)
+[src/bsv/wallets/test-wallet.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L18)
 
 ___
 
@@ -104,7 +105,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L20)
+[src/bsv/wallets/test-wallet.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L20)
 
 ___
 
@@ -118,7 +119,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L54)
+[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L54)
 
 ## Accessors
 
@@ -132,7 +133,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:149](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L149)
+[src/bsv/wallets/test-wallet.ts:148](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L148)
 
 ___
 
@@ -146,7 +147,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:36](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L36)
+[src/bsv/wallets/test-wallet.ts:36](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L36)
 
 ___
 
@@ -172,7 +173,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L67)
+[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L67)
 
 ___
 
@@ -186,7 +187,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L32)
+[src/bsv/wallets/test-wallet.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L32)
 
 ## Methods
 
@@ -206,7 +207,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:138](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L138)
+[src/bsv/wallets/test-wallet.ts:137](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L137)
 
 ___
 
@@ -226,7 +227,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:128](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L128)
+[src/bsv/wallets/test-wallet.ts:127](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L127)
 
 ___
 
@@ -246,7 +247,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:153](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L153)
+[src/bsv/wallets/test-wallet.ts:152](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L152)
 
 ___
 
@@ -272,7 +273,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:112](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L112)
+[src/bsv/wallets/test-wallet.ts:111](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L111)
 
 ___
 
@@ -296,7 +297,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:114](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L114)
+[src/bsv/abstract-signer.ts:114](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L114)
 
 ___
 
@@ -316,7 +317,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:40](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L40)
+[src/bsv/wallets/test-wallet.ts:45](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L45)
 
 ___
 
@@ -336,7 +337,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:44](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L44)
+[src/bsv/wallets/test-wallet.ts:49](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L49)
 
 ___
 
@@ -366,7 +367,7 @@ The public key result.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:48](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L48)
+[src/bsv/wallets/test-wallet.ts:53](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L53)
 
 ___
 
@@ -395,7 +396,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:88](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L88)
+[src/bsv/wallets/test-wallet.ts:87](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L87)
 
 ___
 
@@ -420,7 +421,27 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:118](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L118)
+[src/bsv/wallets/test-wallet.ts:117](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L117)
+
+___
+
+### pushPrivateKey
+
+▸ **pushPrivateKey**(`privateKey`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `privateKey` | [`PrivateKey`](bsv.PrivateKey.md) \| [`PrivateKey`](bsv.PrivateKey.md)[] |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/bsv/wallets/test-wallet.ts:40](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L40)
 
 ___
 
@@ -445,7 +466,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L157)
+[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L157)
 
 ___
 
@@ -474,7 +495,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:84](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L84)
+[src/bsv/wallets/test-wallet.ts:83](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L83)
 
 ___
 
@@ -507,7 +528,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:52](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L52)
+[src/bsv/wallets/test-wallet.ts:57](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L57)
 
 ___
 
@@ -536,7 +557,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:71](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/wallets/test-wallet.ts#L71)
+[src/bsv/wallets/test-wallet.ts:76](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L76)
 
 ___
 
@@ -564,4 +585,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L171)
+[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L171)
