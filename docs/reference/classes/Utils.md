@@ -17,6 +17,7 @@
 
 - [buildOpreturnScript](Utils.md#buildopreturnscript)
 - [buildOutput](Utils.md#buildoutput)
+- [buildPublicKeyHashOutput](Utils.md#buildpublickeyhashoutput)
 - [buildPublicKeyHashScript](Utils.md#buildpublickeyhashscript)
 - [fromLEUnsigned](Utils.md#fromleunsigned)
 - [readVarint](Utils.md#readvarint)
@@ -37,7 +38,7 @@
 
 #### Defined in
 
-[src/builtins/functions.ts:415](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L415)
+[src/smart-contract/builtins/functions.ts:413](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L413)
 
 ___
 
@@ -47,68 +48,93 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:417](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L417)
+[src/smart-contract/builtins/functions.ts:415](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L415)
 
 ## Methods
 
 ### buildOpreturnScript
 
-▸ `Static` **buildOpreturnScript**(`data`): `Bytes`
+▸ `Static` **buildOpreturnScript**(`data`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `data` | `Bytes` |
+| `data` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:496](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L496)
+[src/smart-contract/builtins/functions.ts:504](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L504)
 
 ___
 
 ### buildOutput
 
-▸ `Static` **buildOutput**(`outputScript`, `outputSatoshis`): `Bytes`
+▸ `Static` **buildOutput**(`outputScript`, `outputSatoshis`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `outputScript` | `Bytes` |
+| `outputScript` | [`ByteString`](../README.md#bytestring) |
 | `outputSatoshis` | `bigint` |
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:485](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L485)
+[src/smart-contract/builtins/functions.ts:483](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L483)
+
+___
+
+### buildPublicKeyHashOutput
+
+▸ `Static` **buildPublicKeyHashOutput**(`pubKeyHash`, `amount`): [`ByteString`](../README.md#bytestring)
+
+build P2PKH output from PubKeyHash
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pubKeyHash` | [`Ripemd160`](../README.md#ripemd160) | the address to receive change coin |
+| `amount` | `bigint` | satoshi amount |
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+a P2PKH output
+
+#### Defined in
+
+[src/smart-contract/builtins/functions.ts:499](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L499)
 
 ___
 
 ### buildPublicKeyHashScript
 
-▸ `Static` **buildPublicKeyHashScript**(`pubKeyHash`): `Bytes`
+▸ `Static` **buildPublicKeyHashScript**(`pubKeyHash`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `pubKeyHash` | `Bytes` \| [`Ripemd160`](../README.md#ripemd160) |
+| `pubKeyHash` | [`Ripemd160`](../README.md#ripemd160) |
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:490](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L490)
+[src/smart-contract/builtins/functions.ts:488](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L488)
 
 ___
 
@@ -120,7 +146,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `bytes` | `Bytes` |
+| `bytes` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
@@ -128,33 +154,33 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:426](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L426)
+[src/smart-contract/builtins/functions.ts:424](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L424)
 
 ___
 
 ### readVarint
 
-▸ `Static` **readVarint**(`buf`): `Bytes`
+▸ `Static` **readVarint**(`buf`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buf` | `Bytes` |
+| `buf` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:434](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L434)
+[src/smart-contract/builtins/functions.ts:432](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L432)
 
 ___
 
 ### toLEUnsigned
 
-▸ `Static` **toLEUnsigned**(`n`, `l`): `string`
+▸ `Static` **toLEUnsigned**(`n`, `l`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
@@ -165,28 +191,28 @@ ___
 
 #### Returns
 
-`string`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:419](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L419)
+[src/smart-contract/builtins/functions.ts:417](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L417)
 
 ___
 
 ### writeVarint
 
-▸ `Static` **writeVarint**(`buf`): `Bytes`
+▸ `Static` **writeVarint**(`buf`): [`ByteString`](../README.md#bytestring)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buf` | `Bytes` |
+| `buf` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
-`Bytes`
+[`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:462](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L462)
+[src/smart-contract/builtins/functions.ts:460](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L460)

@@ -41,7 +41,7 @@ class YourSmartContractLib extends SmartContractLib {
 
 #### Defined in
 
-[src/library.ts:16](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/library.ts#L16)
+[src/smart-contract/library.ts:16](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L16)
 
 ## Properties
 
@@ -51,7 +51,7 @@ class YourSmartContractLib extends SmartContractLib {
 
 #### Defined in
 
-[src/library.ts:15](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/library.ts#L15)
+[src/smart-contract/library.ts:15](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L15)
 
 ## Methods
 
@@ -65,7 +65,7 @@ class YourSmartContractLib extends SmartContractLib {
 
 #### Defined in
 
-[src/library.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/library.ts#L20)
+[src/smart-contract/library.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L20)
 
 ___
 
@@ -79,4 +79,4 @@ ___
 
 #### Defined in
 
-[src/library.ts:30](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/library.ts#L30)
+[src/smart-contract/library.ts:30](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L30)

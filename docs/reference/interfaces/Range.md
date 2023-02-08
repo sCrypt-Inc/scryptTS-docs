@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[src/utils.ts:6](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/utils.ts#L6)
+[src/transformation/utils.ts:6](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/transformation/utils.ts#L6)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[src/utils.ts:4](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/utils.ts#L4)
+[src/transformation/utils.ts:4](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/transformation/utils.ts#L4)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[src/utils.ts:5](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/utils.ts#L5)
+[src/transformation/utils.ts:5](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/transformation/utils.ts#L5)

@@ -46,7 +46,7 @@ library to access current tx
 
 #### Defined in
 
-[src/builtins/functions.ts:725](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L725)
+[src/smart-contract/builtins/functions.ts:733](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L733)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:722](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L722)
+[src/smart-contract/builtins/functions.ts:730](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L730)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:723](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L723)
+[src/smart-contract/builtins/functions.ts:731](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L731)
 
 ___
 
@@ -76,17 +76,17 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:727](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L727)
+[src/smart-contract/builtins/functions.ts:735](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L735)
 
 ___
 
 ### rBigEndian
 
-▪ `Static` `Readonly` **rBigEndian**: `Bytes`
+▪ `Static` `Readonly` **rBigEndian**: [`ByteString`](../README.md#bytestring)
 
 #### Defined in
 
-[src/builtins/functions.ts:729](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L729)
+[src/smart-contract/builtins/functions.ts:737](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L737)
 
 ## Methods
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:783](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L783)
+[src/smart-contract/builtins/functions.ts:791](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L791)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:785](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L785)
+[src/smart-contract/builtins/functions.ts:793](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L793)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:774](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L774)
+[src/smart-contract/builtins/functions.ts:782](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L782)
 
 ___
 
@@ -172,7 +172,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:790](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L790)
+[src/smart-contract/builtins/functions.ts:798](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L798)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:794](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L794)
+[src/smart-contract/builtins/functions.ts:802](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L802)
 
 ___
 
@@ -212,7 +212,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:777](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L777)
+[src/smart-contract/builtins/functions.ts:785](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L785)
 
 ___
 
@@ -233,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:787](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L787)
+[src/smart-contract/builtins/functions.ts:795](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L795)
 
 ___
 
@@ -245,7 +245,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `bytes` | `Bytes` |
+| `bytes` | [`ByteString`](../README.md#bytestring) |
 
 #### Returns
 
@@ -253,7 +253,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:766](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L766)
+[src/smart-contract/builtins/functions.ts:774](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L774)
 
 ___
 
@@ -273,7 +273,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:797](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L797)
+[src/smart-contract/builtins/functions.ts:805](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L805)
 
 ___
 
@@ -294,7 +294,7 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:732](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L732)
+[src/smart-contract/builtins/functions.ts:740](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L740)
 
 ___
 
@@ -310,7 +310,7 @@ ___
 | `privKey` | [`PrivKey`](../README.md#privkey) |
 | `inverseK` | `bigint` |
 | `r` | `bigint` |
-| `rBigEndian` | `Bytes` |
+| `rBigEndian` | [`ByteString`](../README.md#bytestring) |
 | `sigHashType` | [`SigHashType`](../README.md#sighashtype) |
 
 #### Returns
@@ -319,4 +319,4 @@ ___
 
 #### Defined in
 
-[src/builtins/functions.ts:739](https://github.com/sCrypt-Inc/scrypt-ts/blob/2062405/src/builtins/functions.ts#L739)
+[src/smart-contract/builtins/functions.ts:747](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L747)
