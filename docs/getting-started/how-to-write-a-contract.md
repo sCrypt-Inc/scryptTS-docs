@@ -271,7 +271,7 @@ function printCoord(pt: Point2) {
 
 ### Array
 
-The common TypeScript arrays declared like `T[]` or `Array<T>` are not allowed in `@prop`s and `@method`s. An array **must** be declared as type of `FixedArray<T, LENGTH>`, whose `LENGTH` must be a [CTC](#compile-time-constant) described later, like:
+The common TypeScript arrays declared like `T[]` or `Array<T>` are not allowed in `@prop`s and `@method`s. An array **must** be declared as type of `FixedArray<T, SIZE>`, whose `SIZE` must be a [CTC](#compile-time-constant) described later, like:
 
 ```ts
 let aaa: FixedArray<bigint, 3> = [1n, 3n, 3n]
