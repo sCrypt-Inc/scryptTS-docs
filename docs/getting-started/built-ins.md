@@ -20,7 +20,7 @@ assert(false, 'hello') // throws Error('Execution failed, hello')
 
 ### Math
 
-- `abs(a: bigint): bigint  `, returns the absolute value of `a`.
+- `abs(a: bigint): bigint`, returns the absolute value of `a`.
 
 ```typescript
 abs(1n)  // 1n
@@ -34,13 +34,13 @@ abs(-1n) // 1n
 min(1n, 2n) // 1n
 ```
 
-- `max(a: bigint, b: bigint): bigint`, return the lagest of `a` and `b`.
+- `max(a: bigint, b: bigint): bigint`, returns the lagest of `a` and `b`.
 
 ```typescript
 max(1n, 2n) // 2n
 ```
 
-- `within(x: bigint, min: bigint, max: bigint): boolean`, return `true` if `x` is within the specified range (left-inclusive), `false` otherwise.
+- `within(x: bigint, min: bigint, max: bigint): boolean`, returns `true` if `x` is within the specified range (left-inclusive), `false` otherwise.
 
 ```typescript
 within(0n, 0n, 2n) // true
@@ -64,11 +64,8 @@ within(2n, 0n, 2n) // false
 // as few bytes as possible
 int2ByteString(128n)   // '8000', little endian
 int2ByteString(127n)   // '7f'
-int2ByteString(1n)     // '01'
 int2ByteString(0n)     // ''
-int2ByteString(-0n)    // ''
 int2ByteString(-1n)    // '81'
-int2ByteString(-127n)  // 'ff'
 int2ByteString(-129n)  // '8180', little endian
 
 // specified size
@@ -83,14 +80,9 @@ int2ByteString(-129n, 3n)     // '810080', 3 bytes
 
 ```typescript
 byteString2Int(toByteString('8000'))    // 128n
-byteString2Int(toByteString('7f'))      // 127n
-byteString2Int(toByteString('01'))      // 1n
 byteString2Int(toByteString(''))        // 0n
 byteString2Int(toByteString('00'))      // 0n
-byteString2Int(toByteString('80'))      // 0n
 byteString2Int(toByteString('81'))      // -1n
-byteString2Int(toByteString('ff'))      // -127n
-byteString2Int(toByteString('8180'))    // -129n
 
 byteString2Int(toByteString('010000'))  // 1n
 byteString2Int(toByteString('810080'))  // -129n
@@ -115,10 +107,20 @@ reverseByteString(s1, 3) // 221100
 
 ### Bitshift
 
-- `lshift(x: bigint, n: bigint): bigint`
-- `rshift(x: bigint, n: bigint): bigint`
-- `pow2(n: bigint): bigint`
-- `simplePow(x: bigint, y: bigint)`
+- `lshift(x: bigint, n: bigint): bigint`. Left shift, returns `x * 2^n`.
+
+```typescript
+lshift(2n, 3n)   // 16n
+lshift(-3n, 2n)  // -12n
+```
+
+- `rshift(x: bigint, n: bigint): bigint`. Right shift, returns `x / 2^n`.
+
+```typescript
+rshift(21n, 3n)    // 2n
+rshift(1024n, 11n) // 0n
+rshift(-1024n, 2n) // -256n
+```
 
 ### Exit
 
@@ -131,6 +133,53 @@ reverseByteString(s1, 3) // 221100
 ### Library `Utils`
 
 The `Utils` library provides a set of commonly used utility functions, such as function `Utils.fromLEUnsigned` converts signed integer `n` to unsigned integer of `l` bytes, in little endian. And function `buildOutput(outputScript: ByteString, outputSatoshis: bigint): ByteString` to build a tx output from its script and satoshi amount.
+
+- `static toLEUnsigned(n: bigint, l: bigint): ByteString`. Convert the signed integer `n` to an unsigned integer of `l` byte length, in [sign-magnitude](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude) little endian format.
+
+```typescript
+Utils.toLEUnsigned(10n, 3n)   // '0a0000'
+Utils.toLEUnsigned(-10n, 2n)  // '0a00'
+```
+
+- `static fromLEUnsigned(bytes: ByteString): bigint`. Convert ByteString to unsigned integer in [sign-magnitude](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude) little endian format.
+
+```typescript
+Utils.fromLEUnsigned(toByteString('0a00'))  // 10n
+Utils.fromLEUnsigned(toByteString('8a'))    // 138n, actually converts 8a00 to unsigned integer
+```
+
+- `static readVarint(buf: ByteString): ByteString`. Read a [VarInt](https://learnmeabitcoin.com/technical/varint) field from `buf`.
+
+```typescript
+Utils.readVarint(toByteString('0401020304')) // '01020304'
+```
+
+- `static writeVarint(buf: ByteString): ByteString`. Convert `buf` to a [VarInt](https://learnmeabitcoin.com/technical/varint) field, including the preceding length.
+
+```typescript
+Utils.writeVarint(toByteString('010203')) // '03010203'
+```
+
+- `static buildOutput(outputScript: ByteString, outputSatoshis: bigint): ByteString`. Build a transaction output from its locking script and satoshi amount.
+
+```typescript
+const lockingScript = toByteString('01020304')
+Utils.buildOutput(lockingScript, 1n) // '01000000000000000401020304'
+```
+
+- `static buildPublicKeyHashScript(pubKeyHash: PubKeyHash ): ByteString.` Build a P2PKH locking script from public key hash.
+
+```typescript
+const pubKeyHash = PubKeyHash(toByteString('0011223344556677889900112233445566778899'))
+Utils.buildPublicKeyHashScript(pubKeyHash) // '76a914001122334455667788990011223344556677889988ac'
+```
+
+- `static buildOpreturnScript(data: ByteString): ByteString`. Build an OP_RETURN locking script from data payload.
+
+```typescript
+const data = toByteString('hello world', true)
+Utils.buildOpreturnScript(data) // '006a0b68656c6c6f20776f726c64'
+```
 
 ### Library `HashedMap`
 
