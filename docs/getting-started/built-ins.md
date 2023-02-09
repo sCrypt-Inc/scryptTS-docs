@@ -105,7 +105,32 @@ const s1 = toByteString('793ff39de7e1dce2d853e24256099d25fa1b1598ee24069f24511d7
 reverseByteString(s1, 32) // 6cfeea2d7a1d51249f0624ee98151bfa259d095642e253d8e2dce1e79df33f79
 ```
 
-### Bitshift
+### Bitwise Operator
+
+- `and(x: bigint, y: bigint): bigint` Bitwise AND
+
+```typescript
+and(13n, 5n) // 5n
+```
+
+- `or(x: bigint, y: bigint): bigint` Bitwise OR
+
+```typescript
+or(13n, 5n) // 13n
+```
+
+- `xor(x: bigint, y: bigint): bigint` Bitwise XOR
+
+```typescript
+xor(13n, 5n) // 8n
+```
+
+- `invert(x: bigint): bigint` Bitwise NOT
+
+```typescript
+invert(13n)  // -114n
+invert(-20n) // 107n
+```
 
 - `lshift(x: bigint, n: bigint): bigint` Arithmetic left shift, returns `x * 2^n`.
 
@@ -121,6 +146,8 @@ rshift(21n, 3n)    // 2n
 rshift(1024n, 11n) // 0n
 rshift(-1024n, 2n) // -256n
 ```
+
+Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator, except `~`. Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to **NEVER** apply bitwise operations on negative numbers.
 
 ### Exit
 
