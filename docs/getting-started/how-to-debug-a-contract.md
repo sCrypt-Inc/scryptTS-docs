@@ -16,10 +16,10 @@ You can use `console.log()` to print to the console.
 export class Demo extends SmartContract {
 
     @prop()
-    x: bigint
+    readonly x: bigint
 
     @prop()
-    y: bigint
+    readonly y: bigint
 
     constructor(x: bigint, y: bigint) {
         super(...arguments)

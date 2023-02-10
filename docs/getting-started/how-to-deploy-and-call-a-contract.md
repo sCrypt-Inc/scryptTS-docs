@@ -82,10 +82,10 @@ Here is the complete code to deploy and call contract `Demo`. Notice that we put
 export class Demo extends SmartContract {
 
     @prop()
-    x: bigint
+    readonly x: bigint
 
     @prop()
-    y: bigint
+    readonly y: bigint
 
     constructor(x: bigint, y: bigint) {
         super(...arguments)
