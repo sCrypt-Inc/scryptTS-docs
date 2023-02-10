@@ -16,10 +16,10 @@ You can use `console.log()` to print to the console.
 export class Demo extends SmartContract {
 
     @prop()
-    x: bigint
+    readonly x: bigint
 
     @prop()
-    y: bigint
+    readonly y: bigint
 
     constructor(x: bigint, y: bigint) {
         super(...arguments)
@@ -39,26 +39,16 @@ export class Demo extends SmartContract {
         assert(z == this.sum(this.x, this.y), 'incorrect sum')
     }
 }
-
-(async () => {
-    await Demo.compile()
-    const demo = new Demo(1n, 2n)
-    demo.add(3n)
-})()
 ```
+[Try it on Replit](https://replit.com/@msinkec/scryptTS-console-logging)
 
-Run this command in this [example](https://github.com/sCrypt-Inc/scryptTS-examples):
-
-```bash
-ts-node src/contracts/demo.ts
-```
-
-You should see the following output:
+After running the code, you should see the following output:
 
 ```
 z: 3
 sum: 3
 ```
+
 
 ## Use Visual Studio Code debugger
 

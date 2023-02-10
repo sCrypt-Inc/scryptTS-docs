@@ -63,10 +63,10 @@ In our generated template the smart contract is called `Demo`.
 export class Demo extends SmartContract {
 
   @prop()
-  x: bigint
+  readonly x: bigint
 
   @prop()
-  y: bigint
+  readonly y: bigint
 
 }
 ```
@@ -82,10 +82,10 @@ Each contract has at most one constructor. It is where contract member variables
 export class Demo extends SmartContract {
 
   @prop()
-  x: bigint
+  readonly x: bigint
 
   @prop()
-  y: bigint
+  readonly y: bigint
 
   constructor(x: bigint, y: bigint) {
     super(...arguments)
@@ -109,10 +109,10 @@ Let's take a look at the methods of the `Demo` contract.
 export class Demo extends SmartContract {
 
   @prop()
-  x: bigint
+  readonly x: bigint
 
   @prop()
-  y: bigint
+  readonly y: bigint
 
   constructor(x: bigint, y: bigint) {
     super(...arguments)

@@ -20,3 +20,6 @@ Try it out by creating a demo project:
 scrypt project my-project
 ```
 
+## Online Workspace
+You can also simply fork [the demo contract Repl](https://replit.com/@msinkec/scryptTS-demo) and play with the code in your browser.
+

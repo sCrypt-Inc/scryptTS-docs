@@ -23,7 +23,7 @@ In `scrypt-ts` we can create a smart contract library class like this:
 class MyLib extends SmartContractLib {
 
   @prop()
-  buf: ByteString;
+  readonly buf: ByteString;
 
   constructor(buf: ByteString) {
     super(...arguments);

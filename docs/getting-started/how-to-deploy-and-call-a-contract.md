@@ -76,16 +76,16 @@ The final step is to send the tx to the network. If everything is fine, the tx w
 
 ## Example
 
-Here is the complete code to deploy and call contract `Demo`. Notice that we put the tx building logic in the contract as regular methods, i.e., without decorator `@method`.
+Here is the complete code to deploy and call contract `Demo`. Notice that we put the tx building logic in the contract as regular methods, i.e., without the `@method` decorator.
 
 ```ts
 export class Demo extends SmartContract {
 
     @prop()
-    x: bigint
+    readonly x: bigint
 
     @prop()
-    y: bigint
+    readonly y: bigint
 
     constructor(x: bigint, y: bigint) {
         super(...arguments)
@@ -124,7 +124,9 @@ export class Demo extends SmartContract {
             })
     }
 }
+```
 
+```ts
 // compile contract to get low-level asm
 await Demo.compile()
 
@@ -145,7 +147,6 @@ const unsignedCallTx = demo.getCallTxForAdd(3n, deployTx)
 // 2. sign and broadcast the transaction
 const callTx = await signAndSend(unsignedCallTx)
 console.log('Demo contract called: ', callTx.id)
-
 ```
 
-The full code can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/demo.ts).
+Try deploying the smart contract from your browser by running [this Repl](https://replit.com/@msinkec/scryptTS-demo-deploy).

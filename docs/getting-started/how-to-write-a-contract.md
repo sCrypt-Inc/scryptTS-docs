@@ -11,7 +11,7 @@ import { SmartContract, method, prop, assert } from "scrypt-ts"
 
 class Demo extends SmartContract {
   @prop()
-  x: bigint
+  readonly x: bigint
 
   constructor(x: bigint) {
     super(...arguments)
@@ -31,6 +31,9 @@ class Demo extends SmartContract {
 ```
 
 Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `scryptTS` is that both on-chain and off-chain code are written in the same language: TypeScript.
+
+**🛈 Note**:
+You can fork [the demo contract Repl](https://replit.com/@msinkec/scryptTS-demo) and play with the code in your browser!
 
 ## Properties
 
@@ -56,13 +59,13 @@ in the same order as they are passed into the constructor. For example,
 
 ```ts
 class A extends SmartContract {
-  p0: bigint
+  readonly p0: bigint
   
   @prop()
-  p1: bigint
+  readonly p1: bigint
   
   @prop()
-  p2: boolean
+  readonly p2: boolean
   
   constructor(p0: bigint, p1: bigint, p2: boolean) {
     super(...arguments)  // same as super(p0, p1, p2)

@@ -72,7 +72,7 @@ The example below accesses the locktime of the spending transaction.
 ```ts
 class CheckLockTimeVerify extends SmartContract {
   @prop()
-  matureTime: bigint // Can be timestamp or block height.
+  readonly matureTime: bigint // Can be timestamp or block height.
 
   constructor(matureTime: bigint) {
     super(...arguments)
@@ -105,10 +105,10 @@ The following example ensure both Alice and Bob get 1000 satoshis from the contr
 ```ts
 class DesignatedReceivers extends SmartContract {
   @prop()
-  alice: PubKeyHash
+  readonly alice: PubKeyHash
 
   @prop()
-  bob: PubKeyHash
+  readonly bob: PubKeyHash
 
   constructor(alice: PubKeyHash, bob: PubKeyHash) {
     super(...arguments)
