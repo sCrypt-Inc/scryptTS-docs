@@ -20,21 +20,22 @@ Each bitcoin transaction consists of some inputs and outputs.
 An output contains:
 
 - The amount of bitcoins it contains.
-- bytecodes (called the locking script).
+- bytecodes (called the `locking script`).
 
 while an input contains:
 - A reference to the previous transaction output.
-- bytecodes (the unlocking script).
+- bytecodes (the `unlocking script`).
 
 An Unspent Transaction Output (UTXO) is an output not consumed in any transaction yet. The low-level bytecode/opcode is called [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script), which is interpreted by the [Bitcoin Virtual Machine](https://xiaohuiliu.medium.com/introduction-to-bitcoin-smart-contracts-9c0ea37dc757) (BVM).
 
 ![](../static/img/utxo.jpg)
 
-The locking script can be regarded as a boolean function `f` that specifies conditions to spend the bitcoins in the UTXO (thus the name "locking"), acting as a lock.
+In the example above, we have two transactions, each having one input (in green) and one output (in red). And the transaction on the right spends the one on the left.
+The locking script can be regarded as a boolean function `f` that specifies conditions to spend the bitcoins in the UTXO, acting as a lock (thus the name "locking").
 The unlocking script in turns provides the function arguments that makes `f` evaluates to `true`, i.e., the "key" (also called witness) needed to unlock.
-Only when an input contains the “key” matching previous output’s “lock”, it can spend bitcoins contained in the output.
+Only when the “key” in an input matches previous output’s “lock”, it can spend bitcoins contained in the output.
 
-In [a regular Bitcoin payment](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Pay_to_Public_Key_Hash_.28P2PKH.29), the locking script, containing a [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address), checks the spender has the right private key to produce a valid signature in the unlocking script. The expressive Script enables the locking script to specify arbitrarily more complex spending conditions, i.e., Bitcoin smart contracts.
+In a regular Bitcoin payment to a [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address), the locking script is [Pay To Pubkey Hash (P2PKH)](https://learnmeabitcoin.com/technical/p2pkh). It checks the spender has the right private key corresponding to the address so she can produce a valid signature in the unlocking script. The expressive Script enables the locking script to specify arbitrarily more complex spending conditions than simple P2PKH, i.e., Bitcoin smart contracts.
 
 ## How does `scryptTS` work?
 
