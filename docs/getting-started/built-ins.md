@@ -107,22 +107,27 @@ reverseByteString(s1, 32) // 6cfeea2d7a1d51249f0624ee98151bfa259d095642e253d8e2d
 
 ### Bitwise Operator
 
+Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator, except `~`. Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to **NEVER** apply bitwise operations on negative numbers.
+
 - `and(x: bigint, y: bigint): bigint` Bitwise AND
 
 ```typescript
 and(13n, 5n) // 5n
+and(0x0a32c845n, 0x149f72n) // 0x00108840n, 1083456n
 ```
 
 - `or(x: bigint, y: bigint): bigint` Bitwise OR
 
 ```typescript
 or(13n, 5n) // 13n
+or(0x0a32c845n, 0x149f72n) // 0xa36df77n, 171368311n
 ```
 
 - `xor(x: bigint, y: bigint): bigint` Bitwise XOR
 
 ```typescript
 xor(13n, 5n) // 8n
+xor(0x0a32c845n, 0x149f72n) // 0x0a265737n, 170284855n
 ```
 
 - `invert(x: bigint): bigint` Bitwise NOT
@@ -146,8 +151,6 @@ rshift(21n, 3n)    // 2n
 rshift(1024n, 11n) // 0n
 rshift(-1024n, 2n) // -256n
 ```
-
-Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator, except `~`. Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to **NEVER** apply bitwise operations on negative numbers.
 
 ### Exit
 
