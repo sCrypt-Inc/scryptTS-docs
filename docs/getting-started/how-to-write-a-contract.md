@@ -493,23 +493,6 @@ add(x0: bigint, x1:bigint) : bigint {
 
 Note `**` is not supported currently.
 
-### Bitwise Operators
-
-TypeScript's bitwise operator cannot be used in `scryptTS`. But you can use the bitwise built-in function provided.
-
-
-| built-in function | Description |
-| :-----| :----: | 
-| `and(x,y)`| Bitwise AND | 
-| `or(x,y)` | Bitwise OR | 
-| `xor(x,y)` | Bitwise XOR | 
-| `invert(x)`| Bitwise NOT |  
-| `lshift(x,y)`| Left shift, equals x * 2^y | 
-| `rshift(x,y)`| 	Right shift, equals x / 2^y |
-
-Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator, except `~`. Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to NEVER apply bitwise operations on negative numbers.
-
-
 ## ScriptContext
 
 See [What is ScriptContext](./what-is-scriptcontext.md).
