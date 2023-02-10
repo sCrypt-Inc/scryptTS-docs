@@ -134,14 +134,12 @@ xor(0x0a32c845n, 0x149f72n) // 0x0a265737n, 170284855n
 
 ```typescript
 invert(13n)  // -114n
-invert(-20n) // 107n
 ```
 
 - `lshift(x: bigint, n: bigint): bigint` Arithmetic left shift, returns `x * 2^n`.
 
 ```typescript
 lshift(2n, 3n)   // 16n
-lshift(-3n, 2n)  // -12n
 ```
 
 - `rshift(x: bigint, n: bigint): bigint` Arithmetic right shift, returns `x / 2^n`.
@@ -149,7 +147,6 @@ lshift(-3n, 2n)  // -12n
 ```typescript
 rshift(21n, 3n)    // 2n
 rshift(1024n, 11n) // 0n
-rshift(-1024n, 2n) // -256n
 ```
 
 ### Exit
