@@ -4,149 +4,161 @@ sidebar_position: 6
 
 # How to Deploy & Call a Contract
 
+## Prepare a Signer and Provider
+
+As we mentioned in the [testing section](./how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and calling. 
+
+
+For testing purposes, like in a node testing framework, you might want to use the `TestWallet` we introduced [before](./how-to-test-a-contract#testwallet) like this:
+
+```ts
+let signer = new TestWallet(privateKey, new WhatsonchainProvider(bsv.Networks.testnet));
+```
+
+If you want to use one in production, we also have a built-in signer called `SensiletSigner" that wraps APIs from the Sensilet [chrome extension](https://sensilet.com/) which is a lightweight crypto-wallet like the [Metamask](https://metamask.io/) that can be used in users' browsers.
+
+```ts
+const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
+let signer = new SensiletSigner(new WhatsonchainProvider(network));
+```
+
+Don't forget to connect the signer to the contract instance as well:
+
+```ts
+instance.connect(signer);
+```
+
 ## Contract Deployment
 
-To deploy a smart contract, we first need to compile it to Script. Next, we build a transaction(tx) and uses the Script as locking script in one of its outputs. The output/UTXO is now controlled by the smart contract. Finally, we broadcast the transaction. If it is accepted by miners, the contract is successfully deployed.
+To deploy a smart contract, just call the `deploy` method like this:
+
+
+```ts
+// construct a new instance of `MyContract`
+let instance = new MyContract(...initArgs);
+
+// connect the signer to the instance
+await instance.connect(signer);
+
+// the contract UTXO’s satoshis
+const initBalance = 1234;
+
+// build and send tx for deployment
+const deployTx = await instance.deploy(initBalance);
+
+```
 
 ## Contract Call
 
-To spend a UTXO locked by a contract, we need to call one of its public methods to unlock it. We build a new tx to reference this UTXO in one input, and we need to provide the corresponding unlocking script for this input. The unlocking script is the arguments passed into the public method so that it returns `true`, a.k.a., `witness`.
-
-A public method in this sense can be regarded as a mathematical boolean method `f` in the locking script, with `x` as its argument in the unlocking script. A contract call succeeds if and only if `f(x)` evaluates to `true`.
-
-## Workflow
-
-Generally speaking, if you want to deploy or call a contract on the Bitcoin network, it takes three steps:
-
-### 1. Instantiate a contract
-
-Initialize a contract with proper arguments to get an instance.
+Similar to how we described it in [this section](./how-to-test-a-contract#getatxforinvokingamethod), you can use code to call a contract's public `@method` on the blockchain as follows:
 
 ```ts
-let instance = new MyContract(...args)
+const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, opts);
+console.log(`method call success with tx id ${tx.id}`);
 ```
 
-### 2. Build a tx
+The major difference here from the local test is that the contract instance is connected to a real provider, which can send transactions.
 
-Build a tx and set its input and output script with the contract instance.
+Let's look at a more complex example this time.
 
-Conceptually speaking, there are two kinds of relationship between a contract instance and a tx.
+### Method with Signatures
 
-#### `lockTo`
-
-A contract `instance` is locked to a `tx` if the `instance` is the locking script of one of its outputs.
-
-From the perspective of `tx`, it may look like this:
-
-```js
-tx.addOutput(new bsv.Transaction.Output({
-  script: instance.lockingScript,
-  ...
-}))
-```
-The contract is in the 0-th output of `tx`.
-From the perspective of `instance`, this is equivalent to:
-
-```js
-instance.lockTo = { tx, outputIndex: 0 }
-```
-
-#### `unlockFrom`
-
-A contract `instance` is unlocked from a `tx` if one of its input calls `instance`'s public method to spend the UTXO it locks to.
-
-From the perspective of `tx`, it looks like:
-
-```js
-tx.addInput(new bsv.Transaction.Input({
-  script: instance.getUnlockingScript( inst => inst.pubMethod(...args) )
-  ...
-}))
-```
-`tx`'s 0-th input spends the contract UTXO.
-From the perspective of `instance`, this is equivalent to:
-
-```js
-instance.unlockFrom = { tx, inputIndex: 0 };
-```
-
-### 3. Send the tx
-
-The final step is to send the tx to the network. If everything is fine, the tx will be accepted by miners.
-
-## Example
-
-Here is the complete code to deploy and call contract `Demo`. Notice that we put the tx building logic in the contract as regular methods, i.e., without the `@method` decorator.
+A contract public `@method` may occasionally need a signature argument for authentication. Take this `P2PKH` contract for example:
 
 ```ts
-export class Demo extends SmartContract {
-
+export class P2PKH extends SmartContract {
     @prop()
-    readonly x: bigint
+    readonly readonly pubKeyHash: PubKeyHash;
 
-    @prop()
-    readonly y: bigint
-
-    constructor(x: bigint, y: bigint) {
-        super(...arguments)
-        this.x = x
-        this.y = y
+    constructor(pubKeyHash: PubKeyHash) {
+        super(pubKeyHash);
+        this.pubKeyHash = pubKeyHash;
     }
 
     @method()
-    sum(a: bigint, b: bigint): bigint {
-        return a + b
-    }
+    public unlock(sig: Sig, pubkey: PubKey) {
+        // make sure the `pubkey` is the one locked with its hash value in the constructor
+        assert(hash160(pubkey) == this.pubKeyHash, 'pubKeyHash check failed');
 
-    @method()
-    public add(z: bigint) {
-        assert(z == this.sum(this.x, this.y), 'incorrect sum')
-    }
-
-    @method()
-    public sub(z: bigint) {
-        assert(z == this.x - this.y, 'incorrect difference')
-    }
-
-    getDeployTx(utxos: UTXO[], satoshis: number): bsv.Transaction {
-        return new bsv.Transaction().from(utxos)
-            .addOutput(new bsv.Transaction.Output({
-                script: this.lockingScript,
-                satoshis: satoshis,
-            }))
-    }
-
-    getCallTxForAdd(z: bigint, prevTx: bsv.Transaction): bsv.Transaction {
-        return new bsv.Transaction()
-            .addInputFromPrevTx(prevTx)
-            .setInputScript(0, () => {
-                return this.getUnlockingScript(self => self.add(z))
-            })
+	   // make sure the `sig` is signed by the private key corresponding to the `pubkey`
+        assert(this.checkSig(sig, pubkey), 'signature check failed');
     }
 }
 ```
 
+We can call the `unlock` method like this:
+
 ```ts
-// compile contract to get low-level asm
-await Demo.compile()
+// call
+const { tx: callTx } = await p2pkh.methods.unlock(
+    // the first argument `sig` is replaced by a callback function
+    (sigResponses) => findSigFrom(sigResponses, publicKey),
 
-let demo = new Demo(1n, 2n)
+    // the second argument is still the value of `pubkey`
+    PubKey(toHex(publicKey)),
 
-// contract deployment
-// 1. get the available utxos for the private key
-const utxos = await utxoMgr.getUtxos()
-// 2. construct a transaction for deployment
-const unsignedDeployTx = demo.getDeployTx(utxos, 1000)
-// 3. sign and broadcast the transaction
-const deployTx = await signAndSend(unsignedDeployTx)
-console.log('Demo contract deployed: ', deployTx.id)
+    // method call options
+    {
+        // A request for signer to sign with the private key corresponding to the certain address.
+        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet).toString()
+    } as MethodCallOptions<P2PKH>
+);
 
-// contract call
-// 1. construct a transaction for the call
-const unsignedCallTx = demo.getCallTxForAdd(3n, deployTx)
-// 2. sign and broadcast the transaction
-const callTx = await signAndSend(unsignedCallTx)
-console.log('Demo contract called: ', callTx.id)
+console.log('contract called: ', callTx.id);
+
 ```
 
-Try deploying the smart contract from your browser by running [this Repl](https://replit.com/@msinkec/scryptTS-demo-deploy).
+When `p2phk.method.unlock` is called, an option `sigRequestAddress` is given to the function, and its value is set to be the address of `publicKey`. 
+
+At the same time, a callback function that accepts a `sigResponses` argument and returns a `Sig` value, which is also filtered by the `publicKey`, replaces the first argument for `unlock`.
+
+In general, you should do the following if your `@method` contains multiple `Sig`-typed arguments:
+
+* Ensure that the "sigRequestAddress" field contains all addresses corresponding to these "Sig"s;
+* Replace each "Sig" argument with a callback function that retrieves the proper "Sig" from "sigResponses";
+
+
+## Example
+
+Here is the complete sample code for the deployment and call of a P2PKH contract.
+
+```ts
+```ts
+// compile contract to get low-level asm
+await P2PKH.compile()
+
+// generate a new private key
+const privateKey = bsv.PrivateKey.fromRandom('testnet');
+// public key of the `privateKey`
+const publicKey = privateKey.publicKey
+// public key hash of the `publicKey`
+const pkh = bsv.crypto.Hash.sha256ripemd160(publicKey.toBuffer())
+
+// setup a signer with two private keys
+const signer = await new TestWallet([privKey, privateKey]).connect(new WhatsonchainProvider(bsv.Networks.testnet));
+
+// initiate an instance with `pkh`
+let p2pkh = new P2PKH(PubKeyHash(toHex(pkh)))
+
+// connect the signer
+await p2pkh.connect(signer);
+
+// deploy
+const deployTx = await p2pkh.deploy(1);
+console.log('contract deployed: ', deployTx.id);
+
+// call
+const { tx: callTx } = await p2pkh.methods.unlock(
+    (sigResponses) => findSigFrom(sigResponses, publicKey),
+    PubKey(toHex(publicKey)),
+    {
+        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet).toString()
+    } as MethodCallOptions<P2PKH>
+);
+
+console.log('contract called: ', callTx.id);
+
+```
+
+
+More examples can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/tree/master/tests/testnet)
