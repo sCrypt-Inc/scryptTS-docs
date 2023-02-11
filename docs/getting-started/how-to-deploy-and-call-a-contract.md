@@ -91,7 +91,7 @@ We can call the `unlock` method like this:
 ```ts
 // call
 const { tx: callTx } = await p2pkh.methods.unlock(
-    // the first argument `sig` is replaced by a callback function
+    // the first argument `sig` is replaced by a callback function which will return the value
     (sigResponses) => findSigFrom(sigResponses, publicKey),
 
     // the second argument is still the value of `pubkey`
@@ -100,7 +100,7 @@ const { tx: callTx } = await p2pkh.methods.unlock(
     // method call options
     {
         // A request for signer to sign with the private key corresponding to the certain address.
-        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet).toString()
+        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet)
     } as MethodCallOptions<P2PKH>
 );
 
@@ -114,8 +114,9 @@ At the same time, a callback function that accepts a `sigResponses` argument and
 
 In general, you should do the following if your `@method` contains multiple `Sig`-typed arguments:
 
-* Ensure that the "sigRequestAddress" field contains all addresses corresponding to these "Sig"s;
-* Replace each "Sig" argument with a callback function that retrieves the proper "Sig" from "sigResponses";
+* Ensure that the `sigRequestAddress` field contains all addresses corresponding to these `Sig`s;
+
+* Replace each `Sig` argument with a callback function that retrieves the proper `Sig` from `sigResponses`;
 
 
 ## Example
@@ -123,19 +124,18 @@ In general, you should do the following if your `@method` contains multiple `Sig
 Here is the complete sample code for the deployment and call of a P2PKH contract.
 
 ```ts
-```ts
+import { privateKey } from '../../utils/privateKey';
+
 // compile contract to get low-level asm
 await P2PKH.compile()
 
-// generate a new private key
-const privateKey = bsv.PrivateKey.fromRandom('testnet');
 // public key of the `privateKey`
 const publicKey = privateKey.publicKey
 // public key hash of the `publicKey`
 const pkh = bsv.crypto.Hash.sha256ripemd160(publicKey.toBuffer())
 
-// setup a signer with two private keys
-const signer = await new TestWallet([privKey, privateKey]).connect(new WhatsonchainProvider(bsv.Networks.testnet));
+// setup signer
+const signer = new TestWallet(privateKey, new WhatsonchainProvider(bsv.Networks.testnet));
 
 // initiate an instance with `pkh`
 let p2pkh = new P2PKH(PubKeyHash(toHex(pkh)))
@@ -152,13 +152,12 @@ const { tx: callTx } = await p2pkh.methods.unlock(
     (sigResponses) => findSigFrom(sigResponses, publicKey),
     PubKey(toHex(publicKey)),
     {
-        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet).toString()
+        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet)
     } as MethodCallOptions<P2PKH>
 );
 
 console.log('contract called: ', callTx.id);
 
 ```
-
 
 More examples can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/tree/master/tests/testnet)
