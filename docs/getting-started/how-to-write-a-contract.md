@@ -39,9 +39,9 @@ You can fork [the demo contract Repl](https://replit.com/@msinkec/scryptTS-demo)
 
 A smart contract can have two kinds of properties:
 
-1. With `@prop` decorator: these properties are **only allowed to have [types](#Types) specified below** and they shall only be initialized in the constructor.
+1. With `@prop` decorator: these properties are **only allowed to have [types](#data-types) specified below** and they shall only be initialized in the constructor.
 
-2. Without `@prop` decorator: these properties are regular TypeScript  properties without any special requirement. Accessing these properties is prohibited in methods decorated with the `@method` decorator.
+2. Without `@prop` decorator: these properties are regular TypeScript properties without any special requirement, meaning they can use any types. Accessing these properties is prohibited in methods decorated with the `@method` decorator.
 
 
 ### `@prop(stateful: boolean = false)` decorator 
@@ -82,7 +82,7 @@ class A extends SmartContract {
 
 Like properties, a smart contract can also have two kinds of methods:
 
-1. With `@method` decorator: these methods can only call **methods also decorated by `@method` or [functions](#Functions) specified below**. Also, **only the properties decorated by `@prop` can be accessed**.
+1. With `@method` decorator: these methods can only call **methods also decorated by `@method` or [functions](#functions) specified below**. Also, **only the properties decorated by `@prop` can be accessed**.
 
 2. Without `@method` decorator: these methods are just  regular TypeScript class methods.
 
@@ -97,7 +97,7 @@ Like properties, a smart contract can also have two kinds of methods:
 
 Each contract must have at least one public `@method`. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the main method into the contract (like `main` in C and Java).
 
-A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](#`assert`). An example is shown below.
+A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](./built-ins.md#assert). An example is shown below.
 
 ```js
   @method()
@@ -111,7 +111,7 @@ A public `@method` can be called from an external transaction. The call succeeds
 
 Without a `public` modifier, a `@method` is an internal method and can only be called within the contract class.
 
-It can return these [types](#Types), e.g.,
+It can return these [types](#data-types), e.g.,
 
 ```js
   @method()
@@ -121,7 +121,7 @@ It can return these [types](#Types), e.g.,
 ```
 
 
-Note: **Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that eventually calls itself.
+Note: **Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that transitively calls itself.
 
 
 ## Data Types
@@ -272,9 +272,10 @@ function printCoord(pt: Point2) {
 
 ```
 
-### Array
+### Fixed Size Array
 
-The common TypeScript arrays declared like `T[]` or `Array<T>` are not allowed in `@prop`s and `@method`s. An array **must** be declared as type of `FixedArray<T, SIZE>`, whose `SIZE` must be a [CTC](#compile-time-constant) described later, like:
+All arrays **must** be of fixed size and be declared as type of `FixedArray<T, SIZE>`, whose `SIZE` must be a [CTC](#compile-time-constant) described later.
+The common TypeScript arrays declared as `T[]` or `Array<T>` are not allowed in `@prop`s and `@method`s, as they are of dynamic size.
 
 ```ts
 let aaa: FixedArray<bigint, 3> = [1n, 3n, 3n]
