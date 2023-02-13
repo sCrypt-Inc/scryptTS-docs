@@ -4,10 +4,10 @@ sidebar_position: 7
 
 # What is ScriptContext
 
-In the UTXO model, the context of validation is the UTXO being spent and the spending transaction, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` is spending the second output of `tx0`, the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
+In the UTXO model, the context of validating a smart contract is the UTXO containing it and the transaction spending it, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` (2 inputs and 2 outputs) is spending the second output of `tx0` (3 inputs and 3 outputs), the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
 ![](../../static/img/scriptContext.jpg)
 
-The context only contains local information, different from account-based blockchains whose context consists of the global state of the entire blockchain (as in Ethereum). A single shared global state kills scalability.
+The context only contains local information, different from account-based blockchains whose context consists of the global state of the entire blockchain (as in Ethereum). A single shared global state across all smart contracts kills scalability, since they all have to sequentially processed due to potential race conditions.
 
 This context is expressed in the `ScriptContext` interface.
 ```ts
@@ -63,9 +63,7 @@ The table shows the meaning of each field of the `ScriptContext` structure.
 | locktime | locktime of the transaction |
 | sigHashType| sighash type of the signature |
 
-
-
-You can directly access the relevant data of the transaction through `this.ctx` in any public method.
+You can directly access the context through `this.ctx` in any public `@method`.
 It can be considered additional information a public method gets when called, besides its function parameters.
 The example below accesses the locktime of the spending transaction.
 
@@ -99,7 +97,7 @@ propagateState(outputs: ByteString) : boolean {
 
 ### Access inputs and outputs
 
-The inputs and outpus of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and then ensure they hash to the expected digest, which ensure they are actually from the spending transaction.
+The inputs and outpus of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and validate they hash to the expected digest, which ensures they are actually from the spending transaction.
 The following example ensure both Alice and Bob get 1000 satoshis from the contract.
 
 ```ts

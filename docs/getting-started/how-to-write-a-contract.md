@@ -109,9 +109,7 @@ A public `@method` can be called from an external transaction. The call succeeds
 
 ### Non-public `@method`s
 
-Without a `public` modifier, a `@method` is an internal method and can only be called within the contract class.
-
-It can return these [types](#data-types), e.g.,
+Without a `public` modifier, a `@method` is internal and cannot be directly called from an external transaction.
 
 ```js
   @method()
