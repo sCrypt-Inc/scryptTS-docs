@@ -56,16 +56,16 @@ The table shows the meaning of each field of the `ScriptContext` structure.
 | utxo.script | locking script of the UTXO |
 | utxo.outpoint.txid | txid of the transaction being spent |
 | utxo.outpoint.outputIndex | index of the UTXO in the outputs |
-| hashPrevouts | `hashPrevouts` is the double SHA256 of the serialization of all input outpoints |
-| hashSequence | `hashSequence` is the double SHA256 of the serialization of sequence of all inputs |
+| hashPrevouts | double SHA256 of the serialization of all input outpoints |
+| hashSequence | double SHA256 of the serialization of sequence of all inputs |
 | sequence | sequence of the input  |
-| hashOutputs | `hashOutputs` is the double SHA256 of the serialization of all outputs |
+| hashOutputs | double SHA256 of the serialization of all outputs |
 | locktime | locktime of the transaction |
 | sigHashType| sighash type of the signature |
 
 You can directly access the context through `this.ctx` in any public `@method`.
 It can be considered additional information a public method gets when called, besides its function parameters.
-The example below accesses the locktime of the spending transaction.
+The example below accesses the [locktime](https://learnmeabitcoin.com/technical/locktime) of the spending transaction.
 
 ```ts
 class CheckLockTimeVerify extends SmartContract {
