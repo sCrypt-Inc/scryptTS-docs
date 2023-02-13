@@ -24,7 +24,7 @@ scrypt project --state my-project
 
 Note the `state` option is turned on.
 
-This will create a project containing a sample stateful contract named `Counter`. This contract implements maintains a single state: how many times it has been called since deployment.
+This will create a project containing a sample stateful contract named `Counter`. This contract implements and maintains a single state: how many times it has been called since deployment.
 
 Let's take a look at the contract source file `src/contracts/counter.ts`.
 
@@ -38,23 +38,22 @@ count: bigint
 
 ### Update states
 
-The `increment()` method does two things:
+The `incOnChain()` method does two things:
 
-1. Update the state, like any othe property:
+1. Update the state, like any other property:
 
 ```js
 this.count++
 ```
 
-1. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
+2. Validate the new state, which goes into the next UTXO containing the same contract, i.e., the state is maintained.
 
 ```ts
-// make sure balance in the contract does not change
-const amount: bigint = this.ctx.utxo.value
-// output containing the latest state
-const output: ByteString = this.buildStateOutput(amount)
-// verify current tx has this single output
-assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
+// Ensure that the output contains the most recent state, and the same value as the previous
+assert(
+      this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)),
+      'hashOutputs mismatch'
+    )
 ```
 
 [ScriptContext](../getting-started/what-is-scriptcontext.md) `this.ctx` allows us to access the outputs of the spending transaction.
@@ -73,8 +72,8 @@ export class Counter extends SmartContract {
     this.count = count
   }
 
-  @method()
-  public increment() {
+  @method(SigHash.ANYONECANPAY_SINGLE)
+  public incOnChain() {
     this.count++
     assert(
       this.ctx.hashOutputs == hash256(
@@ -87,100 +86,105 @@ export class Counter extends SmartContract {
 ```
 
 ## Test a Stateful Contract
-Let's take a look at the local test code in `tests/local/count.test.ts`, which is broken into 3 phases.
 
-### 1. Build a tx and a genesis instance for contract deployment
+Stateful contact testing is very similar to how we described it in [this section](../getting-started/how-to-test-a-contract.md). The only distinction for stateful contracts is that you have to be aware of instance changes in between method calls.
 
-First the `Counter` gets initialized to `0`. Also it's marked as genesis (set flag `isGenesis` internally), the first in a chain of transactions as the contract state gets updated.
+As described in the [Overview](./#overview), for each method call, a tx with new contract UTXO(s) containing the latest state is recorded on the blockchain. To make things clear and easy to understand, we will refer to each of these UTXOs as containing the next instance of the preceding one.
 
-```js
-const count = new Counter(0n).markAsGenesis()
-``` 
+In other words, from the perspective of tx, the public `@method` of a contract instance is called in one of its inputs, and the subsequent contract instance is stored in one of its outputs.
 
-The `Counter` class defines the method `getDeployTx` which builds the deployment tx for the instance.
-
-```js
-getDeployTx(utxos: UTXO[], initBalance: number): bsv.Transaction {
-  this.balance = initBalance
-  const tx = new bsv.Transaction().from(utxos)
-    .addOutput(new bsv.Transaction.Output({
-      script: this.lockingScript,
-      satoshis: initBalance,
-    }))
-  // also build the relationship between the contract and the tx
-  this.lockTo = { tx, outputIndex: 0 }
-  return tx
-}
-```
-
-It builds a tx from a `utxos` list passed in as inputs. It has an output with the initial contract state. Also it binds `this` instance to the `tx` with the `outputIndex` of `0`, meaning the contract is deployed in tx's 0-th output.
-
-#### 2. Build a tx and an instance for contract call
-
-As we described [before](../getting-started/how-to-deploy-and-call-a-contract#concepts), when we call a public method of a contract instance, a new tx and a new contract instance will be built together.
-
-A new instance from the previous contract can be created by calling its `next` method, which will make a deep copy of all properties except for the `isGenesis` flag:
+Now, let's look at how to test the `incOnChain` method call:
 
 ```ts
-const newCounter = counter.next()
-```
+// initialize an genesis instance and connect it to a signer
+let counter = new Counter(0n);
+counter.connect(dummySigner());
 
-Property of this `newCounter` can be updated as before:
+// set the current instance to be the genesis instance
+let current = counter;
 
-```ts
-newCounter.count++
-```
+// create the next instance from the current
+let nextInstance = current.next();
 
-Our contract also implements a method called `getCallTx`, which builds a tx to call the public method:
+// apply updates on the next instance locally
+nextInstance.counter++;
 
-```ts
-getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transaction {
-  const inputIndex = 1
-  return new bsv.Transaction().from(utxos)
-    .addInputFromPrevTx(prevTx)
-    .setOutput(0, (tx: bsv.Transaction) => {
-      nextInst.lockTo = { tx, outputIndex: 0 }
-      return new bsv.Transaction.Output({
-        script: nextInst.lockingScript,
-        satoshis: this.balance,
-      })
-    })
-    .setInputScript(inputIndex, (tx: bsv.Transaction) => {
-      this.unlockFrom = { tx, inputIndex }
-      return this.getUnlockingScript(self => {
-        self.increment()
-      })
-    })
-}
+// call the method of current instance to apply the updates on chain
+const { tx: tx_i, atInputIndex } = await current.methods.incOnchain(
+  {
+    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in. 
+    fromUTXO: getDummyContractUTXO(balance),
+
+    // the `next` instance and its balance should be provided here
+    next: {
+      instance: nextInstance,
+      balance
+    }
+  } as MethodCallOptions<Counter>
+);
+
+// check the validity of the input script generated for the method call.
+let result = tx_i.verifyInputScript(atInputIndex);
+expect(result.success, result.error).to.eq(true);
 
 ```
 
-The tx has the following structure:
+In general, we can break the method call for a stateful contract into 3 phases:
 
-* Inputs
-	
-  * [0]: an input built from `utxos` to pay the tx fee;
+### 1. Build the `current` instance
 
-  * [1]: an input spending the UXTO from `prevTx`, containing the contract. Its unlocking script is generated by calling contract’s public method like:
-
-  ```ts
-  return this.getUnlockingScript(self => {
-    self.increment()
-  })
-  ```
-
-* Outputs
-
-	* [0]: An output has the  `nextInst.lockingScript` as its script. It’s also the new UTXO bound with the latest contract instance `nextInst`.
-
-#### 3. Verify the entry method call
-
-Finally, the [`SmartContract.verify`](../getting-started/how-to-test-a-contract.md#use-smartcontactverify-method) method is used to test the public method:
+The `current` instance refers to the latest contract instance (UTXO) on the blockchain. If this instance happens to be one in a deployment transaction, we call it the "genesis" instance. In the above example, we set the `current` instance to be the "genesis" instance like this:
 
 ```ts
-counter.verify(() => {
-  counter.increment()
-})
+let current = counter;
+```
+
+### 2. Create a `next` instance and apply local updates on it
+
+As mentioned before, the `next` instance is the new instance in the UTXO of the method call tx.
+
+To create a `next` of a specific contract instance, you can use code like this:
+
+```ts
+let nextInstance = instance.next();
+```
+
+It will make a deep copy of all properties and methods of `instance` to create a new one. Sometimes, if you only want to do a shallow copy of some properties, you can pass in the property names as an optional argument like this:
+
+```ts
+let nextInstance = instance.next([‘prop1’, ‘prop2’]);
+```
+
+Then, you should apply all the state updates to the `next` instance. Please note that these are just local updates and have not been applied to the blockchain yet. For our example, it just looks like this:
+
+```ts
+nextInstance.count++;
+```
+
+### 3. Call the method of the `current` instance to apply updates on chain
+
+Then, as described in [this section](../getting-started/how-to-test-a-contract#getatxforinvokingamethod), we can obtain a call transaction. The difference here is that we pass in the `next` instance and its balance value as a method call option. The reason for this is that it will verify that all updates made to the `next` instance adhere to the public `@method`’s logic.
+
+```ts
+const { tx: tx_i, atInputIndex } = await current.methods.incOnchain(
+  {
+    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in. 
+    fromUTXO: getDummyContractUTXO(balance),
+
+    // the `next` instance and its balance should be provided here
+    next: {
+      instance: nextInstance,
+      balance
+    }
+  } as MethodCallOptions<Counter>
+);
+```
+
+Finally, we can check the validity of the input script generated for the method call like this:
+
+```ts
+let result = tx_i.verifyInputScript(atInputIndex);
+expect(result.success, result.error).to.eq(true);
 ```
 
 ### Running the tests
@@ -191,3 +195,5 @@ Same as before, we can just use the following command:
 npm run test
 ```
 Full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/counter.ts).
+
+

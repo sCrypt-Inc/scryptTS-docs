@@ -92,7 +92,7 @@ We can call the `unlock` method like this:
 // call
 const { tx: callTx } = await p2pkh.methods.unlock(
     // the first argument `sig` is replaced by a callback function which will return the value
-    (sigResponses) => findSigFrom(sigResponses, publicKey),
+    (sigResponses) => findSig(sigResponses, publicKey),
 
     // the second argument is still the value of `pubkey`
     PubKey(toHex(publicKey)),
@@ -100,7 +100,7 @@ const { tx: callTx } = await p2pkh.methods.unlock(
     // method call options
     {
         // A request for signer to sign with the private key corresponding to the certain address.
-        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet)
+        pubKeyOrAddrToSign: publicKey.toAddress(bsv.Networks.testnet)
     } as MethodCallOptions<P2PKH>
 );
 
@@ -149,10 +149,10 @@ console.log('contract deployed: ', deployTx.id);
 
 // call
 const { tx: callTx } = await p2pkh.methods.unlock(
-    (sigResponses) => findSigFrom(sigResponses, publicKey),
+    (sigResponses) => findSig(sigResponses, publicKey),
     PubKey(toHex(publicKey)),
     {
-        sigRequiredAddress: publicKey.toAddress(bsv.Networks.testnet)
+        pubKeyOrAddrToSign: publicKey.toAddress(bsv.Networks.testnet)
     } as MethodCallOptions<P2PKH>
 );
 

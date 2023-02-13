@@ -116,7 +116,7 @@ The interface for the `options` argument looks like this:
   changeAddress?: AddressOption;
 
   /** The private key(s) associated with these address(es) or public key(s) must be used to sign the contract input, and the callback function will receive the results of the signatures as an argument named `sigResponses` */
-  sigRequiredAddress?: AddressesOption;
+  pubKeyOrAddrToSign?: PublicKeysOrAddressesOption;
 
   /** The `lockTime` value of the method call tx */
   lockTime?: number;
