@@ -12,7 +12,7 @@ We will use a testing framework called [Mocha](https://mochajs.org).
 
 Let's open the `tests\local\demo.test.ts` file.
 
-### Instantiate the smart contract
+### Initialize the smart contract
 
 Different from instantiating a normal TypeScript class, the `Demo` contract must be compiled before instantiation.
 
