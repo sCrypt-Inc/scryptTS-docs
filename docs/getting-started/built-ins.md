@@ -10,7 +10,7 @@ The following functions come with `scryptTS`.
 
 ### Assert
 
-- `assert(condition: boolean, msg?: string)` Throw an `Error` with the optional error message `msg` if `condition` is `false`. Otherwise, nothing happens.
+- `assert(condition: boolean, errorMsg?: string)` Throw an `Error` with the optional error message if `condition` is `false`. Otherwise, nothing happens.
 
 ```typescript
 assert(1 === 1)        // nothing happens
