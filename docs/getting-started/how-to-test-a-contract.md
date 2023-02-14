@@ -192,8 +192,8 @@ describe('Test SmartContract `Demo`', () => {
   })
 
   it('should throw error', () => {
-    expect(
-	    // Using the wrong argument when calling this function just results in an error.
+    return expect(
+	  // Using the wrong argument when calling this function just results in an error.
       demo.methods.add(4n, { fromUTXO: dummyUTXO })
     ).to.be.rejectedWith(/add check failed/)
   })
