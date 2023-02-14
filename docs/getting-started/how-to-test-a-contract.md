@@ -83,7 +83,7 @@ Assume you have a contract like this:
 ```ts
 Class MyContract extends SmartContract {
   …
-  @method
+  @method()
   public foo(arg1, arg2) {...}
 }
 ```
