@@ -132,6 +132,9 @@ interface MethodCallOptions {
 
   /** The `lockTime` of the method calling tx */
   lockTime?: number;
+    
+  /** The `sequence` of the input which to spend previous contract UTXO in the method calling tx */
+  sequence?: number;
 
   /** The `sequence` value of the input */
   sequence?: number;

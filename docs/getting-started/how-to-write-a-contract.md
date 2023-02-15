@@ -50,11 +50,41 @@ Use this decorator to mark any property that intends to be stored on chain.
 
 This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called [stateful](./stateful-contract.md) property and its value can be updated in subsequent contract calls.
 
+```typescript
+// good, `a` is stored on chain, and it's readonly after the contract is deployed
+@prop()
+readonly a: bigint
+
+// valid, but not good enough, `b` cannot be changed after the contract is deployed
+@prop()
+b: bigint
+
+// good, `counter` is stored on chain, and its value can be updated in subsequent contract calls
+@prop(true)
+counter: bigint
+
+// invalid, `counter` is a stateful property that cannot be readonly
+@prop(true)
+readonly counter
+
+// invalid
+@prop()
+static c: bigint
+
+// invalid
+@prop(true)
+static d: bigint
+
+// valid, but not good enough, `@prop()` is not necessary for the static readonly property
+@prop()
+static readonly UINT_MAX = 0xffffffffn
+```
+
 ## Constructor
 
 A smart contract must have an explicit constructor if it has at least one `@prop`. 
 
-The `super` method must be called in the constructor and all the arguments of the constructor should be passed to `super`
+The `super` method **must** be called in the constructor and all the arguments of the constructor should be passed to `super`
 in the same order as they are passed into the constructor. For example,
 
 ```ts
@@ -97,25 +127,57 @@ Like properties, a smart contract can also have two kinds of methods:
 
 Each contract must have at least one public `@method`. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the main method into the contract (like `main` in C and Java).
 
+```typescript
+class InvalidContractDemo extends SmartContract {
+  // invalid, contract should have at least one public function
+}
+```
+
 A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](./built-ins.md#assert). An example is shown below.
 
-```js
+```typescript
+@method()
+public unlock(x: bigint) {
+  // only succeeds if x is 1
+  assert(this.add(this.x, 1n) == x, "unequal")
+}
+```
+
+**Note**: The last function call of a public `@methed` method **must** be an `assert()` function call, unless it is a `console.log()` call.
+
+```typescript
+class PublicMethodDemo extends SmartContract {
   @method()
-  public unlock(x: bigint) {
-    // only succeeds if x is 1
-    assert(this.add(this.x, 1n) == x, "unequal")
+  public foo() {
+    // invalid, the last statement of public method should be an `assert` function call
   }
+
+  @method()
+  public bar() {
+    assert(true);
+    return 1n;  // invalid either, that is to say, public method cannot return any value
+  }
+
+  @method()
+  public foobar() {
+      console.log();
+      // valid, `console.log` calling will be ignored when verifying the last `assert` statement
+      assert(true);
+      console.log();
+      console.log();
+  }
+}
 ```
 
 ### Non-public `@method`s
 
 Without a `public` modifier, a `@method` is internal and cannot be directly called from an external transaction.
 
-```js
-  @method()
-  add(x0: bigint, x1:bigint) : bigint {
-    return x0 + x1
-  }
+```typescript
+@method()
+add(x0: bigint, x1:bigint) : bigint {
+  return x0 + x1
+}
 ```
 
 
@@ -158,7 +220,7 @@ A literal `string` can be converted in to a `ByteString` using function `toByteS
 * If not passing `isUtf8` or `isUtf8` is `false`, then `literal` should be in the format of hex literal, which can be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`
 * Otherwise, `literal` should be in the format of utf8 literal, i.e. `hello world`
 
-For example:
+**Note**: When `toByteString` is called, it **ONLY** accepts string literals for its first argument, and boolean literals for its second argument.
 
 ```typescript
 toByteString('hello', 1 === 1) // invalid, not passing boolean literal to the 2nd parameter
@@ -170,11 +232,10 @@ let b = toByteString('hello world', true) // valid
 
 toByteString(b, true) // invalid, not passing string literal to the 1st parameter
 
+toByteString('0011') // valid, `0011` is a valid hex literal
 toByteString('0011', false) // valid
-toByteString('0011') // valid
 
 toByteString('001') // invalid, `001` is not a valid hex literal
-
 toByteString('hello', false) // invalid, `hello` is not a valid hex literal
 ```
 
@@ -187,6 +248,9 @@ toByteString('hello', false) // invalid, `hello` is not a valid hex literal
 * `ByteString.slice(start: number, end?: number)`: return a substring from `start` to, but not including, `end`. If `end` is not specified, the substring continues to the last byte. Since `ByteString` is a byte array and each byte consists of two hex characters, `start` and `end` must be even.
 
 ```ts
+const str0 = toByteString('01ab23ef68')
+const str1 = toByteString('656c6c6f20776f726c64')
+
 // comparison
 str0 == str1
 str0 === str1
@@ -198,7 +262,7 @@ str0 + str1
 
 // slice
 str1.slice(2, 6)
-// `556c`, not '6c6c6f20', since each byte has two hex characters
+// `6c6c`, not '6c6f2077', since each byte has two hex characters
 ```
 
 #### `number`
