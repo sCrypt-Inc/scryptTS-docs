@@ -6,16 +6,12 @@ sidebar_position: 6
 
 ## Prepare a Signer and Provider
 
-As we mentioned in the [testing section](./how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and calling. 
+As we mentioned in the [testing section](./how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
 
 
-For testing purposes, like in a node testing framework, you might want to use the `TestWallet` we introduced [before](./how-to-test-a-contract#testwallet) like this:
+For local testing, we can use the `TestWallet` introduced [before](./how-to-test-a-contract#testwallet), with a mock provider.
 
-```ts
-let signer = new TestWallet(privateKey, new WhatsonchainProvider(bsv.Networks.testnet));
-```
-
-If you want to use one in production, we also have a built-in signer called `SensiletSigner" that wraps APIs from the Sensilet [chrome extension](https://sensilet.com/) which is a lightweight crypto-wallet like the [Metamask](https://metamask.io/) that can be used in users' browsers.
+When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [whatsonchain](https://whatsonchain.com/) and a wallet such as [Sensilet](https://sensilet.com/), a [Metamask](https://metamask.io/)-like lightweight crypto-wallet.
 
 ```ts
 const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
@@ -30,7 +26,7 @@ instance.connect(signer);
 
 ## Contract Deployment
 
-To deploy a smart contract, just call the `deploy` method like this:
+To deploy a smart contract, simply call its `deploy` method:
 
 
 ```ts
@@ -45,25 +41,25 @@ const initBalance = 1234;
 
 // build and send tx for deployment
 const deployTx = await instance.deploy(initBalance);
-
+console.log(`Smart contract successfully deployed with txid ${tx.id}`);
 ```
 
 ## Contract Call
 
-Similar to how we described it in [this section](./how-to-test-a-contract#getatxforinvokingamethod), you can use code to call a contract's public `@method` on the blockchain as follows:
+Similar to what we described in [this section](./how-to-test-a-contract#getatxforinvokingamethod), you can call a contract's public `@method` on the blockchain as follows:
 
 ```ts
 const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, opts);
-console.log(`method call success with tx id ${tx.id}`);
+console.log(`Smart contract method successfully called with txid ${tx.id}`);
 ```
 
-The major difference here from the local test is that the contract instance is connected to a real provider, which can send transactions.
+The major difference between here and local tests is that the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
 
-Let's look at a more complex example this time.
+Let's look at a more complex example.
 
 ### Method with Signatures
 
-A contract public `@method` may occasionally need a signature argument for authentication. Take this `P2PKH` contract for example:
+A contract public `@method` often needs a signature argument for authentication. Take this `P2PKH` contract for example:
 
 ```ts
 export class P2PKH extends SmartContract {
@@ -91,16 +87,16 @@ We can call the `unlock` method like this:
 ```ts
 // call
 const { tx: callTx } = await p2pkh.methods.unlock(
-    // the first argument `sig` is replaced by a callback function which will return the value
-    (sigResponses) => findSig(sigResponses, publicKey),
+    // the first argument `sig` is replaced by a callback function which will return the needed signature
+    (sigResps) => findSig(sigResps, publicKey),
 
     // the second argument is still the value of `pubkey`
     PubKey(toHex(publicKey)),
 
     // method call options
     {
-        // A request for signer to sign with the private key corresponding to the certain address.
-        pubKeyOrAddrToSign: publicKey.toAddress(bsv.Networks.testnet)
+        // A request for signer to sign with the private key corresponding to a public key
+        pubKeyOrAddrToSign: publicKey
     } as MethodCallOptions<P2PKH>
 );
 
@@ -108,7 +104,7 @@ console.log('contract called: ', callTx.id);
 
 ```
 
-When `p2phk.method.unlock` is called, an option `sigRequestAddress` is given to the function, and its value is set to be the address of `publicKey`. 
+When `p2phk.method.unlock` is called, the option contains `pubKeyOrAddrToSign`, requesting a signature against `publicKey`.
 
 At the same time, a callback function that accepts a `sigResponses` argument and returns a `Sig` value, which is also filtered by the `publicKey`, replaces the first argument for `unlock`.
 
@@ -137,7 +133,7 @@ const pkh = bsv.crypto.Hash.sha256ripemd160(publicKey.toBuffer())
 // setup signer
 const signer = new TestWallet(privateKey, new WhatsonchainProvider(bsv.Networks.testnet));
 
-// initiate an instance with `pkh`
+// initialize an instance with `pkh`
 let p2pkh = new P2PKH(PubKeyHash(toHex(pkh)))
 
 // connect the signer

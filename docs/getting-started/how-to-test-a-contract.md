@@ -15,17 +15,17 @@ But before going into details, you should learn some basic models of scryptTS fo
 
 ## Provider
 
-A `Provider` is an abstraction of non-account-based operations on a blockchain and is generally not directly involved in signing transactions or data.
+A `Provider` is an abstraction of a standard Bitcoin node that provides connection to the Bitcoin network, for read and write access to the blockchain.
 
-For example, when you want to broadcast transactions to the BSV blockchain network, you’d like to send them to providers like [whatsonchain](https://whatsonchain.com/) via their APIs.
+For example, when you want to broadcast transactions to the blockchain, you can send them to providers like [whatsonchain](https://whatsonchain.com/) via their APIs.
 
-Currently, we have two built-in providers that you could just use:
+Currently, we have two built-in providers:
 
-* `DummyProvider`: A mockup provider just for local tests. Do not send or query transactions.
+* `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
 
 * `WhatsonchainProvider`: A wrapper for whatsonchain APIs, can be used in testnet as well as mainnet.
 
-You can initiate these providers like this:
+You can initialize these providers like this:
 
 ```ts
 let dummyProvider = new DummyProvider();
@@ -35,19 +35,17 @@ let wocProvider = new WhatsonchainProvider(bsv.Networks.testnet);
 
 ## Signer 
 
-A `Signer` is a class that in some way, directly or indirectly, has access to a private key that can sign messages and transactions to authorize the network to perform operations.
-
-For instance, the simplest signer might be a private key, while the most complex signer is a wallet.
+A `Signer` is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
 
 ### TestWallet
 
-For testing purposes only, we have a built-in wallet called "TestWallet." It can be used in tests like these:
+For testing purposes only, we have a built-in wallet called `TestWallet`. It can be created like this:
 
 ```ts
 const signer = new TestWallet(privateKey, provider);
 ```
 
-The argument `privateKey` can be a single private key or an array of private keys that the wallet may use to sign transactions. The ability of the wallet to send transactions is assigned to the provider by the argument `provider`. In other words, the `TestWallet` serves as both a signer and a provider.
+`privateKey` can be a single private key or an array of private keys that the wallet can use to sign transactions. The ability of the wallet to send transactions is assigned to `provider`. In other words, a `TestWallet` serves as both a signer and a provider.
 
 ## Test a Contract Locally
 
@@ -60,9 +58,9 @@ Smart contracts are similar to mathematical functions. Thus, we can test a contr
 
 ### Prepare a Signer and Provider
 
-The 'TestWallet' and 'DummyProvider' combination would be ideal for the local tests because it can sign the contract call transactions without actually sending them. 
+The `TestWallet` and `DummyProvider` combination would be ideal for local tests because it can sign the contract call transactions without actually sending them. 
 
-Such a signer may be declared using the following code:
+Such a signer may be declared as below:
 
 ```ts
 let signer = new TestWallet(privateKey, new DummyProvider());
@@ -74,9 +72,9 @@ Then just connect it to your contract instance like this:
 instance.connect(signer);
 ```
 
-### Get a Tx for Invoking a method
+### Call a Public Method
  
-In order to provide a more user-friendly method of calling contracts' public `@method`, we have injected a runtime object named `methods` in your contract. 
+To facilitate calling a contracts' public `@method`, we have injected a runtime object named `methods` in your contract class. For each public `@method` of your contract (e.g., `contract.foo`), a function with the same name and signature (including list of parameters and return type, i.e., void) is added into `methods` (e.g., `contract.methods.foo`). In addition, there is an `options` appended as the last paramter.
 
 Assume you have a contract like this:
 
@@ -87,15 +85,14 @@ Class MyContract extends SmartContract {
   public foo(arg1, arg2) {...}
 }
 ```
-
-A runtime function with the same name and expanded arguments that accepts one additional `options` parameter at the end is attached to a contract property named `methods` for each public `@method` of your contract. You can check it like this:
+You can check it like this:
 
 ```ts
 let instance = new MyContract();
 console.log(typeof instance.methods.foo) // output `function`
 ```
 
-This function is designed to execute the corresponding `@method` on blockchain, which means it will spend the previous contract UTXO in a new transaction. You can call it like this:
+This function is designed to invoke the corresponding `@method` of the same name on chain, meaning calling it will spend the previous contract UTXO in a new transaction. You can call it like this:
 
 ```ts
 // Note: `instance.methods.foo` should be passed in all arguments and in the same order that `instance.foo` would take. 
@@ -109,42 +106,40 @@ The interface for the `options` argument looks like this:
 
 ```json
 {
-  /** The previous contract UTXO to spend in the method call tx */
+  /** The previous contract UTXO to spend in the method calling tx */
   fromUTXO?: UTXO;
 
   /** The P2PKH change output address */
   changeAddress?: AddressOption;
 
-  /** The private key(s) associated with these address(es) or public key(s) must be used to sign the contract input, and the callback function will receive the results of the signatures as an argument named `sigResponses` */
+  /** The private key(s) correspond to these address(es) or public key(s) must be used to sign the contract input, and the callback function will receive the resulting signatures */
   pubKeyOrAddrToSign?: PublicKeysOrAddressesOption;
 
-  /** The `lockTime` value of the method call tx */
+  /** The `lockTime` of the method calling tx */
   lockTime?: number;
 
-  /** The subsequent contract instance(s) produced in the outputs of the method call tx for a stateful contract */
+  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
   next?: StatefulNextWithIdx<T> | StatefulNext<T>[];
 }
 
 ```
 
-The actual execution sequences for this function are as follows:
+What actually happens during the call is the following.
 
-1. Get an unsigned transaction by calling the tx builder, which can be a default or a customized one like we introduced in [this section](./how-to-build-a-contract-tx#customizedcalltxbuilder), for the public `@method`.
+1. Build an unsigned transaction by calling the tx builder, which can be a default or a customized one introduced in [this section](./how-to-build-a-contract-tx#customizedcalltxbuilder), for a public `@method`.
 
-2. Ask the instance's singer to sign the transaction. Note that `instance.foo` would be invoked during this process in order to get a valid unlocking script for the input.
+2. Use the instance's signer to sign the transaction. Note that `instance.foo` could be invoked during this process in order to get a valid unlocking script for the input.
 
-3. Ask the instance's provider to send the transaction.
+3. User the instance's connected provider to send the transaction.
 
-The signed `tx` for the contract call and its input index are then returned.
-
-Remember that the tx is not actually sent anywhere in this local test because we have a fake provider connected.
+Remember that the tx is not actually sent anywhere in a local test because we connect to a mock provider.
 
 ### Verify the Tx input for the method call
 
-Then you can call `verifyInput` on the returned `tx` to verify that the contract method call has been transformed into a valid input script.
+In the previous step, the signed `tx` for the contract call and its input index are returned. You can call `verifyInputScript` on the returned `tx` to verify that the contract method call (in the given tx input) is successful.
 
 ```ts
-let result = tx.verifyInput(atInputIndex)
+let result = tx.verifyInputScript(atInputIndex)
 console.log(result.success) // Output: true or false
 ```
 
@@ -158,13 +153,13 @@ describe('Test SmartContract `Demo`', () => {
   let demo;
 
   before(async () => {
-    // compile contract to get low-level asm
+    // compile contract
     await Demo.compile() 
 
-    // create a test wallet as signer
+    // create a test wallet as signer, connected to a dummy provider
     signer = new TestWallet(privateKey, new DummyProvider())
 
-    // initiate instance
+    // initialize a contract instance
     demo = new Demo(1n, 2n)
 
     // connect the instance to signer
@@ -203,7 +198,7 @@ describe('Test SmartContract `Demo`', () => {
  
 ## Test a Contract on the Testnet
  
-It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as anticipated on the blockchain.
+It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
  
 Before testing, you need to:
  
