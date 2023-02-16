@@ -59,7 +59,7 @@ Let's look at a more complex example.
 
 ### Method with Signatures
 
-A contract public `@method` often needs a signature argument for authentication. Take this `P2PKH` contract for example:
+A contract public `@method` often needs a signature argument for authentication. Take this [Pay To Pubkey Hash (P2PKH)](https://learnmeabitcoin.com/technical/p2pkh) contract for example:
 
 ```ts
 export class P2PKH extends SmartContract {
@@ -106,13 +106,13 @@ console.log('contract called: ', callTx.id);
 
 When `p2phk.method.unlock` is called, the option contains `pubKeyOrAddrToSign`, requesting a signature against `publicKey`.
 
-At the same time, a callback function that accepts a `sigResponses` argument and returns a `Sig` value, which is also filtered by the `publicKey`, replaces the first argument for `unlock`.
+The first argument is a signature, which can be obtained in a callback function. The function takes a list of signatures requested in `pubKeyOrAddrToSign` and find the one signature to the right public key/address.
 
-In general, you should do the following if your `@method` contains multiple `Sig`-typed arguments:
+In general, if your `@method` needs `Sig`-typed arguments, you could obtain them as follows:
 
-* Ensure that the `sigRequestAddress` field contains all addresses corresponding to these `Sig`s;
+1. Ensure that the `pubKeyOrAddrToSign` contains all public keys/addresses corresponding to these `Sig`s;
 
-* Replace each `Sig` argument with a callback function that retrieves the proper `Sig` from `sigResponses`;
+2. Replace each `Sig` argument with a callback function that filters to the right `Sig` from the full list of signature in `sigResps`.
 
 
 ## Example
@@ -122,12 +122,12 @@ Here is the complete sample code for the deployment and call of a P2PKH contract
 ```ts
 import { privateKey } from '../../utils/privateKey';
 
-// compile contract to get low-level asm
+// compile contract
 await P2PKH.compile()
 
 // public key of the `privateKey`
 const publicKey = privateKey.publicKey
-// public key hash of the `publicKey`
+// hash of the `publicKey`
 const pkh = bsv.crypto.Hash.sha256ripemd160(publicKey.toBuffer())
 
 // setup signer
@@ -139,16 +139,16 @@ let p2pkh = new P2PKH(PubKeyHash(toHex(pkh)))
 // connect the signer
 await p2pkh.connect(signer);
 
-// deploy
+// deploy the contract, with 1 satoshi locked in
 const deployTx = await p2pkh.deploy(1);
 console.log('contract deployed: ', deployTx.id);
 
 // call
 const { tx: callTx } = await p2pkh.methods.unlock(
-    (sigResponses) => findSig(sigResponses, publicKey),
+    (sigResps) => findSig(sigResps, publicKey),
     PubKey(toHex(publicKey)),
     {
-        pubKeyOrAddrToSign: publicKey.toAddress(bsv.Networks.testnet)
+        pubKeyOrAddrToSign: publicKey
     } as MethodCallOptions<P2PKH>
 );
 
@@ -156,4 +156,4 @@ console.log('contract called: ', callTx.id);
 
 ```
 
-More examples can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/tree/master/tests/testnet)
+More examples can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/tree/master/tests/testnet).
