@@ -9,15 +9,11 @@ Install `Node.js` and `NPM` on your machine by following the instructions over [
 
 ## The sCrypt CLI Tool
 
-The [sCrypt CLI tool](https://github.com/sCrypt-Inc/scrypt-cli) is used to easily create, compile and publish scryptTS projects. Install it by running the following command:
-
-```sh
-npm install -g scrypt-cli
-```
+The [sCrypt CLI tool](https://github.com/sCrypt-Inc/scrypt-cli) is used to easily create, compile and publish scryptTS projects. 
 
 Try it out by creating a demo project:
 ```sh
-scrypt project my-project
+npx scrypt-cli project demo-project
 ```
 
 ## Online Workspace
