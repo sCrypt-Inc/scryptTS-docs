@@ -125,7 +125,7 @@ const { tx: tx_i, atInputIndex } = await current.methods.incOnchain(
 );
 
 // check the validity of the input script generated for the method call.
-let result = tx_i.verifyInputScript(atInputIndex);
+let result = tx_i.verifyScript(atInputIndex);
 expect(result.success, result.error).to.eq(true);
 
 ```
@@ -184,7 +184,7 @@ const { tx: tx_i, atInputIndex } = await current.methods.incOnchain(
 Finally, we can check the validity of the input script generated for the method call like this:
 
 ```ts
-let result = tx_i.verifyInputScript(atInputIndex);
+let result = tx_i.verifyScript(atInputIndex);
 expect(result.success, result.error).to.eq(true);
 ```
 

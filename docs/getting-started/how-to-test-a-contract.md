@@ -136,10 +136,10 @@ Remember that the tx is not actually sent anywhere in a local test because we co
 
 ### Verify the Tx input for the method call
 
-In the previous step, the signed `tx` for the contract call and its input index are returned. You can call `verifyInputScript` on the returned `tx` to verify that the contract method call (in the given tx input) is successful.
+In the previous step, the signed `tx` for the contract call and its input index are returned. You can call `verifyScript` on the returned `tx` to verify that the contract method call (in the given tx input) is successful.
 
 ```ts
-let result = tx.verifyInputScript(atInputIndex)
+let result = tx.verifyScript(atInputIndex)
 console.log(result.success) // Output: true or false
 ```
 
@@ -178,7 +178,7 @@ describe('Test SmartContract `Demo`', () => {
       } as MethodCallOptions<Demo>
     )
 
-    let result = callTx.verifyInputScript(atInputIndex)
+    let result = callTx.verifyScript(atInputIndex)
     expect(result.success, result.error).to.eq(true)
   })
 
