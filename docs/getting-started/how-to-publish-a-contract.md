@@ -97,7 +97,7 @@ describe('Test SmartContractLib `Lib`', () => {
 The following command will create a demo scryptTS library along with tests and  scaffolding:
 
 ```sh
-scrypt project --lib <your-lib-name>
+npx scrypt-cli project --lib <your-lib-name>
 ```
 
 Note the `lib` option is turned on.
@@ -105,7 +105,7 @@ Note the `lib` option is turned on.
 You can publish the library on [NPM](https://www.npmjs.com/) by running the following command in the project's root directory:
 
 ```sh
-scrypt publish
+npx scrypt-cli publish
 ```
 
 This will check the projects structure, build it and publish it. After the library is published, users can just import it in any other project just like regular NPM packages.

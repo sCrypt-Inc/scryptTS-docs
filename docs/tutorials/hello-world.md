@@ -15,7 +15,7 @@ First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-
 We can run the following command to create a new sCrypt project:
 
 ```sh
-scrypt project my-project
+npx scrypt-cli project my-project
 ```
 
 The resulting project will contain a demo smart contract along with all the scaffolding.
@@ -155,35 +155,25 @@ Each contract has at least one public method.
 
 ## Build
 
-To compile the contract code into JavaScript with following commands:
+To compile the contract code into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script) with following commands:
 
 ```sh
 npx tsc
 ```
 or
 ```sh
-npm run build
+npx scrypt-cli compile
 ```
 
-If the build process was successful, you wil see:
+If the build process was successful, you will get a contract artifact file. A contract artifact file is the compiler output results in a JSON. It’s a representation used to build locking and unlocking scripts.
 
-```
-$npx tsc                                                     
-activate scryptTS transformer plugin
-...
-transpiling errors []
-```
 
-The tsc compiling process may output diagnostic information in the console about the contract class. Update the source code if needed.
+The compiling process may output diagnostic information in the console about the contract class. Update the source code if needed.
 
 
 # Conclusion
 
 Congrats! We have finished building our first smart contract with **scryptTS**.
-
-Checkout [Tutorial 2](./how-to-test-a-contract.md) to learn how to test contract.
-
-
 
 
 

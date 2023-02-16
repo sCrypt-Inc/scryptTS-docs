@@ -4,6 +4,7 @@ sidebar_position: 6
 
 # How to Deploy & Call a Contract
 
+
 ## Prepare a Signer and Provider
 
 As we mentioned in the [testing section](./how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
@@ -13,15 +14,16 @@ For local testing, we can use the `TestWallet` introduced [before](./how-to-test
 
 When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [whatsonchain](https://whatsonchain.com/) and a wallet such as [Sensilet](https://sensilet.com/), a [Metamask](https://metamask.io/)-like lightweight crypto-wallet.
 
+
 ```ts
 const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
-let signer = new SensiletSigner(new WhatsonchainProvider(network));
+let signer = new SensiletSigner(new DefaultProvider(network));
 ```
 
 Don't forget to connect the signer to the contract instance as well:
 
 ```ts
-instance.connect(signer);
+await instance.connect(signer);
 ```
 
 ## Contract Deployment
@@ -131,7 +133,7 @@ const publicKey = privateKey.publicKey
 const pkh = bsv.crypto.Hash.sha256ripemd160(publicKey.toBuffer())
 
 // setup signer
-const signer = new TestWallet(privateKey, new WhatsonchainProvider(bsv.Networks.testnet));
+const signer = new TestWallet(privateKey, new DefaultProvider());
 
 // initialize an instance with `pkh`
 let p2pkh = new P2PKH(PubKeyHash(toHex(pkh)))
@@ -157,3 +159,26 @@ console.log('contract called: ', callTx.id);
 ```
 
 More examples can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/tree/master/tests/testnet).
+
+
+# Running the code
+
+The deployment code is wrapped into a simple NPM command:
+
+```sh
+npm run testnet
+```
+
+Make sure you funded your address before running this command.
+
+After a successful run you should see something like tho following:
+
+```
+Demo contract deployed:  f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3
+Demo contract called:  dc53da3e80aadcdefdedbeb6367bb8552e381e92b226ab1dc3dc9b3325d8a8ee
+```
+
+These are the TXIDs of the transaction which deployed the smart contract code and then the transaction which unlocked it.
+
+You can see the structure of the transactions using a [block explorer](https://test.whatsonchain.com/tx/f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3)
+

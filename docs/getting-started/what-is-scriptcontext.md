@@ -116,19 +116,17 @@ class DesignatedReceivers extends SmartContract {
 
   @method()
   public payout() {
-    const aliceOutput: ByteString = this.buildPubKeyHashOutput(alice, 1000n)
-    const bobOutput: ByteString = this.buildPubKeyHashOutput(bob, 1000n)
+    const aliceOutput: ByteString = Utils.buildPublicKeyHashOutput(alice, 1000n)
+    const bobOutput: ByteString = Utils.buildPublicKeyHashOutput(bob, 1000n)
     const outputs = aliceOutput + bobOutput
+
+    if (this.changeAmount > 0) {
+      // require a change output
+      outputs += this.buildChangeOutput();
+    }
 
     // ensure outputs are actually from the spending transaction as expected
     assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
-  }
-
-  // create an p2pkh output with the given receiver and amount
-  @method()
-  buildPubKeyHashOutput(receiver: PubKeyHash, amount: bigint): ByteString {
-    const script: ByteString = Utils.buildPublicKeyHashScript(receiver)
-    return Utils.buildOutput(script, amount)
   }
 }
 ```
@@ -158,33 +156,6 @@ There are a total of 6 sigHash types to choose from:
 | ANYONECANPAY_SINGLE | Sign its own input and the output with the same index |
 
 
-When you use a customed sighash type, you need to use the same sighash type when constructing the transaction calling the contract, e.g.,
-
-
-
-```ts
-getCallTx(utxos: UTXO[], prevTx: bsv.Transaction, nextInst: Counter): bsv.Transaction {
-const inputIndex = 1
-return new bsv.Transaction().from(utxos)
-    .addInputFromPrevTx(prevTx)
-    .setOutput(0, (tx: bsv.Transaction) => {
-    nextInst.lockTo = { tx, outputIndex: 0 }
-    return new bsv.Transaction.Output({
-        script: nextInst.lockingScript,
-        satoshis: this.balance,
-    })
-    })
-    .setInputScript({
-      inputIndex,
-      sigtype: bsv.crypto.Signature.ANYONECANPAY_SINGLE   // <----- ANYONECANPAY_SINGLE has to be passed in
-    }, (tx: bsv.Transaction) => {
-    this.unlockFrom = { tx, inputIndex }
-    return this.getUnlockingScript(self => {
-        self.increment()
-    })
-    })
-}
-```
 
 
 ### Debugging

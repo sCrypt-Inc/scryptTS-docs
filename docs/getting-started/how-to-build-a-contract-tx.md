@@ -125,7 +125,7 @@ MyContract.bindTxBuilder("unlock", (options, ...args) => {
 
 ## Heads up
 
-Please be aware that each of these tx builders should only create an unsigned transaction. In other words, you are not required to supply input unlocking scripts by using the `tx.setInputScript` method. The framework will automatically process it.
+Please be aware that each of these tx builders should only create an unsigned transaction. The framework will automatically process it.
 
 Also, please be aware that your customized tx builder must always deliver a transaction that adheres to your public `@method`'s logic, i.e., making all assertions executed in it pass.
 

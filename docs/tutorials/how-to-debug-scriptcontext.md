@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 3
 ---
 
-# Tutorial 5: How to debug ScriptContext error
+# Tutorial 3: How to debug ScriptContext
 
 
 [ScriptContext](../getting-started/what-is-scriptcontext.md) enables the logic of the contract to be executed correctly according to the agreement, and the state of the contract can be propagated correctly.

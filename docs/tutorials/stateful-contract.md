@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
-# Tutorial 4: Stateful Contracts
+# Tutorial 2: Stateful Contracts
 
 ## Overview
 
@@ -50,12 +50,14 @@ this.count++
 2. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
 
 ```ts
-// Ensure that the output contains the most recent state, and the same value as the previous
-assert(
-      this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)),
-      'hashOutputs mismatch'
-    )
+// make sure balance in the contract does not change
+const amount: bigint = this.ctx.utxo.value
+// output containing the latest state
+const output: ByteString = this.buildStateOutput(amount)
+// verify current tx has this single output
+assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
 ```
+
 The built-in function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. We keep the satoshis unchanged in the example. If all outputs (only a single output here) we create in the contract hashes to `hashOutputs` in [ScriptContext](../getting-started/what-is-scriptcontext.md), we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
 
 

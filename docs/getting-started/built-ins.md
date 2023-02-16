@@ -13,8 +13,8 @@ The following functions come with `scryptTS`.
 - `assert(condition: boolean, errorMsg?: string)` Throw an `Error` with the optional error message if `condition` is `false`. Otherwise, nothing happens.
 
 ```typescript
-assert(1 === 1)        // nothing happens
-assert(1 === 2)        // throws Error('Execution failed')
+assert(1n === 1n)        // nothing happens
+assert(1n === 2n)        // throws Error('Execution failed')
 assert(false, 'hello') // throws Error('Execution failed, hello')
 ```
 
@@ -201,7 +201,7 @@ const pubKeyHash = PubKeyHash(toByteString('001122334455667788990011223344556677
 Utils.buildPublicKeyHashScript(pubKeyHash) // '76a914001122334455667788990011223344556677889988ac'
 ```
 
-- `static buildOpreturnScript(data: ByteString): ByteString` Build a data-carrying [OP_RETURN](https://wiki.bitcoinsv.io/index.php/OP_RETURN) script from `data` payload.
+- `static buildOpreturnScript(data: ByteString): ByteString` Build a data-carrying [FALSE OP_RETURN](https://wiki.bitcoinsv.io/index.php/OP_RETURN) script from `data` payload.
 
 ```typescript
 const data = toByteString('hello world', true)
@@ -288,16 +288,16 @@ hashedSet.delete(getSortedItem(set, 2n))
 ```typescript
 class Constants {
     // number of string to denote input sequence
-    static readonly InputSeqLen: bigint = Int(4);
+    static readonly InputSeqLen: bigint = BigInt(4);
     // number of string to denote output value
-    static readonly OutputValueLen: bigint = Int(8);
+    static readonly OutputValueLen: bigint = BigInt(8);
     // number of string to denote a public key (compressed)
-    static readonly PubKeyLen: bigint = Int(33);
+    static readonly PubKeyLen: bigint = BigInt(33);
     // number of string to denote a public key hash
-    static readonly PubKeyHashLen: bigint = Int(20);
+    static readonly PubKeyHashLen: bigint = BigInt(20);
     // number of string to denote a tx id
-    static readonly TxIdLen: bigint = Int(32);
+    static readonly TxIdLen: bigint = BigInt(32);
     // number of string to denote a outpoint
-    static readonly OutpointLen: bigint = Int(36);
+    static readonly OutpointLen: bigint = BigInt(36);
 }
 ```

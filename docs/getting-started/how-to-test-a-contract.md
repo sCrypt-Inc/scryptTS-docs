@@ -11,6 +11,20 @@ There are two different kinds of tests recommended for every project using `scry
 * **Local Unit Testing**
 * **Testnet Integration Testing**
 
+
+## Setup
+
+Before we test the contract, we need to generate a [private key](https://en.bitcoin.it/wiki/Private_key). Let's run the following command:
+
+```sh
+npm run genprivkey
+```
+
+The command will generate a private key which will be stored in the `.env` file in our project root directory. Keep this key secret as whoever has access to it can take the funds! It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. 
+
+Now we will take a look at the file `tests/testnet/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
+
+
 But before going into details, you should learn some basic models of scryptTS for signing and sending transactions.
 
 ## Provider
@@ -23,14 +37,14 @@ Currently, we have two built-in providers:
 
 * `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
 
-* `WhatsonchainProvider`: A wrapper for whatsonchain APIs, can be used in testnet as well as mainnet.
+* `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcon, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
 
 You can initialize these providers like this:
 
 ```ts
 let dummyProvider = new DummyProvider();
 
-let wocProvider = new WhatsonchainProvider(bsv.Networks.testnet);
+let provider = new DefaultProvider(bsv.Networks.mainnet);
 ```
 
 ## Signer 
@@ -69,7 +83,7 @@ let signer = new TestWallet(privateKey, new DummyProvider());
 Then just connect it to your contract instance like this:
 
 ```ts
-instance.connect(signer);
+await instance.connect(signer);
 ```
 
 ### Call a Public Method
@@ -118,7 +132,10 @@ The interface for the `options` argument looks like this:
   /** The `lockTime` of the method calling tx */
   lockTime?: number;
 
-  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
+  /** The `sequence` value of the input */
+  sequence?: number;
+
+  /** The subsequent contract instance(s) produced in the outputs of the method calling tx for a stateful contract */
   next?: StatefulNextWithIdx<T> | StatefulNext<T>[];
 }
 
@@ -163,7 +180,7 @@ describe('Test SmartContract `Demo`', () => {
     demo = new Demo(1n, 2n)
 
     // connect the instance to signer
-    demo.connect(signer)
+    await demo.connect(signer)
   })
 
   it('should pass the public method unit test successfully.', async () => {
