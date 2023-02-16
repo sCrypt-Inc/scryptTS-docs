@@ -157,9 +157,9 @@ rshift(1024n, 11n) // 0n
 
 The following functions come with the `SmartContract` base class.
 
-### `this.buildStateOutput`
+### `this.buildStateOutput(amount: bigint)`
 
-Function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. With this function, you don't need to construct the new state output manually in the contract.
+Function `this.buildStateOutput` creates an output containing the latest state. It takes an input: the number of satoshis in the output. With this function, you don't need to construct the new state output manually in the contract.
 
 ```typescript
 class Counter extends SmartContract {
@@ -177,9 +177,9 @@ class Counter extends SmartContract {
 }
 ```
 
-### `this.buildChangeOutput`
+### `this.buildChangeOutput()`
 
-Function `this.buildChangeOutput()` creates a P2PKH change output for the method calling transaction, with no parameters required. It will calculate the change amount automatically, and use the default address of the signer as the change address by default, or parse it from `changeAddress` field in `MethodCallOptions`.
+Function `this.buildChangeOutput` creates a P2PKH change output for the method calling transaction, with no parameters required. It will calculate the change amount automatically, and use the default address of the signer as the change address by default, or parse it from `changeAddress` field in `MethodCallOptions`.
 
 ```typescript
 const {tx: callTx, atInputIndex} = await anyoneCanSpend.methods.unlock(
@@ -188,6 +188,35 @@ const {tx: callTx, atInputIndex} = await anyoneCanSpend.methods.unlock(
     changeAddress: myAddress, // specify the change address of method calling tx explicitly
   } as MethodCallOptions<AnyoneCanSpend>
 )
+```
+
+### `this.checkSig(signature: Sig, publicKey: PubKey)`
+
+Function `this.checkSig` verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with SIGHASH flags. 
+
+It returns true if the signature matches the public key. Returns false if the signature is an empty byte array. Otherwise, the entire contract fails immediately, due to the [**NULLFAIL** rule](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#NULLFAIL).
+
+For example, for the Pay-to-PubKey-Hash ([P2PKH](https://learnmeabitcoin.com/guide/p2pkh)), we can have implementation as below.
+
+```typescript
+class P2PKH extends SmartContract {
+  // public key hash of the recipient.
+  @prop()
+  readonly pubKeyHash: PubKeyHash
+
+  constructor(pubKeyHash: PubKeyHash) {
+    super(...arguments)
+    this.pubKeyHash = pubKeyHash
+  }
+
+  @method()
+  public unlock(sig: Sig, pubkey: PubKey) {
+    // check if the passed public key belongs to the specified public key hash
+    assert(hash160(pubkey) == this.pubKeyHash, 'public key hashes are not equal')
+    // check signature validity
+    assert(this.checkSig(sig, pubkey), 'signature check failed')
+  }
+}
 ```
 
 ## Standard Libraries
