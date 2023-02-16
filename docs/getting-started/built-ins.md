@@ -4,7 +4,7 @@ sidebar_position: 9
 
 # Built-ins
 
-## Functions
+## Global Functions
 
 The following functions come with `scryptTS`.
 
@@ -153,9 +153,46 @@ rshift(1024n, 11n) // 0n
 
 - `exit(status: boolean): void` Call this function will terminate contract execution. If `status` is `true` then the contract succeeds; otherwise, it fails.
 
+## `SmartContract` Functions
+
+The following functions come with the `SmartContract` base class.
+
+### `this.buildStateOutput`
+
+Function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. With this function, you don't need to construct the new state output manually in the contract.
+
+```typescript
+class Counter extends SmartContract {
+  // ...
+
+  @method(SigHash.ANYONECANPAY_SINGLE)
+  public incOnChain() {
+    // ... update state
+      
+    // construct the new state output 
+    const output: ByteString = this.buildStateOutput(this.ctx.utxo.value)
+
+    // ... verify outputs of current tx
+  }
+}
+```
+
+### `this.buildChangeOutput`
+
+Function `this.buildChangeOutput()` creates a P2PKH change output for the method calling transaction, with no parameters required. It will calculate the change amount automatically, and use the default address of the signer as the change address by default, or parse it from `changeAddress` field in `MethodCallOptions`.
+
+```typescript
+const {tx: callTx, atInputIndex} = await anyoneCanSpend.methods.unlock(
+  {
+    fromUTXO: getDummyUTXO(),
+    changeAddress: myAddress, // specify the change address of method calling tx explicitly
+  } as MethodCallOptions<AnyoneCanSpend>
+)
+```
+
 ## Standard Libraries
 
-`scryptTS` comes with standard libraries that define many commonly used contracts..
+`scryptTS` comes with standard libraries that define many commonly used functions.
 
 ### Library `Utils`
 
