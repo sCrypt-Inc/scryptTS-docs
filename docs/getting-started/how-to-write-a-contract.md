@@ -48,7 +48,7 @@ A smart contract can have two kinds of properties:
 
 Use this decorator to mark any property that intends to be stored on chain.
 
-This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called [stateful](../tutorials/stateful-contract.md) property and its value can be updated in subsequent contract calls.
+This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called [stateful](./stateful-contract.md) property and its value can be updated in subsequent contract calls.
 
 ## Constructor
 

@@ -1,14 +1,14 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 
-# Tutorial 2: Stateful Contracts
+# Stateful Contracts
 
 ## Overview
 
 In Bitcoin's UTXO model, a smart contract is one-off and stateless by default, since the UTXO containing it is destroyed after being spent. Being stateless allows it to scale easily, the same as in [HTTP](https://stackoverflow.com/questions/5836881/stateless-protocol-and-stateful-protocol) and [REST APIs](https://www.geeksforgeeks.org/restful-statelessness/).
 A smart contract can simulate state by requiring 
-the output of the spending transaction containing the same contract but with the updated state, enabled by [ScriptContext](../getting-started/scriptcontext.md).
+the output of the spending transaction containing the same contract but with the updated state, enabled by [ScriptContext](scriptcontext.md).
 This is similar to making HTTP seem stateful by using cookies.
 
 We divide a smart contract in the locking script of an output into two parts: code and state as shown below. The code part contains the business logic of a contract that encodes rules for state transition and must **NOT** change. State transition occurs when a transaction spends the output containing the old state and creates a new output containing the new state, while keeping the contract code intact.
@@ -30,7 +30,7 @@ This will create a project containing a sample stateful contract named `Counter`
 Let's take a look at the contract source file `src/contracts/counter.ts`.
 
 ### Stateful properties
-As shown [before](../getting-started/how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make a property part of the contract state, meaning it can be mutated when the contract gets called.
+As shown [before](how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make a property part of the contract state, meaning it can be mutated when the contract gets called.
 
 ```ts
 @prop(true)
@@ -61,7 +61,7 @@ const output: ByteString = this.buildStateOutput(amount)
 assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
 ```
 
-The built-in function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. We keep the satoshis unchanged in the example. If all outputs (only a single output here) we create in the contract hashes to `hashOutputs` in [ScriptContext](../getting-started/scriptcontext.md), we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
+The built-in function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. We keep the satoshis unchanged in the example. If all outputs (only a single output here) we create in the contract hashes to `hashOutputs` in [ScriptContext](scriptcontext.md), we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
 
 
 The complete stateful contract is as follows:
@@ -98,7 +98,7 @@ export class Counter extends SmartContract {
 
 ## Test a Stateful Contract
 
-Stateful contact testing is very similar to how we described it in [this section](../getting-started/how-to-test-a-contract.md). The only different is that you have to be aware of smart contract instance changes after method calls.
+Stateful contact testing is very similar to how we described it in [this section](how-to-test-a-contract.md). The only different is that you have to be aware of smart contract instance changes after method calls.
 
 As described in the [Overview](#overview), for each method call, a tx contains new contract UTXO(s) with the latest updated state, i.e., the next instance. From the perspective of the current spending tx, the public `@method` of a contract instance is called in one of its inputs, and the next contract instance is stored in one (or more) of its outputs.
 
@@ -170,7 +170,7 @@ This is the **SAME** method we call on chain in `incrementOnChain`, thanks to th
 
 ### 3. Call the method on the `current` instance to apply updates on chain
 
-As described in [this section](../getting-started/how-to-test-a-contract#getatxforinvokingamethod), we can build a call transaction. The only difference here is that we pass in the `next` instance and its balance as a method call option in a stateful contract. So the method (i.e., `incrementOnChain`) have all the information to verify that all updates made to the `next` instance follow the state transition rules in it.
+As described in [this section](how-to-test-a-contract#getatxforinvokingamethod), we can build a call transaction. The only difference here is that we pass in the `next` instance and its balance as a method call option in a stateful contract. So the method (i.e., `incrementOnChain`) have all the information to verify that all updates made to the `next` instance follow the state transition rules in it.
 
 ```ts
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
