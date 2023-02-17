@@ -116,10 +116,11 @@ This function is designed to invoke the corresponding `@method` of the same name
 const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
 ```
 
-The interface for the `options` argument looks like this:
+The `options` argument is of type `MethodCallOptions`:
 
 ```json
-{
+
+interface MethodCallOptions {
   /** The previous contract UTXO to spend in the method calling tx */
   fromUTXO?: UTXO;
 
