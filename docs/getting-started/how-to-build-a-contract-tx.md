@@ -73,7 +73,7 @@ For contract calls, the default tx builder creates a transaction with the follow
 
 * Outputs
 
-  * [0…N-1]: One or more outputs, each containing a new contract instance (UTXO) if the contract is stateful.
+  * [0…N-1]: One or more outputs, each containing a new contract instance (UTXO) if the contract is [stateful](./stateful-contract.md).
   * [N]: A P2PKH change output if needed.
 
 
