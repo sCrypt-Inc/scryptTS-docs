@@ -41,10 +41,13 @@ count: bigint
 
 The `incrementOnChain()` method does two things:
 
-1. Update the state, like any other property:
+1. Call `increment` to update the state:
 
-```js
-this.count++
+```ts
+@method()
+increment(): void {
+    this.count++
+}
 ```
 
 2. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
