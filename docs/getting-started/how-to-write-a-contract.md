@@ -194,6 +194,52 @@ add(x0: bigint, x1:bigint) : bigint {
 
 Note: **Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that transitively calls itself.
 
+```ts
+class MethodsDemo extends SmartContract {
+  @prop()
+  readonly x: bigint;
+  @prop()
+  readonly y: bigint;
+
+  constructor(x: bigint, y: bigint) {
+    super(x, y);
+    this.x = x;
+    this.y = y;
+  }
+	
+  // good, non-public static method without access `@prop` properties
+  @method()
+  static sum(a: bigint, b: bigint): bigint {
+    return a + b;
+  }
+
+  // good, non-public method
+  @method()
+  xyDiff(): bigint {
+    return this.x - this.y
+  }
+	
+  // good, public method
+  @method()
+  public add(z: bigint) {
+    // good, call `sum` with the class name
+    assert(z == Demo.sum(this.x, this.y), 'add check failed');
+  }
+  
+  // good, another public method
+  @method()
+  public sub(z: bigint) {
+    // good, call `xyDiff` with the class instance
+    assert(z == this.xyDiff(), 'sub check failed');
+  }
+  
+  // valid but bad, public static method
+  @method()
+  public static alwaysPass() {
+    assert(true)
+  }
+}
+```
 
 ## Data Types
 
