@@ -79,16 +79,16 @@ static c: bigint
 @prop(true)
 static c: bigint = 1n
 
-// good, `UINT_MAX` is a Compile-time Constant
-static readonly UINT_MAX: bigint = 0xffffffffn
+// good, `UINT_MAX` is a compile-time constant, and no need to typed explicitly
+static readonly UINT_MAX = 0xffffffffn
 
 // valid, but not good enough, `@prop()` is not necessary for the CTC
 @prop()
-static readonly UINT_MAX: bigint = 0xffffffffn
+static readonly UINT_MAX = 0xffffffffn
 
 // invalid
 @prop(true)
-static readonly UINT_MAX: bigint = 0xffffffffn
+static readonly UINT_MAX = 0xffffffffn
 ```
 
 ## Constructor
