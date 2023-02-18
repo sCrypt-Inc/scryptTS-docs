@@ -136,13 +136,9 @@ interface MethodCallOptions {
   /** The `sequence` of the input spending previous contract UTXO in the method calling tx */
   sequence?: number;
 
-  /** The `sequence` value of the input */
-  sequence?: number;
-
   /** The subsequent contract instance(s) produced in the outputs of the method calling tx for a stateful contract */
   next?: StatefulNextWithIdx<T> | StatefulNext<T>[];
 }
-
 ```
 
 What actually happens during the call is the following.
