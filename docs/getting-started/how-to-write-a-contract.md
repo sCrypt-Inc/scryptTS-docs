@@ -50,7 +50,7 @@ Use this decorator to mark any property that intends to be stored on chain.
 
 This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called [stateful](./stateful-contract.md) property and its value can be updated in subsequent contract calls.
 
-```typescript
+```ts
 // good, `a` is stored on chain, and it's readonly after the contract is deployed
 @prop()
 readonly a: bigint
@@ -138,7 +138,7 @@ Like properties, a smart contract can also have two kinds of methods:
 
 Each contract **must** have at least one public `@method`. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the main method into the contract (like `main` in C and Java).
 
-```typescript
+```ts
 class InvalidContractDemo extends SmartContract {
   // invalid, contract should have at least one public function
 }
@@ -146,7 +146,7 @@ class InvalidContractDemo extends SmartContract {
 
 A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](./built-ins.md#assert). An example is shown below.
 
-```typescript
+```ts
 @method()
 public unlock(x: bigint) {
   // only succeeds if x is 1
@@ -156,7 +156,7 @@ public unlock(x: bigint) {
 
 **Note**: The last function call of a public `@methed` method **must** be an `assert()` function call, unless it is a `console.log()` call.
 
-```typescript
+```ts
 class PublicMethodDemo extends SmartContract {
   @method()
   public foo() {
@@ -184,7 +184,7 @@ class PublicMethodDemo extends SmartContract {
 
 Without a `public` modifier, a `@method` is internal and cannot be directly called from an external transaction.
 
-```typescript
+```ts
 @method()
 add(x0: bigint, x1:bigint) : bigint {
   return x0 + x1
@@ -233,7 +233,7 @@ A literal `string` can be converted in to a `ByteString` using function `toByteS
 
 **Note**: When `toByteString` is called, it **ONLY** accepts string literals for its first argument, and boolean literals for its second argument.
 
-```typescript
+```ts
 toByteString('hello', 1 === 1) // invalid, not passing boolean literal to the 2nd parameter
 
 let a = true
