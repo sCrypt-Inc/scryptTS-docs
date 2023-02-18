@@ -57,27 +57,38 @@ readonly a: bigint
 
 // valid, but not good enough, `b` cannot be changed after the contract is deployed
 @prop()
+a: bigint
+
+// good, `b` is stored on chain, and its value can be updated in subsequent contract calls
+@prop(true)
 b: bigint
 
-// good, `counter` is stored on chain, and its value can be updated in subsequent contract calls
+// invalid, `b` is a stateful property that cannot be readonly
 @prop(true)
-counter: bigint
+readonly b: bigint
 
-// invalid, `counter` is a stateful property that cannot be readonly
-@prop(true)
-readonly counter
+// good
+@prop()
+static c: bigint = 1n
 
-// invalid
+// invalid, static property must be initialized when declared
 @prop()
 static c: bigint
 
+// invalid, stateful property cannot be static
+@prop(true)
+static c: bigint = 1n
+
+// good, `UINT_MAX` is a Compile-time Constant
+static readonly UINT_MAX: bigint = 0xffffffffn
+
+// valid, but not good enough, `@prop()` is not necessary for the CTC
+@prop()
+static readonly UINT_MAX: bigint = 0xffffffffn
+
 // invalid
 @prop(true)
-static d: bigint
-
-// valid, but not good enough, `@prop()` is not necessary for the static readonly property
-@prop()
-static readonly UINT_MAX = 0xffffffffn
+static readonly UINT_MAX: bigint = 0xffffffffn
 ```
 
 ## Constructor
@@ -125,7 +136,7 @@ Like properties, a smart contract can also have two kinds of methods:
 
 ### Public `@method`s
 
-Each contract must have at least one public `@method`. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the main method into the contract (like `main` in C and Java).
+Each contract **must** have at least one public `@method`. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the main method into the contract (like `main` in C and Java).
 
 ```typescript
 class InvalidContractDemo extends SmartContract {

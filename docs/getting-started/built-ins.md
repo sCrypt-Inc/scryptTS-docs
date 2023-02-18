@@ -153,50 +153,17 @@ rshift(1024n, 11n) // 0n
 
 - `exit(status: boolean): void` Call this function will terminate contract execution. If `status` is `true` then the contract succeeds; otherwise, it fails.
 
-## `SmartContract` Functions
+## `SmartContract` Methods
 
-The following functions come with the `SmartContract` base class.
+The following `@methods` come with the `SmartContract` base class.
 
-### `this.buildStateOutput(amount: bigint)`
+### `checkSig`
 
-Function `this.buildStateOutput` creates an output containing the latest state. It takes an input: the number of satoshis in the output. With this function, you don't need to construct the new state output manually in the contract.
+Function `checkSig(signature: Sig, publicKey: PubKey): boolean` verifies an ECDSA signature. It takes two inputs: an ECDSA signature and a public key. 
 
-```typescript
-class Counter extends SmartContract {
-  // ...
+It returns true if the signature matches the public key. Returns false if the signature is an empty. Otherwise, the entire contract fails immediately, due to the [**NULLFAIL** rule](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#NULLFAIL).
 
-  @method(SigHash.ANYONECANPAY_SINGLE)
-  public incOnChain() {
-    // ... update state
-      
-    // construct the new state output 
-    const output: ByteString = this.buildStateOutput(this.ctx.utxo.value)
-
-    // ... verify outputs of current tx
-  }
-}
-```
-
-### `this.buildChangeOutput()`
-
-Function `this.buildChangeOutput` creates a P2PKH change output for the method calling transaction, with no parameters required. It will calculate the change amount automatically, and use the default address of the signer as the change address by default, or parse it from `changeAddress` field in `MethodCallOptions`.
-
-```typescript
-const {tx: callTx, atInputIndex} = await anyoneCanSpend.methods.unlock(
-  {
-    fromUTXO: getDummyUTXO(),
-    changeAddress: myAddress, // specify the change address of method calling tx explicitly
-  } as MethodCallOptions<AnyoneCanSpend>
-)
-```
-
-### `this.checkSig(signature: Sig, publicKey: PubKey)`
-
-Function `this.checkSig` verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with SIGHASH flags. 
-
-It returns true if the signature matches the public key. Returns false if the signature is an empty byte array. Otherwise, the entire contract fails immediately, due to the [**NULLFAIL** rule](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#NULLFAIL).
-
-For example, for the Pay-to-PubKey-Hash ([P2PKH](https://learnmeabitcoin.com/guide/p2pkh)), we can have implementation as below.
+For example, Pay-to-PubKey-Hash ([P2PKH](https://learnmeabitcoin.com/guide/p2pkh)), we can have implementation as below.
 
 ```typescript
 class P2PKH extends SmartContract {
@@ -217,6 +184,69 @@ class P2PKH extends SmartContract {
     assert(this.checkSig(sig, pubkey), 'signature check failed')
   }
 }
+```
+
+### `buildStateOutput`
+
+Function `buildStateOutput(amount: bigint): ByteString` creates an output containing the latest state. It takes an input: the number of satoshis in the output.
+
+```typescript
+class Counter extends SmartContract {
+  // ...
+
+  @method(SigHash.ANYONECANPAY_SINGLE)
+  public incOnChain() {
+    // ... update state
+      
+    // construct the new state output 
+    const output: ByteString = this.buildStateOutput(this.ctx.utxo.value)
+
+    // ... verify outputs of current tx
+  }
+}
+```
+
+### `buildChangeOutput`
+
+Function `buildChangeOutput` creates a P2PKH change output. It will calculate the change amount automatically, and use the signer's address by default, unless `changeAddress` field is explicitly set in `MethodCallOptions`.
+
+```typescript
+class Auction extends SmartContract {
+
+  // ...
+
+  @method()
+  public bid(bidder: PubKeyHash, bid: bigint) {
+    
+    // ...
+
+    // Auction continues with a higher bidder.
+    const auctionOutput: ByteString = this.buildStateOutput(bid)
+
+    // Refund previous highest bidder.
+    const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(
+        highestBidder,
+        highestBid
+    )
+    let outputs: ByteString = auctionOutput + refundOutput
+
+    // Add change output.
+    if (this.changeAmount > 0) {
+        outputs += this.buildChangeOutput()
+    }
+
+    assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
+  }
+}
+
+const { tx: callTx, atInputIndex } = await auction.methods.bid(
+  PubKeyHash(toHex(publicKeyHashNewBidder)),
+  BigInt(balance + 1),
+  {
+    fromUTXO: getDummyUTXO(balance),
+    changeAddress: addressNewBidder, // specify the change address of method calling tx explicitly
+  } as MethodCallOptions<Auction>
+)
 ```
 
 ## Standard Libraries
