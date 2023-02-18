@@ -208,7 +208,7 @@ class Counter extends SmartContract {
 
 ### `buildChangeOutput`
 
-Function `buildChangeOutput` creates a P2PKH change output. It will calculate the change amount automatically, and use the signer's address by default, unless `changeAddress` field is explicitly set in `MethodCallOptions`.
+Function `buildChangeOutput(): ByteString` creates a P2PKH change output. It will calculate the change amount (`this.changeAmount`) automatically, and use the signer's address by default, unless `changeAddress` field is explicitly set in `MethodCallOptions`.
 
 ```typescript
 class Auction extends SmartContract {
