@@ -138,12 +138,6 @@ Like properties, a smart contract can also have two kinds of methods:
 
 Each contract **must** have at least one public `@method`. It is denoted with the `public` modifier and does not return any value. It is visible outside the contract and acts as the main method into the contract (like `main` in C and Java).
 
-```ts
-class InvalidContractDemo extends SmartContract {
-  // invalid, contract should have at least one public function
-}
-```
-
 A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in [assert()](./built-ins.md#assert). An example is shown below.
 
 ```ts
