@@ -20,23 +20,14 @@ assert(false, 'hello') // throws Error('Execution failed, hello')
 
 ### Fill
 
-- `fill(value: any, length: number): any ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. Note `length` must be a numeric literal or a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+- `fill(value: any, length: number): any ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. Note `length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
 
 
 ```ts
 // good
-fill(1n, 3)
-
-// good
-const M = 3
-fill(1n, M)
-
-// good, `N` is a static readonly property of class `Demo`
-fill(1n, Demo.N)
-
-// invalid, `P` is neither a CTC nor a numeric literal
-let p = 3n
-fill(1n, Number(p))
+fill(1n, 3) // numeric literal 3
+fill(1n, M) // const M = 3
+fill(1n, Demo.N) // `N` is a static readonly property of class `Demo`
 ```
 
 ### Math
