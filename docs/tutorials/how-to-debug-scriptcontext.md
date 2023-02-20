@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Tutorial 3: How to debug ScriptContext
+# Tutorial 2: How to Debug ScriptContext Failure
 
 
 [ScriptContext](../getting-started/scriptcontext.md) enables the logic of the contract to be executed correctly according to the agreement, and the state of the contract can be propagated correctly.
