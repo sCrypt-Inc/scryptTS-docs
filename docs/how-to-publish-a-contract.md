@@ -137,7 +137,7 @@ The `scrypt.index.json` file will be generated at TypeScript compile time in the
 "compilerOptions": {
   "plugins": [
     {
-      "transform": "../dist/transformer",
+      "transform": "scrypt-ts/dist/transformation/transformer",
       "transformProgram": "true",
       "outDir": "my_scrypts_dir"
     }

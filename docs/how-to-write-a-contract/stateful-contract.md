@@ -170,7 +170,7 @@ This is the **SAME** method we call on chain in `incrementOnChain`, thanks to th
 
 ### 3. Call the method on the `current` instance to apply updates on chain
 
-As described in [this section](how-to-test-a-contract#getatxforinvokingamethod), we can build a call transaction. The only difference here is that we pass in the `next` instance and its balance as a method call option in a stateful contract. So the method (i.e., `incrementOnChain`) have all the information to verify that all updates made to the `next` instance follow the state transition rules in it.
+As described in [this section](../how-to-test-a-contract#call-a-public-method), we can build a call transaction. The only difference here is that we pass in the `next` instance and its balance as a method call option in a stateful contract. So the method (i.e., `incrementOnChain`) have all the information to verify that all updates made to the `next` instance follow the state transition rules in it.
 
 ```ts
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
