@@ -15,7 +15,7 @@ First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-
 We can run the following command to create a new sCrypt project:
 
 ```sh
-npx scrypt-cli project my-project
+scrypt project my-project
 ```
 
 The resulting project will contain a demo smart contract along with all the scaffolding.
@@ -162,7 +162,7 @@ npx tsc
 ```
 or
 ```sh
-npx scrypt-cli compile
+scrypt compile
 ```
 
 If the build process was successful, you will get a contract artifact file. A contract artifact file is the compiler output results in a JSON. It’s a representation used to build locking and unlocking scripts.
