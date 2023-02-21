@@ -261,7 +261,7 @@ const { tx: callTx, atInputIndex } = await auction.methods.bid(
 )
 ```
 
-**Note**: If use a [customized call tx builder](./how-to-build-a-contract-tx.md/#customized-call-tx-builder), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+**Note**: If use a [customized call tx builder](../how-to-build-a-contract-tx#customized-call-tx-builder), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
 
 ```ts
 const unsignedTx: bsv.Transaction = new bsv.Transaction()

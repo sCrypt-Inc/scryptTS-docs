@@ -5,7 +5,7 @@ sidebar_position: 3
 # ScriptContext
 
 In the UTXO model, the context of validating a smart contract is the UTXO containing it and the transaction spending it, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` (2 inputs and 2 outputs) is spending the second output of `tx0` (3 inputs and 3 outputs), the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
-![](../../../static/img/scriptContext.jpg)
+![](../../static/img/scriptContext.jpg)
 
 The context only contains local information, different from account-based blockchains whose context consists of the global state of the entire blockchain (as in Ethereum). A single shared global state across all smart contracts kills scalability, since they all have to sequentially processed due to potential race conditions.
 
@@ -134,7 +134,7 @@ class DesignatedReceivers extends SmartContract {
 ### SigHash Type 
 
 [SigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) decides which part of the spending transaction is included in `ScriptContext`.
-![](../../../static/img/sighashtypes.png)
+![](../../static/img/sighashtypes.png)
 It defaults to `SigHash.ALL`, including all inputs and outputs. You can customize it by setting the argument of the `@method()` decorator, e.g.,
 
 ```ts

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 
@@ -43,7 +43,7 @@ class MyLib extends SmartContractLib {
 }
 ```
 
-A smart contract library can be declared as a  class that extends `SmartContractLib`. It may also have `@prop`s and `@method`s like smart contracts which have the same rules [introduced before](./how-to-write-a-contract.md). A smart contract library can be used within `@method`s like this:
+A smart contract library can be declared as a  class that extends `SmartContractLib`. It may also have `@prop`s and `@method`s like smart contracts which have the same rules [introduced before](./how-to-write-a-contract). A smart contract library can be used within `@method`s like this:
 
 ```ts
 class MyContract extends SmartContract {

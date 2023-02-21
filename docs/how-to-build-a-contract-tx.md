@@ -8,7 +8,7 @@ sidebar_position: 8
 
 After you've finished writing a contract, you want to deploy and call it. But first, you should learn how the a smart contract interacts with the blockchain.
 
-As explained in the [Overview section](../overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A constract instance is a TypeScript object that represents a specific contract deployed on-chain. In this section, we will go over some fundamental concepts in details.
+As explained in the [Overview section](./overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A constract instance is a TypeScript object that represents a specific contract deployed on-chain. In this section, we will go over some fundamental concepts in details.
 
 
 ### Contract Deployment Transaction
@@ -38,7 +38,7 @@ instance.to.inputIndex
 
 This section could be summarized as the diagram below:
 
-![](../../static/img/contract_tx.svg)
+![](../static/img/contract_tx.svg)
 
 ## Tx Builders
 
@@ -73,7 +73,7 @@ For contract calls, the default tx builder creates a transaction with the follow
 
 * Outputs
 
-  * [0…N-1]: One or more outputs, each containing a new contract instance (UTXO) if the contract is [stateful](./stateful-contract.md).
+  * [0…N-1]: One or more outputs, each containing a new contract instance (UTXO) if the contract is [stateful](./how-to-write-a-contract/stateful-contract).
   * [N]: A P2PKH change output if needed.
 
 
