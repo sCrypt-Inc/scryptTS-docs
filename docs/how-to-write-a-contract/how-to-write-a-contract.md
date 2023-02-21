@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # How to Write a Contract
@@ -48,7 +48,7 @@ A smart contract can have two kinds of properties:
 
 Use this decorator to mark any property that intends to be stored on chain.
 
-This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called [stateful](./stateful-contract.md) property and its value can be updated in subsequent contract calls.
+This decorator takes a `boolean` parameter. By default, it is set to `false`, meaning the property cannot be changed after the contract is deployed. If the value is `true`, the property is a so-called [stateful](./stateful-contract) property and its value can be updated in subsequent contract calls.
 
 ```ts
 // good, `a` is stored on chain, and it's readonly after the contract is deployed
@@ -564,7 +564,7 @@ for(let i=0; i< X.M1; i++) {}
 ## Functions
 
 ### Built-in Functions
-You can refer to [Built-ins](../getting-started/built-ins.md) for a full list of functions and libraries built into `scryptTS`.
+You can refer to [Built-ins](./built-ins.md) for a full list of functions and libraries built into `scryptTS`.
 
 ### Whitelisted Functions
 Be default, all Javascript/TypeScript built-in functions and global variables are not allowed in `@method`s, except the following kinds.

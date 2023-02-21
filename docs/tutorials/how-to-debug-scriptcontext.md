@@ -5,7 +5,7 @@ sidebar_position: 2
 # Tutorial 2: How to Debug ScriptContext Failure
 
 
-[ScriptContext](../getting-started/scriptcontext.md) enables the logic of the contract to be executed correctly according to the agreement, and the state of the contract can be propagated correctly.
+[ScriptContext](../how-to-write-a-contract/scriptcontext.md) enables the logic of the contract to be executed correctly according to the agreement, and the state of the contract can be propagated correctly.
 
 When it runs wrong, you need to master the following methods to locate the error more efficiently.
 
@@ -23,7 +23,7 @@ assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
 We all know that if the preimage of the hash is inconsistent, the hash value will not match. When an assertion failure occurs, we can only see two mismatched hash values, and cannot visually see the difference between the preimages of the two hash values (that is, the `outputs` in the contract and the outputs of the transaction).
 
 
-A function `diffOutputs` in [DebugFunctions Interface](../getting-started/how-to-debug-a-contract.md#debugfunctions-interface) is provided to directly compare the difference between the outputs argument and all the outputs of the transaction bound by `unlockFrom`, which are serialized and hashed to produce `hashOutputs` field of `ScriptContext`. 
+A function `diffOutputs` in DebugFunctions Interface is provided to directly compare the difference between the outputs argument and all the outputs of the transaction bound by `this.to`, which are serialized and hashed to produce `hashOutputs` field of `ScriptContext`. 
 
 Just call `this.debug.diffOutputs(outputs)` in the contract:
 

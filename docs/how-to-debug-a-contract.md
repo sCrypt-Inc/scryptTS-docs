@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # How to Debug a Contract
@@ -54,13 +54,13 @@ sum: 3
 
 You can use VS Code to debug scryptTS contracts, the same way as any other TypeScript programs. If you have created a project with [the sCrypt CLI](installation.md), you should have an auto-generated [launch.json](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/.vscode/launch.json), containing everything needed for the debugger out of the box. To learn more about the VS Code TypeScript debugger, please refer to the [official documentation](https://code.visualstudio.com/docs/TypeScript/TypeScript-debugging).
 
-![](../../static/img/debug.jpg)
+![](../static/img/debug.jpg)
 You can set some breakpoints and choose `Launch demo` from the `Run and Debug` view (or press **F5**) to start the debugger instantly.
 
 
-![](../../static/img/debugging1.gif)
+![](../static/img/debugging1.gif)
 
 If you want to debug a unit test written with the [Mocha](https://mochajs.org) testing framework, choose `Launch demo test` from the `Run and Debug` view.
 
 
-![](../../static/img/debugging2.gif)
+![](../static/img/debugging2.gif)

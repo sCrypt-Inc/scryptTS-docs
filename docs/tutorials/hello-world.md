@@ -10,7 +10,7 @@ In this tutorial, we will go over how to quickly create an sCrypt project and ex
 
 ## Create a new project
 
-First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-Inc/scrypt-cli) is installed. Check the [installation section](../getting-started/installation.md) if you don't have it installed yet.
+First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-Inc/scrypt-cli) is installed. Check the [installation section](../installation.md) if you don't have it installed yet.
 
 We can run the following command to create a new sCrypt project:
 
@@ -71,7 +71,7 @@ export class Demo extends SmartContract {
 }
 ```
 
-Note: The [types](../getting-started/how-to-write-a-contract.md#types) used in  `@prop` decorator are restricted.
+Note: The [types](../how-to-write-a-contract#data-types) used in  `@prop` decorator are restricted.
 
 
 ### Constructor

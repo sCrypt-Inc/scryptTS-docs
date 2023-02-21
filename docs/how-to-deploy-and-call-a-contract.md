@@ -48,7 +48,7 @@ console.log(`Smart contract successfully deployed with txid ${tx.id}`);
 
 ## Contract Call
 
-Similar to what we described in [this section](./how-to-test-a-contract#getatxforinvokingamethod), you can call a contract's public `@method` on the blockchain as follows:
+Similar to what we described in [this section](./how-to-test-a-contract#call-a-public-method), you can call a contract's public `@method` on the blockchain as follows:
 
 ```ts
 const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, opts);
