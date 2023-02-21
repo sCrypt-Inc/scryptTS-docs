@@ -329,76 +329,154 @@ Utils.buildOpreturnScript(data) // '006a0b68656c6c6f20776f726c64'
 
 ### Library `HashedMap`
 
-The *HashedMap* library provides a map/hashtable-like data structure. Unique keys and their corresponding values are hashed before being stored. Most functions of *HashedMap* require not only a key, but also its index, ranked by key hash in ascending order.
 
-#### Constructor
+The *HashedMap* library provides a map/hashtable-like data structure. The main difference between the `HashedMap` and other data types we’ve [previously introduced](../how-to-write-a-contract/#data-types) is that the `HashedMap` does NOT store its raw data, which are the serialized keys and values, in the contract on the blockchain. It only keeps their hashed values in the contract instead. 
 
-`constructor(map: Map<K, V>)` Create an instance of `HashedMap` with a `Map`.
+It provides consistent APIs that can be utilized in both on-chain and off-chain contract code, and you won't need to worry about how to perform hashing and serialization. But you should be aware of how to apply it in two different scenarios.
+
+#### Off-chain Usage
+
+It functions just like the Javascript `Map` when used in off-chain code that is not contained in a contract's `@method`. For example, you can create an instance like this:
 
 ```ts
-let map = new Map<bigint, ByteString>()
-map.set(1n, toByteString("0001"))
-map.set(2n, toByteString("0011"))
-map.set(10n, toByteString("0111"))
+// create an empty map
+let hashedMap = new HashedMap<ByteString, ByteString>();
 
-let hashedMap = new HashedMap(map)
+// create from (key,value) pairs
+let hashedMap = new HashedMap([['key1', 'value1'], ['key2', 'value2']]);
 ```
 
-#### SortedItem
-
-`SortedItem<T>` is a generic type which holds an *item* whose type is *T* and its corresponding order value *idx*.
+Also, you can call its functions like this:
 
 ```ts
-type SortedItem<T> = {
-  idx: bigint,
-  item: T
+hashedMap.set(key, value);
+hashedMap.has(key);
+hashedMap.delete(key);
+…
+```
+
+Only when the key type is an object is there a difference. The `HashedMap` will treat two objects with deeply equal values as being the same key, but the `Map` will treat them as two keys if their stack references are not the same. For instance:
+
+```ts
+interface ST {
+  a: bigint;
+}
+
+let map = new Map<ST, bigint>();
+map.set({a: 1n}, 1n);
+map.set({a: 1n}, 2n);
+console.log(map.size); // output ‘2’
+console.log(map.get({a: 1n})); // output ‘undefined’
+
+
+let hashedMap = new HashedMap<ST, bigint>();
+hashedMap.set({a: 1n}, 1n);
+hashedMap.set({a: 1n}, 2n);
+console.log(hashedMap.size); // output ‘1’
+console.log(hashedMap.get({a: 1n})); // output ‘2n’
+```
+
+#### On-chain Usage
+
+However, there are a few guidelines to follow before using `HashedMap` in a contract `@method` that will be executed on-chain:
+
+* It can be used in a contract as an `@prop`, either stateful or not, like the following:
+
+```ts
+@prop() map: HashedMap<KeyType, ValueType>; // valid
+@prop(true) map: HashedMap<KeyType, ValueType> // also valid
+```
+
+* Only the following methods can be called in a public `@method`:
+
+	- `set(key: K, val: V): HashedMap`: Adds a new element with a specified key and value to the HashedMap. If an element with the same key already exists, the element will be updated.
+	- `canGet(key: K, val: V): boolean`: Returns true if the HashedMap has the specified key and value pair in it, otherwise returns false.
+	- `has(key: K): boolean`: Returns true if the HashedMap has the specified key in it, otherwise returns false.
+  - `delete(key: K): boolean`: Returns true if an element in the HashedMap existed and has been removed, or false if the element does not exist.
+	- `clear(): void`: Remove all key and value pairs in the HashedMap.
+	- `size: number`: Returns the number of elements in the HashedMap.
+
+* The aforementioned methods can only be used in public `@method`s, NOT in non-public `@method`s, such as the constructor of the contract.
+
+* It can NOT be used as a parameter:
+
+```ts
+@method public unlock(map: HashedMap<KeyType, ValueType>) // invalid as a parameter type
+```
+
+A full example may look like this:
+
+```ts
+class MyContract extends SmartContract {
+  @prop(true)
+  myMap: HashedMap<bigint, bigint>;
+
+  constructor(map: HashedMap<bigint, bigint>) {
+    this.mapMay = map;
+  }
+
+  @method()
+  public unlock(key: bigint, val: bigint) {
+    this.myMap.set(key, val);
+    assert(this.myMap.has(key));
+    assert(this.myMap.canGet(key, val));
+    assert(this.myMap.delete(key));
+    assert(!this.myMap.has(key));
+  }
 }
 ```
-
-For most functions of *HashedMap*, a parameter named *keyWithIdx* of this type is required. It means that the *key* and its corresponding *keyIndex* should always be provided together.
-
 ### Library `HashedSet`
 
-The *HashedSet* library provides a set-like data structure. It can be regarded as a special *HashedMap* where a value is the same with its key and is thus omitted. Unique values are hashed before being stored. Most functions of *HashedSet* require an index, ranked by the value’s sha256 hash in ascending order. Similar to *HashedMap*, these functions also use *SortedItem* type parameter.
 
-#### Constructor
+The *HashedSet* library provides a set-like data structure. It can be regarded as a special *HashedMap* where a value is the same with its key and is thus omitted. Unique values are hashed before being stored in contracts on the blockchain. 
 
-`constructor(set: Set<E>)` Create an instance of `HashedSet` with a `Set`.
+#### Off-chain Usage
+
+The `HashedSet` can be used as a JavaScript `Set` in the off-chain code that is not in a contract `@method`.
 
 ```ts
-let set = new Set<bigint>()
+let set = new HashedSet<bigint>()
 set.add(1n);
-set.add(2n);
-set.add(3n);
-
-let hashedSet = new HashedSet(set)
+set.has(1n);
+set.delete(1n);
+...
 ```
 
-#### Instance methods
-
-- `add(key: SortedItem<E>): boolean` Add *entry* to set with the key index given by *index*. Returns *true* if successful; otherwise returns *false*.
+Similar to the `HashedMap`, the `HashedSet` will treat two objects as identical if they are deeply equal, rather than requiring that they be the object's reference.
 
 ```ts
-hashedSet.add(getSortedItem(set, 7n))
+interface ST {
+  a: bigint;
+}
+
+let set = new Set<ST, bigint>();
+map.add({a: 1n});
+map.add({a: 1n});
+console.log(map.size); // output ‘2’
+console.log(map.has({a: 1n})); // output ‘false’
+
+
+let hashedSet = new HashedSet<ST, bigint>();
+hashedSet.add({a: 1n});
+hashedSet.add({a: 1n});
+console.log(hashedSet.size); // output ‘1’
+console.log(hashedSet.has({a: 1n})); // output ‘true’
 ```
 
-- `has(key: SortedItem<E>): boolean` Check whether *entry* exists in the set and its index is *index*. Returns *true* if both conditions are met; otherwise returns *false*.
+#### On-chain Usage
 
-```ts
-hashedSet.gas(getSortedItem(set, 3n))
-```
+When used in public `@method`s, `HashedSet` also has almost all of the same restrictions as `HashedMap`. Except for the methods on its own whitelist that can be called in `@method`s as following:
 
-- `delete(key: SortedItem<E>): boolean` Delete the entry with given *entry* and the index is *index*. Returns *true* if successful; otherwise returns *false*.
+- `add(value: T): HashedSet`: Appends a new element with a specified value to the Set.
 
-```ts
-hashedSet.delete(getSortedItem(set, 2n))
-```
+- `has(value: T): boolean`: Returns true if an element with the specified value exists in the Set, otherwise returns false.
 
-- `clear(): boolean` Delete all entries of the set.
+- `delete(value: T): boolean`: Returns true if an element in the Set existed and has been removed, or false if the element does not exist.
 
-- `size(): bigint` Returns the size of set, i.e. the number of the entries it contains.
+- `clear(): void`: Delete all entries of the set.
 
-- `data(): ByteString` Returns the internal data representation of the set.
+- `size: number`: Returns the size of set, i.e. the number of the entries it contains.
+
 
 ### Library `Constants`
 
