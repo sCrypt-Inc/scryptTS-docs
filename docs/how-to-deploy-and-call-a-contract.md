@@ -66,7 +66,7 @@ A contract public `@method` often needs a signature argument for authentication.
 ```ts
 export class P2PKH extends SmartContract {
     @prop()
-    readonly readonly pubKeyHash: PubKeyHash;
+    readonly pubKeyHash: PubKeyHash;
 
     constructor(pubKeyHash: PubKeyHash) {
         super(pubKeyHash);
