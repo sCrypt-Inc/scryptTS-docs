@@ -430,11 +430,26 @@ console.log(hashedMap.get({a: 1n})); // output ‘2n’
 ### Library `HashedSet`
 
 
-The *HashedSet* library provides a set-like data structure. It can be regarded as a special *HashedMap* where a value is the same with its key and is thus omitted. Unique values are hashed before being stored in contracts on the blockchain. 
+`HashedSet` library provides a set-like data structure. It can be regarded as a special `HashedMap` where a value is the same with its key and is thus omitted. Values are hashed before being stored in contracts on the blockchain, as in `HashedMap`.
 
-#### Off-chain Usage
+#### On-chain
 
-The `HashedSet` can be used as a JavaScript `Set` in the off-chain code that is not in a contract `@method`.
+When used in public `@method`s, `HashedSet` also has almost all of the same restrictions as `HashedMap`. Except for the methods on its own whitelist that can be called in `@method`s as following:
+
+- `add(value: T): HashedSet`: Inserts a new element with a specified value in to a set, if there isn't an element with the same value already in the set.
+
+- `has(value: T): boolean`: Returns `true` if an element with the specified value exists in the set, otherwise returns `false`.
+
+- `delete(value: T): boolean`: Returns `true` if an element in the Set existed and has been removed, or false if the element does not exist.
+
+- `clear(): void`: Delete all entries of the set.
+
+- `size: number`: Returns the size of set, i.e. the number of the entries it contains.
+
+
+#### Off-chain
+
+`HashedSet` can be used the same as a JavaScript `Set` in off-chain code .
 
 ```ts
 let set = new HashedSet<bigint>()
@@ -444,7 +459,7 @@ set.delete(1n);
 ...
 ```
 
-Similar to the `HashedMap`, the `HashedSet` will treat two objects as identical if they are deeply equal, rather than requiring that they be the object's reference.
+Similar to `HashedMap`, `HashedSet` will treat two objects as identical if their values equal, rather than requiring that they reference to the same object.
 
 ```ts
 interface ST {
@@ -464,21 +479,6 @@ hashedSet.add({a: 1n});
 console.log(hashedSet.size); // output ‘1’
 console.log(hashedSet.has({a: 1n})); // output ‘true’
 ```
-
-#### On-chain Usage
-
-When used in public `@method`s, `HashedSet` also has almost all of the same restrictions as `HashedMap`. Except for the methods on its own whitelist that can be called in `@method`s as following:
-
-- `add(value: T): HashedSet`: Appends a new element with a specified value to the Set.
-
-- `has(value: T): boolean`: Returns true if an element with the specified value exists in the Set, otherwise returns false.
-
-- `delete(value: T): boolean`: Returns true if an element in the Set existed and has been removed, or false if the element does not exist.
-
-- `clear(): void`: Delete all entries of the set.
-
-- `size: number`: Returns the size of set, i.e. the number of the entries it contains.
-
 
 ### Library `Constants`
 
