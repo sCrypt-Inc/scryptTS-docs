@@ -347,7 +347,7 @@ These guidelines must be followed when using `HashedMap` in a contract `@method`
 	- `clear(): void`: Remove all key and value pairs.
 	- `size: number`: Returns the number of elements.
 
-* The aforementioned methods can only be used in public `@method`s, NOT in non-public `@method`s, except constructors.
+* The aforementioned methods can only be used in public `@method`s, NOT in non-public `@method`s, including constructors.
 
 * `HashedMap` can be used as an `@prop`, either stateful or not:
 
@@ -369,7 +369,9 @@ class MyContract extends SmartContract {
   @prop(true)
   myMap: HashedMap<bigint, bigint>;
 
+  // HashedMap can be a parameter in constructor
   constructor(map: HashedMap<bigint, bigint>) {
+    // assignment is ok, but not calling method
     this.mapMay = map;
   }
 
