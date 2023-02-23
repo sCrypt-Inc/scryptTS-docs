@@ -482,7 +482,7 @@ console.log(hashedSet.has({a: 1n})); // output ‘true’
 
 ### `Constants`
 
-`scryptTS` defines some commonly used constant values in the library `Constants`.
+`Constants` defines some commonly used constant values.
 
 ```ts
 class Constants {
