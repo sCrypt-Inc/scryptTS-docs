@@ -330,75 +330,33 @@ Utils.buildOpreturnScript(data) // '006a0b68656c6c6f20776f726c64'
 ### Library `HashedMap`
 
 
-The *HashedMap* library provides a map/hashtable-like data structure. The main difference between the `HashedMap` and other data types we’ve [previously introduced](../how-to-write-a-contract/#data-types) is that the `HashedMap` does NOT store its raw data, which are the serialized keys and values, in the contract on the blockchain. It only keeps their hashed values in the contract instead. 
+`HashedMap` provides a map/hashtable-like data structure. The main difference between `HashedMap` and other data types we’ve [previously introduced](../how-to-write-a-contract/#data-types) is that it does NOT store raw data (i.e., keys and values) in the contract on the blockchain. It stores their hashed values instead, to minimize on-chain storage, which is expensive.
 
-It provides consistent APIs that can be utilized in both on-chain and off-chain contract code, and you won't need to worry about how to perform hashing and serialization. But you should be aware of how to apply it in two different scenarios.
+It is different to use `HashedMap` in on-chain and off-chain context.
 
-#### Off-chain Usage
+#### On-chain
 
-It functions just like the Javascript `Map` when used in off-chain code that is not contained in a contract's `@method`. For example, you can create an instance like this:
+These guidelines must be followed when using `HashedMap` in a contract `@method`, i.e., on-chain context.
 
-```ts
-// create an empty map
-let hashedMap = new HashedMap<ByteString, ByteString>();
+* Only the following methods can be called. Note `get()` is not listed, since the value itself is not stored and thus must be passed in and verified using `canGet()`.
 
-// create from (key,value) pairs
-let hashedMap = new HashedMap([['key1', 'value1'], ['key2', 'value2']]);
-```
+	- `set(key: K, val: V): HashedMap`: Adds a new element with a specified key and value. If an element with the same key already exists, the element will be updated.
+	- `canGet(key: K, val: V): boolean`: Returns `true` if the specified **key and value pair** exists, otherwise returns `false`.
+	- `has(key: K): boolean`: Returns `true` if the specified key exists, otherwise returns `false`.
+  - `delete(key: K): boolean`: Returns `true` if a key exists and has been removed, otherwise returns `false`.
+	- `clear(): void`: Remove all key and value pairs.
+	- `size: number`: Returns the number of elements.
 
-Also, you can call its functions like this:
+* The aforementioned methods can only be used in public `@method`s, NOT in non-public `@method`s, except constructors.
 
-```ts
-hashedMap.set(key, value);
-hashedMap.has(key);
-hashedMap.delete(key);
-…
-```
-
-Only when the key type is an object is there a difference. The `HashedMap` will treat two objects with deeply equal values as being the same key, but the `Map` will treat them as two keys if their stack references are not the same. For instance:
-
-```ts
-interface ST {
-  a: bigint;
-}
-
-let map = new Map<ST, bigint>();
-map.set({a: 1n}, 1n);
-map.set({a: 1n}, 2n);
-console.log(map.size); // output ‘2’
-console.log(map.get({a: 1n})); // output ‘undefined’
-
-
-let hashedMap = new HashedMap<ST, bigint>();
-hashedMap.set({a: 1n}, 1n);
-hashedMap.set({a: 1n}, 2n);
-console.log(hashedMap.size); // output ‘1’
-console.log(hashedMap.get({a: 1n})); // output ‘2n’
-```
-
-#### On-chain Usage
-
-However, there are a few guidelines to follow before using `HashedMap` in a contract `@method` that will be executed on-chain:
-
-* It can be used in a contract as an `@prop`, either stateful or not, like the following:
+* `HashedMap` can be used as an `@prop`, either stateful or not:
 
 ```ts
 @prop() map: HashedMap<KeyType, ValueType>; // valid
 @prop(true) map: HashedMap<KeyType, ValueType> // also valid
 ```
 
-* Only the following methods can be called in a public `@method`:
-
-	- `set(key: K, val: V): HashedMap`: Adds a new element with a specified key and value to the HashedMap. If an element with the same key already exists, the element will be updated.
-	- `canGet(key: K, val: V): boolean`: Returns true if the HashedMap has the specified key and value pair in it, otherwise returns false.
-	- `has(key: K): boolean`: Returns true if the HashedMap has the specified key in it, otherwise returns false.
-  - `delete(key: K): boolean`: Returns true if an element in the HashedMap existed and has been removed, or false if the element does not exist.
-	- `clear(): void`: Remove all key and value pairs in the HashedMap.
-	- `size: number`: Returns the number of elements in the HashedMap.
-
-* The aforementioned methods can only be used in public `@method`s, NOT in non-public `@method`s, such as the constructor of the contract.
-
-* It can NOT be used as a parameter:
+* It CANNOT be used as a parameter:
 
 ```ts
 @method public unlock(map: HashedMap<KeyType, ValueType>) // invalid as a parameter type
@@ -425,6 +383,50 @@ class MyContract extends SmartContract {
   }
 }
 ```
+
+#### Off-chain
+
+`HashedMap` acts just like the Javascript `Map` when used in off-chain code (that is, not in a contract's `@method`). For example, you can create an instance like this:
+
+```ts
+// create an empty map
+let hashedMap = new HashedMap<bigint, ByteString>();
+
+// create from (key,value) pairs
+let hashedMap1 = new HashedMap([['key1', 'value1'], ['key2', 'value2']]);
+```
+
+Also, you can call its functions like this:
+
+```ts
+hashedMap.set(key, value);
+const v = hashedMap.get(key);
+hashedMap.has(key);
+hashedMap.delete(key);
+…
+```
+
+Only when the key is an object is `HashedMap` different from `Map`. `HashedMap` will treat two keys the same if they have the same values, while `Map` will only if they reference the same object. For instance:
+
+```ts
+interface ST {
+  a: bigint;
+}
+
+let map = new Map<ST, bigint>();
+map.set({a: 1n}, 1n);
+map.set({a: 1n}, 2n);
+console.log(map.size); // output ‘2’ cause two keys {a: 1n} reference differently
+console.log(map.get({a: 1n})); // output ‘undefined’
+
+
+let hashedMap = new HashedMap<ST, bigint>();
+hashedMap.set({a: 1n}, 1n);
+hashedMap.set({a: 1n}, 2n);
+console.log(hashedMap.size); // output ‘1’
+console.log(hashedMap.get({a: 1n})); // output ‘2n’
+```
+
 ### Library `HashedSet`
 
 
