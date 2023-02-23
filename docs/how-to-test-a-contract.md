@@ -31,8 +31,6 @@ But before going into details, you should learn some basic models of scryptTS fo
 
 A `Provider` is an abstraction of a standard Bitcoin node that provides connection to the Bitcoin network, for read and write access to the blockchain.
 
-For example, when you want to broadcast transactions to the blockchain, you can send them to providers like [whatsonchain](https://whatsonchain.com/) via their APIs.
-
 Currently, we have two built-in providers:
 
 * `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.

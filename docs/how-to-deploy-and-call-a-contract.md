@@ -10,14 +10,11 @@ sidebar_position: 6
 As we mentioned in the [testing section](./how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
 
 
-For local testing, we can use the `TestWallet` introduced [before](./how-to-test-a-contract#testwallet), with a mock provider.
-
-When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [whatsonchain](https://whatsonchain.com/) and a wallet such as [Sensilet](https://sensilet.com/), a [Metamask](https://metamask.io/)-like lightweight crypto-wallet.
-
+For local testing, we can use the `TestWallet` introduced [before](./how-to-test-a-contract#testwallet), with a mock provider. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](./how-to-test-a-contract.md#provider).
 
 ```ts
 const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
-let signer = new SensiletSigner(new DefaultProvider(network));
+const signer = new TestWallet(privateKey, new DefaultProvider(network));
 ```
 
 Don't forget to connect the signer to the contract instance as well:
