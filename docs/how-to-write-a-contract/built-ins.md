@@ -276,7 +276,7 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
 
 `scryptTS` comes with standard libraries that define many commonly used functions.
 
-### Library `Utils`
+### `Utils`
 
 The `Utils` library provides a set of commonly used utility functions.
 
@@ -327,7 +327,7 @@ const data = toByteString('hello world', true)
 Utils.buildOpreturnScript(data) // '006a0b68656c6c6f20776f726c64'
 ```
 
-### Library `HashedMap`
+### `HashedMap`
 
 
 `HashedMap` provides a map/hashtable-like data structure. The main difference between `HashedMap` and other data types we’ve [previously introduced](../how-to-write-a-contract/#data-types) is that it does NOT store raw data (i.e., keys and values) in the contract on the blockchain. It stores their hashed values instead, to minimize on-chain storage, which is expensive.
@@ -427,7 +427,7 @@ console.log(hashedMap.size); // output ‘1’
 console.log(hashedMap.get({a: 1n})); // output ‘2n’
 ```
 
-### Library `HashedSet`
+### `HashedSet`
 
 
 `HashedSet` library provides a set-like data structure. It can be regarded as a special `HashedMap` where a value is the same with its key and is thus omitted. Values are hashed before being stored in contracts on the blockchain, as in `HashedMap`.
@@ -480,7 +480,7 @@ console.log(hashedSet.size); // output ‘1’
 console.log(hashedSet.has({a: 1n})); // output ‘true’
 ```
 
-### Library `Constants`
+### `Constants`
 
 `scryptTS` defines some commonly used constant values in the library `Constants`.
 
