@@ -4,13 +4,6 @@ sidebar_position: 8
 
 # How to Build a Contract Tx
 
-## Introduction
-
-After you've finished writing a contract, you want to deploy and call it. But first, you should learn how the a smart contract interacts with the blockchain.
-
-As explained in the [Overview section](./overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A constract instance is a TypeScript object that represents a specific contract deployed on-chain. In this section, we will go over some fundamental concepts in details.
-
-
 ### Contract Deployment Transaction
 
 A Bitcoin transaction is required when deploying a contract to the blockchain. The transaction should have an output, whose script is compiled from the contract. This output is known as a contract UTXO and we regard the contract instance comes `from` this UTXO.
