@@ -159,24 +159,21 @@ console.log('contract called: ', callTx.id);
 More examples can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/tree/master/tests/testnet).
 
 
-# Running the code
+### Running the code
 
-The deployment code is wrapped into a simple NPM command:
+The deployment and call code is wrapped into a simple NPM command:
 
 ```sh
 npm run testnet
 ```
 
-Make sure you funded your address before running this command.
-
-After a successful run you should see something like tho following:
+Make sure you fund your address before running this command.
+After a successful run you should see something like the following:
 
 ```
 Demo contract deployed:  f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3
 Demo contract called:  dc53da3e80aadcdefdedbeb6367bb8552e381e92b226ab1dc3dc9b3325d8a8ee
 ```
 
-These are the TXIDs of the transaction which deployed the smart contract code and then the transaction which unlocked it.
-
-You can see the structure of the transactions using a [block explorer](https://test.whatsonchain.com/tx/f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3)
+These are the TXIDs of the transaction which deployed the smart contract and then the one which called its method. You can see the transactions using a [block explorer](https://test.whatsonchain.com/tx/f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3).
 
