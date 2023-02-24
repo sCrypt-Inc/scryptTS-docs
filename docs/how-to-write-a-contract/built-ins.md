@@ -356,10 +356,11 @@ These guidelines must be followed when using `HashedMap` in a contract `@method`
 @prop(true) map: HashedMap<KeyType, ValueType> // also valid
 ```
 
-* It CANNOT be used as a parameter:
+* It CANNOT be used as a `@method` parameter, regardless of public or not:
 
 ```ts
 @method public unlock(map: HashedMap<KeyType, ValueType>) // invalid as a parameter type
+@method foo(map: HashedMap<KeyType, ValueType>) // invalid as a parameter type
 ```
 
 A full example may look like this:
