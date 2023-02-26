@@ -363,6 +363,19 @@ These guidelines must be followed when using `HashedMap` in a contract `@method`
 @method foo(map: HashedMap<KeyType, ValueType>) // invalid as a parameter type
 ```
 
+* No nesting is allowed currently. That is, key and value cannot contain a `HashedMap`.
+```ts
+type Map1 = HashedMap<KeyType1, ValueType1>
+HashedMap<KeyType2, Map1> // invalid
+HashedMap<Map1, ValueType2> // invalid
+
+type KeyType = {
+  key1: KeyType1
+  key2: KeyType2
+}
+HashedMap<KeyType, ValueType> // valid
+```
+
 A full example may look like this:
 
 ```ts
