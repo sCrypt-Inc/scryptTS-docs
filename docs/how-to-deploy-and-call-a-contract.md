@@ -60,7 +60,10 @@ const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, opts);
 console.log(`Smart contract method successfully called with txid ${tx.id}`);
 ```
 
-The major difference between here and local tests is that the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
+The major differences between here and local tests are:
+1. the contract needs to be depoyed first;
+2. the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
+
 
 Let's look at a more complex example.
 
