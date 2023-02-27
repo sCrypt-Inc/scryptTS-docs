@@ -211,6 +211,114 @@ describe('Test SmartContract `Demo`', () => {
 })
 ```
  
+ ## Test a Stateful Contract
+
+Stateful contact testing is very similar to what we have described above. The only different is that you have to be aware of smart contract instance changes after method calls.
+
+As described in the [Overview](./how-to-write-a-contract/stateful-contract.md#overview), for each method call, a tx contains new contract UTXO(s) with the latest updated state, i.e., the next instance. From the perspective of the current spending tx, the public `@method` of a contract instance is called in one of its inputs, and the next contract instance is stored in one (or more) of its outputs.
+
+Now, let's look at how to test the `incrementOnChain` method call:
+
+```ts
+// initialize the first instance, i.e., deployment
+let counter = new Counter(0n);
+// connect it to a signer
+counter.connect(dummySigner());
+
+// set the current instance to be the first instance
+let current = counter;
+
+// create the next instance from the current
+let nextInstance = current.next();
+
+// apply the same updates on the next instance locally
+nextInstance.increment();
+
+// call the method of current instance to apply the updates on chain
+const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
+  {
+    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in. 
+    fromUTXO: getDummyContractUTXO(balance),
+
+    // the `next` instance and its balance should be provided here
+    next: {
+      instance: nextInstance,
+      balance
+    }
+  } as MethodCallOptions<Counter>
+);
+
+// check the validity of the input script generated for the method call.
+let result = tx_i.verifyScript(atInputIndex);
+expect(result.success, result.error).to.eq(true);
+
+```
+
+In general, we call the method of a stateful contract in 3 steps:
+
+### 1. Build the `current` instance
+
+The `current` instance refers to the contract instance containing the latest state on the blockchain. The first instance is in the deployment transaction. In the above example, we initialize the `current` instance to be the first instance like this:
+
+```ts
+let current = counter;
+```
+
+### 2. Create a `next` instance and apply updates to it off chain
+
+The `next` instance is the new instance in the UTXO of the method calling tx.
+
+To create the `next` of a specific contract instance, you can simply call `next()` on it:
+
+```ts
+let nextInstance = instance.next();
+```
+
+It will make a deep copy of all properties and methods of `instance` to create a new one. 
+
+Then, you should apply all the state updates to the `next` instance. Please note that these are just local/off-chain updates and are yet to be applied to the blockchain.
+
+```ts
+nextInstance.increment();
+```
+This is the **SAME** method we call on chain in `incrementOnChain`, thanks to the fact that both the on-chain smart contract and off-chain code are written in TypeScript.
+
+### 3. Call the method on the `current` instance to apply updates on chain
+
+As described in [this section](#call-a-public-method), we can build a call transaction. The only difference here is that we pass in the `next` instance and its balance as a method call option in a stateful contract. So the method (i.e., `incrementOnChain`) have all the information to verify that all updates made to the `next` instance follow the state transition rules in it.
+
+```ts
+const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
+  {
+    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in. 
+    fromUTXO: getDummyContractUTXO(balance),
+
+    // the `next` instance and its balance should be provided here
+    next: {
+      instance: nextInstance,
+      balance
+    }
+  } as MethodCallOptions<Counter>
+);
+```
+
+Finally, we can check the validity of the method call as before.
+
+```ts
+let result = tx_i.verifyScript(atInputIndex);
+expect(result.success, result.error).to.eq(true);
+```
+
+### Running the tests
+
+As before, we can just use the following command:
+
+```sh
+npm run test
+```
+Full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/counter.ts).
+
+
 ## Test a Contract on the Testnet
  
 It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
