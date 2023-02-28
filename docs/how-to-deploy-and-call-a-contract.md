@@ -12,6 +12,42 @@ After you've finished writing a contract, you want to deploy and call it. But fi
 As explained in the [Overview section](./overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in details.
 
 
+### Tx Builders
+
+To deploy or interact with contracts, we must build transactions and broadcast them to Bitcoin.
+We have some built-in tx builders for the most common way to interact with contracts, so usually you don't have to implement them. If the default tx builder does not meet your specific requirements, such as having extra inputs or outputs in your tx, you can [customize it](./how-to-build-a-contract-tx.md).
+
+
+#### Contract Deployment Transaction
+
+A Bitcoin transaction is required when deploying a contract to the blockchain. The transaction should have an output, whose script is compiled from the contract. This output is known as a contract UTXO and we regard the contract instance comes `from` this UTXO.
+
+An instance's `from` can be accessed.
+```ts
+// the tx that contains the instance
+instance.from.tx
+// the index of the tx output that contains the instance
+instance.from.outputIndex
+```
+
+#### Contract Call Transaction
+
+When you call a public method of a contract instance in a UTXO, a call transaction is needed. The transaction has an input that references to the UTXO and contains the script consisted of the method's arguments. We regard the contract instance goes `to` this transaction input.
+
+An instance's `to` can be accessed.
+```ts
+// the tx that spends the instance
+instance.to.tx
+// the index of the tx input that spends the UTXO the instance is in
+instance.to.inputIndex
+```
+
+
+This section could be summarized as the diagram below:
+
+![](../static/img/contract_tx.svg)
+
+
 ## Prepare a Signer and Provider
 
 As we mentioned in the [testing section](./how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
