@@ -68,7 +68,7 @@ within(2n, 0n, 2n) // false
 - `hash160(a: ByteString): Ripemd160` Actually returns `ripemd160(sha256(a))`
 - `hash256(a: ByteString): Sha256` Actually returns `sha256(sha256(a))`
 
-### Bytes Operation
+### ByteString Operations
 
 - `int2ByteString(n: bigint, size?: bigint): ByteString` If `size` is omitted, convert `n` is converted to a `ByteString` in [sign-magnitude](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude) little endian format, with as few bytes as possible (a.k.a., minimally encoded). Otherwise, converts the number `n` to a `ByteString` of the specified size, including the sign bit; fails if the number cannot be accommodated.
 
@@ -261,7 +261,7 @@ const { tx: callTx, atInputIndex } = await auction.methods.bid(
 )
 ```
 
-**Note**: If use a [customized call tx builder](../how-to-build-a-contract-tx#customized-call-tx-builder), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+**Note**: If you use a [customized call tx builder](../how-to-build-a-contract-tx#customized-call-tx-builder), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
 
 ```ts
 const unsignedTx: bsv.Transaction = new bsv.Transaction()
