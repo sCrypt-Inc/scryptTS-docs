@@ -15,7 +15,7 @@ As explained in the [Overview section](./overview.md), a `scryptTS` contract is 
 ### Tx Builders
 
 To deploy or interact with contracts, we must build transactions and broadcast them to Bitcoin.
-We have some built-in tx builders for the most common way to interact with contracts, so usually you don't have to implement them. If the default tx builder does not meet your specific requirements, such as having extra inputs or outputs in your tx, you can [customize it](./how-to-build-a-contract-tx.md).
+We have some built-in tx builders for the most common way to interact with contracts, so usually you don't have to implement them. If the default tx builder does not meet your specific requirements, such as having extra inputs or outputs in your tx, you can [customize it](./how-to-customize-a-contract-tx.md).
 
 
 #### Contract Deployment Transaction
@@ -284,4 +284,4 @@ These are the TXIDs of the transaction which deployed the smart contract and the
 
 
 ### Customize Transactions
-Deploying and calling a contract builds transactions with a certain format, which suffices for many cases. In cases where the tx format does not work for you and you need to customize it, please refer to [this section](./how-to-build-a-contract-tx.md).
+Deploying and calling a contract builds transactions with a certain format, which suffices for many cases. In cases where the tx format does not work for you and you need to customize it, please refer to [this section](./how-to-customize-a-contract-tx.md).
