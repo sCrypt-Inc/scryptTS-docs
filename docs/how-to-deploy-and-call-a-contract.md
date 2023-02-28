@@ -71,6 +71,8 @@ The [following code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master
 ```ts
 const counter = new Counter(0n)
 
+await counter.connect(getDefaultSigner())
+
 // deploy the contract first
 const deployTx = await counter.deploy(1)
 console.log('Counter deploy tx:', deployTx.id)
