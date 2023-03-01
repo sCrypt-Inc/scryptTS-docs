@@ -510,10 +510,10 @@ interface ST {
 }
 
 let set = new Set<ST, bigint>();
-map.add({a: 1n});
-map.add({a: 1n});
-console.log(map.size); // output ‘2’
-console.log(map.has({a: 1n})); // output ‘false’
+set.add({a: 1n});
+set.add({a: 1n});
+console.log(set.size); // output ‘2’
+console.log(set.has({a: 1n})); // output ‘false’
 
 
 let hashedSet = new HashedSet<ST, bigint>();
