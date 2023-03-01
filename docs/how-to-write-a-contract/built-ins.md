@@ -509,7 +509,7 @@ interface ST {
   a: bigint;
 }
 
-let set = new Set<ST, bigint>();
+let set = new Set<ST>();
 set.add({a: 1n});
 set.add({a: 1n});
 console.log(set.size); // output ‘2’
