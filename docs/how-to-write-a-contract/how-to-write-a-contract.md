@@ -93,7 +93,7 @@ static readonly UINT_MAX = 0xffffffffn
 
 ## Constructor
 
-A smart contract must have an explicit constructor if it has at least one `@prop`. 
+A smart contract must have an explicit constructor if it has at least one `@prop` that is not static.
 
 The `super` method **must** be called in the constructor and all the arguments of the constructor should be passed to `super`
 in the same order as they are passed into the constructor. For example,
