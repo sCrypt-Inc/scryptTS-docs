@@ -495,10 +495,10 @@ When used in public `@method`s, `HashedSet` also has almost all of the same rest
 `HashedSet` can be used the same as a JavaScript `Set` in off-chain code .
 
 ```ts
-let set = new HashedSet<bigint>()
-set.add(1n);
-set.has(1n);
-set.delete(1n);
+let hashedSet = new HashedSet<bigint>()
+hashedSet.add(1n);
+hashedSet.has(1n);
+hashedSet.delete(1n);
 ...
 ```
 
