@@ -274,22 +274,22 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
 
 ### `fromTx`
 
-Function `static fromTx(tx: bsv.Transaction, atOutputIndex: number, offchainValues?: Record<string, any>)` create an instance with its state synced to a given transaction output, identified by `tx` the transaction and `atOutputIndex` the output index. It is needed to [create an up-to-date instance of a contract](./../how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction).
+Function `static fromTx(tx: bsv.Transaction, atOutputIndex: number, offchainValues?: Record<string, any>)` creates an instance with its state synchronized to a given transaction output, identified by `tx` the transaction and `atOutputIndex` the output index. It is needed to [create an up-to-date instance of a contract](./../how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction).
 
 ```ts
-// recover instance from transaction
-const instance = Counter.fromTx(tx, atOutputIndex)
+// create an instance from a transaction output
+const instance = ContractName.fromTx(tx, atOutputIndex)
 
 // we're good here, the `instance` is state synchronized with the on-chain transaction
 ```
 
-If the contract contains on-chain properties of type `HashedMap` or `HashedSet`, the values of all these properties at this transaction must be passed as the third argument.
+If the contract contains @prop's of type `HashedMap` or `HashedSet`, the values of all these properties at this transaction must be passed in the third argument.
 
 ```ts
-// e.g. the contract has two on-chain properties of type `HashedMap` or `HashedSet`
+// e.g. the contract has two stateful properties of type `HashedMap` or `HashedSet`
 // @prop(true) mySet: HashedSet<bigint>
 // @prop() myMap: HashedMap<bigint, bigint>
-const instance = DemoContract.fromTx(latestTx, atOutputIndex, {
+const instance = ContractName.fromTx(tx, atOutputIndex, {
     // pass the values of all these properties at the transaction moment
     'mySet': currentSet,
     'myMap': currentMap,

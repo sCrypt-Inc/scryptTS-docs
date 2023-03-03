@@ -147,7 +147,7 @@ for (let i = 0; i < 3; ++i) {
 
 In reality, a contract's deployment and its call, and its different calls in the case of a stateful contract, may well be in separate processes. For example, the deployment party is different from the calling party, or multiple parties call it. If so, we need to create a contract instance from an on-chain transaction that represents its latest state, before we can call its method.
 
-We can do so by calling `static fromTx() to create an contract instance from the transaction.
+We can create an contract instance from a transaction's output by calling [fromTx()](how-to-write-a-contract/built-ins.md#fromtx).
 ```ts
 // recover instance from transaction
 const instance = Counter.fromTx(tx, atOutputIndex)
