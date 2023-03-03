@@ -102,8 +102,10 @@ MyContract.bindTxBuilder("unlock", (options, ...args) => {
 })
 ```
 
-## Notes
-
+:::note
 Please be aware that each of these tx builders should only create an **unsigned** transaction. You need to sign it later if necessary before broadcasting.
+:::
 
-Also, your customized tx must satisfy all of the called `@method`'s assertions.
+:::note
+Your customized tx must satisfy all of the called `@method`'s assertions.
+:::

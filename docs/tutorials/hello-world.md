@@ -121,4 +121,3 @@ Congrats! Your have deloyed and called your first Bitcoin smart contract.
 
 
 
-

@@ -82,11 +82,11 @@ class CheckLockTimeVerify extends SmartContract {
     assert(this.ctx.locktime >= this.matureTime, "locktime too low")
   }
 }
-
 ```
 
-
-**Note**: accessing `this.ctx` in **non-public** methods is not allowed:
+:::note
+Accessing `this.ctx` in **non-public** methods is not allowed.
+:::
 
 ```ts
 @method()

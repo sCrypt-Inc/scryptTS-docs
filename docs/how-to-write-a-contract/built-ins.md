@@ -20,7 +20,11 @@ assert(false, 'hello') // throws Error('Execution failed, hello')
 
 ### Fill
 
-- `fill(value: any, length: number): any ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. Note `length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+- `fill(value: any, length: number): any ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. 
+
+:::note
+`length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+:::
 
 
 ```ts
@@ -110,7 +114,11 @@ const s2 = toByteString('hello', true) // '68656c6c6f', 5 bytes
 len(s2) // 5
 ```
 
-- `reverseByteString(b: ByteString, size: number): ByteString` Returns reversed bytes of `b` which is of `size` bytes. Note `size` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant). It is often useful when converting a number between little-endian and big-endian.
+- `reverseByteString(b: ByteString, size: number): ByteString` Returns reversed bytes of `b` which is of `size` bytes.
+
+:::note
+`size` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant). It is often useful when converting a number between little-endian and big-endian.
+:::
 
 ```ts
 const s1 = toByteString('793ff39de7e1dce2d853e24256099d25fa1b1598ee24069f24511d7a2deafe6c') 
@@ -265,7 +273,9 @@ const { tx: callTx, atInputIndex } = await auction.methods.bid(
 )
 ```
 
-**Note**: If you use a [customized call tx builder](../how-to-customize-a-contract-tx.md), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+:::note
+If you use a [customized call tx builder](../how-to-customize-a-contract-tx.md), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+:::
 
 ```ts
 const unsignedTx: bsv.Transaction = new bsv.Transaction()
