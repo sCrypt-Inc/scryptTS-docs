@@ -349,6 +349,13 @@ const pubKeyHash = PubKeyHash(toByteString('001122334455667788990011223344556677
 Utils.buildPublicKeyHashScript(pubKeyHash) // '76a914001122334455667788990011223344556677889988ac'
 ```
 
+- `static buildPublicKeyHashOutput(pubKeyHash: PubKeyHash, amount: bigint): ByteString` Build P2PKH output from the public key hash.
+
+```ts
+const pubKeyHash = PubKeyHash(toByteString('0011223344556677889900112233445566778899'))
+Utils.buildPublicKeyHashOutput(pubKeyHash, 1n) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
+```
+
 - `static buildOpreturnScript(data: ByteString): ByteString` Build a data-carrying [FALSE OP_RETURN](https://wiki.bitcoinsv.io/index.php/OP_RETURN) script from `data` payload.
 
 ```ts
