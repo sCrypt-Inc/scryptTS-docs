@@ -1,20 +1,31 @@
 ---
 sidebar_position: 4
 ---
- 
+
 # How to Test a Contract
- 
+
 Before using a smart contract in production, one should always test it carefully, especially because any bug in it may cause **real economic losses**.
- 
+
 There are two different kinds of tests recommended for every project using `scryptTS`:
- 
+
 * **Local Unit Testing**
 * **Testnet Integration Testing**
 
 Now we will take a look at the file `tests/local/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
 
-
 But before going into details, you should learn some basic models of scryptTS for signing and sending transactions.
+
+## Compile the Contract
+
+First things first. Call function `SmartContract.compile()` to compile the contract before doing any testing.
+
+```ts
+await Demo.compile()
+```
+
+:::note
+This function should **NOT** be called in production environment.
+:::
 
 ## Provider
 
@@ -74,7 +85,7 @@ await instance.connect(signer);
 ```
 
 ### Call a Public Method
- 
+
 To facilitate calling a contracts' public `@method`, we have injected a runtime object named `methods` in your contract class. For each public `@method` of your contract (e.g., `contract.foo`), a function with the same name and signature (including list of parameters and return type, i.e., void) is added into `methods` (e.g., `contract.methods.foo`). In addition, there is an `options` appended as the last paramter.
 
 Assume you have a contract like this:
@@ -106,7 +117,6 @@ const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
 The `options` argument is of type `MethodCallOptions`:
 
 ```json
-
 interface MethodCallOptions {
   /** The previous contract UTXO to spend in the method calling tx */
   fromUTXO?: UTXO;
@@ -148,9 +158,9 @@ console.log(result.success) // Output: true or false
 ```
 
 ### Integrate with a testing framework
- 
+
 You can use whatever testing framework you like to write unit tests for your contract. For example, a local test using [Mocha](https://mochajs.org/) is shown below:
- 
+
 ```js
 describe('Test SmartContract `Demo`', () => {
   let signer;
@@ -199,7 +209,7 @@ describe('Test SmartContract `Demo`', () => {
 
 })
 ```
- 
+
  ## Test a Stateful Contract
 
 Stateful contact testing is very similar to what we have described above. The only different is that you have to be aware of smart contract instance changes after method calls.
@@ -307,7 +317,4 @@ npm run test
 ```
 Full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/counter.ts).
 
-
 You may visit [here](./how-to-deploy-and-call-a-contract.md) to see more details on contract deployment and call.
-
-
