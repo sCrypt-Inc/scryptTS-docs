@@ -300,6 +300,18 @@ const instance = ContractName.fromTx(tx, atOutputIndex, {
 })
 ```
 
+### `bindTxBuilder`
+
+Function `static bindTxBuilder(methodName: string, txBuilder: MethodCallTxBuilder<SmartContract>)` bind the customized tx builder to a contract public `@method`.
+
+```ts
+// bind a customized tx builder for the public method `MyContract.unlock`
+MyContract.bindTxBuilder("unlock", (options, ...args) => {
+  // ...
+})
+```
+
+You may visit [here](../how-to-customize-a-contract-tx.md#customize-1) to see more details on how to customize tx builder.
 
 ## Standard Libraries
 
