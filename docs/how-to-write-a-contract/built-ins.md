@@ -272,26 +272,24 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
   .change(options.changeAddress);
 ```
 
-### `syncState`
+### `fromTx`
 
-Function `syncState(tx: bsv.Transaction, atOutputIndex: number, rawValue?: Record<string, HashedMap<any, any> | HashedSet<any>>)` synchronizes an instance to its state to a given transaction output, identified by `tx` the transaction and `atOutputIndex` the output index. It is needed to [create an up-to-date instance of a contract](./../how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction).
+Function `static fromTx(tx: bsv.Transaction, atOutputIndex: number, offchainValues?: Record<string, any>)` create an instance with its state synced to a given transaction output, identified by `tx` the transaction and `atOutputIndex` the output index. It is needed to [create an up-to-date instance of a contract](./../how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction).
 
 ```ts
-// 1. `new` an instance using the same constructor arguments as when deploying the contract
-const instance = new ContractName(...ctorArgs)
-// 2. sync state from tx
-instance.syncState(tx, atOutputIndex)
+// recover instance from transaction
+const instance = Counter.fromTx(tx, atOutputIndex)
 
 // we're good here, the `instance` is state synchronized with the on-chain transaction
 ```
 
-If the contract contains state properties of type `HashedMap` or `HashedSet`, the values of all these properties at this transaction must be passed as the third argument.
+If the contract contains on-chain properties of type `HashedMap` or `HashedSet`, the values of all these properties at this transaction must be passed as the third argument.
 
 ```ts
-// e.g. the contract has two state properties of type `HashedMap` or `HashedSet`
+// e.g. the contract has two on-chain properties of type `HashedMap` or `HashedSet`
 // @prop(true) mySet: HashedSet<bigint>
-// @prop(true) myMap: HashedMap<bigint, bigint>
-instance.syncState(latestTx, atOutputIndex, {
+// @prop() myMap: HashedMap<bigint, bigint>
+const instance = DemoContract.fromTx(latestTx, atOutputIndex, {
     // pass the values of all these properties at the transaction moment
     'mySet': currentSet,
     'myMap': currentMap,
