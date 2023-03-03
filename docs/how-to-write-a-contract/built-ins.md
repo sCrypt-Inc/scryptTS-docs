@@ -357,11 +357,11 @@ Utils.buildOpreturnScript(data) // '006a0b68656c6c6f20776f726c64'
 ### `HashedMap`
 
 
-`HashedMap` provides a map/hashtable-like data structure. The main difference between `HashedMap` and other data types we’ve [previously introduced](../how-to-write-a-contract/#data-types) is that it does NOT store raw data (i.e., keys and values) in the contract on the blockchain. It stores their hashed values instead, to minimize on-chain storage, which is expensive.
-
-It is different to use `HashedMap` in on-chain and off-chain context.
+`HashedMap` provides a map/hashtable-like data structure. It is different to use `HashedMap` in on-chain and off-chain context.
 
 #### On-chain
+
+The main difference between `HashedMap` and other data types we’ve [previously introduced](../how-to-write-a-contract/#data-types) is that it does NOT store raw data (i.e., keys and values) in the contract on the blockchain. It stores their hashed values instead, to minimize on-chain storage, which is expensive.
 
 These guidelines must be followed when using `HashedMap` in a contract `@method`, i.e., on-chain context.
 
