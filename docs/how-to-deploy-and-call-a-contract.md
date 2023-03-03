@@ -147,15 +147,10 @@ for (let i = 0; i < 3; ++i) {
 
 In reality, a contract's deployment and its call, and its different calls in the case of a stateful contract, may well be in separate processes. For example, the deployment party is different from the calling party, or multiple parties call it. If so, we need to create a contract instance from an on-chain transaction that represents its latest state, before we can call its method.
 
-We can do so in two steps:
-1. `new` an instance using the same constructor arguments as when deploying the contract
-2. call `syncState()` to synchronize the state of the contract instance from the transaction.
-
+We can do so by calling `static fromTx() to create an contract instance from the transaction.
 ```ts
-// step 1
-const counter = new Counter(0n)
-// step 2: the latest counter is at the given output of `tx`
-instance.syncState(tx, atOutputIndex)
+// recover instance from transaction
+const instance = Counter.fromTx(tx, atOutputIndex)
 
 // we're good here, the `instance` is now in sync with the on-chain transaction
 ```
