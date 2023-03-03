@@ -24,6 +24,31 @@ Numbers in [] represent index, starting from 0.
 ### Customize
 You can customize a deployment tx builder by overriding its `buildDeployTransaction` method.
 
+```ts
+class DemoContract extends SmartContract {
+  // ...
+
+  // customize the deployment tx by override `SmartContract.buildDeployTransaction` method
+  override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
+    const deployTx = new bsv.Transaction()
+      .from(utxos) // add p2pkh inputs
+      .addOutput(new bsv.Transaction.Output({
+        script: this.lockingScript,
+        satoshis: amount,
+      })) // add contract output
+      .addData('Hello World'); // add OP_RETURN output
+
+    if (changeAddress) {
+      deployTx.change(changeAddress);
+      if (this._provider) {
+        deployTx.feePerKb(await this.provider.getFeePerKb());
+      }
+    }
+
+    return deployTx;
+  }
+}
+```
 
 ## Call Tx
 
