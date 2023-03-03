@@ -15,7 +15,7 @@ First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-
 We can run the following command to create a new sCrypt project:
 
 ```sh
-scrypt project hello-world
+npx scrypt-cli project hello-world
 ```
 
 The resulting project will contain a `src/helloworld.ts` contract along with all the scaffolding.
@@ -74,8 +74,9 @@ To compile the contract code into [Bitcoin Script](https://wiki.bitcoinsv.io/ind
 npx tsc
 ```
 or
+
 ```sh
-scrypt compile
+npx scrypt-cli compile
 ```
 
 If the build process was successful, you will get a contract artifact file. A contract artifact file is the compiler output results in a JSON. It’s a representation used to build locking and unlocking scripts.
@@ -116,11 +117,11 @@ The following code implements deploying and calling the `HelloWorld` contract:
 ```ts
 import { HelloWorld } from '../../src/contracts/helloWorld'
 import { getDefaultSigner, inputSatoshis } from './utils/txHelper'
-import { toByteString,bsv, sha256 } from 'scrypt-ts'
+import { toByteString, sha256 } from 'scrypt-ts'
 
-const message = "hello world, sCrypt!";
+const message = 'hello world, sCrypt!'
 
-async function deploy() {
+async function main() {
     await HelloWorld.compile()
     const helloWorld = new HelloWorld(sha256(toByteString(message, true)))
 
@@ -130,14 +131,6 @@ async function deploy() {
     // contract deployment
     const deployTx = await helloWorld.deploy(inputSatoshis)
     console.log('HelloWorld contract deployed: ', deployTx.id)
-    return deployTx;
-}
-
-
-async function call(tx: bsv.Transaction) {
-    // create a smart contract instance from the deploy transaction. 
-    const helloWorld = HelloWorld.fromTx(tx, 0)
-    await helloWorld.connect(getDefaultSigner())
 
     // contract call
     const { tx: callTx } = await helloWorld.methods.unlock(
@@ -148,8 +141,7 @@ async function call(tx: bsv.Transaction) {
 
 describe('Test SmartContract `HelloWorld` on testnet', () => {
     it('should succeed', async () => {
-        const deployTx = await deploy();
-        await call(deployTx);
+        await main()
     })
 })
 ```
