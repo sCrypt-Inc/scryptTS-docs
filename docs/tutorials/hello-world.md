@@ -16,12 +16,14 @@ We can run the following command to create a new sCrypt project:
 
 ```sh
 npx scrypt-cli project hello-world
+cd hello-world
+npm install
 ```
 
-The resulting project will contain a `src/helloworld.ts` contract along with all the scaffolding.
+The resulting project will contain a `src/helloWorld.ts` contract along with all the scaffolding.
 
 
-Below is the source code of the `HelloWorld` contract:
+Let's modify the `HelloWorld` contract to the following code:
 
 
 ```ts
@@ -86,11 +88,52 @@ The compiling process may output diagnostic information in the console about the
 
 ## Local Testing
 
-Before using a smart contract in production, one should always test it carefully, especially because any bug in it may cause **real economic losses**. The code in `tests/local/helloWorld.test.ts` locally tests the `unlock` public `@method` of the `HelloWorld` contract.
+Before using a smart contract in production, one should always test it carefully, especially because any bug in it may cause **real economic losses**. 
+
+The code in `tests/local/helloWorld.test.ts` locally tests the `unlock` public `@method` of the `HelloWorld` contract.
+
+```ts
+import { expect, use } from 'chai'
+import { MethodCallOptions, sha256, toByteString } from 'scrypt-ts'
+import { HelloWorld } from '../../src/contracts/helloWorld'
+import { getDummySigner, getDummyUTXO } from './utils/txHelper'
+import chaiAsPromised from 'chai-as-promised'
+use(chaiAsPromised)
+
+describe('Test SmartContract `HelloWorld`', () => {
+    let instance: HelloWorld
+
+    before(async () => {
+        await HelloWorld.compile()
+        instance = new HelloWorld(sha256(toByteString('hello world', true)))
+        await instance.connect(getDummySigner())
+    })
+
+    it('should pass the public method unit test successfully.', async () => {
+        const { tx: callTx, atInputIndex } = await instance.methods.unlock(
+            toByteString('hello world', true),
+            {
+                fromUTXO: getDummyUTXO(),
+            } as MethodCallOptions<HelloWorld>
+        )
+
+        const result = callTx.verifyScript(atInputIndex)
+        expect(result.success, result.error).to.eq(true)
+    })
+
+    it('should throw with wrong message.', async () => {
+        return expect(
+            instance.methods.unlock(toByteString('wrong message', true), {
+                fromUTXO: getDummyUTXO(),
+            } as MethodCallOptions<HelloWorld>)
+        ).to.be.rejectedWith(/Not expected message!/)
+    })
+})
+```
 
 Follow the steps below to run the above test code:
 
-1. [Generate a private key](./how-to-test-a-contract.md#generate-a-private-key):
+1. [Generate a private key](../how-to-test-a-contract.md#generate-a-private-key):
 
 2. `npm test`
 
@@ -98,9 +141,7 @@ Follow the steps below to run the above test code:
 
 ### Setup
 
-1. [Generate a private key](./how-to-test-a-contract.md#generate-a-private-key):
-
-2. Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
+Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
 
 ### Introduction
 
@@ -123,17 +164,17 @@ const message = 'hello world, sCrypt!'
 
 async function main() {
     await HelloWorld.compile()
-    const helloWorld = new HelloWorld(sha256(toByteString(message, true)))
+    const instance = new HelloWorld(sha256(toByteString(message, true)))
 
     // connect to a signer
-    await helloWorld.connect(getDefaultSigner())
+    await instance.connect(getDefaultSigner())
 
     // contract deployment
-    const deployTx = await helloWorld.deploy(inputSatoshis)
+    const deployTx = await instance.deploy(inputSatoshis)
     console.log('HelloWorld contract deployed: ', deployTx.id)
 
     // contract call
-    const { tx: callTx } = await helloWorld.methods.unlock(
+    const { tx: callTx } = await instance.methods.unlock(
         toByteString(message, true)
     )
     console.log('HelloWorld contract `unlock` called: ', callTx.id)
