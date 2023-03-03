@@ -365,7 +365,7 @@ It is different to use `HashedMap` in on-chain and off-chain context.
 
 These guidelines must be followed when using `HashedMap` in a contract `@method`, i.e., on-chain context.
 
-* Only the following methods can be called. Note `get()` is not listed, since the value itself is not stored and thus must be passed in and verified using `canGet()`.
+* Only the following methods can be called.
 
 	- `set(key: K, val: V): HashedMap`: Adds a new element with a specified key and value. If an element with the same key already exists, the element will be updated.
 	- `canGet(key: K, val: V): boolean`: Returns `true` if the specified **key and value pair** exists, otherwise returns `false`.
@@ -373,6 +373,10 @@ These guidelines must be followed when using `HashedMap` in a contract `@method`
   - `delete(key: K): boolean`: Returns `true` if a key exists and has been removed, otherwise returns `false`.
 	- `clear(): void`: Remove all key and value pairs.
 	- `size: number`: Returns the number of elements.
+
+:::note 
+`get()` is not listed, since the value itself is not stored and thus must be passed in and verified using `canGet()`.
+:::
 
 * The aforementioned methods can only be used in public `@method`s, NOT in non-public `@method`s, including constructors.
 
@@ -429,7 +433,7 @@ class MyContract extends SmartContract {
 
 #### Off-chain
 
-`HashedMap` acts just like the Javascript `Map` when used in off-chain code (that is, not in a contract's `@method`). For example, you can create an instance like this:
+`HashedMap` acts just like the JavaScript/TypeScript [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) when used in off-chain code (that is, not in a contract's `@method`). For example, you can create an instance like this:
 
 ```ts
 // create an empty map
@@ -443,11 +447,15 @@ Also, you can call its functions like this:
 
 ```ts
 hashedMap.set(key, value);
-const v = hashedMap.get(key);
+const v = hashedMap.get(key);   // <----
 hashedMap.has(key);
 hashedMap.delete(key);
 …
+
 ```
+:::note
+`get()` can be called since the HashedMap stores the original key and value off chain.
+:::
 
 Only when the key is an object is `HashedMap` different from `Map`. `HashedMap` will treat two keys the same if they have the same values, while `Map` will only if they reference the same object. For instance:
 
