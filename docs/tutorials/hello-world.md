@@ -15,143 +15,58 @@ First we need to make sure that the [sCrypt CLI tool](https://github.com/sCrypt-
 We can run the following command to create a new sCrypt project:
 
 ```sh
-scrypt project my-project
+npx scrypt-cli project hello-world
+cd hello-world
+npm install
 ```
 
-The resulting project will contain a demo smart contract along with all the scaffolding.
+The resulting project will contain a `src/helloWorld.ts` contract along with all the scaffolding.
 
 
-## The Smart Contract
+Let's modify the `HelloWorld` contract to the following code:
 
-Open `src/contracts/demo.ts` in your editor. You will see the following among the source files imports:
 
 ```ts
-import { method, prop, SmartContract, assert } from "scrypt-ts"
-```
+import {
+    assert,
+    ByteString,
+    method,
+    prop,
+    sha256,
+    Sha256,
+    SmartContract,
+} from 'scrypt-ts'
 
-What each of these are:
+export class HelloWorld extends SmartContract {
 
+    @prop()
+    hash: Sha256;
 
-- `SmartContract`: The class that creates smart contracts.
+    constructor(hash: Sha256){
+        super(...arguments);
+        this.hash = hash;
+    }
 
-- `method`: The decorator on class methods to mark them as contract methods. The logic implemented in these methods would be serialized into [bitcoin transactions](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions) and be executed on chain.
-
-- `prop`:  The decorator on class properties to mark them as contract properties, which means the values would be stored on chain within bitcoin transactions.
-
-- `assert`: The function specifies terms/conditions of a contract. It consumes a boolean condition. If the condition is not met, the contract will abort execution and fail. Otherwise, the execution will resume.
-
-
-## Smart Contract Class
-
-All smart contracts should extends the `SmartContract` class.
-
-```ts
-export class Demo extends SmartContract {
-
-
+    @method()
+    public unlock(message: ByteString) {
+        assert(this.hash === sha256(message), 'Not expected message!')
+    }
 }
 ```
 
-In our generated template the smart contract is called `Demo`.
+The `HelloWorld` contract stores the sha256 hash of a message in the contract property `hash`. Only message which hash value matches `hash` will unlock the contract. 
+
+The following is an explanation of some keywords in the contract:
 
 
-### Contract Properties
+- `ByteString`: A [`ByteString`](../how-to-write-a-contract/how-to-write-a-contract.md#bytestring) represents a byte array.
 
-`@prop()` decorators are used to add properties to contracts. Properties are templated parameters of the contract, which make the contract more general.
+- `SmartContract`: All smart contracts should extends the `SmartContract` class.
 
-```ts
-export class Demo extends SmartContract {
+- `@prop`:  The [`@prop` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#properties) on class properties to mark them as contract properties, which means the values would be stored on chain within bitcoin transactions.
 
-  @prop()
-  readonly x: bigint
+- `@method`: The [`@method` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#method-decorator) on class methods to mark them as contract methods. The logic implemented in these methods would be serialized into [bitcoin transactions](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions) and be executed on chain.
 
-  @prop()
-  readonly y: bigint
-
-}
-```
-
-Note: The [types](../how-to-write-a-contract#data-types) used in  `@prop` decorator are restricted.
-
-
-### Constructor
-
-Each contract has at most one constructor. It is where contract member variables are initialized. 
-
-```ts
-export class Demo extends SmartContract {
-
-  @prop()
-  readonly x: bigint
-
-  @prop()
-  readonly y: bigint
-
-  constructor(x: bigint, y: bigint) {
-    super(...arguments)
-    this.x = x
-    this.y = y
-  }
-
-}
-```
-
-You must initialize the property in the constructor, it is not allowed to initialize when the property is declared.
-
-### Non-Public Methods
-
-**scryptTS** enables developers to define their own methods.
-
-Let's take a look at the methods of the `Demo` contract.
-
-```ts
-
-export class Demo extends SmartContract {
-
-  @prop()
-  readonly x: bigint
-
-  @prop()
-  readonly y: bigint
-
-  constructor(x: bigint, y: bigint) {
-    super(...arguments)
-    this.x = x
-    this.y = y
-  }
-
-  @method()
-  sum(a: bigint, b: bigint): bigint {
-      return a + b
-  }
-
-  @method
-  public add(z: bigint) {
-      assert(z == this.sum(this.x, this.y), 'incorrect sum')
-  }
-
-  @method
-  public sub(z: bigint) {
-      assert(z == this.x - this.y, 'incorrect difference')
-  }
-}
-```
-
-### Public Methods
-
-The public method is the interface for calling the contract externally. The main logic code contained in the method body can be regarded as a locking script; the method parameters can be regarded as the corresponding unlocking script. Miners actually verify the execution results of this combination.
-
-The `add` public method of the demo contract provides a verification method for the contract whether the input `z` is the sum of two properties `x` and `y`. The return type of public methods is `void`. The return type need not be explicitly declared.
-
-
-```ts
-@method
-public add(z: bigint) {
-    assert(z == this.sum(this.x, this.y), 'incorrect sum')
-}
-```
-
-Each contract has at least one public method.
 
 ## Build
 
@@ -161,8 +76,9 @@ To compile the contract code into [Bitcoin Script](https://wiki.bitcoinsv.io/ind
 npx tsc
 ```
 or
+
 ```sh
-scrypt compile
+npx scrypt-cli compile
 ```
 
 If the build process was successful, you will get a contract artifact file. A contract artifact file is the compiler output results in a JSON. It’s a representation used to build locking and unlocking scripts.
@@ -170,6 +86,121 @@ If the build process was successful, you will get a contract artifact file. A co
 
 The compiling process may output diagnostic information in the console about the contract class. Update the source code if needed.
 
+## Local Testing
+
+Before using a smart contract in production, one should always test it carefully, especially because any bug in it may cause **real economic losses**. 
+
+The code in `tests/local/helloWorld.test.ts` locally tests the `unlock` public `@method` of the `HelloWorld` contract.
+
+```ts
+import { expect, use } from 'chai'
+import { MethodCallOptions, sha256, toByteString } from 'scrypt-ts'
+import { HelloWorld } from '../../src/contracts/helloWorld'
+import { getDummySigner, getDummyUTXO } from './utils/txHelper'
+import chaiAsPromised from 'chai-as-promised'
+use(chaiAsPromised)
+
+describe('Test SmartContract `HelloWorld`', () => {
+    let instance: HelloWorld
+
+    before(async () => {
+        await HelloWorld.compile()
+        instance = new HelloWorld(sha256(toByteString('hello world', true)))
+        await instance.connect(getDummySigner())
+    })
+
+    it('should pass the public method unit test successfully.', async () => {
+        const { tx: callTx, atInputIndex } = await instance.methods.unlock(
+            toByteString('hello world', true),
+            {
+                fromUTXO: getDummyUTXO(),
+            } as MethodCallOptions<HelloWorld>
+        )
+
+        const result = callTx.verifyScript(atInputIndex)
+        expect(result.success, result.error).to.eq(true)
+    })
+
+    it('should throw with wrong message.', async () => {
+        return expect(
+            instance.methods.unlock(toByteString('wrong message', true), {
+                fromUTXO: getDummyUTXO(),
+            } as MethodCallOptions<HelloWorld>)
+        ).to.be.rejectedWith(/Not expected message!/)
+    })
+})
+```
+
+Follow the steps below to run the above test code:
+
+1. [Generate a private key](../how-to-test-a-contract.md#generate-a-private-key):
+
+2. `npm test`
+
+## Contract Deploy & Call
+
+### Setup
+
+Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
+
+### Introduction
+
+It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
+
+
+1. To [deploy a smart contract](../how-to-deploy-and-call-a-contract.md#contract-deployment), simply call its `deploy` method.
+
+2. To [call a smart contract](../how-to-deploy-and-call-a-contract.md#contract-call), we need to create a smart contract instance from the deploy transaction. Then call a contract's public method (`instance.methods.xxxx()`)  on the instance.
+
+The following code implements deploying and calling the `HelloWorld` contract:
+
+
+```ts
+import { HelloWorld } from '../../src/contracts/helloWorld'
+import { getDefaultSigner, inputSatoshis } from './utils/txHelper'
+import { toByteString, sha256 } from 'scrypt-ts'
+
+const message = 'hello world, sCrypt!'
+
+async function main() {
+    await HelloWorld.compile()
+    const instance = new HelloWorld(sha256(toByteString(message, true)))
+
+    // connect to a signer
+    await instance.connect(getDefaultSigner())
+
+    // contract deployment
+    const deployTx = await instance.deploy(inputSatoshis)
+    console.log('HelloWorld contract deployed: ', deployTx.id)
+
+    // contract call
+    const { tx: callTx } = await instance.methods.unlock(
+        toByteString(message, true)
+    )
+    console.log('HelloWorld contract `unlock` called: ', callTx.id)
+}
+
+describe('Test SmartContract `HelloWorld` on testnet', () => {
+    it('should succeed', async () => {
+        await main()
+    })
+})
+```
+
+Use `npm run testnet` to execute the above code. You will see the following output:
+
+![](../../static/img/hello-world-deploy-and-call-output.png)
+
+
+View [the transaction of the deployment contract](https://test.whatsonchain.com/tx/9d6ffffef154cdb2fc93fb6384c343fdbacfa48972976e7d01281d13746e539a) on the whatsonchain blockchain browser:
+
+![](../../static/img/hello-world-contract-deploy-tx.png)
+
+
+
+View [the transaction of the calling contract](https://test.whatsonchain.com/tx/25aa4697ace65f59098a5767e483149daf82d9ae5fad87a721941c5715faac1d) on the whatsonchain blockchain browser:
+
+![](../../static/img/hello-world-contract-call-tx.png)
 
 # Conclusion
 

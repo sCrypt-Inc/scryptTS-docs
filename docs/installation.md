@@ -5,11 +5,14 @@ sidebar_position: 2
 # Installation
 
 ## Prerequisite
-Install `Node.js` and `NPM` on your machine by following the instructions over [here](https://nodejs.org/en/download).
+
+1. Install `Node.js` and `NPM` on your machine by following the instructions over [here](https://nodejs.org/en/download).
 
 :::note
 Require `Node.js` version `>=16`.
 :::
+
+2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ## The sCrypt CLI Tool
 
