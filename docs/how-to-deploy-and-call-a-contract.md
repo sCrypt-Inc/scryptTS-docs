@@ -5,9 +5,25 @@ sidebar_position: 5
 # How to Deploy & Call a Contract
 
 
+## Setup
+
+It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
+Before testing, you need to:
+
+1. [Generate a private key](./how-to-test-a-contract.md#generate-a-private-key) with the following command:
+
+```
+npm run genprivkey
+```
+
+2. Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
+
+
 ## Introduction
 
-After you've finished writing a contract, you want to deploy and call it. But first, you should learn how the a smart contract interacts with the blockchain.
+
+After you've finished writing a contract, you can deploy and call it. But first, you should learn how the a smart contract interacts with the blockchain.
+
 
 As explained in the [Overview section](./overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in details.
 

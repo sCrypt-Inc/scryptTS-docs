@@ -12,7 +12,7 @@ There are two different kinds of tests recommended for every project using `scry
 * **Testnet Integration Testing**
 
 
-## Setup
+## Generate a private key
 
 Before we test the contract, we need to generate a [private key](https://en.bitcoin.it/wiki/Private_key). Let's run the following command:
 
@@ -318,14 +318,6 @@ npm run test
 ```
 Full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/counter.ts).
 
-
-## Test a Contract on the Testnet
- 
-It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
- 
-Before testing, you need to:
- 
-* Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
 
 You may visit [here](./how-to-deploy-and-call-a-contract.md) to see more details on contract deployment and call.
 
