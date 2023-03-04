@@ -59,7 +59,7 @@ Now let’s look at what is in the smart contract.
 
 ## Contract Deployment & Call
 
-Before we deploy the contract, follow [the instruction](../how-to-test-a-contract.md#generate-a-private-key) to fund a Bitcoin key.
+Before we deploy the contract, follow [the instruction](../how-to-deploy-and-call-a-contract.md#setup) to fund a Bitcoin key.
 
 1. To [deploy a smart contract](../how-to-deploy-and-call-a-contract.md#contract-deployment), simply call its `deploy` method.
 
