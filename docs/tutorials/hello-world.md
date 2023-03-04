@@ -26,7 +26,7 @@ The resulting project will contain a sample smart contract `src/contracts/hellow
 ```ts
 import { assert, ByteString, method, prop, sha256, Sha256, SmartContract } from 'scrypt-ts'
 
-export class HelloWorld extends SmartContract {
+export class Helloworld extends SmartContract {
 
     @prop()
     hash: Sha256;
@@ -43,7 +43,7 @@ export class HelloWorld extends SmartContract {
 }
 ```
 
-The `HelloWorld` contract stores the sha256 hash of a message in the contract property `hash`. Only message which hash value matches `hash` will unlock the contract. 
+The `Helloworld` contract stores the sha256 hash of a message in the contract property `hash`. Only message which hash value matches `hash` will unlock the contract. 
 
 Now let’s look at what is in the smart contract.
 
@@ -65,10 +65,10 @@ Before we deploy the contract, follow [the instruction](../how-to-test-a-contrac
 
 2. To [call a smart contract](../how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
 
-Modify `tests/local/helloworld.test.ts` to the following code, to deploy and call the `HelloWorld` contract.
+Modify `tests/local/helloworld.test.ts` to the following code, to deploy and call the `Helloworld` contract.
 
 ```ts
-import { HelloWorld } from '../../src/contracts/helloworld'
+import { Helloworld } from '../../src/contracts/helloworld'
 import { getDefaultSigner, inputSatoshis } from './utils/txHelper'
 import { toByteString, sha256 } from 'scrypt-ts'
 
@@ -76,19 +76,19 @@ import { toByteString, sha256 } from 'scrypt-ts'
 
 const message = toByteString('hello world', true)
 
-await HelloWorld.compile()
-const instance = new HelloWorld(sha256(message))
+await Helloworld.compile()
+const instance = new Helloworld(sha256(message))
 
 // connect to a signer
 await instance.connect(getDefaultSigner())
 
 // contract deployment
 const deployTx = await instance.deploy(inputSatoshis)
-console.log('HelloWorld contract deployed: ', deployTx.id)
+console.log('Helloworld contract deployed: ', deployTx.id)
 
 // contract call
 const { tx: callTx } = await instance.methods.unlock(message)
-console.log('HelloWorld contract `unlock` called: ', callTx.id)
+console.log('Helloworld contract `unlock` called: ', callTx.id)
 
 }()
 ```
