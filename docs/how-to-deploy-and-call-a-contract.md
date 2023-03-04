@@ -18,6 +18,8 @@ npm run genprivkey
 
 2. Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
 
+![facuet](../static/img/faucet.gif)
+
 
 ## Introduction
 
