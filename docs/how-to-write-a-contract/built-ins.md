@@ -173,7 +173,11 @@ The following `@methods` come with the `SmartContract` base class.
 
 Function `checkSig(signature: Sig, publicKey: PubKey): boolean` verifies an ECDSA signature. It takes two inputs: an ECDSA signature and a public key. 
 
-It returns true if the signature matches the public key. Returns false if the signature is an empty. Otherwise, the entire contract fails immediately, due to the [**NULLFAIL** rule](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#NULLFAIL).
+It returns if the signature matches the public key.
+
+:::caution
+All signature checking functions (`checkSig` and `checkMultiSig`) follow the [**NULLFAIL** rule](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki#NULLFAIL): if the signature is invalid, the entire contract aborts and fails immediately, unless the signature is an empty ByteString, in which case these functions return `false`.
+:::
 
 For example, Pay-to-Public-Key-Hash ([P2PKH](https://learnmeabitcoin.com/guide/p2pkh)) can be implemented as below.
 
