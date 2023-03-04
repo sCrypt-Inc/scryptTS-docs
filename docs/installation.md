@@ -12,7 +12,7 @@ sidebar_position: 2
 Require `Node.js` version `>=16`.
 :::
 
-2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ## The sCrypt CLI Tool
 
