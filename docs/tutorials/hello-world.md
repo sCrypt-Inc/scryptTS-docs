@@ -65,7 +65,7 @@ Before we deploy the contract, follow [the instruction](../how-to-deploy-and-cal
 
 2. To [call a smart contract](../how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
 
-Modify `tests/local/helloworld.test.ts` to the following code, to deploy and call the `Helloworld` contract.
+Modify `tests/testnet/helloworld.ts` to the following code, to deploy and call the `Helloworld` contract.
 
 ```ts
 import { Helloworld } from '../../src/contracts/helloworld'
@@ -74,40 +74,40 @@ import { toByteString, sha256 } from 'scrypt-ts'
 
 (async () => {
 
-const message = toByteString('hello world', true)
+    const message = toByteString('hello world', true)
 
-await Helloworld.compile()
-const instance = new Helloworld(sha256(message))
+    await Helloworld.compile()
+    const instance = new Helloworld(sha256(message))
 
-// connect to a signer
-await instance.connect(getDefaultSigner())
+    // connect to a signer
+    await instance.connect(getDefaultSigner())
 
-// contract deployment
-const deployTx = await instance.deploy(inputSatoshis)
-console.log('Helloworld contract deployed: ', deployTx.id)
+    // contract deployment
+    const deployTx = await instance.deploy(inputSatoshis)
+    console.log('Helloworld contract deployed: ', deployTx.id)
 
-// contract call
-const { tx: callTx } = await instance.methods.unlock(message)
-console.log('Helloworld contract `unlock` called: ', callTx.id)
+    // contract call
+    const { tx: callTx } = await instance.methods.unlock(message)
+    console.log('Helloworld contract `unlock` called: ', callTx.id)
 
-}()
+})()
 ```
 
 Run the following command:
 ```
-npx ts-node tests/local/helloworld.test.ts
+npx ts-node tests/testnet/helloworld.ts
 ```
 You will see some output like:
 
 ![](../../static/img/hello-world-deploy-and-call-output.png)
 
 
-You can view [the deployment transaction](https://test.whatsonchain.com/tx/9d6ffffef154cdb2fc93fb6384c343fdbacfa48972976e7d01281d13746e539a) using the WhatsOnChain blockchain explorer:
+You can view [the deployment transaction](https://test.whatsonchain.com/tx/b10744292358eda2cfae3baae5cd486e30136b086011f7953aed9098f62f4245) using the WhatsOnChain blockchain explorer:
 
 ![](../../static/img/hello-world-contract-deploy-tx.png)
 
 
-You can also view [the calling transaction](https://test.whatsonchain.com/tx/25aa4697ace65f59098a5767e483149daf82d9ae5fad87a721941c5715faac1d):
+You can also view [the calling transaction](https://test.whatsonchain.com/tx/f28175616b6dd0ebe2aad41505aabb5bf2864e2e6d1157168183f51b6194d3e6):
 
 ![](../../static/img/hello-world-contract-call-tx.png)
 
