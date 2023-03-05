@@ -11,18 +11,7 @@ There are two different kinds of tests recommended for every project using `scry
 * **Local Unit Testing**
 * **Testnet Integration Testing**
 
-
-## Generate a private key
-
-Before we test the contract, we need to generate a [private key](https://en.bitcoin.it/wiki/Private_key). Let's run the following command:
-
-```sh
-npm run genprivkey
-```
-
-The command will generate a private key which will be stored in the `.env` file in our project root directory. Keep this key secret as whoever has access to it can take the funds! It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. 
-
-Now we will take a look at the file `tests/testnet/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
+Now we will take a look at the file `tests/local/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
 
 
 But before going into details, you should learn some basic models of scryptTS for signing and sending transactions.

@@ -8,13 +8,16 @@ sidebar_position: 5
 ## Setup
 
 It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
-Before testing, you need to:
 
-1. [Generate a private key](./how-to-test-a-contract.md#generate-a-private-key) with the following command:
+Before deploy and call a contract, you need to:
 
-```
+1. Generate a private key with the following command:
+
+```sh
 npm run genprivkey
 ```
+
+The command will generate a private key which will be stored in the `.env` file in our project root directory. Keep this key secret as whoever has access to it can take the funds! It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. 
 
 2. Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
 
