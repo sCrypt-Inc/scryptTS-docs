@@ -186,6 +186,14 @@ Function `static async compile(): Promise<TranspileError[]>` compiles the contra
 const transpileErrors = await Demo.compile()
 ```
 
+### `scriptSize`
+
+Function `get scriptSize(): number` returns the byte length of the contract locking script.
+
+```ts
+const size = await Demo.scriptSize()
+```
+
 ### `checkSig`
 
 Function `checkSig(signature: Sig, publicKey: PubKey): boolean` verifies an ECDSA signature. It takes two inputs: an ECDSA signature and a public key. 
@@ -490,8 +498,7 @@ hashedMap.set(key, value);
 const v = hashedMap.get(key);   // <----
 hashedMap.has(key);
 hashedMap.delete(key);
-…
-
+...
 ```
 :::note
 `get()` can be called since the HashedMap stores the original key and value off chain.
