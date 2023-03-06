@@ -43,7 +43,7 @@ export class Helloworld extends SmartContract {
 }
 ```
 
-The `Helloworld` contract stores the sha256 hash of a message in the contract property `hash`. Only message which hash value matches `hash` will unlock the contract. 
+The `Helloworld` contract stores the sha256 hash of a message in the contract property `hash`. Only a message which hashes to the value set in `this.hash` will unlock the contract.
 
 Now let’s look at what is in the smart contract.
 
@@ -54,7 +54,7 @@ Now let’s look at what is in the smart contract.
 
 - `@method`: the [`@method` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#method-decorator) marks a contract method. A [public method](https://scrypt.io/scrypt-ts/how-to-write-a-contract/#public-methods) is an entry point to a contract.
 
-- `assert`: throws an error and fails the contract if its first argument is `false`. Here it ensures the passed message hashed to the expected digest.
+- `assert`: throws an error and makes the method call fail if its first argument is `false`. Here it ensures the passed message hashed to the expected digest.
 
 
 ## Contract Deployment & Call
@@ -65,11 +65,11 @@ Before we deploy the contract, follow [the instruction](../how-to-deploy-and-cal
 
 2. To [call a smart contract](../how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
 
-Modify `tests/testnet/helloworld.ts` to the following code, to deploy and call the `Helloworld` contract.
+Let's create a file named `deploy.ts` in the root of the project, containing code to deploy and call the `Helloworld` contract:
 
 ```ts
-import { Helloworld } from '../../src/contracts/helloworld'
-import { getDefaultSigner, inputSatoshis } from './utils/txHelper'
+import { Helloworld } from './src/contracts/helloworld'
+import { getDefaultSigner, inputSatoshis } from './tests/testnet/utils/txHelper'
 import { toByteString, sha256 } from 'scrypt-ts'
 
 (async () => {
@@ -95,7 +95,7 @@ import { toByteString, sha256 } from 'scrypt-ts'
 
 Run the following command:
 ```
-npx ts-node tests/testnet/helloworld.ts
+npx ts-node deploy.ts
 ```
 You will see some output like:
 
@@ -111,7 +111,7 @@ You can also view [the calling transaction](https://test.whatsonchain.com/tx/f28
 
 ![](../../static/img/hello-world-contract-call-tx.png)
 
-Congrats! Your have deloyed and called your first Bitcoin smart contract.
+Congrats! You have deployed and called your first Bitcoin smart contract.
 
 
 
