@@ -88,7 +88,7 @@ Assume you have a contract like this:
 
 ```ts
 Class MyContract extends SmartContract {
-  …
+  ...
   @method()
   public foo(arg1, arg2) {...}
 }
@@ -112,8 +112,8 @@ const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
 
 The `options` argument is of type `MethodCallOptions`:
 
-```json
-interface MethodCallOptions {
+```ts
+interface MethodCallOptions<T> {
   /** The previous contract UTXO to spend in the method calling tx */
   fromUTXO?: UTXO;
 
@@ -125,7 +125,7 @@ interface MethodCallOptions {
 
   /** The `lockTime` of the method calling tx */
   lockTime?: number;
-    
+
   /** The `sequence` of the input spending previous contract UTXO in the method calling tx */
   sequence?: number;
 
@@ -202,7 +202,6 @@ describe('Test SmartContract `Demo`', () => {
       demo.methods.add(4n, { fromUTXO: dummyUTXO })
     ).to.be.rejectedWith(/add check failed/)
   })
-
 })
 ```
 

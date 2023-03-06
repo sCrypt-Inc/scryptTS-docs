@@ -15,7 +15,7 @@ The following functions come with `scryptTS`.
 ```ts
 assert(1n === 1n)        // nothing happens
 assert(1n === 2n)        // throws Error('Execution failed')
-assert(false, 'hello') // throws Error('Execution failed, hello')
+assert(false, 'hello')   // throws Error('Execution failed, hello')
 ```
 
 ### Fill
@@ -333,7 +333,7 @@ Function `static bindTxBuilder(methodName: string, txBuilder: MethodCallTxBuilde
 
 ```ts
 // bind a customized tx builder for the public method `MyContract.unlock`
-MyContract.bindTxBuilder("unlock", (options, ...args) => {
+MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...args: any) => {
   // ...
 })
 ```

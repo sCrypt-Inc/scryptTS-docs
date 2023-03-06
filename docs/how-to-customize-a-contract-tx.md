@@ -50,6 +50,8 @@ class DemoContract extends SmartContract {
 }
 ```
 
+You may visit the [full code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/cf3ea45a11/src/contracts/auction.ts#L100-L127) for more details.
+
 ## Call Tx
 
 ### Default
@@ -72,7 +74,7 @@ You can customize a tx builder for a public `@method` of your contract by callin
 
 ```ts
 // bind a customized tx builder for the public method `MyContract.unlock`
-MyContract.bindTxBuilder("unlock", (options, ...args) => { 
+MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...args: any) => { 
 
   let result: Promise<BuildMethodCallTxResult<MyContract>>;
 
@@ -101,6 +103,55 @@ MyContract.bindTxBuilder("unlock", (options, ...args) => {
   return Promise.resolve(result)         
 })
 ```
+
+Note that the parameters of your customized tx builder consist of two parts:
+
+- `options` is of type `BuildMethodCallTxOptions`.
+
+```ts
+interface BuildMethodCallTxOptions<T> {
+  /** The previous contract UTXO to spend in the method calling tx */
+  fromUTXO?: UTXO;
+
+  /** The P2PKH change output address */
+  changeAddress?: AddressOption;
+
+  /** The current contract instance to spend in the input of method calling tx */
+  current: T;
+
+  /** The P2PKH UTXOs that can be added to the method calling tx to pay transaction fees */
+  utxos: UTXO[];
+
+  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
+  nexts?: StatefulNext<T>[];
+}
+```
+
+- `...args: any` is an argument list the same as the bound pubic `@method`.
+
+```ts
+Auction.bindTxBuilder('bid', Auction.buildTxForBid)
+
+class Auction extends SmartContract {
+  // ...
+
+  @method(SigHash.ALL)
+  public bid(bidder: PubKeyHash, bid: bigint) {
+    // ...
+  }
+
+  static buildTxForBid(
+    options: BuildMethodCallTxOptions<Auction>,
+    // the following arguments are the same as the bound public `@method`
+    bidder: PubKeyHash,
+    bid: bigint
+  ): Promise<BuildMethodCallTxResult<Auction>> {
+    // ...
+  }
+}
+```
+
+You may visit the [full code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/cf3ea45a11/src/contracts/auction.ts#L129-L178) for more details.
 
 ## Notes
 
