@@ -17,15 +17,11 @@ But before going into details, you should learn some basic models of scryptTS fo
 
 ## Compile the Contract
 
-First things first. Call function `SmartContract.compile()` to compile the contract before doing any testing.
+First, call function `SmartContract.compile()` to compile the contract before doing any testing.
 
 ```ts
 await Demo.compile()
 ```
-
-:::note
-This function should **NOT** be called in production environment.
-:::
 
 ## Provider
 

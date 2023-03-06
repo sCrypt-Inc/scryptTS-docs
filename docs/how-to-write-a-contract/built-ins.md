@@ -20,7 +20,7 @@ assert(false, 'hello') // throws Error('Execution failed, hello')
 
 ### Fill
 
-- `fill(value: any, length: number): any ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. 
+- `fill(value: T, length: number): T[length] ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. 
 
 :::note
 `length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
@@ -114,10 +114,10 @@ const s2 = toByteString('hello', true) // '68656c6c6f', 5 bytes
 len(s2) // 5
 ```
 
-- `reverseByteString(b: ByteString, size: number): ByteString` Returns reversed bytes of `b` which is of `size` bytes.
+- `reverseByteString(b: ByteString, size: number): ByteString` Returns reversed bytes of `b` which is of `size` bytes. It is often useful when converting a number between little-endian and big-endian.
 
 :::note
-`size` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant). It is often useful when converting a number between little-endian and big-endian.
+`size` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
 :::
 
 ```ts
@@ -176,6 +176,15 @@ rshift(1024n, 11n) // 0n
 ## `SmartContract` Methods
 
 The following `@methods` come with the `SmartContract` base class.
+
+### `compile`
+
+Function `static async compile(): Promise<TranspileError[]>` compiles the contract and returns transpile errors if compiling fails.
+
+```ts
+// returns transpile errors if compiling fails
+const transpileErrors = await Demo.compile()
+```
 
 ### `checkSig`
 
@@ -371,7 +380,7 @@ const pubKeyHash = PubKeyHash(toByteString('001122334455667788990011223344556677
 Utils.buildPublicKeyHashScript(pubKeyHash) // '76a914001122334455667788990011223344556677889988ac'
 ```
 
-- `static buildPublicKeyHashOutput(pubKeyHash: PubKeyHash, amount: bigint): ByteString` Build P2PKH output from the public key hash.
+- `static buildPublicKeyHashOutput(pubKeyHash: PubKeyHash, amount: bigint): ByteString` Build a P2PKH output from the public key hash.
 
 ```ts
 const pubKeyHash = PubKeyHash(toByteString('0011223344556677889900112233445566778899'))

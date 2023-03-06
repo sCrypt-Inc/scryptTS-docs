@@ -28,7 +28,7 @@ You can customize a deployment tx builder by overriding its `buildDeployTransact
 class DemoContract extends SmartContract {
   // ...
 
-  // customize the deployment tx by override `SmartContract.buildDeployTransaction` method
+  // customize the deployment tx by overriding `SmartContract.buildDeployTransaction` method
   override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
     const deployTx = new bsv.Transaction()
       .from(utxos) // add p2pkh inputs
@@ -102,10 +102,8 @@ MyContract.bindTxBuilder("unlock", (options, ...args) => {
 })
 ```
 
-:::note
-Please be aware that each of these tx builders should only create an **unsigned** transaction. You need to sign it later if necessary before broadcasting.
-:::
+## Notes
 
-:::note
-Your customized tx must satisfy all of the called `@method`'s assertions.
-:::
+Please be aware that each of these tx builders should only create an **unsigned** transaction. You need to sign it later if necessary before broadcasting.
+
+Also, your customized tx must satisfy all of the called `@method`'s assertions.
