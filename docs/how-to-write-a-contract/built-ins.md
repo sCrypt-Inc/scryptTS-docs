@@ -15,12 +15,16 @@ The following functions come with `scryptTS`.
 ```ts
 assert(1n === 1n)        // nothing happens
 assert(1n === 2n)        // throws Error('Execution failed')
-assert(false, 'hello') // throws Error('Execution failed, hello')
+assert(false, 'hello')   // throws Error('Execution failed, hello')
 ```
 
 ### Fill
 
-- `fill(value: any, length: number): any ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. Note `length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+- `fill(value: T, length: number): T[length] ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. 
+
+:::note
+`length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+:::
 
 
 ```ts
@@ -110,7 +114,11 @@ const s2 = toByteString('hello', true) // '68656c6c6f', 5 bytes
 len(s2) // 5
 ```
 
-- `reverseByteString(b: ByteString, size: number): ByteString` Returns reversed bytes of `b` which is of `size` bytes. Note `size` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant). It is often useful when converting a number between little-endian and big-endian.
+- `reverseByteString(b: ByteString, size: number): ByteString` Returns reversed bytes of `b` which is of `size` bytes. It is often useful when converting a number between little-endian and big-endian.
+
+:::note
+`size` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+:::
 
 ```ts
 const s1 = toByteString('793ff39de7e1dce2d853e24256099d25fa1b1598ee24069f24511d7a2deafe6c') 
@@ -168,6 +176,23 @@ rshift(1024n, 11n) // 0n
 ## `SmartContract` Methods
 
 The following `@methods` come with the `SmartContract` base class.
+
+### `compile`
+
+Function `static async compile(): Promise<TranspileError[]>` compiles the contract and returns transpile errors if compiling fails.
+
+```ts
+// returns transpile errors if compiling fails
+const transpileErrors = await Demo.compile()
+```
+
+### `scriptSize`
+
+Function `get scriptSize(): number` returns the byte length of the contract locking script.
+
+```ts
+const size = Demo.scriptSize()
+```
 
 ### `checkSig`
 
@@ -265,7 +290,9 @@ const { tx: callTx, atInputIndex } = await auction.methods.bid(
 )
 ```
 
-**Note**: If you use a [customized call tx builder](../how-to-customize-a-contract-tx.md), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+:::note
+If you use a [customized call tx builder](../how-to-customize-a-contract-tx.md), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+:::
 
 ```ts
 const unsignedTx: bsv.Transaction = new bsv.Transaction()
@@ -300,6 +327,46 @@ const instance = ContractName.fromTx(tx, atOutputIndex, {
 })
 ```
 
+### `buildDeployTransaction`
+
+Function `async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction>` creates a tx to deploy the contract. The first parameter `utxos` represents one or more [P2PKH](https://learnmeabitcoin.com/technical/p2pkh) inputs for paying transaction fees. The second parameter `amount` is the balance of contract output. The last parameter `changeAddress` is optional and represents the P2PKH change address.
+
+```ts
+async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
+    const deployTx = new bsv.Transaction()
+      // add p2pkh inputs for paying tx fees
+      .from(utxos) 
+      // add contract output
+      .addOutput(new bsv.Transaction.Output({
+        script: this.lockingScript,
+        satoshis: amount,
+      }))
+    // add the change output if passing `changeAddress`
+    if (changeAddress) {
+      deployTx.change(changeAddress);
+      if (this._provider) {
+        deployTx.feePerKb(await this.provider.getFeePerKb());
+      }
+    }
+
+    return deployTx;
+  }
+```
+
+You may visit [here](../how-to-customize-a-contract-tx.md#customize) to see more details on how to cutomize deployment tx.
+
+### `bindTxBuilder`
+
+Function `static bindTxBuilder(methodName: string, txBuilder: MethodCallTxBuilder<SmartContract>)` binds the customized tx builder `txBuilder` to a contract public `@method` identified by `methodName`.
+
+```ts
+// bind a customized tx builder for the public method `MyContract.unlock`
+MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...args: any) => {
+  // ...
+})
+```
+
+You may visit [here](../how-to-customize-a-contract-tx.md#customize-1) to see more details on how to customize tx builder.
 
 ## Standard Libraries
 
@@ -347,6 +414,13 @@ Utils.buildOutput(lockingScript, 1n) // '01000000000000000401020304'
 ```ts
 const pubKeyHash = PubKeyHash(toByteString('0011223344556677889900112233445566778899'))
 Utils.buildPublicKeyHashScript(pubKeyHash) // '76a914001122334455667788990011223344556677889988ac'
+```
+
+- `static buildPublicKeyHashOutput(pubKeyHash: PubKeyHash, amount: bigint): ByteString` Build a P2PKH output from the public key hash.
+
+```ts
+const pubKeyHash = PubKeyHash(toByteString('0011223344556677889900112233445566778899'))
+Utils.buildPublicKeyHashOutput(pubKeyHash, 1n) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
 ```
 
 - `static buildOpreturnScript(data: ByteString): ByteString` Build a data-carrying [FALSE OP_RETURN](https://wiki.bitcoinsv.io/index.php/OP_RETURN) script from `data` payload.
@@ -452,8 +526,7 @@ hashedMap.set(key, value);
 const v = hashedMap.get(key);   // <----
 hashedMap.has(key);
 hashedMap.delete(key);
-…
-
+...
 ```
 :::note
 `get()` can be called since the HashedMap stores the original key and value off chain.
