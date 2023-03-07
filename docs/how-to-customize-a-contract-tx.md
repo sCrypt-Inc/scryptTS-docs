@@ -22,7 +22,7 @@ For contract deployment, the default tx builder creates a transaction with the f
 Numbers in [] represent index, starting from 0.
 
 ### Customize
-You can customize a deployment tx builder by overriding its `buildDeployTransaction` method.
+You can customize a deployment tx builder by overriding its `buildDeployTransaction` method. The first parameter `utxos` represents one or more [P2PKH](https://learnmeabitcoin.com/technical/p2pkh) inputs for paying transaction fees. The second parameter `amount` is the balance of contract output. The last parameter `changeAddress` is optional and represents the P2PKH change address.
 
 ```ts
 class DemoContract extends SmartContract {
@@ -31,12 +31,15 @@ class DemoContract extends SmartContract {
   // customize the deployment tx by overriding `SmartContract.buildDeployTransaction` method
   override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
     const deployTx = new bsv.Transaction()
-      .from(utxos) // add p2pkh inputs
+      // add p2pkh inputs for paying tx fees
+      .from(utxos)
+      // add contract output
       .addOutput(new bsv.Transaction.Output({
         script: this.lockingScript,
         satoshis: amount,
-      })) // add contract output
-      .addData('Hello World'); // add OP_RETURN output
+      }))
+      // add OP_RETURN output
+      .addData('Hello World');
 
     if (changeAddress) {
       deployTx.change(changeAddress);
@@ -70,7 +73,7 @@ For contract calls, the default tx builder creates a transaction with the follow
 
 ### Customize
 
-You can customize a tx builder for a public `@method` of your contract by calling `bindTxBuilder`.
+You can customize a tx builder for a public `@method` of your contract by calling `bindTxBuilder`. The first parameter is the public method name, and the second parameter is the customized tx builder.
 
 ```ts
 // bind a customized tx builder for the public method `MyContract.unlock`
