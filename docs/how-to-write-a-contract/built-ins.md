@@ -191,7 +191,7 @@ const transpileErrors = await Demo.compile()
 Function `get scriptSize(): number` returns the byte length of the contract locking script.
 
 ```ts
-const size = Demo.scriptSize()
+const size = Demo.scriptSize
 ```
 
 ### `checkSig`
