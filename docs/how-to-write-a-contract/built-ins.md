@@ -329,7 +329,7 @@ const instance = ContractName.fromTx(tx, atOutputIndex, {
 
 ### `buildDeployTransaction`
 
-Function `async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction>` creates a tx to deploy the contract. The first parameter `utxos` represents one or more [P2PKH](https://learnmeabitcoin.com/technical/p2pkh) inputs for paying transaction fees. The second parameter `amount` is the balance of contract output. The last parameter `changeAddress` is optional and represents the P2PKH change address.
+Function `async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction>` creates a tx to deploy the contract. The first parameter `utxos` represents one or more [P2PKH](https://learnmeabitcoin.com/technical/p2pkh) inputs for paying transaction fees. The second parameter `amount` is the balance of contract output. The last parameter `changeAddress` is optional and represents a change address.
 
 ```ts
 async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
@@ -353,7 +353,7 @@ async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.
   }
 ```
 
-You may visit [here](../how-to-customize-a-contract-tx.md#customize) to see more details on how to cutomize deployment tx.
+You may visit [here](../how-to-customize-a-contract-tx.md#customize) to see more details on how to cutomize a deployment tx.
 
 ### `bindTxBuilder`
 
