@@ -23,6 +23,12 @@ The command will generate a private key which will be stored in the `.env` file 
 
 ![facuet](../static/img/faucet.gif)
 
+### Extract Your Sensilet Private Key
+
+If you already have a testnet wallet in Sensilet, you can extract the private key as follows.
+
+![](../static/img/extract-sensilet-private-key.gif)
+
 ## Introduction
 
 
