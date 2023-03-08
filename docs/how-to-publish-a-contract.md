@@ -105,10 +105,10 @@ Note the `lib` option is turned on.
 You can publish the library on [NPM](https://www.npmjs.com/) by running the following command in the project's root directory:
 
 ```sh
-scrypt publish
+npm publish
 ```
 
-This will check the projects structure, build it and publish it. After the library is published, users can just import it in any other project just like regular NPM packages.
+This will build the project and publish it on NPM. After the library is published, users can simply import it in any other project just like regular NPM packages.
 
 **Please Note** that named imports are not supported yet. You should only import like this:
 ```ts
@@ -125,13 +125,13 @@ node_modules
     |__ dist
         |__ myLib.js
         |__ myLib.d.ts
-    |__ scrypts
+    |__ artifacts
         |__ myLib.scrypt
     |__ scrypt.index.json
     …
 ```
 
-The `scrypt.index.json` file will be generated at TypeScript compile time in the same directory of your `tsconfig.json` which should be placed in the root folder. It shall not be moved or modified manually. The folder for auto-generated sCrypt files can be changed by configuring the `outDir` option in `tsconfig.json`, like:
+The `scrypt.index.json` file will be generated at TypeScript compile time in the same directory of your `tsconfig.json` which should be placed in the root folder. It shall not be moved or modified manually. The folder for auto-generated `.scrypt` files (`artifacts` in the upper file tree) can be changed by configuring the `outDir` option in `tsconfig.json`, like:
 
 ```json
 "compilerOptions": {
@@ -145,7 +145,7 @@ The `scrypt.index.json` file will be generated at TypeScript compile time in the
 }
 ```
 
-You should always publish the auto-generated sCrypt files along with the package. If you are familiar with sCrypt development and want to apply some improvements to the auto-generated files, for example using an inline asm function to replace an ordinary function to reduce the final script size, you could just modify the auto-generated file as you wish before publishing it.
+You should always publish the auto-generated sCrypt files along with the package. If you are familiar with sCrypt development and want to apply some improvements to the auto-generated files, for example using an inline asm function to replace an ordinary function to reduce the final script size, you could just modify the auto-generated file as you wish before publishing it. Take a look at how [scrytp-ts-lib](https://github.com/sCrypt-Inc/scrypt-ts-lib/tree/master/optimizations) does it.
 
 **Note**: You should modify the auto-generated files with caution and make sure that the modification passes the tests.
 
