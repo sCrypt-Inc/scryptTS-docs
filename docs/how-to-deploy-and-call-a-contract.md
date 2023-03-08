@@ -23,7 +23,6 @@ The command will generate a private key which will be stored in the `.env` file 
 
 ![facuet](../static/img/faucet.gif)
 
-
 ## Introduction
 
 

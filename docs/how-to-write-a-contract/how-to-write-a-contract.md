@@ -32,8 +32,9 @@ class Demo extends SmartContract {
 
 Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `scryptTS` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
-**🛈 Note**:
+:::note
 You can fork [the demo contract Repl](https://replit.com/@msinkec/scryptTS-demo) and play with the code in your browser!
+:::
 
 ## Properties
 
@@ -148,7 +149,9 @@ public unlock(x: bigint) {
 }
 ```
 
-**Note**: The last function call of a public `@methed` method **must** be an `assert()` function call, unless it is a `console.log()` call.
+:::note
+The last function call of a public `@methed` method **must** be an `assert()` function call, unless it is a `console.log()` call.
+:::
 
 ```ts
 class PublicMethodDemo extends SmartContract {
@@ -185,8 +188,9 @@ add(x0: bigint, x1:bigint) : bigint {
 }
 ```
 
-
-Note: **Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that transitively calls itself.
+:::note
+**Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that transitively calls itself.
+:::
 
 ```ts
 class MethodsDemo extends SmartContract {
@@ -271,7 +275,9 @@ A literal `string` can be converted in to a `ByteString` using function `toByteS
 * If not passing `isUtf8` or `isUtf8` is `false`, then `literal` should be in the format of hex literal, which can be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`
 * Otherwise, `literal` should be in the format of utf8 literal, i.e. `hello world`
 
-**Note**: When `toByteString` is called, it **ONLY** accepts string literals for its first argument, and boolean literals for its second argument.
+:::note
+When `toByteString` is called, it **ONLY** accepts string literals for its first argument, and boolean literals for its second argument.
+:::
 
 ```ts
 toByteString('hello', 1 === 1) // invalid, not passing boolean literal to the 2nd parameter
@@ -456,11 +462,12 @@ for(let $i = 0n; $i < $maxLoopCount; $i++) {
 }
 ```
 
-Note:
+:::note
 * the initial value must be `0`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
 * `$maxLoopCount` must be a [CTC](#compile-time-constant).
 * `$i` can be arbitrary name, e.g., `i`, `j`, or `k`. It can be both a `number` or a `bigint` type.
 * `break` and `continue` are currently not allowed, but can be emulated like
+:::
 
 ```ts
 // emulate break
@@ -608,7 +615,9 @@ add(x0: bigint, x1:bigint) : bigint {
 | `!` | Logical NOT |
 | `cond ? expr1 : expr2 ` | ternary |
 
-Note `**` is not supported currently.
+:::note
+`**` is not supported currently.
+:::
 
 ## ScriptContext
 

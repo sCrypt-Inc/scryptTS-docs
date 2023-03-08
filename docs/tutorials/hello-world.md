@@ -121,4 +121,3 @@ Congrats! You have deployed and called your first Bitcoin smart contract.
 
 
 
-

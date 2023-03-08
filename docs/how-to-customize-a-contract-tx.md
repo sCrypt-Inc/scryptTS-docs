@@ -22,8 +22,38 @@ For contract deployment, the default tx builder creates a transaction with the f
 Numbers in [] represent index, starting from 0.
 
 ### Customize
-You can customize a deployment tx builder by overriding its `buildDeployTransaction` method.
+You can customize a contract's deployment tx builder by overriding its [buildDeployTransaction](https://scrypt.io/scrypt-ts/how-to-write-a-contract/built-ins#builddeploytransaction) method. An example is shown below.
 
+```ts
+class DemoContract extends SmartContract {
+  // ...
+
+  // customize the deployment tx by overriding `SmartContract.buildDeployTransaction` method
+  override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
+    const deployTx = new bsv.Transaction()
+      // add p2pkh inputs for paying tx fees
+      .from(utxos)
+      // add contract output
+      .addOutput(new bsv.Transaction.Output({
+        script: this.lockingScript,
+        satoshis: amount,
+      }))
+      // add OP_RETURN output
+      .addData('Hello World');
+
+    if (changeAddress) {
+      deployTx.change(changeAddress);
+      if (this._provider) {
+        deployTx.feePerKb(await this.provider.getFeePerKb());
+      }
+    }
+
+    return deployTx;
+  }
+}
+```
+
+You may visit the [full code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/cf3ea45a11/src/contracts/auction.ts#L100-L127) for more details.
 
 ## Call Tx
 
@@ -43,11 +73,11 @@ For contract calls, the default tx builder creates a transaction with the follow
 
 ### Customize
 
-You can customize a tx builder for a public `@method` of your contract by calling `bindTxBuilder`.
+You can customize a tx builder for a public `@method` of your contract by calling `bindTxBuilder`. The first parameter is the public method name, and the second parameter is the customized tx builder.
 
 ```ts
 // bind a customized tx builder for the public method `MyContract.unlock`
-MyContract.bindTxBuilder("unlock", (options, ...args) => { 
+MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...args: any) => { 
 
   let result: Promise<BuildMethodCallTxResult<MyContract>>;
 
@@ -76,6 +106,55 @@ MyContract.bindTxBuilder("unlock", (options, ...args) => {
   return Promise.resolve(result)         
 })
 ```
+
+Note that the parameters of your customized tx builder consist of two parts:
+
+- `options` is of type `BuildMethodCallTxOptions`.
+
+```ts
+interface BuildMethodCallTxOptions<T> {
+  /** The previous contract UTXO to spend in the method calling tx */
+  fromUTXO?: UTXO;
+
+  /** The P2PKH change output address */
+  changeAddress?: AddressOption;
+
+  /** The current contract instance to spend in the input of method calling tx */
+  current: T;
+
+  /** The P2PKH UTXOs that can be added to the method calling tx to pay transaction fees */
+  utxos: UTXO[];
+
+  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
+  nexts?: StatefulNext<T>[];
+}
+```
+
+- `...args: any` is an argument list the same as the bound pubic `@method`.
+
+```ts
+Auction.bindTxBuilder('bid', Auction.buildTxForBid)
+
+class Auction extends SmartContract {
+  // ...
+
+  @method(SigHash.ALL)
+  public bid(bidder: PubKeyHash, bid: bigint) {
+    // ...
+  }
+
+  static buildTxForBid(
+    options: BuildMethodCallTxOptions<Auction>,
+    // the following arguments are the same as the bound public `@method`
+    bidder: PubKeyHash,
+    bid: bigint
+  ): Promise<BuildMethodCallTxResult<Auction>> {
+    // ...
+  }
+}
+```
+
+You may visit the [full code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/cf3ea45a11/src/contracts/auction.ts#L129-L178) for more details.
 
 ## Notes
 
