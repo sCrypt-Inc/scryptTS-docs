@@ -7,16 +7,16 @@ sidebar_position: 9
 
 As described in [this section](./how-to-test-a-contract.md#signer), a signer is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
 
-scryptTS provides the following signers by default:
+`scryptTS` provides the following signers by default:
 
-1. `TestWallet` : An implemention of a simple wallet which hold multiple private keys and have a feature of cachable in-memory utxo management. Only used when testing contracts.
-2. `SensiletSigner`: A signer powered by the popular bsv wallet [sensilet](https://sensilet.com/). Can be used in production environment.
+1. `TestWallet` : a simple wallet that can hold multiple private keys, with in-memory utxo management. Should only be used for testing.
+2. `SensiletSigner`: a signer powered by the popular smart contract wallet [Sensilet](https://sensilet.com/). Can be used in production.
 
 ## Implementation
 
 ### Base Class `Signer`
 
-scryptTS supports implementing your own signer by inheriting the abstract base class `Signer`.
+If you want to implement your own signer, you must inherit from the base class `Signer`.
 
 
 ```ts
@@ -161,15 +161,15 @@ export abstract class Signer {
 }
 ```
 
-We recommend implementing all `abstract` methods. For methods that are not `abstract`, usually the default implementation is sufficient.
+It is recommended that your signer implements all `abstract` methods. For non-`abstract` methods, the default implementation is usually sufficient.
 
 
 ### `SensiletSigner`
 
-Next, take the Sensilet wallet as an example to introduce how to implement `SensiletSigner`.
+Next, we use the Sensilet wallet as an example to show how to implement a`SensiletSigner`.
 
 
-1. In the `connect` method, usually only attempt to connect the provider and save it:
+1. In the `connect` method, you usually attempt to connect to a provider and save it:
 
 ```ts
 override async connect(provider: Provider): Promise<this> {
@@ -190,7 +190,7 @@ override async connect(provider: Provider): Promise<this> {
 }
 ```
 
-2. Returns the address to the default private key of the sensilet wallet in the `getDefaultAddress` method:
+2. Returns the address to the default private key of the wallet in `getDefaultAddress`:
 
 ```ts
 /**
@@ -221,7 +221,7 @@ override async getDefaultAddress(): Promise<bsv.Address> {
 }
 ```
 
-3. Returns the public key to the default private key of the sensilet wallet in the `getDefaultPubKey` method:
+3. Returns the public key to the default private key of the wallet in `getDefaultPubKey`:
 
 ```ts
 override async getDefaultPubKey(): Promise<PublicKey> {
@@ -231,7 +231,7 @@ override async getDefaultPubKey(): Promise<PublicKey> {
 }
 ```
 
-4. Since sensilet is a single-address wallet, we simply ignore the `getPubKey` method:
+4. Since Sensilet is a single-address wallet, we simply ignore the `getPubKey` method:
 
 ```ts
 override async getPubKey(address: AddressOption): Promise<PublicKey> {
@@ -239,9 +239,9 @@ override async getPubKey(address: AddressOption): Promise<PublicKey> {
 }
 ```
 
-5. Both `signTransaction` and `signRawTransaction` are methods to sign the transaction, but the parameters are different. Normally `signRawTransaction` does the parameter conversion and delegates the implementation of the signature to `signTransaction`.
+5. Both `signTransaction` and `signRawTransaction` sign the transaction, but their parameters are different. `signRawTransaction` converts the parameters and delegates the implementation of the signing to `signTransaction`.
 
-The following are the parameter types related to these two functions:
+The following are types used in these two functions:
 
 
 ```ts
@@ -404,7 +404,7 @@ override async signMessage(message: string, address?: AddressOption): Promise<st
 }
 ```
 
-So far, we have implemented all abstract methods. The remaining non-abstract methods can adopt the default implementation, that is, delegate to the connected *provider*. But if you have a better implementation, you can override them. For example, we can use the [sensilet api `getBsvBalance`](https://doc.sensilet.com/guide/sensilet-api.html#getbsvbalance) to implement the method of obtaining the balance.
+So far, we have implemented all abstract methods. The remaining non-abstract methods can reuse the default implementation, that is, delegating to the connected [provider](./how-to-test-a-contract.md#provider). If you have a customized implementation, you can override them. For example, we can use the [Sensilet api `getBsvBalance`](https://doc.sensilet.com/guide/sensilet-api.html#getbsvbalance) to obtain the balance of an address.
 
 ```ts
 override getBalance(address?: AddressOption): Promise<{ confirmed: number, unconfirmed: number }> {
@@ -415,11 +415,11 @@ override getBalance(address?: AddressOption): Promise<{ confirmed: number, uncon
 }
 ```
 
-Now we have implemented `SensiletSigner`. The full code is [here](https://github.com/sCrypt-Inc/scrypt-ts/blob/35d31276f5e39955dc8266fb80f6137a11b82c45/src/bsv/signers/sensilet-signer.ts#L44).
+Now we have implemented `SensiletSigner`. The full code is [here](https://gist.github.com/xhliu/73104028deaf95c8b6665bf96496fe11#file-sensiletsigner-ts-L44).
 
-## Connect your Signer
+## Use your signer
 
-Just connect your signer like any other signers:
+Just connect your signer to a smart contract instance like any other signers:
 
 ```ts
 // declare your signer
