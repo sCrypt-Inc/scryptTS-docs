@@ -22,9 +22,9 @@ According to the interactions above, this contract needs to store three properti
 - The highest bidder until now
 
 ```ts
-// The bidder's address.
+// The bidder's public key.
 @prop(true)
-bidder: PubKeyHash
+bidder: PubKey
 
 // The auctioneer's public key.
 @prop()
@@ -192,12 +192,7 @@ export class Auction extends SmartContract {
     // Close the auction if deadline is reached.
     @method()
     public close(sig: Sig) {
-        // Check if using block height.
-        if (this.auctionDeadline < Auction.LOCKTIME_BLOCK_HEIGHT_MARKER) {
-            // Enforce nLocktime field to also use block height.
-            assert(this.ctx.locktime < Auction.LOCKTIME_BLOCK_HEIGHT_MARKER)
-        }
-        assert(this.ctx.sequence < Auction.UINT_MAX, 'input sequence should less than UINT_MAX')
+        // Check deadline
         assert(this.ctx.locktime >= this.auctionDeadline, 'auction is not over yet')
 
         // Check signature of the auctioneer.

@@ -197,7 +197,7 @@ const size = demo.scriptSize
 
 ### `loadArtifact`
 
-Function `static loadArtifact(artifact: MergedArtifact)` loads the contract artifact file in order to rebuild a contract instance, it's usually called on the front end.
+Function `static loadArtifact(artifact: MergedArtifact)` loads the contract artifact file in order to rebuild a contract instance, it's usually called at the front end.
 
 ```ts
 import { TicTacToe } from './contracts/tictactoe';
@@ -205,7 +205,7 @@ var artifact = require('../artifacts/src/contracts/tictactoe.json');
 TicTacToe.loadArtifact(artifact);
 ```
 
-You may visit [here](https://learn.scrypt.io/en/courses/Build-a-Tic-tac-toe-Game-with-sCrypt-614c387bc0974f55df5af1e5/lessons/2/chapters/1) for more details about how to add a front end for the contract.
+You may visit [here](https://learn.scrypt.io/en/courses/Build-a-Tic-tac-toe-Game-with-sCrypt-614c387bc0974f55df5af1e5/lessons/2/chapters/1) for more details about how to add a front end to a contract.
 
 ### `checkSig`
 
