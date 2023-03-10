@@ -6,16 +6,16 @@ sidebar_position: 4
 
 ## Overview
 
-In this tutorial, we will go over how to build an Auction Contract on Bitcoin.
+In this tutorial, we will go over how to build an auction contract. It is open and transparent, where everyone can participate and the highest bidder wins when the bidding is over.
 
-For this contract, there are mainly two functions that need to be implemented:
+There are two ways to interact with the contract:
 
-- Bid: if a higher bid is found, the new bid is locked into the contract UTXO, the current highest bidder is updated, and the previous highest bidder is refunded.
-- Close auction: the man who starts the auction can close it and receive the Bitcoin after its deadline.
+1. Bid: if a higher bid is found, the current highest bidder is updated, and the previous highest bidder is refunded.
+2. Close: the auctioneer can close the auction after it expires and take the offer.
 
 ## Contract Properties
 
-According to the requirements above, this contract needs to record three properties in it:
+According to the interactions above, this contract needs to store three properties:
 
 - The auctioneer, who starts the auction
 - The deadline for the auction
@@ -37,7 +37,7 @@ readonly auctionDeadline: bigint
 
 ## Constructor
 
-Initialize all the `@prop` properties in the constructor, noting that we don't need to pass the `bidder` in parameters.
+Initialize all the `@prop` properties in the constructor. Note that we don't need to pass a `bidder` parameter.
 
 ```ts
 constructor(auctioneer: PubKey, auctionDeadline: bigint) {
@@ -49,34 +49,34 @@ constructor(auctioneer: PubKey, auctionDeadline: bigint) {
 }
 ```
 
-When deploying the contract, the auctioneer locked the `initialBid` into the contract UTXO, and at this time, the highest bidder would be himself.
+When deploying the contract, the auctioneer locked the minimal bid into the contract, and at this time, the highest bidder would be himself.
 
 ```ts
 const auction = new Auction(publicKeyAuctioneer, auctionDeadline)
-const deployTx = await auction.deploy(initialBid)
+const deployTx = await auction.deploy(minBid)
 ```
 
 ## Public Methods
 
 ### Bid
 
-In method `public bid(bidder: PubKeyHash, bid: bigint)`, we need to check if the bidder has a higher bid than the previous one. If so, then we update the highest bidder in the contract state and make a refund to pay the previous bid back to the previous bidder.
+In method `public bid(bidder: PubKeyHash, bid: bigint)`, we need to check if the bidder has a higher bid than the previous one. If so, we update the highest bidder in the contract state and refund the previous bidder.
 
-How could we know the previous highest bid? Read it from the value of contract UTXO.
+We can read the previous highest bid from the balance of the contract UTXO.
 
 ```ts
 const highestBid: bigint = this.ctx.utxo.value
 ```
 
-Then it's easy to require a higher bid.
+Then it's easy to demand a higher bid.
 
 ```ts
 assert(bid > highestBid, 'the auction bid is lower than the current highest bid')
 ```
 
-And what about the outputs?
+The spending/redeeming tx has these outputs.
 
-- Contract new state output, records the new bidder and locks the new bid into contract UTXO.
+- Contract's new state output: records the new bidder and locks the new bid into contract UTXO.
 
 ```ts
 // Log the previous highest bidder
@@ -88,14 +88,14 @@ this.bidder = bidder
 const auctionOutput: ByteString = this.buildStateOutput(bid)
 ```
 
-- The refund P2PKH output, pay the previous bid back to the previous bidder.
+- A refund P2PKH output: pay back the previous bidder.
 
 ```ts
 // Refund previous highest bidder.
 const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(highestBidder, highestBid)
 ```
 
-- The change P2PKH output, pay the transaction fee back.
+- An optional change P2PKH output.
 
 ```ts
 let outputs: ByteString = auctionOutput + refundOutput
@@ -105,7 +105,7 @@ if (this.changeAmount > 0) {
 }
 ```
 
-At last, we require the transaction to have these outputs.
+At last, we require the transaction to have these outputs using `ScriptContext`.
 
 ```ts
 assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
@@ -117,7 +117,7 @@ As `bid` is called continuously, the state of the contract is constantly updated
 
 Method `public close(sig: Sig)` is simple, we require:
 
-- It can only be called by the auctioneer, that's why we need to pass in the caller's signature
+- It can only be called by the auctioneer. That is why we need to pass in the caller's signature.
 
 ```ts
 // Check signature of the auctioneer.
@@ -130,18 +130,9 @@ assert(this.checkSig(sig, this.auctioneer), 'signature check failed')
 assert(this.ctx.locktime >= this.auctionDeadline, 'auction is not over yet')
 ```
 
-Pay attention to the [Locktime and Sequence](https://wiki.bitcoinsv.io/index.php/NLocktime_and_nSequence) interlock when dealing with the transaction lock time, we also need extra validations. 
-
-```ts
-// Check if `auctionDeadline` uses block height.
-if (this.auctionDeadline < Auction.LOCKTIME_BLOCK_HEIGHT_MARKER) {
-    // Enforce nLocktime field to also use block height.
-    assert(this.ctx.locktime < Auction.LOCKTIME_BLOCK_HEIGHT_MARKER)
-}
-assert(this.ctx.sequence < Auction.UINT_MAX, 'input sequence should less than UINT_MAX')
-```
-
-Please be also noted that we didn't assert any transaction outputs in this method, because the auctioneer can send the highest bid anywhere as wish, this is what we actually want.
+:::note
+We don't place any constraint on transaction outputs here, because the auctioneer can send the highest bid to any address he controls, which is what we actually want.
+:::
 
 ## Conclusion
 
