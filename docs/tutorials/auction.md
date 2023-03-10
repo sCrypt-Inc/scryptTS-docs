@@ -115,6 +115,33 @@ assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
 
 As `bid` is called continuously, the state of the contract is constantly updated. The highest bidder, and the highest bid as well, is recorded in the latest contract UTXO until the auctioneer closes the auction.
 
+```ts
+// Call this public method to bid with a higher offer.
+@method()
+public bid(bidder: PubKeyHash, bid: bigint) {
+    const highestBid: bigint = this.ctx.utxo.value
+    assert(bid > highestBid, 'the auction bid is lower than the current highest bid')
+
+    // Change the address of the highest bidder.
+    const highestBidder: PubKeyHash = this.bidder
+    this.bidder = bidder
+
+    // Auction continues with a higher bidder.
+    const auctionOutput: ByteString = this.buildStateOutput(bid)
+
+    // Refund previous highest bidder.
+    const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(highestBidder, highestBid)
+
+    let outputs: ByteString = auctionOutput + refundOutput
+    // Add change output.
+    if (this.changeAmount > 0) {
+        outputs += this.buildChangeOutput()
+    }
+
+    assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
+}
+```
+
 ### Close
 
 ![](https://lucid.app/publicSegments/view/0f40689c-9727-423e-81ed-0d5df338dece/image.png)
@@ -137,6 +164,42 @@ assert(this.ctx.locktime >= this.auctionDeadline, 'auction is not over yet')
 :::note
 We don't place any constraint on transaction outputs here, because the auctioneer can send the highest bid to any address he controls, which is what we actually want.
 :::
+
+```ts
+// Close the auction if deadline is reached.
+@method()
+public close(sig: Sig) {
+    // Check deadline
+    assert(this.ctx.locktime >= this.auctionDeadline, 'auction is not over yet')
+    // Check signature of the auctioneer.
+    assert(this.checkSig(sig, this.auctioneer), 'signature check failed')
+}
+```
+
+## Customize tx builder for `bid`
+
+Using [default tx builder](../how-to-customize-a-contract-tx.md#default-1) cannot meet our demand when calling `bid`, since the second output - the refund P2PKH output - is not a new contract instance.
+
+In Function `static bidTxBuilder(options: BuildMethodCallTxOptions<Auction>, bidder: PubKeyHash, bid: bigint): Promise<BuildMethodCallTxResult<Auction>>`, we add all three outputs as designed.
+
+```ts
+const unsignedTx: Transaction = new Transaction()
+    // add contract input
+    .addInput(current.buildContractInput(options.fromUTXO))
+    // add p2pkh inputs
+    .from(options.utxos)
+    // build next instance output
+    .addOutput(new Transaction.Output({script: nextInstance.lockingScript, satoshis: Number(bid),}))
+    // build refund output
+    .addOutput(
+        new Transaction.Output({
+            script: Script.fromHex(Utils.buildPublicKeyHashScript(current.bidder)),
+            satoshis: options.fromUTXO?.satoshis ?? current.from.tx.outputs[current.from.outputIndex].satoshis,
+        })
+    )
+    // build change output
+    .change(options.changeAddress)
+```
 
 ## Conclusion
 
