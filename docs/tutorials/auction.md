@@ -205,16 +205,16 @@ const unsignedTx: Transaction = new Transaction()
 
 Congratulations, you have completed the `Auction` contract!
 
-The [final complete code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/46aaccbf5e/src/contracts/auction.ts) is as follows:
+The [final complete code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/2e9c8c07a6/src/contracts/auction.ts) is as follows:
 
 ```ts
 export class Auction extends SmartContract {
     static readonly LOCKTIME_BLOCK_HEIGHT_MARKER = 500000000
     static readonly UINT_MAX = 0xffffffffn
 
-    // The bidder's address.
+    // The bidder's public key.
     @prop(true)
-    bidder: PubKeyHash
+    bidder: PubKey
 
     // The auctioneer's public key.
     @prop()
@@ -226,26 +226,26 @@ export class Auction extends SmartContract {
 
     constructor(auctioneer: PubKey, auctionDeadline: bigint) {
         super(...arguments)
-        this.bidder = hash160(auctioneer)
+        this.bidder = auctioneer
         this.auctioneer = auctioneer
         this.auctionDeadline = auctionDeadline
     }
 
     // Call this public method to bid with a higher offer.
     @method()
-    public bid(bidder: PubKeyHash, bid: bigint) {
+    public bid(bidder: PubKey, bid: bigint) {
         const highestBid: bigint = this.ctx.utxo.value
         assert(bid > highestBid, 'the auction bid is lower than the current highest bid')
 
         // Change the address of the highest bidder.
-        const highestBidder: PubKeyHash = this.bidder
+        const highestBidder: PubKey = this.bidder
         this.bidder = bidder
 
         // Auction continues with a higher bidder.
         const auctionOutput: ByteString = this.buildStateOutput(bid)
 
         // Refund previous highest bidder.
-        const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(highestBidder, highestBid)
+        const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(hash160(highestBidder), highestBid)
         let outputs: ByteString = auctionOutput + refundOutput
 
         // Add change output.
@@ -267,7 +267,7 @@ export class Auction extends SmartContract {
     }
 
     // User defined transaction builder for calling function `bid`
-    static bidTxBuilder(options: BuildMethodCallTxOptions<Auction>, bidder: PubKeyHash, bid: bigint): Promise<BuildMethodCallTxResult<Auction>> {
+    static bidTxBuilder(options: BuildMethodCallTxOptions<Auction>, bidder: PubKey, bid: bigint): Promise<BuildMethodCallTxResult<Auction>> {
         const current = options.current
 
         const nextInstance = current.next()
@@ -283,7 +283,7 @@ export class Auction extends SmartContract {
             // build refund output
             .addOutput(
                 new Transaction.Output({
-                    script: Script.fromHex(Utils.buildPublicKeyHashScript(current.bidder)),
+                    script: Script.fromHex(Utils.buildPublicKeyHashScript(hash160(current.bidder))),
                     satoshis: options.fromUTXO?.satoshis ?? current.from.tx.outputs[current.from.outputIndex].satoshis,
                 })
             )
