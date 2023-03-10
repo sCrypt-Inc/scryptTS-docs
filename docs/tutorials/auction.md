@@ -76,6 +76,8 @@ assert(bid > highestBid, 'the auction bid is lower than the current highest bid'
 
 The spending/redeeming tx has these outputs.
 
+![](https://lucid.app/publicSegments/view/bfe65136-2acd-4a46-ba63-a6ec4b6d7d4a/image.png)
+
 - Contract's new state output: records the new bidder and locks the new bid into contract UTXO.
 
 ```ts
@@ -114,6 +116,8 @@ assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
 As `bid` is called continuously, the state of the contract is constantly updated. The highest bidder, and the highest bid as well, is recorded in the latest contract UTXO until the auctioneer closes the auction.
 
 ### Close
+
+![](https://lucid.app/publicSegments/view/0f40689c-9727-423e-81ed-0d5df338dece/image.png)
 
 Method `public close(sig: Sig)` is simple, we require:
 
