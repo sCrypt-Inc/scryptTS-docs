@@ -17,11 +17,17 @@ Before deploy and call a contract, you need to:
 npm run genprivkey
 ```
 
-The command will generate a private key which will be stored in the `.env` file in our project root directory. Keep this key secret as whoever has access to it can take the funds! It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. 
+The command will generate a private key and store it in a `.env` file in our project's root directory. It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. 
 
-2. Get a private key with some test coins on the testnet. You could use our [facuet](https://scrypt.io/#faucet) to receive test coins.
+2. Fund the private key's address with some testnet coins. You could use this [facuet](https://scrypt.io/#faucet) to receive test coins.
 
 ![facuet](../static/img/faucet.gif)
+
+### Use the Sensilet Wallet
+
+Alternatively, if you have already installed [Sensilet](https://sensilet.com/), you can extract and use its private key on testnet as follows.
+
+![](../static/img/extract-sensilet-private-key.gif)
 
 ## Introduction
 
