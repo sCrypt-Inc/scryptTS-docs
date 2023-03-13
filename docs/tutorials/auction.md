@@ -205,7 +205,7 @@ const unsignedTx: Transaction = new Transaction()
 
 Congratulations, you have completed the `Auction` contract!
 
-The [final complete code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/2e9c8c07a6/src/contracts/auction.ts) is as follows:
+The [final complete code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/auction.ts) is as follows:
 
 ```ts
 export class Auction extends SmartContract {
