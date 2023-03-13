@@ -43,7 +43,7 @@ Initialize all the `@prop` properties in the constructor. Note that we don't nee
 constructor(auctioneer: PubKey, auctionDeadline: bigint) {
     super(...arguments)
     // the initial bidder is the auctioneer himeself
-    this.bidder = hash160(auctioneer)
+    this.bidder = auctioneer
     this.auctioneer = auctioneer
     this.auctionDeadline = auctionDeadline
 }
@@ -82,8 +82,8 @@ The spending/redeeming tx has these outputs.
 
 ```ts
 // Log the previous highest bidder
-const highestBidder: PubKeyHash = this.bidder
-// Change the address of the highest bidder.
+const highestBidder: PubKey = this.bidder
+// Change the public key of the highest bidder.
 this.bidder = bidder
 
 // Auction continues with a higher bidder.
@@ -122,8 +122,8 @@ public bid(bidder: PubKeyHash, bid: bigint) {
     const highestBid: bigint = this.ctx.utxo.value
     assert(bid > highestBid, 'the auction bid is lower than the current highest bid')
 
-    // Change the address of the highest bidder.
-    const highestBidder: PubKeyHash = this.bidder
+    // Change the public key of the highest bidder.
+    const highestBidder: PubKey = this.bidder
     this.bidder = bidder
 
     // Auction continues with a higher bidder.
@@ -237,7 +237,7 @@ export class Auction extends SmartContract {
         const highestBid: bigint = this.ctx.utxo.value
         assert(bid > highestBid, 'the auction bid is lower than the current highest bid')
 
-        // Change the address of the highest bidder.
+        // Change the public key of the highest bidder.
         const highestBidder: PubKey = this.bidder
         this.bidder = bidder
 
