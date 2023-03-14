@@ -6,7 +6,7 @@ sidebar_position: 8
 
 This section will introduce how to connect the smart contract to a frontend project and interact with it.
 
-We use [React](https://reactjs.org/) as our frontend framework. We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the frontend project.
+We use [React](https://reactjs.org/) as our frontend framework as an example. We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the frontend project.
 
 :::note
 You can use any frontend framework to build the dApp.
@@ -14,32 +14,29 @@ You can use any frontend framework to build the dApp.
 
 ## Setup
 
-### Scaffold
+### React
 
-It's free to run the following command to create a React app from the very beginning.
+Run the following command to create a React project.
 
 ```bash
-npx create-react-app [your-project] --template typescript
+npx create-react-app [your-project-name] --template typescript
 ```
 
 ![](../static/img/react-scaffold.png)
 
-Later, we will do most work under the `src` directory.
+We will do most work under the `src` directory.
 
-### Install scryptTS SDK
+### `scryptTS`
 
-The sCrypt SDK - [scryptTS](https://scrypt.io/scrypt-ts) - enables you to easily compile, test, deploy, and call contracts.
-
-Step into the project directory, then use the `scrypt-cli` command line tool to install the SDK.
+Run the `init` command of the [CLI](./installation.md#the-scrypt-cli-tool) to turn it into a `scryptTS` project.
 
 ```bash
-cd [your-project]
+cd [your-project-name]
 npx scrypt-cli init
 ```
 
-This `init` command will also install the dependencies and initialize the contract development environment.
-
-After this initialization, we are ready to go!
+This installs all the dependencies and configs the contract development environment.
+After this, we are ready to go!
 
 ## Load Contract
 
