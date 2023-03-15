@@ -105,7 +105,11 @@ const userAddress = await signer.getDefaultAddress();
 
 ## Interact with Contract
 
-We have obtained the contract class by loading the contract artifact file before. Now you can [deploy](./how-to-deploy-and-call-a-contract.md#contract-deployment) and [call](./how-to-deploy-and-call-a-contract.md#contract-call) the contract to enable your user to interact with it.
+We have obtained the contract class by loading its artifact file before. In order to enable your user to interact with the contract, you only need:
+
+- Create contract instance.
+- Connect the contract instance with a [signer](./how-to-deploy-and-call-a-contract.md#prepare-a-signer-and-provider).
+- [Deploy](./how-to-deploy-and-call-a-contract.md#contract-deployment) and [call](./how-to-deploy-and-call-a-contract.md#contract-call) the contract.
 
 ## Conclusion
 
