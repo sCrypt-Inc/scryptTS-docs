@@ -320,4 +320,4 @@ export class TicTacToe extends SmartContract {
 
 ```
 
-But no dApp is complete if users cannot interact with it. Go [here](https://learn.scrypt.io/en/courses/Build-a-Tic-tac-toe-Game-with-sCrypt-614c387bc0974f55df5af1e5) to see how to add a front end to it.
+But no dApp is complete if users cannot interact with it. Go [here](../how-to-integrate-a-frontend.md) to see how to add a front end to it.
