@@ -69,7 +69,7 @@ Let's create a file named `deploy.ts` in the root of the project, containing cod
 
 ```ts
 import { Helloworld } from './src/contracts/helloworld'
-import { getDefaultSigner, inputSatoshis } from './tests/testnet/utils/txHelper'
+import { getDefaultSigner } from './tests/testnet/utils/txHelper'
 import { toByteString, sha256 } from 'scrypt-ts'
 
 (async () => {
@@ -82,8 +82,8 @@ import { toByteString, sha256 } from 'scrypt-ts'
     // connect to a signer
     await instance.connect(getDefaultSigner())
 
-    // contract deployment
-    const deployTx = await instance.deploy(inputSatoshis)
+    // deploy the contract and lock up 42 satoshis in it
+    const deployTx = await instance.deploy(42)
     console.log('Helloworld contract deployed: ', deployTx.id)
 
     // contract call
