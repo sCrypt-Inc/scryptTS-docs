@@ -1,26 +1,14 @@
-on:
-  push:
-    tags:
-    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-
-name: Publish Stable
+name: Deploy
+on: [push]
 
 jobs:
-  build:
-    name: Publish Stable
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare git
-        run: git config --global core.autocrlf false
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@master
+      - uses: redkubes/docusaurus-deploy-action@v1
         with:
-          submodules: true
-      - name: Install Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - name: Install
-        run: npm i 
-      - name: Publish
-        run: USE_SSH=true npm run deploy
+          source-folder: docs
+          git-user: ${{ github.event.head_commit.author.username }}
+          git-password: ${{ secrets.GITHUB_TOKEN }}
+          deployment-branch: gh-pages
