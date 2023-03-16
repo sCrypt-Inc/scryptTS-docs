@@ -49,7 +49,7 @@ We'll take a look at how to generate the artifact by ourselves first.
 
 Before you start, you need to get the contract source files, as a frontend developer.
 
-Let's use the [HelloWorld contract](./tutorials/hello-world.md) as an example. Copy and paste `helloworld.ts` into the `src/contracts` directory.
+Let's use the [Helloworld contract](./tutorials/hello-world.md) as an example. Copy and paste `helloworld.ts` into the `src/contracts` directory.
 
 ![](../static/img/copy-contract-source.png)
 
@@ -70,9 +70,9 @@ After the compilation, you will get an JSON artifact file at `artifacts/src/cont
 Now with the contract artifact file, you directly load it in the `index.tsx` file.
 
 ```ts
-import { HelloWorld } from './contracts/helloworld';
+import { Helloworld } from './contracts/helloworld';
 var artifact = require('../artifacts/src/contracts/helloworld.json');
-HelloWorld.loadArtifact(artifact);
+Helloworld.loadArtifact(artifact);
 ```
 
 Now you can create an instance from the contract class as before.
@@ -82,12 +82,12 @@ const instance = new Helloworld(sha256(message))
 ```
 
 :::info
-You cannot simply call `HelloWorld.compile()` at the front end, since it only works in NodeJS, not in browser.
+You cannot simply call `Helloworld.compile()` at the front end, since it only works in NodeJS, not in browser.
 :::
 
 ## Integrate Wallet
 
-Your will integrate [Sensilet](https://sensilet.com/), a MetaMask-like wallet, into the project.
+You will integrate [Sensilet](https://sensilet.com/), a MetaMask-like wallet, into the project.
 
 :::info
 You can refer to this [guide](./how-to-add-a-signer.md) to add support for other wallets.
