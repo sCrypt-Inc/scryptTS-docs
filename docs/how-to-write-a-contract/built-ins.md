@@ -369,16 +369,54 @@ override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddre
 
 ### `bindTxBuilder`
 
-Function `static bindTxBuilder(methodName: string, txBuilder: MethodCallTxBuilder<SmartContract>)` binds the customized tx builder `txBuilder` to a contract public `@method` identified by `methodName`.
+Function `bindTxBuilder(methodName: string, txBuilder: MethodCallTxBuilder<SmartContract>):void` binds the customized transaction builder `MethodCallTxBuilder`, which returns a `ContractTransation`, to a contract public `@method` identified by `methodName`.
 
 ```ts
-// bind a customized tx builder for the public method `MyContract.unlock`
-MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...args: any) => {
+
+/**
+ * A transaction builder.
+ * The default transaction builder only supports fixed-format call transactions. 
+ * Some complex contracts require a custom transaction builder to successfully call the contract.
+ */
+export interface MethodCallTxBuilder<T extends SmartContract> {
+  (current: T, options: MethodCallOptions<T>, ...args: any): Promise<ContractTransaction>
+}
+
+
+// bind a customized tx builder for the public method `instance.unlock()`
+instance.bindTxBuilder("unlock", (options: MethodCallOptions<T>, ...args: any) => {
   // ...
 })
 ```
 
 You may visit [here](../how-to-customize-a-contract-tx.md#customize-1) to see more details on how to customize tx builder.
+
+
+### `multiContractCall`
+
+When the `@method`s of multiple contracts is called in a transaction, the transaction builders for each contract collectively construct the `ContractTransation`. Function `static async multiContractCall(partialContractTransaction: ContractTransaction, signer: Signer): Promise<MultiContractTransaction>` signs and broadcasts the final transaction.
+
+```ts
+const partialContractTransaction1 = await counter1.methods.incrementOnChain(
+    {
+        multiContractCall: true,
+    } as MethodCallOptions<Counter>
+)
+
+const partialContractTransaction2 = await counter2.methods.incrementOnChain(
+    {
+        multiContractCall: true,
+        partialContractTransaction: partialContractTransaction1
+    } as MethodCallOptions<Counter>
+);
+
+const {tx: callTx, nexts} = await SmartContract.multiContractCall(partialContractTransaction2, signer)
+
+
+console.log('Counter contract counter1, counter2 called: ', callTx.id)
+```
+
+
 
 ## Standard Libraries
 

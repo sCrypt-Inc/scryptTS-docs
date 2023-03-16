@@ -77,9 +77,9 @@ You can customize a tx builder for a public `@method` of your contract by callin
 
 ```ts
 // bind a customized tx builder for the public method `MyContract.unlock`
-MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...args: any) => { 
+instance.bindTxBuilder("unlock", (options: MethodCallOptions<T>, ...args: any) => { 
 
-  let result: Promise<BuildMethodCallTxResult<MyContract>>;
+  let result: Promise<ContractTransaction<MyContract>>;
 
   // the contract instance
   const current = options.current;
@@ -88,8 +88,6 @@ MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...arg
   const unsignedTx: bsv.Transaction = new bsv.Transaction()
     // add contract input
     .addInput(current.buildContractInput(options.fromUTXO))
-    // add p2pkh inputs
-    .from(options.utxos)
     // add a p2pkh output
     .addOutput(new bsv.Transaction.Output({
         script: bsv.Script.fromHex(Utils.buildPublicKeyHashScript(args[0])),
@@ -99,7 +97,7 @@ MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...arg
     .change(options.changeAddress);
 
   result = {
-    unsignedTx,
+    tx: unsignedTx,
     atInputIndex: 0 // the contract input's index
   };
 
@@ -109,31 +107,11 @@ MyContract.bindTxBuilder("unlock", (options: BuildMethodCallTxOptions<T>, ...arg
 
 Note that the parameters of your customized tx builder consist of two parts:
 
-- `options` is of type `BuildMethodCallTxOptions`.
-
-```ts
-interface BuildMethodCallTxOptions<T> {
-  /** The previous contract UTXO to spend in the method calling tx */
-  fromUTXO?: UTXO;
-
-  /** The P2PKH change output address */
-  changeAddress?: AddressOption;
-
-  /** The current contract instance to spend in the input of method calling tx */
-  current: T;
-
-  /** The P2PKH UTXOs that can be added to the method calling tx to pay transaction fees */
-  utxos: UTXO[];
-
-  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
-  nexts?: StatefulNext<T>[];
-}
-```
-
+- `options` is of type [`MethodCallOptions`](./how-to-test-a-contract.md#methodcalloptions).
 - `...args: any` is an argument list the same as the bound pubic `@method`.
 
 ```ts
-Auction.bindTxBuilder('bid', Auction.buildTxForBid)
+instance.bindTxBuilder('bid', Auction.buildTxForBid)
 
 class Auction extends SmartContract {
   // ...
@@ -144,11 +122,11 @@ class Auction extends SmartContract {
   }
 
   static buildTxForBid(
-    options: BuildMethodCallTxOptions<Auction>,
+    options: MethodCallOptions<Auction>,
     // the following arguments are the same as the bound public `@method`
     bidder: PubKeyHash,
     bid: bigint
-  ): Promise<BuildMethodCallTxResult<Auction>> {
+  ): Promise<ContractTransaction> {
     // ...
   }
 }

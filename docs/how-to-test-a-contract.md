@@ -110,27 +110,40 @@ This function is designed to invoke the corresponding `@method` of the same name
 const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
 ```
 
+
+#### MethodCallOptions
+
 The `options` argument is of type `MethodCallOptions`:
 
 ```ts
-interface MethodCallOptions<T> {
-  /** The previous contract UTXO to spend in the method calling tx */
-  fromUTXO?: UTXO;
-
-  /** The P2PKH change output address */
-  changeAddress?: AddressOption;
-
-  /** The private key(s) correspond to these address(es) or public key(s) must be used to sign the contract input, and the callback function will receive the resulting signatures */
-  pubKeyOrAddrToSign?: PublicKeysOrAddressesOption;
-
+/**
+ * A option type to call a contract public `@method` function.
+ * Used to specify the behavior of signers and transaction builders. 
+ * For example, specifying a transaction builder to use a specific change address or specifying a signer to use a specific public key to sign.
+ */
+export interface MethodCallOptions<T> {
+  /**
+   * The private key(s) associated with these address(es) or public key(s)
+   * must be used to sign the contract input,
+   * and the callback function will receive the results of the signatures as an argument named `sigResponses`
+   * */
+  readonly pubKeyOrAddrToSign?: PublicKeysOrAddressesOption;
+  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
+  readonly next?: StatefulNext<T>[] | StatefulNext<T>,
   /** The `lockTime` of the method calling tx */
-  lockTime?: number;
-
+  readonly lockTime?: number;
   /** The `sequence` of the input spending previous contract UTXO in the method calling tx */
-  sequence?: number;
-
-  /** The subsequent contract instance(s) produced in the outputs of the method calling tx for a stateful contract */
-  next?: StatefulNextWithIdx<T> | StatefulNext<T>[];
+  readonly sequence?: number;
+  /** The previous contract UTXO to spend in the method calling tx */
+  readonly fromUTXO?: UTXO;
+  /** The P2PKH change output address */
+  readonly changeAddress?: AddressOption;
+  /** verify the input script before send transaction */
+  readonly verify?: boolean;
+  /** Whether to call multiple contracts at the same time in one transaction */
+  readonly multiContractCall?: true;
+  /** Pass the `ContractTransaction` of the previous call as an argument to the next call, only used if `multiContractCall = true`.  */
+  readonly partialContractTransaction?: ContractTransaction;
 }
 ```
 
