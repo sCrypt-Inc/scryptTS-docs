@@ -22,7 +22,7 @@ For contract deployment, the default tx builder creates a transaction with the f
 Numbers in [] represent index, starting from 0.
 
 ### Customize
-You can customize a contract's deployment tx builder by overriding its [buildDeployTransaction](https://scrypt.io/scrypt-ts/how-to-write-a-contract/built-ins#builddeploytransaction) method. An example is shown below.
+You can customize a contract's deployment tx builder by overriding its [buildDeployTransaction](./how-to-write-a-contract/built-ins#builddeploytransaction) method. An example is shown below.
 
 ```ts
 class DemoContract extends SmartContract {
