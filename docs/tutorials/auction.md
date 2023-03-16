@@ -180,14 +180,12 @@ public close(sig: Sig) {
 
 Using [default tx builder](../how-to-customize-a-contract-tx.md#default-1) cannot meet our demand when calling `bid`, since the second output - the refund P2PKH output - is not a new contract instance.
 
-In Function `static bidTxBuilder(options: BuildMethodCallTxOptions<Auction>, bidder: PubKeyHash, bid: bigint): Promise<BuildMethodCallTxResult<Auction>>`, we add all three outputs as designed.
+In Function `static bidTxBuilder(options: MethodCallOptions<Auction>, bidder: PubKeyHash, bid: bigint): Promise<ContractTransaction>`, we add all three outputs as designed.
 
 ```ts
 const unsignedTx: Transaction = new Transaction()
     // add contract input
     .addInput(current.buildContractInput(options.fromUTXO))
-    // add p2pkh inputs
-    .from(options.utxos)
     // build next instance output
     .addOutput(new Transaction.Output({script: nextInstance.lockingScript, satoshis: Number(bid),}))
     // build refund output
@@ -267,7 +265,7 @@ export class Auction extends SmartContract {
     }
 
     // User defined transaction builder for calling function `bid`
-    static bidTxBuilder(options: BuildMethodCallTxOptions<Auction>, bidder: PubKey, bid: bigint): Promise<BuildMethodCallTxResult<Auction>> {
+    static bidTxBuilder(options: MethodCallOptions<Auction>, bidder: PubKey, bid: bigint): Promise<ContractTransaction> {
         const current = options.current
 
         const nextInstance = current.next()
@@ -276,8 +274,6 @@ export class Auction extends SmartContract {
         const unsignedTx: Transaction = new Transaction()
             // add contract input
             .addInput(current.buildContractInput(options.fromUTXO))
-            // add p2pkh inputs
-            .from(options.utxos)
             // build next instance output
             .addOutput(new Transaction.Output({script: nextInstance.lockingScript, satoshis: Number(bid),}))
             // build refund output
@@ -291,7 +287,7 @@ export class Auction extends SmartContract {
             .change(options.changeAddress)
 
         return Promise.resolve({
-            unsignedTx,
+            tx: unsignedTx,
             atInputIndex: 0,
             nexts: [
                 {
