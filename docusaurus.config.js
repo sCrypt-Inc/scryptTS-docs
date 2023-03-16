@@ -9,7 +9,7 @@ const config = {
   title: 'sCrypt',
   tagline: 'a Typescript DSL to write smart contracts on Bitcoin Satoshi Vision.',
   url: 'https://scrypt.io',
-  baseUrl: '/scrypt-ts',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

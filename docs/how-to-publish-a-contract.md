@@ -17,7 +17,7 @@ A smart contract library is different from a smart contract in these ways:
 
 ## Write a Smart Contract Library
 
-In `scrypt-ts` we can create a smart contract library class like this:
+Using `sCrypt` we can create a smart contract library class like this:
 
 ```ts
 class MyLib extends SmartContractLib {
