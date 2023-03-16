@@ -2,24 +2,24 @@
 sidebar_position: 8
 ---
 
-# How to integrate Smart Contract With a Frontend
+# How to Integrate With a Frontend
 
-This section will introduce how to connect the smart contract to a frontend project and interact with it.
+This section will show how to integrate your smart contract to a frontend, so users can interact with it.
 
-We use [React](https://reactjs.org/) as our frontend framework as an example. We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the frontend project.
+We use [React](https://reactjs.org/) as our frontend framework as an example. We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the front end project.
 
 :::note
-You can use any frontend framework to build the dApp.
+You can use frontend frameworks other than React.
 :::
 
 ## Setup
 
 ### React
 
-Run the following command to create a React project.
+Run the following command to create a React project, named `helloworld`.
 
 ```bash
-npx create-react-app [your-project-name] --template typescript
+npx create-react-app helloworld --template typescript
 ```
 
 ![](../static/img/react-scaffold.png)
@@ -31,7 +31,7 @@ We will do most work under the `src` directory.
 Run the `init` command of the [CLI](./installation.md#the-scrypt-cli-tool) to turn it into a `scryptTS` project.
 
 ```bash
-cd [your-project-name]
+cd helloworld
 npx scrypt-cli init
 ```
 
@@ -40,21 +40,20 @@ After this, we are ready to go!
 
 ## Load Contract
 
-Before interacting with the contract in the front end, we need to load the contract class first. 
+Before interacting with a smart contract at the front end, we need to load the contract class in two steps.
 
-When a contract source file is compiled, it will deliver a JSON file, we call it the contract artifact.
-
-Generally, as a frontend developer, you will get this contract artifact from your backend partner or contract developer, then load it in the front end, and that's all.
 
 We'll take a look at how to generate the artifact by ourselves first.
 
-### Compile Contract
+### 1. Compile Contract
 
-When you have the contract source file, copy it into `src/contracts` directory.
+Before you start, you need to get the contract source files, as a frontend developer.
+
+Let's use the [HelloWorld contract](./tutorials/hello-world.md) as an example. Copy and paste `helloworld.ts` into the `src/contracts` directory.
 
 ![](../static/img/copy-contract-source.png)
 
-Then run the following command to compile the contract.
+Run the following command to compile the contract.
 
 ```bash
 npx scrypt-cli compile
@@ -62,32 +61,42 @@ npx scrypt-cli compile
 
 ![](../static/img/scrypt-cli-compile.png)
 
-After the compilation, you will get the artifact in `artifacts/src/contract` directory.
+After the compilation, you will get an JSON artifact file at `artifacts/src/contracts/helloworld.json`.
 
 ![](../static/img/contract-artifacts.png)
 
-### Load Artifact
+### 2. Load Artifact
 
-Now with the contract artifact file, we directly load it in the `index.tsx` file.
+Now with the contract artifact file, you directly load it in the `index.tsx` file.
 
 ```ts
-import { HelloWorld } from './contracts/helloWorld';
-var artifact = require('../artifacts/src/contracts/helloWorld.json');
+import { HelloWorld } from './contracts/helloworld';
+var artifact = require('../artifacts/src/contracts/helloworld.json');
 HelloWorld.loadArtifact(artifact);
 ```
 
+Now you can create an instance from the contract class as before.
+```ts
+const message = toByteString('hello world', true)
+const instance = new Helloworld(sha256(message))
+```
+
+:::info
+You cannot simply call `HelloWorld.compile()` at the front end, since it only works in NodeJS, not in browser.
+:::
+
 ## Integrate Wallet
 
-We will integrate [Sensilet](https://sensilet.com/), a MetaMask-like wallet, into our project.
+Your will integrate [Sensilet](https://sensilet.com/), a MetaMask-like wallet, into the project.
 
 :::info
 You can refer to this [guide](./how-to-add-a-signer.md) to add support for other wallets.
 :::
 
-To request user's authentication, you can use the `requestAuth` method. 
+To request access to the wallet, you can use its `requestAuth` method. 
 
 ```ts
-const provider = new WhatsonchainProvider(bsv.Networks.testnet);
+const provider = new DefaultProvider(bsv.Networks.testnet);
 const signer = new SensiletSigner(provider);
 
 // request authentication
@@ -103,16 +112,11 @@ const userAddress = await signer.getDefaultAddress();
 // ...
 ```
 
-## Interact with Contract
+Now you can connect the wallet to the contract instance as before.
+```ts
+await instance.connect(signer);
+```
 
-We have obtained the contract class by loading its artifact file before. In order to enable your user to interact with the contract, you only need:
+Afterwards, you can interact with the contract from the front end by [calling its method](./how-to-deploy-and-call-a-contract.md#contract-call) as usual.
 
-- Create contract instance.
-- Connect the contract instance with a [signer](./how-to-deploy-and-call-a-contract.md#prepare-a-signer-and-provider).
-- [Deploy](./how-to-deploy-and-call-a-contract.md#contract-deployment) and [call](./how-to-deploy-and-call-a-contract.md#contract-call) the contract.
-
-## Conclusion
-
-Great, you made it to the end of this last part! Now you're fully equipped to apply the skills from this guide to build out your own custom dApp project!
-
-Go [here](https://learn.scrypt.io/en/courses/Build-a-Tic-tac-toe-Game-with-sCrypt-614c387bc0974f55df5af1e5) to discover how to build a Tic-Tac-Toe game on Bitcoin.
+Go [here](https://learn.scrypt.io/en/courses/Build-a-Tic-tac-toe-Game-with-sCrypt-614c387bc0974f55df5af1e5) to see a full example on how to build a Tic-Tac-Toe game on chain.
