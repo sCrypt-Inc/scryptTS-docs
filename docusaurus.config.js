@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'scryptTS',
+  title: 'sCrypt',
   tagline: 'a Typescript DSL to write smart contracts on Bitcoin Satoshi Vision.',
   url: 'https://scrypt.io',
   baseUrl: '/scrypt-ts',
@@ -51,7 +51,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'scryptTS',
+        title: 'sCrypt',
         logo: {
           alt: 'scrypt Logo',
           src: 'img/logo.svg',

@@ -35,7 +35,7 @@ Alternatively, if you have already installed [Sensilet](https://sensilet.com/), 
 After you've finished writing a contract, you can deploy and call it. But first, you should learn how the a smart contract interacts with the blockchain.
 
 
-As explained in the [Overview section](./overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in details.
+As explained in the [Overview section](./overview.md), an `sCrypt` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in details.
 
 
 ### Tx Builders
