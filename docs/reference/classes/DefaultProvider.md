@@ -1,84 +1,90 @@
-[scrypt-ts](../README.md) / Provider
+[scrypt-ts](../README.md) / DefaultProvider
 
-# Class: Provider
+# Class: DefaultProvider
 
-A Provider is an abstraction of non-account-based operations on a blockchain and is generally not directly involved in signing transaction or data.
+The default provider is the safest, easiest way to begin developing on Bitcon,
+and it is also robust enough for use in production.
 
 ## Hierarchy
 
-- `EventEmitter`
+- [`Provider`](Provider.md)
 
-  ↳ **`Provider`**
-
-  ↳↳ [`WhatsonchainProvider`](WhatsonchainProvider.md)
-
-  ↳↳ [`DefaultProvider`](DefaultProvider.md)
-
-  ↳↳ [`DummyProvider`](DummyProvider.md)
+  ↳ **`DefaultProvider`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Provider.md#constructor)
+- [constructor](DefaultProvider.md#constructor)
 
 ### Properties
 
-- [\_isProvider](Provider.md#_isprovider)
-- [captureRejectionSymbol](Provider.md#capturerejectionsymbol)
-- [captureRejections](Provider.md#capturerejections)
-- [defaultMaxListeners](Provider.md#defaultmaxlisteners)
-- [errorMonitor](Provider.md#errormonitor)
+- [\_isProvider](DefaultProvider.md#_isprovider)
+- [\_providers](DefaultProvider.md#_providers)
+- [captureRejectionSymbol](DefaultProvider.md#capturerejectionsymbol)
+- [captureRejections](DefaultProvider.md#capturerejections)
+- [defaultMaxListeners](DefaultProvider.md#defaultmaxlisteners)
+- [errorMonitor](DefaultProvider.md#errormonitor)
+
+### Accessors
+
+- [bestProvider](DefaultProvider.md#bestprovider)
 
 ### Methods
 
-- [addListener](Provider.md#addlistener)
-- [connect](Provider.md#connect)
-- [emit](Provider.md#emit)
-- [eventNames](Provider.md#eventnames)
-- [getBalance](Provider.md#getbalance)
-- [getContractUTXOs](Provider.md#getcontractutxos)
-- [getEstimateFee](Provider.md#getestimatefee)
-- [getFeePerKb](Provider.md#getfeeperkb)
-- [getMaxListeners](Provider.md#getmaxlisteners)
-- [getNetwork](Provider.md#getnetwork)
-- [getTransaction](Provider.md#gettransaction)
-- [isConnected](Provider.md#isconnected)
-- [listUnspent](Provider.md#listunspent)
-- [listenerCount](Provider.md#listenercount)
-- [listeners](Provider.md#listeners)
-- [off](Provider.md#off)
-- [on](Provider.md#on)
-- [once](Provider.md#once)
-- [prependListener](Provider.md#prependlistener)
-- [prependOnceListener](Provider.md#prependoncelistener)
-- [rawListeners](Provider.md#rawlisteners)
-- [removeAllListeners](Provider.md#removealllisteners)
-- [removeListener](Provider.md#removelistener)
-- [sendRawTransaction](Provider.md#sendrawtransaction)
-- [sendTransaction](Provider.md#sendtransaction)
-- [setMaxListeners](Provider.md#setmaxlisteners)
-- [updateNetwork](Provider.md#updatenetwork)
-- [getEventListeners](Provider.md#geteventlisteners)
-- [isProvider](Provider.md#isprovider)
-- [listenerCount](Provider.md#listenercount-1)
-- [on](Provider.md#on-1)
-- [once](Provider.md#once-1)
-- [setMaxListeners](Provider.md#setmaxlisteners-1)
+- [addListener](DefaultProvider.md#addlistener)
+- [connect](DefaultProvider.md#connect)
+- [emit](DefaultProvider.md#emit)
+- [eventNames](DefaultProvider.md#eventnames)
+- [getBalance](DefaultProvider.md#getbalance)
+- [getContractUTXOs](DefaultProvider.md#getcontractutxos)
+- [getEstimateFee](DefaultProvider.md#getestimatefee)
+- [getFeePerKb](DefaultProvider.md#getfeeperkb)
+- [getMaxListeners](DefaultProvider.md#getmaxlisteners)
+- [getNetwork](DefaultProvider.md#getnetwork)
+- [getTransaction](DefaultProvider.md#gettransaction)
+- [isConnected](DefaultProvider.md#isconnected)
+- [listUnspent](DefaultProvider.md#listunspent)
+- [listenerCount](DefaultProvider.md#listenercount)
+- [listeners](DefaultProvider.md#listeners)
+- [off](DefaultProvider.md#off)
+- [on](DefaultProvider.md#on)
+- [once](DefaultProvider.md#once)
+- [prependListener](DefaultProvider.md#prependlistener)
+- [prependOnceListener](DefaultProvider.md#prependoncelistener)
+- [rawListeners](DefaultProvider.md#rawlisteners)
+- [removeAllListeners](DefaultProvider.md#removealllisteners)
+- [removeListener](DefaultProvider.md#removelistener)
+- [sendRawTransaction](DefaultProvider.md#sendrawtransaction)
+- [sendTransaction](DefaultProvider.md#sendtransaction)
+- [setMaxListeners](DefaultProvider.md#setmaxlisteners)
+- [updateNetwork](DefaultProvider.md#updatenetwork)
+- [getEventListeners](DefaultProvider.md#geteventlisteners)
+- [isProvider](DefaultProvider.md#isprovider)
+- [listenerCount](DefaultProvider.md#listenercount-1)
+- [on](DefaultProvider.md#on-1)
+- [once](DefaultProvider.md#once-1)
+- [setMaxListeners](DefaultProvider.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new Provider**()
+• **new DefaultProvider**(`options?`)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `options?` | `DefaultProviderOption` |
 
 #### Overrides
 
-EventEmitter.constructor
+[Provider](Provider.md).[constructor](Provider.md#constructor)
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:40
+dist/bsv/providers/default-provider.d.ts:18
 
 ## Properties
 
@@ -86,9 +92,23 @@ dist/bsv/abstract-provider.d.ts:40
 
 • `Readonly` **\_isProvider**: `boolean`
 
+#### Inherited from
+
+[Provider](Provider.md).[_isProvider](Provider.md#_isprovider)
+
 #### Defined in
 
 dist/bsv/abstract-provider.d.ts:111
+
+___
+
+### \_providers
+
+• `Private` **\_providers**: `any`
+
+#### Defined in
+
+dist/bsv/providers/default-provider.d.ts:17
 
 ___
 
@@ -98,7 +118,7 @@ ___
 
 #### Inherited from
 
-EventEmitter.captureRejectionSymbol
+[Provider](Provider.md).[captureRejectionSymbol](Provider.md#capturerejectionsymbol)
 
 #### Defined in
 
@@ -114,7 +134,7 @@ Sets or gets the default captureRejection value for all emitters.
 
 #### Inherited from
 
-EventEmitter.captureRejections
+[Provider](Provider.md).[captureRejections](Provider.md#capturerejections)
 
 #### Defined in
 
@@ -128,7 +148,7 @@ ___
 
 #### Inherited from
 
-EventEmitter.defaultMaxListeners
+[Provider](Provider.md).[defaultMaxListeners](Provider.md#defaultmaxlisteners)
 
 #### Defined in
 
@@ -150,17 +170,31 @@ regular `'error'` listener is installed.
 
 #### Inherited from
 
-EventEmitter.errorMonitor
+[Provider](Provider.md).[errorMonitor](Provider.md#errormonitor)
 
 #### Defined in
 
 node_modules/@types/node/ts4.8/events.d.ts:327
 
+## Accessors
+
+### bestProvider
+
+• `get` **bestProvider**(): [`Provider`](Provider.md)
+
+#### Returns
+
+[`Provider`](Provider.md)
+
+#### Defined in
+
+dist/bsv/providers/default-provider.d.ts:19
+
 ## Methods
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+▸ **addListener**(`eventName`, `listener`): [`DefaultProvider`](DefaultProvider.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -177,11 +211,11 @@ v0.1.26
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.addListener
+[Provider](Provider.md).[addListener](Provider.md#addlistener)
 
 #### Defined in
 
@@ -191,19 +225,23 @@ ___
 
 ### connect
 
-▸ `Abstract` **connect**(): `Promise`<[`Provider`](Provider.md)\>
+▸ **connect**(): `Promise`<[`DefaultProvider`](DefaultProvider.md)\>
 
 Implement the connection provider, for example, verify the api key during the connection process.
 
 #### Returns
 
-`Promise`<[`Provider`](Provider.md)\>
+`Promise`<[`DefaultProvider`](DefaultProvider.md)\>
 
 a connected provider. Throw an exception if the connection fails.
 
+#### Overrides
+
+[Provider](Provider.md).[connect](Provider.md#connect)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:49
+dist/bsv/providers/default-provider.d.ts:21
 
 ___
 
@@ -266,7 +304,7 @@ v0.1.26
 
 #### Inherited from
 
-EventEmitter.emit
+[Provider](Provider.md).[emit](Provider.md#emit)
 
 #### Defined in
 
@@ -304,7 +342,7 @@ v6.0.0
 
 #### Inherited from
 
-EventEmitter.eventNames
+[Provider](Provider.md).[eventNames](Provider.md#eventnames)
 
 #### Defined in
 
@@ -314,7 +352,7 @@ ___
 
 ### getBalance
 
-▸ `Abstract` **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+▸ **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
 Get the balance of BSVs in satoshis for an address.
 
@@ -330,15 +368,19 @@ Get the balance of BSVs in satoshis for an address.
 
 A promise which resolves to the address balance status.
 
+#### Overrides
+
+[Provider](Provider.md).[getBalance](Provider.md#getbalance)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:100
+dist/bsv/providers/default-provider.d.ts:28
 
 ___
 
 ### getContractUTXOs
 
-▸ `Abstract` **getContractUTXOs**(`genesisTxHash`, `outputIndex`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **getContractUTXOs**(`genesisTxHash`, `outputIndex`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of UTXO for a certain contract instance.
 
@@ -355,9 +397,13 @@ Get a list of UTXO for a certain contract instance.
 
 A promise which resolves to a list of transaction UTXO.
 
+#### Overrides
+
+[Provider](Provider.md).[getContractUTXOs](Provider.md#getcontractutxos)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:110
+dist/bsv/providers/default-provider.d.ts:32
 
 ___
 
@@ -379,6 +425,10 @@ Get a best guess of the fee for a transaction.
 
 The estimated fee in satoshis.
 
+#### Inherited from
+
+[Provider](Provider.md).[getEstimateFee](Provider.md#getestimatefee)
+
 #### Defined in
 
 dist/bsv/abstract-provider.d.ts:68
@@ -387,7 +437,7 @@ ___
 
 ### getFeePerKb
 
-▸ `Abstract` **getFeePerKb**(): `Promise`<`number`\>
+▸ **getFeePerKb**(): `Promise`<`number`\>
 
 #### Returns
 
@@ -395,9 +445,13 @@ ___
 
 The fee rate for sending transactions through this provider.
 
+#### Overrides
+
+[Provider](Provider.md).[getFeePerKb](Provider.md#getfeeperkb)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:62
+dist/bsv/providers/default-provider.d.ts:24
 
 ___
 
@@ -406,7 +460,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](Provider.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](DefaultProvider.md#defaultmaxlisteners).
 
 **`Since`**
 
@@ -418,7 +472,7 @@ v1.0.0
 
 #### Inherited from
 
-EventEmitter.getMaxListeners
+[Provider](Provider.md).[getMaxListeners](Provider.md#getmaxlisteners)
 
 #### Defined in
 
@@ -428,7 +482,7 @@ ___
 
 ### getNetwork
 
-▸ `Abstract` **getNetwork**(): `Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
+▸ **getNetwork**(): `Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
 
 #### Returns
 
@@ -436,15 +490,19 @@ ___
 
 The network this provider is connected to.
 
+#### Overrides
+
+[Provider](Provider.md).[getNetwork](Provider.md#getnetwork)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:58
+dist/bsv/providers/default-provider.d.ts:23
 
 ___
 
 ### getTransaction
 
-▸ `Abstract` **getTransaction**(`txHash`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+▸ **getTransaction**(`txHash`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
 Get a transaction from the network.
 
@@ -460,15 +518,19 @@ Get a transaction from the network.
 
 The query result with the transaction information.
 
+#### Overrides
+
+[Provider](Provider.md).[getTransaction](Provider.md#gettransaction)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:87
+dist/bsv/providers/default-provider.d.ts:26
 
 ___
 
 ### isConnected
 
-▸ `Abstract` **isConnected**(): `boolean`
+▸ **isConnected**(): `boolean`
 
 check if provider is ready
 
@@ -476,15 +538,19 @@ check if provider is ready
 
 `boolean`
 
+#### Overrides
+
+[Provider](Provider.md).[isConnected](Provider.md#isconnected)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:44
+dist/bsv/providers/default-provider.d.ts:20
 
 ___
 
 ### listUnspent
 
-▸ `Abstract` **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of the P2PKH UTXOs.
 
@@ -501,9 +567,13 @@ Get a list of the P2PKH UTXOs.
 
 A promise which resolves to a list of UTXO for the query options.
 
+#### Overrides
+
+[Provider](Provider.md).[listUnspent](Provider.md#listunspent)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:94
+dist/bsv/providers/default-provider.d.ts:27
 
 ___
 
@@ -529,7 +599,7 @@ v3.2.0
 
 #### Inherited from
 
-EventEmitter.listenerCount
+[Provider](Provider.md).[listenerCount](Provider.md#listenercount)
 
 #### Defined in
 
@@ -567,7 +637,7 @@ v0.1.26
 
 #### Inherited from
 
-EventEmitter.listeners
+[Provider](Provider.md).[listeners](Provider.md#listeners)
 
 #### Defined in
 
@@ -577,7 +647,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`Provider`](Provider.md)
+▸ **off**(`eventName`, `listener`): [`DefaultProvider`](DefaultProvider.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -594,11 +664,11 @@ v10.0.0
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.off
+[Provider](Provider.md).[off](Provider.md#off)
 
 #### Defined in
 
@@ -608,7 +678,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`Provider`](Provider.md)
+▸ **on**(`eventName`, `listener`): [`DefaultProvider`](DefaultProvider.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -649,11 +719,11 @@ v0.1.101
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.on
+[Provider](Provider.md).[on](Provider.md#on)
 
 #### Defined in
 
@@ -663,7 +733,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`Provider`](Provider.md)
+▸ **once**(`eventName`, `listener`): [`DefaultProvider`](DefaultProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -702,11 +772,11 @@ v0.3.0
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.once
+[Provider](Provider.md).[once](Provider.md#once)
 
 #### Defined in
 
@@ -716,7 +786,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+▸ **prependListener**(`eventName`, `listener`): [`DefaultProvider`](DefaultProvider.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -744,11 +814,11 @@ v6.0.0
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.prependListener
+[Provider](Provider.md).[prependListener](Provider.md#prependlistener)
 
 #### Defined in
 
@@ -758,7 +828,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`DefaultProvider`](DefaultProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -784,11 +854,11 @@ v6.0.0
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.prependOnceListener
+[Provider](Provider.md).[prependOnceListener](Provider.md#prependoncelistener)
 
 #### Defined in
 
@@ -843,7 +913,7 @@ v9.4.0
 
 #### Inherited from
 
-EventEmitter.rawListeners
+[Provider](Provider.md).[rawListeners](Provider.md#rawlisteners)
 
 #### Defined in
 
@@ -853,7 +923,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`Provider`](Provider.md)
+▸ **removeAllListeners**(`event?`): [`DefaultProvider`](DefaultProvider.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -875,11 +945,11 @@ v0.1.26
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.removeAllListeners
+[Provider](Provider.md).[removeAllListeners](Provider.md#removealllisteners)
 
 #### Defined in
 
@@ -889,7 +959,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+▸ **removeListener**(`eventName`, `listener`): [`DefaultProvider`](DefaultProvider.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -981,11 +1051,11 @@ v0.1.26
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.removeListener
+[Provider](Provider.md).[removeListener](Provider.md#removelistener)
 
 #### Defined in
 
@@ -995,7 +1065,7 @@ ___
 
 ### sendRawTransaction
 
-▸ `Abstract` **sendRawTransaction**(`rawTxHex`): `Promise`<`string`\>
+▸ **sendRawTransaction**(`rawTxHex`): `Promise`<`string`\>
 
 Send a raw transaction hex string.
 
@@ -1011,9 +1081,13 @@ Send a raw transaction hex string.
 
 A promise which resolves to the hash of the transaction that has been sent.
 
+#### Overrides
+
+[Provider](Provider.md).[sendRawTransaction](Provider.md#sendrawtransaction)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:74
+dist/bsv/providers/default-provider.d.ts:25
 
 ___
 
@@ -1039,6 +1113,10 @@ If there is a problem with the `tx` object during serialization.
 
 A promise which resolves to the hash of the transaction that has been sent.
 
+#### Inherited from
+
+[Provider](Provider.md).[sendTransaction](Provider.md#sendtransaction)
+
 #### Defined in
 
 dist/bsv/abstract-provider.d.ts:81
@@ -1047,7 +1125,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`Provider`](Provider.md)
+▸ **setMaxListeners**(`n`): [`DefaultProvider`](DefaultProvider.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1068,11 +1146,11 @@ v0.3.5
 
 #### Returns
 
-[`Provider`](Provider.md)
+[`DefaultProvider`](DefaultProvider.md)
 
 #### Inherited from
 
-EventEmitter.setMaxListeners
+[Provider](Provider.md).[setMaxListeners](Provider.md#setmaxlisteners)
 
 #### Defined in
 
@@ -1082,7 +1160,7 @@ ___
 
 ### updateNetwork
 
-▸ `Abstract` **updateNetwork**(`newwork`): `Promise`<`boolean`\>
+▸ **updateNetwork**(`newwork`): `Promise`<`boolean`\>
 
 update provider newwork
 
@@ -1096,9 +1174,13 @@ update provider newwork
 
 `Promise`<`boolean`\>
 
+#### Overrides
+
+[Provider](Provider.md).[updateNetwork](Provider.md#updatenetwork)
+
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:54
+dist/bsv/providers/default-provider.d.ts:22
 
 ___
 
@@ -1148,7 +1230,7 @@ v15.2.0, v14.17.0
 
 #### Inherited from
 
-EventEmitter.getEventListeners
+[Provider](Provider.md).[getEventListeners](Provider.md#geteventlisteners)
 
 #### Defined in
 
@@ -1173,6 +1255,10 @@ Check if an object is a `Provider`
 value is Provider
 
 Returns `true` if and only if `object` is a Provider.
+
+#### Inherited from
+
+[Provider](Provider.md).[isProvider](Provider.md#isprovider)
 
 #### Defined in
 
@@ -1216,7 +1302,7 @@ Since v3.2.0 - Use `listenerCount` instead.
 
 #### Inherited from
 
-EventEmitter.listenerCount
+[Provider](Provider.md).[listenerCount](Provider.md#listenercount-1)
 
 #### Defined in
 
@@ -1302,7 +1388,7 @@ that iterates `eventName` events emitted by the `emitter`
 
 #### Inherited from
 
-EventEmitter.on
+[Provider](Provider.md).[on](Provider.md#on-1)
 
 #### Defined in
 
@@ -1412,7 +1498,7 @@ v11.13.0, v10.16.0
 
 #### Inherited from
 
-EventEmitter.once
+[Provider](Provider.md).[once](Provider.md#once-1)
 
 #### Defined in
 
@@ -1434,7 +1520,7 @@ node_modules/@types/node/ts4.8/events.d.ts:194
 
 #### Inherited from
 
-EventEmitter.once
+[Provider](Provider.md).[once](Provider.md#once-1)
 
 #### Defined in
 
@@ -1475,7 +1561,7 @@ v15.4.0
 
 #### Inherited from
 
-EventEmitter.setMaxListeners
+[Provider](Provider.md).[setMaxListeners](Provider.md#setmaxlisteners-1)
 
 #### Defined in
 

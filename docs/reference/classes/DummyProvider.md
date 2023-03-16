@@ -2,7 +2,7 @@
 
 # Class: DummyProvider
 
-A DummyProvider is build for test purpose only, it always return a dummy utxo for `listUnspent` request.
+A DummyProvider is build for test purpose only, it always returns a dummy utxo for `listUnspent` request.
 
 ## Hierarchy
 
@@ -72,7 +72,7 @@ A DummyProvider is build for test purpose only, it always return a dummy utxo fo
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L42)
+dist/bsv/abstract-provider.d.ts:40
 
 ## Properties
 
@@ -86,7 +86,7 @@ A DummyProvider is build for test purpose only, it always return a dummy utxo fo
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L140)
+dist/bsv/abstract-provider.d.ts:111
 
 ___
 
@@ -205,7 +205,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:14](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L14)
+dist/bsv/providers/dummy-provider.d.ts:10
 
 ___
 
@@ -324,7 +324,7 @@ Get the balance of BSVs in satoshis for an address.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) | The query address. |
+| `address` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
@@ -338,7 +338,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:41](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L41)
+dist/bsv/providers/dummy-provider.d.ts:17
 
 ___
 
@@ -367,7 +367,7 @@ A promise which resolves to a list of transaction UTXO.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:44](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L44)
+dist/bsv/providers/dummy-provider.d.ts:21
 
 ___
 
@@ -395,7 +395,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:79](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L79)
+dist/bsv/abstract-provider.d.ts:68
 
 ___
 
@@ -407,7 +407,7 @@ ___
 
 `Promise`<`number`\>
 
-The fee rate for sending transations through this provider.
+The fee rate for sending transactions through this provider.
 
 #### Overrides
 
@@ -415,7 +415,7 @@ The fee rate for sending transations through this provider.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:23](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L23)
+dist/bsv/providers/dummy-provider.d.ts:13
 
 ___
 
@@ -460,7 +460,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L20)
+dist/bsv/providers/dummy-provider.d.ts:12
 
 ___
 
@@ -488,7 +488,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:29](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L29)
+dist/bsv/providers/dummy-provider.d.ts:15
 
 ___
 
@@ -508,7 +508,7 @@ check if provider is ready
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:11](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L11)
+dist/bsv/providers/dummy-provider.d.ts:9
 
 ___
 
@@ -522,7 +522,7 @@ Get a list of the P2PKH UTXOs.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) | The address of the returned UTXOs belongs to. |
+| `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
 | `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
@@ -537,7 +537,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L32)
+dist/bsv/providers/dummy-provider.d.ts:16
 
 ___
 
@@ -1051,7 +1051,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:26](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L26)
+dist/bsv/providers/dummy-provider.d.ts:14
 
 ___
 
@@ -1083,7 +1083,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L101)
+dist/bsv/abstract-provider.d.ts:81
 
 ___
 
@@ -1144,7 +1144,7 @@ update provider newwork
 
 #### Defined in
 
-[src/bsv/providers/dummy-provider.ts:17](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/dummy-provider.ts#L17)
+dist/bsv/providers/dummy-provider.d.ts:11
 
 ___
 
@@ -1226,7 +1226,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:147](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L147)
+dist/bsv/abstract-provider.d.ts:117
 
 ___
 

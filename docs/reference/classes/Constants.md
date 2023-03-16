@@ -2,6 +2,8 @@
 
 # Class: Constants
 
+A library than contains some commonly used constant values
+
 ## Table of contents
 
 ### Constructors
@@ -29,9 +31,11 @@
 
 ▪ `Static` `Readonly` **InputSeqLen**: `bigint`
 
+length of `ByteString` to denote input sequence
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:820](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L820)
+dist/smart-contract/builtins/functions.d.ts:1144
 
 ___
 
@@ -39,9 +43,11 @@ ___
 
 ▪ `Static` `Readonly` **OutpointLen**: `bigint`
 
+length of `ByteString` to denote a outpoint
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:830](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L830)
+dist/smart-contract/builtins/functions.d.ts:1154
 
 ___
 
@@ -49,9 +55,11 @@ ___
 
 ▪ `Static` `Readonly` **OutputValueLen**: `bigint`
 
+length of `ByteString` to denote output value
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:822](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L822)
+dist/smart-contract/builtins/functions.d.ts:1146
 
 ___
 
@@ -59,9 +67,11 @@ ___
 
 ▪ `Static` `Readonly` **PubKeyHashLen**: `bigint`
 
+length of `ByteString` to denote a public key hash
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:826](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L826)
+dist/smart-contract/builtins/functions.d.ts:1150
 
 ___
 
@@ -69,9 +79,11 @@ ___
 
 ▪ `Static` `Readonly` **PubKeyLen**: `bigint`
 
+length of `ByteString` to denote a public key (compressed)
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:824](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L824)
+dist/smart-contract/builtins/functions.d.ts:1148
 
 ___
 
@@ -79,6 +91,8 @@ ___
 
 ▪ `Static` `Readonly` **TxIdLen**: `bigint`
 
+length of `ByteString` to denote a tx id
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:828](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L828)
+dist/smart-contract/builtins/functions.d.ts:1152

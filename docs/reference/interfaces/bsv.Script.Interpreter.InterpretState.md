@@ -20,7 +20,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:803
+node_modules/bsv/index.d.ts:814
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:802
+node_modules/bsv/index.d.ts:813
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:801
+node_modules/bsv/index.d.ts:812

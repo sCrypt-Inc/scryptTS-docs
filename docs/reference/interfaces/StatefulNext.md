@@ -2,6 +2,8 @@
 
 # Interface: StatefulNext<T\>
 
+Contains information about the new state of a set of stateful contracts, used to construct transactions in the transaction builder.
+
 ## Type parameters
 
 | Name |
@@ -20,11 +22,13 @@
 
 ### atOutputIndex
 
-• `Optional` **atOutputIndex**: `number`
+• **atOutputIndex**: `number`
+
+The index of the subsequent contract output in the method calling tx
 
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:7](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L7)
+dist/smart-contract/types/contract-call.d.ts:13
 
 ___
 
@@ -32,9 +36,11 @@ ___
 
 • **balance**: `number`
 
+Satoshis of the subsequent contract output in the method calling tx
+
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:6](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L6)
+dist/smart-contract/types/contract-call.d.ts:11
 
 ___
 
@@ -42,6 +48,8 @@ ___
 
 • **instance**: `T`
 
+The subsequent stateful contract instance
+
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:5](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L5)
+dist/smart-contract/types/contract-call.d.ts:9

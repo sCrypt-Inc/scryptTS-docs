@@ -2,7 +2,8 @@
 
 # Class: WhatsonchainProvider
 
-A Provider is an abstraction of non-account-based operations on a blockchain and is generally not directly involved in signing transaction or data.
+The WhatsonchainProvider is backed by [whatsonchain][https://whatsonchain.com](https://whatsonchain.com),
+which is the popular blockchain exxplorer for Bitcoin.
 
 ## Hierarchy
 
@@ -83,7 +84,7 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:13](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L13)
+dist/bsv/providers/whatsonchain-provider.d.ts:11
 
 ## Properties
 
@@ -97,17 +98,17 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L140)
+dist/bsv/abstract-provider.d.ts:111
 
 ___
 
 ### \_network
 
-• `Private` **\_network**: [`Network`](../interfaces/bsv.Networks.Network.md)
+• `Private` **\_network**: `any`
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:11](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L11)
+dist/bsv/providers/whatsonchain-provider.d.ts:10
 
 ___
 
@@ -187,7 +188,7 @@ node_modules/@types/node/ts4.8/events.d.ts:327
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L18)
+dist/bsv/providers/whatsonchain-provider.d.ts:12
 
 ## Methods
 
@@ -240,7 +241,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:28](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L28)
+dist/bsv/providers/whatsonchain-provider.d.ts:14
 
 ___
 
@@ -359,7 +360,7 @@ Get the balance of BSVs in satoshis for an address.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address?` | [`AddressOption`](../README.md#addressoption) | The query address. |
+| `address?` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
@@ -373,7 +374,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:85](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L85)
+dist/bsv/providers/whatsonchain-provider.d.ts:19
 
 ___
 
@@ -402,7 +403,7 @@ A promise which resolves to a list of transaction UTXO.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L101)
+dist/bsv/providers/whatsonchain-provider.d.ts:24
 
 ___
 
@@ -430,7 +431,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:79](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L79)
+dist/bsv/abstract-provider.d.ts:68
 
 ___
 
@@ -442,7 +443,7 @@ ___
 
 `Promise`<`number`\>
 
-The fee rate for sending transations through this provider.
+The fee rate for sending transactions through this provider.
 
 #### Overrides
 
@@ -450,7 +451,7 @@ The fee rate for sending transations through this provider.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:105](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L105)
+dist/bsv/providers/whatsonchain-provider.d.ts:25
 
 ___
 
@@ -495,7 +496,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:39](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L39)
+dist/bsv/providers/whatsonchain-provider.d.ts:16
 
 ___
 
@@ -523,7 +524,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:97](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L97)
+dist/bsv/providers/whatsonchain-provider.d.ts:23
 
 ___
 
@@ -543,13 +544,13 @@ check if provider is ready
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:24](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L24)
+dist/bsv/providers/whatsonchain-provider.d.ts:13
 
 ___
 
 ### listUnspent
 
-▸ **listUnspent**(`address`, `options`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of the P2PKH UTXOs.
 
@@ -557,8 +558,8 @@ Get a list of the P2PKH UTXOs.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | `string` \| [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
+| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -572,7 +573,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:68](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L68)
+dist/bsv/providers/whatsonchain-provider.d.ts:18
 
 ___
 
@@ -1086,7 +1087,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:43](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L43)
+dist/bsv/providers/whatsonchain-provider.d.ts:17
 
 ___
 
@@ -1118,7 +1119,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L101)
+dist/bsv/abstract-provider.d.ts:81
 
 ___
 
@@ -1179,7 +1180,7 @@ update provider newwork
 
 #### Defined in
 
-[src/bsv/providers/whatsonchain-provider.ts:33](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/providers/whatsonchain-provider.ts#L33)
+dist/bsv/providers/whatsonchain-provider.d.ts:15
 
 ___
 
@@ -1261,7 +1262,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:147](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L147)
+dist/bsv/abstract-provider.d.ts:117
 
 ___
 

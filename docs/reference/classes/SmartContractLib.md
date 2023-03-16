@@ -22,11 +22,6 @@ class YourSmartContractLib extends SmartContractLib {
 
 - [args](SmartContractLib.md#args)
 
-### Methods
-
-- [getArgs](SmartContractLib.md#getargs)
-- [getState](SmartContractLib.md#getstate)
-
 ## Constructors
 
 ### constructor
@@ -41,42 +36,14 @@ class YourSmartContractLib extends SmartContractLib {
 
 #### Defined in
 
-[src/smart-contract/library.ts:16](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L16)
+dist/smart-contract/library.d.ts:15
 
 ## Properties
 
 ### args
 
-• **args**: `any`[] = `[]`
+• **args**: `any`[]
 
 #### Defined in
 
-[src/smart-contract/library.ts:15](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L15)
-
-## Methods
-
-### getArgs
-
-▸ **getArgs**(): `SupportedParamType`[]
-
-#### Returns
-
-`SupportedParamType`[]
-
-#### Defined in
-
-[src/smart-contract/library.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L20)
-
-___
-
-### getState
-
-▸ **getState**(): `StructObject`
-
-#### Returns
-
-`StructObject`
-
-#### Defined in
-
-[src/smart-contract/library.ts:30](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/library.ts#L30)
+dist/smart-contract/library.d.ts:14

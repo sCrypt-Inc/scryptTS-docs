@@ -1,12 +1,28 @@
 [scrypt-ts](../README.md) / HashedSet
 
-# Class: HashedSet<E\>
+# Class: HashedSet<T\>
+
+The HashedSet library provides a set-like data structure.
+It can be regarded as a special HashedMap where a value is the same with its key and is thus omitted.
+Unique values are hashed before being stored. Only the hash values of key are saved on the chain.
+`HashedSet` is a wrapper for `Set` in javascript.
+Only some of the specified functions can be called in the `@method` function of a contract, but there is no restriction on other places.
 
 ## Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `E` | extends `SupportedParamType` |
+| `T` | extends `SupportedParamType` |
+
+## Hierarchy
+
+- `Set`<`T`\>
+
+  ↳ **`HashedSet`**
+
+## Implements
+
+- `SortedItemAccessTraceable`
 
 ## Table of contents
 
@@ -16,334 +32,319 @@
 
 ### Properties
 
-- [DelegateClazz](HashedSet.md#delegateclazz)
-- [\_elemType](HashedSet.md#_elemtype)
-- [\_type](HashedSet.md#_type)
-- [innerSet](HashedSet.md#innerset)
-- [H\_SIZE](HashedSet.md#h_size)
+- [[toStringTag]](HashedSet.md#[tostringtag])
+- [size](HashedSet.md#size)
+- [[species]](HashedSet.md#[species])
 
 ### Methods
 
-- [\_add](HashedSet.md#_add)
-- [\_checkInOrder](HashedSet.md#_checkinorder)
-- [\_delete](HashedSet.md#_delete)
-- [\_has](HashedSet.md#_has)
+- [[iterator]](HashedSet.md#[iterator])
 - [add](HashedSet.md#add)
-- [attach](HashedSet.md#attach)
 - [clear](HashedSet.md#clear)
 - [data](HashedSet.md#data)
 - [delete](HashedSet.md#delete)
+- [entries](HashedSet.md#entries)
+- [forEach](HashedSet.md#foreach)
 - [has](HashedSet.md#has)
-- [init](HashedSet.md#init)
-- [size](HashedSet.md#size)
-- [toSet](HashedSet.md#toset)
+- [keys](HashedSet.md#keys)
+- [values](HashedSet.md#values)
 
 ## Constructors
 
 ### constructor
 
-• **new HashedSet**<`E`\>(`set`)
+• **new HashedSet**<`T`\>(`values?`)
+
+The constructor of `HashedSet` should not be called inside the contract.
+The `HashedSet` should be created outside the contract and passed to the contract via the contract's constructor.
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `E` | extends `SupportedParamType` |
+| `T` | extends `SupportedParamType` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `set` | `Set`<`E`\> |
+| `values?` | readonly `T`[] |
+
+#### Overrides
+
+Set&lt;T\&gt;.constructor
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:328](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L328)
+dist/smart-contract/builtins/hashed-set.d.ts:26
 
 ## Properties
 
-### DelegateClazz
+### [toStringTag]
 
-• `Private` `Optional` **DelegateClazz**: typeof `AbstractContract`
+• `Readonly` **[toStringTag]**: `string`
 
-#### Defined in
+#### Inherited from
 
-[src/smart-contract/builtins/types.ts:326](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L326)
-
-___
-
-### \_elemType
-
-• `Private` `Optional` **\_elemType**: `string`
+Set.\_\_@toStringTag@24
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:323](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L323)
-
-___
-
-### \_type
-
-• `Private` `Optional` **\_type**: `string`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:325](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L325)
-
-___
-
-### innerSet
-
-• **innerSet**: `Set`<`E`\>
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:319](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L319)
-
-___
-
-### H\_SIZE
-
-▪ `Static` `Readonly` **H\_SIZE**: `Int`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:321](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L321)
-
-## Methods
-
-### \_add
-
-▸ `Private` **_add**(`elem`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `elem` | [`SortedItem`](../README.md#sorteditem)<`E`\> |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:348](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L348)
-
-___
-
-### \_checkInOrder
-
-▸ `Private` **_checkInOrder**(`low`, `high`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `low` | [`ByteString`](../README.md#bytestring) |
-| `high` | [`ByteString`](../README.md#bytestring) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:340](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L340)
-
-___
-
-### \_delete
-
-▸ `Private` **_delete**(`elem`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `elem` | [`SortedItem`](../README.md#sorteditem)<`E`\> |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:376](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L376)
-
-___
-
-### \_has
-
-▸ `Private` **_has**(`elem`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `elem` | [`SortedItem`](../README.md#sorteditem)<`E`\> |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:390](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L390)
-
-___
-
-### add
-
-▸ **add**(`key`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | [`SortedItem`](../README.md#sorteditem)<`E`\> |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:401](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L401)
-
-___
-
-### attach
-
-▸ **attach**(`set`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `set` | `Set`<`E`\> |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:458](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L458)
-
-___
-
-### clear
-
-▸ **clear**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:439](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L439)
-
-___
-
-### data
-
-▸ **data**(): [`ByteString`](../README.md#bytestring)
-
-#### Returns
-
-[`ByteString`](../README.md#bytestring)
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:450](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L450)
-
-___
-
-### delete
-
-▸ **delete**(`key`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | [`SortedItem`](../README.md#sorteditem)<`E`\> |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:424](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L424)
-
-___
-
-### has
-
-▸ **has**(`key`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | [`SortedItem`](../README.md#sorteditem)<`E`\> |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:415](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L415)
-
-___
-
-### init
-
-▸ **init**(`type`, `clazz`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `type` | `string` |
-| `clazz` | typeof `AbstractContract` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:332](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L332)
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:143
 
 ___
 
 ### size
 
-▸ **size**(): `bigint`
+• `Readonly` **size**: `number`
 
-#### Returns
+#### Inherited from
 
-`bigint`
+Set.size
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:445](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L445)
+node_modules/typescript/lib/lib.es2015.collection.d.ts:115
 
 ___
 
-### toSet
+### [species]
 
-▸ **toSet**(): `Set`<`E`\>
+▪ `Static` `Readonly` **[species]**: `SetConstructor`
 
-#### Returns
+#### Inherited from
 
-`Set`<`E`\>
+Set.\_\_@species@598
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:454](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/types.ts#L454)
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:320
+
+## Methods
+
+### [iterator]
+
+▸ **[iterator]**(): `IterableIterator`<`T`\>
+
+Iterates over values in the set.
+
+#### Returns
+
+`IterableIterator`<`T`\>
+
+#### Inherited from
+
+Set.\_\_@iterator@86
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:172
+
+___
+
+### add
+
+▸ **add**(`value`): [`HashedSet`](HashedSet.md)<`T`\>
+
+Appends a new element with a specified value to the Set.
+Can be called in the `@method` function of a contract
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `T` | value of a element |
+
+#### Returns
+
+[`HashedSet`](HashedSet.md)<`T`\>
+
+this set
+
+#### Overrides
+
+Set.add
+
+#### Defined in
+
+dist/smart-contract/builtins/hashed-set.d.ts:33
+
+___
+
+### clear
+
+▸ **clear**(): `void`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Set.clear
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es2015.collection.d.ts:98
+
+___
+
+### data
+
+▸ **data**(): `Bytes`
+
+Returns the internal data representation of the set.
+Can be called in the `@method` function of a contract
+
+#### Returns
+
+`Bytes`
+
+#### Defined in
+
+dist/smart-contract/builtins/hashed-set.d.ts:54
+
+___
+
+### delete
+
+▸ **delete**(`value`): `boolean`
+
+Remove a element with a specified value from the Set.
+Can be called in the `@method` function of a contract
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `T` | value of a element |
+
+#### Returns
+
+`boolean`
+
+true if an element in the Set existed and has been removed, or false if the element does not exist.
+
+#### Overrides
+
+Set.delete
+
+#### Defined in
+
+dist/smart-contract/builtins/hashed-set.d.ts:40
+
+___
+
+### entries
+
+▸ **entries**(): `IterableIterator`<[`T`, `T`]\>
+
+Returns an iterable of [v,v] pairs for every value `v` in the set.
+
+#### Returns
+
+`IterableIterator`<[`T`, `T`]\>
+
+#### Inherited from
+
+Set.entries
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:176
+
+___
+
+### forEach
+
+▸ **forEach**(`callbackfn`, `thisArg?`): `void`
+
+Executes a provided function once per each value in the Set object, in insertion order.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `callbackfn` | (`value`: `T`, `value2`: `T`, `set`: `Set`<`T`\>) => `void` |
+| `thisArg?` | `any` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Set.forEach
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es2015.collection.d.ts:107
+
+___
+
+### has
+
+▸ **has**(`value`): `boolean`
+
+Check whether element exists in the set
+Can be called in the `@method` function of a contract
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `T` | value of a element |
+
+#### Returns
+
+`boolean`
+
+true if an element with the specified value exists in the Set, otherwise returns false.
+
+#### Overrides
+
+Set.has
+
+#### Defined in
+
+dist/smart-contract/builtins/hashed-set.d.ts:47
+
+___
+
+### keys
+
+▸ **keys**(): `IterableIterator`<`T`\>
+
+Despite its name, returns an iterable of the values in the set.
+
+#### Returns
+
+`IterableIterator`<`T`\>
+
+#### Inherited from
+
+Set.keys
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:180
+
+___
+
+### values
+
+▸ **values**(): `IterableIterator`<`T`\>
+
+Returns an iterable of values in the set.
+
+#### Returns
+
+`IterableIterator`<`T`\>
+
+#### Inherited from
+
+Set.values
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:185

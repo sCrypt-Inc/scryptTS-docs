@@ -21,6 +21,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 - [\_address](SensiletSigner.md#_address)
 - [\_isSigner](SensiletSigner.md#_issigner)
 - [\_target](SensiletSigner.md#_target)
+- [getConnectedTarget](SensiletSigner.md#getconnectedtarget)
 - [provider](SensiletSigner.md#provider)
 - [DEBUG\_TAG](SensiletSigner.md#debug_tag)
 
@@ -32,15 +33,14 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 - [connect](SensiletSigner.md#connect)
 - [getBalance](SensiletSigner.md#getbalance)
-- [getConnectedTarget](SensiletSigner.md#getconnectedtarget)
 - [getDefaultAddress](SensiletSigner.md#getdefaultaddress)
 - [getDefaultPubKey](SensiletSigner.md#getdefaultpubkey)
 - [getNetwork](SensiletSigner.md#getnetwork)
 - [getPubKey](SensiletSigner.md#getpubkey)
-- [getSensilet](SensiletSigner.md#getsensilet)
 - [getSignatures](SensiletSigner.md#getsignatures)
-- [isSensiletConnected](SensiletSigner.md#issensiletconnected)
+- [isAuthenticated](SensiletSigner.md#isauthenticated)
 - [listUnspent](SensiletSigner.md#listunspent)
+- [requestAuth](SensiletSigner.md#requestauth)
 - [signAndsendTransaction](SensiletSigner.md#signandsendtransaction)
 - [signMessage](SensiletSigner.md#signmessage)
 - [signRawTransaction](SensiletSigner.md#signrawtransaction)
@@ -65,17 +65,17 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:50](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L50)
+dist/bsv/signers/sensilet-signer.d.ts:10
 
 ## Properties
 
 ### \_address
 
-• `Private` **\_address**: `string`
+• `Private` **\_address**: `any`
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:48](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L48)
+dist/bsv/signers/sensilet-signer.d.ts:9
 
 ___
 
@@ -89,17 +89,27 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L55)
+dist/bsv/abstract-signer.d.ts:49
 
 ___
 
 ### \_target
 
-• `Private` **\_target**: `SensiletWalletAPI`
+• `Private` **\_target**: `any`
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:47](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L47)
+dist/bsv/signers/sensilet-signer.d.ts:8
+
+___
+
+### getConnectedTarget
+
+• `Private` **getConnectedTarget**: `any`
+
+#### Defined in
+
+dist/bsv/signers/sensilet-signer.d.ts:24
 
 ___
 
@@ -113,7 +123,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L54)
+dist/bsv/abstract-signer.d.ts:48
 
 ___
 
@@ -123,7 +133,7 @@ ___
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:46](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L46)
+dist/bsv/signers/sensilet-signer.d.ts:7
 
 ## Accessors
 
@@ -149,7 +159,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L67)
+dist/bsv/abstract-signer.d.ts:122
 
 ## Methods
 
@@ -175,7 +185,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:100](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L100)
+dist/bsv/signers/sensilet-signer.d.ts:25
 
 ___
 
@@ -183,15 +193,19 @@ ___
 
 ▸ **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
+Get the balance of BSVs in satoshis for an address.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address?` | [`AddressOption`](../README.md#addressoption) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `address?` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
 `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+
+A promise which resolves to the address balance status.
 
 #### Overrides
 
@@ -199,26 +213,7 @@ ___
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:129](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L129)
-
-___
-
-### getConnectedTarget
-
-▸ **getConnectedTarget**(): `Promise`<`SensiletWalletAPI`\>
-
-Get an object that can directly interact with the Sensilet wallet,
-if there is no connection with the wallet, it will request to establish a connection.
-
-#### Returns
-
-`Promise`<`SensiletWalletAPI`\>
-
-SensiletWalletAPI
-
-#### Defined in
-
-[src/bsv/signers/sensilet-signer.ts:85](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L85)
+dist/bsv/signers/sensilet-signer.d.ts:28
 
 ___
 
@@ -238,7 +233,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:118](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L118)
+dist/bsv/signers/sensilet-signer.d.ts:26
 
 ___
 
@@ -258,7 +253,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:136](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L136)
+dist/bsv/signers/sensilet-signer.d.ts:32
 
 ___
 
@@ -272,7 +267,7 @@ ___
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:124](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L124)
+dist/bsv/signers/sensilet-signer.d.ts:27
 
 ___
 
@@ -288,7 +283,7 @@ If the private key for the address does not belong this signer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) | The request address, using the default address if omitted. |
+| `address` | [`Address`](bsv.Address.md) | The request address, using the default address if omitted. |
 
 #### Returns
 
@@ -302,25 +297,7 @@ The public key result.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:142](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L142)
-
-___
-
-### getSensilet
-
-▸ **getSensilet**(): `SensiletWalletAPI`
-
-Get an object that can directly interact with the Sensilet wallet
-
-#### Returns
-
-`SensiletWalletAPI`
-
-SensiletWalletAPI or undefined if the provider has not yet established a connection with the wallet
-
-#### Defined in
-
-[src/bsv/signers/sensilet-signer.ts:64](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L64)
+dist/bsv/signers/sensilet-signer.d.ts:33
 
 ___
 
@@ -349,15 +326,15 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:212](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L212)
+dist/bsv/signers/sensilet-signer.d.ts:37
 
 ___
 
-### isSensiletConnected
+### isAuthenticated
 
-▸ **isSensiletConnected**(): `Promise`<`boolean`\>
+▸ **isAuthenticated**(): `Promise`<`boolean`\>
 
-Check if the wallet is connected
+Check if the wallet has been authenticated
 
 #### Returns
 
@@ -365,9 +342,13 @@ Check if the wallet is connected
 
 true | false
 
+#### Overrides
+
+[Signer](Signer.md).[isAuthenticated](Signer.md#isauthenticated)
+
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:72](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L72)
+dist/bsv/signers/sensilet-signer.d.ts:15
 
 ___
 
@@ -375,16 +356,20 @@ ___
 
 ▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
+Get a list of the P2PKH UTXOs.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) |
-| `options?` | `UtxoQueryOptions` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
+| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
 `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+
+A promise which resolves to a list of UTXO for the query options.
 
 #### Inherited from
 
@@ -392,7 +377,29 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:108](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L108)
+dist/bsv/abstract-signer.d.ts:136
+
+___
+
+### requestAuth
+
+▸ **requestAuth**(): `Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+
+Request wallet authentication
+
+#### Returns
+
+`Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+
+A promise which resolves to if the wallet has been authenticated and the authenticate error message
+
+#### Overrides
+
+[Signer](Signer.md).[requestAuth](Signer.md#requestauth)
+
+#### Defined in
+
+dist/bsv/signers/sensilet-signer.d.ts:20
 
 ___
 
@@ -400,16 +407,20 @@ ___
 
 ▸ **signAndsendTransaction**(`tx`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
+Sign transaction and broadcast it
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) |
-| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `tx` | [`Transaction`](bsv.Transaction-1.md) | A transaction is signed and broadcast |
+| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) | The options for signing, see the details of `SignTransactionOptions`. |
 
 #### Returns
 
 `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+
+A promise which resolves to the transaction id.
 
 #### Inherited from
 
@@ -417,7 +428,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L157)
+dist/bsv/abstract-signer.d.ts:129
 
 ___
 
@@ -432,7 +443,7 @@ Sign a message string.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `message` | `string` | The message to be signed. |
-| `address?` | [`AddressOption`](../README.md#addressoption) | The optional address whose private key will be used to sign `message`, using the default private key if omitted. |
+| `address?` | [`Address`](bsv.Address.md) | The optional address whose private key will be used to sign `message`, using the default private key if omitted. |
 
 #### Returns
 
@@ -446,7 +457,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:204](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L204)
+dist/bsv/signers/sensilet-signer.d.ts:36
 
 ___
 
@@ -479,7 +490,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:146](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L146)
+dist/bsv/signers/sensilet-signer.d.ts:34
 
 ___
 
@@ -508,7 +519,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-[src/bsv/signers/sensilet-signer.ts:167](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/signers/sensilet-signer.ts#L167)
+dist/bsv/signers/sensilet-signer.d.ts:35
 
 ___
 
@@ -536,4 +547,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L171)
+dist/bsv/abstract-signer.d.ts:151

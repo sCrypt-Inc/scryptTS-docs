@@ -20,79 +20,53 @@ class YourSmartContract extends SmartContract {
 
 ### Properties
 
-- [\_ctx](SmartContract.md#_ctx)
-- [\_provider](SmartContract.md#_provider)
-- [\_signer](SmartContract.md#_signer)
-- [delegateInstance](SmartContract.md#delegateinstance)
-- [enableUpdateEMC](SmartContract.md#enableupdateemc)
-- [entryMethodCall](SmartContract.md#entrymethodcall)
+- [call](SmartContract.md#call)
+- [dummySignSingleCallTx](SmartContract.md#dummysignsinglecalltx)
 - [from](SmartContract.md#from)
+- [multiContractCall](SmartContract.md#multicontractcall)
+- [signSingleCallTx](SmartContract.md#signsinglecalltx)
+- [singleContractCall](SmartContract.md#singlecontractcall)
 - [to](SmartContract.md#to)
-- [DelegateClazz](SmartContract.md#delegateclazz)
-- [\_txBuilders](SmartContract.md#_txbuilders)
-- [transformInfo](SmartContract.md#transforminfo)
 
 ### Accessors
 
+- [balance](SmartContract.md#balance)
+- [changeAddress](SmartContract.md#changeaddress)
 - [changeAmount](SmartContract.md#changeamount)
+- [codePart](SmartContract.md#codepart)
 - [ctx](SmartContract.md#ctx)
+- [dataPart](SmartContract.md#datapart)
 - [debug](SmartContract.md#debug)
 - [lockingScript](SmartContract.md#lockingscript)
+- [methods](SmartContract.md#methods)
 - [provider](SmartContract.md#provider)
+- [scriptSize](SmartContract.md#scriptsize)
 - [signer](SmartContract.md#signer)
+- [utxo](SmartContract.md#utxo)
 
 ### Other Methods
 
-- [\_assertFromExist](SmartContract.md#_assertfromexist)
-- [\_assertToExist](SmartContract.md#_asserttoexist)
-- [\_prepareArgsForMethodCall](SmartContract.md#_prepareargsformethodcall)
+- [bindTxBuilder](SmartContract.md#bindtxbuilder)
+- [buildChangeOutput](SmartContract.md#buildchangeoutput)
 - [buildContractInput](SmartContract.md#buildcontractinput)
 - [buildDeployTransaction](SmartContract.md#builddeploytransaction)
-- [buildEntryMethodCall](SmartContract.md#buildentrymethodcall)
 - [buildStateOutput](SmartContract.md#buildstateoutput)
-- [call](SmartContract.md#call)
-- [callDelegatedMethod](SmartContract.md#calldelegatedmethod)
 - [checkPreimage](SmartContract.md#checkpreimage)
 - [checkPreimageAdvanced](SmartContract.md#checkpreimageadvanced)
 - [checkPreimageSigHashType](SmartContract.md#checkpreimagesighashtype)
-- [checkPubkeyEncoding](SmartContract.md#checkpubkeyencoding)
-- [checkSignatureEncoding](SmartContract.md#checksignatureencoding)
-- [clearCtx](SmartContract.md#clearctx)
-- [clone](SmartContract.md#clone)
 - [connect](SmartContract.md#connect)
 - [deploy](SmartContract.md#deploy)
-- [diffOutputs](SmartContract.md#diffoutputs)
-- [dummySignCallTx](SmartContract.md#dummysigncalltx)
-- [genLaunchConfig](SmartContract.md#genlaunchconfig)
-- [getContractArtifact](SmartContract.md#getcontractartifact)
-- [getCtxMethods](SmartContract.md#getctxmethods)
-- [getDelegateClazz](SmartContract.md#getdelegateclazz)
-- [getMethodsMeta](SmartContract.md#getmethodsmeta)
 - [getStateScript](SmartContract.md#getstatescript)
-- [getTxBuilder](SmartContract.md#gettxbuilder)
-- [getUnlockingScript](SmartContract.md#getunlockingscript)
 - [isStateful](SmartContract.md#isstateful)
 - [markAsGenesis](SmartContract.md#markasgenesis)
-- [methods](SmartContract.md#methods)
 - [next](SmartContract.md#next)
-- [setCtx](SmartContract.md#setctx)
 - [setDataPartInASM](SmartContract.md#setdatapartinasm)
 - [setDataPartInHex](SmartContract.md#setdatapartinhex)
 - [sigTypeOfMethod](SmartContract.md#sigtypeofmethod)
-- [syncStateProps](SmartContract.md#syncstateprops)
-- [verify](SmartContract.md#verify)
-- [\_getCachedArtifactFile](SmartContract.md#_getcachedartifactfile)
-- [\_getCtxMethods](SmartContract.md#_getctxmethods)
-- [\_getScryptFile](SmartContract.md#_getscryptfile)
-- [\_getTransform](SmartContract.md#_gettransform)
-- [\_loadCachedArtifact](SmartContract.md#_loadcachedartifact)
-- [bindTxBuilder](SmartContract.md#bindtxbuilder)
 - [compile](SmartContract.md#compile)
-- [compileImpl](SmartContract.md#compileimpl)
-- [defaultCallTxBuilder](SmartContract.md#defaultcalltxbuilder)
-- [findKeyIndex](SmartContract.md#findkeyindex)
-- [fromScript](SmartContract.md#fromscript)
-- [init](SmartContract.md#init)
+- [fromTx](SmartContract.md#fromtx)
+- [loadArtifact](SmartContract.md#loadartifact)
+- [multiContractCall](SmartContract.md#multicontractcall-1)
 
 ### Signature Verification Methods
 
@@ -113,67 +87,27 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-[src/smart-contract/contract.ts:295](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L295)
+dist/smart-contract/contract.d.ts:143
 
 ## Properties
 
-### \_ctx
+### call
 
-• `Optional` **\_ctx**: `ScriptContext`
+• `Private` **call**: `any`
 
 #### Defined in
 
-[src/smart-contract/contract.ts:134](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L134)
+dist/smart-contract/contract.d.ts:389
 
 ___
 
-### \_provider
+### dummySignSingleCallTx
 
-• `Optional` **\_provider**: [`Provider`](Provider.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:730](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L730)
-
-___
-
-### \_signer
-
-• `Optional` **\_signer**: [`Signer`](Signer.md)
+• `Private` **dummySignSingleCallTx**: `any`
 
 #### Defined in
 
-[src/smart-contract/contract.ts:731](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L731)
-
-___
-
-### delegateInstance
-
-• `Private` **delegateInstance**: `AbstractContract`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:137](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L137)
-
-___
-
-### enableUpdateEMC
-
-• `Private` **enableUpdateEMC**: `boolean` = `false`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:692](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L692)
-
-___
-
-### entryMethodCall
-
-• `Private` `Optional` **entryMethodCall**: [`FunctionCall`](FunctionCall.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:675](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L675)
+dist/smart-contract/contract.d.ts:393
 
 ___
 
@@ -186,7 +120,37 @@ In other words, it's the start point for the lifecycle of `this` instance.
 
 #### Defined in
 
-[src/smart-contract/contract.ts:126](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L126)
+dist/smart-contract/contract.d.ts:97
+
+___
+
+### multiContractCall
+
+• `Private` **multiContractCall**: `any`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:391
+
+___
+
+### signSingleCallTx
+
+• `Private` **signSingleCallTx**: `any`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:392
+
+___
+
+### singleContractCall
+
+• `Private` **singleContractCall**: `any`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:390
 
 ___
 
@@ -199,45 +163,53 @@ In other words, it's the end point for the lifecycle of `this` instance.
 
 #### Defined in
 
-[src/smart-contract/contract.ts:132](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L132)
-
-___
-
-### DelegateClazz
-
-▪ `Static` `Private` **DelegateClazz**: typeof `AbstractContract`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:136](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L136)
-
-___
-
-### \_txBuilders
-
-▪ `Static` `Private` **\_txBuilders**: `Map`<`string`, [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\>\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1063](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1063)
-
-___
-
-### transformInfo
-
-▪ `Static` `Private` `Optional` **transformInfo**: `TransformInfo`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L140)
+dist/smart-contract/contract.d.ts:102
 
 ## Accessors
+
+### balance
+
+• `get` **balance**(): `number`
+
+Get the current locked balance of the contract
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:438
+
+___
+
+### changeAddress
+
+• `get` **changeAddress**(): [`Ripemd160`](../README.md#ripemd160)
+
+Get the change address of the change output for `to.tx`.
+
+**`Onchain`**
+
+#### Returns
+
+[`Ripemd160`](../README.md#ripemd160)
+
+the change address of to.tx
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:272
+
+___
 
 ### changeAmount
 
 • `get` **changeAmount**(): `bigint`
 
 Get the amount of the change output for `to.tx`.
+
+**`Onchain`**
 
 #### Returns
 
@@ -247,510 +219,15 @@ amount in satoshis
 
 #### Defined in
 
-[src/smart-contract/contract.ts:554](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L554)
+dist/smart-contract/contract.d.ts:266
 
 ___
 
-### ctx
+### codePart
 
-• `get` **ctx**(): `ScriptContext`
+• `get` **codePart**(): `string`
 
-#### Returns
-
-`ScriptContext`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1178](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1178)
-
-___
-
-### debug
-
-• `get` **debug**(): `DebugFunctions`
-
-#### Returns
-
-`DebugFunctions`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1169](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1169)
-
-___
-
-### lockingScript
-
-• `get` **lockingScript**(): [`Script`](bsv.Script-1.md)
-
-#### Returns
-
-[`Script`](bsv.Script-1.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:397](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L397)
-
-___
-
-### provider
-
-• `get` **provider**(): [`Provider`](Provider.md)
-
-#### Returns
-
-[`Provider`](Provider.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:753](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L753)
-
-___
-
-### signer
-
-• `get` **signer**(): [`Signer`](Signer.md)
-
-#### Returns
-
-[`Signer`](Signer.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:746](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L746)
-
-## Other Methods
-
-### \_assertFromExist
-
-▸ `Private` **_assertFromExist**(): `void`
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:723](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L723)
-
-___
-
-### \_assertToExist
-
-▸ `Private` **_assertToExist**(): `void`
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:717](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L717)
-
-___
-
-### \_prepareArgsForMethodCall
-
-▸ `Private` **_prepareArgsForMethodCall**(`methodName`, `...args`): `Object`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
-| `...args` | `any`[] |
-
-#### Returns
-
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `methodArgs` | `any`[] |
-| `methodCallOptions` | [`MethodCallOptions`](../interfaces/MethodCallOptions.md)<[`SmartContract`](SmartContract.md)\> |
-| `sigArgs` | `Map`<`number`, { `callback`: `Function` ; `length`: `number`  }\> |
-
-#### Defined in
-
-[src/smart-contract/contract.ts:811](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L811)
-
-___
-
-### buildContractInput
-
-▸ **buildContractInput**(`fromUTXO?`): [`Input`](bsv.Transaction.Input-1.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fromUTXO?` | [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md) |
-
-#### Returns
-
-[`Input`](bsv.Transaction.Input-1.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1104](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1104)
-
-___
-
-### buildDeployTransaction
-
-▸ **buildDeployTransaction**(`utxos`, `amount`, `changeAddress?`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `utxos` | [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[] |
-| `amount` | `number` |
-| `changeAddress?` | `string` \| [`Address`](bsv.Address.md) |
-
-#### Returns
-
-`Promise`<[`Transaction`](bsv.Transaction-1.md)\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:760](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L760)
-
-___
-
-### buildEntryMethodCall
-
-▸ `Private` **buildEntryMethodCall**<`T`\>(`callPub`): `SamePromiseOrValue`<`T`, [`FunctionCall`](FunctionCall.md)\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `void` \| `Promise`<`void`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `callPub` | (`self`: [`SmartContract`](SmartContract.md)) => `T` |
-
-#### Returns
-
-`SamePromiseOrValue`<`T`, [`FunctionCall`](FunctionCall.md)\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:694](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L694)
-
-___
-
-### buildStateOutput
-
-▸ **buildStateOutput**(`amount`): [`ByteString`](../README.md#bytestring)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `amount` | `bigint` |
-
-#### Returns
-
-[`ByteString`](../README.md#bytestring)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:446](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L446)
-
-___
-
-### call
-
-▸ `Private` **call**(`methodName`, `...args`): `Promise`<[`MethodCallResult`](../interfaces/MethodCallResult.md)<[`SmartContract`](SmartContract.md)\>\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
-| `...args` | `any`[] |
-
-#### Returns
-
-`Promise`<[`MethodCallResult`](../interfaces/MethodCallResult.md)<[`SmartContract`](SmartContract.md)\>\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:859](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L859)
-
-___
-
-### callDelegatedMethod
-
-▸ `Private` **callDelegatedMethod**(`methodName`, `...args`): `Object`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
-| `...args` | `any`[] |
-
-#### Returns
-
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `publicMethodCall` | [`FunctionCall`](FunctionCall.md) |
-| `txPreimage?` | [`SigHashPreimage`](../README.md#sighashpreimage) |
-
-#### Defined in
-
-[src/smart-contract/contract.ts:605](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L605)
-
-___
-
-### checkPreimage
-
-▸ **checkPreimage**(`txPreimage`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:535](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L535)
-
-___
-
-### checkPreimageAdvanced
-
-▸ **checkPreimageAdvanced**(`txPreimage`, `privKey`, `pubKey`, `inverseK`, `r`, `rBigEndian`, `sigHashType`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
-| `privKey` | [`PrivKey`](../README.md#privkey) |
-| `pubKey` | [`PubKey`](../README.md#pubkey) |
-| `inverseK` | `bigint` |
-| `r` | `bigint` |
-| `rBigEndian` | `string` |
-| `sigHashType` | [`SigHashType`](../README.md#sighashtype) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:523](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L523)
-
-___
-
-### checkPreimageSigHashType
-
-▸ **checkPreimageSigHashType**(`txPreimage`, `sigHashType`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
-| `sigHashType` | [`SigHashType`](../README.md#sighashtype) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:531](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L531)
-
-___
-
-### checkPubkeyEncoding
-
-▸ `Private` **checkPubkeyEncoding**(`publickey`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `publickey` | [`PubKey`](../README.md#pubkey) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:559](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L559)
-
-___
-
-### checkSignatureEncoding
-
-▸ `Private` **checkSignatureEncoding**(`signature`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `signature` | [`Sig`](../README.md#sig) |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:566](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L566)
-
-___
-
-### clearCtx
-
-▸ `Private` **clearCtx**(): `void`
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:671](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L671)
-
-___
-
-### clone
-
-▸ **clone**(`opt?`): [`SmartContract`](SmartContract.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `opt?` | `Object` |
-| `opt.refCloneProps?` | `string`[] |
-
-#### Returns
-
-[`SmartContract`](SmartContract.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:409](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L409)
-
-___
-
-### connect
-
-▸ **connect**(`providerOrSigner`): `Promise`<`void`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `providerOrSigner` | [`Provider`](Provider.md) \| [`Signer`](Signer.md) |
-
-#### Returns
-
-`Promise`<`void`\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:733](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L733)
-
-___
-
-### deploy
-
-▸ **deploy**(`amount?`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
-
-#### Parameters
-
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `amount` | `number` | `1` |
-| `options?` | `Object` | `undefined` |
-| `options.address?` | `string` \| [`Address`](bsv.Address.md) | `undefined` |
-| `options.changeAddress?` | `string` \| [`Address`](bsv.Address.md) | `undefined` |
-| `options.send` | `boolean` | `undefined` |
-
-#### Returns
-
-`Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:778](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L778)
-
-___
-
-### diffOutputs
-
-▸ `Private` **diffOutputs**(`outputs`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `outputs` | [`ByteString`](../README.md#bytestring) |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1157](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1157)
-
-___
-
-### dummySignCallTx
-
-▸ `Private` **dummySignCallTx**(`tx`, `inputIndex`, `methodName`, `...args`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) |
-| `inputIndex` | `number` |
-| `methodName` | `string` |
-| `...args` | `any` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1017](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1017)
-
-___
-
-### genLaunchConfig
-
-▸ **genLaunchConfig**(`a`, `tx`, `inputIndex?`): `string`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `a` | `any` |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) |
-| `inputIndex?` | `number` |
+Returns code part of the lockingScript, in hex format.
 
 #### Returns
 
@@ -758,75 +235,185 @@ ___
 
 #### Defined in
 
-[src/smart-contract/contract.ts:374](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L374)
+dist/smart-contract/contract.d.ts:180
 
 ___
 
-### getContractArtifact
+### ctx
 
-▸ **getContractArtifact**(): [`ContractArtifact`](../interfaces/ContractArtifact.md)
+• `get` **ctx**(): `ScriptContext`
+
+You can directly access the context through `this.ctx` in any public @method.
+[ScriptContext][https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext](https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext) can be considered additional information a public method gets when called, besides its function parameters.
+
+**`Onchain`**
 
 #### Returns
 
-[`ContractArtifact`](../interfaces/ContractArtifact.md)
+`ScriptContext`
 
 #### Defined in
 
-[src/smart-contract/contract.ts:277](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L277)
+dist/smart-contract/contract.d.ts:448
 
 ___
 
-### getCtxMethods
+### dataPart
 
-▸ **getCtxMethods**(): `string`[]
+• `get` **dataPart**(): [`Script`](bsv.Script-1.md)
 
 #### Returns
 
-`string`[]
+[`Script`](bsv.Script-1.md)
 
 #### Defined in
 
-[src/smart-contract/contract.ts:287](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L287)
+dist/smart-contract/contract.d.ts:321
 
 ___
 
-### getDelegateClazz
+### debug
 
-▸ `Private` **getDelegateClazz**(): typeof `AbstractContract`
+• `get` **debug**(): `DebugFunctions`
+
+A set of functions for debugging contracts, which can only be called in `@method` methods.
 
 #### Returns
 
-typeof `AbstractContract`
+`DebugFunctions`
 
 #### Defined in
 
-[src/smart-contract/contract.ts:291](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L291)
+dist/smart-contract/contract.d.ts:434
 
 ___
 
-### getMethodsMeta
+### lockingScript
 
-▸ `Private` **getMethodsMeta**(`methodName`): `MethodsMetaValue`
+• `get` **lockingScript**(): [`Script`](bsv.Script-1.md)
+
+Returns a lockingScript of contract.
+
+#### Returns
+
+[`Script`](bsv.Script-1.md)
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:172
+
+___
+
+### methods
+
+• `get` **methods**(): `Record`<`string`, (...`args`: `any`) => `Promise`<[`ContractTransaction`](../interfaces/ContractTransaction.md)\>\>
+
+An object to access all public `@method`s
+
+#### Returns
+
+`Record`<`string`, (...`args`: `any`) => `Promise`<[`ContractTransaction`](../interfaces/ContractTransaction.md)\>\>
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:397
+
+___
+
+### provider
+
+• `get` **provider**(): [`Provider`](Provider.md)
+
+Get the connected [provider][https://scrypt.io/scrypt-ts/how-to-test-a-contract#provider](https://scrypt.io/scrypt-ts/how-to-test-a-contract#provider)
+
+#### Returns
+
+[`Provider`](Provider.md)
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:346
+
+___
+
+### scriptSize
+
+• `get` **scriptSize**(): `number`
+
+Returns script size of lockingScript.
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:176
+
+___
+
+### signer
+
+• `get` **signer**(): [`Signer`](Signer.md)
+
+Get the connected [signer][https://scrypt.io/scrypt-ts/how-to-test-a-contract#signer](https://scrypt.io/scrypt-ts/how-to-test-a-contract#signer)
+
+#### Returns
+
+[`Signer`](Signer.md)
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:342
+
+___
+
+### utxo
+
+• `get` **utxo**(): [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)
+
+Get the utxo where the contract is currently located
+
+#### Returns
+
+[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:442
+
+## Other Methods
+
+### bindTxBuilder
+
+▸ **bindTxBuilder**(`methodName`, `txBuilder`): `void`
+
+Bind a transation builder for a public `@method`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `methodName` | `string` | the public `@method` name |
+| `txBuilder` | [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\> | a transation builder |
 
 #### Returns
 
-`MethodsMetaValue`
+`void`
 
 #### Defined in
 
-[src/smart-contract/contract.ts:1132](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1132)
+dist/smart-contract/contract.d.ts:405
 
 ___
 
-### getStateScript
+### buildChangeOutput
 
-▸ **getStateScript**(): [`ByteString`](../README.md#bytestring)
+▸ **buildChangeOutput**(): [`ByteString`](../README.md#bytestring)
+
+A built-in function to create an [change output][https://wiki.bitcoinsv.io/index.php/Change](https://wiki.bitcoinsv.io/index.php/Change).
+
+**`Onchain`**
 
 #### Returns
 
@@ -834,53 +421,259 @@ ___
 
 #### Defined in
 
-[src/smart-contract/contract.ts:452](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L452)
+dist/smart-contract/contract.d.ts:212
 
 ___
 
-### getTxBuilder
+### buildContractInput
 
-▸ `Private` **getTxBuilder**(`methodName`): [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\>
+▸ **buildContractInput**(`fromUTXO?`): [`Input`](bsv.Transaction.Input-1.md)
+
+Build an input that includes the contract
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `fromUTXO?` | [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md) | A parameter to specify the `utxo` where the contract is located |
 
 #### Returns
 
-[`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\>
+[`Input`](bsv.Transaction.Input-1.md)
+
+an input that includes the contract
 
 #### Defined in
 
-[src/smart-contract/contract.ts:1043](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1043)
+dist/smart-contract/contract.d.ts:415
 
 ___
 
-### getUnlockingScript
+### buildDeployTransaction
 
-▸ **getUnlockingScript**<`T`\>(`callPub`): `SamePromiseOrValue`<`T`, [`Script`](bsv.Script-1.md)\>
+▸ **buildDeployTransaction**(`utxos`, `amount`, `changeAddress?`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
 
-#### Type parameters
+creates a tx to deploy the contract. Users override it to cutomize a deployment tx as below.
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `void` \| `Promise`<`void`\> |
+**`Example`**
+
+```ts
+override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
+ const deployTx = new bsv.Transaction()
+ // add p2pkh inputs for paying tx fees
+ .from(utxos)
+ // add contract output
+ .addOutput(new bsv.Transaction.Output({
+   script: this.lockingScript,
+   satoshis: amount,
+ }))
+ // add the change output if passing `changeAddress`
+ if (changeAddress) {
+   deployTx.change(changeAddress);
+   if (this._provider) {
+     deployTx.feePerKb(await this.provider.getFeePerKb());
+   }
+ }
+
+ return deployTx;
+}
+```
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `callPub` | (`self`: [`SmartContract`](SmartContract.md)) => `T` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `utxos` | [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[] | represents one or more P2PKH inputs for paying transaction fees. |
+| `amount` | `number` | the balance of contract output |
+| `changeAddress?` | `string` \| [`Address`](bsv.Address.md) | a change address |
 
 #### Returns
 
-`SamePromiseOrValue`<`T`, [`Script`](bsv.Script-1.md)\>
+`Promise`<[`Transaction`](bsv.Transaction-1.md)\>
 
 #### Defined in
 
-[src/smart-contract/contract.ts:361](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L361)
+dist/smart-contract/contract.d.ts:376
+
+___
+
+### buildStateOutput
+
+▸ **buildStateOutput**(`amount`): [`ByteString`](../README.md#bytestring)
+
+A built-in function to create an output containing the new state. It takes an input: the number of satoshis in the output.
+
+**`Onchain`**
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `amount` | `bigint` | the number of satoshis in the output |
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+an output containing the new state
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:206
+
+___
+
+### checkPreimage
+
+▸ **checkPreimage**(`txPreimage`): `boolean`
+
+Using the [OP_PUSH_TX][https://medium.com/@xiaohuiliu/op-push-tx-3d3d279174c1](https://medium.com/@xiaohuiliu/op-push-tx-3d3d279174c1) technique, check if `txPreimage` is the preimage of the current transaction.
+
+**`Onchain`**
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm) |
+
+#### Returns
+
+`boolean`
+
+true if `txPreimage` is the preimage of the current transaction. Otherwise false.
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:253
+
+___
+
+### checkPreimageAdvanced
+
+▸ **checkPreimageAdvanced**(`txPreimage`, `privKey`, `pubKey`, `inverseK`, `r`, `rBigEndian`, `sigHashType`): `boolean`
+
+Same as `checkPreimage`, but support customized more settings.
+
+**`Onchain`**
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm) |
+| `privKey` | [`PrivKey`](../README.md#privkey) | private Key |
+| `pubKey` | [`PubKey`](../README.md#pubkey) | public key |
+| `inverseK` | `bigint` | inverseK |
+| `r` | `bigint` | r |
+| `rBigEndian` | `string` | must be mininally encoded, to conform to strict DER rule https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki#der-encoding |
+| `sigHashType` | [`SigHashType`](../README.md#sighashtype) | A SIGHASH flag is used to indicate which part of the transaction is signed by the ECDSA signature. |
+
+#### Returns
+
+`boolean`
+
+true if `txPreimage` is the preimage of the current transaction. Otherwise false.
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:238
+
+___
+
+### checkPreimageSigHashType
+
+▸ **checkPreimageSigHashType**(`txPreimage`, `sigHashType`): `boolean`
+
+Same as `checkPreimage`, but support customized sighash type
+
+**`Onchain`**
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm) |
+| `sigHashType` | [`SigHashType`](../README.md#sighashtype) | A SIGHASH flag is used to indicate which part of the transaction is signed by the ECDSA signature. |
+
+#### Returns
+
+`boolean`
+
+true if `txPreimage` is the preimage of the current transaction. Otherwise false.
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:246
+
+___
+
+### connect
+
+▸ **connect**(`providerOrSigner`): `Promise`<`void`\>
+
+connect a provider or a signer.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `providerOrSigner` | [`Provider`](Provider.md) \| [`Signer`](Signer.md) | a provider or a signer |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:338
+
+___
+
+### deploy
+
+▸ **deploy**(`amount?`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+
+Deploy the contract
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `amount?` | `number` | satoshis locked in the contract |
+| `options?` | `Object` | An optional parameter that can specify the change address |
+| `options.address?` | [`Address`](bsv.Address.md) | - |
+| `options.changeAddress?` | [`Address`](bsv.Address.md) | - |
+
+#### Returns
+
+`Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+
+The transaction id of the successfully deployed contract
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:383
+
+___
+
+### getStateScript
+
+▸ **getStateScript**(): [`ByteString`](../README.md#bytestring)
+
+A built-in function to create a locking script containing the new state.
+
+**`Onchain`**
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+a locking script that containing the new state
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:218
 
 ___
 
@@ -888,13 +681,17 @@ ___
 
 ▸ **isStateful**(): `boolean`
 
+Check if the contract is a stateful contract
+
 #### Returns
 
 `boolean`
 
+true if contract has a `@prop(true)` property
+
 #### Defined in
 
-[src/smart-contract/contract.ts:1120](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1120)
+dist/smart-contract/contract.d.ts:420
 
 ___
 
@@ -902,27 +699,15 @@ ___
 
 ▸ **markAsGenesis**(): [`SmartContract`](SmartContract.md)
 
+Mark the contract as genesis contracts
+
 #### Returns
 
 [`SmartContract`](SmartContract.md)
 
 #### Defined in
 
-[src/smart-contract/contract.ts:439](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L439)
-
-___
-
-### methods
-
-▸ **methods**(): `Record`<`string`, (...`args`: `any`) => `Promise`<[`MethodCallResult`](../interfaces/MethodCallResult.md)<[`SmartContract`](SmartContract.md)\>\>\>
-
-#### Returns
-
-`Record`<`string`, (...`args`: `any`) => `Promise`<[`MethodCallResult`](../interfaces/MethodCallResult.md)<[`SmartContract`](SmartContract.md)\>\>\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1034](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1034)
+dist/smart-contract/contract.d.ts:199
 
 ___
 
@@ -932,38 +717,20 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `opt?` | `Object` |
-| `opt.refCloneProps?` | `string`[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `opt?` | `Object` | properties that only references are copied, but not deep clone their values. |
+| `opt.refCloneProps?` | `string`[] | - |
 
 #### Returns
 
 [`SmartContract`](SmartContract.md)
 
-#### Defined in
-
-[src/smart-contract/contract.ts:431](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L431)
-
-___
-
-### setCtx
-
-▸ `Private` **setCtx**(`txPreimage`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) |
-
-#### Returns
-
-`void`
+a cloned contract instance with `this.from = undefined` and `this.to = undefined`
 
 #### Defined in
 
-[src/smart-contract/contract.ts:650](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L650)
+dist/smart-contract/contract.d.ts:193
 
 ___
 
@@ -971,6 +738,8 @@ ___
 
 ▸ **setDataPartInASM**(`dataPart`): `void`
 
+set the data part of the contract in ASM format
+
 #### Parameters
 
 | Name | Type |
@@ -983,7 +752,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/contract.ts:677](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L677)
+dist/smart-contract/contract.d.ts:315
 
 ___
 
@@ -991,6 +760,8 @@ ___
 
 ▸ **setDataPartInHex**(`dataPart`): `void`
 
+set the data part of the contract in hex format
+
 #### Parameters
 
 | Name | Type |
@@ -1003,7 +774,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/contract.ts:681](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L681)
+dist/smart-contract/contract.d.ts:320
 
 ___
 
@@ -1011,150 +782,23 @@ ___
 
 ▸ **sigTypeOfMethod**(`methodName`): `number`
 
+Get [sigHash type][https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext#sighash-type](https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext#sighash-type) of the public `@method` function.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `methodName` | `string` | name of the public `@method` function. |
 
 #### Returns
 
 `number`
 
-#### Defined in
-
-[src/smart-contract/contract.ts:1124](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1124)
-
-___
-
-### syncStateProps
-
-▸ `Private` **syncStateProps**(): `void`
-
-#### Returns
-
-`void`
+a sigHash type
 
 #### Defined in
 
-[src/smart-contract/contract.ts:379](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L379)
-
-___
-
-### verify
-
-▸ **verify**<`T`\>(`entryMethodInvoking`): `SamePromiseOrValue`<`T`, [`VerifyResult`](../interfaces/VerifyResult.md)\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `void` \| `Promise`<`void`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `entryMethodInvoking` | (`self`: [`SmartContract`](SmartContract.md)) => `T` |
-
-#### Returns
-
-`SamePromiseOrValue`<`T`, [`VerifyResult`](../interfaces/VerifyResult.md)\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:322](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L322)
-
-___
-
-### \_getCachedArtifactFile
-
-▸ `Static` `Private` **_getCachedArtifactFile**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:252](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L252)
-
-___
-
-### \_getCtxMethods
-
-▸ `Static` `Private` **_getCtxMethods**(): `string`[]
-
-#### Returns
-
-`string`[]
-
-#### Defined in
-
-[src/smart-contract/contract.ts:281](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L281)
-
-___
-
-### \_getScryptFile
-
-▸ `Static` `Private` **_getScryptFile**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:229](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L229)
-
-___
-
-### \_getTransform
-
-▸ `Static` `Private` **_getTransform**(): `TransformInfo`
-
-#### Returns
-
-`TransformInfo`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:207](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L207)
-
-___
-
-### \_loadCachedArtifact
-
-▸ `Static` `Private` **_loadCachedArtifact**(): [`ContractArtifact`](../interfaces/ContractArtifact.md)
-
-#### Returns
-
-[`ContractArtifact`](../interfaces/ContractArtifact.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:260](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L260)
-
-___
-
-### bindTxBuilder
-
-▸ `Static` **bindTxBuilder**(`methodName`, `txBuilder`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
-| `txBuilder` | [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\> |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1052](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1052)
+dist/smart-contract/contract.d.ts:426
 
 ___
 
@@ -1173,104 +817,55 @@ errors if compiling fails
 
 #### Defined in
 
-[src/smart-contract/contract.ts:172](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L172)
+dist/smart-contract/contract.d.ts:120
 
 ___
 
-### compileImpl
+### fromTx
 
-▸ `Static` `Private` **compileImpl**(`filePath`): `Promise`<`CompileResult`\>
+▸ `Static` **fromTx**<`T`\>(`this`, `tx`, `atOutputIndex`, `offchainValues?`): `T`
 
-#### Parameters
+recover a `SmartContract` instance from the transaction
+if the contract contains onchain properties of type `HashedMap` or `HashedSet`
+it's required to pass all their offchain raw data at this transaction moment
+
+#### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `filePath` | `string` |
-
-#### Returns
-
-`Promise`<`CompileResult`\>
-
-#### Defined in
-
-[src/smart-contract/contract.ts:142](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L142)
-
-___
-
-### defaultCallTxBuilder
-
-▸ `Static` **defaultCallTxBuilder**(`sigHashType`): [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\>
+| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `sigHashType` | [`SigHashType`](../README.md#sighashtype) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `this` | (...`args`: `any`[]) => `T` | - |
+| `tx` | [`Transaction`](bsv.Transaction-1.md) | transaction |
+| `atOutputIndex` | `number` | output index of `tx` |
+| `offchainValues?` | `Record`<`string`, `any`\> | the value of offchain properties, the raw data of onchain `HashedMap` and `HashedSet` properties, at this transaction moment |
 
 #### Returns
 
-[`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\>
+`T`
 
 #### Defined in
 
-[src/smart-contract/contract.ts:1065](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1065)
+dist/smart-contract/contract.d.ts:466
 
 ___
 
-### findKeyIndex
+### loadArtifact
 
-▸ `Static` **findKeyIndex**(`collection`, `key`, `keyType?`): `bigint`
+▸ `Static` **loadArtifact**(`artifact`): `void`
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `collection` | `Set`<`SupportedParamType`\> \| `Map`<`SupportedParamType`, `SupportedParamType`\> |
-| `key` | `SupportedParamType` |
-| `keyType?` | `string` |
-
-#### Returns
-
-`bigint`
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1136](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1136)
-
-___
-
-### fromScript
-
-▸ `Static` **fromScript**(`script`): [`SmartContract`](SmartContract.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `script` | `string` |
-
-#### Returns
-
-[`SmartContract`](SmartContract.md)
-
-#### Defined in
-
-[src/smart-contract/contract.ts:1183](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L1183)
-
-___
-
-### init
-
-▸ `Static` **init**(`artifact`): `void`
-
-This function is usually called on the frontend. 
+This function is usually called on the frontend.
 The contract class needs to call this function before instantiating.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `artifact` | [`MergedArtifact`](../README.md#mergedartifact) | a merged contract artifact object |
+| `artifact` | [`ContractArtifact`](../interfaces/ContractArtifact.md) | a merged contract artifact object |
 
 #### Returns
 
@@ -1278,7 +873,32 @@ The contract class needs to call this function before instantiating.
 
 #### Defined in
 
-[src/smart-contract/contract.ts:198](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L198)
+dist/smart-contract/contract.d.ts:126
+
+___
+
+### multiContractCall
+
+▸ `Static` **multiContractCall**(`partialContractTransaction`, `signer`): `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
+
+When the `@method`s of multiple contracts is called in a transaction, this function signs and broadcasts the final transaction.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `partialContractTransaction` | [`ContractTransaction`](../interfaces/ContractTransaction.md) | - |
+| `signer` | [`Signer`](Signer.md) | a signer to sign the transation. |
+
+#### Returns
+
+`Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
+
+a `MultiContractTransation` with a signed transation.
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:477
 
 ___
 
@@ -1289,6 +909,8 @@ ___
 ▸ **checkMultiSig**(`signatures`, `publickeys`): `boolean`
 
 Compares the first signature against each public key until it finds an ECDSA match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result. All signatures need to match a public key. Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the scriptSig using the same order as their corresponding public keys were placed in the scriptPubKey or redeemScript. If all signatures are valid, 1 is returned, 0 otherwise. Due to a bug, one extra unused value is removed from the stack.
+
+**`Onchain`**
 
 **`See`**
 
@@ -1307,15 +929,17 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/smart-contract/contract.ts:544](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L544)
+dist/smart-contract/contract.d.ts:260
 
 ___
 
 ### checkSig
 
-▸ **checkSig**(`signature`, `publickey`): `boolean`
+▸ **checkSig**(`signature`, `publickey`, `errorMsg?`): `boolean`
 
-verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with sighash flags. It outputs true or false on the stack based on whether the signature check passes or fails.
+A built-in function verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with sighash flags. It outputs true or false on the stack based on whether the signature check passes or fails.
+
+**`Onchain`**
 
 **`See`**
 
@@ -1327,6 +951,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 | :------ | :------ |
 | `signature` | [`Sig`](../README.md#sig) |
 | `publickey` | [`PubKey`](../README.md#pubkey) |
+| `errorMsg?` | `string` |
 
 #### Returns
 
@@ -1334,4 +959,4 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/smart-contract/contract.ts:493](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/contract.ts#L493)
+dist/smart-contract/contract.d.ts:225

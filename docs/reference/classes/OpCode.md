@@ -2,6 +2,8 @@
 
 # Class: OpCode
 
+Opcodes used in [Bitcoin Script][https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script)
+
 ## Table of contents
 
 ### Constructors
@@ -139,9 +141,19 @@
 
 ▪ `Static` `Readonly` **OP\_0**: [`OpCodeType`](../README.md#opcodetype)
 
+An empty array of bytes is pushed onto the stack. (This is not a no-op: an item is added to the stack.)
+
+**`Name`**
+
+OP_0
+
+**`Constant`**
+
+`OpCodeType('00')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:268](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L268)
+dist/smart-contract/builtins/functions.d.ts:159
 
 ___
 
@@ -149,9 +161,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_0NOTEQUAL**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 0 if the input is 0. 1 otherwise.
+
+**`Name`**
+
+OP_0NOTEQUAL
+
+**`Constant`**
+
+`OpCodeType('92')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:350](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L350)
+dist/smart-contract/builtins/functions.d.ts:637
 
 ___
 
@@ -159,9 +181,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_1**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 1 is pushed onto the stack.
+
+**`Name`**
+
+OP_1
+
+**`Constant`**
+
+`OpCodeType('51')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:275](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L275)
+dist/smart-contract/builtins/functions.d.ts:201
 
 ___
 
@@ -169,9 +201,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_10**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 10 is pushed onto the stack.
+
+**`Name`**
+
+OP_10
+
+**`Constant`**
+
+`OpCodeType('5a')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:285](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L285)
+dist/smart-contract/builtins/functions.d.ts:261
 
 ___
 
@@ -179,9 +221,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_11**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 11 is pushed onto the stack.
+
+**`Name`**
+
+OP_11
+
+**`Constant`**
+
+`OpCodeType('5b')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:286](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L286)
+dist/smart-contract/builtins/functions.d.ts:267
 
 ___
 
@@ -189,9 +241,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_12**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 12 is pushed onto the stack.
+
+**`Name`**
+
+OP_12
+
+**`Constant`**
+
+`OpCodeType('5c')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:287](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L287)
+dist/smart-contract/builtins/functions.d.ts:273
 
 ___
 
@@ -199,9 +261,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_13**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 13 is pushed onto the stack.
+
+**`Name`**
+
+OP_13
+
+**`Constant`**
+
+`OpCodeType('5d')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:288](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L288)
+dist/smart-contract/builtins/functions.d.ts:279
 
 ___
 
@@ -209,9 +281,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_14**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 14 is pushed onto the stack.
+
+**`Name`**
+
+OP_14
+
+**`Constant`**
+
+`OpCodeType('5e')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:289](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L289)
+dist/smart-contract/builtins/functions.d.ts:285
 
 ___
 
@@ -219,9 +301,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_15**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 15 is pushed onto the stack.
+
+**`Name`**
+
+OP_15
+
+**`Constant`**
+
+`OpCodeType('5f')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:290](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L290)
+dist/smart-contract/builtins/functions.d.ts:291
 
 ___
 
@@ -229,9 +321,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_16**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 16 is pushed onto the stack.
+
+**`Name`**
+
+OP_16
+
+**`Constant`**
+
+`OpCodeType('60')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:291](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L291)
+dist/smart-contract/builtins/functions.d.ts:297
 
 ___
 
@@ -239,9 +341,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_1ADD**: [`OpCodeType`](../README.md#opcodetype)
 
+1 is added to the input.
+
+**`Name`**
+
+OP_1ADD
+
+**`Constant`**
+
+`OpCodeType('8b')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:343](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L343)
+dist/smart-contract/builtins/functions.d.ts:595
 
 ___
 
@@ -249,9 +361,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_1NEGATE**: [`OpCodeType`](../README.md#opcodetype)
 
+The number -1 is pushed onto the stack.
+
+**`Name`**
+
+OP_1NEGATE
+
+**`Constant`**
+
+`OpCodeType('4f')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:273](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L273)
+dist/smart-contract/builtins/functions.d.ts:189
 
 ___
 
@@ -259,9 +381,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_1SUB**: [`OpCodeType`](../README.md#opcodetype)
 
+1 is subtracted from the input.
+
+**`Name`**
+
+OP_1SUB
+
+**`Constant`**
+
+`OpCodeType('8c')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:344](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L344)
+dist/smart-contract/builtins/functions.d.ts:601
 
 ___
 
@@ -269,9 +401,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 2 is pushed onto the stack.
+
+**`Name`**
+
+OP_2
+
+**`Constant`**
+
+`OpCodeType('52')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:277](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L277)
+dist/smart-contract/builtins/functions.d.ts:213
 
 ___
 
@@ -279,9 +421,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2DIV**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is divided by 2. **DISABLED** now. (This opcode is scheduled to be re-enabled in the Chronicle update)
+
+**`Name`**
+
+OP_2DIV
+
+**`Constant`**
+
+`OpCodeType('8e')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:346](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L346)
+dist/smart-contract/builtins/functions.d.ts:613
 
 ___
 
@@ -289,9 +441,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2DROP**: [`OpCodeType`](../README.md#opcodetype)
 
+Removes the top two stack items.
+
+**`Name`**
+
+OP_2DROP
+
+**`Constant`**
+
+`OpCodeType('6d')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:307](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L307)
+dist/smart-contract/builtins/functions.d.ts:415
 
 ___
 
@@ -299,9 +461,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2DUP**: [`OpCodeType`](../README.md#opcodetype)
 
+Duplicates the top two stack items.
+
+**`Name`**
+
+OP_2DUP
+
+**`Constant`**
+
+`OpCodeType('6e')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:308](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L308)
+dist/smart-contract/builtins/functions.d.ts:421
 
 ___
 
@@ -309,9 +481,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2MUL**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is multiplied by 2. **DISABLED** now. (This opcode is scheduled to be re-enabled in the Chronicle update)
+
+**`Name`**
+
+OP_2MUL
+
+**`Constant`**
+
+`OpCodeType('8d')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:345](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L345)
+dist/smart-contract/builtins/functions.d.ts:607
 
 ___
 
@@ -319,9 +501,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2OVER**: [`OpCodeType`](../README.md#opcodetype)
 
+Copies the pair of items two spaces back in the stack to the front.
+
+**`Name`**
+
+OP_2OVER
+
+**`Constant`**
+
+`OpCodeType('70')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:310](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L310)
+dist/smart-contract/builtins/functions.d.ts:433
 
 ___
 
@@ -329,9 +521,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2ROT**: [`OpCodeType`](../README.md#opcodetype)
 
+The fifth and sixth items back are moved to the top of the stack.
+
+**`Name`**
+
+OP_2ROT
+
+**`Constant`**
+
+`OpCodeType('71')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:311](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L311)
+dist/smart-contract/builtins/functions.d.ts:439
 
 ___
 
@@ -339,9 +541,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_2SWAP**: [`OpCodeType`](../README.md#opcodetype)
 
+Swaps the top two pairs of items.
+
+**`Name`**
+
+OP_2SWAP
+
+**`Constant`**
+
+`OpCodeType('72')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:312](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L312)
+dist/smart-contract/builtins/functions.d.ts:445
 
 ___
 
@@ -349,9 +561,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_3**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 3 is pushed onto the stack.
+
+**`Name`**
+
+OP_3
+
+**`Constant`**
+
+`OpCodeType('53')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:278](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L278)
+dist/smart-contract/builtins/functions.d.ts:219
 
 ___
 
@@ -359,9 +581,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_3DUP**: [`OpCodeType`](../README.md#opcodetype)
 
+Duplicates the top three stack items.
+
+**`Name`**
+
+OP_3DUP
+
+**`Constant`**
+
+`OpCodeType('6f')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:309](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L309)
+dist/smart-contract/builtins/functions.d.ts:427
 
 ___
 
@@ -369,9 +601,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_4**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 4 is pushed onto the stack.
+
+**`Name`**
+
+OP_4
+
+**`Constant`**
+
+`OpCodeType('54')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:279](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L279)
+dist/smart-contract/builtins/functions.d.ts:225
 
 ___
 
@@ -379,9 +621,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_5**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 5 is pushed onto the stack.
+
+**`Name`**
+
+OP_5
+
+**`Constant`**
+
+`OpCodeType('55')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:280](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L280)
+dist/smart-contract/builtins/functions.d.ts:231
 
 ___
 
@@ -389,9 +641,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_6**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 6 is pushed onto the stack.
+
+**`Name`**
+
+OP_6
+
+**`Constant`**
+
+`OpCodeType('56')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:281](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L281)
+dist/smart-contract/builtins/functions.d.ts:237
 
 ___
 
@@ -399,9 +661,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_7**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 7 is pushed onto the stack.
+
+**`Name`**
+
+OP_7
+
+**`Constant`**
+
+`OpCodeType('57')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:282](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L282)
+dist/smart-contract/builtins/functions.d.ts:243
 
 ___
 
@@ -409,9 +681,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_8**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 8 is pushed onto the stack.
+
+**`Name`**
+
+OP_8
+
+**`Constant`**
+
+`OpCodeType('58')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:283](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L283)
+dist/smart-contract/builtins/functions.d.ts:249
 
 ___
 
@@ -419,9 +701,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_9**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 9 is pushed onto the stack.
+
+**`Name`**
+
+OP_9
+
+**`Constant`**
+
+`OpCodeType('59')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:284](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L284)
+dist/smart-contract/builtins/functions.d.ts:255
 
 ___
 
@@ -429,9 +721,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_ABS**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is made positive.
+
+**`Name`**
+
+OP_ABS
+
+**`Constant`**
+
+`OpCodeType('90')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:348](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L348)
+dist/smart-contract/builtins/functions.d.ts:625
 
 ___
 
@@ -439,9 +741,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_ADD**: [`OpCodeType`](../README.md#opcodetype)
 
+a is added to b.
+
+**`Name`**
+
+OP_ADD
+
+**`Constant`**
+
+`OpCodeType('93')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:352](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L352)
+dist/smart-contract/builtins/functions.d.ts:643
 
 ___
 
@@ -449,9 +761,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_AND**: [`OpCodeType`](../README.md#opcodetype)
 
+Boolean and between each bit in the inputs.
+
+**`Name`**
+
+OP_AND
+
+**`Constant`**
+
+`OpCodeType('84')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:334](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L334)
+dist/smart-contract/builtins/functions.d.ts:553
 
 ___
 
@@ -459,9 +781,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_BIN2NUM**: [`OpCodeType`](../README.md#opcodetype)
 
+Converts byte sequence x into a numeric value.
+
+**`Name`**
+
+OP_BIN2NUM
+
+**`Constant`**
+
+`OpCodeType('81')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:329](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L329)
+dist/smart-contract/builtins/functions.d.ts:535
 
 ___
 
@@ -469,9 +801,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_BOOLAND**: [`OpCodeType`](../README.md#opcodetype)
 
+If both a and b are not 0, the output is 1. Otherwise 0.
+
+**`Name`**
+
+OP_BOOLAND
+
+**`Constant`**
+
+`OpCodeType('9a')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:360](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L360)
+dist/smart-contract/builtins/functions.d.ts:685
 
 ___
 
@@ -479,9 +821,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_BOOLOR**: [`OpCodeType`](../README.md#opcodetype)
 
+If a or b is not 0, the output is 1. Otherwise 0.
+
+**`Name`**
+
+OP_BOOLOR
+
+**`Constant`**
+
+`OpCodeType('9b')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:361](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L361)
+dist/smart-contract/builtins/functions.d.ts:691
 
 ___
 
@@ -489,9 +841,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_CAT**: [`OpCodeType`](../README.md#opcodetype)
 
+Concatenates two strings.
+
+**`Name`**
+
+OP_CAT
+
+**`Constant`**
+
+`OpCodeType('7e')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:326](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L326)
+dist/smart-contract/builtins/functions.d.ts:517
 
 ___
 
@@ -499,9 +861,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_CHECKMULTISIG**: [`OpCodeType`](../README.md#opcodetype)
 
+Compares the first signature against each public key until it finds an ECDSA match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result. All signatures need to match a public key. Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the scriptSig using the same order as their corresponding public keys were placed in the scriptPubKey or redeemScript. If all signatures are valid, 1 is returned, 0 otherwise. Due to a bug, an extra unused value (x) is removed from the stack. Script spenders must account for this by adding a junk value (typically zero) to the stack.
+
+**`Name`**
+
+OP_CHECKMULTISIG
+
+**`Constant`**
+
+`OpCodeType('ae')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:383](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L383)
+dist/smart-contract/builtins/functions.d.ts:807
 
 ___
 
@@ -509,9 +881,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_CHECKMULTISIGVERIFY**: [`OpCodeType`](../README.md#opcodetype)
 
+Same as `OP_CHECKMULTISIG`, but `OP_VERIFY` is executed afterward.
+
+**`Name`**
+
+OP_CHECKMULTISIGVERIFY
+
+**`Constant`**
+
+`OpCodeType('af')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:384](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L384)
+dist/smart-contract/builtins/functions.d.ts:813
 
 ___
 
@@ -519,9 +901,20 @@ ___
 
 ▪ `Static` `Readonly` **OP\_CHECKSIG**: [`OpCodeType`](../README.md#opcodetype)
 
+The entire transaction's outputs, inputs, and script (from the most recently-executed [OP_CODESEPARATOR][https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR) to the end) are hashed.
+The signature used by [OP_CHECKSIG][https://wiki.bitcoinsv.io/index.php/OP_CHECKSIG](https://wiki.bitcoinsv.io/index.php/OP_CHECKSIG) must be a valid signature for this hash and public key. If it is, 1 is returned, 0 otherwise.
+
+**`Name`**
+
+OP_CHECKSIG
+
+**`Constant`**
+
+`OpCodeType('ac')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:381](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L381)
+dist/smart-contract/builtins/functions.d.ts:795
 
 ___
 
@@ -529,9 +922,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_CHECKSIGVERIFY**: [`OpCodeType`](../README.md#opcodetype)
 
+Same as `OP_CHECKSIG`, but `OP_VERIFY` is executed afterward.
+
+**`Name`**
+
+OP_CHECKSIGVERIFY
+
+**`Constant`**
+
+`OpCodeType('ad')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:382](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L382)
+dist/smart-contract/builtins/functions.d.ts:801
 
 ___
 
@@ -539,9 +942,20 @@ ___
 
 ▪ `Static` `Readonly` **OP\_CODESEPARATOR**: [`OpCodeType`](../README.md#opcodetype)
 
+All of the signature checking words will only match signatures to the data after the most recently-executed
+[OP_CODESEPARATOR][https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR).
+
+**`Name`**
+
+OP_CODESEPARATOR
+
+**`Constant`**
+
+`OpCodeType('ab')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:380](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L380)
+dist/smart-contract/builtins/functions.d.ts:788
 
 ___
 
@@ -549,9 +963,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_DEPTH**: [`OpCodeType`](../README.md#opcodetype)
 
+Counts the number of stack items onto the stack and places the value on the top
+
+**`Name`**
+
+OP_DEPTH
+
+**`Constant`**
+
+`OpCodeType('74')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:314](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L314)
+dist/smart-contract/builtins/functions.d.ts:457
 
 ___
 
@@ -559,9 +983,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_DIV**: [`OpCodeType`](../README.md#opcodetype)
 
+a is divided by b.
+
+**`Name`**
+
+OP_DIV
+
+**`Constant`**
+
+`OpCodeType('96')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:355](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L355)
+dist/smart-contract/builtins/functions.d.ts:661
 
 ___
 
@@ -569,9 +1003,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_DROP**: [`OpCodeType`](../README.md#opcodetype)
 
+Removes the top stack item.
+
+**`Name`**
+
+OP_DROP
+
+**`Constant`**
+
+`OpCodeType('75')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:315](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L315)
+dist/smart-contract/builtins/functions.d.ts:463
 
 ___
 
@@ -579,9 +1023,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_DUP**: [`OpCodeType`](../README.md#opcodetype)
 
+Duplicates the top stack item.
+
+**`Name`**
+
+OP_DUP
+
+**`Constant`**
+
+`OpCodeType('76')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:316](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L316)
+dist/smart-contract/builtins/functions.d.ts:469
 
 ___
 
@@ -589,9 +1043,27 @@ ___
 
 ▪ `Static` `Readonly` **OP\_ELSE**: [`OpCodeType`](../README.md#opcodetype)
 
+If the preceding IF or NOTIF check was not valid then statement 2 is executed.
+
+**`Name`**
+
+OP_ELSE
+
+**`Constant`**
+
+`OpCodeType('67')`
+
+**`Example`**
+
+`[expression] IF
+ [statement 1]
+ELSE
+ [statement 2]
+ENDIF`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:300](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L300)
+dist/smart-contract/builtins/functions.d.ts:372
 
 ___
 
@@ -599,9 +1071,28 @@ ___
 
 ▪ `Static` `Readonly` **OP\_ENDIF**: [`OpCodeType`](../README.md#opcodetype)
 
+Ends an if/else block. All blocks must end, or the transaction is invalid.
+An OP_ENDIF without a prior matching OP_IF or OP_NOTIF is also invalid.
+
+**`Name`**
+
+OP_ENDIF
+
+**`Constant`**
+
+`OpCodeType('68')`
+
+**`Example`**
+
+`[expression] IF
+ [statement 1]
+ELSE
+ [statement 2]
+ENDIF`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:301](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L301)
+dist/smart-contract/builtins/functions.d.ts:385
 
 ___
 
@@ -609,9 +1100,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_EQUAL**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if the inputs are exactly equal, 0 otherwise.
+
+**`Name`**
+
+OP_EQUAL
+
+**`Constant`**
+
+`OpCodeType('87')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:337](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L337)
+dist/smart-contract/builtins/functions.d.ts:571
 
 ___
 
@@ -619,9 +1120,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_EQUALVERIFY**: [`OpCodeType`](../README.md#opcodetype)
 
+Same as `OP_EQUAL`, but runs `OP_VERIFY` afterward.
+
+**`Name`**
+
+OP_EQUALVERIFY
+
+**`Constant`**
+
+`OpCodeType('88')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:338](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L338)
+dist/smart-contract/builtins/functions.d.ts:577
 
 ___
 
@@ -629,9 +1140,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_FALSE**: [`OpCodeType`](../README.md#opcodetype)
 
+An empty array of bytes is pushed onto the stack. (This is not a no-op: an item is added to the stack.)
+
+**`Name`**
+
+OP_FALSE
+
+**`Constant`**
+
+`OpCodeType('00')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:269](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L269)
+dist/smart-contract/builtins/functions.d.ts:165
 
 ___
 
@@ -639,9 +1160,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_FROMALTSTACK**: [`OpCodeType`](../README.md#opcodetype)
 
+Puts the input onto the top of the main stack. Removes it from the alt stack.
+
+**`Name`**
+
+OP_FROMALTSTACK
+
+**`Constant`**
+
+`OpCodeType('6c')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:306](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L306)
+dist/smart-contract/builtins/functions.d.ts:409
 
 ___
 
@@ -649,9 +1180,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_GREATERTHAN**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if a is greater than b, 0 otherwise.
+
+**`Name`**
+
+OP_GREATERTHAN
+
+**`Constant`**
+
+`OpCodeType('a0')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:366](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L366)
+dist/smart-contract/builtins/functions.d.ts:721
 
 ___
 
@@ -659,9 +1200,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_GREATERTHANOREQUAL**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if a is greater than or equal to b, 0 otherwise.
+
+**`Name`**
+
+OP_GREATERTHANOREQUAL
+
+**`Constant`**
+
+`OpCodeType('a2')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:368](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L368)
+dist/smart-contract/builtins/functions.d.ts:733
 
 ___
 
@@ -669,9 +1220,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_HASH160**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is hashed twice: first with SHA-256 and then with RIPEMD-160.
+
+**`Name`**
+
+OP_HASH160
+
+**`Constant`**
+
+`OpCodeType('a9')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:378](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L378)
+dist/smart-contract/builtins/functions.d.ts:775
 
 ___
 
@@ -679,9 +1240,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_HASH256**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is hashed two times with SHA-256.
+
+**`Name`**
+
+OP_HASH256
+
+**`Constant`**
+
+`OpCodeType('aa')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:379](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L379)
+dist/smart-contract/builtins/functions.d.ts:781
 
 ___
 
@@ -689,9 +1260,35 @@ ___
 
 ▪ `Static` `Readonly` **OP\_IF**: [`OpCodeType`](../README.md#opcodetype)
 
+If the top stack value is TRUE, statement 1 is executed.
+If the top stack value is FALSE and ELSE is used, statement 2 is executed.
+If ELSE is NOT used, the script jumps to ENDIF. The top stack value is removed.
+
+**`Deprecated`**
+
+**`Name`**
+
+OP_IF
+
+**`Constant`**
+
+`OpCodeType('63')`
+
+**`Example`**
+
+`[expression] IF
+ [statement 1]
+ENDIF`
+OR
+`[expression] IF
+ [statement 1]
+ELSE
+ [statement 2]
+ENDIF`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:296](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L296)
+dist/smart-contract/builtins/functions.d.ts:329
 
 ___
 
@@ -699,9 +1296,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_IFDUP**: [`OpCodeType`](../README.md#opcodetype)
 
+If the top stack value is not 0, duplicate it.
+
+**`Name`**
+
+OP_IFDUP
+
+**`Constant`**
+
+`OpCodeType('73')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:313](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L313)
+dist/smart-contract/builtins/functions.d.ts:451
 
 ___
 
@@ -709,9 +1316,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_INVALIDOPCODE**: [`OpCodeType`](../README.md#opcodetype)
 
+Matches any opcode that is not yet assigned. The word is used internally for assisting with transaction matching. They are invalid if used in actual scripts.
+
+**`Name`**
+
+OP_PUBKEY
+
+**`Constant`**
+
+`OpCodeType('ff')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:404](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L404)
+dist/smart-contract/builtins/functions.d.ts:891
 
 ___
 
@@ -719,9 +1336,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_INVERT**: [`OpCodeType`](../README.md#opcodetype)
 
+Flips all of the bits in the input.
+
+**`Name`**
+
+OP_INVERT
+
+**`Constant`**
+
+`OpCodeType('83')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:333](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L333)
+dist/smart-contract/builtins/functions.d.ts:547
 
 ___
 
@@ -729,9 +1356,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_LESSTHAN**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if a is less than b, 0 otherwise.
+
+**`Name`**
+
+OP_LESSTHAN
+
+**`Constant`**
+
+`OpCodeType('9f')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:365](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L365)
+dist/smart-contract/builtins/functions.d.ts:715
 
 ___
 
@@ -739,9 +1376,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_LESSTHANOREQUAL**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if a is less than or equal to b, 0 otherwise.
+
+**`Name`**
+
+OP_LESSTHANOREQUAL
+
+**`Constant`**
+
+`OpCodeType('a1')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:367](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L367)
+dist/smart-contract/builtins/functions.d.ts:727
 
 ___
 
@@ -749,9 +1396,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_LSHIFT**: [`OpCodeType`](../README.md#opcodetype)
 
+Logical left shift b bits. Sign data is discarded
+
+**`Name`**
+
+OP_LSHIFT
+
+**`Constant`**
+
+`OpCodeType('98')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:357](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L357)
+dist/smart-contract/builtins/functions.d.ts:673
 
 ___
 
@@ -759,9 +1416,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_MAX**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns the larger of a and b.
+
+**`Name`**
+
+OP_MAX
+
+**`Constant`**
+
+`OpCodeType('a4')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:370](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L370)
+dist/smart-contract/builtins/functions.d.ts:745
 
 ___
 
@@ -769,9 +1436,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_MIN**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns the smaller of a and b.
+
+**`Name`**
+
+OP_MIN
+
+**`Constant`**
+
+`OpCodeType('a3')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:369](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L369)
+dist/smart-contract/builtins/functions.d.ts:739
 
 ___
 
@@ -779,9 +1456,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_MOD**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns the remainder after dividing a by b.
+
+**`Name`**
+
+OP_MOD
+
+**`Constant`**
+
+`OpCodeType('97')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:356](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L356)
+dist/smart-contract/builtins/functions.d.ts:667
 
 ___
 
@@ -789,9 +1476,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_MUL**: [`OpCodeType`](../README.md#opcodetype)
 
+a is multiplied by b.
+
+**`Name`**
+
+OP_MUL
+
+**`Constant`**
+
+`OpCodeType('95')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:354](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L354)
+dist/smart-contract/builtins/functions.d.ts:655
 
 ___
 
@@ -799,9 +1496,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NEGATE**: [`OpCodeType`](../README.md#opcodetype)
 
+The sign of the input is flipped.
+
+**`Name`**
+
+OP_NEGATE
+
+**`Constant`**
+
+`OpCodeType('8f')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:347](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L347)
+dist/smart-contract/builtins/functions.d.ts:619
 
 ___
 
@@ -809,9 +1516,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NIP**: [`OpCodeType`](../README.md#opcodetype)
 
+Removes the second-to-top stack item.
+
+**`Name`**
+
+OP_NIP
+
+**`Constant`**
+
+`OpCodeType('77')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:317](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L317)
+dist/smart-contract/builtins/functions.d.ts:475
 
 ___
 
@@ -819,9 +1536,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP**: [`OpCodeType`](../README.md#opcodetype)
 
+Does nothing.
+
+**`Name`**
+
+OP_NOP
+
+**`Constant`**
+
+`OpCodeType('61')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:294](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L294)
+dist/smart-contract/builtins/functions.d.ts:303
 
 ___
 
@@ -829,9 +1556,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP1**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP1
+
+**`Constant`**
+
+`OpCodeType('b0')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:387](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L387)
+dist/smart-contract/builtins/functions.d.ts:819
 
 ___
 
@@ -839,9 +1576,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP10**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP10
+
+**`Constant`**
+
+`OpCodeType('b9')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:396](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L396)
+dist/smart-contract/builtins/functions.d.ts:873
 
 ___
 
@@ -849,9 +1596,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP2**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored. (previously OP_CHECKLOCKTIMEVERIFY)
+
+**`Name`**
+
+OP_NOP2
+
+**`Constant`**
+
+`OpCodeType('b1')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:388](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L388)
+dist/smart-contract/builtins/functions.d.ts:825
 
 ___
 
@@ -859,9 +1616,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP3**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored. (previously OP_CHECKSEQUENCEVERIFY)
+
+**`Name`**
+
+OP_NOP3
+
+**`Constant`**
+
+`OpCodeType('b2')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:389](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L389)
+dist/smart-contract/builtins/functions.d.ts:831
 
 ___
 
@@ -869,9 +1636,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP4**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP4
+
+**`Constant`**
+
+`OpCodeType('b3')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:390](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L390)
+dist/smart-contract/builtins/functions.d.ts:837
 
 ___
 
@@ -879,9 +1656,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP5**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP5
+
+**`Constant`**
+
+`OpCodeType('b4')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:391](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L391)
+dist/smart-contract/builtins/functions.d.ts:843
 
 ___
 
@@ -889,9 +1676,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP6**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP6
+
+**`Constant`**
+
+`OpCodeType('b5')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:392](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L392)
+dist/smart-contract/builtins/functions.d.ts:849
 
 ___
 
@@ -899,9 +1696,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP7**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP7
+
+**`Constant`**
+
+`OpCodeType('b6')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:393](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L393)
+dist/smart-contract/builtins/functions.d.ts:855
 
 ___
 
@@ -909,9 +1716,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP8**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP8
+
+**`Constant`**
+
+`OpCodeType('b7')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:394](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L394)
+dist/smart-contract/builtins/functions.d.ts:861
 
 ___
 
@@ -919,9 +1736,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOP9**: [`OpCodeType`](../README.md#opcodetype)
 
+No operation. The word is ignored.
+
+**`Name`**
+
+OP_NOP9
+
+**`Constant`**
+
+`OpCodeType('b8')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:395](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L395)
+dist/smart-contract/builtins/functions.d.ts:867
 
 ___
 
@@ -929,9 +1756,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOT**: [`OpCodeType`](../README.md#opcodetype)
 
+If the input is 0 or 1, it is flipped. Otherwise the output will be 0.
+
+**`Name`**
+
+OP_NOT
+
+**`Constant`**
+
+`OpCodeType('91')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:349](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L349)
+dist/smart-contract/builtins/functions.d.ts:631
 
 ___
 
@@ -939,9 +1776,35 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NOTIF**: [`OpCodeType`](../README.md#opcodetype)
 
+If the top stack value is FALSE, statement 1 is executed.
+If the top stack value is TRUE and ELSE is used, statement 2 is executed. If ELSE is NOT used, the script jumps to ENDIF.
+The top stack value is removed.
+
+**`Deprecated`**
+
+**`Name`**
+
+OP_NOTIF
+
+**`Constant`**
+
+`OpCodeType('64')`
+
+**`Example`**
+
+`[expression] NOTIF
+ [statement 1]
+ENDIF`
+OR
+`[expression] NOTIF
+ [statement 1]
+ELSE
+ [statement 2]
+ENDIF`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:297](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L297)
+dist/smart-contract/builtins/functions.d.ts:348
 
 ___
 
@@ -949,9 +1812,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NUM2BIN**: [`OpCodeType`](../README.md#opcodetype)
 
+Converts numeric value a into byte sequence of length b.
+
+**`Name`**
+
+OP_NUM2BIN
+
+**`Constant`**
+
+`OpCodeType('80')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:328](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L328)
+dist/smart-contract/builtins/functions.d.ts:529
 
 ___
 
@@ -959,9 +1832,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NUMEQUAL**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if the numbers are equal, 0 otherwise.
+
+**`Name`**
+
+OP_NUMEQUAL
+
+**`Constant`**
+
+`OpCodeType('9c')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:362](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L362)
+dist/smart-contract/builtins/functions.d.ts:697
 
 ___
 
@@ -969,9 +1852,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NUMEQUALVERIFY**: [`OpCodeType`](../README.md#opcodetype)
 
+Same as `OP_NUMEQUAL`, but runs `OP_VERIFY` afterward.
+
+**`Name`**
+
+OP_NUMEQUALVERIFY
+
+**`Constant`**
+
+`OpCodeType('9d')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:363](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L363)
+dist/smart-contract/builtins/functions.d.ts:703
 
 ___
 
@@ -979,9 +1872,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_NUMNOTEQUAL**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if the numbers are not equal, 0 otherwise.
+
+**`Name`**
+
+OP_NUMNOTEQUAL
+
+**`Constant`**
+
+`OpCodeType('9e')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:364](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L364)
+dist/smart-contract/builtins/functions.d.ts:709
 
 ___
 
@@ -989,9 +1892,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_OR**: [`OpCodeType`](../README.md#opcodetype)
 
+Boolean or between each bit in the inputs.
+
+**`Name`**
+
+OP_OR
+
+**`Constant`**
+
+`OpCodeType('85')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:335](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L335)
+dist/smart-contract/builtins/functions.d.ts:559
 
 ___
 
@@ -999,9 +1912,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_OVER**: [`OpCodeType`](../README.md#opcodetype)
 
+Copies the second-to-top stack item to the top.
+
+**`Name`**
+
+OP_OVER
+
+**`Constant`**
+
+`OpCodeType('78')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:318](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L318)
+dist/smart-contract/builtins/functions.d.ts:481
 
 ___
 
@@ -1009,9 +1932,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_PICK**: [`OpCodeType`](../README.md#opcodetype)
 
+The item `n` back in the stack is copied to the top.
+
+**`Name`**
+
+OP_PICK
+
+**`Constant`**
+
+`OpCodeType('79')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:319](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L319)
+dist/smart-contract/builtins/functions.d.ts:487
 
 ___
 
@@ -1019,9 +1952,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_PUBKEY**: [`OpCodeType`](../README.md#opcodetype)
 
+Represents a public key compatible with OP_CHECKSIG. The word is used internally for assisting with transaction matching. They are invalid if used in actual scripts.
+
+**`Name`**
+
+OP_PUBKEY
+
+**`Constant`**
+
+`OpCodeType('fe')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:403](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L403)
+dist/smart-contract/builtins/functions.d.ts:885
 
 ___
 
@@ -1029,9 +1972,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_PUBKEYHASH**: [`OpCodeType`](../README.md#opcodetype)
 
+Represents a public key hashed with OP_HASH160. The word is used internally for assisting with transaction matching. They are invalid if used in actual scripts.
+
+**`Name`**
+
+OP_PUBKEYHASH
+
+**`Constant`**
+
+`OpCodeType('fd')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:402](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L402)
+dist/smart-contract/builtins/functions.d.ts:879
 
 ___
 
@@ -1039,9 +1992,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_PUSHDATA1**: [`OpCodeType`](../README.md#opcodetype)
 
+The next byte contains the number of bytes to be pushed onto the stack.
+
+**`Name`**
+
+OP_PUSHDATA1
+
+**`Constant`**
+
+`OpCodeType('4c')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:270](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L270)
+dist/smart-contract/builtins/functions.d.ts:171
 
 ___
 
@@ -1049,9 +2012,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_PUSHDATA2**: [`OpCodeType`](../README.md#opcodetype)
 
+The next two bytes contain the number of bytes to be pushed onto the stack in little endian order.
+
+**`Name`**
+
+OP_PUSHDATA2
+
+**`Constant`**
+
+`OpCodeType('4d')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:271](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L271)
+dist/smart-contract/builtins/functions.d.ts:177
 
 ___
 
@@ -1059,9 +2032,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_PUSHDATA4**: [`OpCodeType`](../README.md#opcodetype)
 
+The next four bytes contain the number of bytes to be pushed onto the stack in little endian order.
+
+**`Name`**
+
+OP_PUSHDATA4
+
+**`Constant`**
+
+`OpCodeType('4e')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:272](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L272)
+dist/smart-contract/builtins/functions.d.ts:183
 
 ___
 
@@ -1069,9 +2052,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_RESERVED**: [`OpCodeType`](../README.md#opcodetype)
 
+Transaction is invalid unless occuring in an unexecuted OP_IF branch
+
+**`Name`**
+
+OP_RESERVED
+
+**`Constant`**
+
+`OpCodeType('50')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:274](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L274)
+dist/smart-contract/builtins/functions.d.ts:195
 
 ___
 
@@ -1079,9 +2072,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_RESERVED1**: [`OpCodeType`](../README.md#opcodetype)
 
+Any opcode not assigned is also reserved. Using an unassigned opcode makes the transaction invalid.
+
+**`Name`**
+
+OP_RESERVED1
+
+**`Constant`**
+
+`OpCodeType('89')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:339](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L339)
+dist/smart-contract/builtins/functions.d.ts:583
 
 ___
 
@@ -1089,9 +2092,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_RESERVED2**: [`OpCodeType`](../README.md#opcodetype)
 
+Any opcode not assigned is also reserved. Using an unassigned opcode makes the transaction invalid.
+
+**`Name`**
+
+OP_RESERVED2
+
+**`Constant`**
+
+`OpCodeType('8a')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:340](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L340)
+dist/smart-contract/builtins/functions.d.ts:589
 
 ___
 
@@ -1099,9 +2112,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_RETURN**: [`OpCodeType`](../README.md#opcodetype)
 
+OP_RETURN can also be used to create "False Return" outputs with a scriptPubKey consisting of `OP_FALSE` `OP_RETURN` followed by data. Such outputs are provably unspendable and should be given a value of zero Satoshis. These outputs can be pruned from storage in the UTXO set, reducing its size. Currently the BitcoinSV network supports multiple FALSE RETURN outputs in a given transaction with each one capable of holding up to 100kB of data. After the Genesis upgrade in 2020 miners will be free to mine transactions containing FALSE RETURN outputs of any size.
+
+**`Name`**
+
+OP_RETURN
+
+**`Constant`**
+
+`OpCodeType('6a')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:303](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L303)
+dist/smart-contract/builtins/functions.d.ts:397
 
 ___
 
@@ -1109,9 +2132,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_RIPEMD160**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is hashed using RIPEMD-160.
+
+**`Name`**
+
+OP_RIPEMD160
+
+**`Constant`**
+
+`OpCodeType('a6')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:375](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L375)
+dist/smart-contract/builtins/functions.d.ts:757
 
 ___
 
@@ -1119,9 +2152,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_ROLL**: [`OpCodeType`](../README.md#opcodetype)
 
+The item `n` back in the stack is moved to the top.
+
+**`Name`**
+
+OP_ROLL
+
+**`Constant`**
+
+`OpCodeType('7a')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:320](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L320)
+dist/smart-contract/builtins/functions.d.ts:493
 
 ___
 
@@ -1129,9 +2172,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_ROT**: [`OpCodeType`](../README.md#opcodetype)
 
+The top three items on the stack are rotated to the left.
+
+**`Name`**
+
+OP_ROT
+
+**`Constant`**
+
+`OpCodeType('7b')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:321](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L321)
+dist/smart-contract/builtins/functions.d.ts:499
 
 ___
 
@@ -1139,9 +2192,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_RSHIFT**: [`OpCodeType`](../README.md#opcodetype)
 
+Logical right shift b bits. Sign data is discarded
+
+**`Name`**
+
+OP_RSHIFT
+
+**`Constant`**
+
+`OpCodeType('99')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:358](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L358)
+dist/smart-contract/builtins/functions.d.ts:679
 
 ___
 
@@ -1149,9 +2212,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_SHA1**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is hashed using SHA-1.
+
+**`Name`**
+
+OP_SHA1
+
+**`Constant`**
+
+`OpCodeType('a7')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:376](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L376)
+dist/smart-contract/builtins/functions.d.ts:763
 
 ___
 
@@ -1159,9 +2232,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_SHA256**: [`OpCodeType`](../README.md#opcodetype)
 
+The input is hashed using SHA-256.
+
+**`Name`**
+
+OP_SHA256
+
+**`Constant`**
+
+`OpCodeType('a8')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:377](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L377)
+dist/smart-contract/builtins/functions.d.ts:769
 
 ___
 
@@ -1169,9 +2252,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_SIZE**: [`OpCodeType`](../README.md#opcodetype)
 
+Pushes the string length of the top element of the stack (without popping it).
+
+**`Name`**
+
+OP_SIZE
+
+**`Constant`**
+
+`OpCodeType('82')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:330](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L330)
+dist/smart-contract/builtins/functions.d.ts:541
 
 ___
 
@@ -1179,9 +2272,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_SPLIT**: [`OpCodeType`](../README.md#opcodetype)
 
+Splits byte sequence x at position n.
+
+**`Name`**
+
+OP_SPLIT
+
+**`Constant`**
+
+`OpCodeType('7f')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:327](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L327)
+dist/smart-contract/builtins/functions.d.ts:523
 
 ___
 
@@ -1189,9 +2292,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_SUB**: [`OpCodeType`](../README.md#opcodetype)
 
+b is subtracted from a.
+
+**`Name`**
+
+OP_SUB
+
+**`Constant`**
+
+`OpCodeType('94')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:353](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L353)
+dist/smart-contract/builtins/functions.d.ts:649
 
 ___
 
@@ -1199,9 +2312,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_SWAP**: [`OpCodeType`](../README.md#opcodetype)
 
+The top two items on the stack are swapped.
+
+**`Name`**
+
+OP_SWAP
+
+**`Constant`**
+
+`OpCodeType('7c')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:322](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L322)
+dist/smart-contract/builtins/functions.d.ts:505
 
 ___
 
@@ -1209,9 +2332,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_TOALTSTACK**: [`OpCodeType`](../README.md#opcodetype)
 
+Puts the input onto the top of the alt stack. Removes it from the main stack.
+
+**`Name`**
+
+OP_TOALTSTACK
+
+**`Constant`**
+
+`OpCodeType('6b')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:305](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L305)
+dist/smart-contract/builtins/functions.d.ts:403
 
 ___
 
@@ -1219,9 +2352,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_TRUE**: [`OpCodeType`](../README.md#opcodetype)
 
+The number 1 is pushed onto the stack.
+
+**`Name`**
+
+OP_TRUE
+
+**`Constant`**
+
+`OpCodeType('51')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:276](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L276)
+dist/smart-contract/builtins/functions.d.ts:207
 
 ___
 
@@ -1229,9 +2372,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_TUCK**: [`OpCodeType`](../README.md#opcodetype)
 
+The item at the top of the stack is copied and inserted before the second-to-top item.
+
+**`Name`**
+
+OP_TUCK
+
+**`Constant`**
+
+`OpCodeType('7d')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:323](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L323)
+dist/smart-contract/builtins/functions.d.ts:511
 
 ___
 
@@ -1239,9 +2392,23 @@ ___
 
 ▪ `Static` `Readonly` **OP\_VER**: [`OpCodeType`](../README.md#opcodetype)
 
+Puts the version of the protocol under which this transaction will be evaluated onto the stack.
+
+**`Deprecated`**
+
+DISABLED
+
+**`Name`**
+
+OP_VER
+
+**`Constant`**
+
+`OpCodeType('62')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:295](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L295)
+dist/smart-contract/builtins/functions.d.ts:310
 
 ___
 
@@ -1249,9 +2416,21 @@ ___
 
 ▪ `Static` `Readonly` **OP\_VERIF**: [`OpCodeType`](../README.md#opcodetype)
 
+**`Name`**
+
+OP_VERIF
+
+**`Constant`**
+
+`OpCodeType('65')`
+
+**`Deprecated`**
+
+DISABLED
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:298](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L298)
+dist/smart-contract/builtins/functions.d.ts:354
 
 ___
 
@@ -1259,9 +2438,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_VERIFY**: [`OpCodeType`](../README.md#opcodetype)
 
+Marks transaction as invalid if top stack value is not true. The top stack value is removed.
+
+**`Name`**
+
+OP_VERIFY
+
+**`Constant`**
+
+`OpCodeType('69')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:302](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L302)
+dist/smart-contract/builtins/functions.d.ts:391
 
 ___
 
@@ -1269,9 +2458,21 @@ ___
 
 ▪ `Static` `Readonly` **OP\_VERNOTIF**: [`OpCodeType`](../README.md#opcodetype)
 
+**`Name`**
+
+OP_VERNOTIF
+
+**`Constant`**
+
+`OpCodeType('66')`
+
+**`Deprecated`**
+
+DISABLED
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:299](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L299)
+dist/smart-contract/builtins/functions.d.ts:360
 
 ___
 
@@ -1279,9 +2480,19 @@ ___
 
 ▪ `Static` `Readonly` **OP\_WITHIN**: [`OpCodeType`](../README.md#opcodetype)
 
+Returns 1 if x is within the specified range (left-inclusive), 0 otherwise.
+
+**`Name`**
+
+OP_WITHIN
+
+**`Constant`**
+
+`OpCodeType('a5')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:372](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L372)
+dist/smart-contract/builtins/functions.d.ts:751
 
 ___
 
@@ -1289,6 +2500,16 @@ ___
 
 ▪ `Static` `Readonly` **OP\_XOR**: [`OpCodeType`](../README.md#opcodetype)
 
+Boolean exclusive or between each bit in the inputs.
+
+**`Name`**
+
+OP_XOR
+
+**`Constant`**
+
+`OpCodeType('86')`
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:336](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L336)
+dist/smart-contract/builtins/functions.d.ts:565

@@ -32,6 +32,7 @@
 - [readVarintBN](bsv.encoding.BufferReader.md#readvarintbn)
 - [readVarintBuf](bsv.encoding.BufferReader.md#readvarintbuf)
 - [readVarintNum](bsv.encoding.BufferReader.md#readvarintnum)
+- [remaining](bsv.encoding.BufferReader.md#remaining)
 - [reverse](bsv.encoding.BufferReader.md#reverse)
 
 ## Constructors
@@ -58,7 +59,7 @@ node_modules/bsv/index.d.ts:160
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:178
+node_modules/bsv/index.d.ts:179
 
 ## Methods
 
@@ -295,6 +296,20 @@ ___
 #### Defined in
 
 node_modules/bsv/index.d.ts:170
+
+___
+
+### remaining
+
+▸ **remaining**(): `number`
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+node_modules/bsv/index.d.ts:178
 
 ___
 
