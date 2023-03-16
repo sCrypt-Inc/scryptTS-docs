@@ -17,9 +17,12 @@ scrypt-ts
 - [DefaultProvider](classes/DefaultProvider.md)
 - [DummyProvider](classes/DummyProvider.md)
 - [FunctionCall](classes/FunctionCall.md)
+- [GorillapoolProvider](classes/GorillapoolProvider.md)
 - [Provider](classes/Provider.md)
+- [SensibleProvider](classes/SensibleProvider.md)
 - [SensiletSigner](classes/SensiletSigner.md)
 - [Signer](classes/Signer.md)
+- [TaalProvider](classes/TaalProvider.md)
 - [TestWallet](classes/TestWallet.md)
 - [WhatsonchainProvider](classes/WhatsonchainProvider.md)
 
@@ -453,7 +456,7 @@ dist/smart-contract/builtins/types.d.ts:21
 ▸ **lshift**(`x`, `n`): `bigint`
 
 Arithmetic left shift, returns `x * 2^n`.
-More detail abourt [Bitwise Operator][https://scrypt.io/scrypt-ts/getting-started/built-ins#bitwise-operator](https://scrypt.io/scrypt-ts/getting-started/built-ins#bitwise-operator)
+More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
 
 #### Parameters
 
@@ -477,7 +480,7 @@ ___
 ▸ **rshift**(`x`, `n`): `bigint`
 
 Arithmetic right shift, returns `x / 2^n`.
-More detail abourt [Bitwise Operator][https://scrypt.io/scrypt-ts/getting-started/built-ins#bitwise-operator](https://scrypt.io/scrypt-ts/getting-started/built-ins#bitwise-operator)
+More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
 
 #### Parameters
 

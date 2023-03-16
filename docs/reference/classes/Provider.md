@@ -12,6 +12,12 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 
   ↳↳ [`WhatsonchainProvider`](WhatsonchainProvider.md)
 
+  ↳↳ [`SensibleProvider`](SensibleProvider.md)
+
+  ↳↳ [`GorillapoolProvider`](GorillapoolProvider.md)
+
+  ↳↳ [`TaalProvider`](TaalProvider.md)
+
   ↳↳ [`DefaultProvider`](DefaultProvider.md)
 
   ↳↳ [`DummyProvider`](DummyProvider.md)
@@ -94,7 +100,7 @@ ___
 
 ### captureRejectionSymbol
 
-▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](WhatsonchainProvider.md#capturerejectionsymbol)
+▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](Provider.md#capturerejectionsymbol)
 
 #### Inherited from
 
@@ -138,7 +144,7 @@ ___
 
 ### errorMonitor
 
-▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](WhatsonchainProvider.md#errormonitor)
+▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](Provider.md#errormonitor)
 
 This symbol shall be used to install a listener for only monitoring `'error'`
 events. Listeners installed using this symbol are called before the regular

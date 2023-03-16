@@ -1,76 +1,72 @@
-[scrypt-ts](../README.md) / WhatsonchainProvider
+[scrypt-ts](../README.md) / GorillapoolProvider
 
-# Class: WhatsonchainProvider
+# Class: GorillapoolProvider
 
-The WhatsonchainProvider is backed by [whatsonchain][https://whatsonchain.com](https://whatsonchain.com),
-which is the popular blockchain exxplorer for Bitcoin.
+The GorillapoolProvider is backed by [gorillapool][https://gorillapool.io/swagger/](https://gorillapool.io/swagger/)
 
 ## Hierarchy
 
 - [`Provider`](Provider.md)
 
-  ↳ **`WhatsonchainProvider`**
+  ↳ **`GorillapoolProvider`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](WhatsonchainProvider.md#constructor)
+- [constructor](GorillapoolProvider.md#constructor)
 
 ### Properties
 
-- [\_isProvider](WhatsonchainProvider.md#_isprovider)
-- [\_network](WhatsonchainProvider.md#_network)
-- [captureRejectionSymbol](WhatsonchainProvider.md#capturerejectionsymbol)
-- [captureRejections](WhatsonchainProvider.md#capturerejections)
-- [defaultMaxListeners](WhatsonchainProvider.md#defaultmaxlisteners)
-- [errorMonitor](WhatsonchainProvider.md#errormonitor)
-
-### Accessors
-
-- [apiPrefix](WhatsonchainProvider.md#apiprefix)
+- [\_isProvider](GorillapoolProvider.md#_isprovider)
+- [\_network](GorillapoolProvider.md#_network)
+- [\_provider](GorillapoolProvider.md#_provider)
+- [captureRejectionSymbol](GorillapoolProvider.md#capturerejectionsymbol)
+- [captureRejections](GorillapoolProvider.md#capturerejections)
+- [defaultMaxListeners](GorillapoolProvider.md#defaultmaxlisteners)
+- [errorMonitor](GorillapoolProvider.md#errormonitor)
 
 ### Methods
 
-- [addListener](WhatsonchainProvider.md#addlistener)
-- [connect](WhatsonchainProvider.md#connect)
-- [emit](WhatsonchainProvider.md#emit)
-- [eventNames](WhatsonchainProvider.md#eventnames)
-- [getBalance](WhatsonchainProvider.md#getbalance)
-- [getContractUTXOs](WhatsonchainProvider.md#getcontractutxos)
-- [getEstimateFee](WhatsonchainProvider.md#getestimatefee)
-- [getFeePerKb](WhatsonchainProvider.md#getfeeperkb)
-- [getMaxListeners](WhatsonchainProvider.md#getmaxlisteners)
-- [getNetwork](WhatsonchainProvider.md#getnetwork)
-- [getTransaction](WhatsonchainProvider.md#gettransaction)
-- [isConnected](WhatsonchainProvider.md#isconnected)
-- [listUnspent](WhatsonchainProvider.md#listunspent)
-- [listenerCount](WhatsonchainProvider.md#listenercount)
-- [listeners](WhatsonchainProvider.md#listeners)
-- [off](WhatsonchainProvider.md#off)
-- [on](WhatsonchainProvider.md#on)
-- [once](WhatsonchainProvider.md#once)
-- [prependListener](WhatsonchainProvider.md#prependlistener)
-- [prependOnceListener](WhatsonchainProvider.md#prependoncelistener)
-- [rawListeners](WhatsonchainProvider.md#rawlisteners)
-- [removeAllListeners](WhatsonchainProvider.md#removealllisteners)
-- [removeListener](WhatsonchainProvider.md#removelistener)
-- [sendRawTransaction](WhatsonchainProvider.md#sendrawtransaction)
-- [sendTransaction](WhatsonchainProvider.md#sendtransaction)
-- [setMaxListeners](WhatsonchainProvider.md#setmaxlisteners)
-- [updateNetwork](WhatsonchainProvider.md#updatenetwork)
-- [getEventListeners](WhatsonchainProvider.md#geteventlisteners)
-- [isProvider](WhatsonchainProvider.md#isprovider)
-- [listenerCount](WhatsonchainProvider.md#listenercount-1)
-- [on](WhatsonchainProvider.md#on-1)
-- [once](WhatsonchainProvider.md#once-1)
-- [setMaxListeners](WhatsonchainProvider.md#setmaxlisteners-1)
+- [addListener](GorillapoolProvider.md#addlistener)
+- [connect](GorillapoolProvider.md#connect)
+- [emit](GorillapoolProvider.md#emit)
+- [eventNames](GorillapoolProvider.md#eventnames)
+- [getBalance](GorillapoolProvider.md#getbalance)
+- [getContractUTXOs](GorillapoolProvider.md#getcontractutxos)
+- [getEstimateFee](GorillapoolProvider.md#getestimatefee)
+- [getFeePerKb](GorillapoolProvider.md#getfeeperkb)
+- [getMaxListeners](GorillapoolProvider.md#getmaxlisteners)
+- [getNetwork](GorillapoolProvider.md#getnetwork)
+- [getTransaction](GorillapoolProvider.md#gettransaction)
+- [isConnected](GorillapoolProvider.md#isconnected)
+- [listUnspent](GorillapoolProvider.md#listunspent)
+- [listenerCount](GorillapoolProvider.md#listenercount)
+- [listeners](GorillapoolProvider.md#listeners)
+- [off](GorillapoolProvider.md#off)
+- [on](GorillapoolProvider.md#on)
+- [once](GorillapoolProvider.md#once)
+- [prependListener](GorillapoolProvider.md#prependlistener)
+- [prependOnceListener](GorillapoolProvider.md#prependoncelistener)
+- [rawListeners](GorillapoolProvider.md#rawlisteners)
+- [removeAllListeners](GorillapoolProvider.md#removealllisteners)
+- [removeListener](GorillapoolProvider.md#removelistener)
+- [sendRawTransaction](GorillapoolProvider.md#sendrawtransaction)
+- [sendTransaction](GorillapoolProvider.md#sendtransaction)
+- [setMaxListeners](GorillapoolProvider.md#setmaxlisteners)
+- [updateNetwork](GorillapoolProvider.md#updatenetwork)
+- [getEventListeners](GorillapoolProvider.md#geteventlisteners)
+- [isProvider](GorillapoolProvider.md#isprovider)
+- [listenerCount](GorillapoolProvider.md#listenercount-1)
+- [on](GorillapoolProvider.md#on-1)
+- [once](GorillapoolProvider.md#once-1)
+- [setMaxListeners](GorillapoolProvider.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new WhatsonchainProvider**(`network`)
+• **new GorillapoolProvider**(`network`)
 
 #### Parameters
 
@@ -84,7 +80,7 @@ which is the popular blockchain exxplorer for Bitcoin.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:11
+dist/bsv/providers/gorillapool-provider.d.ts:11
 
 ## Properties
 
@@ -108,7 +104,17 @@ ___
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:10
+dist/bsv/providers/gorillapool-provider.d.ts:9
+
+___
+
+### \_provider
+
+• `Private` **\_provider**: `any`
+
+#### Defined in
+
+dist/bsv/providers/gorillapool-provider.d.ts:10
 
 ___
 
@@ -176,25 +182,11 @@ regular `'error'` listener is installed.
 
 node_modules/@types/node/ts4.8/events.d.ts:327
 
-## Accessors
-
-### apiPrefix
-
-• `get` **apiPrefix**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-dist/bsv/providers/whatsonchain-provider.d.ts:12
-
 ## Methods
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **addListener**(`eventName`, `listener`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -211,7 +203,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -225,13 +217,13 @@ ___
 
 ### connect
 
-▸ **connect**(): `Promise`<[`WhatsonchainProvider`](WhatsonchainProvider.md)\>
+▸ **connect**(): `Promise`<[`GorillapoolProvider`](GorillapoolProvider.md)\>
 
 Implement the connection provider, for example, verify the api key during the connection process.
 
 #### Returns
 
-`Promise`<[`WhatsonchainProvider`](WhatsonchainProvider.md)\>
+`Promise`<[`GorillapoolProvider`](GorillapoolProvider.md)\>
 
 a connected provider. Throw an exception if the connection fails.
 
@@ -241,7 +233,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:14
+dist/bsv/providers/gorillapool-provider.d.ts:13
 
 ___
 
@@ -374,7 +366,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:19
+dist/bsv/providers/gorillapool-provider.d.ts:18
 
 ___
 
@@ -403,7 +395,7 @@ A promise which resolves to a list of transaction UTXO.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:24
+dist/bsv/providers/gorillapool-provider.d.ts:23
 
 ___
 
@@ -451,7 +443,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:25
+dist/bsv/providers/gorillapool-provider.d.ts:24
 
 ___
 
@@ -460,7 +452,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](WhatsonchainProvider.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](GorillapoolProvider.md#defaultmaxlisteners).
 
 **`Since`**
 
@@ -496,7 +488,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:16
+dist/bsv/providers/gorillapool-provider.d.ts:15
 
 ___
 
@@ -524,7 +516,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:23
+dist/bsv/providers/gorillapool-provider.d.ts:22
 
 ___
 
@@ -544,7 +536,7 @@ check if provider is ready
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:13
+dist/bsv/providers/gorillapool-provider.d.ts:12
 
 ___
 
@@ -573,7 +565,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:18
+dist/bsv/providers/gorillapool-provider.d.ts:17
 
 ___
 
@@ -647,7 +639,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **off**(`eventName`, `listener`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -664,7 +656,7 @@ v10.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -678,7 +670,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **on**(`eventName`, `listener`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -719,7 +711,7 @@ v0.1.101
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -733,7 +725,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **once**(`eventName`, `listener`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -772,7 +764,7 @@ v0.3.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -786,7 +778,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **prependListener**(`eventName`, `listener`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -814,7 +806,7 @@ v6.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -828,7 +820,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -854,7 +846,7 @@ v6.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -923,7 +915,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **removeAllListeners**(`event?`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -945,7 +937,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -959,7 +951,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **removeListener**(`eventName`, `listener`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -1051,7 +1043,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -1087,7 +1079,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:17
+dist/bsv/providers/gorillapool-provider.d.ts:16
 
 ___
 
@@ -1125,7 +1117,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **setMaxListeners**(`n`): [`GorillapoolProvider`](GorillapoolProvider.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1146,7 +1138,7 @@ v0.3.5
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`GorillapoolProvider`](GorillapoolProvider.md)
 
 #### Inherited from
 
@@ -1180,7 +1172,7 @@ update provider newwork
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:15
+dist/bsv/providers/gorillapool-provider.d.ts:14
 
 ___
 

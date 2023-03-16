@@ -244,7 +244,7 @@ ___
 • `get` **ctx**(): `ScriptContext`
 
 You can directly access the context through `this.ctx` in any public @method.
-[ScriptContext][https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext](https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext) can be considered additional information a public method gets when called, besides its function parameters.
+[ScriptContext][https://docs.scrypt.io/how-to-write-a-contract/scriptcontext](https://docs.scrypt.io/how-to-write-a-contract/scriptcontext) can be considered additional information a public method gets when called, besides its function parameters.
 
 **`Onchain`**
 
@@ -324,7 +324,7 @@ ___
 
 • `get` **provider**(): [`Provider`](Provider.md)
 
-Get the connected [provider][https://scrypt.io/scrypt-ts/how-to-test-a-contract#provider](https://scrypt.io/scrypt-ts/how-to-test-a-contract#provider)
+Get the connected [provider][https://docs.scrypt.io/how-to-test-a-contract#provider](https://docs.scrypt.io/how-to-test-a-contract#provider)
 
 #### Returns
 
@@ -356,7 +356,7 @@ ___
 
 • `get` **signer**(): [`Signer`](Signer.md)
 
-Get the connected [signer][https://scrypt.io/scrypt-ts/how-to-test-a-contract#signer](https://scrypt.io/scrypt-ts/how-to-test-a-contract#signer)
+Get the connected [signer][https://docs.scrypt.io/how-to-test-a-contract#signer](https://docs.scrypt.io/how-to-test-a-contract#signer)
 
 #### Returns
 
@@ -782,7 +782,7 @@ ___
 
 ▸ **sigTypeOfMethod**(`methodName`): `number`
 
-Get [sigHash type][https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext#sighash-type](https://scrypt.io/scrypt-ts/how-to-write-a-contract/scriptcontext#sighash-type) of the public `@method` function.
+Get [sigHash type][https://docs.scrypt.io/how-to-write-a-contract/scriptcontext#sighash-type](https://docs.scrypt.io/how-to-write-a-contract/scriptcontext#sighash-type) of the public `@method` function.
 
 #### Parameters
 

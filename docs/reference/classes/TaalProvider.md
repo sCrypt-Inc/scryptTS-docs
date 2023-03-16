@@ -1,82 +1,84 @@
-[scrypt-ts](../README.md) / WhatsonchainProvider
+[scrypt-ts](../README.md) / TaalProvider
 
-# Class: WhatsonchainProvider
+# Class: TaalProvider
 
-The WhatsonchainProvider is backed by [whatsonchain][https://whatsonchain.com](https://whatsonchain.com),
+The TaalProvider is backed by [taal][https://console.taal.com/](https://console.taal.com/),
 which is the popular blockchain exxplorer for Bitcoin.
 
 ## Hierarchy
 
 - [`Provider`](Provider.md)
 
-  ↳ **`WhatsonchainProvider`**
+  ↳ **`TaalProvider`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](WhatsonchainProvider.md#constructor)
+- [constructor](TaalProvider.md#constructor)
 
 ### Properties
 
-- [\_isProvider](WhatsonchainProvider.md#_isprovider)
-- [\_network](WhatsonchainProvider.md#_network)
-- [captureRejectionSymbol](WhatsonchainProvider.md#capturerejectionsymbol)
-- [captureRejections](WhatsonchainProvider.md#capturerejections)
-- [defaultMaxListeners](WhatsonchainProvider.md#defaultmaxlisteners)
-- [errorMonitor](WhatsonchainProvider.md#errormonitor)
+- [\_api\_key](TaalProvider.md#_api_key)
+- [\_isProvider](TaalProvider.md#_isprovider)
+- [\_network](TaalProvider.md#_network)
+- [\_provider](TaalProvider.md#_provider)
+- [captureRejectionSymbol](TaalProvider.md#capturerejectionsymbol)
+- [captureRejections](TaalProvider.md#capturerejections)
+- [defaultMaxListeners](TaalProvider.md#defaultmaxlisteners)
+- [errorMonitor](TaalProvider.md#errormonitor)
 
 ### Accessors
 
-- [apiPrefix](WhatsonchainProvider.md#apiprefix)
+- [apiPrefix](TaalProvider.md#apiprefix)
 
 ### Methods
 
-- [addListener](WhatsonchainProvider.md#addlistener)
-- [connect](WhatsonchainProvider.md#connect)
-- [emit](WhatsonchainProvider.md#emit)
-- [eventNames](WhatsonchainProvider.md#eventnames)
-- [getBalance](WhatsonchainProvider.md#getbalance)
-- [getContractUTXOs](WhatsonchainProvider.md#getcontractutxos)
-- [getEstimateFee](WhatsonchainProvider.md#getestimatefee)
-- [getFeePerKb](WhatsonchainProvider.md#getfeeperkb)
-- [getMaxListeners](WhatsonchainProvider.md#getmaxlisteners)
-- [getNetwork](WhatsonchainProvider.md#getnetwork)
-- [getTransaction](WhatsonchainProvider.md#gettransaction)
-- [isConnected](WhatsonchainProvider.md#isconnected)
-- [listUnspent](WhatsonchainProvider.md#listunspent)
-- [listenerCount](WhatsonchainProvider.md#listenercount)
-- [listeners](WhatsonchainProvider.md#listeners)
-- [off](WhatsonchainProvider.md#off)
-- [on](WhatsonchainProvider.md#on)
-- [once](WhatsonchainProvider.md#once)
-- [prependListener](WhatsonchainProvider.md#prependlistener)
-- [prependOnceListener](WhatsonchainProvider.md#prependoncelistener)
-- [rawListeners](WhatsonchainProvider.md#rawlisteners)
-- [removeAllListeners](WhatsonchainProvider.md#removealllisteners)
-- [removeListener](WhatsonchainProvider.md#removelistener)
-- [sendRawTransaction](WhatsonchainProvider.md#sendrawtransaction)
-- [sendTransaction](WhatsonchainProvider.md#sendtransaction)
-- [setMaxListeners](WhatsonchainProvider.md#setmaxlisteners)
-- [updateNetwork](WhatsonchainProvider.md#updatenetwork)
-- [getEventListeners](WhatsonchainProvider.md#geteventlisteners)
-- [isProvider](WhatsonchainProvider.md#isprovider)
-- [listenerCount](WhatsonchainProvider.md#listenercount-1)
-- [on](WhatsonchainProvider.md#on-1)
-- [once](WhatsonchainProvider.md#once-1)
-- [setMaxListeners](WhatsonchainProvider.md#setmaxlisteners-1)
+- [addListener](TaalProvider.md#addlistener)
+- [connect](TaalProvider.md#connect)
+- [emit](TaalProvider.md#emit)
+- [eventNames](TaalProvider.md#eventnames)
+- [getBalance](TaalProvider.md#getbalance)
+- [getContractUTXOs](TaalProvider.md#getcontractutxos)
+- [getEstimateFee](TaalProvider.md#getestimatefee)
+- [getFeePerKb](TaalProvider.md#getfeeperkb)
+- [getMaxListeners](TaalProvider.md#getmaxlisteners)
+- [getNetwork](TaalProvider.md#getnetwork)
+- [getTransaction](TaalProvider.md#gettransaction)
+- [isConnected](TaalProvider.md#isconnected)
+- [listUnspent](TaalProvider.md#listunspent)
+- [listenerCount](TaalProvider.md#listenercount)
+- [listeners](TaalProvider.md#listeners)
+- [off](TaalProvider.md#off)
+- [on](TaalProvider.md#on)
+- [once](TaalProvider.md#once)
+- [prependListener](TaalProvider.md#prependlistener)
+- [prependOnceListener](TaalProvider.md#prependoncelistener)
+- [rawListeners](TaalProvider.md#rawlisteners)
+- [removeAllListeners](TaalProvider.md#removealllisteners)
+- [removeListener](TaalProvider.md#removelistener)
+- [sendRawTransaction](TaalProvider.md#sendrawtransaction)
+- [sendTransaction](TaalProvider.md#sendtransaction)
+- [setMaxListeners](TaalProvider.md#setmaxlisteners)
+- [updateNetwork](TaalProvider.md#updatenetwork)
+- [getEventListeners](TaalProvider.md#geteventlisteners)
+- [isProvider](TaalProvider.md#isprovider)
+- [listenerCount](TaalProvider.md#listenercount-1)
+- [on](TaalProvider.md#on-1)
+- [once](TaalProvider.md#once-1)
+- [setMaxListeners](TaalProvider.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new WhatsonchainProvider**(`network`)
+• **new TaalProvider**(`api_key?`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `network` | [`Network`](../interfaces/bsv.Networks.Network.md) |
+| `api_key?` | `string` |
 
 #### Overrides
 
@@ -84,9 +86,19 @@ which is the popular blockchain exxplorer for Bitcoin.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:11
+dist/bsv/providers/taal-provider.d.ts:12
 
 ## Properties
+
+### \_api\_key
+
+• `Private` **\_api\_key**: `any`
+
+#### Defined in
+
+dist/bsv/providers/taal-provider.d.ts:10
+
+___
 
 ### \_isProvider
 
@@ -108,7 +120,17 @@ ___
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:10
+dist/bsv/providers/taal-provider.d.ts:9
+
+___
+
+### \_provider
+
+• `Private` **\_provider**: `any`
+
+#### Defined in
+
+dist/bsv/providers/taal-provider.d.ts:11
 
 ___
 
@@ -188,13 +210,13 @@ node_modules/@types/node/ts4.8/events.d.ts:327
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:12
+dist/bsv/providers/taal-provider.d.ts:13
 
 ## Methods
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **addListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -211,7 +233,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -225,13 +247,13 @@ ___
 
 ### connect
 
-▸ **connect**(): `Promise`<[`WhatsonchainProvider`](WhatsonchainProvider.md)\>
+▸ **connect**(): `Promise`<[`TaalProvider`](TaalProvider.md)\>
 
 Implement the connection provider, for example, verify the api key during the connection process.
 
 #### Returns
 
-`Promise`<[`WhatsonchainProvider`](WhatsonchainProvider.md)\>
+`Promise`<[`TaalProvider`](TaalProvider.md)\>
 
 a connected provider. Throw an exception if the connection fails.
 
@@ -241,7 +263,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:14
+dist/bsv/providers/taal-provider.d.ts:15
 
 ___
 
@@ -374,7 +396,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:19
+dist/bsv/providers/taal-provider.d.ts:20
 
 ___
 
@@ -403,7 +425,7 @@ A promise which resolves to a list of transaction UTXO.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:24
+dist/bsv/providers/taal-provider.d.ts:25
 
 ___
 
@@ -451,7 +473,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:25
+dist/bsv/providers/taal-provider.d.ts:26
 
 ___
 
@@ -460,7 +482,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](WhatsonchainProvider.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](TaalProvider.md#defaultmaxlisteners).
 
 **`Since`**
 
@@ -496,7 +518,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:16
+dist/bsv/providers/taal-provider.d.ts:17
 
 ___
 
@@ -524,7 +546,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:23
+dist/bsv/providers/taal-provider.d.ts:24
 
 ___
 
@@ -544,13 +566,13 @@ check if provider is ready
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:13
+dist/bsv/providers/taal-provider.d.ts:14
 
 ___
 
 ### listUnspent
 
-▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **listUnspent**(`address`, `options`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of the P2PKH UTXOs.
 
@@ -559,7 +581,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -573,7 +595,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:18
+dist/bsv/providers/taal-provider.d.ts:19
 
 ___
 
@@ -647,7 +669,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **off**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -664,7 +686,7 @@ v10.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -678,7 +700,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **on**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -719,7 +741,7 @@ v0.1.101
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -733,7 +755,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **once**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -772,7 +794,7 @@ v0.3.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -786,7 +808,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **prependListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -814,7 +836,7 @@ v6.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -828,7 +850,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -854,7 +876,7 @@ v6.0.0
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -923,7 +945,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **removeAllListeners**(`event?`): [`TaalProvider`](TaalProvider.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -945,7 +967,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -959,7 +981,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **removeListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -1051,7 +1073,7 @@ v0.1.26
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -1087,7 +1109,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:17
+dist/bsv/providers/taal-provider.d.ts:18
 
 ___
 
@@ -1125,7 +1147,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`WhatsonchainProvider`](WhatsonchainProvider.md)
+▸ **setMaxListeners**(`n`): [`TaalProvider`](TaalProvider.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1146,7 +1168,7 @@ v0.3.5
 
 #### Returns
 
-[`WhatsonchainProvider`](WhatsonchainProvider.md)
+[`TaalProvider`](TaalProvider.md)
 
 #### Inherited from
 
@@ -1180,7 +1202,7 @@ update provider newwork
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:15
+dist/bsv/providers/taal-provider.d.ts:16
 
 ___
 
