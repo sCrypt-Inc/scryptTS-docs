@@ -406,6 +406,42 @@ let aab: FixedArray<bigint, N> = [1n, 2n]
 let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
+:::note
+In scryptTS, all parameters are *pass by value*, whereas, in JavaScript objects and arrays are *pass by reference*, which means extra care must be taken when updating the values of these variables. For example:
+
+```ts
+import {assert, method, prop, SmartContract, FixedArray} from "scrypt-ts";
+class DemoContract extends SmartContract {
+
+    @prop(true)
+    readonly a: FixedArray<bigint, 3>;
+    
+    @prop(true)
+    readonly b: FixedArray<bigint, 3>; 
+
+    constructor(a: FixedArray<bigint, 3>, b: FixedArray<bigint, 3>) {
+        super(...arguments);
+        this.a = a;
+        this.b = b;
+    }
+
+    @method()
+    public unlock() {
+        assert(true);
+    }
+}
+
+const arrayA: FixedArray<bigint, 3> = [1n, 2n, 3n]
+const arrayB: FixedArray<bigint, 3> = [1n, 2n, 3n]
+// invalid, you cannot pass an array or user-defined type to two different function parameters.
+const instance = new DemoContract(arrayA, arrayA);
+// valid
+const instance = new DemoContract(arrayA, arrayB);
+// Attention! `instance.a` has been changed.
+arrayA[0] = 0n
+```
+:::
+
 ### Domain Types
 
 There are several domain types, specific to the Bitcoin context, used to further improve type safety. They are all subtypes of `ByteString`. That is, they can be used where a `ByteString` is expected, but not vice versa.
