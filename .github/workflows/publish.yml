@@ -9,6 +9,6 @@ jobs:
       - uses: redkubes/docusaurus-deploy-action@v1
         with:
           source-folder: docs
-          git-user: ${{ github.event.head_commit.author.username }}
+          git-user: zhfnjust
           git-password: ${{ secrets.GITHUB_TOKEN }}
           deployment-branch: gh-pages
