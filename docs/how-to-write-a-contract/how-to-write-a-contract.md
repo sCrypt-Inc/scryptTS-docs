@@ -406,6 +406,10 @@ let aab: FixedArray<bigint, N> = [1n, 2n]
 let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
+:::note
+Customized type and Fixed Array are *pass by reference*. When passing them to a contract method, an alias or reference to the actual parameter is passed, which means the method will access the actual parameter.
+:::
+
 ### Domain Types
 
 There are several domain types, specific to the Bitcoin context, used to further improve type safety. They are all subtypes of `ByteString`. That is, they can be used where a `ByteString` is expected, but not vice versa.
