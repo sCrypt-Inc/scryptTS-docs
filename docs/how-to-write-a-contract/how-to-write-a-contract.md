@@ -407,7 +407,15 @@ let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
 :::note
-Customized type and Fixed Array are *pass by reference*. When passing them to a contract method, an alias or reference to the actual parameter is passed, which means the method will access the actual parameter.
+In scryptTS, all parameters are *pass by value*, whereas, in JavaScript objects and arrays are *pass by reference*, which means extra care must be taken when updating the values of these variables. For example:
+
+```ts
+const array: FixedArray<bigint, 3> = [1n, 2n, 3n]
+const instance = new DemoContract(array)
+
+// Attention! `instance.array` has been changed.
+array[0] = 0n
+```
 :::
 
 ### Domain Types
