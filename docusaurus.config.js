@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'scryptTS',
   tagline: 'a Typescript DSL to write smart contracts on Bitcoin Satoshi Vision.',
-  url: 'https://scrypt.io',
-  baseUrl: '/scrypt-ts',
+  url: 'https://docs.scrypt.io',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -17,7 +17,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'sCrypt-Inc', // Usually your GitHub org/user name.
-  projectName: 'scrypt-ts', // Usually your repo name.
+  projectName: 'scrypt-ts-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
