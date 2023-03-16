@@ -9,7 +9,7 @@ This section will show how to integrate your smart contract to a frontend, so us
 We use [React](https://reactjs.org/) as our frontend framework as an example. We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the front end project.
 
 :::note
-You can use frontend frameworks other than React.
+Currently, the only supported frontend frameworks is React. We anticipate to add supports for other frameworks over time.
 :::
 
 ## Setup
