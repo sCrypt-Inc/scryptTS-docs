@@ -323,6 +323,6 @@ As before, we can just use the following command:
 ```sh
 npm run test
 ```
-Full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/counter.ts).
+Full code is [here](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/counter.ts).
 
 You may visit [here](./how-to-deploy-and-call-a-contract.md) to see more details on contract deployment and call.

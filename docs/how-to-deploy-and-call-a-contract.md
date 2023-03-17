@@ -129,7 +129,7 @@ The major differences between here and local tests are:
 ### Create a smart contract instance from a transaction
 To interact with a deployed smart contract (i.e., calling its public methods), we need its contract instance corresponding to its latest state on chain, stateful or not. When testing on testnet, we usually put a contract's deployment and its calling (note there could be multiple calls if the contract is stateful) in the same process for convenience, so that we don't need to manage the internal state of the instance manually, because it's always consistent with the transactions on chain.
 
-The [following code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/counter.ts) tests the stateful contract [Counter](./how-to-write-a-contract/stateful-contract.md#create-a-stateful-contract). `currentInstance` always points to the latest instance.
+The [following code](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/counter.ts) tests the stateful contract [Counter](./how-to-write-a-contract/stateful-contract.md#create-a-stateful-contract). `currentInstance` always points to the latest instance.
 ```ts
 const counter = new Counter(0n)
 
@@ -282,7 +282,7 @@ console.log('contract called: ', callTx.id);
 
 ```
 
-More examples can be found [here](https://github.com/sCrypt-Inc/scryptTS-examples/tree/master/tests/testnet).
+More examples can be found [here](https://github.com/sCrypt-Inc/boilerplate/tree/master/tests/testnet).
 
 
 ### Running the code

@@ -53,7 +53,7 @@ class DemoContract extends SmartContract {
 }
 ```
 
-You may visit the [full code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/cf3ea45a11/src/contracts/auction.ts#L100-L127) for more details.
+You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/cf3ea45a11/src/contracts/auction.ts#L100-L127) for more details.
 
 ## Call Tx
 
@@ -132,7 +132,7 @@ class Auction extends SmartContract {
 }
 ```
 
-You may visit the [full code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/cf3ea45a11/src/contracts/auction.ts#L129-L178) for more details.
+You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/cf3ea45a11/src/contracts/auction.ts#L129-L178) for more details.
 
 ## Notes
 
