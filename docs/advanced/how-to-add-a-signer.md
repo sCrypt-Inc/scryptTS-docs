@@ -1,11 +1,11 @@
 ---
-sidebar_position: 12
+sidebar_position: 1
 ---
 
 # How to Add a Signer
 
 
-As described in [this section](./how-to-test-a-contract.md#signer), a signer is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
+As described in [this section](../how-to-test-a-contract.md#signer), a signer is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
 
 `scryptTS` provides the following signers by default:
 
@@ -404,7 +404,7 @@ override async signMessage(message: string, address?: AddressOption): Promise<st
 }
 ```
 
-So far, we have implemented all abstract methods. The remaining non-abstract methods can reuse the default implementation, that is, delegating to the connected [provider](./how-to-test-a-contract.md#provider). If you have a customized implementation, you can override them. For example, we can use the [Sensilet api `getBsvBalance`](https://doc.sensilet.com/guide/sensilet-api.html#getbsvbalance) to obtain the balance of an address.
+So far, we have implemented all abstract methods. The remaining non-abstract methods can reuse the default implementation, that is, delegating to the connected [provider](../how-to-test-a-contract.md#provider). If you have a customized implementation, you can override them. For example, we can use the [Sensilet api `getBsvBalance`](https://doc.sensilet.com/guide/sensilet-api.html#getbsvbalance) to obtain the balance of an address.
 
 ```ts
 override getBalance(address?: AddressOption): Promise<{ confirmed: number, unconfirmed: number }> {

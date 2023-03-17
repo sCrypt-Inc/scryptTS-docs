@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
-# Tutorial 4: How to Debug ScriptContext Failure
+# How to Debug ScriptContext Failure
 
 
 [ScriptContext](../how-to-write-a-contract/scriptcontext.md) enables the logic of the contract to be executed correctly according to the agreement, and the state of the contract can be propagated correctly.
