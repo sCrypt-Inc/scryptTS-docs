@@ -20,14 +20,6 @@ The following is an [example code](https://github.com/sCrypt-Inc/boilerplate/blo
 
 
 ```ts
-import {
-    MethodCallOptions,
-    SmartContract,
-    bsv,
-    ContractTransaction,
-    toByteString,
-    sha256,
-} from 'scrypt-ts'
 import { Counter } from '../../src/contracts/counter'
 import { getDefaultSigner } from '../utils/helper'
 import { HashPuzzle } from '../../src/contracts/hashPuzzle'
@@ -116,20 +108,20 @@ async function main() {
         }
     )
 
-    const partialContractTransaction1 = await counter.methods.incrementOnChain({
+    const partialTx = await counter.methods.incrementOnChain({
         multiContractCall: true,
     } as MethodCallOptions<Counter>)
 
-    const partialContractTransaction2 = await hashPuzzle.methods.unlock(
+    const finalTx = await hashPuzzle.methods.unlock(
         byteString,
         {
             multiContractCall: true,
-            partialContractTransaction: partialContractTransaction1,
+            partialContractTransaction: partialTx,
         } as MethodCallOptions<HashPuzzle>
     )
 
     const { tx: callTx, nexts } = await SmartContract.multiContractCall(
-        partialContractTransaction2,
+        finalTx,
         signer
     )
 
@@ -139,11 +131,8 @@ async function main() {
     counter = nexts[0].instance
 }
 
-describe('Test SmartContract `Counter, HashPuzzle ` multi called on testnet', () => {
-    it('should succeed', async () => {
-        await main()
-    })
-})
+await main()
+
 ```
 
 
