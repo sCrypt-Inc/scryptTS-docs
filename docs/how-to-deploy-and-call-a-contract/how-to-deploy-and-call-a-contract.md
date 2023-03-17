@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 # How to Deploy & Call a Contract
@@ -21,13 +21,13 @@ The command will generate a private key and store it in a `.env` file in our pro
 
 2. Fund the private key's address with some testnet coins. You could use this [facuet](https://scrypt.io/#faucet) to receive test coins.
 
-![facuet](../static/img/faucet.gif)
+![facuet](../../static/img/faucet.gif)
 
 ### Use the Sensilet Wallet
 
 Alternatively, if you have already installed [Sensilet](https://sensilet.com/), you can extract and use its private key on testnet as follows.
 
-![](../static/img/extract-sensilet-private-key.gif)
+![](../../static/img/extract-sensilet-private-key.gif)
 
 ## Introduction
 
@@ -35,7 +35,7 @@ Alternatively, if you have already installed [Sensilet](https://sensilet.com/), 
 After you've finished writing a contract, you can deploy and call it. But first, you should learn how the a smart contract interacts with the blockchain.
 
 
-As explained in the [Overview section](./overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in details.
+As explained in the [Overview section](../overview.md), a `scryptTS` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in details.
 
 
 ### Tx Builders
@@ -71,15 +71,15 @@ instance.to.inputIndex
 
 This section could be summarized as the diagram below:
 
-![](../static/img/contract_tx.svg)
+![](../../static/img/contract_tx.svg)
 
 
 ## Prepare a Signer and Provider
 
-As we mentioned in the [testing section](./how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
+As we mentioned in the [testing section](../how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
 
 
-For local testing, we can use the `TestWallet` introduced [before](./how-to-test-a-contract#testwallet), with a mock provider. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](./how-to-test-a-contract.md#provider).
+For local testing, we can use the `TestWallet` introduced [before](./how-to-test-a-contract#testwallet), with a mock provider. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](../how-to-test-a-contract.md#provider).
 
 ```ts
 const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
@@ -129,7 +129,7 @@ The major differences between here and local tests are:
 ### Create a smart contract instance from a transaction
 To interact with a deployed smart contract (i.e., calling its public methods), we need its contract instance corresponding to its latest state on chain, stateful or not. When testing on testnet, we usually put a contract's deployment and its calling (note there could be multiple calls if the contract is stateful) in the same process for convenience, so that we don't need to manage the internal state of the instance manually, because it's always consistent with the transactions on chain.
 
-The [following code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/counter.ts) tests the stateful contract [Counter](./how-to-write-a-contract/stateful-contract.md#create-a-stateful-contract). `currentInstance` always points to the latest instance.
+The [following code](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/tests/testnet/counter.ts) tests the stateful contract [Counter](../how-to-write-a-contract/stateful-contract.md#create-a-stateful-contract). `currentInstance` always points to the latest instance.
 ```ts
 const counter = new Counter(0n)
 
@@ -173,7 +173,7 @@ for (let i = 0; i < 3; ++i) {
 
 In reality, a contract's deployment and its call, and its different calls in the case of a stateful contract, may well be in separate processes. For example, the deployment party is different from the calling party, or multiple parties call it. If so, we need to create a contract instance from an on-chain transaction that represents its latest state, before we can call its method.
 
-We can create an contract instance from a transaction's output by calling [fromTx()](how-to-write-a-contract/built-ins.md#fromtx).
+We can create an contract instance from a transaction's output by calling [fromTx()](../how-to-write-a-contract/built-ins.md#fromtx).
 ```ts
 // recover instance from transaction
 const instance = Counter.fromTx(tx, atOutputIndex)

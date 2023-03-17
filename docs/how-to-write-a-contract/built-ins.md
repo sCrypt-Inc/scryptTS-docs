@@ -304,7 +304,7 @@ const { tx: callTx, atInputIndex } = await auction.methods.bid(
 ```
 
 :::note
-If you use a [customized call tx builder](../how-to-customize-a-contract-tx.md), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+If you use a [customized call tx builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
 :::
 
 ```ts
@@ -318,7 +318,7 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
 
 ### `fromTx`
 
-Function `static fromTx(tx: bsv.Transaction, atOutputIndex: number, offchainValues?: Record<string, any>)` creates an instance with its state synchronized to a given transaction output, identified by `tx` the transaction and `atOutputIndex` the output index. It is needed to [create an up-to-date instance of a contract](./../how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction).
+Function `static fromTx(tx: bsv.Transaction, atOutputIndex: number, offchainValues?: Record<string, any>)` creates an instance with its state synchronized to a given transaction output, identified by `tx` the transaction and `atOutputIndex` the output index. It is needed to [create an up-to-date instance of a contract](./../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction).
 
 ```ts
 // create an instance from a transaction output
@@ -342,7 +342,7 @@ const instance = ContractName.fromTx(tx, atOutputIndex, {
 
 ### `buildDeployTransaction`
 
-Function `async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction>` creates a tx to deploy the contract. The first parameter `utxos` represents one or more [P2PKH](https://learnmeabitcoin.com/technical/p2pkh) inputs for paying transaction fees. The second parameter `amount` is the balance of contract output. The last parameter `changeAddress` is optional and represents a change address. Users override it to [cutomize a deployment tx](../how-to-customize-a-contract-tx.md#customize) as below.
+Function `async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction>` creates a tx to deploy the contract. The first parameter `utxos` represents one or more [P2PKH](https://learnmeabitcoin.com/technical/p2pkh) inputs for paying transaction fees. The second parameter `amount` is the balance of contract output. The last parameter `changeAddress` is optional and represents a change address. Users override it to [cutomize a deployment tx](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#customize) as below.
 
 
 ```ts
@@ -389,7 +389,7 @@ instance.bindTxBuilder("unlock", (options: MethodCallOptions<T>, ...args: any) =
 })
 ```
 
-You may visit [here](../how-to-customize-a-contract-tx.md#customize-1) to see more details on how to customize tx builder.
+You may visit [here](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#customize-1) to see more details on how to customize tx builder.
 
 
 ### `multiContractCall`

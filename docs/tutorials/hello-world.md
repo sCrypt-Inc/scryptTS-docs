@@ -59,11 +59,11 @@ Now let’s look at what is in the smart contract.
 
 ## Contract Deployment & Call
 
-Before we deploy the contract, follow [the instruction](../how-to-deploy-and-call-a-contract.md#setup) to fund a Bitcoin key.
+Before we deploy the contract, follow [the instruction](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#setup) to fund a Bitcoin key.
 
-1. To [deploy a smart contract](../how-to-deploy-and-call-a-contract.md#contract-deployment), simply call its `deploy` method.
+1. To [deploy a smart contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-deployment), simply call its `deploy` method.
 
-2. To [call a smart contract](../how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
+2. To [call a smart contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
 
 Let's create a file named `deploy.ts` in the root of the project, containing code to deploy and call the `Helloworld` contract:
 

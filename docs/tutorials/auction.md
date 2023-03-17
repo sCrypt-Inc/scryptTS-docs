@@ -178,7 +178,7 @@ public close(sig: Sig) {
 
 ## Customize tx builder for `bid`
 
-Using [default tx builder](../how-to-customize-a-contract-tx.md#default-1) cannot meet our demand when calling `bid`, since the second output - the refund P2PKH output - is not a new contract instance.
+Using [default tx builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#default-1) cannot meet our demand when calling `bid`, since the second output - the refund P2PKH output - is not a new contract instance.
 
 In Function `static bidTxBuilder(options: MethodCallOptions<Auction>, bidder: PubKeyHash, bid: bigint): Promise<ContractTransaction>`, we add all three outputs as designed.
 
