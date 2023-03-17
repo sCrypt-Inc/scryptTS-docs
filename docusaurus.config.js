@@ -155,7 +155,7 @@ const config = {
 
       algolia: {
         appId: 'OJKYHFWNLH',
-        apiKey: '41d31d6a84f91d053d5588b2785cab7e',
+        apiKey: 'b2fd643cac7f79de3144cda8f1215aaf',
         indexName: 'scryptTS-docs',
       },
     }),
