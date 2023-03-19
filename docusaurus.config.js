@@ -33,7 +33,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
+          routeBasePath: '/docs',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -61,19 +61,7 @@ const config = {
             type: 'doc',
             docId: 'overview',
             position: 'left',
-            label: 'Overview',
-          },
-          {
-            type: 'doc',
-            docId: 'tutorials/hello-world',
-            position: 'left',
-            label: 'Tutorials',
-          },
-          {
-            type: 'doc',
-            docId: 'reference/README',
-            position: 'left',
-            label: 'Reference',
+            label: 'Docs',
           },
           {
             href: 'https://learn.scrypt.io/',
