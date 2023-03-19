@@ -42,7 +42,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:361
+node_modules/bsv/index.d.ts:362
 
 ## Properties
 
@@ -52,7 +52,7 @@ node_modules/bsv/index.d.ts:361
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:358
+node_modules/bsv/index.d.ts:359
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:359
+node_modules/bsv/index.d.ts:360
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:357
+node_modules/bsv/index.d.ts:358
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:360
+node_modules/bsv/index.d.ts:361
 
 ## Methods
 
@@ -96,7 +96,7 @@ node_modules/bsv/index.d.ts:360
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:369
+node_modules/bsv/index.d.ts:370
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:367
+node_modules/bsv/index.d.ts:368
 
 ___
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:366
+node_modules/bsv/index.d.ts:367
 
 ___
 
@@ -150,7 +150,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:370
+node_modules/bsv/index.d.ts:371
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:368
+node_modules/bsv/index.d.ts:369
 
 ___
 
@@ -189,4 +189,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:371
+node_modules/bsv/index.d.ts:372

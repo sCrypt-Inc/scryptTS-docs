@@ -12,6 +12,14 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 
   ↳↳ [`WhatsonchainProvider`](WhatsonchainProvider.md)
 
+  ↳↳ [`SensibleProvider`](SensibleProvider.md)
+
+  ↳↳ [`GorillapoolProvider`](GorillapoolProvider.md)
+
+  ↳↳ [`TaalProvider`](TaalProvider.md)
+
+  ↳↳ [`DefaultProvider`](DefaultProvider.md)
+
   ↳↳ [`DummyProvider`](DummyProvider.md)
 
 ## Table of contents
@@ -76,7 +84,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L42)
+dist/bsv/abstract-provider.d.ts:40
 
 ## Properties
 
@@ -86,13 +94,13 @@ EventEmitter.constructor
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L140)
+dist/bsv/abstract-provider.d.ts:111
 
 ___
 
 ### captureRejectionSymbol
 
-▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](WhatsonchainProvider.md#capturerejectionsymbol)
+▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](Provider.md#capturerejectionsymbol)
 
 #### Inherited from
 
@@ -136,7 +144,7 @@ ___
 
 ### errorMonitor
 
-▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](WhatsonchainProvider.md#errormonitor)
+▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](Provider.md#errormonitor)
 
 This symbol shall be used to install a listener for only monitoring `'error'`
 events. Listeners installed using this symbol are called before the regular
@@ -201,7 +209,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:56](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L56)
+dist/bsv/abstract-provider.d.ts:49
 
 ___
 
@@ -320,7 +328,7 @@ Get the balance of BSVs in satoshis for an address.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) | The query address. |
+| `address` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
@@ -330,7 +338,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:128](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L128)
+dist/bsv/abstract-provider.d.ts:100
 
 ___
 
@@ -355,7 +363,7 @@ A promise which resolves to a list of transaction UTXO.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:136](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L136)
+dist/bsv/abstract-provider.d.ts:110
 
 ___
 
@@ -379,7 +387,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:79](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L79)
+dist/bsv/abstract-provider.d.ts:68
 
 ___
 
@@ -391,11 +399,11 @@ ___
 
 `Promise`<`number`\>
 
-The fee rate for sending transations through this provider.
+The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:72](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L72)
+dist/bsv/abstract-provider.d.ts:62
 
 ___
 
@@ -436,7 +444,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L67)
+dist/bsv/abstract-provider.d.ts:58
 
 ___
 
@@ -460,7 +468,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:113](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L113)
+dist/bsv/abstract-provider.d.ts:87
 
 ___
 
@@ -476,7 +484,7 @@ check if provider is ready
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:50](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L50)
+dist/bsv/abstract-provider.d.ts:44
 
 ___
 
@@ -490,7 +498,7 @@ Get a list of the P2PKH UTXOs.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) | The address of the returned UTXOs belongs to. |
+| `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
 | `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
@@ -501,7 +509,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:121](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L121)
+dist/bsv/abstract-provider.d.ts:94
 
 ___
 
@@ -1011,7 +1019,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:93](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L93)
+dist/bsv/abstract-provider.d.ts:74
 
 ___
 
@@ -1039,7 +1047,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:101](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L101)
+dist/bsv/abstract-provider.d.ts:81
 
 ___
 
@@ -1096,7 +1104,7 @@ update provider newwork
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:62](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L62)
+dist/bsv/abstract-provider.d.ts:54
 
 ___
 
@@ -1174,7 +1182,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:147](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-provider.ts#L147)
+dist/bsv/abstract-provider.d.ts:117
 
 ___
 

@@ -35,7 +35,9 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 - [getDefaultPubKey](Signer.md#getdefaultpubkey)
 - [getPubKey](Signer.md#getpubkey)
 - [getSignatures](Signer.md#getsignatures)
+- [isAuthenticated](Signer.md#isauthenticated)
 - [listUnspent](Signer.md#listunspent)
+- [requestAuth](Signer.md#requestauth)
 - [signAndsendTransaction](Signer.md#signandsendtransaction)
 - [signMessage](Signer.md#signmessage)
 - [signRawTransaction](Signer.md#signrawtransaction)
@@ -56,7 +58,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:57](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L57)
+dist/bsv/abstract-signer.d.ts:50
 
 ## Properties
 
@@ -66,7 +68,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L55)
+dist/bsv/abstract-signer.d.ts:49
 
 ___
 
@@ -76,7 +78,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L54)
+dist/bsv/abstract-signer.d.ts:48
 
 ## Accessors
 
@@ -98,7 +100,7 @@ the connected provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L67)
+dist/bsv/abstract-signer.d.ts:122
 
 ## Methods
 
@@ -120,7 +122,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:83](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L83)
+dist/bsv/abstract-signer.d.ts:69
 
 ___
 
@@ -128,19 +130,23 @@ ___
 
 ▸ **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
+Get the balance of BSVs in satoshis for an address.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address?` | [`AddressOption`](../README.md#addressoption) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `address?` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
 `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
+A promise which resolves to the address balance status.
+
 #### Defined in
 
-[src/bsv/abstract-signer.ts:114](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L114)
+dist/bsv/abstract-signer.d.ts:142
 
 ___
 
@@ -156,7 +162,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:97](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L97)
+dist/bsv/abstract-signer.d.ts:79
 
 ___
 
@@ -172,7 +178,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:91](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L91)
+dist/bsv/abstract-signer.d.ts:74
 
 ___
 
@@ -188,7 +194,7 @@ If the private key for the address does not belong this signer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address?` | [`AddressOption`](../README.md#addressoption) | The request address, using the default address if omitted. |
+| `address?` | [`Address`](bsv.Address.md) | The request address, using the default address if omitted. |
 
 #### Returns
 
@@ -198,7 +204,7 @@ The public key result.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:105](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L105)
+dist/bsv/abstract-signer.d.ts:86
 
 ___
 
@@ -223,7 +229,25 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:153](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L153)
+dist/bsv/abstract-signer.d.ts:116
+
+___
+
+### isAuthenticated
+
+▸ `Abstract` **isAuthenticated**(): `Promise`<`boolean`\>
+
+Check if the wallet has been authenticated
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+true | false
+
+#### Defined in
+
+dist/bsv/abstract-signer.d.ts:55
 
 ___
 
@@ -231,20 +255,42 @@ ___
 
 ▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
+Get a list of the P2PKH UTXOs.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) |
-| `options?` | `UtxoQueryOptions` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
+| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
 `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
+A promise which resolves to a list of UTXO for the query options.
+
 #### Defined in
 
-[src/bsv/abstract-signer.ts:108](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L108)
+dist/bsv/abstract-signer.d.ts:136
+
+___
+
+### requestAuth
+
+▸ `Abstract` **requestAuth**(): `Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+
+Request wallet authentication
+
+#### Returns
+
+`Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+
+A promise which resolves to if the wallet has been authenticated and the authenticate error message
+
+#### Defined in
+
+dist/bsv/abstract-signer.d.ts:60
 
 ___
 
@@ -252,20 +298,24 @@ ___
 
 ▸ **signAndsendTransaction**(`tx`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
+Sign transaction and broadcast it
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) |
-| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `tx` | [`Transaction`](bsv.Transaction-1.md) | A transaction is signed and broadcast |
+| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) | The options for signing, see the details of `SignTransactionOptions`. |
 
 #### Returns
 
 `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
+A promise which resolves to the transaction id.
+
 #### Defined in
 
-[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L157)
+dist/bsv/abstract-signer.d.ts:129
 
 ___
 
@@ -280,7 +330,7 @@ Sign a message string.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `message` | `string` | The message to be signed. |
-| `address?` | [`AddressOption`](../README.md#addressoption) | The optional address whose private key will be used to sign `message`, using the default private key if omitted. |
+| `address?` | [`Address`](bsv.Address.md) | The optional address whose private key will be used to sign `message`, using the default private key if omitted. |
 
 #### Returns
 
@@ -290,7 +340,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:145](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L145)
+dist/bsv/abstract-signer.d.ts:109
 
 ___
 
@@ -319,7 +369,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:129](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L129)
+dist/bsv/abstract-signer.d.ts:95
 
 ___
 
@@ -344,7 +394,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:137](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L137)
+dist/bsv/abstract-signer.d.ts:102
 
 ___
 
@@ -368,4 +418,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L171)
+dist/bsv/abstract-signer.d.ts:151

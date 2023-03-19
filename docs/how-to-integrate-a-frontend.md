@@ -90,7 +90,7 @@ You cannot simply call `Helloworld.compile()` at the front end, since it only wo
 You will integrate [Sensilet](https://sensilet.com/), a MetaMask-like wallet, into the project.
 
 :::info
-You can refer to this [guide](./how-to-add-a-signer.md) to add support for other wallets.
+You can refer to this [guide](./advanced/how-to-add-a-signer.md) to add support for other wallets.
 :::
 
 To request access to the wallet, you can use its `requestAuth` method. 
@@ -117,6 +117,6 @@ Now you can connect the wallet to the contract instance as before.
 await instance.connect(signer);
 ```
 
-Afterwards, you can interact with the contract from the front end by [calling its method](./how-to-deploy-and-call-a-contract.md#contract-call) as usual.
+Afterwards, you can interact with the contract from the front end by [calling its method](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) as usual.
 
 Go [here](https://learn.scrypt.io/en/courses/Build-a-Tic-tac-toe-Game-with-sCrypt-614c387bc0974f55df5af1e5) to see a full example on how to build a Tic-Tac-Toe game on chain.

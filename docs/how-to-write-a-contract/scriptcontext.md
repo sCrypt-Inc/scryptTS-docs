@@ -160,4 +160,4 @@ There are a total of 6 sigHash types to choose from:
 
 ### Debugging
 
-See [How to debug ScriptContext](../tutorials/how-to-debug-scriptcontext.md)
+See [How to Debug ScriptContext Failure](../advanced/how-to-debug-scriptcontext.md)

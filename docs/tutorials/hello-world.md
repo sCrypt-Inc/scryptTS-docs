@@ -10,7 +10,7 @@ In this tutorial, we will go over how to quickly create a “Hello World” smar
 
 ## Create a new project
 
-Make sure [all prerequisite tools](https://scrypt.io/scrypt-ts/installation) are installed.
+Make sure [all prerequisite tools](../installation) are installed.
 
 Run the following commands to create a new project:
 
@@ -52,18 +52,18 @@ Now let’s look at what is in the smart contract.
 
 - `@prop`:  the [`@prop` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#properties) marks a contract property.
 
-- `@method`: the [`@method` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#method-decorator) marks a contract method. A [public method](https://scrypt.io/scrypt-ts/how-to-write-a-contract/#public-methods) is an entry point to a contract.
+- `@method`: the [`@method` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#method-decorator) marks a contract method. A [public method](../how-to-write-a-contract/#public-methods) is an entry point to a contract.
 
 - `assert`: throws an error and makes the method call fail if its first argument is `false`. Here it ensures the passed message hashed to the expected digest.
 
 
 ## Contract Deployment & Call
 
-Before we deploy the contract, follow [the instruction](../how-to-deploy-and-call-a-contract.md#setup) to fund a Bitcoin key.
+Before we deploy the contract, follow [the instruction](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#setup) to fund a Bitcoin key.
 
-1. To [deploy a smart contract](../how-to-deploy-and-call-a-contract.md#contract-deployment), simply call its `deploy` method.
+1. To [deploy a smart contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-deployment), simply call its `deploy` method.
 
-2. To [call a smart contract](../how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
+2. To [call a smart contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
 
 Let's create a file named `deploy.ts` in the root of the project, containing code to deploy and call the `Helloworld` contract:
 

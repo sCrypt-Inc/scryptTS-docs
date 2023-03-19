@@ -23,7 +23,7 @@ The index of input.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:28](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L28)
+dist/bsv/abstract-signer.d.ts:26
 
 ___
 
@@ -35,7 +35,7 @@ The public key bound with the `sig`.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L32)
+dist/bsv/abstract-signer.d.ts:30
 
 ___
 
@@ -47,7 +47,7 @@ The signature.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:30](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L30)
+dist/bsv/abstract-signer.d.ts:28
 
 ___
 
@@ -59,4 +59,4 @@ The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:34](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L34)
+dist/bsv/abstract-signer.d.ts:32

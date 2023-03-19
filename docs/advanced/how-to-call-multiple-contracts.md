@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 2
 ---
 
 # Call Multiple Contracts in a Single Tx
@@ -8,7 +8,7 @@ Up to now, we have only shown how to call one smart contract in a transaction. T
 
 There are cases where it is desirable to spend multiple smart contract UTXOs in different inputs of a tx.
 
-The main differences from [calling a single contract](./how-to-deploy-and-call-a-contract.md#contract-call) are:
+The main differences from [calling a single contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) are:
 
 1. Set `multiContractCall = true` in `MethodCallOptions`
 2. Each call may only return a partial/incomplete transaction, instead of a complete transaction
@@ -16,18 +16,10 @@ The main differences from [calling a single contract](./how-to-deploy-and-call-a
 4. Finally invoke `SmartContract.multiContractCall(partialContractTransaction: ContractTransaction, signer: Signer)` to sign and broadcast the complete transaction
 
 
-The following is an [example code](https://github.com/sCrypt-Inc/scrypt-ts-example/blob/master/tests/testnet/multi_contracts_call.ts) of calling two contracts at the same time:
+The following is an [example code](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/multi_contracts_call.ts) of calling two contracts at the same time:
 
 
 ```ts
-import {
-    MethodCallOptions,
-    SmartContract,
-    bsv,
-    ContractTransaction,
-    toByteString,
-    sha256,
-} from 'scrypt-ts'
 import { Counter } from '../../src/contracts/counter'
 import { getDefaultSigner } from '../utils/helper'
 import { HashPuzzle } from '../../src/contracts/hashPuzzle'
@@ -116,20 +108,20 @@ async function main() {
         }
     )
 
-    const partialContractTransaction1 = await counter.methods.incrementOnChain({
+    const partialTx = await counter.methods.incrementOnChain({
         multiContractCall: true,
     } as MethodCallOptions<Counter>)
 
-    const partialContractTransaction2 = await hashPuzzle.methods.unlock(
+    const finalTx = await hashPuzzle.methods.unlock(
         byteString,
         {
             multiContractCall: true,
-            partialContractTransaction: partialContractTransaction1,
+            partialContractTransaction: partialTx,
         } as MethodCallOptions<HashPuzzle>
     )
 
     const { tx: callTx, nexts } = await SmartContract.multiContractCall(
-        partialContractTransaction2,
+        finalTx,
         signer
     )
 
@@ -139,17 +131,14 @@ async function main() {
     counter = nexts[0].instance
 }
 
-describe('Test SmartContract `Counter, HashPuzzle ` multi called on testnet', () => {
-    it('should succeed', async () => {
-        await main()
-    })
-})
+await main()
+
 ```
 
 
 
 :::note
-- You must bind a [transition builder](./how-to-deploy-and-call-a-contract#tx-builders) to each contract instance, since [the default](./how-to-customize-a-contract-tx.md#customize-1) only spends a single contract UTXO.
+- You must bind a [transition builder](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#tx-builders) to each contract instance, since [the default](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#customize-1) only spends a single contract UTXO.
 - If the called contracts need signatures from different private keys to be called, the signer passed to `multiContractCall` must have all private keys.
 :::
 

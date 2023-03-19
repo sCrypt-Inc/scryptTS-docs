@@ -2,6 +2,8 @@
 
 # Class: VarIntReader
 
+A reader to parse a ByteString buffer
+
 ## Table of contents
 
 ### Constructors
@@ -22,7 +24,6 @@
 - [readBool](VarIntReader.md#readbool)
 - [readBytes](VarIntReader.md#readbytes)
 - [readInt](VarIntReader.md#readint)
-- [getStateStart](VarIntReader.md#getstatestart)
 
 ## Constructors
 
@@ -38,7 +39,7 @@
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:602](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L602)
+dist/smart-contract/builtins/functions.d.ts:1056
 
 ## Properties
 
@@ -48,7 +49,7 @@
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:599](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L599)
+dist/smart-contract/builtins/functions.d.ts:1054
 
 ___
 
@@ -58,7 +59,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:600](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L600)
+dist/smart-contract/builtins/functions.d.ts:1055
 
 ___
 
@@ -68,7 +69,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:593](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L593)
+dist/smart-contract/builtins/functions.d.ts:1051
 
 ___
 
@@ -78,7 +79,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:597](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L597)
+dist/smart-contract/builtins/functions.d.ts:1053
 
 ___
 
@@ -88,7 +89,7 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:595](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L595)
+dist/smart-contract/builtins/functions.d.ts:1052
 
 ## Methods
 
@@ -96,13 +97,17 @@ ___
 
 ▸ **eof**(): `boolean`
 
+Check if all have been read
+
 #### Returns
 
 `boolean`
 
+true if all have been read
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:607](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L607)
+dist/smart-contract/builtins/functions.d.ts:1061
 
 ___
 
@@ -110,13 +115,17 @@ ___
 
 ▸ **readBool**(): `boolean`
 
+read a byte as boolean
+
 #### Returns
 
 `boolean`
 
+true if the read byte not equal to '00'
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:647](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L647)
+dist/smart-contract/builtins/functions.d.ts:1071
 
 ___
 
@@ -124,13 +133,17 @@ ___
 
 ▸ **readBytes**(): [`ByteString`](../README.md#bytestring)
 
+read bytes which encoded with bitcoin [value-pushing words][https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script)
+
 #### Returns
 
 [`ByteString`](../README.md#bytestring)
 
+true if all have been read
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:611](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L611)
+dist/smart-contract/builtins/functions.d.ts:1066
 
 ___
 
@@ -138,30 +151,14 @@ ___
 
 ▸ **readInt**(): `bigint`
 
-#### Returns
-
-`bigint`
-
-#### Defined in
-
-[src/smart-contract/builtins/functions.ts:653](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L653)
-
-___
-
-### getStateStart
-
-▸ `Static` **getStateStart**(`scriptCode`): `bigint`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `scriptCode` | [`ByteString`](../README.md#bytestring) |
+read bytes as `readBytes` and convert it to a number with `byteString2Int`
 
 #### Returns
 
 `bigint`
 
+a number
+
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:657](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/builtins/functions.ts#L657)
+dist/smart-contract/builtins/functions.d.ts:1076

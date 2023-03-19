@@ -17,7 +17,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'sCrypt-Inc', // Usually your GitHub org/user name.
-  projectName: 'scrypt-ts', // Usually your repo name.
+  projectName: 'scrypt-ts-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -142,8 +142,8 @@ const config = {
 
       algolia: {
         appId: 'OJKYHFWNLH',
-        apiKey: '41d31d6a84f91d053d5588b2785cab7e',
-        indexName: 'scrypt',
+        apiKey: 'b2fd643cac7f79de3144cda8f1215aaf',
+        indexName: 'scryptTS-docs',
       },
     }),
 };

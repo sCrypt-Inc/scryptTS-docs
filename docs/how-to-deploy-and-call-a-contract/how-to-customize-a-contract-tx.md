@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 2
 ---
 
 # How to Customize a Contract Tx
@@ -22,7 +22,7 @@ For contract deployment, the default tx builder creates a transaction with the f
 Numbers in [] represent index, starting from 0.
 
 ### Customize
-You can customize a contract's deployment tx builder by overriding its [buildDeployTransaction](https://scrypt.io/scrypt-ts/how-to-write-a-contract/built-ins#builddeploytransaction) method. An example is shown below.
+You can customize a contract's deployment tx builder by overriding its [buildDeployTransaction](../how-to-write-a-contract/built-ins#builddeploytransaction) method. An example is shown below.
 
 ```ts
 class DemoContract extends SmartContract {
@@ -67,7 +67,7 @@ For contract calls, the default tx builder creates a transaction with the follow
 
 * Outputs
 
-  * [0…N-1]: One or more outputs, each containing a new contract instance (UTXO) if the contract is [stateful](./how-to-write-a-contract/stateful-contract).
+  * [0…N-1]: One or more outputs, each containing a new contract instance (UTXO) if the contract is [stateful](../how-to-write-a-contract/stateful-contract).
   * [N]: A P2PKH change output if needed.
 
 
@@ -107,7 +107,7 @@ instance.bindTxBuilder("unlock", (options: MethodCallOptions<T>, ...args: any) =
 
 Note that the parameters of your customized tx builder consist of two parts:
 
-- `options` is of type [`MethodCallOptions`](./how-to-test-a-contract.md#methodcalloptions).
+- `options` is of type [`MethodCallOptions`](../how-to-test-a-contract.md#methodcalloptions).
 - `...args: any` is an argument list the same as the bound pubic `@method`.
 
 ```ts

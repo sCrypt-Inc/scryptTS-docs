@@ -2,17 +2,15 @@
 
 # Interface: MethodCallOptions<T\>
 
+A option type to call a contract public `@method` function.
+Used to specify the behavior of signers and transaction builders.
+For example, specifying a transaction builder to use a specific change address or specifying a signer to use a specific public key to sign.
+
 ## Type parameters
 
 | Name |
 | :------ |
 | `T` |
-
-## Hierarchy
-
-- [`SharedOptions`](SharedOptions.md)
-
-  ↳ **`MethodCallOptions`**
 
 ## Table of contents
 
@@ -21,74 +19,119 @@
 - [changeAddress](MethodCallOptions.md#changeaddress)
 - [fromUTXO](MethodCallOptions.md#fromutxo)
 - [lockTime](MethodCallOptions.md#locktime)
+- [multiContractCall](MethodCallOptions.md#multicontractcall)
 - [next](MethodCallOptions.md#next)
-- [send](MethodCallOptions.md#send)
-- [sigRequiredAddress](MethodCallOptions.md#sigrequiredaddress)
+- [partialContractTransaction](MethodCallOptions.md#partialcontracttransaction)
+- [pubKeyOrAddrToSign](MethodCallOptions.md#pubkeyoraddrtosign)
+- [sequence](MethodCallOptions.md#sequence)
+- [verify](MethodCallOptions.md#verify)
 
 ## Properties
 
 ### changeAddress
 
-• `Optional` **changeAddress**: [`AddressOption`](../README.md#addressoption)
+• `Optional` `Readonly` **changeAddress**: [`Address`](../classes/bsv.Address.md)
 
-#### Inherited from
-
-[SharedOptions](SharedOptions.md).[changeAddress](SharedOptions.md#changeaddress)
+The P2PKH change output address
 
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:14](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L14)
+dist/smart-contract/types/contract-call.d.ts:36
 
 ___
 
 ### fromUTXO
 
-• `Optional` **fromUTXO**: [`IUnspentOutput`](bsv.Transaction.IUnspentOutput.md)
+• `Optional` `Readonly` **fromUTXO**: [`IUnspentOutput`](bsv.Transaction.IUnspentOutput.md)
 
-#### Inherited from
-
-[SharedOptions](SharedOptions.md).[fromUTXO](SharedOptions.md#fromutxo)
+The previous contract UTXO to spend in the method calling tx
 
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:13](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L13)
+dist/smart-contract/types/contract-call.d.ts:34
 
 ___
 
 ### lockTime
 
-• `Optional` **lockTime**: `number`
+• `Optional` `Readonly` **lockTime**: `number`
+
+The `lockTime` of the method calling tx
 
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:34](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L34)
+dist/smart-contract/types/contract-call.d.ts:30
+
+___
+
+### multiContractCall
+
+• `Optional` `Readonly` **multiContractCall**: `boolean`
+
+Whether to call multiple contracts at the same time in one transaction
+
+#### Defined in
+
+dist/smart-contract/types/contract-call.d.ts:40
 
 ___
 
 ### next
 
-• `Optional` **next**: [`StatefulNextWithIdx`](../README.md#statefulnextwithidx)<`T`\> \| [`StatefulNext`](StatefulNext.md)<`T`\>[]
+• `Optional` `Readonly` **next**: [`StatefulNext`](StatefulNext.md)<`T`\> \| [`StatefulNext`](StatefulNext.md)<`T`\>[]
+
+The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract
 
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:33](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L33)
+dist/smart-contract/types/contract-call.d.ts:28
 
 ___
 
-### send
+### partialContractTransaction
 
-• `Optional` **send**: `boolean`
+• `Optional` `Readonly` **partialContractTransaction**: [`ContractTransaction`](ContractTransaction.md)
+
+Pass the `ContractTransaction` of the previous call as an argument to the next call, only used if `multiContractCall = true`.
 
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:31](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L31)
+dist/smart-contract/types/contract-call.d.ts:42
 
 ___
 
-### sigRequiredAddress
+### pubKeyOrAddrToSign
 
-• `Optional` **sigRequiredAddress**: [`AddressesOption`](../README.md#addressesoption)
+• `Optional` `Readonly` **pubKeyOrAddrToSign**: [`PublicKeysOrAddressesOption`](../README.md#publickeysoraddressesoption)
+
+The private key(s) associated with these address(es) or public key(s)
+must be used to sign the contract input,
+and the callback function will receive the results of the signatures as an argument named `sigResponses`
 
 #### Defined in
 
-[src/smart-contract/types/contract-call.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/smart-contract/types/contract-call.ts#L32)
+dist/smart-contract/types/contract-call.d.ts:26
+
+___
+
+### sequence
+
+• `Optional` `Readonly` **sequence**: `number`
+
+The `sequence` of the input spending previous contract UTXO in the method calling tx
+
+#### Defined in
+
+dist/smart-contract/types/contract-call.d.ts:32
+
+___
+
+### verify
+
+• `Optional` `Readonly` **verify**: `boolean`
+
+verify the input script before send transaction
+
+#### Defined in
+
+dist/smart-contract/types/contract-call.d.ts:38

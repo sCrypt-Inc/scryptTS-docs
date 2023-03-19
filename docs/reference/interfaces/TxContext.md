@@ -2,6 +2,9 @@
 
 # Interface: TxContext
 
+TxContext provides some context information of the current transaction,
+needed only if signature is checked inside the contract.
+
 ## Table of contents
 
 ### Properties
@@ -16,41 +19,9 @@
 
 ### inputIndex
 
-• `Optional` **inputIndex**: `number`
+• **inputIndex**: `number`
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:7
-
-___
-
-### inputSatoshis
-
-• `Optional` **inputSatoshis**: `number`
-
-**`Deprecated`**
-
-no need any more
-
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:11
-
-___
-
-### opReturn
-
-• `Optional` **opReturn**: `string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:12
-
-___
-
-### opReturnHex
-
-• `Optional` **opReturnHex**: `string`
+input index
 
 #### Defined in
 
@@ -58,10 +29,48 @@ node_modules/scryptlib/dist/contract.d.ts:13
 
 ___
 
-### tx
+### inputSatoshis
 
-• **tx**: [`Transaction`](../classes/bsv.Transaction-1.md)
+• **inputSatoshis**: `number`
+
+input amount in satoshis
 
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:6
+node_modules/scryptlib/dist/contract.d.ts:15
+
+___
+
+### opReturn
+
+• `Optional` **opReturn**: `string`
+
+contract state in ASM format
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:17
+
+___
+
+### opReturnHex
+
+• `Optional` **opReturnHex**: `string`
+
+contract state in hex format
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:19
+
+___
+
+### tx
+
+• **tx**: `string` \| [`Transaction`](../classes/bsv.Transaction-1.md)
+
+current transaction represented in bsv.Transaction object or hex string
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:11

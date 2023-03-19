@@ -29,9 +29,11 @@
 
 • **abi**: `ABIEntity`[]
 
+ABI of the contract: interfaces of its public functions and constructor
+
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:34
+node_modules/scryptlib/dist/contract.d.ts:50
 
 ___
 
@@ -39,19 +41,25 @@ ___
 
 • **alias**: `AliasEntity`[]
 
+all typealias defined in the contracts, including dependent contracts
+
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:33
+node_modules/scryptlib/dist/contract.d.ts:48
 
 ___
 
 ### asm
 
-• **asm**: `string`
+• `Optional` **asm**: `string`
+
+**`Deprecated`**
+
+locking script of the contract in ASM format, including placeholders for constructor parameters
 
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:35
+node_modules/scryptlib/dist/contract.d.ts:52
 
 ___
 
@@ -59,45 +67,7 @@ ___
 
 • **buildType**: `string`
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:27
-
-___
-
-### compilerVersion
-
-• **compilerVersion**: `string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:26
-
-___
-
-### contract
-
-• **contract**: `string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:28
-
-___
-
-### file
-
-• **file**: `string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:37
-
-___
-
-### hex
-
-• **hex**: `string`
+build type, can be debug or release
 
 #### Defined in
 
@@ -105,49 +75,23 @@ node_modules/scryptlib/dist/contract.d.ts:36
 
 ___
 
-### library
+### compilerVersion
 
-• **library**: `LibraryEntity`[]
+• **compilerVersion**: `string`
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:32
-
-___
-
-### md5
-
-• **md5**: `string`
+version of compiler used to produce this file
 
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:29
+node_modules/scryptlib/dist/contract.d.ts:34
 
 ___
 
-### sourceMap
+### contract
 
-• `Optional` **sourceMap**: `string`[]
+• **contract**: `string`
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:39
-
-___
-
-### sourceMapFile
-
-• **sourceMapFile**: `string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:40
-
-___
-
-### sources
-
-• `Optional` **sources**: `string`[]
+name of the contract
 
 #### Defined in
 
@@ -155,13 +99,103 @@ node_modules/scryptlib/dist/contract.d.ts:38
 
 ___
 
+### file
+
+• **file**: `string`
+
+file uri of the main contract source code file
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:56
+
+___
+
+### hex
+
+• **hex**: `string`
+
+locking script of the contract in hex format, including placeholders for constructor parameters
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:54
+
+___
+
+### library
+
+• **library**: `LibraryEntity`[]
+
+all library defined in the contracts, including dependent contracts
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:46
+
+___
+
+### md5
+
+• **md5**: `string`
+
+md5 of the contract source code
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:40
+
+___
+
+### sourceMap
+
+• `Optional` **sourceMap**: `string`[]
+
+**`Deprecated`**
+
+*
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:60
+
+___
+
+### sourceMapFile
+
+• **sourceMapFile**: `string`
+
+file uri of source map file *
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:62
+
+___
+
+### sources
+
+• `Optional` **sources**: `string`[]
+
+**`Deprecated`**
+
+*
+
+#### Defined in
+
+node_modules/scryptlib/dist/contract.d.ts:58
+
+___
+
 ### stateProps
 
 • **stateProps**: `ParamEntity`[]
 
+all stateful properties defined in the contracts
+
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:30
+node_modules/scryptlib/dist/contract.d.ts:42
 
 ___
 
@@ -169,9 +203,11 @@ ___
 
 • **structs**: `StructEntity`[]
 
+all structures defined in the contracts, including dependent contracts
+
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:31
+node_modules/scryptlib/dist/contract.d.ts:44
 
 ___
 
@@ -179,6 +215,8 @@ ___
 
 • **version**: `number`
 
+version of artifact file
+
 #### Defined in
 
-node_modules/scryptlib/dist/contract.d.ts:25
+node_modules/scryptlib/dist/contract.d.ts:32

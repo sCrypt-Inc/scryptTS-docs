@@ -36,7 +36,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:979
+node_modules/bsv/index.d.ts:990
 
 ## Methods
 
@@ -50,7 +50,7 @@ node_modules/bsv/index.d.ts:979
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:981
+node_modules/bsv/index.d.ts:992
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:983
+node_modules/bsv/index.d.ts:994
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:982
+node_modules/bsv/index.d.ts:993
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:984
+node_modules/bsv/index.d.ts:995
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:974
+node_modules/bsv/index.d.ts:985
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:976
+node_modules/bsv/index.d.ts:987
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:975
+node_modules/bsv/index.d.ts:986
 
 ___
 
@@ -172,4 +172,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:977
+node_modules/bsv/index.d.ts:988

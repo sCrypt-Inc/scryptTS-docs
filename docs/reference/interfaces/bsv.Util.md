@@ -24,4 +24,4 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:907
+node_modules/bsv/index.d.ts:918

@@ -14,12 +14,15 @@ scrypt-ts
 
 ### Other Classes
 
+- [DefaultProvider](classes/DefaultProvider.md)
+- [DummyProvider](classes/DummyProvider.md)
 - [FunctionCall](classes/FunctionCall.md)
-- [HashedMap](classes/HashedMap.md)
-- [HashedSet](classes/HashedSet.md)
+- [GorillapoolProvider](classes/GorillapoolProvider.md)
 - [Provider](classes/Provider.md)
+- [SensibleProvider](classes/SensibleProvider.md)
 - [SensiletSigner](classes/SensiletSigner.md)
 - [Signer](classes/Signer.md)
+- [TaalProvider](classes/TaalProvider.md)
 - [TestWallet](classes/TestWallet.md)
 - [WhatsonchainProvider](classes/WhatsonchainProvider.md)
 
@@ -31,9 +34,10 @@ scrypt-ts
 ### Standard Contracts Classes
 
 - [Constants](classes/Constants.md)
+- [HashedMap](classes/HashedMap.md)
+- [HashedSet](classes/HashedSet.md)
 - [OpCode](classes/OpCode.md)
 - [SigHash](classes/SigHash.md)
-- [Tx](classes/Tx.md)
 - [Utils](classes/Utils.md)
 - [VarIntReader](classes/VarIntReader.md)
 - [VarIntWriter](classes/VarIntWriter.md)
@@ -41,10 +45,14 @@ scrypt-ts
 ### Interfaces
 
 - [ContractArtifact](interfaces/ContractArtifact.md)
-- [Range](interfaces/Range.md)
+- [ContractTransaction](interfaces/ContractTransaction.md)
+- [MethodCallOptions](interfaces/MethodCallOptions.md)
+- [MethodCallTxBuilder](interfaces/MethodCallTxBuilder.md)
+- [MultiContractTransaction](interfaces/MultiContractTransaction.md)
 - [SignTransactionOptions](interfaces/SignTransactionOptions.md)
 - [SignatureRequest](interfaces/SignatureRequest.md)
 - [SignatureResponse](interfaces/SignatureResponse.md)
+- [StatefulNext](interfaces/StatefulNext.md)
 - [TransactionResponse](interfaces/TransactionResponse.md)
 - [TxContext](interfaces/TxContext.md)
 - [TxInputRef](interfaces/TxInputRef.md)
@@ -65,6 +73,9 @@ scrypt-ts
 - [PrivKey](README.md#privkey)
 - [PubKey](README.md#pubkey)
 - [PubKeyHash](README.md#pubkeyhash)
+- [PublicKeyOption](README.md#publickeyoption)
+- [PublicKeysOption](README.md#publickeysoption)
+- [PublicKeysOrAddressesOption](README.md#publickeysoraddressesoption)
 - [Ripemd160](README.md#ripemd160)
 - [Sha1](README.md#sha1)
 - [Sha256](README.md#sha256)
@@ -72,7 +83,6 @@ scrypt-ts
 - [SigHashPreimage](README.md#sighashpreimage)
 - [SigHashType](README.md#sighashtype)
 - [SignerError](README.md#signererror)
-- [SortedItem](README.md#sorteditem)
 - [SubBytes](README.md#subbytes)
 - [TxHash](README.md#txhash)
 - [UTXO](README.md#utxo)
@@ -81,12 +91,21 @@ scrypt-ts
 
 - [auto](README.md#auto)
 
+### Bitwise Operator Functions
+
+- [lshift](README.md#lshift)
+- [rshift](README.md#rshift)
+
 ### Bytes Operations Functions
 
 - [byteString2Int](README.md#bytestring2int)
 - [int2ByteString](README.md#int2bytestring)
 - [len](README.md#len)
 - [reverseByteString](README.md#reversebytestring)
+
+### Global Function Functions
+
+- [equals](README.md#equals)
 
 ### Hashing Functions
 
@@ -115,24 +134,23 @@ scrypt-ts
 - [Sig](README.md#sig-1)
 - [SigHashPreimage](README.md#sighashpreimage-1)
 - [SigHashType](README.md#sighashtype-1)
-- [addressesToList](README.md#addressestolist)
 - [and](README.md#and)
 - [buildOpreturnScript](README.md#buildopreturnscript)
 - [buildPublicKeyHashScript](README.md#buildpublickeyhashscript)
-- [equals](README.md#equals)
-- [getBuildInType](README.md#getbuildintype)
+- [fill](README.md#fill)
+- [findSig](README.md#findsig)
 - [getDummyP2pkhUTXOs](README.md#getdummyp2pkhutxos)
-- [getPreimage](README.md#getpreimage)
+- [getDummySig](README.md#getdummysig)
 - [getRandomAddress](README.md#getrandomaddress)
 - [getSortedItem](README.md#getsorteditem)
-- [hasModifier](README.md#hasmodifier)
 - [invert](README.md#invert)
-- [isNumberLiteralExpr](README.md#isnumberliteralexpr)
-- [number2hex](README.md#number2hex)
+- [isInNodeEnv](README.md#isinnodeenv)
+- [mapIter](README.md#mapiter)
 - [or](README.md#or)
-- [signTx](README.md#signtx)
+- [parseAddresses](README.md#parseaddresses)
 - [toByteString](README.md#tobytestring)
 - [toHex](README.md#tohex)
+- [toNumber](README.md#tonumber)
 - [utxoFromOutput](README.md#utxofromoutput)
 - [xor](README.md#xor)
 
@@ -143,12 +161,6 @@ scrypt-ts
 ### assert Functions
 
 - [assert](README.md#assert)
-
-### bitshift Functions
-
-- [lshift](README.md#lshift)
-- [pow2](README.md#pow2)
-- [rshift](README.md#rshift)
 
 ### decorator Functions
 
@@ -163,7 +175,7 @@ scrypt-ts
 
 ### FixedArray
 
-Ƭ **FixedArray**<`T`, `N`\>: `N` extends `N` ? `number` extends `N` ? `T`[] : `_TupleOf`<`T`, `N`, []\> : `never`
+Ƭ **FixedArray**<`T`, `N`\>: `GrowToSize`<`T`, `N`, []\>
 
 An array is a fixed-size list of values of the same basic type.
 When you declare an array you have to declare it like this:
@@ -187,7 +199,7 @@ let bbb: FixedArray<FixedArray<FixedArray<bigint, 1>, 2>, 3> = [[[1n], [1n]], [[
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:69](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L69)
+dist/smart-contract/builtins/types.d.ts:37
 
 ___
 
@@ -195,11 +207,11 @@ ___
 
 ### AddressOption
 
-Ƭ **AddressOption**: [`Address`](classes/bsv.Address.md) \| `string`
+Ƭ **AddressOption**: [`Address`](classes/bsv.Address.md)
 
 #### Defined in
 
-[src/bsv/types.ts:7](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/types.ts#L7)
+dist/bsv/types.d.ts:4
 
 ___
 
@@ -209,17 +221,19 @@ ___
 
 #### Defined in
 
-[src/bsv/types.ts:9](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/types.ts#L9)
+dist/bsv/types.d.ts:5
 
 ___
 
 ### ByteString
 
-Ƭ **ByteString**: `Bytes`
+Ƭ **ByteString**: `Flavor`<`string`, ``"bytes"``\>
+
+a ByteString represents a byte array.
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:31](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L31)
+dist/smart-contract/builtins/types.d.ts:8
 
 ___
 
@@ -229,7 +243,7 @@ ___
 
 #### Defined in
 
-[src/bsv/types.ts:5](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/types.ts#L5)
+dist/bsv/types.d.ts:3
 
 ___
 
@@ -278,6 +292,36 @@ ___
 node_modules/scryptlib/dist/scryptTypes.d.ts:73
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:48
+
+___
+
+### PublicKeyOption
+
+Ƭ **PublicKeyOption**: [`PublicKey`](classes/bsv.PublicKey.md)
+
+#### Defined in
+
+dist/bsv/types.d.ts:6
+
+___
+
+### PublicKeysOption
+
+Ƭ **PublicKeysOption**: [`PublicKeyOption`](README.md#publickeyoption) \| [`PublicKeyOption`](README.md#publickeyoption)[]
+
+#### Defined in
+
+dist/bsv/types.d.ts:7
+
+___
+
+### PublicKeysOrAddressesOption
+
+Ƭ **PublicKeysOrAddressesOption**: [`AddressesOption`](README.md#addressesoption) \| [`PublicKeysOption`](README.md#publickeysoption)
+
+#### Defined in
+
+dist/bsv/types.d.ts:8
 
 ___
 
@@ -359,30 +403,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:47](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-signer.ts#L47)
-
-___
-
-### SortedItem
-
-Ƭ **SortedItem**<`T`\>: `Object`
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `idx` | `bigint` |
-| `item` | `T` |
-
-#### Defined in
-
-[src/smart-contract/builtins/types.ts:468](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L468)
+dist/bsv/abstract-signer.d.ts:43
 
 ___
 
@@ -402,7 +423,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-provider.ts:7](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/abstract-provider.ts#L7)
+dist/bsv/abstract-provider.d.ts:7
 
 ___
 
@@ -412,7 +433,7 @@ ___
 
 #### Defined in
 
-[src/bsv/types.ts:3](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/types.ts#L3)
+dist/bsv/types.d.ts:2
 
 ___
 
@@ -426,7 +447,57 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:52](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L52)
+dist/smart-contract/builtins/types.d.ts:21
+
+## Bitwise Operator Functions
+
+### lshift
+
+▸ **lshift**(`x`, `n`): `bigint`
+
+Arithmetic left shift, returns `x * 2^n`.
+More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `x` | `bigint` |
+| `n` | `bigint` |
+
+#### Returns
+
+`bigint`
+
+#### Defined in
+
+dist/smart-contract/builtins/functions.d.ts:138
+
+___
+
+### rshift
+
+▸ **rshift**(`x`, `n`): `bigint`
+
+Arithmetic right shift, returns `x / 2^n`.
+More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `x` | `bigint` |
+| `n` | `bigint` |
+
+#### Returns
+
+`bigint`
+
+#### Defined in
+
+dist/smart-contract/builtins/functions.d.ts:144
+
+___
 
 ## Bytes Operations Functions
 
@@ -440,7 +511,7 @@ ByteString can be converted to bigint using function byteString2Int.
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `Bytes` |
+| `a` | [`ByteString`](README.md#bytestring) |
 
 #### Returns
 
@@ -448,7 +519,7 @@ ByteString can be converted to bigint using function byteString2Int.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:30](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L30)
+dist/smart-contract/builtins/functions.d.ts:24
 
 ___
 
@@ -473,7 +544,7 @@ Otherwise, converts the number `n` to a ByteString of the specified size, includ
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L18)
+dist/smart-contract/builtins/functions.d.ts:19
 
 ___
 
@@ -487,7 +558,7 @@ Returns the length of the ByteString. Not the length of the string.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `a` | `Bytes` | a ByteString |
+| `a` | [`ByteString`](README.md#bytestring) | a ByteString |
 
 #### Returns
 
@@ -497,7 +568,7 @@ The length of the ByteString.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:42](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L42)
+dist/smart-contract/builtins/functions.d.ts:31
 
 ___
 
@@ -512,7 +583,7 @@ It is often useful when converting a number between little-endian and big-endian
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `b` | `Bytes` | a ByteString to be reversed |
+| `b` | [`ByteString`](README.md#bytestring) | a ByteString to be reversed |
 | `size` | `number` | the size of the ByteString. |
 
 #### Returns
@@ -523,7 +594,40 @@ reversed ByteString.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:53](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L53)
+dist/smart-contract/builtins/functions.d.ts:40
+
+___
+
+## Global Function Functions
+
+### equals
+
+▸ **equals**<`T`\>(`a`, `b`): `boolean`
+
+Comparing two struct/FixedArray
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `T` |
+| `b` | `T` |
+
+#### Returns
+
+`boolean`
+
+returns true if equal; otherwise returns false
+
+#### Defined in
+
+dist/smart-contract/builtins/types.d.ts:43
 
 ___
 
@@ -544,7 +648,7 @@ https://en.wikipedia.org/wiki/RIPEMD
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `a` | `Bytes` | ByteString Data, a.k.a. pre-image, which can be any size. |
+| `a` | [`ByteString`](README.md#bytestring) | ByteString Data, a.k.a. pre-image, which can be any size. |
 
 #### Returns
 
@@ -554,7 +658,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:169](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L169)
+dist/smart-contract/builtins/functions.d.ts:114
 
 ___
 
@@ -573,7 +677,7 @@ https://www.movable-type.co.uk/scripts/sha256.html
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `a` | `Bytes` | ByteString data, a.k.a. pre-image, which can be any size. |
+| `a` | [`ByteString`](README.md#bytestring) | ByteString data, a.k.a. pre-image, which can be any size. |
 
 #### Returns
 
@@ -583,7 +687,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:184](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L184)
+dist/smart-contract/builtins/functions.d.ts:126
 
 ___
 
@@ -599,7 +703,7 @@ https://en.wikipedia.org/wiki/RIPEMD
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `a` | `Bytes` | ByteString Data, a.k.a. pre-image, which can be any size. |
+| `a` | [`ByteString`](README.md#bytestring) | ByteString Data, a.k.a. pre-image, which can be any size. |
 
 #### Returns
 
@@ -609,7 +713,7 @@ The hash in the form of a ByteString.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:127](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L127)
+dist/smart-contract/builtins/functions.d.ts:82
 
 ___
 
@@ -626,7 +730,7 @@ https://en.wikipedia.org/wiki/SHA-1
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `a` | `Bytes` | ByteString Data, a.k.a. pre-image, which can be any size. |
+| `a` | [`ByteString`](README.md#bytestring) | ByteString Data, a.k.a. pre-image, which can be any size. |
 
 #### Returns
 
@@ -636,7 +740,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:140](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L140)
+dist/smart-contract/builtins/functions.d.ts:92
 
 ___
 
@@ -653,7 +757,7 @@ https://www.movable-type.co.uk/scripts/sha256.html
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `a` | `Bytes` | ByteString Data, a.k.a. pre-image, which can be any size. |
+| `a` | [`ByteString`](README.md#bytestring) | ByteString Data, a.k.a. pre-image, which can be any size. |
 
 #### Returns
 
@@ -663,7 +767,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:154](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L154)
+dist/smart-contract/builtins/functions.d.ts:102
 
 ___
 
@@ -687,7 +791,7 @@ The input `a` is made positive.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:88](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L88)
+dist/smart-contract/builtins/functions.d.ts:58
 
 ___
 
@@ -710,7 +814,7 @@ Returns the largest of `a` and `b`.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:107](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L107)
+dist/smart-contract/builtins/functions.d.ts:68
 
 ___
 
@@ -733,7 +837,7 @@ Returns the smallest of `a` and `b`.
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:99](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L99)
+dist/smart-contract/builtins/functions.d.ts:63
 
 ___
 
@@ -757,7 +861,7 @@ Returns true if `x` is within the specified range (left-inclusive), false otherw
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:115](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L115)
+dist/smart-contract/builtins/functions.d.ts:73
 
 ___
 
@@ -963,26 +1067,6 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:86
 
 ___
 
-### addressesToList
-
-▸ **addressesToList**(`addresses`): `string`[]
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `addresses` | [`AddressesOption`](README.md#addressesoption) |
-
-#### Returns
-
-`string`[]
-
-#### Defined in
-
-[src/bsv/utils.ts:34](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/utils.ts#L34)
-
-___
-
 ### and
 
 ▸ **and**(`a`, `b`): `Int`
@@ -1044,50 +1128,55 @@ node_modules/scryptlib/dist/builtins.d.ts:23
 
 ___
 
-### equals
+### fill
 
-▸ **equals**<`T`\>(`a`, `b`): `boolean`
+▸ **fill**<`E`, `N`\>(`value`, `length`): [`FixedArray`](README.md#fixedarray)<`E`, `N`\>
+
+Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type.
+Note that `length` must be a numeric literal or a compiled-time constant
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Type |
+| :------ | :------ |
+| `E` | `E` |
+| `N` | extends `number` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `a` | `T` |
-| `b` | `T` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `E` | the value of each element to set |
+| `length` | `N` | the length of FixedArray |
 
 #### Returns
 
-`boolean`
+[`FixedArray`](README.md#fixedarray)<`E`, `N`\>
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:129](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L129)
+dist/smart-contract/builtins/functions.d.ts:10
 
 ___
 
-### getBuildInType
+### findSig
 
-▸ **getBuildInType**(`type`): `string`
+▸ **findSig**(`sigResponses`, `pubKeyOrAddr`): [`Sig`](README.md#sig)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `type` | `string` |
+| `sigResponses` | [`SignatureResponse`](interfaces/SignatureResponse.md)[] |
+| `pubKeyOrAddr` | [`PublicKey`](classes/bsv.PublicKey.md) \| [`Address`](classes/bsv.Address.md) |
 
 #### Returns
 
-`string`
+[`Sig`](README.md#sig)
 
 #### Defined in
 
-[src/transformation/utils.ts:11](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/transformation/utils.ts#L11)
+dist/smart-contract/utils/index.d.ts:6
 
 ___
 
@@ -1097,9 +1186,9 @@ ___
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `count` | `number` | `1` |
+| Name | Type |
+| :------ | :------ |
+| `count?` | `number` |
 
 #### Returns
 
@@ -1107,32 +1196,21 @@ ___
 
 #### Defined in
 
-[src/bsv/utils.ts:6](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/utils.ts#L6)
+dist/bsv/utils.d.ts:3
 
 ___
 
-### getPreimage
+### getDummySig
 
-▸ **getPreimage**(`tx`, `lockingScript`, `inputAmount`, `inputIndex?`, `sighashType?`, `flags?`): `string`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `tx` | [`Transaction`](classes/bsv.Transaction-1.md) |
-| `lockingScript` | [`Script`](classes/bsv.Script-1.md) |
-| `inputAmount` | `number` |
-| `inputIndex?` | `number` |
-| `sighashType?` | `number` |
-| `flags?` | `number` |
+▸ **getDummySig**(): [`Sig`](README.md#sig)
 
 #### Returns
 
-`string`
+[`Sig`](README.md#sig)
 
 #### Defined in
 
-node_modules/scryptlib/dist/utils.d.ts:26
+dist/smart-contract/utils/index.d.ts:4
 
 ___
 
@@ -1142,9 +1220,9 @@ ___
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `network` | [`Network`](interfaces/bsv.Networks.Network.md) | `bsv.Networks.testnet` |
+| Name | Type |
+| :------ | :------ |
+| `network?` | [`Network`](interfaces/bsv.Networks.Network.md) |
 
 #### Returns
 
@@ -1152,7 +1230,7 @@ ___
 
 #### Defined in
 
-[src/bsv/utils.ts:17](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/utils.ts#L17)
+dist/bsv/utils.d.ts:4
 
 ___
 
@@ -1184,27 +1262,6 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:93
 
 ___
 
-### hasModifier
-
-▸ **hasModifier**(`node`, `...kinds`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `node` | `Node` |
-| `...kinds` | (`ConstKeyword` \| `DefaultKeyword` \| `ExportKeyword` \| `InKeyword` \| `PrivateKeyword` \| `ProtectedKeyword` \| `PublicKeyword` \| `StaticKeyword` \| `AbstractKeyword` \| `AsyncKeyword` \| `DeclareKeyword` \| `OutKeyword` \| `ReadonlyKeyword` \| `OverrideKeyword`)[] |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/transformation/utils.ts:48](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/transformation/utils.ts#L48)
-
-___
-
 ### invert
 
 ▸ **invert**(`a`): `Int`
@@ -1225,15 +1282,9 @@ node_modules/scryptlib/dist/builtins.d.ts:18
 
 ___
 
-### isNumberLiteralExpr
+### isInNodeEnv
 
-▸ **isNumberLiteralExpr**(`expr`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `expr` | `Node` |
+▸ **isInNodeEnv**(): `boolean`
 
 #### Returns
 
@@ -1241,27 +1292,34 @@ ___
 
 #### Defined in
 
-[src/transformation/utils.ts:64](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/transformation/utils.ts#L64)
+dist/smart-contract/utils/index.d.ts:8
 
 ___
 
-### number2hex
+### mapIter
 
-▸ **number2hex**(`val`): `string`
+▸ **mapIter**<`T`\>(`iterable`, `callback`): `Generator`<`any`, `void`, `unknown`\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `val` | `number` \| `bigint` |
+| `iterable` | `IterableIterator`<`T`\> |
+| `callback` | (`x`: `any`) => `any` |
 
 #### Returns
 
-`string`
+`Generator`<`any`, `void`, `unknown`\>
 
 #### Defined in
 
-[src/transformation/utils.ts:40](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/transformation/utils.ts#L40)
+dist/smart-contract/utils/index.d.ts:7
 
 ___
 
@@ -1286,52 +1344,41 @@ node_modules/scryptlib/dist/builtins.d.ts:16
 
 ___
 
-### signTx
+### parseAddresses
 
-▸ **signTx**(`tx`, `privateKey`, `lockingScript`, `inputAmount`, `inputIndex?`, `sighashType?`, `flags?`): `string`
+▸ **parseAddresses**(`publicKeysOrAddresses`, `network?`): [`AddressOption`](README.md#addressoption)[]
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `tx` | [`Transaction`](classes/bsv.Transaction-1.md) |
-| `privateKey` | [`PrivateKey`](classes/bsv.PrivateKey.md) |
-| `lockingScript` | [`Script`](classes/bsv.Script-1.md) |
-| `inputAmount` | `number` |
-| `inputIndex?` | `number` |
-| `sighashType?` | `number` |
-| `flags?` | `number` |
+| `publicKeysOrAddresses` | [`PublicKeysOrAddressesOption`](README.md#publickeysoraddressesoption) |
+| `network?` | [`Network`](interfaces/bsv.Networks.Network.md) |
 
 #### Returns
 
-`string`
+[`AddressOption`](README.md#addressoption)[]
 
 #### Defined in
 
-node_modules/scryptlib/dist/utils.d.ts:25
+dist/bsv/utils.d.ts:6
 
 ___
 
 ### toByteString
 
-▸ **toByteString**<`T`\>(`str`, `isUtf8?`): [`ByteString`](README.md#bytestring)
+▸ **toByteString**(`literal`, `isUtf8?`): [`ByteString`](README.md#bytestring)
 
 Converts a literal to ByteString.
-If not passing `isUtf8`, then `str` should be in the format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/`
-Otherwise, `str` should be in the format of utf8 literal, i.e. `hello world`
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `string` |
+If not passing `isUtf8` or `isUtf8` is false, then `literal` should be in the format of hex literal, i.e. `/^([0-9a-fA-F]{2})*$/`
+Otherwise, `literal` should be in the format of utf8 literal, i.e. `hello world`
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `str` | `string` \| `HexType`<`T`\> | literal string, can be hex literal or utf8 literal, depends on isUtf8 marker |
-| `isUtf8?` | ``true`` | marker indicating whether `str` is utf8 or hex |
+| `literal` | `string` | literal string, can be hex literal or utf8 literal, depends on the `isUtf8` marker |
+| `isUtf8?` | `boolean` | marker indicating whether `literal` is utf8 or hex |
 
 #### Returns
 
@@ -1339,7 +1386,7 @@ Otherwise, `str` should be in the format of utf8 literal, i.e. `hello world`
 
 #### Defined in
 
-[src/smart-contract/builtins/types.ts:40](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/types.ts#L40)
+dist/smart-contract/builtins/types.d.ts:16
 
 ___
 
@@ -1364,6 +1411,26 @@ node_modules/scryptlib/dist/utils.d.ts:18
 
 ___
 
+### toNumber
+
+▸ **toNumber**(`sighashType`): `number`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `sighashType` | [`SigHashType`](README.md#sighashtype) |
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+dist/smart-contract/utils/index.d.ts:5
+
+___
+
 ### utxoFromOutput
 
 ▸ **utxoFromOutput**(`tx`, `outputIndex`): [`UTXO`](README.md#utxo)
@@ -1381,7 +1448,7 @@ ___
 
 #### Defined in
 
-[src/bsv/utils.ts:21](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/bsv/utils.ts#L21)
+dist/bsv/utils.d.ts:5
 
 ___
 
@@ -1431,7 +1498,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:70](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L70)
+dist/smart-contract/builtins/functions.d.ts:46
 
 ___
 
@@ -1440,6 +1507,9 @@ ___
 ### assert
 
 ▸ **assert**(`condition`, `msg?`): asserts condition
+
+`assert(condition: boolean, errorMsg?: string)`
+Throw an Error with the optional error message if condition is false. Otherwise, nothing happens.
 
 #### Parameters
 
@@ -1454,71 +1524,7 @@ asserts condition
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:191](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L191)
-
-___
-
-## bitshift Functions
-
-### lshift
-
-▸ **lshift**(`x`, `n`): `bigint`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `x` | `bigint` |
-| `n` | `bigint` |
-
-#### Returns
-
-`bigint`
-
-#### Defined in
-
-[src/smart-contract/builtins/functions.ts:240](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L240)
-
-___
-
-### pow2
-
-▸ **pow2**(`n`): `bigint`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `n` | `bigint` |
-
-#### Returns
-
-`bigint`
-
-#### Defined in
-
-[src/smart-contract/builtins/functions.ts:232](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L232)
-
-___
-
-### rshift
-
-▸ **rshift**(`x`, `n`): `bigint`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `x` | `bigint` |
-| `n` | `bigint` |
-
-#### Returns
-
-`bigint`
-
-#### Defined in
-
-[src/smart-contract/builtins/functions.ts:248](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L248)
+dist/smart-contract/builtins/functions.d.ts:132
 
 ___
 
@@ -1532,9 +1538,9 @@ Indicates whether the method is a contract method, and ordinary methods do not a
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `sigHashType` | [`SigHashType`](README.md#sighashtype) | `SigHash.ALL` |
+| Name | Type |
+| :------ | :------ |
+| `sigHashType?` | [`SigHashType`](README.md#sighashtype) |
 
 #### Returns
 
@@ -1556,7 +1562,7 @@ Indicates whether the method is a contract method, and ordinary methods do not a
 
 #### Defined in
 
-[src/smart-contract/decorators.ts:8](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/decorators.ts#L8)
+dist/smart-contract/decorators.d.ts:17
 
 ___
 
@@ -1568,9 +1574,9 @@ Indicates whether the property is an property of a contract, and ordinary class 
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `state` | `boolean` | `false` | Whether the property is a property of a stateful contract |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `state?` | `boolean` | Whether the property is a property of a stateful contract |
 
 #### Returns
 
@@ -1591,7 +1597,7 @@ Indicates whether the property is an property of a contract, and ordinary class 
 
 #### Defined in
 
-[src/smart-contract/decorators.ts:80](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/decorators.ts#L80)
+dist/smart-contract/decorators.d.ts:31
 
 ___
 
@@ -1615,4 +1621,4 @@ ___
 
 #### Defined in
 
-[src/smart-contract/builtins/functions.ts:81](https://github.com/sCrypt-Inc/scrypt-ts/blob/5acfc51/src/smart-contract/builtins/functions.ts#L81)
+dist/smart-contract/builtins/functions.d.ts:53

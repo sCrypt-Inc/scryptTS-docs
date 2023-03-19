@@ -21,6 +21,9 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 
 ### Properties
 
+- [\_checkAddressOption](TestWallet.md#_checkaddressoption)
+- [\_getAddressesIn](TestWallet.md#_getaddressesin)
+- [\_getPrivateKeys](TestWallet.md#_getprivatekeys)
 - [\_isSigner](TestWallet.md#_issigner)
 - [\_privateKeys](TestWallet.md#_privatekeys)
 - [\_utxoManagers](TestWallet.md#_utxomanagers)
@@ -35,17 +38,16 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 
 ### Methods
 
-- [\_checkAddressOption](TestWallet.md#_checkaddressoption)
-- [\_getAddressesIn](TestWallet.md#_getaddressesin)
-- [\_getPrivateKeys](TestWallet.md#_getprivatekeys)
+- [addPrivateKey](TestWallet.md#addprivatekey)
 - [connect](TestWallet.md#connect)
 - [getBalance](TestWallet.md#getbalance)
 - [getDefaultAddress](TestWallet.md#getdefaultaddress)
 - [getDefaultPubKey](TestWallet.md#getdefaultpubkey)
 - [getPubKey](TestWallet.md#getpubkey)
 - [getSignatures](TestWallet.md#getsignatures)
+- [isAuthenticated](TestWallet.md#isauthenticated)
 - [listUnspent](TestWallet.md#listunspent)
-- [pushPrivateKey](TestWallet.md#pushprivatekey)
+- [requestAuth](TestWallet.md#requestauth)
 - [signAndsendTransaction](TestWallet.md#signandsendtransaction)
 - [signMessage](TestWallet.md#signmessage)
 - [signRawTransaction](TestWallet.md#signrawtransaction)
@@ -71,9 +73,39 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:22](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L22)
+dist/bsv/wallets/test-wallet.d.ts:14
 
 ## Properties
+
+### \_checkAddressOption
+
+• `Private` **\_checkAddressOption**: `any`
+
+#### Defined in
+
+dist/bsv/wallets/test-wallet.d.ts:33
+
+___
+
+### \_getAddressesIn
+
+• `Private` **\_getAddressesIn**: `any`
+
+#### Defined in
+
+dist/bsv/wallets/test-wallet.d.ts:32
+
+___
+
+### \_getPrivateKeys
+
+• `Private` **\_getPrivateKeys**: `any`
+
+#### Defined in
+
+dist/bsv/wallets/test-wallet.d.ts:35
+
+___
 
 ### \_isSigner
 
@@ -85,27 +117,27 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:55](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L55)
+dist/bsv/abstract-signer.d.ts:49
 
 ___
 
 ### \_privateKeys
 
-• `Private` `Readonly` **\_privateKeys**: [`PrivateKey`](bsv.PrivateKey.md)[]
+• `Private` `Readonly` **\_privateKeys**: `any`
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:18](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L18)
+dist/bsv/wallets/test-wallet.d.ts:12
 
 ___
 
 ### \_utxoManagers
 
-• `Private` **\_utxoManagers**: `Map`<`string`, `CacheableUtxoManager`\>
+• `Private` **\_utxoManagers**: `any`
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:20](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L20)
+dist/bsv/wallets/test-wallet.d.ts:13
 
 ___
 
@@ -119,21 +151,21 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:54](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L54)
+dist/bsv/abstract-signer.d.ts:48
 
 ## Accessors
 
 ### \_defaultPrivateKey
 
-• `Private` `get` **_defaultPrivateKey**(): [`PrivateKey`](bsv.PrivateKey.md)
+• `Private` `get` **_defaultPrivateKey**(): `any`
 
 #### Returns
 
-[`PrivateKey`](bsv.PrivateKey.md)
+`any`
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:148](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L148)
+dist/bsv/wallets/test-wallet.d.ts:34
 
 ___
 
@@ -147,7 +179,7 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:36](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L36)
+dist/bsv/wallets/test-wallet.d.ts:21
 
 ___
 
@@ -173,7 +205,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:67](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L67)
+dist/bsv/abstract-signer.d.ts:122
 
 ___
 
@@ -187,67 +219,27 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:32](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L32)
+dist/bsv/wallets/test-wallet.d.ts:20
 
 ## Methods
 
-### \_checkAddressOption
+### addPrivateKey
 
-▸ `Private` **_checkAddressOption**(`address?`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `address?` | [`AddressesOption`](../README.md#addressesoption) |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/bsv/wallets/test-wallet.ts:137](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L137)
-
-___
-
-### \_getAddressesIn
-
-▸ `Private` **_getAddressesIn**(`sigRequests?`): [`AddressesOption`](../README.md#addressesoption)
+▸ **addPrivateKey**(`privateKey`): [`TestWallet`](TestWallet.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `sigRequests?` | [`SignatureRequest`](../interfaces/SignatureRequest.md)[] |
+| `privateKey` | [`PrivateKey`](bsv.PrivateKey.md) \| [`PrivateKey`](bsv.PrivateKey.md)[] |
 
 #### Returns
 
-[`AddressesOption`](../README.md#addressesoption)
+[`TestWallet`](TestWallet.md)
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:127](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L127)
-
-___
-
-### \_getPrivateKeys
-
-▸ `Private` **_getPrivateKeys**(`address?`): [`PrivateKey`](bsv.PrivateKey.md)[]
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `address?` | [`AddressesOption`](../README.md#addressesoption) |
-
-#### Returns
-
-[`PrivateKey`](bsv.PrivateKey.md)[]
-
-#### Defined in
-
-[src/bsv/wallets/test-wallet.ts:152](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L152)
+dist/bsv/wallets/test-wallet.d.ts:22
 
 ___
 
@@ -273,7 +265,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:111](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L111)
+dist/bsv/wallets/test-wallet.d.ts:30
 
 ___
 
@@ -281,15 +273,19 @@ ___
 
 ▸ **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
+Get the balance of BSVs in satoshis for an address.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address?` | [`AddressOption`](../README.md#addressoption) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `address?` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
 `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+
+A promise which resolves to the address balance status.
 
 #### Inherited from
 
@@ -297,7 +293,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:114](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L114)
+dist/bsv/abstract-signer.d.ts:142
 
 ___
 
@@ -317,7 +313,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:45](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L45)
+dist/bsv/wallets/test-wallet.d.ts:23
 
 ___
 
@@ -337,7 +333,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:49](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L49)
+dist/bsv/wallets/test-wallet.d.ts:24
 
 ___
 
@@ -353,7 +349,7 @@ If the private key for the address does not belong this signer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) | The request address, using the default address if omitted. |
+| `address` | [`Address`](bsv.Address.md) | The request address, using the default address if omitted. |
 
 #### Returns
 
@@ -367,7 +363,7 @@ The public key result.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:53](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L53)
+dist/bsv/wallets/test-wallet.d.ts:25
 
 ___
 
@@ -396,7 +392,29 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:87](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L87)
+dist/bsv/wallets/test-wallet.d.ts:29
+
+___
+
+### isAuthenticated
+
+▸ **isAuthenticated**(): `Promise`<`boolean`\>
+
+Check if the wallet has been authenticated
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+true | false
+
+#### Overrides
+
+[Signer](Signer.md).[isAuthenticated](Signer.md#isauthenticated)
+
+#### Defined in
+
+dist/bsv/wallets/test-wallet.d.ts:15
 
 ___
 
@@ -404,16 +422,20 @@ ___
 
 ▸ **listUnspent**(`address`, `options`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
+Get a list of the P2PKH UTXOs.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address` | [`AddressOption`](../README.md#addressoption) |
-| `options` | `UtxoQueryOptions` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
+| `options` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
 `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+
+A promise which resolves to a list of UTXO for the query options.
 
 #### Overrides
 
@@ -421,27 +443,29 @@ ___
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:117](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L117)
+dist/bsv/wallets/test-wallet.d.ts:31
 
 ___
 
-### pushPrivateKey
+### requestAuth
 
-▸ **pushPrivateKey**(`privateKey`): `void`
+▸ **requestAuth**(): `Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `privateKey` | [`PrivateKey`](bsv.PrivateKey.md) \| [`PrivateKey`](bsv.PrivateKey.md)[] |
+Request wallet authentication
 
 #### Returns
 
-`void`
+`Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+
+A promise which resolves to if the wallet has been authenticated and the authenticate error message
+
+#### Overrides
+
+[Signer](Signer.md).[requestAuth](Signer.md#requestauth)
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:40](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L40)
+dist/bsv/wallets/test-wallet.d.ts:16
 
 ___
 
@@ -449,16 +473,20 @@ ___
 
 ▸ **signAndsendTransaction**(`tx`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
+Sign transaction and broadcast it
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) |
-| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `tx` | [`Transaction`](bsv.Transaction-1.md) | A transaction is signed and broadcast |
+| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) | The options for signing, see the details of `SignTransactionOptions`. |
 
 #### Returns
 
 `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+
+A promise which resolves to the transaction id.
 
 #### Inherited from
 
@@ -466,7 +494,7 @@ ___
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:157](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L157)
+dist/bsv/abstract-signer.d.ts:129
 
 ___
 
@@ -481,7 +509,7 @@ Sign a message string.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `message` | `string` | The message to be signed. |
-| `address?` | [`AddressOption`](../README.md#addressoption) | The optional address whose private key will be used to sign `message`, using the default private key if omitted. |
+| `address?` | [`Address`](bsv.Address.md) | The optional address whose private key will be used to sign `message`, using the default private key if omitted. |
 
 #### Returns
 
@@ -495,7 +523,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:83](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L83)
+dist/bsv/wallets/test-wallet.d.ts:28
 
 ___
 
@@ -528,7 +556,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:57](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L57)
+dist/bsv/wallets/test-wallet.d.ts:26
 
 ___
 
@@ -557,7 +585,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-[src/bsv/wallets/test-wallet.ts:76](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/wallets/test-wallet.ts#L76)
+dist/bsv/wallets/test-wallet.d.ts:27
 
 ___
 
@@ -585,4 +613,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-[src/bsv/abstract-signer.ts:171](https://github.com/sCrypt-Inc/scrypt-ts/blob/d43e8cc/src/bsv/abstract-signer.ts#L171)
+dist/bsv/abstract-signer.d.ts:151
