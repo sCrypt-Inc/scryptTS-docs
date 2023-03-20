@@ -21,6 +21,8 @@ For contract deployment, the default tx builder creates a transaction with the f
 
 Numbers in [] represent index, starting from 0.
 
+![](https://lucid.app/publicSegments/view/5242c7cb-d30d-4a92-826c-4d6290e2af04/image.png)
+
 ### Customize
 You can customize a contract's deployment tx builder by overriding its [buildDeployTransaction](../how-to-write-a-contract/built-ins#builddeploytransaction) method. An example is shown below.
 
@@ -69,6 +71,8 @@ For contract calls, the default tx builder creates a transaction with the follow
 
   * [0…N-1]: One or more outputs, each containing a new contract instance (UTXO) if the contract is [stateful](../how-to-write-a-contract/stateful-contract).
   * [N]: A P2PKH change output if needed.
+
+![](https://lucid.app/publicSegments/view/9dfde0f0-7275-48da-9411-057e895b5fb3/image.png)
 
 
 ### Customize
