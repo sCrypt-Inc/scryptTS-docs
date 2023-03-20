@@ -133,7 +133,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} sCrypt, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} sCrypt, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
