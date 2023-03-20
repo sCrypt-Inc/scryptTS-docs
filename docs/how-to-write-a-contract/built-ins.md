@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Global Functions
 
-The following functions come with `scryptTS`.
+The following functions come with `sCrypt`.
 
 ### Assert
 
@@ -420,7 +420,7 @@ console.log('Counter contract counter1, counter2 called: ', callTx.id)
 
 ## Standard Libraries
 
-`scryptTS` comes with standard libraries that define many commonly used functions.
+`sCrypt` comes with standard libraries that define many commonly used functions.
 
 ### `Utils`
 

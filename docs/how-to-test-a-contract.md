@@ -6,14 +6,14 @@ sidebar_position: 4
 
 Before using a smart contract in production, one should always test it carefully, especially because any bug in it may cause **real economic losses**.
 
-There are two different kinds of tests recommended for every project using `scryptTS`:
+There are two different kinds of tests recommended for every project using `sCrypt`:
 
 * **Local Unit Testing**
 * **Testnet Integration Testing**
 
 Now we will take a look at the file `tests/local/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
 
-But before going into details, you should learn some basic models of scryptTS for signing and sending transactions.
+But before going into details, you should learn some basic models of sCrypt for signing and sending transactions.
 
 ## Compile the Contract
 
@@ -323,6 +323,6 @@ As before, we can just use the following command:
 ```sh
 npm run test
 ```
-Full code is [here](https://github.com/sCrypt-Inc/scryptTS-examples/blob/master/src/contracts/counter.ts).
+Full code is [here](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/counter.ts).
 
 You may visit [here](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md) to see more details on contract deployment and call.

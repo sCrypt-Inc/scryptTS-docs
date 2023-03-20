@@ -7,7 +7,7 @@ sidebar_position: 1
 
 As described in [this section](../how-to-test-a-contract.md#signer), a signer is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
 
-`scryptTS` provides the following signers by default:
+`sCrypt` provides the following signers by default:
 
 1. `TestWallet` : a simple wallet that can hold multiple private keys, with in-memory utxo management. Should only be used for testing.
 2. `SensiletSigner`: a signer powered by the popular smart contract wallet [Sensilet](https://sensilet.com/). Can be used in production.

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-`scryptTS` is an `embedded Domain Specific Language` ([eDSL](https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages)) based on TypeScript for writing smart contracts on Bitcoin SV. `Embedded` means that it is a language inside another language. `scryptTS` is strictly a subset of TypeScript, so all `scryptTS` code is valid TypeScript, but not vice versa.
+`sCrypt` is an `embedded Domain Specific Language` ([eDSL](https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages)) based on TypeScript for writing smart contracts on Bitcoin SV. `Embedded` means that it is a language inside another language. `sCrypt` is strictly a subset of TypeScript, so all `sCrypt` code is valid TypeScript, but not vice versa.
 
 We choose [TypeScript](https://www.typescriptlang.org) as the host language because it provides an easy, familiar language (JavaScript), but with type safety, making it easy to get started writing safe smart contracts. There is no need to learn a new programming language or tools, if you are already familiar with TypeScript/JavaScript.
 If you're new to TypeScript, check out this helpful [introductory video](https://www.youtube.com/watch?v=ahCwqrYpIuM).
@@ -37,13 +37,13 @@ Only when the “key” in an input matches previous output’s “lock”, it c
 
 In a regular Bitcoin payment to a [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address), the locking script is [Pay To Pubkey Hash (P2PKH)](https://learnmeabitcoin.com/technical/p2pkh). It checks the spender has the right private key corresponding to the address so she can produce a valid signature in the unlocking script. The expressive Script enables the locking script to specify arbitrarily more complex spending conditions than simple P2PKH, i.e., Bitcoin smart contracts.
 
-## How does `scryptTS` work?
+## How does `sCrypt` work?
 
-`scryptTS` is a high-level language to be compiled into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script). The resulting assembly-like scripts could be used as locking scripts when building transactions.
+`sCrypt` is a high-level language to be compiled into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script). The resulting assembly-like scripts could be used as locking scripts when building transactions.
 
-## Learn `scryptTS`
+## Learn `sCrypt`
 
-Jump over to the [Installation](./installation.md) section to learn how to create an `scryptTS` project. 
+Jump over to the [Installation](./installation.md) section to learn how to create an `sCrypt` project. 
 
 :::tip
 You can also follow this [Youtube series](https://www.youtube.com/playlist?list=PL0Kn1t30VSpGcbwN-bcbU1-x0fRAoq-GI).

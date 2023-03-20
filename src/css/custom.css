@@ -70,3 +70,30 @@
     var(--ifm-color-emphasis-100) 100%
   );
 }
+
+.community-links {
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    text-align: center;
+}
+
+.community-links ul {
+    display: inline-block;
+}
+
+.community-links ul li {
+    float: left;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.community-links ul li a {
+    padding: 10px;
+    display: inline-block;
+}
+
+.community-links p {
+    margin-top: 20px;
+    font-size: 14px;
+}

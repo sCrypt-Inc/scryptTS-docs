@@ -1,0 +1,137 @@
+.faucet-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.faucet-form-container {
+  width: 100%;
+  max-width: 30rem;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+.faucet-form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.faucet-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.faucet-form-label {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.faucet-form-input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.faucet-form-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+display:inline-block;
+}
+
+.faucet-form-button:hover {
+  background-color: #0062cc;
+}
+
+.faucets-container {
+  width: 100%;
+  max-width: 30rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+.faucets-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.faucets-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.faucets-item {
+  margin-bottom: 0.5rem;
+}
+
+.faucets-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.faucet-donation-container {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+}
+
+.faucet-donation-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.faucet-donation-address {
+  font-family: monospace;
+}
+
+
+.faucet-success {
+  background-color: #91ff6f;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.faucet-err {
+  background-color: #ff4d4d;
+  border: 1px solid #ff2121;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.faucet-warn {
+  background-color: #ffea73;
+  border: 1px solid #fcd708;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.faucet-err div, .faucet-success div, .faucet-warn div  {
+  padding-left: 10px;
+}
+
+.faucet-err p, .faucet-success p, .faucet-warn p  {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  padding-left: 10px;
+  text-align: left;
+  width: 100%;
+  backdrop-filter: brightness(80%);
+}

@@ -6,13 +6,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'scryptTS',
-  tagline: 'a Typescript DSL to write smart contracts on Bitcoin Satoshi Vision.',
-  url: 'https://docs.scrypt.io',
+  title: 'sCrypt',
+  tagline: 'a Typescript framework to write smart contracts on Bitcoin Satoshi Vision.',
+  url: 'https://scrypt.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -33,7 +33,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
+          routeBasePath: '/docs',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -51,33 +51,46 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'scryptTS',
+        title: '',
         logo: {
           alt: 'scrypt Logo',
-          src: 'img/logo.svg',
+          src: 'img/scrypt.png',
         },
         items: [
           {
             type: 'doc',
             docId: 'overview',
             position: 'left',
-            label: 'Overview',
+            label: 'Docs',
           },
           {
-            type: 'doc',
-            docId: 'tutorials/hello-world',
-            position: 'left',
-            label: 'Tutorials',
+            href: 'https://learn.scrypt.io/',
+            label: 'Learn',
+            position: 'right',
           },
           {
-            type: 'doc',
-            docId: 'reference/README',
-            position: 'left',
-            label: 'Reference',
+            href: 'https://by-example.scrypt.io/',
+            label: 'By Example',
+            position: 'right',
           },
           {
-            href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
+            href: 'https://github.com/sCrypt-Inc/awesome-scrypt/',
+            label: 'Developers',
+            position: 'right',
+          },
+          {
+            href: '/faucet/',
+            label: 'Faucet',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/sCrypt-Inc/',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'https://classic.scrypt.io',
+            label: 'Classic',
             position: 'right',
           },
         ],
@@ -86,62 +99,36 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
             items: [
               {
-                label: 'Overview',
-                to: '/overview',
-              },
-              {
-                label: 'Tutorials',
-                to: '/category/tutorials',
-              },
-              {
-                label: 'Reference',
-                to: '/reference',
-              },
-              {
-                label: 'Youtube',
-                to: 'https://www.youtube.com/playlist?list=PL0Kn1t30VSpGcbwN-bcbU1-x0fRAoq-GI',
-              },
-              {
-                label: 'By Example',
-                to: 'https://by-example.scrypt.io',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Medium',
-                href: 'https://xiaohuiliu.medium.com',
-              },
-
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/sinoTrinity',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/sCrypt-Inc',
-              },
-            ],
-          },
-          {
-            title: 'Contract Us',
-            items: [
-              {
-                label: 'Official Website',
-                href: 'https://scrypt.io',
-              },
-              {
-                label: 'Telegram',
-                href: 'https://t.me/joinchat/GwaRAxKT16JjXyHt5PuhHw',
-              },
-              {
-                label: 'Slack',
-                href: 'https://join.slack.com/t/scryptworkspace/shared_invite/enQtNzQ1OTMyNDk1ODU3LTJmYjE5MGNmNDZhYmYxZWM4ZGY2MTczM2NiNTIxYmFhNTVjNjE5MGYwY2UwNDYxMTQyNGU2NmFkNTY5MmI1MWM',
+                html: `
+<div class="community-links">
+  <ul>
+      <li><a title="Email sCrypt" target="_blank" href="mailto:support@scrypt.io"><img src="/img/email.png"
+                  alt="Email sCrypt"></a></li>
+      <li><a title="sCrypt Medium" target="_blank" href="https://medium.com/@xiaohuiliu"><img src="/img/medium.png"
+                  alt="sCrypt Medium"></a></li>
+      <li><a title="sCrypt GitHub" target="_blank" href="https://github.com/sCrypt-Inc"><img src="/img/github.png"
+                  alt="sCrypt GitHub"></a></li>
+      <li><a title="sCrypt Telegram" target="_blank" href="https://t.me/joinchat/GwaRAxKT16JjXyHt5PuhHw"><img
+                  src="/img/telegram.png" alt="sCrypt Telegram"></a></li>
+      <li><a title="sCrypt Slack" target="_blank"
+              href="https://join.slack.com/t/scryptworkspace/shared_invite/enQtNzQ1OTMyNDk1ODU3LTJmYjE5MGNmNDZhYmYxZWM4ZGY2MTczM2NiNTIxYmFhNTVjNjE5MGYwY2UwNDYxMTQyNGU2NmFkNTY5MmI1MWM"><img
+                  src="/img/slack.png" alt="sCrypt Slack"></a></li>
+      <li><a title="sCrypt Twitter" target="_blank" href="https://twitter.com/sinoTrinity"><img
+                  src="/img/twitter.png" alt="sCrypt Twitter"></a></li>
+      <li><a title="sCrypt WeChat" target="_blank" href="/img/wechat-qrcode.jpg"><img src="/img/wechat.png"
+                  alt="sCrypt WeChat"></a></li>
+      <li><a title="sCrypt in BSV Discord" target="_blank" href="https://discord.gg/bsv"><img src="/img/discord.png"
+                  alt="sCrypt in BSV Discord"></a></li>
+      <li><a title="sCrypt on Reddit" target="_blank" href="https://www.reddit.com/r/sCrypt"><img
+                  src="/img/reddit.png" alt="sCrypt on Reddit"></a></li>
+      <li><a title="sCrypt on Youtube" target="_blank"
+              href="https://www.youtube.com/channel/UCzQsmR836zW8b1kh03Ht04w"><img src="/img/yt.png"
+                  alt="sCrypt on Youtube"></a></li>
+  </ul>
+</div>
+                `
               },
             ],
           },

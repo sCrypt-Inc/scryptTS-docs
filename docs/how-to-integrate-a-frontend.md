@@ -26,9 +26,9 @@ npx create-react-app helloworld --template typescript
 
 We will do most work under the `src` directory.
 
-### `scryptTS`
+### `sCrypt`
 
-Run the `init` command of the [CLI](./installation.md#the-scrypt-cli-tool) to turn it into a `scryptTS` project.
+Run the `init` command of the [CLI](./installation.md#the-scrypt-cli-tool) to turn it into an `sCrypt` project.
 
 ```bash
 cd helloworld

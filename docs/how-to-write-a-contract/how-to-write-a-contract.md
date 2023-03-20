@@ -30,10 +30,10 @@ class Demo extends SmartContract {
 }
 ```
 
-Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `scryptTS` is that both on-chain and off-chain code are written in the same language: TypeScript.
+Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
 :::note
-You can fork [the demo contract Repl](https://replit.com/@msinkec/scryptTS-demo) and play with the code in your browser!
+You can use [the sCrypt template Repl](https://replit.com/@msinkec/sCrypt) and play with the code in your browser!
 :::
 
 ## Properties
@@ -407,7 +407,7 @@ let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
 :::note
-In scryptTS, all parameters are *pass by value*, whereas, in JavaScript objects and arrays are *pass by reference*, which means extra care must be taken when updating the values of these variables. For example:
+In sCrypt, all parameters are *pass by value*, whereas, in JavaScript objects and arrays are *pass by reference*, which means extra care must be taken when updating the values of these variables. For example:
 
 ```ts
 import {assert, method, prop, SmartContract, FixedArray} from "scrypt-ts";
@@ -626,7 +626,7 @@ add(x0: bigint, x1:bigint) : bigint {
 
 ## Operators
 
-**scryptTS** is a subset of TypeScript. Only the following operators can be used directly.
+**sCrypt** is a subset of TypeScript. Only the following operators can be used directly.
 
 
 | Operator | Description |
@@ -640,8 +640,8 @@ add(x0: bigint, x1:bigint) : bigint {
 | `--` | Decrement |
 | `==` | Equal to |
 | `!=` | Not equal to |
-| `===` | Same as `==` in **scryptTS** |
-| `!==` | Same as `!=` in **scryptTS** |
+| `===` | Same as `==` in **sCrypt** |
+| `!==` | Same as `!=` in **sCrypt** |
 | `>` | Greater than |
 | `>=` | Greater than or equal to |
 | `<` | Less than |
