@@ -79,7 +79,7 @@ This section could be summarized as the diagram below:
 As we mentioned in the [testing section](../how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
 
 
-For local testing, we can use the `TestWallet` introduced [before](./how-to-test-a-contract#testwallet), with a mock provider. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](../how-to-test-a-contract.md#provider).
+For local testing, we can use the `TestWallet` introduced [before](../how-to-test-a-contract#testwallet), with a mock provider. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](../how-to-test-a-contract.md#provider).
 
 ```ts
 const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
@@ -114,7 +114,7 @@ console.log(`Smart contract successfully deployed with txid ${tx.id}`);
 
 ## Contract Call
 
-Similar to what we described in [this section](./how-to-test-a-contract#call-a-public-method), you can call a contract's public `@method` on the blockchain as follows:
+Similar to what we described in [this section](../how-to-test-a-contract#call-a-public-method), you can call a contract's public `@method` on the blockchain as follows:
 
 ```ts
 // build and send tx for calling `foo`
