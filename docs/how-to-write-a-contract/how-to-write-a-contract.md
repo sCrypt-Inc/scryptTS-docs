@@ -273,27 +273,30 @@ In a smart contract context (i.e., in `@method`s or `@prop`s), a `ByteString` re
 A literal `string` can be converted in to a `ByteString` using function `toByteString(literal: string, isUtf8: boolean = false): ByteString`:
 
 * If not passing `isUtf8` or `isUtf8` is `false`, then `literal` should be in the format of hex literal, which can be represented by the regular expression: `/^([0-9a-fA-F]{2})*$/`
-* Otherwise, `literal` should be in the format of utf8 literal, i.e. `hello world`
+* Otherwise, `literal` should be in the format of utf8 literal, e.g., `hello world`.
 
 :::note
-When `toByteString` is called, it **ONLY** accepts string literals for its first argument, and boolean literals for its second argument.
+`toByteString` **ONLY** accepts string literals for its first argument, and boolean literals for the second.
 :::
 
 ```ts
-toByteString('hello', 1 === 1) // invalid, not passing boolean literal to the 2nd parameter
-
-let a = true
-toByteString('world', a) // invalid, not passing boolean literal to the 2nd parameter
-
+let a = toByteString('0011') // valid, `0011` is a valid hex literal
+// 0011
 let b = toByteString('hello world', true) // valid
+// 68656c6c6f20776f726c64
+
+toByteString('0011', false) // valid
+// 30303131
 
 toByteString(b, true) // invalid, not passing string literal to the 1st parameter
 
-toByteString('0011') // valid, `0011` is a valid hex literal
-toByteString('0011', false) // valid
-
 toByteString('001') // invalid, `001` is not a valid hex literal
 toByteString('hello', false) // invalid, `hello` is not a valid hex literal
+
+toByteString('hello', 1 === 1) // invalid, not passing boolean literal to the 2nd parameter
+
+let c = true
+toByteString('world', c) // invalid, not passing boolean literal to the 2nd parameter
 ```
 
 `ByteString` has the following operators and methods:
@@ -373,7 +376,6 @@ type Point = {
   y: number
 }
  
-// Exactly the same as the earlier example
 function printCoord(pt: Point) {
   console.log("The coordinate's x value is " + pt.x)
   console.log("The coordinate's y value is " + pt.y)
@@ -384,6 +386,7 @@ interface Point2 {
   y: number
 }
  
+// Exactly the same as the earlier example
 function printCoord(pt: Point2) {
   console.log("The coordinate's x value is " + pt.x)
   console.log("The coordinate's y value is " + pt.y)
