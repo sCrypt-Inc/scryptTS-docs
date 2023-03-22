@@ -394,23 +394,23 @@ You may visit [here](../how-to-deploy-and-call-a-contract/how-to-customize-a-con
 
 ### `multiContractCall`
 
-When the `@method`s of multiple contracts is called in a transaction, the transaction builders for each contract collectively construct the `ContractTransation`. Function `static async multiContractCall(partialContractTransaction: ContractTransaction, signer: Signer): Promise<MultiContractTransaction>` signs and broadcasts the final transaction.
+When the `@method`s of multiple contracts is called in a transaction, the transaction builders for each contract collectively construct the `ContractTransation`. Function `static async multiContractCall(partialContractTx: ContractTransaction, signer: Signer): Promise<MultiContractTransaction>` signs and broadcasts the final transaction.
 
 ```ts
-const partialContractTransaction1 = await counter1.methods.incrementOnChain(
+const partialContractTx1 = await counter1.methods.incrementOnChain(
     {
         multiContractCall: true,
     } as MethodCallOptions<Counter>
 )
 
-const partialContractTransaction2 = await counter2.methods.incrementOnChain(
+const partialContractTx2 = await counter2.methods.incrementOnChain(
     {
         multiContractCall: true,
-        partialContractTransaction: partialContractTransaction1
+        partialContractTx: partialContractTx1
     } as MethodCallOptions<Counter>
 );
 
-const {tx: callTx, nexts} = await SmartContract.multiContractCall(partialContractTransaction2, signer)
+const {tx: callTx, nexts} = await SmartContract.multiContractCall(partialContractTx2, signer)
 
 
 console.log('Counter contract counter1, counter2 called: ', callTx.id)

@@ -13,7 +13,7 @@ The main differences from [calling a single contract](../how-to-deploy-and-call-
 1. Set `multiContractCall = true` in `MethodCallOptions`
 2. Each call may only return a partial/incomplete transaction, instead of a complete transaction
 3. A partial tx has to be passed as `ContractTransaction` in `MethodCallOptions` in subsequent calls
-4. Finally invoke `SmartContract.multiContractCall(partialContractTransaction: ContractTransaction, signer: Signer)` to sign and broadcast the complete transaction
+4. Finally invoke `SmartContract.multiContractCall(partialContractTx: ContractTransaction, signer: Signer)` to sign and broadcast the complete transaction
 
 
 The following is an [example code](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/multi_contracts_call.ts) of calling two contracts at the same time:
@@ -91,8 +91,8 @@ async function main() {
             options: MethodCallOptions<HashPuzzle>,
             ...args: any
         ): Promise<ContractTransaction> => {
-            if (options.partialContractTransaction) {
-                const unSignedTx = options.partialContractTransaction.tx
+            if (options.partialContractTx) {
+                const unSignedTx = options.partialContractTx.tx
                 unSignedTx.addInput(
                     current.buildContractInput(options.fromUTXO)
                 )
@@ -104,7 +104,7 @@ async function main() {
                 })
             }
 
-            throw new Error('no partialContractTransaction found')
+            throw new Error('no partialContractTx found')
         }
     )
 
@@ -116,7 +116,7 @@ async function main() {
         byteString,
         {
             multiContractCall: true,
-            partialContractTransaction: partialTx,
+            partialContractTx: partialTx,
         } as MethodCallOptions<HashPuzzle>
     )
 

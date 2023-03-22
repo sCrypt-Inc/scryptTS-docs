@@ -21,7 +21,7 @@ For example, specifying a transaction builder to use a specific change address o
 - [lockTime](MethodCallOptions.md#locktime)
 - [multiContractCall](MethodCallOptions.md#multicontractcall)
 - [next](MethodCallOptions.md#next)
-- [partialContractTransaction](MethodCallOptions.md#partialcontracttransaction)
+- [partialContractTx](MethodCallOptions.md#partialContractTx)
 - [pubKeyOrAddrToSign](MethodCallOptions.md#pubkeyoraddrtosign)
 - [sequence](MethodCallOptions.md#sequence)
 - [verify](MethodCallOptions.md#verify)
@@ -88,9 +88,9 @@ dist/smart-contract/types/contract-call.d.ts:28
 
 ___
 
-### partialContractTransaction
+### partialContractTx
 
-• `Optional` `Readonly` **partialContractTransaction**: [`ContractTransaction`](ContractTransaction.md)
+• `Optional` `Readonly` **partialContractTx**: [`ContractTransaction`](ContractTransaction.md)
 
 Pass the `ContractTransaction` of the previous call as an argument to the next call, only used if `multiContractCall = true`.
 
