@@ -97,3 +97,13 @@
     margin-top: 20px;
     font-size: 14px;
 }
+
+/* Hide footer under docs */
+.docs-doc-page .footer {
+  visibility: hidden;
+}
+
+/* Hide footer under docs */
+.docs-doc-page .navbar__link {
+  visibility: hidden;
+}
