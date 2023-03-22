@@ -143,7 +143,7 @@ export interface MethodCallOptions<T> {
   /** Whether to call multiple contracts at the same time in one transaction */
   readonly multiContractCall?: true;
   /** Pass the `ContractTransaction` of the previous call as an argument to the next call, only used if `multiContractCall = true`.  */
-  readonly partialContractTransaction?: ContractTransaction;
+  readonly partialContractTx?: ContractTransaction;
 }
 ```
 

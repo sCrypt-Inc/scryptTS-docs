@@ -879,7 +879,7 @@ ___
 
 ### multiContractCall
 
-▸ `Static` **multiContractCall**(`partialContractTransaction`, `signer`): `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
+▸ `Static` **multiContractCall**(`partialContractTx`, `signer`): `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
 
 When the `@method`s of multiple contracts is called in a transaction, this function signs and broadcasts the final transaction.
 
@@ -887,7 +887,7 @@ When the `@method`s of multiple contracts is called in a transaction, this funct
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `partialContractTransaction` | [`ContractTransaction`](../interfaces/ContractTransaction.md) | - |
+| `partialContractTx` | [`ContractTransaction`](../interfaces/ContractTransaction.md) | - |
 | `signer` | [`Signer`](Signer.md) | a signer to sign the transation. |
 
 #### Returns
