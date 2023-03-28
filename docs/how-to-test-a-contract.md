@@ -27,11 +27,13 @@ await Demo.compile()
 
 A `Provider` is an abstraction of a standard Bitcoin node that provides connection to the Bitcoin network, for read and write access to the blockchain.
 
-Currently, we have two built-in providers:
+sCrypt already has a few built-in providers:
 
 * `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
 
 * `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcon, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
+
+* See full list of providers [here](./reference/classes/Provider.md#hierarchy).
 
 You can initialize these providers like this:
 

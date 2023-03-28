@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # How to Add a Signer
@@ -164,9 +164,9 @@ export abstract class Signer {
 It is recommended that your signer implements all `abstract` methods. For non-`abstract` methods, the default implementation is usually sufficient.
 
 
-### `SensiletSigner`
+### `Example: SensiletSigner`
 
-Next, we use the Sensilet wallet as an example to show how to implement a`SensiletSigner`.
+Next, we use the [Sensilet wallet](https://sensilet.com/) as an example to show how to implement a `SensiletSigner`.
 
 
 1. In the `connect` method, you usually attempt to connect to a provider and save it:
