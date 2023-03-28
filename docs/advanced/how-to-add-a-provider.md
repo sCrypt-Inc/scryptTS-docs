@@ -267,7 +267,20 @@ override async getBalance(
 }
 ```
 
-Lastly, ff our provider doesn't support a certain query, we can simply throw an error by default:
+We also implement the function to query the raw transaction using the transactions ID:
+```ts
+override async getTransaction(txHash: string): Promise<TransactionResponse> {
+  try {
+    const res = await superagent.get(`${this.apiPrefix}/tx/${txHash}/hex`);
+    return new bsv.Transaction(res.text)
+  } catch (e) {
+    throw new Error(`WhatsonchainProvider ERROR: failed fetching raw transaction data: ${e.message}`);
+  }
+}
+```
+
+
+Lastly, if our provider doesn't support a certain query, we can simply throw an error by default:
 ```ts
 override async getContractUTXOs(genesisTxHash: string, outputIndex?: number): Promise<UTXO[]> {
     throw new Error("Method #getContractUTXOs not implemented in WhatsonchainProvider.");
