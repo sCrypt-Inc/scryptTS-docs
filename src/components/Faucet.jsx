@@ -86,7 +86,7 @@ const Faucet = () => {
             <div>
               BSV transfer succeeded!<br/>
               TXID:<br/>
-              <a href={`khttps://test.whatsonchain.com/tx/${successMsg}`} target="_blank">{successMsg}</a>
+              <a href={`https://test.whatsonchain.com/tx/${successMsg}`} target="_blank">{successMsg}</a>
               </div>
           </div>
         )}
