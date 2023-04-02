@@ -240,6 +240,38 @@ class P2PKH extends SmartContract {
 }
 ```
 
+### `checkMultiSig`
+
+Function `checkMultiSig(signatures: Sig[], publickeys: PubKey[]): boolean` verifies an array of ECDSA signatures. It takes two inputs: an array of ECDSA signatures and an array of public keys.
+
+The function compares the first signature against each public key until it finds an ECDSA match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result. All signatures need to match a public key. Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the `signatures` array using the same order as their corresponding public keys were placed in the `publickeys` array. If all signatures are valid, `true` is returned, `false` otherwise.
+
+```ts
+class MultiSigPayment extends SmartContract {
+  // public key hashes of the 3 recipients
+  @prop()
+  readonly pubKeyHashes: FixedArray<PubKeyHash, 3>
+
+  constructor(pubKeyHashes: FixedArray<PubKeyHash, 3>) {
+    super(...arguments)
+    this.pubKeyHashes = pubKeyHashes
+  }
+
+  @method()
+  public unlock(
+      signatures: FixedArray<Sig, 3>, 
+      publicKeys: FixedArray<PubKey, 3>
+    ) {
+    // check if the passed public keys belong to the specified public key hashes
+    for (let i = 0; i < 3; i++) {
+      assert(hash160(publicKeys[i]) == this.pubKeyHashes[i], 'public key hash mismatch¸')
+    }
+    // validate signatures
+    assert(this.checkMultiSig(signatures, publicKeys), 'checkMultiSig failed')
+  }
+}
+```
+
 ### `buildStateOutput`
 
 Function `buildStateOutput(amount: bigint): ByteString` creates an output containing the latest state. It takes an input: the number of satoshis in the output.
