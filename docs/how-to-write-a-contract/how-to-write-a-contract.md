@@ -409,39 +409,43 @@ let aab: FixedArray<bigint, N> = [1n, 2n]
 let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
-:::note
-In sCrypt, all parameters are *pass by value*, whereas, in JavaScript objects and arrays are *pass by reference*, which means extra care must be taken when updating the values of these variables. For example:
+:::caution
+A `FixedArray` behaves differently in an on-chain and off-chain context, when passed as a function argument. It is *passed by reference* off chain, as a regular TypeScript/JavaScript array, while *passed by value* on chain. It is thus strongly recommended to NEVER mutate a `FixedArray` parameter inside a function.
 
 ```ts
-import {assert, method, prop, SmartContract, FixedArray} from "scrypt-ts";
 class DemoContract extends SmartContract {
 
     @prop(true)
-    readonly a: FixedArray<bigint, 3>;
-    
-    @prop(true)
-    readonly b: FixedArray<bigint, 3>; 
+    readonly a: FixedArray<bigint, 3>
 
-    constructor(a: FixedArray<bigint, 3>, b: FixedArray<bigint, 3>) {
-        super(...arguments);
-        this.a = a;
-        this.b = b;
+    constructor(a: FixedArray<bigint, 3>) {
+        super(...arguments)
+        this.a = a
     }
 
     @method()
-    public unlock() {
-        assert(true);
+    onchainChange(a: FixedArray<bigint, 3>) {
+        a[0] = 0
+    }
+
+    offchainChange(a: FixedArray<bigint, 3>) {
+        a[0] = 0
+    }
+
+    @method()
+    public main(a: FixedArray<bigint, 3>) {
+      this.onchainChange(this.a)
+      // note: a[0] is not changed on chain
+      assert(this.a[0] == 1n)
     }
 }
 
 const arrayA: FixedArray<bigint, 3> = [1n, 2n, 3n]
-const arrayB: FixedArray<bigint, 3> = [1n, 2n, 3n]
-// invalid, you cannot pass an array or user-defined type to two different function parameters.
-const instance = new DemoContract(arrayA, arrayA);
-// valid
-const instance = new DemoContract(arrayA, arrayB);
-// Attention! `instance.a` has been changed.
-arrayA[0] = 0n
+const instance = new DemoContract(arrayA);
+
+instance.offchainChange(arrayA)
+// note: arrayA[0] is changed off chain
+assert(arrayA[0] = 0n)
 ```
 :::
 
