@@ -118,7 +118,7 @@ class DesignatedReceivers extends SmartContract {
   public payout() {
     const aliceOutput: ByteString = Utils.buildPublicKeyHashOutput(alice, 1000n)
     const bobOutput: ByteString = Utils.buildPublicKeyHashOutput(bob, 1000n)
-    const outputs = aliceOutput + bobOutput
+    let outputs = aliceOutput + bobOutput
 
     if (this.changeAmount > 0) {
       // require a change output
