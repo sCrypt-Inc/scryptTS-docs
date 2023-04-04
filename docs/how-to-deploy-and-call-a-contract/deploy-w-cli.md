@@ -18,10 +18,10 @@ or
 scrypt d
 ```
 
-By default, the CLI tool will run the deployment script named `deploy.ts` located in the root of the project. You can also specify a different deployment script using the `--file` or `--f` option.
+By default, the CLI tool will run the deployment script named `deploy.ts` located in the root of the project. You can also specify a different deployment script using the `--file` or `-f` option.
 
 ```sh
-scrypt d --f myCustomDeploy.ts
+scrypt d -f myCustomDeploy.ts
 ```
 
 If the project was created using sCrypt CLI, it will already have a `deploy.ts` file present (except for library projects). If not, the `deploy` command will generate a template.
@@ -42,17 +42,23 @@ import * as dotenv from 'dotenv'
 // Load the .env file
 dotenv.config()
 
-// Read the private key from the .env file
+// Read the private key from the .env file.
+// The default private key inside the .env file is meant to be used for the Bitcoin testnet.
+// See https://scrypt.io/docs/bitcoin-basics/bsv/#private-keys
 const privateKey = bsv.PrivateKey.fromWIF(process.env.PRIVATE_KEY)
 
+// Prepare signer. 
+// See https://scrypt.io/docs/how-to-deploy-and-call-a-contract/#prepare-a-signer-and-provider
 const signer = new TestWallet(privateKey, new DefaultProvider())
 
 async function main() {
+    // Compile the smart contract.
     await Demoproject.compile()
 
-    The amount of satoshis locked in the smart contract:
+    // The amount of satoshis locked in the smart contract:
     const amount = 100
 
+    // Instantiate the smart contract and pass constructor parameters.
     const instance = new Demoproject(
         sha256(toByteString('hello world', true))
     )
