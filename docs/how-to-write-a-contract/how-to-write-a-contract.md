@@ -356,44 +356,6 @@ b.slice(0, Number(end))
 It can also be used in defining [compile-time constants](#compile-time-constant).
 
 
-### User-defined Types
-
-Users can be define customized types using `type` or `interface`, made of basic types. For example,
-
-```ts
-type ST = {
-  a: bigint
-  b: boolean
-}
-
-interface ST1 {
-  x: ST
-  y: ByteString
-}
-
-type Point = {
-  x: number
-  y: number
-}
- 
-function printCoord(pt: Point) {
-  console.log("The coordinate's x value is " + pt.x)
-  console.log("The coordinate's y value is " + pt.y)
-}
-
-interface Point2 {
-  x: number
-  y: number
-}
- 
-// Exactly the same as the earlier example
-function printCoord(pt: Point2) {
-  console.log("The coordinate's x value is " + pt.x)
-  console.log("The coordinate's y value is " + pt.y)
-}
-
-```
-
 ### Fixed Size Array
 
 All arrays **must** be of fixed size and be declared as type of `FixedArray<T, SIZE>`, whose `SIZE` must be a [CTC](#compile-time-constant) described later.
@@ -449,6 +411,46 @@ instance.offchainChange(arrayA)
 assert(arrayA[0] = 0n)
 ```
 :::
+
+### User-defined Types
+
+Users can be define customized types using `type` or `interface`, made of basic types.[^1]
+
+```ts
+type ST = {
+  a: bigint
+  b: boolean
+}
+
+interface ST1 {
+  x: ST
+  y: ByteString
+}
+
+type Point = {
+  x: number
+  y: number
+}
+ 
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x)
+  console.log("The coordinate's y value is " + pt.y)
+}
+
+interface Point2 {
+  x: number
+  y: number
+}
+ 
+// Exactly the same as the earlier example
+function printCoord(pt: Point2) {
+  console.log("The coordinate's x value is " + pt.x)
+  console.log("The coordinate's y value is " + pt.y)
+}
+
+```
+
+[^1]: A user-defined type is also passed by value on chain, and by reference off chain, same as a `FixedArray`. It is thus strongly recommended to NEVER mutate the field of a parameter, which is of a user-defined type, inside a function.
 
 ### Domain Types
 
