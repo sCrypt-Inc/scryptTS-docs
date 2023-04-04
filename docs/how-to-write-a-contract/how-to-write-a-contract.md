@@ -402,8 +402,9 @@ The common TypeScript arrays declared as `T[]` or `Array<T>` are not allowed in 
 ```ts
 let aaa: FixedArray<bigint, 3> = [1n, 3n, 3n]
 
-const N = 2
-let aab: FixedArray<bigint, N> = [1n, 2n]
+// set to all 0s
+const N = 20
+let aab: FixedArray<bigint, N> = fill(0n, N)
 
 // 2-dimensional array
 let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
