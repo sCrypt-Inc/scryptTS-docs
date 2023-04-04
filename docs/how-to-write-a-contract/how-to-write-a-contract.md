@@ -373,7 +373,7 @@ let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
 :::caution
-A `FixedArray` behaves differently in an on-chain and off-chain context, when passed as a function argument. It is *passed by reference* off chain, as a regular TypeScript/JavaScript array, while *passed by value* on chain. It is thus strongly recommended to NEVER mutate a `FixedArray` parameter inside a function.
+A `FixedArray` behaves differently in an on-chain and off-chain context, when passed as a function argument. It is *passed by reference* off chain, as a regular TypeScript/JavaScript array, while *passed by value* on chain. It is thus strongly recommended to NEVER mutate a `FixedArray` parameter's element inside a function.
 
 ```ts
 class DemoContract extends SmartContract {
