@@ -661,7 +661,3 @@ add(x0: bigint, x1:bigint) : bigint {
 :::note
 `**` is not supported currently.
 :::
-
-## ScriptContext
-
-See [ScriptContext](./scriptcontext.md).
