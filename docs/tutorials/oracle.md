@@ -19,6 +19,10 @@ The data supplied by oracles can include various types of information, such as a
 
 Read [this article](https://medium.com/coinmonks/access-external-data-from-bitcoin-smart-contracts-2ecdc7448c43) for a more comprehensive explanation of how they can be used on Bitcoin.
 
+### Rabin Signatures
+
+Because we are checking a signature for an arbitrary chunk of data, the whole verification algorithm needs to be implemented in sCrypt and executed on-chain.  For this reason, we employ the [Rabin signature scheme](https://en.wikipedia.org/wiki/Rabin_signature_algorithm), which boasts a notably straightforward verification algorithm. This simplicity makes it well-suited for on-chain code, effectively minimizing the script size. Conversely, traditional ECDSA signatures offer smaller signatures but require a more complex verification algorithm.
+
 ## Contract Properties
 
 There are quite a few properties which our price betting smart contract will require:
