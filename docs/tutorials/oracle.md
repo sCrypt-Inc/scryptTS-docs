@@ -173,7 +173,7 @@ As we can see, if the target price was reached, Alice gets paid, else Bob gets t
 
 ## Conclusion
 
-Congratulations! You have completed the `PriceBet` tutorial!
+Congratulations! You have completed the oracle tutorial!
 
 The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/priceBet.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/priceBet.ts).
 
