@@ -70,19 +70,23 @@ public unlock(msg: ByteString, sig: RabinSig) {
     )
 
     // Decode data.
-    // 4 bytes timestamp (LE) + 8 bytes rate (LE) + 1 byte decimal + 16 bytes symbol
-    const timestamp = Utils.fromLEUnsigned(msg.slice(0, 8))
-    const price = Utils.fromLEUnsigned(msg.slice(8, 24))
-    const symbol: ByteString = msg.slice(26, 58)
+    const exchangeRate = PriceBet.parseExchangeRate(msg)
 
     // Validate data.
-    assert(timestamp >= this.timestampFrom, 'Timestamp too early.')
-    assert(timestamp <= this.timestampTo, 'Timestamp too late.')
-    assert(symbol == this.symbol, 'Wrong symbol.')
+    assert(
+        exchangeRate.timestamp >= this.timestampFrom,
+        'Timestamp too early.'
+    )
+    assert(
+        exchangeRate.timestamp <= this.timestampTo,
+        'Timestamp too late.'
+    )
+    assert(exchangeRate.symbol == this.symbol, 'Wrong symbol.')
 
     // Include output that pays the winner.
     const outAmount = this.ctx.utxo.value // Include all sats from contract instance.
-    const winner = price >= this.targetPrice ? this.alicePkh : this.bobPkh
+    const winner =
+        exchangeRate.price >= this.targetPrice ? this.alicePkh : this.bobPkh
     const out = Utils.buildPublicKeyHashOutput(winner, outAmount)
     assert(this.ctx.hashOutputs == hash256(out), 'hashOutputs mismatch')
 }
@@ -108,12 +112,19 @@ The verification method requires the message signed by the oracle, the oracles s
 
 Next, we need to parse information from the chunk of data that is the signed message and assert on it. For a granular description of the message format check out the `"Exchange Rate"` section in the [WitnessOnChain API docs](https://witnessonchain.com).
 
+We need to implement the static method `parseExchangeRate` as follows:
+
 ```ts
-// Decode data.
-// 4 bytes timestamp (LE) + 8 bytes rate (LE) + 1 byte decimal + 16 bytes symbol
-const timestamp = Utils.fromLEUnsigned(msg.slice(0, 8))
-const price = Utils.fromLEUnsigned(msg.slice(8, 24))
-const symbol: ByteString = msg.slice(26, 58)
+// Parses signed message from the oracle.
+@method()
+static parseExchangeRate(msg: ByteString): ExchangeRate {
+    // 4 bytes timestamp (LE) + 8 bytes rate (LE) + 1 byte decimal + 16 bytes symbol
+    return {
+        timestamp: Utils.fromLEUnsigned(msg.slice(0, 8)),
+        price: Utils.fromLEUnsigned(msg.slice(8, 24)),
+        symbol: msg.slice(26, 58),
+    }
+}
 ```
 
 We parse out the following data:
@@ -121,17 +132,33 @@ We parse out the following data:
 - `price` - The exchange rate encoded as an integer -> (priceFloat * (10^decimal)).
 - `symbol` - The symbol of the token pair, e.g. `BSV_USDC`.
 
+Finally, we wrap the parsed values in a custom type, named `ExchangeRate` and return it. Here's the definition of the type:
+
+```ts
+type ExchangeRate = {
+    timestamp: bigint
+    price: bigint
+    symbol: ByteString
+}
+```
+
 Now we can validate the data. First, we check if the timestamp of the exchange rate is within our specified range that we bet on:
 
 ```ts
-assert(timestamp >= this.timestampFrom, 'Timestamp too early.')
-assert(timestamp <= this.timestampTo, 'Timestamp too late.')
+assert(
+    exchangeRate.timestamp >= this.timestampFrom,
+    'Timestamp too early.'
+)
+assert(
+    exchangeRate.timestamp <= this.timestampTo,
+    'Timestamp too late.'
+)
 ```
 
 Additionally, we check if the exchange rate is actually for the correct token pair:
 
 ```ts
-assert(symbol == this.symbol, 'Wrong symbol.')
+assert(exchangeRate.symbol == this.symbol, 'Wrong symbol.')
 ```
 
 Lastly, upon having all the necessary information, we can choose the winner and pay to his address accordingly:
@@ -139,7 +166,7 @@ Lastly, upon having all the necessary information, we can choose the winner and 
 ```ts
 // Include output that pays the winner.
 const outAmount = this.ctx.utxo.value // Include all sats from contract instance.
-const winner = price >= this.targetPrice ? this.alicePkh : this.bobPkh
+const winner = exchangeRate.price >= this.targetPrice ? this.alicePkh : this.bobPkh
 const out = Utils.buildPublicKeyHashOutput(winner, outAmount)
 assert(this.ctx.hashOutputs == hash256(out), 'hashOutputs mismatch')
 ```
