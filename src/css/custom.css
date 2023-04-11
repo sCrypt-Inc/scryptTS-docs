@@ -101,9 +101,21 @@
 /* Hide footer under docs */
 .docs-doc-page .footer {
   visibility: hidden;
+  display: none;
 }
 
-/* Hide footer under docs */
+/* Hide navbar items under docs */
 .docs-doc-page .navbar__link {
   visibility: hidden;
+  display: none;
+}
+/* Except docs repo link */
+.docs-doc-page .navbar__link[href="https://github.com/sCrypt-Inc/scryptTS-docs"] {
+  visibility: visible;
+  display: inline-block;
+}
+/* But hide docs repo link elsewhere */
+.navbar__link[href="https://github.com/sCrypt-Inc/scryptTS-docs"] {
+  visibility: hidden;
+  display: none;
 }

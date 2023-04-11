@@ -89,6 +89,12 @@ const config = {
             position: 'right',
           },
           {
+            /* Only visible under docs. See src/custom/custom.css */
+            href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
+            label: 'GitHub',
+            position: 'right',
+          },
+          {
             href: 'https://classic.scrypt.io',
             label: 'Classic',
             position: 'right',
