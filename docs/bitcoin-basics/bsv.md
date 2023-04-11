@@ -180,6 +180,37 @@ console.log(tx.serialize())
 For broadcasting you can use any provider you like. For simple demo purposes you can simply paste the serialized transaction [here](https://test.whatsonchain.com/broadcast).
 
 
+### OP_RETURN Scripts
+
+In case you would like to put some arbitrary data on-chain, without any locking logic, you can use transaction outputs with an [OP_RETURN](https://wiki.bitcoinsv.io/index.php/OP_RETURN) script.
+
+An example of an OP_RETURN script written in ASM format is this:
+
+```
+OP_FALSE OP_RETURN 734372797074
+```
+
+In effect, the opcodes `OP_FALSE OP_RETURN` will make the script unspendable. After them we can insert arbitrary chunks of data. The `734372797074` is actually the string `sCrypt` encoded as an `utf-8` hexadecimal string.
+
+```js
+console.log(Buffer.from('sCrypt').toString('hex'))
+// 734372797074
+```
+
+An OP_RETURN script can also contain more than a single chunk of data:
+```
+OP_FALSE OP_RETURN 48656c6c6f 66726f6d 734372797074
+```
+
+The `bsv` submodule offers a convenient function to construct such scripts:
+
+```ts
+const opRetScript: bsv.Script = bsv.Script.buildSafeDataOut(['Hello', 'from', 'sCrypt'])
+``` 
+
+We can add the resulting `bsv.Script` object to an output as we showed [above](#constructing-transactions).
+
+
 ## References
 
 - Take a look at the full [`bsv` submodule reference](../reference/modules/bsv) for a full list of what functions it provides.
