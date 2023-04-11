@@ -4,6 +4,9 @@ sidebar_position: 5
 
 # How to Integrate sCrypt Service
 
+Before interacting with the `sCrypt` contract, we must create a contract instance representing the latest state of the contract on the chain. According to [this](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction) section, calling the `fromTx` method can recover such an instance. This works, but not good enough, because you still need to track and record all the contract-related transactions.
+
+The `sCrypt` service will do this part of the work for you, the only thing you have to do is to integrate it.
 
 ## Initialize sCrypt Client
 
@@ -22,7 +25,6 @@ Scrypt.init({
 For now, you can use the test key `alpha_test_api_key` on testnet.
 :::
 
-
 ## Connect `ScryptProvider` with your signer
 
 Initializing the `ScryptProvider` with your own API key and then connect signer to `ScryptProvider`. 
@@ -32,6 +34,9 @@ const signer = new TestWallet(myPrivateKey)
 await signer.connect(new ScryptProvider())
 ```
 
+:::note
+It's **required** to use `ScryptProvider` if you want to integrate sCrypt service.
+:::
 
 ## Contract Deployment
 
