@@ -58,11 +58,11 @@ import { RabinPubKey } from 'scrypt-ts-lib'
 
 ## Public Method - `unlock`
 
-The contract will have only a single public method, namely `unlock`. As parameters, it will take the oracles signature and the message signed:
+The contract will have only a single public method, namely `unlock`. As parameters, it will take the oracles signature, the signed message from the oracle, and a signature of the winner, who can unlock the funds:
 
 ```ts
 @method()
-public unlock(msg: ByteString, sig: RabinSig) {
+public unlock(msg: ByteString, sig: RabinSig, winnerSig: Sig) {
     // Verify oracle signature.
     assert(
         RabinVerifierWOC.verifySig(msg, sig, this.oraclePubKey),
@@ -83,12 +83,12 @@ public unlock(msg: ByteString, sig: RabinSig) {
     )
     assert(exchangeRate.symbol == this.symbol, 'Wrong symbol.')
 
-    // Include output that pays the winner.
-    const outAmount = this.ctx.utxo.value // Include all sats from contract instance.
+    // Decide winner and check their signature.
     const winner =
-        exchangeRate.price >= this.targetPrice ? this.alicePkh : this.bobPkh
-    const out = Utils.buildPublicKeyHashOutput(winner, outAmount)
-    assert(this.ctx.hashOutputs == hash256(out), 'hashOutputs mismatch')
+        exchangeRate.price >= this.targetPrice
+            ? this.alicePubKey
+            : this.bobPubKey
+    assert(this.checkSig(winnerSig, winner))
 }
 ```
 
@@ -161,17 +161,17 @@ Additionally, we check if the exchange rate is actually for the correct token pa
 assert(exchangeRate.symbol == this.symbol, 'Wrong symbol.')
 ```
 
-Lastly, upon having all the necessary information, we can choose the winner and pay to his address accordingly:
+Lastly, upon having all the necessary information, we can choose the winner and check their signature:
 
 ```ts
-// Include output that pays the winner.
-const outAmount = this.ctx.utxo.value // Include all sats from contract instance.
-const winner = exchangeRate.price >= this.targetPrice ? this.alicePkh : this.bobPkh
-const out = Utils.buildPublicKeyHashOutput(winner, outAmount)
-assert(this.ctx.hashOutputs == hash256(out), 'hashOutputs mismatch')
+const winner =
+    exchangeRate.price >= this.targetPrice
+        ? this.alicePubKey
+        : this.bobPubKey
+assert(this.checkSig(winnerSig, winner))
 ```
 
-As we can see, if the target price us reached, Alice gets paid; otherwise Bob gets the funds. The contract ensures the winner gets paid via a standard [`P2PKH`](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Pay_to_Public_Key_Hash_.28P2PKH.29) output.
+As we can see, if the target price is reached, only Alice is able to unlock the funds, and if not, then only Bob is able to do so.
 
 
 ## Conclusion
