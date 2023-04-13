@@ -27,10 +27,10 @@ You can generate a Bitcoin private key from a random value:
 const privKey = bsv.PrivateKey.fromRandom()
 ```
 
-This will generate a private key for the Bitcoin main network. To create a key for the test network (also referred to as "testnet"), pass a string `testnet`:
+This will generate a private key for the Bitcoin main network. To create a key for the test network (also referred to as "testnet"), pass a string `bsv.Networks.testnet` object:
 
 ```ts
-const privKey = bsv.PrivateKey.fromRandom('testnet')
+const privKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
 ```
 
 The main difference between a mainnet and a testnet key is how they get serialized. Check out [this page](https://wiki.bitcoinsv.io/index.php/Wallet_Import_Format_(WIF)) which explains this in detail.
@@ -56,7 +56,7 @@ A public key is a key that is derived from a private key and can be shared publi
 You can get the public key corresponding to a private key the following way:
 
 ```ts
-const privKey = bsv.PrivateKey.fromRandom('testnet')
+const privKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
 const pubKey = privKey.toPublicKey()
 ```
 
@@ -74,7 +74,7 @@ console.log(pubKey.toHex())
 You can get a Bitcoin address from either the private key or the public key:
 
 ```ts
-const privKey = bsv.PrivateKey.fromRandom('testnet')
+const privKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
 const pubKey = privKey.toPublicKey()
 
 console.log(privKey.toAddress())
