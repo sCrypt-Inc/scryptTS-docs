@@ -650,8 +650,8 @@ add(x0: bigint, x1:bigint) : bigint {
 | `--` | Decrement |
 | `==` | Equal to |
 | `!=` | Not equal to |
-| `===` | Same as `==` in **sCrypt** |
-| `!==` | Same as `!=` in **sCrypt** |
+| `===` | Same as `==` |
+| `!==` | Same as `!=` |
 | `>` | Greater than |
 | `>=` | Greater than or equal to |
 | `<` | Less than |
@@ -660,6 +660,11 @@ add(x0: bigint, x1:bigint) : bigint {
 | <code>&#124;&#124;</code> | Logical OR |
 | `!` | Logical NOT |
 | `cond ? expr1 : expr2 ` | ternary |
+| `+=` | Add and assign |
+| `-=` | Subtract and assign |
+| `*=` | Multiply and assign |
+| `/=` | Divide and assign |
+| `%=` | Assign remainder |
 
 :::note
 `**` is not supported currently.
