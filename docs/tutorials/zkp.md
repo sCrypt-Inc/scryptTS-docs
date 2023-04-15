@@ -2,29 +2,28 @@
 sidebar_position: 6
 ---
 
-# Tutorial 6: zk-SNARKs
+# Tutorial 6: Zero Knowledge Proofs
 
 ## Overview 
 
-In this tutorial we will go over how to create a zero-knowledge proof (ZKP) and verify it on-chain using sCrypt.
-
-As a simple example, we will create a proof that we know the factors of a specific number. The important bit is, that none of the factors will ever be publicly revealed.
+In this tutorial we will go over how to create a zero-knowledge proof (ZKP) and verify it on Bitcoin using sCrypt.
 
 ### What are zk-SNARKS?
 
-zk-SNARKs, or Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge, are cryptographic proofs that allow one party to prove possession of information without revealing the actual information, ensuring privacy on a public blockchain, such as Bitcoin, and other applications.
+SNARK (zero-knowledge Succinct Non-interactive ARguments of Knowledge) is a type of ZKP that is amenable for blockchains. The generated proof is “succinct” and “non-interactive”: a proof is only a few hundred bytes and can be verified in constant time and within a few milliseconds, without needing to ask additional questions of the prover. Together, these properties make zk-SNARK especially suitable for blockchains, where on-chain storage and computation can be expensive and senders often go offline after sending a transaction. 
 
-A proof is constructed off-chain by a prover who generates the proof using a secret input (often referred to as the "witness") and a public statement, based on a pre-defined arithmetic circuit that represents the problem being solved. The prover can then use this proof as an input for an sCrypt smart contract, which can verify the validity of the proof using a verification key and the public statement.
+A proof is constructed off-chain by a prover who generates the proof using a secret input (often referred to as the "witness") and a public input. The prover can then use this proof as an input for an sCrypt smart contract, which can verify the validity of the proof using a verification key and the public input.
+![](../../static/img/zksnark-verifier.png)
+[Source](https://www.altoros.com/blog/securing-a-blockchain-with-a-noninteractive-zero-knowledge-proof/)
 
-In our concrete example the secret input are the factors of a specific number, which is considered the public statement.
 
 There are many tools for creating such proofs, [ZoKrates](https://github.com/sCrypt-Inc/zokrates) and [SnarkJS](https://github.com/sCrypt-Inc/snarkjs) are among the most popular. 
 
 In this example we will use ZoKrates. It provides a python-like higher-level language for developers to code the computational problem they want to prove.
 
-For a more comprehensive explanation of zk-SNARKS and how they work, we recommend reading [this blog post](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell).
+For a more comprehensive explanation of zk-SNARKS and how they work, we recommend reading [this blog post](https://xiaohuiliu.medium.com/zk-snarks-on-bitcoin-239d96d182bd).
 
-## Installing ZoKrates
+## Install ZoKrates
 
 Run the following command to install [released binaries](https://github.com/sCrypt-Inc/zokrates/releases):
 
@@ -78,7 +77,7 @@ This generates a proving key and a verification key for this circuit.
 zokrates setup
 ```
 
-### 4. Calculating a witness
+### 4. Calculate a witness
 
 A proof attests that a prover knows some secret/private information that satisfies the original program. This secret information is called witness. In the following example, `7` and `13` are the witnesses, as they are factors of `91`.
 
@@ -145,7 +144,7 @@ cd verifier && git init && npm i
 Now the verifier is ready to be used. In the following section we will go over the code and show how to use it.
 
 
-### The sCrypt Verifier
+### 7. Run the sCrypt Verifier
 
 In the generated project, let's open the file `src/contracts/verifier.ts`. This file contains all the sCrypt code that is used to verify a proof on-chain. This includes an elliptic curve implementation along with a library that implements pairings over that elliptic curve and lastly the implementation of the proof verification algorithm. In our example the [`BN-256` elliptic curve](https://hackmd.io/@jpw/bn254) is being used along with the [`Groth-16` proof system](https://eprint.iacr.org/2016/260.pdf).
 
@@ -263,6 +262,7 @@ If everything is right, the command should pass and successfully verify our proo
 
 Congratulations! You have successfully created a zk-SNARK and verified it using sCrypt.
 
-If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, then take a look at our [course](https://learn.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-64187ae0d1a6cb859d18d72a), which will teach you how to create a ZK Battleship game.
-Additionally, it also teaches you to use [snarkjs/circom](https://github.com/sCrypt-Inc/snarkjs).
+If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, take a look at our free [course](https://learn.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-64187ae0d1a6cb859d18d72a), which will teach you how to create a ZK Battleship game.
+Additionally, it teaches you to use [snarkjs/circom](https://github.com/sCrypt-Inc/snarkjs).
 
+To know more about ZKP, you can refer to [this awesome list](https://github.com/sCrypt-Inc/awesome-zero-knowledge-proofs).
