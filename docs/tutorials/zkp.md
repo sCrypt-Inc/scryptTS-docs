@@ -203,7 +203,7 @@ async function main() {
     const publicInputs: FixedArray<bigint, typeof N_PUB_INPUTS> = [ 0n ]
 
     let verifier = new Verifier(
-        prepareVerifyingKey(VERIFICATION_KEY_DATA),
+        prepareVerifyingKey(VERIFYING_KEY_DATA),
         publicInputs
     )
 
@@ -218,10 +218,10 @@ async function main() {
 main()
 ```
 
-We can observe that we need to adjust two things. First, we need to set the amount of satoshis we will lock into the deployed smart contract. The second thing is the public input value, i.e. the product of the secret factors. Let's set it to some value, for example `441668`:
+We can observe that we need to adjust two things. First, we need to set the amount of satoshis we will lock into the deployed smart contract. The second thing is the public input value, i.e. the product of the secret factors. Let's set it to the value `91`:
 
 ```ts
-const publicInputs: FixedArray<bigint, typeof N_PUB_INPUTS> = [ 441668n ]
+const publicInputs: FixedArray<bigint, typeof N_PUB_INPUTS> = [ 91n ]
 ```
 
 Note also, that ZoKrates already provided us with the values of the verification key, that we created during the setup phase.
@@ -240,11 +240,51 @@ After a successful run you should see something like the following:
 Verifier contract deployed:  5c407e6a51a8e0762f984e8ffa623f172142df8ac2208d2ff52d16ddad6b143e
 ```
 
-The smart contract is now deployed and can be unlocked using a valid proof, that proves the knowledge of the factors for the integer `441668`.
+The smart contract is now deployed and can be unlocked using a valid proof, that proves the knowledge of the factors for the integer `91`.
+
+Let's call the deployed contract. Let's create a file named `call.ts` with the following content:
+
+```ts
+import { TaalProvider } from 'scrypt-ts'
+import { parseProofFile } from './src/util'
+import { Verifier } from './src/contracts/verifier'
+import { Proof } from './src/contracts/snark'
+import { getDefaultSigner } from './tests/utils/helper'
+import { PathLike } from 'fs'
+
+export async function call(txId: string, proofPath: PathLike) {
+    // Fetch TX via provider and reconstruct contract instance
+    const provider = new TaalProvider()
+    const tx = await provider.getTransaction(txId)
+    const verifier = Verifier.fromTx(tx, 0)
+    
+    // Connect signer
+    await verifier.connect(getDefaultSigner())
+
+    // Parse proof.json
+    const proof: Proof = parseProofFile(proofPath)
+
+    // Call verifyProof()
+    const { tx: callTx } = await verifier.methods.verifyProof(
+        proof
+    )
+    console.log('Verifier contract unlocked: ', callTx.id)
+}
+```
+
+The function `call` will reconstruct the contract instance from the passed [TXID](https://wiki.bitcoinsv.io/index.php/TXID) and call its `verifyProof` method. The proof gets parsed from `proof.json`, which we already created in the section above.
+
+Let's unlock our contract:
+
+```ts
+call('5c407e6a51a8e0762f984e8ffa623f172142df8ac2208d2ff52d16ddad6b143e', '../proof.json')
+```
+
+If everything goes as expected, we have now unlocked the verifier smart contract and the funds were transferred back to our projects address.
 
 ## Conclusion
 
-Congratulations! You have successfully created a zk-SNARK and deployed a verifier smart contract.
+Congratulations! You have successfully created a zk-SNARK and verified it on-chain!
 
 If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, take a look at our free [course](https://learn.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-64187ae0d1a6cb859d18d72a), which will teach you how to create a ZK Battleship game.
 Additionally, it teaches you to use [snarkjs/circom](https://github.com/sCrypt-Inc/snarkjs).
