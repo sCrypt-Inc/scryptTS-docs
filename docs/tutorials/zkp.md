@@ -245,7 +245,7 @@ The smart contract is now deployed and can be unlocked using a valid proof, that
 Let's call the deployed contract. Let's create a file named `call.ts` with the following content:
 
 ```ts
-import { TaalProvider } from 'scrypt-ts'
+import { DefaultProvider } from 'scrypt-ts'
 import { parseProofFile } from './src/util'
 import { Verifier } from './src/contracts/verifier'
 import { Proof } from './src/contracts/snark'
@@ -256,7 +256,7 @@ export async function call(txId: string, proofPath: PathLike) {
     await Verifier.compile()
 
     // Fetch TX via provider and reconstruct contract instance
-    const provider = new TaalProvider()
+    const provider = new DefaultProvider()
     const tx = await provider.getTransaction(txId)
     const verifier = Verifier.fromTx(tx, 0)
     
@@ -272,17 +272,20 @@ export async function call(txId: string, proofPath: PathLike) {
     )
     console.log('Verifier contract unlocked: ', callTx.id)
 }
+
+(async () => {
+  await call('adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80', '../proof.json')
+})()
 ```
 
-The function `call` will reconstruct the contract instance from the passed [TXID](https://wiki.bitcoinsv.io/index.php/TXID) and call its `verifyProof` method. The proof gets parsed from `proof.json`, which we already created in the section above.
+The function `call` will create the contract instance from the passed [TXID](https://wiki.bitcoinsv.io/index.php/TXID) and call its `verifyProof` method. The proof gets parsed from `proof.json`, which we already created in the section above.
 
-Let's unlock our contract:
-
-```ts
-call('adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80', '../proof.json')
+Let's unlock our contract by running the following command:
+```
+npx ts-node call.ts
 ```
 
-If everything goes as expected, we have now unlocked the verifier smart contract and the funds were transferred back to our projects address.
+If everything goes as expected, we have now unlocked the verifier smart contract.
 
 ## Conclusion
 
