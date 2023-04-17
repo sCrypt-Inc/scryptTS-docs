@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 
-# Tutorial 2: Tic Tac Toe
+# Tutorial 5: Tic Tac Toe
 
 ## Overview
 In this tutorial, we will go over how to use sCrypt to build a Tic-Tac-Toe Contract on Bitcoin.

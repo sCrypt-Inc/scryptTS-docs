@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
-# Tutorial 5: Interact with a Deployed Contract
+# Tutorial 2: Interact with a Deployed Contract
 
 ## Overview
 In this tutorial, we will interact with a deployed smart contract by calling its public method.
@@ -38,9 +38,9 @@ export class Counter extends SmartContract {
 }
 ```
 
-## Deployment and Reconstruction
+## Deploy
 
-For the deployment of our smart contract, we define the following function:
+To deploy the smart contract, we define the following function:
 
 ```ts
 async function deploy(initialCount = 100n): Promise<string> {
@@ -54,9 +54,10 @@ async function deploy(initialCount = 100n): Promise<string> {
 }
 ```
 
-As we can see, the function takes in the initial value of the counter property and constructs an instance of the contract. Then, it connects a [signer](https://scrypt.io/docs/how-to-deploy-and-call-a-contract/#prepare-a-signer-and-provider) which will fund the contract and deploy the instance on-chain with a balance of 1 satoshi. The function returns only the TXID of the deployed smart contract.
+The function deploys the contract with a balance of 1 satoshi and returns the TXID of the deployed contract.
 
-Next, we define the counter increment function which will update our deployed smart contract:
+## Interact
+Next, we update our deployed smart contract by calling the following function:
 
 ```ts
 async function callIncrementOnChain(
@@ -81,20 +82,14 @@ async function callIncrementOnChain(
             balance: instance.balance,
         },
     } as MethodCallOptions<Counter>)
-    console.log(
-        `Counter incrementOnChain called: ${callTx.id}, the count now is: ${nextInstance.count}`
-    )
+    console.log(`Counter incrementOnChain called: ${callTx.id}, the count now is: ${nextInstance.count}`)
     return callTx.id
 }
 ```
 
-The function takes as parameters the TXID of the deployed smart contract along with the output index (which is usually 0). It uses an instance of the [`DefaultProvider`](../reference/classes/DefaultProvider) to fetch the transaction data from the blockchain. Subsequently, it reconstructs the smart contract instance using the [`fromTx`](../how-to-write-a-contract/built-ins.md#fromtx) function for seamless integration.
+The function takes as parameters the TXID of the deployed smart contract to [create an instance](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction), along with the output index (which is usually 0). It uses the [`DefaultProvider`](../reference/classes/DefaultProvider) to fetch the transaction data from the blockchain. Subsequently, it reconstructs the smart contract instance using the [`fromTx`](../how-to-write-a-contract/built-ins.md#fromtx) function.
 
-At this point we have pretty much the exact instance that we had in the deploy function. Notably, the only shared data between the functions is the deployed contract's TXID.
-
-Once the instance is reconstructed, the function increments the counters value and updates the deployed contract. This will yield a new TXID which references the most recent state of the deployed smart contract.
-
-To conclude, let's encapsulate the entire process within a main function, designed to deploy the contract and increment its value five times:
+Let's encapsulate the entire process within a main function, designed to deploy the contract and increment its value five times:
 
 ```ts
 async function main() {
@@ -110,7 +105,7 @@ async function main() {
 })()
 ```
 
-If we now execute the code, we should get an output similar to the following:
+If we execute the code, we should get an output similar to the following:
 
 ```ts
 Counter deployed: 1cd6eb4ff0a5bd83f06c60c5e9a5c113c6e44fd876096e4e94e04a80fee8c8ca, the count is: 100
