@@ -2,14 +2,15 @@
 sidebar_position: 5
 ---
 
-# Tutorial 5: Reconstructing Deployed Contract
+# Tutorial 5: Interact with a Deployed Contract
 
 ## Overview
-In this tutorial, we will explore the process of reconstructing an instance of a previously deployed smart contract, using nothing but its [transacion ID](https://wiki.bitcoinsv.io/index.php/TXID). To accomplish this, we will use a [`Provider`](../how-to-test-a-contract#provider) to fetch the necessary transaction data.
+In this tutorial, we will interact with a deployed smart contract by calling its public method.
+We need to create an instance corresponding to the deployed contract on chain.
 
-## The Smart Contract Code
+## The Smart Contract
 
-The smart contract we will use in this tutorial is just a regular `Counter` contract.
+We will reuse [the `Counter` contract](../how-to-write-a-contract/stateful-contract.md#create-a-stateful-contract).
 
 ```ts
 export class Counter extends SmartContract {
@@ -36,8 +37,6 @@ export class Counter extends SmartContract {
 
 }
 ```
-
-In case you need a refresher of how it works, please read the [stateful contracts section](../how-to-write-a-contract/stateful-contract).
 
 ## Deployment and Reconstruction
 
@@ -124,6 +123,5 @@ Counter incrementOnChain called: de43687fd386e92cd892c18600d473bc38d5adb0cc34bbd
 
 ## Conclusion
 
-Congratulations! You have successfully deployed a smart contract and reconstructed its instance by solely using its TXID as a reference.
-
+Congratulations! You've now deployed AND interacted with a Bitcoin smart contract.
 You can see a complete test example in our [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/counterFromTx.ts).

@@ -129,56 +129,19 @@ The major differences between here and local tests are:
 ### Create a smart contract instance from a transaction
 To interact with a deployed smart contract (i.e., calling its public methods), we need its contract instance corresponding to its latest state on chain, stateful or not. When testing on testnet, we usually put a contract's deployment and its calling (note there could be multiple calls if the contract is stateful) in the same process for convenience, so that we don't need to manage the internal state of the instance manually, because it's always consistent with the transactions on chain.
 
-The [following code](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/counter.ts) tests the stateful contract [Counter](../how-to-write-a-contract/stateful-contract.md#create-a-stateful-contract). `currentInstance` always points to the latest instance.
-```ts
-const counter = new Counter(0n)
-
-await counter.connect(getDefaultSigner())
-
-// deploy the contract first
-const deployTx = await counter.deploy(1)
-console.log('Counter deploy tx:', deployTx.id)
-
-// then call the contract by reusing the same instance `counter`
-let currentInstance = counter
-
-// call the method of current instance to apply the updates on chain
-for (let i = 0; i < 3; ++i) {
-    // avoid mempool conflicts, sleep to allow previous tx "sink-into" the network
-    await sleep(2)
-
-    // create the next instance from the current
-    const nextInstance = currentInstance.next()
-
-    // apply updates on the next instance off chain
-    nextInstance.increment()
-
-    // call the method of current instance to apply the updates on chain
-    const { tx: tx_i } = await currentInstance.methods.incrementOnChain({
-        next: {
-            instance: nextInstance,
-            balance,
-        },
-    } as MethodCallOptions<Counter>)
-
-    console.log(
-        `Counter call tx: ${tx_i.id}, count updated to: ${nextInstance.count}`
-    )
-
-    // update the current instance reference
-    currentInstance = nextInstance
-}
-
-```
-
 In reality, a contract's deployment and its call, and its different calls in the case of a stateful contract, may well be in separate processes. For example, the deployment party is different from the calling party, or multiple parties call it. If so, we need to create a contract instance from an on-chain transaction that represents its latest state, before we can call its method.
 
-We can create an contract instance from a transaction's output by calling [fromTx()](../how-to-write-a-contract/built-ins.md#fromtx).
+Typically, we only know the [TXID](https://wiki.bitcoinsv.io/index.php/TXID) of the transaction containing the instance. We can create an instance in two steps:
+1. Using TXID, we retrieve the full transaction by calling [getTransaction](../reference/classes/Provider.md#gettransaction) of the [connected provider](../reference/classes/Signer.md#connectedprovider) of the signer.
+2. We can create an contract instance from a transaction's by calling [fromTx()](../how-to-write-a-contract/built-ins.md#fromtx).
 ```ts
-// recover instance from transaction
+// 1) fetch a transaction from txid
+const tx = await signer.connectedProvider.getTransaction(txId)
+// 2) create instance from transaction
 const instance = Counter.fromTx(tx, atOutputIndex)
 
-// we're good here, the `instance` is now in sync with the on-chain transaction
+// from now on, `instance` is in sync with the on-chain transaction
+// and we can use it to interact with the contract
 ```
 
 Let's look at a more complex example.
