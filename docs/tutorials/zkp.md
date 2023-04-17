@@ -237,7 +237,7 @@ The first time you run the command, it will ask you to fund a testnet address. Y
 After a successful run you should see something like the following:
 
 ```
-Verifier contract deployed:  5c407e6a51a8e0762f984e8ffa623f172142df8ac2208d2ff52d16ddad6b143e
+Verifier contract deployed:  adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80
 ```
 
 The smart contract is now deployed and can be unlocked using a valid proof, that proves the knowledge of the factors for the integer `91`.
@@ -253,6 +253,8 @@ import { getDefaultSigner } from './tests/utils/helper'
 import { PathLike } from 'fs'
 
 export async function call(txId: string, proofPath: PathLike) {
+    await Verifier.compile()
+
     // Fetch TX via provider and reconstruct contract instance
     const provider = new TaalProvider()
     const tx = await provider.getTransaction(txId)
@@ -277,7 +279,7 @@ The function `call` will reconstruct the contract instance from the passed [TXID
 Let's unlock our contract:
 
 ```ts
-call('5c407e6a51a8e0762f984e8ffa623f172142df8ac2208d2ff52d16ddad6b143e', '../proof.json')
+call('adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80', '../proof.json')
 ```
 
 If everything goes as expected, we have now unlocked the verifier smart contract and the funds were transferred back to our projects address.
