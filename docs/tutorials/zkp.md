@@ -146,9 +146,11 @@ Now the verifier is ready to be used. In the following section we will go over t
 
 ### 7. Run the sCrypt Verifier
 
-In the generated project, let's open the file `src/contracts/verifier.ts`. This file contains all the sCrypt code that is used to verify a proof on-chain. This includes an elliptic curve implementation along with a library that implements pairings over that elliptic curve and lastly the implementation of the proof verification algorithm. In our example the [`BN-256` elliptic curve](https://hackmd.io/@jpw/bn254) is being used along with the [`Groth-16` proof system](https://eprint.iacr.org/2016/260.pdf).
+In the generated project, let's open the file `src/contracts/verifier.ts`. This file contains an sCrypt smart contract, named `Verifier`, which can be unlocked by providing a valid ZK proof.
 
-As a developer you only need to know about the main `Verifier` contract. Let's take a look at its implementation:
+Under the hood it uses the `SNARK` library from `src/contracts/snark.ts`. This file includes an elliptic curve implementation along with a library that implements pairings over that elliptic curve and lastly the implementation of the proof verification algorithm. In our example the [`BN-256` elliptic curve](https://hackmd.io/@jpw/bn254) is being used along with the [`Groth-16` proof system](https://eprint.iacr.org/2016/260.pdf)..
+
+Let's take a look at the implementation of `Verifier`:
 
 ```ts
 export class Verifier extends SmartContract {
@@ -156,111 +158,138 @@ export class Verifier extends SmartContract {
     @prop()
     vk: VerifyingKey
 
-    constructor(vk: VerifyingKey) {
+    @prop()
+    publicInputs: FixedArray<bigint, typeof N_PUB_INPUTS>,
+
+    constructor(
+      vk: VerifyingKey,
+      publicInputs: FixedArray<bigint, typeof N_PUB_INPUTS>,
+      ) {
         super(...arguments)
         this.vk = vk
+        this.publicInputs = publicInputs
     }
     
     @method()
     public verifyProof(
-        inputs: FixedArray<bigint, 1>,
-        proof: Proof,
+        proof: Proof
     ) {
-        assert(G16BN256.verify(this.vk, inputs, proof))
+        assert(SNARK.verify(this.vk, this.publicInputs, proof))
     }
 
 }
 ```
 
-As we can see, the contract has a single property, namely the verification key. ZoKrates already created an object named `VERIFYING_KEY_DATA` in the same source file, which contains the values of the VK. We will use them later. 
+As we can see, the contract has two properties, namely the verification key and the value(s) of the public inputs to our ZK program. 
 
-The contract also has a public method named `verifyProof`. As the name implies it verifies a ZK proof and can be unlocked by a valid one. As inputs it takes the public values of our proof (in our case the product of the factors) and the proof itself. It calls a single function:
+The contract also has a public method named `verifyProof`. As the name implies it verifies a ZK proof and can be unlocked by a valid one. The proof is passed as a parameter. The method calls the proof verification function:
 
 ```ts
-G16BN256.verify(this.vk, inputs, proof)
+SNARK.verify(this.vk, this.publicInputs, proof)
 ```
 
-We can observe, that the implementation of the verification algorithm takes in the verifying key, the public inputs and the proof. It's important to note that the proof is cryptographically tied to the verifying key and thus must be a proof about the correct ZoKrates program (`factor.zok`).
+The function takes as parameters the verification key, the public inputs and the proof. It's important to note that the proof is cryptographically tied to the verification key and thus must be a proof about the correct ZoKrates program (`factor.zok`).
 
-The current method accepts a proof for any number, as it takes the public information as an input. Let's modify a bit and make the value fixed:
-
-```ts
-@method()
-public verifyProof(
-    proof: Proof
-) {
-    const inputs: FixedArray<bigint, 1> = [ 441668n ]
-    assert(G16BN256.verify(this.vk, inputs, proof))
-}
-```
-
-Now our smart contract will only accept a proof of knowing the factors of the number `441668`.
-
-The generated project will also contain tests that demonstrate the usage of our verifier. Let's take a look at the code in `tests/local/verifier.test.ts`.
+The generated project will also contain a deployment script `deploy.ts`. Let's take a look at the code:
 
 ```ts
-...
-
-let verifier: Verifier
-
-before(async () => {
+async function main() {
     await Verifier.compile()
-    // Construct VerifyingKey struct with pre-calculated miller(beta, alpha)
-    let alpha = BN256.createCurvePoint(VERIFYING_KEY_DATA.alpha)
-    let beta = BN256.createTwistPoint(VERIFYING_KEY_DATA.beta)
-    let millerb1a1 = BN256Pairing.miller(beta, alpha)
     
-    let vk: VerifyingKey = {
-       millerb1a1: millerb1a1,
-       gamma: VERIFYING_KEY_DATA.gamma,
-       delta: VERIFYING_KEY_DATA.delta,
-       gammaAbc: VERIFYING_KEY_DATA.gammaAbc
-    }
-    
-    verifier = new Verifier(vk)
-})
+    // TODO: Adjust the amount of satoshis locked in the smart contract:
+    const amount = 100
 
-it('should pass verify proof', () => {
-    // TODO: Link proof.json (relative to project root dir)
-    const proofPath = '../proof.json'
-    const proof: Proof = parseProofFile(proofPath)
+    // TODO: Insert public input values here:
+    const publicInputs: FixedArray<bigint, typeof N_PUB_INPUTS> = [ 0n ]
 
-    // TODO: Insert public param values here (don't forget to adjust arr size):
-    const inputs: FixedArray<bigint, 1> = [ 0n ]
+    let verifier = new Verifier(
+        prepareVerifyingKey(VERIFYING_KEY_DATA),
+        publicInputs
+    )
 
-    const result = verifier.verify((self) => {
-        self.verifyProof(inputs, proof)
-    })
-    expect(result.success, result.error).to.be.true
-})
+    // Connect to a signer.
+    await verifier.connect(getDefaultSigner())
+
+    // Deploy:
+    const deployTx = await verifier.deploy(amount)
+    console.log('Verifier contract deployed: ', deployTx.id)
+}
+
+main()
 ```
 
-We can observe that we need to adjust two things. The first one is the path to our `proof.json` file, which contains the proof created by ZoKrates. The second one are the values of the public inputs to our ZoKrates program. Because we already hardcoded this value into our contract in a previous step, we can adjust the code to the following:
+We can observe that we need to adjust two things. First, we need to set the amount of satoshis we will lock into the deployed smart contract. The second thing is the public input value, i.e. the product of the secret factors. Let's set it to the value `91`:
 
 ```ts
-it('should pass verify proof', () => {
-    const proofPath = '../proof.json'
-    const proof: Proof = parseProofFile(proofPath)
-
-    const result = verifier.verify((self) => {
-        self.verifyProof(proof)
-    })
-    expect(result.success, result.error).to.be.true
-})
+const publicInputs: FixedArray<bigint, typeof N_PUB_INPUTS> = [ 91n ]
 ```
 
-Now that everything is ready, let's run the verification. Run this in the projects root directory:
+Note also, that ZoKrates already provided us with the values of the verification key, that we created during the setup phase.
+
+Now, we can build and deploy the contract. Simply run:
 
 ```sh
-npm t
+npm run deploy
 ```
 
-If everything is right, the command should pass and successfully verify our proof.
+The first time you run the command, it will ask you to fund a testnet address. You can fund it using [our faucet](https://scrypt.io/faucet/).
 
+After a successful run you should see something like the following:
+
+```
+Verifier contract deployed:  adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80
+```
+
+The smart contract is now deployed and can be unlocked using a valid proof, that proves the knowledge of the factors for the integer `91`.
+
+Let's call the deployed contract. Let's create a file named `call.ts` with the following content:
+
+```ts
+import { DefaultProvider } from 'scrypt-ts'
+import { parseProofFile } from './src/util'
+import { Verifier } from './src/contracts/verifier'
+import { Proof } from './src/contracts/snark'
+import { getDefaultSigner } from './tests/utils/helper'
+import { PathLike } from 'fs'
+
+export async function call(txId: string, proofPath: PathLike) {
+    await Verifier.compile()
+
+    // Fetch TX via provider and reconstruct contract instance
+    const provider = new DefaultProvider()
+    const tx = await provider.getTransaction(txId)
+    const verifier = Verifier.fromTx(tx, 0)
+    
+    // Connect signer
+    await verifier.connect(getDefaultSigner())
+
+    // Parse proof.json
+    const proof: Proof = parseProofFile(proofPath)
+
+    // Call verifyProof()
+    const { tx: callTx } = await verifier.methods.verifyProof(
+        proof
+    )
+    console.log('Verifier contract unlocked: ', callTx.id)
+}
+
+(async () => {
+  await call('adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80', '../proof.json')
+})()
+```
+
+The function `call` will create the contract instance from the passed [TXID](https://wiki.bitcoinsv.io/index.php/TXID) and call its `verifyProof` method. The proof gets parsed from `proof.json`, which we already created in the section above.
+
+Let's unlock our contract by running the following command:
+```
+npx ts-node call.ts
+```
+
+If everything goes as expected, we have now unlocked the verifier smart contract.
 
 ## Conclusion
 
-Congratulations! You have successfully created a zk-SNARK and verified it using sCrypt.
+Congratulations! You have successfully created a zk-SNARK and verified it on-chain!
 
 If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, take a look at our free [course](https://learn.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-64187ae0d1a6cb859d18d72a), which will teach you how to create a ZK Battleship game.
 Additionally, it teaches you to use [snarkjs/circom](https://github.com/sCrypt-Inc/snarkjs).
