@@ -65,13 +65,13 @@ async function callIncrementOnChain(
     atOutputIndex = 0
 ): Promise<string> {
     // Fetch TX via provider and reconstruct contract instance.
-    const provider = new DefaultProvider()
-    const tx = await provider.getTransaction(txId)
+    const signer = new getDefaultSigner()
+    const tx = await signer.connectedProvider.getTransaction(txId)
     const instance = Counter.fromTx(tx, atOutputIndex)
     
     //console.log(`Deployed counter value: ${instance.count}`)
 
-    await instance.connect(getDefaultSigner())
+    await instance.connect(signer)
 
     const nextInstance = instance.next()
     nextInstance.count++
