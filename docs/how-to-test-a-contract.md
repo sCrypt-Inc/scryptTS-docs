@@ -40,7 +40,13 @@ You can initialize these providers like this:
 ```ts
 let dummyProvider = new DummyProvider();
 
-let provider = new DefaultProvider(bsv.Networks.mainnet);
+// mainnet
+
+let provider = new DefaultProvider();
+
+// testnet
+
+let provider = new DefaultProvider(bsv.Networks.testnet);
 ```
 
 ## Signer 
