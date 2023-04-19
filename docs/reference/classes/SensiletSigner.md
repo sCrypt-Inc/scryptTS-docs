@@ -51,13 +51,13 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 ### constructor
 
-• **new SensiletSigner**(`provider?`)
+• **new SensiletSigner**(`provider`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `provider?` | [`Provider`](Provider.md) |
+| `provider` | [`Provider`](Provider.md) |
 
 #### Overrides
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:49
+dist/bsv/abstract-signer.d.ts:48
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:48
+dist/bsv/abstract-signer.d.ts:47
 
 ___
 
@@ -159,7 +159,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:122
+dist/bsv/abstract-signer.d.ts:121
 
 ## Methods
 
@@ -363,7 +363,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -377,7 +377,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:136
+dist/bsv/abstract-signer.d.ts:135
 
 ___
 
@@ -428,7 +428,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:129
+dist/bsv/abstract-signer.d.ts:128
 
 ___
 
@@ -547,4 +547,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:151
+dist/bsv/abstract-signer.d.ts:150

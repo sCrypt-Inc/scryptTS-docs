@@ -58,7 +58,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:50
+dist/bsv/abstract-signer.d.ts:49
 
 ## Properties
 
@@ -68,7 +68,7 @@ dist/bsv/abstract-signer.d.ts:50
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:49
+dist/bsv/abstract-signer.d.ts:48
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:48
+dist/bsv/abstract-signer.d.ts:47
 
 ## Accessors
 
@@ -100,7 +100,7 @@ the connected provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:122
+dist/bsv/abstract-signer.d.ts:121
 
 ## Methods
 
@@ -122,7 +122,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:69
+dist/bsv/abstract-signer.d.ts:68
 
 ___
 
@@ -146,7 +146,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:142
+dist/bsv/abstract-signer.d.ts:141
 
 ___
 
@@ -162,7 +162,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:79
+dist/bsv/abstract-signer.d.ts:78
 
 ___
 
@@ -178,7 +178,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:74
+dist/bsv/abstract-signer.d.ts:73
 
 ___
 
@@ -204,7 +204,7 @@ The public key result.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:86
+dist/bsv/abstract-signer.d.ts:85
 
 ___
 
@@ -229,7 +229,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:116
+dist/bsv/abstract-signer.d.ts:115
 
 ___
 
@@ -247,7 +247,7 @@ true | false
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:55
+dist/bsv/abstract-signer.d.ts:54
 
 ___
 
@@ -262,7 +262,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -272,7 +272,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:136
+dist/bsv/abstract-signer.d.ts:135
 
 ___
 
@@ -290,7 +290,7 @@ A promise which resolves to if the wallet has been authenticated and the authent
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:60
+dist/bsv/abstract-signer.d.ts:59
 
 ___
 
@@ -315,7 +315,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:129
+dist/bsv/abstract-signer.d.ts:128
 
 ___
 
@@ -340,7 +340,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:109
+dist/bsv/abstract-signer.d.ts:108
 
 ___
 
@@ -369,7 +369,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:95
+dist/bsv/abstract-signer.d.ts:94
 
 ___
 
@@ -394,7 +394,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:102
+dist/bsv/abstract-signer.d.ts:101
 
 ___
 
@@ -418,4 +418,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:151
+dist/bsv/abstract-signer.d.ts:150

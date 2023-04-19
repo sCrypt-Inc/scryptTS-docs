@@ -21,7 +21,7 @@ For example, specifying a transaction builder to use a specific change address o
 - [lockTime](MethodCallOptions.md#locktime)
 - [multiContractCall](MethodCallOptions.md#multicontractcall)
 - [next](MethodCallOptions.md#next)
-- [partialContractTx](MethodCallOptions.md#partialContractTx)
+- [partialContractTx](MethodCallOptions.md#partialcontracttx)
 - [pubKeyOrAddrToSign](MethodCallOptions.md#pubkeyoraddrtosign)
 - [sequence](MethodCallOptions.md#sequence)
 - [verify](MethodCallOptions.md#verify)

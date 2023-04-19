@@ -37,7 +37,6 @@ which is the popular blockchain exxplorer for Bitcoin.
 - [emit](WhatsonchainProvider.md#emit)
 - [eventNames](WhatsonchainProvider.md#eventnames)
 - [getBalance](WhatsonchainProvider.md#getbalance)
-- [getContractUTXOs](WhatsonchainProvider.md#getcontractutxos)
 - [getEstimateFee](WhatsonchainProvider.md#getestimatefee)
 - [getFeePerKb](WhatsonchainProvider.md#getfeeperkb)
 - [getMaxListeners](WhatsonchainProvider.md#getmaxlisteners)
@@ -84,7 +83,7 @@ which is the popular blockchain exxplorer for Bitcoin.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:11
+dist/providers/whatsonchain-provider.d.ts:11
 
 ## Properties
 
@@ -98,7 +97,7 @@ dist/bsv/providers/whatsonchain-provider.d.ts:11
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:111
+dist/bsv/abstract-provider.d.ts:97
 
 ___
 
@@ -108,7 +107,7 @@ ___
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:10
+dist/providers/whatsonchain-provider.d.ts:10
 
 ___
 
@@ -188,7 +187,7 @@ node_modules/@types/node/ts4.8/events.d.ts:327
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:12
+dist/providers/whatsonchain-provider.d.ts:12
 
 ## Methods
 
@@ -241,7 +240,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:14
+dist/providers/whatsonchain-provider.d.ts:14
 
 ___
 
@@ -374,36 +373,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:19
-
-___
-
-### getContractUTXOs
-
-▸ **getContractUTXOs**(`genesisTxHash`, `outputIndex?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
-
-Get a list of UTXO for a certain contract instance.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `genesisTxHash` | `string` | The hash value of deployment transaction of the contract instance. |
-| `outputIndex?` | `number` | The output index of the deployment transaction of the contract instance. |
-
-#### Returns
-
-`Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
-
-A promise which resolves to a list of transaction UTXO.
-
-#### Overrides
-
-[Provider](Provider.md).[getContractUTXOs](Provider.md#getcontractutxos)
-
-#### Defined in
-
-dist/bsv/providers/whatsonchain-provider.d.ts:24
+dist/providers/whatsonchain-provider.d.ts:19
 
 ___
 
@@ -431,7 +401,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:68
+dist/bsv/abstract-provider.d.ts:61
 
 ___
 
@@ -451,7 +421,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:25
+dist/providers/whatsonchain-provider.d.ts:24
 
 ___
 
@@ -496,7 +466,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:16
+dist/providers/whatsonchain-provider.d.ts:16
 
 ___
 
@@ -524,7 +494,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:23
+dist/providers/whatsonchain-provider.d.ts:23
 
 ___
 
@@ -544,7 +514,7 @@ check if provider is ready
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:13
+dist/providers/whatsonchain-provider.d.ts:13
 
 ___
 
@@ -559,7 +529,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -573,7 +543,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:18
+dist/providers/whatsonchain-provider.d.ts:18
 
 ___
 
@@ -1087,7 +1057,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:17
+dist/providers/whatsonchain-provider.d.ts:17
 
 ___
 
@@ -1119,7 +1089,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:81
+dist/bsv/abstract-provider.d.ts:74
 
 ___
 
@@ -1160,15 +1130,15 @@ ___
 
 ### updateNetwork
 
-▸ **updateNetwork**(`newwork`): `Promise`<`boolean`\>
+▸ **updateNetwork**(`network`): `Promise`<`boolean`\>
 
-update provider newwork
+update provider network
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newwork` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
+| `network` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
 
 #### Returns
 
@@ -1180,7 +1150,7 @@ update provider newwork
 
 #### Defined in
 
-dist/bsv/providers/whatsonchain-provider.d.ts:15
+dist/providers/whatsonchain-provider.d.ts:15
 
 ___
 
@@ -1262,7 +1232,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:117
+dist/bsv/abstract-provider.d.ts:103
 
 ___
 

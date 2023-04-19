@@ -31,7 +31,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:351
+node_modules/bsv/index.d.ts:801
 
 ## Methods
 
@@ -45,7 +45,7 @@ node_modules/bsv/index.d.ts:351
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:352
+node_modules/bsv/index.d.ts:802
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:353
+node_modules/bsv/index.d.ts:803
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:354
+node_modules/bsv/index.d.ts:804
 
 ___
 
@@ -93,4 +93,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:350
+node_modules/bsv/index.d.ts:800

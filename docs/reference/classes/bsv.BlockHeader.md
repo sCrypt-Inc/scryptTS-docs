@@ -28,7 +28,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:999
+node_modules/bsv/index.d.ts:1449
 
 ## Methods
 
@@ -52,4 +52,4 @@ node_modules/bsv/index.d.ts:999
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1001
+node_modules/bsv/index.d.ts:1451

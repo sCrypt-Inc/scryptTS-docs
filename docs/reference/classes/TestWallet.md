@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:49
+dist/bsv/abstract-signer.d.ts:48
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:48
+dist/bsv/abstract-signer.d.ts:47
 
 ## Accessors
 
@@ -205,7 +205,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:122
+dist/bsv/abstract-signer.d.ts:121
 
 ___
 
@@ -293,7 +293,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:142
+dist/bsv/abstract-signer.d.ts:141
 
 ___
 
@@ -429,7 +429,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -494,7 +494,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:129
+dist/bsv/abstract-signer.d.ts:128
 
 ___
 
@@ -613,4 +613,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:151
+dist/bsv/abstract-signer.d.ts:150

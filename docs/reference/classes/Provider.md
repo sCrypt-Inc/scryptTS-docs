@@ -22,6 +22,8 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 
   ↳↳ [`DummyProvider`](DummyProvider.md)
 
+  ↳↳ [`ScryptProvider`](ScryptProvider.md)
+
 ## Table of contents
 
 ### Constructors
@@ -43,7 +45,6 @@ A Provider is an abstraction of non-account-based operations on a blockchain and
 - [emit](Provider.md#emit)
 - [eventNames](Provider.md#eventnames)
 - [getBalance](Provider.md#getbalance)
-- [getContractUTXOs](Provider.md#getcontractutxos)
 - [getEstimateFee](Provider.md#getestimatefee)
 - [getFeePerKb](Provider.md#getfeeperkb)
 - [getMaxListeners](Provider.md#getmaxlisteners)
@@ -84,7 +85,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:40
+dist/bsv/abstract-provider.d.ts:33
 
 ## Properties
 
@@ -94,7 +95,7 @@ dist/bsv/abstract-provider.d.ts:40
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:111
+dist/bsv/abstract-provider.d.ts:97
 
 ___
 
@@ -209,7 +210,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:49
+dist/bsv/abstract-provider.d.ts:42
 
 ___
 
@@ -338,32 +339,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:100
-
-___
-
-### getContractUTXOs
-
-▸ `Abstract` **getContractUTXOs**(`genesisTxHash`, `outputIndex`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
-
-Get a list of UTXO for a certain contract instance.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `genesisTxHash` | `string` | The hash value of deployment transaction of the contract instance. |
-| `outputIndex` | `number` | The output index of the deployment transaction of the contract instance. |
-
-#### Returns
-
-`Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
-
-A promise which resolves to a list of transaction UTXO.
-
-#### Defined in
-
-dist/bsv/abstract-provider.d.ts:110
+dist/bsv/abstract-provider.d.ts:93
 
 ___
 
@@ -387,7 +363,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:68
+dist/bsv/abstract-provider.d.ts:61
 
 ___
 
@@ -403,7 +379,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:62
+dist/bsv/abstract-provider.d.ts:55
 
 ___
 
@@ -444,7 +420,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:58
+dist/bsv/abstract-provider.d.ts:51
 
 ___
 
@@ -468,7 +444,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:87
+dist/bsv/abstract-provider.d.ts:80
 
 ___
 
@@ -484,7 +460,7 @@ check if provider is ready
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:44
+dist/bsv/abstract-provider.d.ts:37
 
 ___
 
@@ -499,7 +475,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -509,7 +485,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:94
+dist/bsv/abstract-provider.d.ts:87
 
 ___
 
@@ -1019,7 +995,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:74
+dist/bsv/abstract-provider.d.ts:67
 
 ___
 
@@ -1047,7 +1023,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:81
+dist/bsv/abstract-provider.d.ts:74
 
 ___
 
@@ -1088,15 +1064,15 @@ ___
 
 ### updateNetwork
 
-▸ `Abstract` **updateNetwork**(`newwork`): `Promise`<`boolean`\>
+▸ `Abstract` **updateNetwork**(`network`): `Promise`<`boolean`\>
 
-update provider newwork
+update provider network
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newwork` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
+| `network` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
 
 #### Returns
 
@@ -1104,7 +1080,7 @@ update provider newwork
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:54
+dist/bsv/abstract-provider.d.ts:47
 
 ___
 
@@ -1182,7 +1158,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:117
+dist/bsv/abstract-provider.d.ts:103
 
 ___
 
