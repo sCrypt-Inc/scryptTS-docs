@@ -185,7 +185,6 @@ export class Voting extends SmartContract {
 }
 ```
 
-
 ## Frontend
 
 We can add a frontend to the voting smart contract according to [this guide](../how-to-integrate-a-frontend.md). It contains several steps as follows, let's go through them quickly.
@@ -211,7 +210,6 @@ npx scrypt-cli init
 
 This command will create a contract file at `src\contracts\voting.ts`, replace the content of the file with the contract written above.
 
-
 ### Compiling Contract
 
 Compile the contract with the following command: 
@@ -224,7 +222,7 @@ This command will output a contract artifact file at `artifacts\src\contracts\vo
 
 ### Contract Deployment
 
-After [installing the sCrypt SDK](#install-the-scrypt-sdk), You will get a script `deploy.ts`, which can be used to deploy our `Voting` contract with a little modification.
+After [installing the sCrypt SDK](#install-the-scrypt-sdk), you will get a script `deploy.ts`, which can be used to deploy our `Voting` contract with a little modification.
 
 ```ts
 import { CandidateName, Voting, N } from './src/contracts/voting'
@@ -265,7 +263,6 @@ async function main() {
         toByteString('Steve Jobs', true),
     ]
 
-
     const instance = new Voting(
         candidateNames
     )
@@ -286,7 +283,6 @@ Before deploying the contract, we need to create `.env` file and save your priva
 ```
 PRIVATE_KEY=cQtC5DoR7eyJakLKfRiUrqxLsGpHYh6RmxRVrsV1fjCoC8WAZMk4
 ```
-
 
 Execute the `deploy.ts` script with the following command to deploy the contract.
 
@@ -309,8 +305,7 @@ const contract_id = {
 };
 ```
 
-
-### Load contract artifact
+### Load Contract Artifact
 
 Before actually starting to write the front-end code, we need to load contract artifact in `src\index.tsx`.
 
@@ -354,13 +349,11 @@ Scrypt.init({
 })
 ```
 
-
-### Fetch latest contract
+### Fetch Latest Contract
 
 After the contract is deployed, we can fetch it on the frontend.
 
 Call the `Scrypt.contractApi.getLatestInstance()` method to get a contract instance aligned to the contract on-chain state. With this instance, we can read contract properties using the dot operator to display data to the user on the web page, or update the contract state by calling its public method as [before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) when the user votes for a candidate.
-
 
 ```ts
 import React, { useEffect, useRef, useState } from "react";
@@ -373,12 +366,10 @@ import { Scrypt, ScryptProvider, SensiletSigner} from "scrypt-ts";
 ...
 
 function App() {
-
   const [votingContract, setContract] = useState<Voting>();
   const signerRef = useRef<SensiletSigner>();
 
   async function fetchContract() {
-
     try {
       const instance = await Scrypt.contractApi.getLatestInstance(
         Voting,
@@ -394,11 +385,8 @@ function App() {
   useEffect(() => {
     const provider = new ScryptProvider();
     const signer = new SensiletSigner(provider);
-
     signerRef.current = signer;
-
     fetchContract();
-
   }, []);
 
   return (
@@ -415,23 +403,17 @@ export default App;
 
 ### Read contract state
 
-
 With the contract latest instance, now we can read the lastest contract state and render it.
 
-
 ```ts
-
 function byteString2utf8(b: ByteString) {
   return Buffer.from(b, "hex").toString("utf8");
 }
 
-
 function App() {
-
-...
+  // ...
 
   let rows: Array<any> = [];
-
   if (votingContract) {
     // render contract state
     rows = votingContract.candidates.map((candidate) => {
@@ -468,69 +450,66 @@ function App() {
 }
 ```
 
-
-### Update contract state
+### Update Contract State
 
 To update contract state, we need to call contract public method. we create a function `voting()` to handle the voting action.
 
 How to call a contract public method is no different than what is described [here](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call).
 
 ```ts
+async function voting(e: any) {
 
-  ...
-  async function voting(e: any) {
+  const signer = signerRef.current as SensiletSigner;
 
-    const signer = signerRef.current as SensiletSigner;
-
-    if (votingContract && signer) {
-      const { isAuthenticated, error } = await signer.requestAuth();
-      if (!isAuthenticated) {
-        throw new Error(error);
-      }
-
-      await votingContract.connect(signer);
-
-      // create the next instance from the current
-      const nextInstance = votingContract.next();
-
-      const candidateName = e.target.name;
-
-      // update state
-      nextInstance.increaseVotesReceived(candidateName);
-
-      // call the method of current instance to apply the updates on chain
-      votingContract.methods
-        .vote(candidateName, {
-          next: {
-            instance: nextInstance,
-            balance: votingContract.balance,
-          },
-        })
-        .then((result) => {
-          console.log(`Voting call tx: ${result.tx.id}`);
-        })
-        .catch((e) => {
-          fetchContract();
-          console.error("call error: ", e);
-        });
+  if (votingContract && signer) {
+    const { isAuthenticated, error } = await signer.requestAuth();
+    if (!isAuthenticated) {
+      throw new Error(error);
     }
-  }
 
-  if (votingContract) {
-    // render contract state
-    rows = votingContract.candidates.map((candidate) => {
-      return (
-        <tr>
-          <td>{byteString2utf8(candidate.name)}</td>
-          <td>{candidate.votesReceived.toString()}</td>
+    await votingContract.connect(signer);
 
-          <td>
-            <button onClick={voting} name={candidate.name}>👍</button>
-          </td>
-        </tr>
-      );
-    });
+    // create the next instance from the current
+    const nextInstance = votingContract.next();
+
+    const candidateName = e.target.name;
+
+    // update state
+    nextInstance.increaseVotesReceived(candidateName);
+
+    // call the method of current instance to apply the updates on chain
+    votingContract.methods
+      .vote(candidateName, {
+        next: {
+          instance: nextInstance,
+          balance: votingContract.balance,
+        },
+      })
+      .then((result) => {
+        console.log(`Voting call tx: ${result.tx.id}`);
+      })
+      .catch((e) => {
+        fetchContract();
+        console.error("call error: ", e);
+      });
   }
+}
+
+if (votingContract) {
+  // render contract state
+  rows = votingContract.candidates.map((candidate) => {
+    return (
+      <tr>
+        <td>{byteString2utf8(candidate.name)}</td>
+        <td>{candidate.votesReceived.toString()}</td>
+
+        <td>
+          <button onClick={voting} name={candidate.name}>👍</button>
+        </td>
+      </tr>
+    );
+  });
+}
 ```
 
 If successful, you will see the following LOG in `console`:
@@ -539,7 +518,7 @@ If successful, you will see the following LOG in `console`:
 Voting call tx: fc8b3d03b8fa7469d66a165b017fe941fa8ab59c0979457cef2b6415d659e3f7
 ```
 
-### Subscribe contract event
+### Subscribe Contract Event
 
 We see transactions where the contract is successfully invoked, but nothing changes in the UI. 
 
@@ -547,57 +526,51 @@ In order to refresh the UI in a timely manner, we can use `Scrypt.contractApi.su
 
 Subscribe to contract events by contract ID. This function accepts a callback function. The first parameter of the callback function is `ContractCalledEvent<T>`. 
 
-ContractCalledEvent is the relevant information when the contract is called, such as the public function name and function arguments when the call occurs.
+`ContractCalledEvent` is the relevant information when the contract is called, such as the public function name and function arguments when the call occurs.
 
 ```ts
 export interface ContractCalledEvent<T> {
-    /**
-     * If a stateful contract is called, `nexts` contains the contract instance containing the new state generated by this call.
-     * If a stateless contract is called, `nexts` is empty.
-     */
-    nexts: Array<T>;
-    /** name of public function */
-    methodName: string;
-    /** public function arguments */
-    args: SupportedParamType[];
-    /** transaction where contract is called */
-    tx: bsv.Transaction;
+  /**
+   * If a stateful contract is called, `nexts` contains the contract instance containing the new state generated by this call.
+   * If a stateless contract is called, `nexts` is empty.
+   */
+  nexts: Array<T>;
+  /** name of public function */
+  methodName: string;
+  /** public function arguments */
+  args: SupportedParamType[];
+  /** transaction where contract is called */
+  tx: bsv.Transaction;
 }
 ```
 
-
-
 ```ts
-  useEffect(() => {
-    const provider = new ScryptProvider();
-    const signer = new SensiletSigner(provider);
+useEffect(() => {
+  const provider = new ScryptProvider();
+  const signer = new SensiletSigner(provider);
 
-    signerRef.current = signer;
+  signerRef.current = signer;
 
-    fetchContract();
+  fetchContract();
 
-    // subscribe by contract_id
-    const subscription = Scrypt.contractApi.subscribe({
-      clazz: Voting,
-      id: contract_id
-    }, (event: ContractCalledEvent<Voting>) => {
-      // update the contract instance 
-      setContract(event.nexts[0]);
-    });
+  // subscribe by contract_id
+  const subscription = Scrypt.contractApi.subscribe({
+    clazz: Voting,
+    id: contract_id
+  }, (event: ContractCalledEvent<Voting>) => {
+    // update the contract instance 
+    setContract(event.nexts[0]);
+  });
 
-    return () => {
-      // unsubscribe
-      subscription.unsubscribe();
-    };
-  }, []);
+  return () => {
+    // unsubscribe
+    subscription.unsubscribe();
+  };
+}, []);
 ```
-
 
 ### Conclusion
 
 Congratulations! You have successfully completed the development of the voting dapp.
 
-The repo  is [here](https://github.com/sCrypt-Inc/voting). And a online exmaple is [here](http://classic.scrypt.io/voting).
-
-
-
+The repo is [here](https://github.com/sCrypt-Inc/voting). And a online exmaple is [here](http://classic.scrypt.io/voting).
