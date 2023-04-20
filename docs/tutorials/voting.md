@@ -6,27 +6,27 @@ sidebar_position: 7
 
 ## Overview
 
-In this tutorial, we will go over how to use sCrypt to build a Voting dApp on Bitcoin, including the Smart Contract and an interactive front-end web page.
+In this tutorial, we will go over how to use sCrypt to build a full-stacck voting dApp on Bitcoin, including the smart contract and an interactive front-end.
 
 ![](../../static/img/voting.gif)
 
-On the web page, you can see the candidates list. Click the `Voting` link will add one vote to the corresponding candidate. This action will pop up the Sensilet wallet to let you authorize the voting operation, then send a transaction to call the smart contract after your approval.
+On the web page, you can see the candidate list. Clicking the like button will cast one vote to the corresponding candidate. This will prompt the wallet to ask for a user's approval. A transaction calling the contract will be sent after her approval.
 
-Now let's start. First is the smart contract implementation step-by-step, then the front-end web page.
+First we will write the smart contract step by step and deploy it. Afterwards we will build a front-end with React that allows users to cast vote and thus interact with the contract.
 
 ## Contract
 
 ### Properties
 
-For the candidate, there are two main properties we need to store in the contract: the name and his/her votes received.
+For each candidate, there are two properties we need to store in the contract: her name and her votes received so far.
 
-We define a type alias of `ByteString` to represent the type of the candidate name.
+We define a type alias of `ByteString` to represent a candidate name.
 
 ```ts
 export type CandidateName = ByteString
 ```
 
-Then define a struct to represent the candidate.
+We define a struct to represent a candidate.
 
 ```ts
 export type Candidate = {
@@ -35,16 +35,13 @@ export type Candidate = {
 }
 ```
 
-For the contract, we need to store a list of the candidates, so we can use `FixedArray`.
+We use a `FixedArray` to store the list of candidates, which we alias as type `Candidates`.
+Since candidates' vote counts can be updated, we mark it [stateful](../how-to-write-a-contract/stateful-contract.md#stateful-properties) by setting `@prop(true)`.
 
 ```ts
 export const N = 10
 export type Candidates = FixedArray<Candidate, typeof N>
-```
 
-Noted that we define the list of candidates as type `Candidates` in order to simplify the code.
-
-```ts
 export class Voting extends SmartContract {  
   @prop(true)
   candidates: Candidates
@@ -54,7 +51,7 @@ export class Voting extends SmartContract {
 
 ### Constructor
 
-Initialize all the `@prop` properties in the constructor. Note that we only need to pass the candidate names as the argument, because the votes they received would be all 0 at the beginning.
+Initialize all the `@prop` properties in the constructor. Note that we only need to pass the candidate names in the argument, because the votes they received would be all 0 at the beginning.
 
 ```ts
 constructor(candidateNames: FixedArray<CandidateName, typeof N>) {
@@ -70,19 +67,20 @@ constructor(candidateNames: FixedArray<CandidateName, typeof N>) {
 
 ### Methods
 
-The only way to interact with this contract is to vote for one candidate in the list, so we will have only 1 **public** method `vote`, it takes only 1 parameter: the name of the candidate you want to vote for.
+The only way to interact with this contract is to vote for one candidate in the list, so we will have only 1 **public** method `vote`. Tt takes only 1 parameter: the name of the candidate you want to vote for.
 
 ```ts
 @method()
 public vote(candidate: CandidateName) {
-  // change contract state: add one vote to `candidate` in the list
-  // restrict tx outputs
+  // 1) change contract state: add one vote to `candidate` in the list
+  // 2) propogate the state
 }
 ```
 
-We can simply use a `for` loop to implement this: find the corresponding candidate in the list by comparing the name, then add one vote to it. Note that we implement a non-public method `increaseVotesReceived` to cover this logic: add one vote to the candidate passed in by the argument.
+We can simply use a `for` loop to implement this: find the corresponding candidate in the list by name, then increment its vote by one. We implement this in a helper method `increaseVotesReceived`.
 
 ```ts
+// cast one vote to a candidate
 @method()
 increaseVotesReceived(candidate: CandidateName): void {
   for (let i = 0; i < N; i++) {
@@ -93,7 +91,7 @@ increaseVotesReceived(candidate: CandidateName): void {
 }
 ```
 
-For the outputs, we just need to restrict them to contain the latest contract state, and the change output when necessary.
+After we increment the candidate's votes and update the contract state, we make sure the new state is maintained in the spending transaction's output [as usual](../how-to-write-a-contract/stateful-contract.md#update-states). Another output is added if change is needed.
 
 ```ts
 let outputs: ByteString = this.buildStateOutput(this.ctx.utxo.value)
@@ -103,7 +101,7 @@ if (this.changeAmount > 0n) {
 assert(this.ctx.hashOutputs === hash256(outputs), 'hashOutputs mismatch')
 ```
 
-At this point, the public function `vote` is finished.
+The public function `vote` is now finished.
 
 ```ts
 @method()
@@ -187,11 +185,11 @@ export class Voting extends SmartContract {
 
 ## Frontend
 
-We can add a frontend to the voting smart contract according to [this guide](../how-to-integrate-a-frontend.md). It contains several steps as follows, let's go through them quickly.
+We will add a frontend to the voting smart contract according to [this guide](../how-to-integrate-a-frontend.md).
 
 ### Setup Project
 
-The front-end interface of the dApp will be created using [Create React App](https://create-react-app.dev/).
+The front-end will be created using [Create React App](https://create-react-app.dev/).
 
 ```bash
 npx create-react-app voting --template typescript
@@ -199,18 +197,18 @@ npx create-react-app voting --template typescript
 
 ### Install the sCrypt SDK
 
-The sCrypt SDK - sCrypt enables you to easily compile, test, deploy, and call contracts.
+The sCrypt SDK enables you to easily compile, test, deploy, and call contracts.
 
-Use the scrypt-cli command line tool to install the SDK.
+Use the `scrypt-cli` command line to install the SDK.
 
 ```bash
 cd voting
 npx scrypt-cli init
 ```
 
-This command will create a contract file at `src\contracts\voting.ts`, replace the content of the file with the contract written above.
+This command will create a contract file at `src\contracts\voting.ts`, replace the content of the file with the contract written [above](#final-code).
 
-### Compiling Contract
+### Compile Contract
 
 Compile the contract with the following command: 
 
@@ -218,11 +216,11 @@ Compile the contract with the following command:
 npx scrypt-cli compile
 ```
 
-This command will output a contract artifact file at `artifacts\src\contracts\voting.json`.
+This command will generate a contract artifact file at `artifacts\src\contracts\voting.json`.
 
 ### Contract Deployment
 
-After [installing the sCrypt SDK](#install-the-scrypt-sdk), you will get a script `deploy.ts`, which can be used to deploy our `Voting` contract with a little modification.
+After [installing the sCrypt SDK](#install-the-scrypt-sdk), you will have a script `deploy.ts` in the project directory, which can be used to deploy our `Voting` contract with some monior modification.
 
 ```ts
 import { CandidateName, Voting, N } from './src/contracts/voting'
@@ -247,7 +245,6 @@ const signer = new TestWallet(privateKey, new DefaultProvider({
 async function main() {
     await Voting.compile()
 
-    // TODO: Adjust the amount of satoshis locked in the smart contract:
     const amount = 1
 
     const candidateNames: FixedArray<CandidateName, typeof N> = [
@@ -284,30 +281,30 @@ Before deploying the contract, we need to create `.env` file and save your priva
 PRIVATE_KEY=cQtC5DoR7eyJakLKfRiUrqxLsGpHYh6RmxRVrsV1fjCoC8WAZMk4
 ```
 
-Execute the `deploy.ts` script with the following command to deploy the contract.
+Run the following command to deploy the contract.
 
 ```
 npx ts-node deploy.ts
 ```
 
-After success, you will see the following output:
+After success, you will see an output similar to the following:
 
 ![](../../static/img/deploy-output.png)
 
-The transaction that deployed the contract and the output index where the contract is located represent the ID of the contract. Now we get the contract ID: 
-
+#### Contract ID
+Your can get the deployed contract's ID: the TXID and the output index where the contract is located.
 ```js
 const contract_id = {
-  /** The deployment transaction id */
+  /** the deployment transaction id */
   txId: "0bccd695db02876d1c7cb41ac97f1fa2381c91c54a38b03633f1edde9260084e",
-  /** The output index */
+  /** the output index */
   outputIndex: 0,
 };
 ```
 
 ### Load Contract Artifact
 
-Before actually starting to write the front-end code, we need to load contract artifact in `src\index.tsx`.
+Before writing the front-end code, we need to load the contract artifact in `src\index.tsx`.
 
 ```ts
 import { Voting } from './contracts/voting';
@@ -315,7 +312,7 @@ var artifact = require('../artifacts/src/contracts/voting.json');
 Voting.loadArtifact(artifact);
 ```
 
-### Integreate Wallet
+### Integrate Wallet
 
 Use `requestAuth` method of `signer` to request access to the wallet.
 
@@ -336,11 +333,11 @@ if (!isAuthenticated) {
 
 ### Integrate sCrypt Service
 
-Before interacting with the voting contract, we always need to create a contract instance representing the latest state of the contract on the chain, yet it is not easy to implement this in practical applications.
+To interacte with the voting contract, we need to create a contract instance representing the latest state of the contract on chain. When both Alice and Bob vote on the webpage, we need to ensure that their contract instances are always up to date. After Alice votes, we have to notify Bob that the state of the contract has changed and synchronize his local contract instance to the latest state on chain.
 
-When both Alice and Bob vote on the web page, you need to ensure that their contract instances are always up-to-date. After Alice votes, you have to notify Bob that the state of the contract has been changed and synchronize his local contract instance to the latest state on the chain.
+Fortunately,`sCrypt` provides such infrastructure service, which abstracts away all the common complexities of communicating with the blockchain, so we do not have to track the contract state, which could be computationally demanding as blockchain grows. We can instead focus on our application's business logic.
 
-That's why we need `sCrypt` infrastructure service, you can refer to [this guide](../advanced/how-to-integrate-scrypt-service.md) to initialize it.
+To use it, we first have to initialize it according to [this guide](../advanced/how-to-integrate-scrypt-service.md).
 
 ```ts
 Scrypt.init({
@@ -349,11 +346,9 @@ Scrypt.init({
 })
 ```
 
-### Fetch Latest Contract
+### Fetch Latest Contract Instance
 
-After the contract is deployed, we can fetch it on the frontend.
-
-Call the `Scrypt.contractApi.getLatestInstance()` method to get a contract instance aligned to the contract on-chain state. With this instance, we can read contract properties using the dot operator to display data to the user on the web page, or update the contract state by calling its public method as [before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) when the user votes for a candidate.
+We can fetch a contract's latest instance by calling the `Scrypt.contractApi.getLatestInstance()` using its [contract ID](#contract-id). With this instance, we can easily read a contract's properties to display to the user on the webpage, or update the contract state by calling its public method as [before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) when the user votes for a candidate.
 
 ```ts
 import React, { useEffect, useRef, useState } from "react";
@@ -403,7 +398,7 @@ export default App;
 
 ### Read contract state
 
-With the contract latest instance, now we can read the lastest contract state and render it.
+With the contract instance, we can read its lastest state and render it.
 
 ```ts
 function byteString2utf8(b: ByteString) {
@@ -452,9 +447,9 @@ function App() {
 
 ### Update Contract State
 
-To update contract state, we need to call contract public method. we create a function `voting()` to handle the voting action.
+To update the contract's state, we need to call its public method. We create a function `voting()` to handle the voting event triggered by a user.
 
-How to call a contract public method is no different than what is described [here](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call).
+Calling a contract public method is [the same as before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call).
 
 ```ts
 async function voting(e: any) {
@@ -512,17 +507,18 @@ if (votingContract) {
 }
 ```
 
-If successful, you will see the following LOG in `console`:
+If successful, you will see the following log in the `console`:
 
 ```
 Voting call tx: fc8b3d03b8fa7469d66a165b017fe941fa8ab59c0979457cef2b6415d659e3f7
 ```
 
-### Subscribe Contract Event
+### Subscribe to Contract Event
 
-We see transactions where the contract is successfully invoked, but nothing changes in the UI. 
+So far, we have a fully working app. However, there is a slight problem. When Alice clicks on the like button for a candadate in her browser, the candidate's vote count in Bob's browser does not increase, unless he manually refreshes. 
+We need a way to listen to contract event. 
 
-In order to refresh the UI in a timely manner, we can use `Scrypt.contractApi.subscribe(options: SubscribeOptions<T>, cb: (e: ContractCalledEvent<T>) => void): SubScription` to subscribe to the event that the contract is called.  When the voting contract gets called or updated, the client will receive a notification to allow you to do some own business, such as refreshing the page to show the latest data to the user and updating the contract instance.
+We call `Scrypt.contractApi.subscribe(options: SubscribeOptions<T>, cb: (e: ContractCalledEvent<T>) => void): SubScription` to subscribe to events that the contract has been called. When a contract gets called and updated, we refresh the UI in real time, re-render all the content on the page and show the updated vote count.
 
 Subscribe to contract events by contract ID. This function accepts a callback function. The first parameter of the callback function is `ContractCalledEvent<T>`. 
 
@@ -530,17 +526,17 @@ Subscribe to contract events by contract ID. This function accepts a callback fu
 
 ```ts
 export interface ContractCalledEvent<T> {
+  /** name of public function */
+  methodName: string;
+  /** public function arguments */
+  args: SupportedParamType[];
+  /** transaction where contract is called from */
+  tx: bsv.Transaction;
   /**
    * If a stateful contract is called, `nexts` contains the contract instance containing the new state generated by this call.
    * If a stateless contract is called, `nexts` is empty.
    */
   nexts: Array<T>;
-  /** name of public function */
-  methodName: string;
-  /** public function arguments */
-  args: SupportedParamType[];
-  /** transaction where contract is called */
-  tx: bsv.Transaction;
 }
 ```
 
@@ -571,6 +567,6 @@ useEffect(() => {
 
 ### Conclusion
 
-Congratulations! You have successfully completed the development of the voting dapp.
+Congratulations! You have successfully completed a fullstack voting dapp fully on Bitcoin.
 
-The repo is [here](https://github.com/sCrypt-Inc/voting). And a online exmaple is [here](http://classic.scrypt.io/voting).
+The repo is [here](https://github.com/sCrypt-Inc/voting). And an online exmaple is [here](http://classic.scrypt.io/voting).
