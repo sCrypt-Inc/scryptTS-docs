@@ -19,7 +19,8 @@ The SensibleProvider is backed by [Sensible][https://github.com/sensible-contrac
 ### Properties
 
 - [\_isProvider](SensibleProvider.md#_isprovider)
-- [\_network](SensibleProvider.md#_network)
+- [apiKey](SensibleProvider.md#apikey)
+- [network](SensibleProvider.md#network)
 - [captureRejectionSymbol](SensibleProvider.md#capturerejectionsymbol)
 - [captureRejections](SensibleProvider.md#capturerejections)
 - [defaultMaxListeners](SensibleProvider.md#defaultmaxlisteners)
@@ -36,7 +37,6 @@ The SensibleProvider is backed by [Sensible][https://github.com/sensible-contrac
 - [emit](SensibleProvider.md#emit)
 - [eventNames](SensibleProvider.md#eventnames)
 - [getBalance](SensibleProvider.md#getbalance)
-- [getContractUTXOs](SensibleProvider.md#getcontractutxos)
 - [getEstimateFee](SensibleProvider.md#getestimatefee)
 - [getFeePerKb](SensibleProvider.md#getfeeperkb)
 - [getMaxListeners](SensibleProvider.md#getmaxlisteners)
@@ -69,13 +69,14 @@ The SensibleProvider is backed by [Sensible][https://github.com/sensible-contrac
 
 ### constructor
 
-• **new SensibleProvider**(`network`)
+• **new SensibleProvider**(`network`, `apiKey`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `network` | [`Network`](../interfaces/bsv.Networks.Network.md) |
+| `apiKey` | `string` |
 
 #### Overrides
 
@@ -83,7 +84,7 @@ The SensibleProvider is backed by [Sensible][https://github.com/sensible-contrac
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:10
+dist/providers/sensible-provider.d.ts:11
 
 ## Properties
 
@@ -97,17 +98,27 @@ dist/bsv/providers/sensible-provider.d.ts:10
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:111
+dist/bsv/abstract-provider.d.ts:97
 
 ___
 
-### \_network
+### apiKey
 
-• `Private` **\_network**: `any`
+• `Private` **apiKey**: `any`
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:9
+dist/providers/sensible-provider.d.ts:10
+
+___
+
+### network
+
+• `Private` **network**: `any`
+
+#### Defined in
+
+dist/providers/sensible-provider.d.ts:9
 
 ___
 
@@ -187,7 +198,7 @@ node_modules/@types/node/ts4.8/events.d.ts:327
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:11
+dist/providers/sensible-provider.d.ts:12
 
 ## Methods
 
@@ -240,7 +251,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:13
+dist/providers/sensible-provider.d.ts:14
 
 ___
 
@@ -373,36 +384,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:18
-
-___
-
-### getContractUTXOs
-
-▸ **getContractUTXOs**(`genesisTxHash`, `outputIndex?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
-
-Get a list of UTXO for a certain contract instance.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `genesisTxHash` | `string` | The hash value of deployment transaction of the contract instance. |
-| `outputIndex?` | `number` | The output index of the deployment transaction of the contract instance. |
-
-#### Returns
-
-`Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
-
-A promise which resolves to a list of transaction UTXO.
-
-#### Overrides
-
-[Provider](Provider.md).[getContractUTXOs](Provider.md#getcontractutxos)
-
-#### Defined in
-
-dist/bsv/providers/sensible-provider.d.ts:23
+dist/providers/sensible-provider.d.ts:19
 
 ___
 
@@ -430,7 +412,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:68
+dist/bsv/abstract-provider.d.ts:61
 
 ___
 
@@ -450,7 +432,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:24
+dist/providers/sensible-provider.d.ts:24
 
 ___
 
@@ -495,7 +477,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:15
+dist/providers/sensible-provider.d.ts:16
 
 ___
 
@@ -523,7 +505,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:22
+dist/providers/sensible-provider.d.ts:23
 
 ___
 
@@ -543,7 +525,7 @@ check if provider is ready
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:12
+dist/providers/sensible-provider.d.ts:13
 
 ___
 
@@ -558,7 +540,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options?` | `UtxoQueryOptions` | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -572,7 +554,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:17
+dist/providers/sensible-provider.d.ts:18
 
 ___
 
@@ -1086,7 +1068,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:16
+dist/providers/sensible-provider.d.ts:17
 
 ___
 
@@ -1118,7 +1100,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:81
+dist/bsv/abstract-provider.d.ts:74
 
 ___
 
@@ -1159,15 +1141,15 @@ ___
 
 ### updateNetwork
 
-▸ **updateNetwork**(`newwork`): `Promise`<`boolean`\>
+▸ **updateNetwork**(`network`): `Promise`<`boolean`\>
 
-update provider newwork
+update provider network
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `newwork` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
+| `network` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
 
 #### Returns
 
@@ -1179,7 +1161,7 @@ update provider newwork
 
 #### Defined in
 
-dist/bsv/providers/sensible-provider.d.ts:14
+dist/providers/sensible-provider.d.ts:15
 
 ___
 
@@ -1261,7 +1243,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:117
+dist/bsv/abstract-provider.d.ts:103
 
 ___
 

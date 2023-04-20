@@ -14,11 +14,15 @@ scrypt-ts
 
 ### Other Classes
 
+- [ActionError](classes/ActionError.md)
+- [BsvApi](classes/BsvApi.md)
+- [ContractApi](classes/ContractApi.md)
 - [DefaultProvider](classes/DefaultProvider.md)
 - [DummyProvider](classes/DummyProvider.md)
 - [FunctionCall](classes/FunctionCall.md)
 - [GorillapoolProvider](classes/GorillapoolProvider.md)
 - [Provider](classes/Provider.md)
+- [ScryptProvider](classes/ScryptProvider.md)
 - [SensibleProvider](classes/SensibleProvider.md)
 - [SensiletSigner](classes/SensiletSigner.md)
 - [Signer](classes/Signer.md)
@@ -45,18 +49,28 @@ scrypt-ts
 ### Interfaces
 
 - [ContractArtifact](interfaces/ContractArtifact.md)
+- [ContractCalledEvent](interfaces/ContractCalledEvent.md)
 - [ContractTransaction](interfaces/ContractTransaction.md)
+- [DefaultProviderOption](interfaces/DefaultProviderOption.md)
+- [LogConfig](interfaces/LogConfig.md)
 - [MethodCallOptions](interfaces/MethodCallOptions.md)
 - [MethodCallTxBuilder](interfaces/MethodCallTxBuilder.md)
 - [MultiContractTransaction](interfaces/MultiContractTransaction.md)
+- [Outpoint](interfaces/Outpoint.md)
+- [RequestConfig](interfaces/RequestConfig.md)
+- [ScriptContext](interfaces/ScriptContext.md)
+- [ScryptConfig](interfaces/ScryptConfig.md)
 - [SignTransactionOptions](interfaces/SignTransactionOptions.md)
 - [SignatureRequest](interfaces/SignatureRequest.md)
 - [SignatureResponse](interfaces/SignatureResponse.md)
 - [StatefulNext](interfaces/StatefulNext.md)
+- [SubScription](interfaces/SubScription.md)
+- [SubscribeOptions](interfaces/SubscribeOptions.md)
 - [TransactionResponse](interfaces/TransactionResponse.md)
 - [TxContext](interfaces/TxContext.md)
 - [TxInputRef](interfaces/TxInputRef.md)
 - [TxOutputRef](interfaces/TxOutputRef.md)
+- [UtxoQueryOptions](interfaces/UtxoQueryOptions.md)
 - [VerifyResult](interfaces/VerifyResult.md)
 
 ### Array Type Aliases
@@ -68,6 +82,8 @@ scrypt-ts
 - [AddressOption](README.md#addressoption)
 - [AddressesOption](README.md#addressesoption)
 - [ByteString](README.md#bytestring)
+- [ContractId](README.md#contractid)
+- [LogLevel](README.md#loglevel)
 - [Network](README.md#network)
 - [OpCodeType](README.md#opcodetype)
 - [PrivKey](README.md#privkey)
@@ -82,7 +98,6 @@ scrypt-ts
 - [Sig](README.md#sig)
 - [SigHashPreimage](README.md#sighashpreimage)
 - [SigHashType](README.md#sighashtype)
-- [SignerError](README.md#signererror)
 - [SubBytes](README.md#subbytes)
 - [TxHash](README.md#txhash)
 - [UTXO](README.md#utxo)
@@ -90,6 +105,10 @@ scrypt-ts
 ### Types Type Aliases
 
 - [auto](README.md#auto)
+
+### Variables
+
+- [Scrypt](README.md#scrypt)
 
 ### Bitwise Operator Functions
 
@@ -139,6 +158,7 @@ scrypt-ts
 - [buildPublicKeyHashScript](README.md#buildpublickeyhashscript)
 - [fill](README.md#fill)
 - [findSig](README.md#findsig)
+- [findSigs](README.md#findsigs)
 - [getDummyP2pkhUTXOs](README.md#getdummyp2pkhutxos)
 - [getDummySig](README.md#getdummysig)
 - [getRandomAddress](README.md#getrandomaddress)
@@ -154,10 +174,6 @@ scrypt-ts
 - [utxoFromOutput](README.md#utxofromoutput)
 - [xor](README.md#xor)
 
-### Signature Verification Functions
-
-- [checkMultiSig](README.md#checkmultisig)
-
 ### assert Functions
 
 - [assert](README.md#assert)
@@ -166,10 +182,6 @@ scrypt-ts
 
 - [method](README.md#method)
 - [prop](README.md#prop)
-
-### exit() Functions
-
-- [exit](README.md#exit)
 
 ## Array Type Aliases
 
@@ -234,6 +246,36 @@ a ByteString represents a byte array.
 #### Defined in
 
 dist/smart-contract/builtins/types.d.ts:8
+
+___
+
+### ContractId
+
+Ƭ **ContractId**: `Object`
+
+ContractId is a unique identifier for a contract.
+It is the outpoint referenced by the deployment transaction id and the output index.
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `outputIndex` | `number` | The output index |
+| `txId` | `string` | The deployment transaction id |
+
+#### Defined in
+
+dist/client/core/types.d.ts:10
+
+___
+
+### LogLevel
+
+Ƭ **LogLevel**: ``"verbose"`` \| ``"debug"`` \| ``"info"`` \| ``"warning"`` \| ``"error"`` \| ``"off"``
+
+#### Defined in
+
+dist/client/core/logger-controller.d.ts:2
 
 ___
 
@@ -397,16 +439,6 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:55
 
 ___
 
-### SignerError
-
-Ƭ **SignerError**: `ProviderError`
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:43
-
-___
-
 ### SubBytes
 
 Ƭ **SubBytes**: [`PubKey`](README.md#pubkey) \| [`Sig`](README.md#sig) \| [`Sha256`](README.md#sha256) \| [`Sha1`](README.md#sha1) \| [`SigHashType`](README.md#sighashtype) \| [`Ripemd160`](README.md#ripemd160) \| [`OpCodeType`](README.md#opcodetype)
@@ -449,6 +481,25 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 dist/smart-contract/builtins/types.d.ts:21
 
+## Variables
+
+### Scrypt
+
+• `Const` **Scrypt**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `bsvApi` | [`BsvApi`](classes/BsvApi.md) |
+| `contractApi` | [`ContractApi`](classes/ContractApi.md) |
+| `getConfig` | <T\>(`name`: `string`, `defaultValue?`: `T`) => `T` |
+| `init` | (`config`: [`ScryptConfig`](interfaces/ScryptConfig.md)) => `void` |
+
+#### Defined in
+
+dist/client/index.d.ts:4
+
 ## Bitwise Operator Functions
 
 ### lshift
@@ -471,7 +522,7 @@ More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-cont
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:138
+dist/smart-contract/builtins/functions.d.ts:133
 
 ___
 
@@ -495,7 +546,7 @@ More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-cont
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:144
+dist/smart-contract/builtins/functions.d.ts:139
 
 ___
 
@@ -658,7 +709,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:114
+dist/smart-contract/builtins/functions.d.ts:109
 
 ___
 
@@ -687,7 +738,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:126
+dist/smart-contract/builtins/functions.d.ts:121
 
 ___
 
@@ -713,7 +764,7 @@ The hash in the form of a ByteString.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:82
+dist/smart-contract/builtins/functions.d.ts:77
 
 ___
 
@@ -740,7 +791,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:92
+dist/smart-contract/builtins/functions.d.ts:87
 
 ___
 
@@ -767,7 +818,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:102
+dist/smart-contract/builtins/functions.d.ts:97
 
 ___
 
@@ -791,7 +842,7 @@ The input `a` is made positive.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:58
+dist/smart-contract/builtins/functions.d.ts:53
 
 ___
 
@@ -814,7 +865,7 @@ Returns the largest of `a` and `b`.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:68
+dist/smart-contract/builtins/functions.d.ts:63
 
 ___
 
@@ -837,7 +888,7 @@ Returns the smallest of `a` and `b`.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:63
+dist/smart-contract/builtins/functions.d.ts:58
 
 ___
 
@@ -861,7 +912,7 @@ Returns true if `x` is within the specified range (left-inclusive), false otherw
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:73
+dist/smart-contract/builtins/functions.d.ts:68
 
 ___
 
@@ -1180,6 +1231,27 @@ dist/smart-contract/utils/index.d.ts:6
 
 ___
 
+### findSigs
+
+▸ **findSigs**(`sigResponses`, `pubKeysOrAddrs`): [`Sig`](README.md#sig)[]
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `sigResponses` | [`SignatureResponse`](interfaces/SignatureResponse.md)[] |
+| `pubKeysOrAddrs` | ([`PublicKey`](classes/bsv.PublicKey.md) \| [`Address`](classes/bsv.Address.md))[] |
+
+#### Returns
+
+[`Sig`](README.md#sig)[]
+
+#### Defined in
+
+dist/smart-contract/utils/index.d.ts:7
+
+___
+
 ### getDummyP2pkhUTXOs
 
 ▸ **getDummyP2pkhUTXOs**(`count?`): [`UTXO`](README.md#utxo)[]
@@ -1292,7 +1364,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:8
+dist/smart-contract/utils/index.d.ts:9
 
 ___
 
@@ -1319,7 +1391,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:7
+dist/smart-contract/utils/index.d.ts:8
 
 ___
 
@@ -1473,35 +1545,6 @@ node_modules/scryptlib/dist/builtins.d.ts:17
 
 ___
 
-## Signature Verification Functions
-
-### checkMultiSig
-
-▸ **checkMultiSig**(`signatures`, `publickeys`): `boolean`
-
-Compares the first signature against each public key until it finds an ECDSA match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result. All signatures need to match a public key. Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the scriptSig using the same order as their corresponding public keys were placed in the scriptPubKey or redeemScript. If all signatures are valid, 1 is returned, 0 otherwise. Due to a bug, one extra unused value is removed from the stack.
-
-**`See`**
-
-https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `signatures` | [`Sig`](README.md#sig)[] |
-| `publickeys` | [`PubKey`](README.md#pubkey)[] |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:46
-
-___
-
 ## assert Functions
 
 ### assert
@@ -1524,7 +1567,7 @@ asserts condition
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:132
+dist/smart-contract/builtins/functions.d.ts:127
 
 ___
 
@@ -1598,27 +1641,3 @@ Indicates whether the property is an property of a contract, and ordinary class 
 #### Defined in
 
 dist/smart-contract/decorators.d.ts:31
-
-___
-
-## exit() Functions
-
-### exit
-
-▸ **exit**(`status`): `void`
-
-`exit(bool status)`; statement terminates contract execution.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `status` | `boolean` | If status is true, contract succeeds; otherwise, it fails. |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:53

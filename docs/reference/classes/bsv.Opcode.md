@@ -4,6 +4,10 @@
 
 [bsv](../modules/bsv.md).Opcode
 
+Opcode class, representing opcodes used in Bitcoin Script
+
+**`Param`**
+
 ## Table of contents
 
 ### Constructors
@@ -144,7 +148,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:153
+node_modules/bsv/index.d.ts:603
 
 ## Properties
 
@@ -152,9 +156,25 @@ node_modules/bsv/index.d.ts:153
 
 ▪ `Static` **OP\_0**: `number`
 
+An empty array of bytes is pushed onto the stack. (This is not a no-op: an item is added to the stack.)
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+empty
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:15
+node_modules/bsv/index.d.ts:29
 
 ___
 
@@ -164,7 +184,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:97
+node_modules/bsv/index.d.ts:547
 
 ___
 
@@ -172,9 +192,25 @@ ___
 
 ▪ `Static` **OP\_1**: `number`
 
+The number 1 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`1`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:22
+node_modules/bsv/index.d.ts:92
 
 ___
 
@@ -182,9 +218,25 @@ ___
 
 ▪ `Static` **OP\_10**: `number`
 
+The number in the word name 10 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`10`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:31
+node_modules/bsv/index.d.ts:173
 
 ___
 
@@ -192,9 +244,25 @@ ___
 
 ▪ `Static` **OP\_11**: `number`
 
+The number in the word name 11 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`11`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:32
+node_modules/bsv/index.d.ts:182
 
 ___
 
@@ -202,9 +270,25 @@ ___
 
 ▪ `Static` **OP\_12**: `number`
 
+The number in the word name 12 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`12`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:33
+node_modules/bsv/index.d.ts:191
 
 ___
 
@@ -212,9 +296,25 @@ ___
 
 ▪ `Static` **OP\_13**: `number`
 
+The number in the word name 13 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`13`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:34
+node_modules/bsv/index.d.ts:200
 
 ___
 
@@ -222,9 +322,25 @@ ___
 
 ▪ `Static` **OP\_14**: `number`
 
+The number in the word name 14 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`14`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:35
+node_modules/bsv/index.d.ts:209
 
 ___
 
@@ -232,9 +348,25 @@ ___
 
 ▪ `Static` **OP\_15**: `number`
 
+The number in the word name 15 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`15`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:36
+node_modules/bsv/index.d.ts:218
 
 ___
 
@@ -242,9 +374,25 @@ ___
 
 ▪ `Static` **OP\_16**: `number`
 
+The number in the word name 16 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`16`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:37
+node_modules/bsv/index.d.ts:227
 
 ___
 
@@ -254,7 +402,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:90
+node_modules/bsv/index.d.ts:540
 
 ___
 
@@ -262,9 +410,25 @@ ___
 
 ▪ `Static` **OP\_1NEGATE**: `number`
 
+The number -1 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`-1`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:19
+node_modules/bsv/index.d.ts:65
 
 ___
 
@@ -274,7 +438,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:91
+node_modules/bsv/index.d.ts:541
 
 ___
 
@@ -282,9 +446,25 @@ ___
 
 ▪ `Static` **OP\_2**: `number`
 
+The number in the word name 2 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`2`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:23
+node_modules/bsv/index.d.ts:101
 
 ___
 
@@ -294,7 +474,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:93
+node_modules/bsv/index.d.ts:543
 
 ___
 
@@ -302,9 +482,25 @@ ___
 
 ▪ `Static` **OP\_2DROP**: `number`
 
+Removes the top two stack items.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2
+
+**`Output`**
+
+Nothing
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:54
+node_modules/bsv/index.d.ts:376
 
 ___
 
@@ -312,9 +508,25 @@ ___
 
 ▪ `Static` **OP\_2DUP**: `number`
 
+Duplicates the top two stack items.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2
+
+**`Output`**
+
+x1 x2 x1 x2
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:55
+node_modules/bsv/index.d.ts:385
 
 ___
 
@@ -324,7 +536,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:92
+node_modules/bsv/index.d.ts:542
 
 ___
 
@@ -332,9 +544,25 @@ ___
 
 ▪ `Static` **OP\_2OVER**: `number`
 
+Copies the pair of items two spaces back in the stack to the front.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2 x3 x4
+
+**`Output`**
+
+x1 x2 x3 x4 x1 x2
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:57
+node_modules/bsv/index.d.ts:403
 
 ___
 
@@ -342,9 +570,25 @@ ___
 
 ▪ `Static` **OP\_2ROT**: `number`
 
+The fifth and sixth items back are moved to the top of the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2 x3 x4 x5 x6
+
+**`Output`**
+
+x3 x4 x5 x6 x1 x2
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:58
+node_modules/bsv/index.d.ts:412
 
 ___
 
@@ -352,9 +596,25 @@ ___
 
 ▪ `Static` **OP\_2SWAP**: `number`
 
+Swaps the top two pairs of items.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2 x3 x4
+
+**`Output`**
+
+x3 x4 x1 x2
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:59
+node_modules/bsv/index.d.ts:421
 
 ___
 
@@ -362,9 +622,25 @@ ___
 
 ▪ `Static` **OP\_3**: `number`
 
+The number in the word name 3 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`3`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:24
+node_modules/bsv/index.d.ts:110
 
 ___
 
@@ -372,9 +648,25 @@ ___
 
 ▪ `Static` **OP\_3DUP**: `number`
 
+Duplicates the top three stack items.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2 x3
+
+**`Output`**
+
+x1 x2 x3 x1 x2 x3
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:56
+node_modules/bsv/index.d.ts:394
 
 ___
 
@@ -382,9 +674,25 @@ ___
 
 ▪ `Static` **OP\_4**: `number`
 
+The number in the word name 4 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`4`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:25
+node_modules/bsv/index.d.ts:119
 
 ___
 
@@ -392,9 +700,25 @@ ___
 
 ▪ `Static` **OP\_5**: `number`
 
+The number in the word name 5 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`5`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:26
+node_modules/bsv/index.d.ts:128
 
 ___
 
@@ -402,9 +726,25 @@ ___
 
 ▪ `Static` **OP\_6**: `number`
 
+The number in the word name 6 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`6`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:27
+node_modules/bsv/index.d.ts:137
 
 ___
 
@@ -412,9 +752,25 @@ ___
 
 ▪ `Static` **OP\_7**: `number`
 
+The number in the word name 7 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`7`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:28
+node_modules/bsv/index.d.ts:146
 
 ___
 
@@ -422,9 +778,25 @@ ___
 
 ▪ `Static` **OP\_8**: `number`
 
+The number in the word name 8 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`8`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:29
+node_modules/bsv/index.d.ts:155
 
 ___
 
@@ -432,9 +804,25 @@ ___
 
 ▪ `Static` **OP\_9**: `number`
 
+The number in the word name 9 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`9`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:30
+node_modules/bsv/index.d.ts:164
 
 ___
 
@@ -444,7 +832,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:95
+node_modules/bsv/index.d.ts:545
 
 ___
 
@@ -454,7 +842,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:99
+node_modules/bsv/index.d.ts:549
 
 ___
 
@@ -464,7 +852,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:81
+node_modules/bsv/index.d.ts:531
 
 ___
 
@@ -474,7 +862,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:76
+node_modules/bsv/index.d.ts:526
 
 ___
 
@@ -484,7 +872,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:107
+node_modules/bsv/index.d.ts:557
 
 ___
 
@@ -494,7 +882,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:108
+node_modules/bsv/index.d.ts:558
 
 ___
 
@@ -504,7 +892,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:73
+node_modules/bsv/index.d.ts:523
 
 ___
 
@@ -514,7 +902,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:133
+node_modules/bsv/index.d.ts:583
 
 ___
 
@@ -524,7 +912,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:130
+node_modules/bsv/index.d.ts:580
 
 ___
 
@@ -534,7 +922,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:131
+node_modules/bsv/index.d.ts:581
 
 ___
 
@@ -544,7 +932,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:134
+node_modules/bsv/index.d.ts:584
 
 ___
 
@@ -554,7 +942,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:128
+node_modules/bsv/index.d.ts:578
 
 ___
 
@@ -564,7 +952,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:129
+node_modules/bsv/index.d.ts:579
 
 ___
 
@@ -574,7 +962,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:127
+node_modules/bsv/index.d.ts:577
 
 ___
 
@@ -582,9 +970,25 @@ ___
 
 ▪ `Static` **OP\_DEPTH**: `number`
 
+Counts the number of stack items onto the stack and places the value on the top
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+<Stack size>
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:61
+node_modules/bsv/index.d.ts:439
 
 ___
 
@@ -594,7 +998,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:102
+node_modules/bsv/index.d.ts:552
 
 ___
 
@@ -602,9 +1006,25 @@ ___
 
 ▪ `Static` **OP\_DROP**: `number`
 
+Removes the top stack item.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x
+
+**`Output`**
+
+Nothing
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:62
+node_modules/bsv/index.d.ts:448
 
 ___
 
@@ -612,9 +1032,25 @@ ___
 
 ▪ `Static` **OP\_DUP**: `number`
 
+Removes the top stack item.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x
+
+**`Output`**
+
+x x
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:63
+node_modules/bsv/index.d.ts:457
 
 ___
 
@@ -622,9 +1058,27 @@ ___
 
 ▪ `Static` **OP\_ELSE**: `number`
 
+If the preceding IF or NOTIF check was not valid then statement 2 is executed.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Example`**
+
+```ts
+`[expression] IF
+     [statement 1]
+ ELSE
+     [statement 2]
+ENDIF`
+```
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:46
+node_modules/bsv/index.d.ts:312
 
 ___
 
@@ -632,9 +1086,27 @@ ___
 
 ▪ `Static` **OP\_ENDIF**: `number`
 
+Ends an if/else block. All blocks must end, or the transaction is invalid. An OP_ENDIF without a prior matching OP_IF or OP_NOTIF is also invalid.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Example`**
+
+```ts
+`[expression] IF
+     [statement 1]
+ ELSE
+     [statement 2]
+ENDIF`
+```
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:47
+node_modules/bsv/index.d.ts:325
 
 ___
 
@@ -644,7 +1116,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:84
+node_modules/bsv/index.d.ts:534
 
 ___
 
@@ -654,7 +1126,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:85
+node_modules/bsv/index.d.ts:535
 
 ___
 
@@ -662,9 +1134,25 @@ ___
 
 ▪ `Static` **OP\_FROMALTSTACK**: `number`
 
+Puts the input onto the top of the main stack. Removes it from the alt stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+(alt)x1
+
+**`Output`**
+
+x1
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:53
+node_modules/bsv/index.d.ts:367
 
 ___
 
@@ -674,7 +1162,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:113
+node_modules/bsv/index.d.ts:563
 
 ___
 
@@ -684,7 +1172,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:115
+node_modules/bsv/index.d.ts:565
 
 ___
 
@@ -694,7 +1182,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:125
+node_modules/bsv/index.d.ts:575
 
 ___
 
@@ -704,7 +1192,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:126
+node_modules/bsv/index.d.ts:576
 
 ___
 
@@ -712,9 +1200,33 @@ ___
 
 ▪ `Static` **OP\_IF**: `number`
 
+If the top stack value is TRUE, statement 1 is executed.
+If the top stack value is FALSE and ELSE is used, statement 2 is executed. If ELSE is NOT used, the script jumps to ENDIF.
+The top stack value is removed.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Example`**
+
+```ts
+`[expression] IF
+     [statement 1]
+ENDIF`
+OR
+`[expression] IF
+     [statement 1]
+ ELSE
+     [statement 2]
+ENDIF`
+```
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:42
+node_modules/bsv/index.d.ts:266
 
 ___
 
@@ -722,9 +1234,25 @@ ___
 
 ▪ `Static` **OP\_IFDUP**: `number`
 
+If the top stack value is not 0, duplicate it.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x
+
+**`Output`**
+
+x / x x
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:60
+node_modules/bsv/index.d.ts:430
 
 ___
 
@@ -734,7 +1262,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:151
+node_modules/bsv/index.d.ts:601
 
 ___
 
@@ -744,7 +1272,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:80
+node_modules/bsv/index.d.ts:530
 
 ___
 
@@ -754,7 +1282,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:112
+node_modules/bsv/index.d.ts:562
 
 ___
 
@@ -764,7 +1292,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:114
+node_modules/bsv/index.d.ts:564
 
 ___
 
@@ -774,7 +1302,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:104
+node_modules/bsv/index.d.ts:554
 
 ___
 
@@ -784,7 +1312,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:117
+node_modules/bsv/index.d.ts:567
 
 ___
 
@@ -794,7 +1322,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:116
+node_modules/bsv/index.d.ts:566
 
 ___
 
@@ -804,7 +1332,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:103
+node_modules/bsv/index.d.ts:553
 
 ___
 
@@ -814,7 +1342,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:101
+node_modules/bsv/index.d.ts:551
 
 ___
 
@@ -824,7 +1352,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:94
+node_modules/bsv/index.d.ts:544
 
 ___
 
@@ -832,9 +1360,25 @@ ___
 
 ▪ `Static` **OP\_NIP**: `number`
 
+Removes the second-to-top stack item.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2
+
+**`Output`**
+
+x2
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:64
+node_modules/bsv/index.d.ts:466
 
 ___
 
@@ -842,9 +1386,25 @@ ___
 
 ▪ `Static` **OP\_NOP**: `number`
 
+Does nothing.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+Nothing
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:40
+node_modules/bsv/index.d.ts:237
 
 ___
 
@@ -854,7 +1414,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:137
+node_modules/bsv/index.d.ts:587
 
 ___
 
@@ -864,7 +1424,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:146
+node_modules/bsv/index.d.ts:596
 
 ___
 
@@ -874,7 +1434,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:138
+node_modules/bsv/index.d.ts:588
 
 ___
 
@@ -884,7 +1444,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:139
+node_modules/bsv/index.d.ts:589
 
 ___
 
@@ -894,7 +1454,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:140
+node_modules/bsv/index.d.ts:590
 
 ___
 
@@ -904,7 +1464,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:141
+node_modules/bsv/index.d.ts:591
 
 ___
 
@@ -914,7 +1474,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:142
+node_modules/bsv/index.d.ts:592
 
 ___
 
@@ -924,7 +1484,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:143
+node_modules/bsv/index.d.ts:593
 
 ___
 
@@ -934,7 +1494,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:144
+node_modules/bsv/index.d.ts:594
 
 ___
 
@@ -944,7 +1504,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:145
+node_modules/bsv/index.d.ts:595
 
 ___
 
@@ -954,7 +1514,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:96
+node_modules/bsv/index.d.ts:546
 
 ___
 
@@ -962,9 +1522,33 @@ ___
 
 ▪ `Static` **OP\_NOTIF**: `number`
 
+If the top stack value is FALSE, statement 1 is executed.
+If the top stack value is TRUE and ELSE is used, statement 2 is executed. If ELSE is NOT used, the script jumps to ENDIF.
+The top stack value is removed.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Example`**
+
+```ts
+`[expression] NOTIF
+     [statement 1]
+ENDIF`
+OR
+`[expression] NOTIF
+     [statement 1]
+ ELSE
+     [statement 2]
+ENDIF`
+```
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:43
+node_modules/bsv/index.d.ts:285
 
 ___
 
@@ -974,7 +1558,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:75
+node_modules/bsv/index.d.ts:525
 
 ___
 
@@ -984,7 +1568,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:109
+node_modules/bsv/index.d.ts:559
 
 ___
 
@@ -994,7 +1578,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:110
+node_modules/bsv/index.d.ts:560
 
 ___
 
@@ -1004,7 +1588,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:111
+node_modules/bsv/index.d.ts:561
 
 ___
 
@@ -1014,7 +1598,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:82
+node_modules/bsv/index.d.ts:532
 
 ___
 
@@ -1022,9 +1606,25 @@ ___
 
 ▪ `Static` **OP\_OVER**: `number`
 
+Copies the second-to-top stack item to the top.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2
+
+**`Output`**
+
+x1 x2 x1
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:65
+node_modules/bsv/index.d.ts:475
 
 ___
 
@@ -1032,9 +1632,25 @@ ___
 
 ▪ `Static` **OP\_PICK**: `number`
 
+The item `n` back in the stack is copied to the top.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+xn ... x2 x1 x0 <n>
+
+**`Output`**
+
+xn ... x2 x1 x0 xn
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:66
+node_modules/bsv/index.d.ts:484
 
 ___
 
@@ -1044,7 +1660,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:150
+node_modules/bsv/index.d.ts:600
 
 ___
 
@@ -1054,7 +1670,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:149
+node_modules/bsv/index.d.ts:599
 
 ___
 
@@ -1062,9 +1678,25 @@ ___
 
 ▪ `Static` **OP\_PUSHDATA1**: `number`
 
+The next byte contains the number of bytes to be pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+special
+
+**`Output`**
+
+data
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:16
+node_modules/bsv/index.d.ts:38
 
 ___
 
@@ -1072,9 +1704,25 @@ ___
 
 ▪ `Static` **OP\_PUSHDATA2**: `number`
 
+The next two bytes contain the number of bytes to be pushed onto the stack in little endian order.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+special
+
+**`Output`**
+
+data
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:17
+node_modules/bsv/index.d.ts:47
 
 ___
 
@@ -1082,9 +1730,25 @@ ___
 
 ▪ `Static` **OP\_PUSHDATA4**: `number`
 
+The next four bytes contain the number of bytes to be pushed onto the stack in little endian order.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+special
+
+**`Output`**
+
+data
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:18
+node_modules/bsv/index.d.ts:56
 
 ___
 
@@ -1092,9 +1756,25 @@ ___
 
 ▪ `Static` **OP\_RESERVED**: `number`
 
+Reserved words, Using an unassigned opcode makes the transaction invalid.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+Nothing
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:20
+node_modules/bsv/index.d.ts:74
 
 ___
 
@@ -1104,7 +1784,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:86
+node_modules/bsv/index.d.ts:536
 
 ___
 
@@ -1114,7 +1794,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:87
+node_modules/bsv/index.d.ts:537
 
 ___
 
@@ -1122,9 +1802,28 @@ ___
 
 ▪ `Static` **OP\_RETURN**: `number`
 
+OP_RETURN can also be used to create "False Return" outputs with a scriptPubKey consisting of OP_FALSE OP_RETURN followed by data.
+Such outputs are provably unspendable and should be given a value of zero Satoshis. These outputs can be pruned from storage 
+in the UTXO set, reducing its size. After the Genesis upgrade in 2020 miners will be free to mine transactions 
+containing FALSE RETURN outputs of any size.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+Ends script with top value on stack as final result
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:49
+node_modules/bsv/index.d.ts:346
 
 ___
 
@@ -1134,7 +1833,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:122
+node_modules/bsv/index.d.ts:572
 
 ___
 
@@ -1142,9 +1841,25 @@ ___
 
 ▪ `Static` **OP\_ROLL**: `number`
 
+The item `n` back in the stack is copied to the top.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+xn ... x2 x1 x0 <n>
+
+**`Output`**
+
+... x2 x1 x0 xn
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:67
+node_modules/bsv/index.d.ts:493
 
 ___
 
@@ -1152,9 +1867,25 @@ ___
 
 ▪ `Static` **OP\_ROT**: `number`
 
+The top three items on the stack are rotated to the left.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2 x3
+
+**`Output`**
+
+x2 x3 x1
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:68
+node_modules/bsv/index.d.ts:502
 
 ___
 
@@ -1164,7 +1895,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:105
+node_modules/bsv/index.d.ts:555
 
 ___
 
@@ -1174,7 +1905,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:123
+node_modules/bsv/index.d.ts:573
 
 ___
 
@@ -1184,7 +1915,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:124
+node_modules/bsv/index.d.ts:574
 
 ___
 
@@ -1194,7 +1925,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:77
+node_modules/bsv/index.d.ts:527
 
 ___
 
@@ -1204,7 +1935,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:74
+node_modules/bsv/index.d.ts:524
 
 ___
 
@@ -1214,7 +1945,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:100
+node_modules/bsv/index.d.ts:550
 
 ___
 
@@ -1222,9 +1953,25 @@ ___
 
 ▪ `Static` **OP\_SWAP**: `number`
 
+The top two items on the stack are swapped.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2
+
+**`Output`**
+
+x2 x1
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:69
+node_modules/bsv/index.d.ts:511
 
 ___
 
@@ -1232,9 +1979,25 @@ ___
 
 ▪ `Static` **OP\_TOALTSTACK**: `number`
 
+Puts the input onto the top of the alt stack. Removes it from the main stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1
+
+**`Output`**
+
+(alt)x1
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:52
+node_modules/bsv/index.d.ts:358
 
 ___
 
@@ -1242,9 +2005,25 @@ ___
 
 ▪ `Static` **OP\_TRUE**: `number`
 
+The number 1 is pushed onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+`1`
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:21
+node_modules/bsv/index.d.ts:83
 
 ___
 
@@ -1252,9 +2031,25 @@ ___
 
 ▪ `Static` **OP\_TUCK**: `number`
 
+The item at the top of the stack is copied and inserted before the second-to-top item.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+x1 x2
+
+**`Output`**
+
+x2 x1 x2
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:70
+node_modules/bsv/index.d.ts:520
 
 ___
 
@@ -1262,9 +2057,25 @@ ___
 
 ▪ `Static` **OP\_VER**: `number`
 
+DISABLED.Puts the version of the protocol under which this transaction will be evaluated onto the stack.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+Nothing
+
+**`Output`**
+
+Protocol version
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:41
+node_modules/bsv/index.d.ts:247
 
 ___
 
@@ -1272,9 +2083,17 @@ ___
 
 ▪ `Static` **OP\_VERIF**: `number`
 
+DISABLED
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:44
+node_modules/bsv/index.d.ts:292
 
 ___
 
@@ -1282,9 +2101,25 @@ ___
 
 ▪ `Static` **OP\_VERIFY**: `number`
 
+Marks transaction as invalid if top stack value is not true. The top stack value is removed.
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Input`**
+
+True / false
+
+**`Output`**
+
+Nothing / fail
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:48
+node_modules/bsv/index.d.ts:334
 
 ___
 
@@ -1292,9 +2127,17 @@ ___
 
 ▪ `Static` **OP\_VERNOTIF**: `number`
 
+DISABLED
+
+**`Opcode`**
+
+**`Hex`**
+
+**`Static`**
+
 #### Defined in
 
-node_modules/bsv/index.d.ts:45
+node_modules/bsv/index.d.ts:299
 
 ___
 
@@ -1304,7 +2147,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:119
+node_modules/bsv/index.d.ts:569
 
 ___
 
@@ -1314,4 +2157,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:83
+node_modules/bsv/index.d.ts:533

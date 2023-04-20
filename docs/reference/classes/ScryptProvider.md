@@ -1,83 +1,71 @@
-[scrypt-ts](../README.md) / TaalProvider
+[scrypt-ts](../README.md) / ScryptProvider
 
-# Class: TaalProvider
+# Class: ScryptProvider
 
-The TaalProvider is backed by [taal][https://console.taal.com/](https://console.taal.com/),
-which is the popular blockchain exxplorer for Bitcoin.
+A Provider is an abstraction of non-account-based operations on a blockchain and is generally not directly involved in signing transaction or data.
 
 ## Hierarchy
 
 - [`Provider`](Provider.md)
 
-  ↳ **`TaalProvider`**
+  ↳ **`ScryptProvider`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](TaalProvider.md#constructor)
+- [constructor](ScryptProvider.md#constructor)
 
 ### Properties
 
-- [\_isProvider](TaalProvider.md#_isprovider)
-- [\_network](TaalProvider.md#_network)
-- [\_provider](TaalProvider.md#_provider)
-- [apiKey](TaalProvider.md#apikey)
-- [captureRejectionSymbol](TaalProvider.md#capturerejectionsymbol)
-- [captureRejections](TaalProvider.md#capturerejections)
-- [defaultMaxListeners](TaalProvider.md#defaultmaxlisteners)
-- [errorMonitor](TaalProvider.md#errormonitor)
-
-### Accessors
-
-- [apiPrefix](TaalProvider.md#apiprefix)
+- [\_isConnected](ScryptProvider.md#_isconnected)
+- [\_isProvider](ScryptProvider.md#_isprovider)
+- [network](ScryptProvider.md#network)
+- [captureRejectionSymbol](ScryptProvider.md#capturerejectionsymbol)
+- [captureRejections](ScryptProvider.md#capturerejections)
+- [defaultMaxListeners](ScryptProvider.md#defaultmaxlisteners)
+- [errorMonitor](ScryptProvider.md#errormonitor)
 
 ### Methods
 
-- [addListener](TaalProvider.md#addlistener)
-- [connect](TaalProvider.md#connect)
-- [emit](TaalProvider.md#emit)
-- [eventNames](TaalProvider.md#eventnames)
-- [getBalance](TaalProvider.md#getbalance)
-- [getEstimateFee](TaalProvider.md#getestimatefee)
-- [getFeePerKb](TaalProvider.md#getfeeperkb)
-- [getMaxListeners](TaalProvider.md#getmaxlisteners)
-- [getNetwork](TaalProvider.md#getnetwork)
-- [getTransaction](TaalProvider.md#gettransaction)
-- [isConnected](TaalProvider.md#isconnected)
-- [listUnspent](TaalProvider.md#listunspent)
-- [listenerCount](TaalProvider.md#listenercount)
-- [listeners](TaalProvider.md#listeners)
-- [off](TaalProvider.md#off)
-- [on](TaalProvider.md#on)
-- [once](TaalProvider.md#once)
-- [prependListener](TaalProvider.md#prependlistener)
-- [prependOnceListener](TaalProvider.md#prependoncelistener)
-- [rawListeners](TaalProvider.md#rawlisteners)
-- [removeAllListeners](TaalProvider.md#removealllisteners)
-- [removeListener](TaalProvider.md#removelistener)
-- [sendRawTransaction](TaalProvider.md#sendrawtransaction)
-- [sendTransaction](TaalProvider.md#sendtransaction)
-- [setMaxListeners](TaalProvider.md#setmaxlisteners)
-- [updateNetwork](TaalProvider.md#updatenetwork)
-- [getEventListeners](TaalProvider.md#geteventlisteners)
-- [isProvider](TaalProvider.md#isprovider)
-- [listenerCount](TaalProvider.md#listenercount-1)
-- [on](TaalProvider.md#on-1)
-- [once](TaalProvider.md#once-1)
-- [setMaxListeners](TaalProvider.md#setmaxlisteners-1)
+- [addListener](ScryptProvider.md#addlistener)
+- [connect](ScryptProvider.md#connect)
+- [emit](ScryptProvider.md#emit)
+- [eventNames](ScryptProvider.md#eventnames)
+- [getBalance](ScryptProvider.md#getbalance)
+- [getEstimateFee](ScryptProvider.md#getestimatefee)
+- [getFeePerKb](ScryptProvider.md#getfeeperkb)
+- [getMaxListeners](ScryptProvider.md#getmaxlisteners)
+- [getNetwork](ScryptProvider.md#getnetwork)
+- [getTransaction](ScryptProvider.md#gettransaction)
+- [isConnected](ScryptProvider.md#isconnected)
+- [listUnspent](ScryptProvider.md#listunspent)
+- [listenerCount](ScryptProvider.md#listenercount)
+- [listeners](ScryptProvider.md#listeners)
+- [off](ScryptProvider.md#off)
+- [on](ScryptProvider.md#on)
+- [once](ScryptProvider.md#once)
+- [prependListener](ScryptProvider.md#prependlistener)
+- [prependOnceListener](ScryptProvider.md#prependoncelistener)
+- [rawListeners](ScryptProvider.md#rawlisteners)
+- [removeAllListeners](ScryptProvider.md#removealllisteners)
+- [removeListener](ScryptProvider.md#removelistener)
+- [sendRawTransaction](ScryptProvider.md#sendrawtransaction)
+- [sendTransaction](ScryptProvider.md#sendtransaction)
+- [setMaxListeners](ScryptProvider.md#setmaxlisteners)
+- [updateNetwork](ScryptProvider.md#updatenetwork)
+- [getEventListeners](ScryptProvider.md#geteventlisteners)
+- [isProvider](ScryptProvider.md#isprovider)
+- [listenerCount](ScryptProvider.md#listenercount-1)
+- [on](ScryptProvider.md#on-1)
+- [once](ScryptProvider.md#once-1)
+- [setMaxListeners](ScryptProvider.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new TaalProvider**(`apiKey?`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `apiKey?` | `string` |
+• **new ScryptProvider**()
 
 #### Overrides
 
@@ -85,9 +73,19 @@ which is the popular blockchain exxplorer for Bitcoin.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:12
+dist/providers/scrypt-provider.d.ts:7
 
 ## Properties
+
+### \_isConnected
+
+• `Private` **\_isConnected**: `any`
+
+#### Defined in
+
+dist/providers/scrypt-provider.d.ts:5
+
+___
 
 ### \_isProvider
 
@@ -103,33 +101,13 @@ dist/bsv/abstract-provider.d.ts:97
 
 ___
 
-### \_network
+### network
 
-• `Private` **\_network**: `any`
-
-#### Defined in
-
-dist/providers/taal-provider.d.ts:10
-
-___
-
-### \_provider
-
-• `Private` **\_provider**: `any`
+• `Private` **network**: `any`
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:11
-
-___
-
-### apiKey
-
-• `Private` **apiKey**: `any`
-
-#### Defined in
-
-dist/providers/taal-provider.d.ts:9
+dist/providers/scrypt-provider.d.ts:6
 
 ___
 
@@ -197,25 +175,11 @@ regular `'error'` listener is installed.
 
 node_modules/@types/node/ts4.8/events.d.ts:327
 
-## Accessors
-
-### apiPrefix
-
-• `get` **apiPrefix**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-dist/providers/taal-provider.d.ts:13
-
 ## Methods
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
+▸ **addListener**(`eventName`, `listener`): [`ScryptProvider`](ScryptProvider.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -232,7 +196,7 @@ v0.1.26
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -246,13 +210,13 @@ ___
 
 ### connect
 
-▸ **connect**(): `Promise`<[`TaalProvider`](TaalProvider.md)\>
+▸ **connect**(): `Promise`<[`ScryptProvider`](ScryptProvider.md)\>
 
 Implement the connection provider, for example, verify the api key during the connection process.
 
 #### Returns
 
-`Promise`<[`TaalProvider`](TaalProvider.md)\>
+`Promise`<[`ScryptProvider`](ScryptProvider.md)\>
 
 a connected provider. Throw an exception if the connection fails.
 
@@ -262,7 +226,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:15
+dist/providers/scrypt-provider.d.ts:9
 
 ___
 
@@ -373,7 +337,7 @@ ___
 
 ### getBalance
 
-▸ **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+▸ **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
 Get the balance of BSVs in satoshis for an address.
 
@@ -381,7 +345,7 @@ Get the balance of BSVs in satoshis for an address.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address?` | [`Address`](bsv.Address.md) | The query address. |
+| `address` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
@@ -395,7 +359,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:20
+dist/providers/scrypt-provider.d.ts:16
 
 ___
 
@@ -443,7 +407,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:25
+dist/providers/scrypt-provider.d.ts:12
 
 ___
 
@@ -452,7 +416,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](TaalProvider.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](ScryptProvider.md#defaultmaxlisteners).
 
 **`Since`**
 
@@ -488,7 +452,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:17
+dist/providers/scrypt-provider.d.ts:11
 
 ___
 
@@ -516,7 +480,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:24
+dist/providers/scrypt-provider.d.ts:14
 
 ___
 
@@ -536,13 +500,13 @@ check if provider is ready
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:14
+dist/providers/scrypt-provider.d.ts:8
 
 ___
 
 ### listUnspent
 
-▸ **listUnspent**(`address`, `options`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of the P2PKH UTXOs.
 
@@ -551,7 +515,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -565,7 +529,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:19
+dist/providers/scrypt-provider.d.ts:15
 
 ___
 
@@ -639,7 +603,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
+▸ **off**(`eventName`, `listener`): [`ScryptProvider`](ScryptProvider.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -656,7 +620,7 @@ v10.0.0
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -670,7 +634,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
+▸ **on**(`eventName`, `listener`): [`ScryptProvider`](ScryptProvider.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -711,7 +675,7 @@ v0.1.101
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -725,7 +689,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
+▸ **once**(`eventName`, `listener`): [`ScryptProvider`](ScryptProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -764,7 +728,7 @@ v0.3.0
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -778,7 +742,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
+▸ **prependListener**(`eventName`, `listener`): [`ScryptProvider`](ScryptProvider.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -806,7 +770,7 @@ v6.0.0
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -820,7 +784,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`ScryptProvider`](ScryptProvider.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -846,7 +810,7 @@ v6.0.0
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -915,7 +879,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`TaalProvider`](TaalProvider.md)
+▸ **removeAllListeners**(`event?`): [`ScryptProvider`](ScryptProvider.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -937,7 +901,7 @@ v0.1.26
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -951,7 +915,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`TaalProvider`](TaalProvider.md)
+▸ **removeListener**(`eventName`, `listener`): [`ScryptProvider`](ScryptProvider.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -1043,7 +1007,7 @@ v0.1.26
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -1079,7 +1043,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:18
+dist/providers/scrypt-provider.d.ts:13
 
 ___
 
@@ -1117,7 +1081,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`TaalProvider`](TaalProvider.md)
+▸ **setMaxListeners**(`n`): [`ScryptProvider`](ScryptProvider.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1138,7 +1102,7 @@ v0.3.5
 
 #### Returns
 
-[`TaalProvider`](TaalProvider.md)
+[`ScryptProvider`](ScryptProvider.md)
 
 #### Inherited from
 
@@ -1152,7 +1116,7 @@ ___
 
 ### updateNetwork
 
-▸ **updateNetwork**(`network`): `Promise`<`boolean`\>
+▸ **updateNetwork**(`newwork`): `Promise`<`boolean`\>
 
 update provider network
 
@@ -1160,7 +1124,7 @@ update provider network
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `network` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
+| `newwork` | [`Network`](../interfaces/bsv.Networks.Network.md) | Network type to be updated |
 
 #### Returns
 
@@ -1172,7 +1136,7 @@ update provider network
 
 #### Defined in
 
-dist/providers/taal-provider.d.ts:16
+dist/providers/scrypt-provider.d.ts:10
 
 ___
 

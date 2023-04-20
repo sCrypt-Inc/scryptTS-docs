@@ -52,7 +52,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:576
+node_modules/bsv/index.d.ts:1026
 
 ## Properties
 
@@ -62,7 +62,7 @@ node_modules/bsv/index.d.ts:576
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:578
+node_modules/bsv/index.d.ts:1028
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:581
+node_modules/bsv/index.d.ts:1031
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:582
+node_modules/bsv/index.d.ts:1032
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:580
+node_modules/bsv/index.d.ts:1030
 
 ## Methods
 
@@ -106,7 +106,7 @@ node_modules/bsv/index.d.ts:580
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:593
+node_modules/bsv/index.d.ts:1043
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:584
+node_modules/bsv/index.d.ts:1034
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:591
+node_modules/bsv/index.d.ts:1041
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:592
+node_modules/bsv/index.d.ts:1042
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:590
+node_modules/bsv/index.d.ts:1040
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:588
+node_modules/bsv/index.d.ts:1038
 
 ___
 
@@ -196,7 +196,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:587
+node_modules/bsv/index.d.ts:1037
 
 ___
 
@@ -210,7 +210,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:585
+node_modules/bsv/index.d.ts:1035
 
 ___
 
@@ -224,7 +224,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:586
+node_modules/bsv/index.d.ts:1036
 
 ___
 
@@ -238,7 +238,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:589
+node_modules/bsv/index.d.ts:1039
 
 ___
 
@@ -259,7 +259,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:598
+node_modules/bsv/index.d.ts:1048
 
 ___
 
@@ -280,19 +280,19 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:599
+node_modules/bsv/index.d.ts:1049
 
 ___
 
 ### fromRandom
 
-▸ `Static` **fromRandom**(`netowrk?`): [`PrivateKey`](bsv.PrivateKey.md)
+▸ `Static` **fromRandom**(`network?`): [`PrivateKey`](bsv.PrivateKey.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `netowrk?` | `string` |
+| `network?` | `string` \| [`Network`](../interfaces/bsv.Networks.Network.md) |
 
 #### Returns
 
@@ -300,7 +300,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:597
+node_modules/bsv/index.d.ts:1047
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:595
+node_modules/bsv/index.d.ts:1045
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:596
+node_modules/bsv/index.d.ts:1046
 
 ___
 
@@ -360,7 +360,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:600
+node_modules/bsv/index.d.ts:1050
 
 ___
 
@@ -380,4 +380,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:601
+node_modules/bsv/index.d.ts:1051
