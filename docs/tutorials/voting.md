@@ -224,7 +224,7 @@ This command will output a contract artifact file at `artifacts\src\contracts\vo
 
 ### Contract Deployment
 
-After[installing the sCrypt SDK](#install-the-scrypt-sdk), You will get a script `deploy.ts` to deploy contract, which can be used to deploy our `Voting` contract with a little modification.
+After [installing the sCrypt SDK](#install-the-scrypt-sdk), You will get a script `deploy.ts`, which can be used to deploy our `Voting` contract with a little modification.
 
 ```ts
 import { CandidateName, Voting, N } from './src/contracts/voting'
@@ -312,7 +312,7 @@ const contract_id = {
 
 ### Load contract artifact
 
-Before actually starting to write the front-end code, we need to load contract artifact.
+Before actually starting to write the front-end code, we need to load contract artifact in `src\index.tsx`.
 
 ```ts
 import { Voting } from './contracts/voting';
@@ -355,11 +355,11 @@ Scrypt.init({
 ```
 
 
-### Fetch contract in the frontend
+### Fetch latest contract
 
 After the contract is deployed, we can fetch it on the frontend.
 
-Call the `Scrypt.contractApi.getLatestInstance` method to get a contract instance aligned to the contract on-chain state. With this instance, we can read contract properties using the dot operator to display data to the user on the web page, or update the contract state by calling its public method as [before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) when the user votes for a candidate.
+Call the `Scrypt.contractApi.getLatestInstance()` method to get a contract instance aligned to the contract on-chain state. With this instance, we can read contract properties using the dot operator to display data to the user on the web page, or update the contract state by calling its public method as [before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) when the user votes for a candidate.
 
 
 ```ts
