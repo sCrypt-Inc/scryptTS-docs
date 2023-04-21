@@ -23,14 +23,14 @@ For each candidate, there are two properties we need to store in the contract: h
 We define a type alias of `ByteString` to represent a candidate name.
 
 ```ts
-export type CandidateName = ByteString
+export type Name = ByteString
 ```
 
 We define a struct to represent a candidate.
 
 ```ts
 export type Candidate = {
-  name: CandidateName
+  name: Name
   votesReceived: bigint
 }
 ```
@@ -39,7 +39,7 @@ We use a `FixedArray` to store the list of candidates, which we alias as type `C
 Since candidates' vote counts can be updated, we mark it [stateful](../how-to-write-a-contract/stateful-contract.md#stateful-properties) by setting `@prop(true)`.
 
 ```ts
-export const N = 10
+export const N = 2
 export type Candidates = FixedArray<Candidate, typeof N>
 
 export class Voting extends SmartContract {  
@@ -54,13 +54,16 @@ export class Voting extends SmartContract {
 Initialize all the `@prop` properties in the constructor. Note that we only need to pass the candidate names in the argument, because the votes they received would be all 0 at the beginning.
 
 ```ts
-constructor(candidateNames: FixedArray<CandidateName, typeof N>) {
+constructor(names: FixedArray<Name, typeof N>) {
   super(...arguments)
   // initialize fixed array
-  this.candidates = fill({ name: toByteString(''), votesReceived: 0n }, N)
+  this.candidates = fill({
+      name: toByteString(''),
+      votesReceived: 0n
+  }, N)
   // set names and set votes they received to 0
   for (let i = 0; i < N; i++) {
-    this.candidates[i] = { name: candidateNames[i], votesReceived: 0n }
+    this.candidates[i] = { name: names[i], votesReceived: 0n }
   }
 }
 ```
@@ -71,7 +74,7 @@ The only way to interact with this contract is to vote for one candidate in the 
 
 ```ts
 @method()
-public vote(candidate: CandidateName) {
+public vote(name: Name) {
   // 1) change contract state: add one vote to `candidate` in the list
   // 2) propogate the state
 }
@@ -82,9 +85,9 @@ We can simply use a `for` loop to implement this: find the corresponding candida
 ```ts
 // cast one vote to a candidate
 @method()
-increaseVotesReceived(candidate: CandidateName): void {
+increaseVotesReceived(name: Name): void {
   for (let i = 0; i < N; i++) {
-    if (this.candidates[i].name === candidate) {
+    if (this.candidates[i].name === name) {
       this.candidates[i].votesReceived++
     }
   }
@@ -105,9 +108,9 @@ The public function `vote` is now finished.
 
 ```ts
 @method()
-public vote(candidate: CandidateName) {
+public vote(name: Name) {
   // change contract state: add one vote to `candidate` in the list
-  this.increaseVotesReceived(candidate)
+  this.increaseVotesReceived(name)
   
   // restrict tx outputs
   // to contain the latest state with the same balance
@@ -125,61 +128,63 @@ public vote(candidate: CandidateName) {
 You have completed the `Voting` contract! The [final complete code](https://github.com/sCrypt-Inc/voting/blob/master/src/contracts/voting.ts) is as follows:
 
 ```ts
-import {
-    method,
-    prop,
-    SmartContract,
-    hash256,
-    assert,
-    ByteString,
-    FixedArray,
-    toByteString,
-    fill
-} from 'scrypt-ts'
-export type CandidateName = ByteString
+import { assert, ByteString, hash256, method, prop, SmartContract, FixedArray, fill, toByteString } from 'scrypt-ts'
+
+export type Name = ByteString
 
 export type Candidate = {
-  name: CandidateName
-  votesReceived: bigint
+    name: Name
+    votesReceived: bigint
 }
 
-export const N = 10
+export const N = 2
 
 export type Candidates = FixedArray<Candidate, typeof N>
 
 export class Voting extends SmartContract {
-  @prop(true)
-  candidates: Candidates
+    @prop(true)
+    candidates: Candidates
 
-  constructor(candidateNames: FixedArray<CandidateName, typeof N>) {
-    super(...arguments)
-    // initilize fixed array
-    this.candidates = fill({ name: toByteString(''), votesReceived: 0n }, N)
-    // set names and set their received votes to 0
-    for (let i = 0; i < N; i++) {
-      this.candidates[i] = { name: candidateNames[i], votesReceived: 0n }
+    constructor(names: FixedArray<Name, typeof N>) {
+        super(...arguments)
+        // initialize fixed array
+        this.candidates = fill({
+            name: toByteString(''),
+            votesReceived: 0n,
+        }, N)
+        // set names and set votes they received to 0
+        for (let i = 0; i < N; i++) {
+            this.candidates[i] = {
+                name: names[i],
+                votesReceived: 0n,
+            }
+        }
     }
-  }
 
-  @method()
-  public vote(candidate: CandidateName) {
-    this.increaseVotesReceived(candidate)
-    // output containing the latest state and the same balance
-    let outputs: ByteString = this.buildStateOutput(this.ctx.utxo.value)
-    if (this.changeAmount > 0n) {
-      outputs += this.buildChangeOutput()
+    /**
+     * vote for a candidate
+     * @param name candidate's name
+     */
+    @method()
+    public vote(name: Name) {
+        // change contract state: add one vote to `candidate` in the list
+        this.increaseVotesReceived(name)
+        // output containing the latest state and the same balance
+        let outputs: ByteString = this.buildStateOutput(this.ctx.utxo.value)
+        if (this.changeAmount > 0n) {
+            outputs += this.buildChangeOutput()
+        }
+        assert(this.ctx.hashOutputs === hash256(outputs), 'hashOutputs mismatch')
     }
-    assert(this.ctx.hashOutputs === hash256(outputs), 'hashOutputs mismatch')
-  }
 
-  @method()
-  increaseVotesReceived(candidate: CandidateName): void {
-    for (let i = 0; i < N; i++) {
-      if (this.candidates[i].name === candidate) {
-        this.candidates[i].votesReceived++
-      }
+    @method()
+    increaseVotesReceived(name: Name): void {
+        for (let i = 0; i < N; i++) {
+            if (this.candidates[i].name === name) {
+                this.candidates[i].votesReceived++
+            }
+        }
     }
-  }
 }
 ```
 
@@ -223,7 +228,7 @@ This command will generate a contract artifact file at `artifacts\src\contracts\
 After [installing the sCrypt SDK](#install-the-scrypt-sdk), you will have a script `deploy.ts` in the project directory, which can be used to deploy our `Voting` contract with some monior modification.
 
 ```ts
-import { CandidateName, Voting, N } from './src/contracts/voting'
+import { Name, Voting, N } from './src/contracts/voting'
 import { bsv, TestWallet, DefaultProvider, toByteString, FixedArray } from 'scrypt-ts'
 
 import * as dotenv from 'dotenv'
@@ -245,19 +250,9 @@ const signer = new TestWallet(privateKey, new DefaultProvider({
 async function main() {
     await Voting.compile()
 
-    const amount = 1
-
-    const candidateNames: FixedArray<CandidateName, typeof N> = [
-        toByteString('Craig Wright', true),
-        toByteString('Elon Musk', true),
-        toByteString('Donald Trump', true),
-        toByteString('Lionel Messi', true),
-        toByteString('Bill Gates', true),
-        toByteString('xhliu', true),
-        toByteString('Zuckerberg', true),
-        toByteString('Vitalik Buterin', true),
-        toByteString('孙悟空', true),
-        toByteString('Steve Jobs', true),
+    const candidateNames: FixedArray<Name, typeof N> = [
+        toByteString('iPhone', true),
+        toByteString('Android', true)
     ]
 
     const instance = new Voting(
@@ -268,6 +263,7 @@ async function main() {
     await instance.connect(signer)
 
     // Contract deployment.
+    const amount = 1
     const deployTx = await instance.deploy(amount)
     console.log('Voting contract deployed: ', deployTx.id)
 }
@@ -278,13 +274,15 @@ main()
 Before deploying the contract, we need to create `.env` file and save your private key in `PRIVATE_KEY` environment variable.
 
 ```
-PRIVATE_KEY=cQtC5DoR7eyJakLKfRiUrqxLsGpHYh6RmxRVrsV1fjCoC8WAZMk4
+PRIVATE_KEY=xxxxx
 ```
+
+If you don't a private key, you can follow [this guide](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#setup) to generate one using Sensilet wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
 
 Run the following command to deploy the contract.
 
 ```
-npx ts-node deploy.ts
+npm run deploy:contract
 ```
 
 After success, you will see an output similar to the following:
@@ -296,7 +294,7 @@ Your can get the deployed contract's ID: the TXID and the output index where the
 ```js
 const contract_id = {
   /** the deployment transaction id */
-  txId: "0bccd695db02876d1c7cb41ac97f1fa2381c91c54a38b03633f1edde9260084e",
+  txId: "6751b645e1579e8e6201e3c59b900ad58e59868aa5e4ee89359d3f8ca1d66c8a",
   /** the output index */
   outputIndex: 0,
 };
@@ -312,13 +310,21 @@ var artifact = require('../artifacts/src/contracts/voting.json');
 Voting.loadArtifact(artifact);
 ```
 
+### Connect `ScryptProvider` with your signer 
+
+```ts
+const provider = new ScryptProvider();
+const signer = new SensiletSigner(provider);
+
+signerRef.current = signer;
+```
+
 ### Integrate Wallet
 
 Use `requestAuth` method of `signer` to request access to the wallet.
 
 ```ts
-const provider = new DefaultProvider(bsv.Networks.testnet);
-const signer = new SensiletSigner(provider);
+const signer = signerRef.current as SensiletSigner;
 
 // request authentication
 const { isAuthenticated, error } = await signer.requestAuth();
@@ -351,18 +357,11 @@ Scrypt.init({
 We can fetch a contract's latest instance by calling the `Scrypt.contractApi.getLatestInstance()` using its [contract ID](#contract-id). With this instance, we can easily read a contract's properties to display to the user on the webpage, or update the contract state by calling its public method as [before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) when the user votes for a candidate.
 
 ```ts
-import React, { useEffect, useRef, useState } from "react";
-import logo from './logo.svg';
-import './App.css';
-import { Voting } from './contracts/voting';
-
-import { Scrypt, ScryptProvider, SensiletSigner} from "scrypt-ts";
-
-...
-
 function App() {
   const [votingContract, setContract] = useState<Voting>();
-  const signerRef = useRef<SensiletSigner>();
+  const [error, setError] = React.useState("");
+  
+  // ...
 
   async function fetchContract() {
     try {
@@ -370,30 +369,15 @@ function App() {
         Voting,
         contract_id
       );
-      console.log('votingContract', instance)
       setContract(instance);
     } catch (error: any) {
       console.error("fetchContract error: ", error);
+      setError(error.message);
     }
   }
-
-  useEffect(() => {
-    const provider = new ScryptProvider();
-    const signer = new SensiletSigner(provider);
-    signerRef.current = signer;
-    fetchContract();
-  }, []);
-
-  return (
-    <div className="App">
-      <header>
-      <h2>Who is Satoshi?</h2>
-      </header>
-    </div>
-  );
+    
+  // ...
 }
-
-export default App;
 ```
 
 ### Read contract state
@@ -410,36 +394,61 @@ function App() {
 
   let rows: Array<any> = [];
   if (votingContract) {
-    // render contract state
-    rows = votingContract.candidates.map((candidate) => {
+    rows = votingContract.candidates.map((candidate, index) => {
       return (
-        <tr>
-          <td>{byteString2utf8(candidate.name)}</td>
-          <td>{candidate.votesReceived.toString()}</td>
+        <TableRow hover selected={success.candidate === candidate.name}>
+          <TableCell>
+            {byteString2utf8(candidate.name)}
+            <Box
+              sx={{
+                height: 200,
+              }}
+              component="img"
+              alt={byteString2utf8(candidate.name)}
+              src={`./voting/${index === 0 ? 'iphone' : 'android'}.png`}
+            />
+          </TableCell>
+          <TableCell>{candidate.votesReceived.toString()}</TableCell>
 
-          <td>
-            <button name={candidate.name}>👍</button>
-          </td>
-        </tr>
+          <TableCell>
+            <Button variant="text" onClick={voting} name={candidate.name}>
+              👍
+            </Button>
+          </TableCell>
+        </TableRow>
       );
     });
   }
-
+  
   return (
     <div className="App">
-      <header >
-        <h2>Who is Satoshi?</h2>
+      <header className="App-header">
+        <h2>What's your favorite phone?</h2>
       </header>
-      <table >
-        <thead>
-          <tr>
-            <td>Candidate</td>
-            <td>Votes</td>
-            <td>Voting</td>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
+      <TableContainer component={Paper} variant="outlined">
+        <Table aria-label="demo table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Candidate</TableCell>
+              <TableCell>Votes</TableCell>
+              <TableCell>Voting</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{rows}</TableBody>
+        </Table>
+      </TableContainer>
+      <Snackbar open={error !== ""} autoHideDuration={6000} onClose={handleClose}>
+        <Alert severity="error">{error}</Alert>
+      </Snackbar>
+
+      <Snackbar open={success.candidate !== "" && success.txId !== ""} autoHideDuration={6000} onClose={handleSuccessClose}>
+        <Alert severity="success">
+          {" "}
+          <Link href={`https://test.whatsonchain.com/tx/${success.txId}`} target="_blank" rel="noreferrer">
+            {`"${byteString2utf8(success.candidate)}" got one vote,  tx: ${success.txId}`}
+          </Link>
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
@@ -453,6 +462,7 @@ Calling a contract public method is [the same as before](../how-to-deploy-and-ca
 
 ```ts
 async function voting(e: any) {
+  // ...
 
   const signer = signerRef.current as SensiletSigner;
 
@@ -484,26 +494,11 @@ async function voting(e: any) {
         console.log(`Voting call tx: ${result.tx.id}`);
       })
       .catch((e) => {
+        setError(e.message);
         fetchContract();
         console.error("call error: ", e);
       });
   }
-}
-
-if (votingContract) {
-  // render contract state
-  rows = votingContract.candidates.map((candidate) => {
-    return (
-      <tr>
-        <td>{byteString2utf8(candidate.name)}</td>
-        <td>{candidate.votesReceived.toString()}</td>
-
-        <td>
-          <button onClick={voting} name={candidate.name}>👍</button>
-        </td>
-      </tr>
-    );
-  });
 }
 ```
 
@@ -519,6 +514,18 @@ So far, we have a fully working app. However, there is a slight problem. When Al
 We need a way to listen to contract event. 
 
 We call `Scrypt.contractApi.subscribe(options: SubscribeOptions<T>, cb: (e: ContractCalledEvent<T>) => void): SubScription` to subscribe to events that the contract has been called. When a contract gets called and updated, we refresh the UI in real time, re-render all the content on the page and show the updated vote count.
+
+`options: SubscribeOptions<T>`: it includes a contract class, a contract ID, and a optional list of method names monitored.
+
+```ts
+interface SubscribeOptions<T> {
+  clazz: new (...args: any) => T;
+  id: ContractId;
+  methodNames?: Array<string>;
+}
+```
+
+If `methodNames` is set, you will be notified only when public functions in the list are called. Otherwise, you will be notified when ANY public function is called.
 
 Subscribe to contract events by contract ID. This function accepts a callback function. The first parameter of the callback function is `ContractCalledEvent<T>`. 
 
@@ -555,6 +562,10 @@ useEffect(() => {
     id: contract_id
   }, (event: ContractCalledEvent<Voting>) => {
     // update the contract instance 
+    setSuccess({
+      txId: event.tx.id,
+      candidate: event.args[0] as ByteString,
+    });
     setContract(event.nexts[0]);
   });
 
