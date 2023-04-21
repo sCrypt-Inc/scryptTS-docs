@@ -6,13 +6,13 @@ sidebar_position: 7
 
 ## Overview
 
-In this tutorial, we will go over how to use sCrypt to build a full-stacck voting dApp on Bitcoin, including the smart contract and an interactive front-end.
+In this tutorial, we will go over how to use sCrypt to build a full-stack voting dApp on Bitcoin, including the smart contract and an interactive front-end.
 
 ![](../../static/img/voting.gif)
 
-On the web page, you can see the candidate list. Clicking the like button will cast one vote to the corresponding candidate. This will prompt the wallet to ask for a user's approval. A transaction calling the contract will be sent after her approval.
+On the web page, you can see the candidate list. Clicking the like button will cast one vote for the corresponding candidate. This will prompt the wallet to ask for a user's approval. A transaction calling the contract will be sent after her approval.
 
-First we will write the smart contract step by step and deploy it. Afterwards we will build a front-end with React that allows users to cast vote and thus interact with the contract.
+First, we will write and deploy the smart contract step by step. Afterward, we will build a front-end with React that allows users to cast votes and thus interact with the contract.
 
 ## Contract
 
@@ -70,7 +70,7 @@ constructor(names: FixedArray<Name, typeof N>) {
 
 ### Methods
 
-The only way to interact with this contract is to vote for one candidate in the list, so we will have only 1 **public** method `vote`. Tt takes only 1 parameter: the name of the candidate you want to vote for.
+The only way to interact with this contract is to vote for one candidate in the list, so we will have only 1 **public** method `vote`. It takes only 1 parameter: the name of the candidate you want to vote for.
 
 ```ts
 @method()
@@ -225,7 +225,7 @@ This command will generate a contract artifact file at `artifacts\src\contracts\
 
 ### Contract Deployment
 
-After [installing the sCrypt SDK](#install-the-scrypt-sdk), you will have a script `deploy.ts` in the project directory, which can be used to deploy our `Voting` contract with some monior modification.
+After [installing the sCrypt SDK](#install-the-scrypt-sdk), you will have a script `deploy.ts` in the project directory, which can be used to deploy our `Voting` contract after some minor modifications.
 
 ```ts
 import { Name, Voting, N } from './src/contracts/voting'
@@ -271,7 +271,7 @@ async function main() {
 main()
 ```
 
-Before deploying the contract, we need to create `.env` file and save your private key in `PRIVATE_KEY` environment variable.
+Before deploying the contract, we need to create a `.env` file and save your private key in the `PRIVATE_KEY` environment variable.
 
 ```
 PRIVATE_KEY=xxxxx
@@ -281,7 +281,7 @@ If you don't a private key, you can follow [this guide](../how-to-deploy-and-cal
 
 Run the following command to deploy the contract.
 
-```
+```bash
 npm run deploy:contract
 ```
 
@@ -290,6 +290,7 @@ After success, you will see an output similar to the following:
 ![](../../static/img/deploy-output.png)
 
 #### Contract ID
+
 Your can get the deployed contract's ID: the TXID and the output index where the contract is located.
 ```js
 const contract_id = {
@@ -310,22 +311,11 @@ var artifact = require('../artifacts/src/contracts/voting.json');
 Voting.loadArtifact(artifact);
 ```
 
-### Connect `ScryptProvider` with your signer 
-
-```ts
-const provider = new ScryptProvider();
-const signer = new SensiletSigner(provider);
-
-signerRef.current = signer;
-```
-
 ### Integrate Wallet
 
 Use `requestAuth` method of `signer` to request access to the wallet.
 
 ```ts
-const signer = signerRef.current as SensiletSigner;
-
 // request authentication
 const { isAuthenticated, error } = await signer.requestAuth();
 if (!isAuthenticated) {
@@ -350,6 +340,17 @@ Scrypt.init({
   apiKey: 'YOUR_API_KEY',
   network: 'testnet'
 })
+```
+
+### Connect Signer to `ScryptProvider`
+
+It's required to connect your signer to `ScryptProvider` when using sCrypt service.
+
+```ts
+const provider = new ScryptProvider();
+const signer = new SensiletSigner(provider);
+
+signerRef.current = signer;
 ```
 
 ### Fetch Latest Contract Instance
@@ -515,7 +516,9 @@ We need a way to listen to contract event.
 
 We call `Scrypt.contractApi.subscribe(options: SubscribeOptions<T>, cb: (e: ContractCalledEvent<T>) => void): SubScription` to subscribe to events that the contract has been called. When a contract gets called and updated, we refresh the UI in real time, re-render all the content on the page and show the updated vote count.
 
-`options: SubscribeOptions<T>`: it includes a contract class, a contract ID, and a optional list of method names monitored.
+The subscribe function takes 2 parameters:
+
+1. `options: SubscribeOptions<T>`: it includes a contract class, a contract ID, and a optional list of method names monitored.
 
 ```ts
 interface SubscribeOptions<T> {
@@ -527,9 +530,9 @@ interface SubscribeOptions<T> {
 
 If `methodNames` is set, you will be notified only when public functions in the list are called. Otherwise, you will be notified when ANY public function is called.
 
-Subscribe to contract events by contract ID. This function accepts a callback function. The first parameter of the callback function is `ContractCalledEvent<T>`. 
+2. `callback: (event: ContractCalledEvent<T>) => void`: a callback funciton upon receiving notifications. 
 
-`ContractCalledEvent` is the relevant information when the contract is called, such as the public function name and function arguments when the call occurs.
+`ContractCalledEvent<T>` contains the relevant information when the contract is called, such as the public function name and function arguments when the call occurs.
 
 ```ts
 export interface ContractCalledEvent<T> {
@@ -546,6 +549,8 @@ export interface ContractCalledEvent<T> {
   nexts: Array<T>;
 }
 ```
+
+The code to subscribe to contract events is as follows.
 
 ```ts
 useEffect(() => {
