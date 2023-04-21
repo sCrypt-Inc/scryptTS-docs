@@ -21,7 +21,7 @@ const Faucet = () => {
 
   const createCooldownMessage = (address) => {
     clearMessages()
-    setCooldownMsg(address)
+    setCooldownMsg(`Limit of 2 top-ups per day exceeded for address: ${address}`)
   }
 
   const createErrorMessage = (msg) => {
