@@ -237,7 +237,7 @@ The first time you run the command, it will ask you to fund a testnet address. Y
 After a successful run you should see something like the following:
 
 ```
-Verifier contract deployed:  adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80
+Verifier contract deployed:  0ac734ea775b7dcf4078dbdca7d013e755e7caf2e3538066b9fbd4a9f5b1aaf7
 ```
 
 The smart contract is now deployed and can be unlocked using a valid proof, that proves the knowledge of the factors for the integer `91`.
@@ -274,7 +274,7 @@ export async function call(txId: string, proofPath: PathLike) {
 }
 
 (async () => {
-  await call('adef4be4239cf3d1fb972434731ce7d277460fec3529227414ca25257a717e80', '../proof.json')
+  await call('0ac734ea775b7dcf4078dbdca7d013e755e7caf2e3538066b9fbd4a9f5b1aaf7', '../proof.json')
 })()
 ```
 
@@ -285,7 +285,11 @@ Let's unlock our contract by running the following command:
 npx ts-node call.ts
 ```
 
-If everything goes as expected, we have now unlocked the verifier smart contract.
+If everything goes as expected, we have now unlocked the verifier smart contract. You'll see an output similar to the following:
+
+```
+Verifier contract unlocked:  e270b92c713f1924838d845f142402784700b34c01fc654847b234dd9517a79b
+```
 
 ## Conclusion
 
