@@ -55,7 +55,7 @@ class DemoContract extends SmartContract {
 }
 ```
 
-You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/cf3ea45a11/src/contracts/auction.ts#L100-L127) for more details.
+You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/f63c37038a03bc51267e816d9441969d3e1d2ece/src/contracts/auction.ts#L100-L127) for more details.
 
 ## Call Tx
 
@@ -81,12 +81,8 @@ You can customize a tx builder for a public `@method` of your contract by callin
 
 ```ts
 // bind a customized tx builder for the public method `MyContract.unlock`
-instance.bindTxBuilder("unlock", (options: MethodCallOptions<T>, ...args: any) => { 
-
-  let result: Promise<ContractTransaction<MyContract>>;
-
-  // the contract instance
-  const current = options.current;
+instance.bindTxBuilder("unlock", (current: T, options: MethodCallOptions<T>, ...args: any) => { 
+  let result: Promise<ContractTransaction>;
 
   // the tx is NOT signed
   const unsignedTx: bsv.Transaction = new bsv.Transaction()
@@ -109,8 +105,9 @@ instance.bindTxBuilder("unlock", (options: MethodCallOptions<T>, ...args: any) =
 })
 ```
 
-Note that the parameters of your customized tx builder consist of two parts:
+Note that the parameters of your customized tx builder consist of the following parts:
 
+- `current` is the actual instance of the smart contract.
 - `options` is of type [`MethodCallOptions`](../how-to-test-a-contract.md#methodcalloptions).
 - `...args: any` is an argument list the same as the bound pubic `@method`.
 
@@ -126,6 +123,7 @@ class Auction extends SmartContract {
   }
 
   static buildTxForBid(
+    current: Auction,
     options: MethodCallOptions<Auction>,
     // the following arguments are the same as the bound public `@method`
     bidder: PubKeyHash,
@@ -136,10 +134,10 @@ class Auction extends SmartContract {
 }
 ```
 
-You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/cf3ea45a11/src/contracts/auction.ts#L129-L178) for more details.
+You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/f63c37038a03bc51267e816d9441969d3e1d2ece/src/contracts/auction.ts#L130-L172) for more details.
 
 ## Notes
 
-Please be aware that each of these tx builders should only create an **unsigned** transaction. You need to sign it later if necessary before broadcasting.
+Please be aware that each of these tx builders should only create an **unsigned** transaction. If required, the transaction gets signed automatically in a later step prior to broadcasting.
 
 Also, your customized tx must satisfy all of the called `@method`'s assertions.
