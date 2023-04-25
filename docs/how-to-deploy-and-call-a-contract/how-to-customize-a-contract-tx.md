@@ -98,7 +98,8 @@ instance.bindTxBuilder("unlock", (current: T, options: MethodCallOptions<T>, ...
 
   result = {
     tx: unsignedTx,
-    atInputIndex: 0 // the contract input's index
+    atInputIndex: 0, // the contract input's index
+    nexts: []
   };
 
   return Promise.resolve(result)         
