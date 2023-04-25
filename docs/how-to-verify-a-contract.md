@@ -47,24 +47,4 @@ Now, every time someone opens the `sCrypt` tab on [the script hash page](https:/
 
 ## Verify contract using CLI
 
-The same process can be done using the [sCrypt CLI](https://www.npmjs.com/package/scrypt-cli) by running the `verify` command:
-
-```sh
-scrypt verify <scriptHash> <contractPath>
-```
-
-The first positional argument is the script hash of the deployed contract and the second one is the path to the file which contains the sCrypt smart contract. Note, that the file must also include all the code it depends on, i.e. third party libraries, just like in the browser interface, described above. 
-
-Using the `network` option, you can specify on which network the contract is deployed. This defaults to `test`, indicating the Bitcoin testnet:
-
-```sh
-npx scrypt-cli verify --network main <scriptHash> <contractPath>
-```
-
-You can also specify the version of sCrypt used during verification. By default, the command will use the version specified in `package.json`:
-
-```sh
-npx scrypt-cli verify --scryptVer 0.2.0-beta.9 <scriptHash> <contractPath>
-```
-
-Upon execution, the designated contract code undergoes verification on sCrypt's servers. If successful, the outcome will be displayed on WoC, as shown above.
+The same process can be done using the [sCrypt CLI](https://www.npmjs.com/package/scrypt-cli). Take a look at the ["Deploy and Verify Using CLI" page](./how-to-deploy-and-call-a-contract/deploy-verify-cli.md#verify) for more detail.
