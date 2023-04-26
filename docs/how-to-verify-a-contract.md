@@ -4,7 +4,7 @@ sidebar_position: 11
 
 # How to Verify a Contract
 
-You will learn how to verify smart contracts on [WhatsOnChain](https://whatsonchain.com/) (WoC).
+You will learn how to verify smart contracts on [WhatsOnChain](https://whatsonchain.com/) (WoC), a blockchain explorer.
 By verifying your smart contract on WoC, anyone can view its source code and interact with it confidently. Let's get started!
 
 
@@ -19,9 +19,11 @@ You can submit and verify sCrypt source code that compiles to it.
 
 ![](../static/img/verify-diagram.webp)
 
-## Submitting the Source Code
+There are two ways to verify it.
 
-At the deployed transaction, click on the `ScriptHash` of the first output. It will open a page like this:
+## 1. Using WOC sCrypt Plugin
+
+At the deployed transaction on WOC, click on the `ScriptHash` of the first output. It will open a page like this:
 
 ![](../static/img/verify-scripthash.png)
 
@@ -45,7 +47,7 @@ Congrats, you have verified your first smart contract!
 
 Now, every time someone opens the `sCrypt` tab on [the script hash page](https://test.whatsonchain.com/script/eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def), they will see the verified smart contract source code, as well as its constructor parameters when deployed.
 
-## Verify contract using CLI
+## 2. Using CLI
 
 The same process can be done using the [sCrypt CLI](https://www.npmjs.com/package/scrypt-cli). 
 You can verify the deployed smart contracts script using the `verify` command:
