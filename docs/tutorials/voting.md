@@ -301,6 +301,16 @@ const contract_id = {
 };
 ```
 
+### Verify
+
+After a successful deployment of a smart contract, you can verify the deployed contract script:
+
+```sh
+npm run verify:contract
+```
+
+Upon execution, the designated contract code undergoes verification on sCrypt's servers. If successful, the outcome will be [displayed on WoC](https://test.whatsonchain.com/script/cecb4f8799913df3e5af50bc81a24e3fef3216a92452d27cd97dcd7ccbce1f1b), under the "sCrypt" tab. See the ["How to Verify a Contract"](../how-to-verify-a-contract.md) page for more details.
+
 ### Load Contract Artifact
 
 Before writing the front-end code, we need to load the contract artifact in `src\index.tsx`.
