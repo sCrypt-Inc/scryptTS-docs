@@ -15,7 +15,18 @@ If you take a look at the transaction on WoC, you'll see that the first output c
 
 ![](../static/img/verify-tx-out.png)
 
-You can submit and verify sCrypt source code that compiles to it.
+This hash is referred to as the `scriptHash`. It's essentially just a `sha256` hash value of the deployed contracts locking script, encoded in a little-endian hex format. It is commonly used as an index by block explorers. You can also get this value locally, via the contract instances `scriptHash` property:
+
+```ts
+console.log(instance.scriptHash)
+// eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def
+```
+
+:::note
+The scriptHash value can vary due to factors like the current property values and the number of times the contract has been updated, leading to inconsistencies in its value. 
+:::
+
+You can submit and verify sCrypt source code that belongs to a specific script hash.
 
 ![](../static/img/verify-diagram.webp)
 
