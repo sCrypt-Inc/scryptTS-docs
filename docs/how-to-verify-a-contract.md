@@ -15,7 +15,7 @@ If you take a look at the transaction on WoC, you'll see that the first output c
 
 ![](../static/img/verify-tx-out.png)
 
-This hash is referred to as the `scriptHash`. It's essentially just a `sha256` hash value of the deployed contracts locking script, encoded in a little-endian hex format. It is commonly used as an index by block explorers. You can also get this value locally, via the contract instances `scriptHash` property:
+This hash is referred to as the `scriptHash`. It's essentially just a `sha256` hash value of the deployed contracts locking script, encoded in a little-endian hex format. It is commonly used as an index by block explorers. You can also get this value locally, via the contract instance's `scriptHash` property:
 
 ```ts
 console.log(instance.scriptHash)
