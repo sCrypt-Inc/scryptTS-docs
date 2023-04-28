@@ -60,7 +60,16 @@ You can set some breakpoints and choose `Launch demo` from the `Run and Debug` v
 
 ![](../static/img/debugging1.gif)
 
+:::note
+You need to change the contract file name in [launch.json](https://github.com/sCrypt-Inc/boilerplate/blob/master/.vscode/launch.json#L13) if needed.
+:::
+
+### Debug a test
 If you want to debug a unit test written with the [Mocha](https://mochajs.org) testing framework, choose `Launch demo test` from the `Run and Debug` view.
 
 
 ![](../static/img/debugging2.gif)
+
+:::note
+You need to change the contract test file name in [launch.json](https://github.com/sCrypt-Inc/boilerplate/blob/master/.vscode/launch.json#L25) if needed.
+:::
