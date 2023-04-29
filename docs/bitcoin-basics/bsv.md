@@ -106,7 +106,7 @@ The hash functions available in the `bsv` submodule are:
 | ripemd160     | 20 bytes     | The RIPEMD160 hash.                                        |
 | sha256ripemd160 | 20 bytes     | The RIPEMD160 hash of the SHA256 hash. Used in Bitcoin addresses. |
 
-Note however, that these functions should not be confused with [sCrypts native hash functions](http://localhost:3000/docs/reference/#hashing-functions). These functions cannot be used in a smart contract method.
+Note however, that these functions should not be confused with [sCrypts native hash functions](http://scrypt.io/docs/reference/#hashing-functions). These functions cannot be used in a smart contract method.
 
 ## Constructing Transactions
 
