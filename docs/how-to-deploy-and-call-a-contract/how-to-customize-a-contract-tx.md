@@ -41,12 +41,12 @@ class DemoContract extends SmartContract {
         satoshis: amount,
       }))
       // add OP_RETURN output
-      .addData('Hello World');
+      .addData('Hello World')
 
     if (changeAddress) {
       deployTx.change(changeAddress);
       if (this._provider) {
-        deployTx.feePerKb(await this.provider.getFeePerKb());
+        deployTx.feePerKb(await this.provider.getFeePerKb())
       }
     }
 
@@ -82,8 +82,6 @@ You can customize a tx builder for a public `@method` of your contract by callin
 ```ts
 // bind a customized tx builder for the public method `MyContract.unlock`
 instance.bindTxBuilder("unlock", (current: T, options: MethodCallOptions<T>, ...args: any) => { 
-  let result: Promise<ContractTransaction>;
-
   // the tx is NOT signed
   const unsignedTx: bsv.Transaction = new bsv.Transaction()
     // add contract input
@@ -94,15 +92,13 @@ instance.bindTxBuilder("unlock", (current: T, options: MethodCallOptions<T>, ...
         satoshis: args[1]
     }))
     // add change output
-    .change(options.changeAddress);
+    .change(options.changeAddress)
 
-  result = {
+  return Promise.resolve({
     tx: unsignedTx,
     atInputIndex: 0, // the contract input's index
     nexts: []
-  };
-
-  return Promise.resolve(result)         
+  })         
 })
 ```
 
