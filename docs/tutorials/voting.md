@@ -644,4 +644,4 @@ useEffect(() => {
 
 Congratulations! You have successfully completed a fullstack voting dapp fully on Bitcoin.
 
-The repo is [here](https://github.com/sCrypt-Inc/voting). And an online exmaple is [here](http://classic.scrypt.io/voting).
+The repo is [here](https://github.com/sCrypt-Inc/voting). And an online example is [here](http://classic.scrypt.io/voting).
