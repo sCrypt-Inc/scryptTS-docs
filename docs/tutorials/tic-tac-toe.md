@@ -193,7 +193,7 @@ else if (this.full()) {
 }
 else {
     // build a output that contains latest contract state.
-    outputs = this.buildStateOutput(amount);
+    outputs = this.buildStateOutput(this.ctx.utxo.value);
 }
 
 if(this.changeAmount > 0n) {
