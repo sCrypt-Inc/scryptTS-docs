@@ -132,7 +132,7 @@ Like properties, a smart contract can also have two kinds of methods:
 ### `@method` decorator
 
 1. Use this decorator to mark any method that intends to run on chain.
-2. It takes a [sighash flag](./scriptcontext.md#sighash-type) as an parameter.
+2. It takes a [sighash flag](./scriptcontext.md#sighash-type) as a parameter.
 
 
 ### Public `@method`s
