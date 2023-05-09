@@ -31,7 +31,7 @@ sCrypt already has a few built-in providers:
 
 * `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
 
-* `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcon, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
+* `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcoin, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
 
 * See full list of providers [here](./reference/classes/Provider.md#hierarchy).
 
@@ -49,7 +49,7 @@ let provider = new DefaultProvider();
 let provider = new DefaultProvider(bsv.Networks.testnet);
 ```
 
-## Signer 
+## Signer
 
 A `Signer` is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
 
@@ -74,7 +74,7 @@ Smart contracts are similar to mathematical functions. Thus, we can test a contr
 
 ### Prepare a Signer and Provider
 
-The `TestWallet` and `DummyProvider` combination would be ideal for local tests because it can sign the contract call transactions without actually sending them. 
+The `TestWallet` and `DummyProvider` combination would be ideal for local tests because it can sign the contract call transactions without actually sending them.
 
 Such a signer may be declared as below:
 
@@ -111,7 +111,7 @@ console.log(typeof instance.methods.foo) // output `function`
 This function is designed to invoke the corresponding `@method` of the same name on chain, meaning calling it will spend the previous contract UTXO in a new transaction. You can call it like this:
 
 ```ts
-// Note: `instance.methods.foo` should be passed in all arguments and in the same order that `instance.foo` would take. 
+// Note: `instance.methods.foo` should be passed in all arguments and in the same order that `instance.foo` would take.
 
 // Additionally, it can accept an optional "opts" argument to control the behavior of the function.
 
@@ -126,7 +126,7 @@ The `options` argument is of type `MethodCallOptions`:
 ```ts
 /**
  * A option type to call a contract public `@method` function.
- * Used to specify the behavior of signers and transaction builders. 
+ * Used to specify the behavior of signers and transaction builders.
  * For example, specifying a transaction builder to use a specific change address or specifying a signer to use a specific public key to sign.
  */
 export interface MethodCallOptions<T> {
@@ -185,7 +185,7 @@ describe('Test SmartContract `Demo`', () => {
 
   before(async () => {
     // compile contract
-    await Demo.compile() 
+    await Demo.compile()
 
     // create a test wallet as signer, connected to a dummy provider
     signer = new TestWallet(privateKey, new DummyProvider())
@@ -198,14 +198,14 @@ describe('Test SmartContract `Demo`', () => {
   })
 
   it('should pass the public method unit test successfully.', async () => {
-    // call `demo.methods.add` to get a signed tx 
+    // call `demo.methods.add` to get a signed tx
     const { tx: callTx, atInputIndex } = await demo.methods.add(
       // pass in the right argument
       3n,
       // set method call options
       {
         // Since `demo.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
-        fromUTXO: dummyUTXO  
+        fromUTXO: dummyUTXO
       } as MethodCallOptions<Demo>
     )
 
@@ -252,7 +252,7 @@ nextInstance.increment();
 // call the method of current instance to apply the updates on chain
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
   {
-    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in. 
+    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
     fromUTXO: getDummyContractUTXO(balance),
 
     // the `next` instance and its balance should be provided here
@@ -289,7 +289,7 @@ To create the `next` of a specific contract instance, you can simply call `next(
 let nextInstance = instance.next();
 ```
 
-It will make a deep copy of all properties and methods of `instance` to create a new one. 
+It will make a deep copy of all properties and methods of `instance` to create a new one.
 
 Then, you should apply all the state updates to the `next` instance. Please note that these are just local/off-chain updates and are yet to be applied to the blockchain.
 
@@ -305,7 +305,7 @@ As described in [this section](#call-a-public-method), we can build a call trans
 ```ts
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
   {
-    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in. 
+    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
     fromUTXO: getDummyContractUTXO(balance),
 
     // the `next` instance and its balance should be provided here
