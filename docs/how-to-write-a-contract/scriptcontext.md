@@ -91,7 +91,7 @@ Accessing `this.ctx` in **non-public** methods is not allowed.
 ```ts
 @method()
 propagateState(outputs: ByteString) : boolean {
-    return this.ctx.hashOutputs == hash256(outputs); //invalid
+    return this.ctx.hashOutputs == hash256(outputs); // invalid
 }
 ```
 
@@ -131,7 +131,7 @@ class DesignatedReceivers extends SmartContract {
 }
 ```
 
-### SigHash Type 
+### SigHash Type
 
 [SigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) decides which part of the spending transaction is included in `ScriptContext`.
 ![](../../static/img/sighashtypes.png)
@@ -147,7 +147,7 @@ public increment() {
 There are a total of 6 sigHash types to choose from:
 
 | SigHash Type | Functional Meaning |
-| ------------- | ------------- | 
+| ------------- | ------------- |
 | ALL | Sign all inputs and outputs |
 | NONE | Sign all inputs and no output |
 | SINGLE | Sign all inputs and the output with the same index |
