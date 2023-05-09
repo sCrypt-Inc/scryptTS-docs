@@ -149,7 +149,7 @@ Below is an example of listening to events when `incrementOnChain` method is cal
 const subscription = Scrypt.contractApi.subscribe({
   clazz: Counter, // contract class
   id: contractId, // contract id
-  methodnames: ['incrementOnChain']
+  methodNames: ['incrementOnChain']
 }, (event: ContractCalledEvent<Counter>) => {
   // callback when receiving a notification
   console.log(`${event.methodName} is called with args: ${event.args}`)
