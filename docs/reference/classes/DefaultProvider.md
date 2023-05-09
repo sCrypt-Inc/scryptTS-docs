@@ -2,7 +2,7 @@
 
 # Class: DefaultProvider
 
-The default provider is the safest, easiest way to begin developing on Bitcon,
+The default provider is the safest, easiest way to begin developing on Bitcoin,
 and it is also robust enough for use in production.
 
 ## Hierarchy
