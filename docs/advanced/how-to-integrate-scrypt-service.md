@@ -12,11 +12,11 @@ An easier alternative is to leverage `sCrypt` infrastructure service, which trac
 
 ### Step 1: Create Your Free Account
 
-Go to the [sCrypt homepage](https://scrypt.io) to create your free account.
+Go to the [sCrypt Developer homepage](https://dev.scrypt.io) to create your free account.
 
 ### Step 2: Get API Key
 
-Login and click on the copy icon to copy your API Key.
+Sign in and click on the copy icon to copy your API Key.
 
 ## Integration
 
@@ -24,7 +24,7 @@ Once you have an API key, you can easily integrate sCrypt service into your app 
 
 ### Step 1: Initialize Client
 
-You can pass the API key, along with `network`, to the `Scrypt.init` function to initialize an sCrypt client in your app. 
+You can pass the API key, along with `network`, to the `Scrypt.init` function to initialize an sCrypt client in your app.
 
 ```ts
 import { Scrypt } from 'scrypt-ts'
@@ -131,13 +131,13 @@ interface SubscribeOptions<T> {
 
 If `methodNames` is set, you will be notified only when public functions in the list are called. Otherwise, you will be notified when ANY public function is called.
 
-2. `callback: (event: ContractCalledEvent<T>) => void`: a callback funciton upon receiving notifications. 
+2. `callback: (event: ContractCalledEvent<T>) => void`: a callback funciton upon receiving notifications.
 
 `ContractCalledEvent<T>` contains relevant information on how the contract is called:
 
 - `methodName: string`, which public method is called
 
-- `args: SupportedParamType[]`, arguments the public method is called with 
+- `args: SupportedParamType[]`, arguments the public method is called with
 
 - `tx: bsv.Transaction`, transaction where contract is called from
 
