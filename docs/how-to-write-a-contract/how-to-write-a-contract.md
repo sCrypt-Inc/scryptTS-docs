@@ -30,7 +30,7 @@ class Demo extends SmartContract {
 }
 ```
 
-Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members docorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
+Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members decorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
 :::note
 You can use [the sCrypt template Repl](https://replit.com/@msinkec/sCrypt) and play with the code in your browser!
@@ -45,7 +45,7 @@ A smart contract can have two kinds of properties:
 2. Without `@prop` decorator: these properties are regular TypeScript properties without any special requirement, meaning they can use any types. Accessing these properties is prohibited in methods decorated with the `@method` decorator.
 
 
-### `@prop(stateful: boolean = false)` decorator 
+### `@prop(stateful: boolean = false)` decorator
 
 Use this decorator to mark any property that intends to be stored on chain.
 
@@ -56,7 +56,7 @@ This decorator takes a `boolean` parameter. By default, it is set to `false`, me
 @prop()
 readonly a: bigint
 
-// valid, but not good enough, `b` cannot be changed after the contract is deployed
+// valid, but not good enough, `a` cannot be changed after the contract is deployed
 @prop()
 a: bigint
 
@@ -102,13 +102,13 @@ in the same order as they are passed into the constructor. For example,
 ```ts
 class A extends SmartContract {
   readonly p0: bigint
-  
+
   @prop()
   readonly p1: bigint
-  
+
   @prop()
   readonly p2: boolean
-  
+
   constructor(p0: bigint, p1: bigint, p2: boolean) {
     super(...arguments)  // same as super(p0, p1, p2)
     this.p0 = p0
@@ -150,7 +150,7 @@ public unlock(x: bigint) {
 ```
 
 :::note
-The last function call of a public `@methed` method **must** be an `assert()` function call, unless it is a `console.log()` call.
+The last function call of a public `@method` method **must** be an `assert()` function call, unless it is a `console.log()` call.
 :::
 
 ```ts
@@ -163,7 +163,7 @@ class PublicMethodDemo extends SmartContract {
   @method()
   public bar() {
     assert(true);
-    return 1n;  // invalid either, that is to say, public method cannot return any value
+    return 1n;  // invalid, because a public method cannot return any value
   }
 
   @method()
@@ -204,7 +204,7 @@ class MethodsDemo extends SmartContract {
     this.x = x;
     this.y = y;
   }
-	
+
   // good, non-public static method without access `@prop` properties
   @method()
   static sum(a: bigint, b: bigint): bigint {
@@ -216,21 +216,21 @@ class MethodsDemo extends SmartContract {
   xyDiff(): bigint {
     return this.x - this.y
   }
-	
+
   // good, public method
   @method()
   public add(z: bigint) {
     // good, call `sum` with the class name
     assert(z == MethodsDemo.sum(this.x, this.y), 'add check failed');
   }
-  
+
   // good, another public method
   @method()
   public sub(z: bigint) {
     // good, call `xyDiff` with the class instance
     assert(z == this.xyDiff(), 'sub check failed');
   }
-  
+
   // valid but bad, public static method
   @method()
   public static alwaysPass() {
@@ -431,7 +431,7 @@ type Point = {
   x: number
   y: number
 }
- 
+
 function printCoord(pt: Point) {
   console.log("The coordinate's x value is " + pt.x)
   console.log("The coordinate's y value is " + pt.y)
@@ -441,7 +441,7 @@ interface Point2 {
   x: number
   y: number
 }
- 
+
 // Exactly the same as the earlier example
 function printCoord(pt: Point2) {
   console.log("The coordinate's x value is " + pt.x)
@@ -530,7 +530,7 @@ for (let i = 0n; i < 3; i++) {
 
 ### `return`
 
-Due to the lack of native return semantics support in Bitcoin Script, a function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future. 
+Due to the lack of native return semantics support in Bitcoin Script, a function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future.
 
 ```ts
 @method() m(x: bigint): bigint {
