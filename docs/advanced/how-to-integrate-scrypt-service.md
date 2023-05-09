@@ -27,11 +27,11 @@ Once you have an API key, you can easily integrate sCrypt service into your app 
 You can pass the API key, along with `network`, to the `Scrypt.init` function to initialize an sCrypt client in your app. 
 
 ```ts
-import { Scrypt } from 'scrypt-ts'
+import { Scrypt, bsv } from 'scrypt-ts'
 
 Scrypt.init({
   apiKey: 'YOUR_API_KEY',
-  network: 'testnet',
+  network: bsv.Networks.testnet,
 })
 ```
 
