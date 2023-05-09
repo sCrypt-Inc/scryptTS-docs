@@ -106,7 +106,7 @@ The hash functions available in the `bsv` submodule are:
 | ripemd160     | 20 bytes     | The RIPEMD160 hash.                                        |
 | sha256ripemd160 | 20 bytes     | The RIPEMD160 hash of the SHA256 hash. Used in Bitcoin addresses. |
 
-Note however, that these [bsv.js hash functions](https://github.com/moneybutton/bsv/blob/master/lib/hash.js) should not be confused with [sCrypt's native hash functions](http://scrypt.io/docs/reference/#hashing-functions). These functions cannot be used in a smart contract method.
+Note however, that these [bsv.js hash functions](https://github.com/moneybutton/bsv/blob/master/lib/hash.js) should not be confused with [sCrypt's native hash functions](https://scrypt.io/docs/reference/#hashing-functions). These functions cannot be used in a smart contract method.
 
 ## Constructing Transactions
 
