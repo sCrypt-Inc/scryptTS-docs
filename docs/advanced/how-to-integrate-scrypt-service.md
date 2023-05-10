@@ -35,10 +35,6 @@ Scrypt.init({
 })
 ```
 
-:::note
-For now, you can use the test key `alpha_test_api_key` on testnet.
-:::
-
 ### Step 2: Connect `ScryptProvider` with your signer
 
 Connect signer to `ScryptProvider`, the required [provider](../how-to-test-a-contract.md#provider) to use sCrypt service.
