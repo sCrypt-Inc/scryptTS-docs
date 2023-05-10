@@ -12,7 +12,7 @@ An easier alternative is to leverage `sCrypt` infrastructure service, which trac
 
 ### Step 1: Create Your Free Account
 
-Go to the [sCrypt Developer homepage](https://dev.scrypt.io) to create your free account.
+Go to the [sCrypt homepage](https://scrypt.io) to create your free account.
 
 ### Step 2: Get API Key
 
