@@ -2,7 +2,7 @@
 
 # Class: GorillapoolProvider
 
-The GorillapoolProvider is backed by [gorillapool][https://gorillapool.io/swagger/](https://gorillapool.io/swagger/)
+The GorillapoolProvider is backed by [gorillapool](https://gorillapool.io/swagger/)
 
 ## Hierarchy
 

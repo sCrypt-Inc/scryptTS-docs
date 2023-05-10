@@ -2,7 +2,7 @@
 
 # Class: SensibleProvider
 
-The SensibleProvider is backed by [Sensible][https://github.com/sensible-contract/sensiblequery](https://github.com/sensible-contract/sensiblequery),
+The SensibleProvider is backed by [Sensible](https://github.com/sensible-contract/sensiblequery),
 
 ## Hierarchy
 

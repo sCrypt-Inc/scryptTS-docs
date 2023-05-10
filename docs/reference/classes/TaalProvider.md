@@ -2,7 +2,7 @@
 
 # Class: TaalProvider
 
-The TaalProvider is backed by [taal][https://console.taal.com/](https://console.taal.com/),
+The TaalProvider is backed by [Taal](https://console.taal.com/),
 which is the popular blockchain exxplorer for Bitcoin.
 
 ## Hierarchy
