@@ -79,7 +79,7 @@ const config = {
             position: 'right',
           },
           {
-            href: '/faucet/',
+            href: 'https://scrypt.io/faucet',
             label: 'Faucet',
             position: 'right',
           },
