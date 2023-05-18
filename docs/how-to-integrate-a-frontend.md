@@ -71,7 +71,7 @@ Now with the contract artifact file, you directly load it in the `index.tsx` fil
 
 ```ts
 import { Helloworld } from './contracts/helloworld';
-var artifact = require('../artifacts/src/contracts/helloworld.json');
+import artifact from '../artifacts/src/contracts/helloworld.json';
 Helloworld.loadArtifact(artifact);
 ```
 
