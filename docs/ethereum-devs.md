@@ -2,7 +2,7 @@
 sidebar_position: 12
 ---
 
-# Transitioning from Ethereum to sCrypt
+# sCrypt for Ethereum Developers
 
 As an Ethereum developer, you might be interested in exploring the BSV ecosystem and its smart contract language, sCrypt. This pages aims to provide a comparison of popular Ethereum development tools and their counterparts in the BSV ecosystem.
 
