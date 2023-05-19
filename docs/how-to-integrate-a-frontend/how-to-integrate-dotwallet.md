@@ -1,10 +1,10 @@
-# How to integrating dotwallet
+# How to integrate DotWallet
 
 
-[DotWallet](https://www.dotwallet.com/en) is a lightweight wallet designed to help users easily and securely manage their digital assets. We will introduce how to integrate dotWallet.
+[DotWallet](https://www.DotWallet.com/en) is a lightweight wallet designed to help users easily and securely manage their digital assets. We will introduce how to integrate DotWallet.
 
 
-## Oauth 2.0
+## OAuth 2.0
 
 
 DotWallet user authorization follows the standard authorization code flow of OAuth2. See [RFC6749](https://tools.ietf.org/html/rfc6749#section-4.1) for details. 
@@ -69,45 +69,45 @@ To avoid security issues, any request for using or obtaining `access_token` must
 :::
 
 
-## Dotwallet Developer Platform
+## DotWallet Developer Platform
 
-1. Before using dotwallet, you need to register and create a dApp on [Dotwallet Developer Platform](https://developers.dotwallet.com/en).
+1. Before using DotWallet, you need to register and create a app on [DotWallet Developer Platform](https://developers.DotWallet.com/en).
 
-![](../../static/img/dotwallet-create-dapp.png)
+![](../../static/img/DotWallet-create-dapp.png)
 
-2. After creating the dApp, you will receive an email containing `app_id` and `secret`.
+2. After creating the app, you will receive an email containing `app_id` and `secret`.
 
 
-![](../../static/img/dotwallet-mail.png)
+![](../../static/img/DotWallet-mail.png)
 
 3. Next, you need to set [redirection URI](https://www.oauth.com/oauth2-servers/redirect-uris). Redirect URLs are a critical part of the OAuth flow. After a user successfully authorizes an application, the authorization server will redirect the user back to the application. For example, in the figure below, we filled in two redirection URIs.
   
 - [https://classic.scrypt.io/tic-tac-toe/](https://classic.scrypt.io/tic-tac-toe) is the address used for product deployment.
 - [http:/ /localhost:3000/tic-tac-toe/](http://localhost:3000/tic-tac-toe/) is used for development and debugging.
 
-![](../../static/img/dotwallet-uris.png)
+![](../../static/img/DotWallet-uris.png)
 
 
 :::note
-*Callback domain* in the form is the redirection URIs in oauth. 
+*Callback domain* in the form is the redirection URIs in OAuth. 
 :::
 
 ## Development Environment 
 
-sCrypt SDK provides `DotwalletSigner` for quick integration with dotwallet.
+sCrypt SDK provides `DotWalletSigner` for quick integration with DotWallet.
 
-You can use `DotwalletDevOption` to create `DotwalletSigner`. Using `DotwalletDevOption` does not require to build a backend service. `DotwalletSigner` will automatically complete the authorization code grant flow for you on the front end.
+You can use `DotWalletDevOption` to create `DotWalletSigner`. Using `DotWalletDevOption` does not require to build a backend service. `DotWalletSigner` will automatically complete the authorization code grant flow for you on the front end.
 
 :::note
-`DotwalletDevOption` is only for development and debugging, otherwise it will leak your `client_secret` <sup>1</sup>. 
+`DotWalletDevOption` is only for development and debugging, otherwise it will leak your `client_secret` <sup>1</sup>. 
 :::
 
 ```ts
 /**
-  * Please note that `DotwalletDevOption` is only used to create DotwalletSigner in development environment.
+  * Please note that `DotWalletDevOption` is only used to create DotWalletSigner in development environment.
   * This Option should not be used in a production environment as it will expose your client_secret.
   */
-export interface DotwalletDevOption {
+export interface DotWalletDevOption {
      /** `app_id` received in the mail */
      client_id: string;
      /** `secret` received in the mail */
@@ -119,7 +119,7 @@ export interface DotwalletDevOption {
 }
 ```
 
-Here is a code example to create `DotwalletSigner` in `React`:
+Here is a code example to create `DotWalletSigner` in `React`:
 
 
 ```ts
@@ -136,13 +136,13 @@ const options = {
 };
 const provider = new DefaultProvider();
 
-const signerRef = useRef(new DotwalletSigner(options, provider));
+const signerRef = useRef(new DotWalletSigner(options, provider));
 
 const signer = signerRef.current;
 ```
 
 
-Next is the same as [before](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md#integrate-wallet), when the user clicks the login wallet button, call the `requestAuth` method to access the wallet, and jump to dotwallet's authorization page.
+Afterwards, you can use it as a signer like any other wallet as [before](./how-to-integrate-a-frontend.md#integrate-wallet). When the user clicks the login wallet button, the `requestAuth` method is called to access the wallet, and user is redirected to DotWallet's authorization page.
 
 
 ```ts
@@ -169,14 +169,16 @@ const walletLogin = async () => {
 
     onAuthenticated();
   } catch (error) {
-    console.error("dotwallet login failed", error);
+    console.error("DotWallet login failed", error);
   }
 };
 ```
 
-![](../../static/img/dotwallet-auth.png)
+![](../../static/img/DotWallet-auth.png)
 
-After the user clicks **Agree to authorize** to log in, the page will be redirected to the `redirect_uri` given by the dApp. In this example, `redirect_uri` is the current page <sup>2</sup>. We identify whether it is a redirected page by judging whether the current query params has the `state` random string filled in when requesting to log in to the dotwallet. If it is a redirected page, it will automatically call `getAccesstoken()` to get `accessToken`. After successful acquisition, `DotwalletSigner` will automatically save the obtained `accessToken` in `localStorage`.
+After the user clicks **Agree to authorize** to log in, the page will be redirected to the `redirect_uri` given by the app. In this example, `redirect_uri` is the current page <sup>2</sup>.
+We can tell whether it is a redirected page by seeing if the current query parameter has the `state` random string filled in when requesting to log in to the wallet. If yes, it will automatically call `getAccesstoken()` to get `accessToken`. After successful authentication, `DotwalletSigner` will automatically save the obtained `accessToken` in `localStorage`. 
+
 
 ```ts
 useEffect(() => {
@@ -192,13 +194,13 @@ useEffect(() => {
 }, []);
 ```
 
-After creating `DotwalletSigner` with `accessToken`, you can call all interfaces of `DotwalletSigner` like calling other [`signer`](../how-to-test-a-contract.md#signer).
+After creating `DotWalletSigner` with `accessToken`, you can call all interfaces of `DotWalletSigner` like calling other [`signer`](../how-to-test-a-contract.md#signer).
 
 
 
 ## Production Environment 
 
-Since the dApp secret and the obtained access_token have a very high security level, they must only be stored on the server and not allowed to be passed to the user agent.
+Since the app secret and the obtained access_token have a very high security level, they must only be stored on the server and not allowed to be passed to the user agent.
 
 The following code demonstrates how to get access token in [Express](https://expressjs.com/) web framework.
 
@@ -240,15 +242,15 @@ app.use('/tic-tac-toe', async function(req, res, next) {
 ```
 
 
-Get access token in frontend and use `DotwalletProdOption` to create a `DotwalletSigner`.
+Get access token in frontend and use `DotWalletProdOption` to create a `DotWalletSigner`.
 
 
 ```ts
 /**
  * This option can be used in both development environment and production environment.
- * See [access-token]{@link https://oauth.net/2/access-tokens} and [DotWallet APIs for authorization]{@link https://developers.dotwallet.com/documents/en/#authorization} to known how to get a access token.
+ * See [access-token]{@link https://oauth.net/2/access-tokens} and [DotWallet APIs for authorization]{@link https://developers.DotWallet.com/documents/en/#authorization} to known how to get a access token.
  */
-export interface DotwalletProdOption {
+export interface DotWalletProdOption {
     accessToken: string;
 }
 
@@ -257,18 +259,17 @@ const accessToken = urlParams.get("accessToken");
 
 const provider = new DefaultProvider();
 
-const signerRef = useRef(new DotwalletSigner({
+const signerRef = useRef(new DotWalletSigner({
   accessToken
 }, provider));
 ```
 
-Now you can access APIs of DotwalletSigner.
+Now you can access APIs of DotWalletSigner.
 
-So far, we have completed the integration of dotWallet.
-
+Congrats! You have completed the integration of DotWallet.
 ------
 
 [1] `client_secret` is usually stored in the backend service. Use the request `accessToken`.
 
-[2] `redirect_uri` only uses the current page during development and debugging. Usually use a backend service as `redirect_uri` in production. And serve the request `accessToken` on the backend.
+[2] `redirect_uri` only uses the current page in development environment. It usually uses a backend service as `redirect_uri` and serves the request with `accessToken` at the backend in production.
 
