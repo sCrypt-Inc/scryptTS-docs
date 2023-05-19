@@ -320,4 +320,4 @@ export class TicTacToe extends SmartContract {
 
 ```
 
-But no dApp is complete if users cannot interact with it. Go [here](../how-to-integrate-a-frontend.md) to see how to add a front end to it.
+But no dApp is complete if users cannot interact with it. Go [here](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md) to see how to add a front end to it.

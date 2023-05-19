@@ -1,8 +1,4 @@
----
-sidebar_position: 8
----
-
-# Tutorial 8: Integrating dotwallet
+# How to integrating dotwallet
 
 
 [DotWallet](https://www.dotwallet.com/en) is a lightweight wallet designed to help users easily and securely manage their digital assets. We will introduce how to integrate dotWallet.
@@ -146,7 +142,7 @@ const signer = signerRef.current;
 ```
 
 
-Next is the same as [before](../how-to-integrate-a-frontend.md#integrate-wallet), when the user clicks the login wallet button, call the `requestAuth` method to access the wallet, and jump to dotwallet's authorization page.
+Next is the same as [before](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md#integrate-wallet), when the user clicks the login wallet button, call the `requestAuth` method to access the wallet, and jump to dotwallet's authorization page.
 
 
 ```ts

@@ -190,7 +190,7 @@ export class Voting extends SmartContract {
 
 ## Frontend
 
-We will add a frontend to the voting smart contract according to [this guide](../how-to-integrate-a-frontend.md).
+We will add a frontend to the voting smart contract according to [this guide](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
 
 ### Setup Project
 
