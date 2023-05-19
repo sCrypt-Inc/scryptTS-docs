@@ -194,7 +194,7 @@ useEffect(() => {
 }, []);
 ```
 
-After creating `DotWalletSigner` with `accessToken`, you can call all interfaces of `DotWalletSigner` like calling other [`signer`](../how-to-test-a-contract.md#signer).
+After creating `DotWalletSigner` with `accessToken`, you can call all interfaces of `DotWalletSigner` as in other signers.
 
 
 
@@ -267,6 +267,7 @@ const signerRef = useRef(new DotWalletSigner({
 Now you can access APIs of DotWalletSigner.
 
 Congrats! You have completed the integration of DotWallet.
+
 ------
 
 [1] `client_secret` is usually stored in the backend service. Use the request `accessToken`.
