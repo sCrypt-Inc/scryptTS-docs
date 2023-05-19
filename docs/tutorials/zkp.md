@@ -237,10 +237,10 @@ The first time you run the command, it will ask you to fund a testnet address. Y
 After a successful run you should see something like the following:
 
 ```
-Verifier contract deployed:  0ac734ea775b7dcf4078dbdca7d013e755e7caf2e3538066b9fbd4a9f5b1aaf7
+Verifier contract deployed:  2396a4e52555cdc29795db281d17de423697bd5cbabbcb756cb14cea8e947235
 ```
 
-The smart contract is now deployed and can be unlocked using a valid proof, that proves the knowledge of the factors for the integer `91`.
+The smart contract is now deployed and can be unlocked using a valid proof, that proves the knowledge of the factors for the integer `91`. You can see [the transaction](https://test.whatsonchain.com/tx/2396a4e52555cdc29795db281d17de423697bd5cbabbcb756cb14cea8e947235) using a block explorer.
 
 Let's call the deployed contract. Let's create a file named `call.ts` with the following content:
 
@@ -274,7 +274,7 @@ export async function call(txId: string, proofPath: PathLike) {
 }
 
 (async () => {
-  await call('0ac734ea775b7dcf4078dbdca7d013e755e7caf2e3538066b9fbd4a9f5b1aaf7', '../proof.json')
+  await call('2396a4e52555cdc29795db281d17de423697bd5cbabbcb756cb14cea8e947235', '../proof.json')
 })()
 ```
 
@@ -288,8 +288,10 @@ npx ts-node call.ts
 If everything goes as expected, we have now unlocked the verifier smart contract. You'll see an output similar to the following:
 
 ```
-Verifier contract unlocked:  e270b92c713f1924838d845f142402784700b34c01fc654847b234dd9517a79b
+Verifier contract unlocked:  30127e0c340878d3fb7c165e2d082267eef2c8df79b5cf750896ef565ca7651d
 ```
+
+Take a look at it using [a block explorer](https://test.whatsonchain.com/tx/30127e0c340878d3fb7c165e2d082267eef2c8df79b5cf750896ef565ca7651d).
 
 ## Conclusion
 

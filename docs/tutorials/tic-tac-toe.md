@@ -71,7 +71,7 @@ The `TicTacToe` contract have a public `@method` called `move()` with `2` parame
  * @param sig a player's signature
  */
 @method()
-public move(n: bigint, sig: Sig): void {
+public move(n: bigint, sig: Sig) {
     assert(n >= 0n && n < 9n);
 }
 ```
@@ -200,7 +200,7 @@ if(this.changeAmount > 0n) {
     outputs += this.buildChangeOutput();
 }
 ```
- 
+
 ### Step 3
 
 Make sure that the output of the current transaction must contain this incremented new state. If all outputs (only a single output here) we create in the contract hashes to `hashOutputs` in `ScriptContext`, we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
@@ -245,7 +245,7 @@ export class TicTacToe extends SmartContract {
     }
 
     @method()
-    public move(n: bigint, sig: Sig): void {
+    public move(n: bigint, sig: Sig) {
         // check position `n`
         assert(n >= 0n && n < 9n);
         // check signature `sig`

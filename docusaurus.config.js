@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'sCrypt',
   tagline: 'a Typescript framework to write smart contracts on Bitcoin Satoshi Vision.',
-  url: 'https://scrypt.io',
+  url: 'https://docs.scrypt.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -33,7 +33,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/docs',
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -79,7 +79,7 @@ const config = {
             position: 'right',
           },
           {
-            href: '/faucet/',
+            href: 'https://scrypt.io/faucet',
             label: 'Faucet',
             position: 'right',
           },

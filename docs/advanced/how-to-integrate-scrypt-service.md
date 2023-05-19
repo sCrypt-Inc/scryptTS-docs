@@ -27,17 +27,13 @@ Once you have an API key, you can easily integrate sCrypt service into your app 
 You can pass the API key, along with `network`, to the `Scrypt.init` function to initialize an sCrypt client in your app.
 
 ```ts
-import { Scrypt } from 'scrypt-ts'
+import { Scrypt, bsv } from 'scrypt-ts'
 
 Scrypt.init({
   apiKey: 'YOUR_API_KEY',
-  network: 'testnet',
+  network: bsv.Networks.testnet,
 })
 ```
-
-:::note
-For now, you can use the test key `alpha_test_api_key` on testnet.
-:::
 
 ### Step 2: Connect `ScryptProvider` with your signer
 
@@ -149,7 +145,7 @@ Below is an example of listening to events when `incrementOnChain` method is cal
 const subscription = Scrypt.contractApi.subscribe({
   clazz: Counter, // contract class
   id: contractId, // contract id
-  methodnames: ['incrementOnChain']
+  methodNames: ['incrementOnChain']
 }, (event: ContractCalledEvent<Counter>) => {
   // callback when receiving a notification
   console.log(`${event.methodName} is called with args: ${event.args}`)
