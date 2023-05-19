@@ -19,7 +19,7 @@ import { bsv } from 'scrypt-ts'
 
 ## Private Keys
 
-A private key object is essentially just a wrapper around a 256-bit integer. 
+A private key object is essentially just a wrapper around a 256-bit integer.
 
 You can generate a Bitcoin private key from a random value:
 
@@ -51,7 +51,7 @@ console.log(privKey.bn.toString())
 
 ## Public Keys
 
-A public key is a key that is derived from a private key and can be shared publicly. Mathematically, a public key is a point on the default elliptic curve that Bitcoin uses, named [`SECP256K1`](https://wiki.bitcoinsv.io/index.php/Secp256k1). It is the curves base point multiplied by the value of the private key.
+A public key is a key that is derived from a private key and can be shared publicly. Mathematically, a public key is a point on the default elliptic curve that Bitcoin uses, named [`SECP256K1`](https://wiki.bitcoinsv.io/index.php/Secp256k1). It is the curve's base point multiplied by the value of the private key.
 
 You can get the public key corresponding to a private key the following way:
 
@@ -87,11 +87,11 @@ Read [this wiki page](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) for m
 
 ## Hash Functions
 
-The `bsv` submodules offers various hash functions that are commonly used in Bitcoin. You can use them like so:
+The `bsv` submodule offers various hash functions that are commonly used in Bitcoin. You can use them like so:
 
 ```ts
-const hashStr = bsv.crypto.Hash.sha256(Buffer.from('this is the data I want to hash')).toString('hex')
-console.log(hashStr)
+const hashString = bsv.crypto.Hash.sha256(Buffer.from('this is the data I want to hash')).toString('hex')
+console.log(hashString)
 // f88eec7ecabf88f9a64c4100cac1e0c0c4581100492137d1b656ea626cad63e3
 ```
 
@@ -106,7 +106,7 @@ The hash functions available in the `bsv` submodule are:
 | ripemd160     | 20 bytes     | The RIPEMD160 hash.                                        |
 | sha256ripemd160 | 20 bytes     | The RIPEMD160 hash of the SHA256 hash. Used in Bitcoin addresses. |
 
-Note however, that these functions should not be confused with [sCrypts native hash functions](/reference/#hashing-functions). These functions cannot be used in a smart contract method.
+Note however, that these [bsv.js hash functions](https://github.com/moneybutton/bsv/blob/master/lib/hash.js) should not be confused with [sCrypt's native hash functions](https://scrypt.io/docs/reference/#hashing-functions). These functions cannot be used in a smart contract method.
 
 ## Constructing Transactions
 
@@ -159,17 +159,17 @@ let tx = new bsv.Transaction()
     )
 ```
 
-Notice, how the output value is 100 less than the value of the UTXO, we're unlocking. This difference is the [transaction fee](https://wiki.bitcoinsv.io/index.php/Transaction_fees) (sometimes also called the miner fee).
+Notice how the output value is 100 less than the value of the UTXO we're unlocking. This difference is the [transaction fee](https://wiki.bitcoinsv.io/index.php/Transaction_fees) (sometimes also called the miner fee).
 
 ### Signing
 
-OK, now that we have the transaction constructed, it's time to sign it. First we need to seal the transaction, so it will be ready to sign. Then we call the `sign` function. It takes the private key that can unlock the UTXO we passed to the `from` function. In our specific example this is the private key that corresponds the the address `n4fTXc2kaKXHyaxmuH5FTKiJ8Tr4fCPHFy`:
+OK, now that we have the transaction constructed, it's time to sign it. First, we need to seal the transaction, so it will be ready to sign. Then we call the `sign` function, which takes the private key that can unlock the UTXO we passed to the `from` function. In our example, this is the private key that corresponds to the address `n4fTXc2kaKXHyaxmuH5FTKiJ8Tr4fCPHFy`:
 
 ```ts
 tx = tx.seal().sign('cNSb8V7pRt6r5HrPTETq2Li2EWYEjA7EcQ1E8V2aGdd6UzN9EuMw')
 ```
 
-Viola! Thats it. This will add the necessary data to the transactions input script. That being the signature along with the public key of our signing key.
+Viola! Thats it. This will add the necessary data to the transaction's input script. That being the signature along with the public key of our signing key.
 
 Now our transaction is ready to be posted to the blockchain. You can serialize the transaction the following way:
 
@@ -177,8 +177,7 @@ Now our transaction is ready to be posted to the blockchain. You can serialize t
 console.log(tx.serialize())
 ```
 
-For broadcasting you can use any provider you like. For simple demo purposes you can simply paste the serialized transaction [here](https://test.whatsonchain.com/broadcast).
-
+For broadcasting, you can use any provider you like. For demo purposes you can simply paste the serialized transaction [here](https://test.whatsonchain.com/broadcast).
 
 ### OP_RETURN Scripts
 
@@ -206,7 +205,7 @@ The `bsv` submodule offers a convenient function to construct such scripts:
 
 ```ts
 const opRetScript: bsv.Script = bsv.Script.buildSafeDataOut(['Hello', 'from', 'sCrypt'])
-``` 
+```
 
 We can add the resulting `bsv.Script` object to an output as we showed [above](#constructing-transactions).
 
@@ -214,5 +213,4 @@ We can add the resulting `bsv.Script` object to an output as we showed [above](#
 ## References
 
 - Take a look at the full [`bsv` submodule reference](../reference/modules/bsv) for a full list of what functions it provides.
-- As the `bsv` submodule is based on MoneyButtons library implementation, take a look at their [video tutorial series](https://www.youtube.com/watch?v=bkGiCjYBpJE&list=PLwj1dNv7vWsMrjrWeiQEelbKTI3Lrmvqp&index=1). Although do keep in mind that some things might be slightly different as it's an old series.
-
+- As the `bsv` submodule is based on MoneyButton's library implementation, take a look at their [video tutorial series](https://www.youtube.com/watch?v=bkGiCjYBpJE&list=PLwj1dNv7vWsMrjrWeiQEelbKTI3Lrmvqp&index=1). Although do keep in mind that some things might be slightly different as it's an old series.

@@ -17,11 +17,11 @@ Before deploy and call a contract, you need to:
 npm run genprivkey
 ```
 
-The command will generate a private key and store it in a `.env` file in our project's root directory. It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key. 
+The command will generate a private key and store it in a `.env` file in our project's root directory. It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key.
 
-2. Fund the private key's address with some testnet coins. You could use this [facuet](https://scrypt.io/faucet) to receive test coins.
+2. Fund the private key's address with some testnet coins. You could use this [faucet](https://scrypt.io/faucet) to receive test coins.
 
-![facuet](../../static/img/faucet.gif)
+![faucet](../../static/img/faucet.gif)
 
 ### Use the Sensilet Wallet
 
@@ -32,10 +32,10 @@ Alternatively, if you have already installed [Sensilet](https://sensilet.com/), 
 ## Introduction
 
 
-After you've finished writing a contract, you can deploy and call it. But first, you should learn how the a smart contract interacts with the blockchain.
+After you've finished writing a contract, you can deploy and call it. But first, you should learn how a smart contract interacts with the blockchain.
 
 
-As explained in the [Overview section](../overview.md), an `sCrypt` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in details.
+As explained in the [Overview section](../overview.md), an `sCrypt` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in detail.
 
 
 ### Tx Builders
@@ -46,7 +46,7 @@ We have some built-in tx builders for the most common way to interact with contr
 
 #### Contract Deployment Transaction
 
-A Bitcoin transaction is required when deploying a contract to the blockchain. The transaction should have an output, whose script is compiled from the contract. This output is known as a contract UTXO and we regard the contract instance comes `from` this UTXO.
+A Bitcoin transaction is required when deploying a contract to the blockchain. The transaction should have an output, whose script is compiled from the contract. This output is known as a contract UTXO and the contract instance comes `from` this UTXO.
 
 An instance's `from` can be accessed.
 ```ts
@@ -58,7 +58,7 @@ instance.from.outputIndex
 
 #### Contract Call Transaction
 
-When you call a public method of a contract instance in a UTXO, a call transaction is needed. The transaction has an input that references to the UTXO and contains the script consisted of the method's arguments. We regard the contract instance goes `to` this transaction input.
+When you call a public method of a contract instance in a UTXO, a call transaction is needed. The transaction has an input that references to the UTXO and contains the script consisting of the method's arguments. We regard the contract instance goes `to` this transaction input.
 
 An instance's `to` can be accessed.
 ```ts
@@ -76,7 +76,7 @@ This section could be summarized as the diagram below:
 
 ## Prepare a Signer and Provider
 
-As we mentioned in the [testing section](../how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call. 
+As we mentioned in the [testing section](../how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call.
 
 
 For local testing, we can use the `TestWallet` introduced [before](../how-to-test-a-contract#testwallet), with a mock provider. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](../how-to-test-a-contract.md#provider).
@@ -123,7 +123,7 @@ console.log(`Smart contract method successfully called with txid ${tx.id}`);
 ```
 
 The major differences between here and local tests are:
-1. the contract needs to be depoyed first;
+1. the contract needs to be deployed first;
 2. the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
 
 ### Create a smart contract instance from a transaction
