@@ -20,11 +20,12 @@ The main difference between the two is that while Ethereum is based on an accoun
 | Scaffolding / Framework | Ethereum uses scaffolding tools like [**Hardhat**](https://hardhat.org/) or [**Truffle**](https://trufflesuite.com/truffle/) to set up the development environment, compile, deploy, and test smart contracts. | The [**sCrypt CLI**](https://www.npmjs.com/package/scrypt-cli) handles all these tasks, eliminating the need for separate tools as in Ethereum. |
 | Libraries | Ethereum developers use [**web3.js**](https://web3js.org/#/) or [**ethers.js**](https://docs.ethers.org) to interact with Ethereum nodes, accounts, smart contracts, and to listen for blockchain events. | In the BSV ecosystem, **sCrypt** takes care of these functionalities as [part of its framework](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md). |
 | Developer Platform / Service | Ethereum developers often use services like [**Alchemy**](https://www.alchemy.com/) or [**Infura**](https://www.infura.io/) to access Ethereum nodes and interact with the Ethereum network without running an Ethereum node themselves. | For BSV, developers use [**sCrypt**'s web development platform](https://scrypt.io), which manages and tracks deployed contracts, provides a platform for contract interaction, and simplifies the overall development process. |
+| IDE | For Ethereum the most popular IDE is [**Remix**](http://remix.ethereum.org/) which is specifically built for Solidity. It also has a Solidity debugger. An alternative is using [VS Code](https://code.visualstudio.com/) with plugins for Solidity. | **sCrypt** is compatible with any environment for developing TypeScript. The most popular being [VS Code](https://code.visualstudio.com/). No plugins needed. |
 | Wallet | For Ethereum, [**Metamask**](https://metamask.io/) is a popular browser extension wallet used for managing user identities, signing transactions, and interacting with smart contracts. | On BSV, developers and users can use [**Sensilet**](https://sensilet.com/), a wallet that can be easily integrated into web3 solutions for the BSV blockchain. |
 | Block Explorer | Ethereum's [**Etherscan**](https://etherscan.io/) is a widely used block explorer for viewing transaction history, contract source codes, and network status. | In the BSV world, [**WhatsOnChain**](https://whatsonchain.com/) serves a similar purpose, providing a comprehensive view of BSV transactions, blocks, and contract details. |
 
 
-## ExampleCode
+## Example Code
 
 Let's compare a counter smart contract between Solidity and sCrypt.
 
