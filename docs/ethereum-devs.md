@@ -4,26 +4,48 @@ sidebar_position: 12
 
 # sCrypt for Ethereum Developers
 
-As an Ethereum developer, you might be interested in exploring the BSV ecosystem and its smart contract language, sCrypt. This pages aims to provide a comparison of popular Ethereum development tools and their counterparts in the BSV ecosystem.
+# Smart contracts on Bitcoin vs Ethereum
+Bitcoin and Ethereum are both layer-1 blockchains with [fully programmable smart contracts](https://xiaohuiliu.medium.com/turing-machine-on-bitcoin-7f0ebe0d52b1).
+However, their designs fundamentally differ. 
 
-The main difference between the two is that while Ethereum is based on an account model, Bitcoin utilizes the UTXO-model. In Ethereum a smart contract is a separate entity that lives on until it's terminated. In Bitcoin, on the other hand, smart contracts are stateless by default and can be terminated once a public method gets called / unlocked. However state can be enforced by having these methods enforce a copy of itself (with a modified state) in the next output. This essentially unlocks a very similar behavior to Ethereum. See [this](how-to-write-a-contract/stateful-contract.md) page for more details.
+Ethereum is a global state machine, whose state consists of all smart contracts deployed on it. Each transaction is an input to the state machine, transitioning it to the next state according to the rules defined in the smart contract the transaction calls. The design imposes severe limitations on scalability, since transactions must be sequentially processed due to potential race conditions.
 
+In Bitcoin, transaction processing is independent of each other since all information needed is localized. There is no shared global state. Bitcoin is maximally parallelizable by design.
 
-
-|| Ethereum | BSV |
+Detailed side-by-side comparison can be found [here](ttps://xiaohuiliu.medium.com/bitcoin-vs-ethereum-smart-contracts-921e0a12b043), which is concisely summarized below.
+|| Ethereum | Bitcoin |
 |---|---|---|
-| Programming Language | Ethereum utilizes [**Solidity**](https://soliditylang.org/) for developing smart contracts. | BSV uses [**sCrypt**](https://docs.scrypt.io/), an embedded Domain Specific Language (eDSL) based on TypeScript. |
-| Execution Environment | Ethereum uses the Ethereum Virtual Machine (EVM) to execute smart contracts. It offers unbounded loops and access to global state. | BSV uses the Bitcoin Virtual Machine (BVM) to execute smart contracts. The computation is a pure function. Unbounded looping can be achieved by iterating [stateful contracts](./how-to-write-a-contract/stateful-contract.md).|
-| Model | Ethereum uses the account model. It cannot be parallelized as it uses global state. | BSV uses the [Unspent Transaction Output (UTXO) model](./overview.md#how-do-bitcoin-smart-contracts-work), which can be fully parallelized and is highly scalable. Execution has no side effects and runs the same on or off chain. |
-| Transaction Cost | Ethereum's transaction costs are generally very expensive, especially for larger contracts. | Because of its scalability, BSV's transaction costs are extremely cheap, even for very large contracts, such as a full custom [zk-SNARK verifier](./tutorials/zkp.md). |
-| Scaling | Ethereum primarily focuses on vertical scaling, such as sharding and layer 2 solutions. | BSV focuses on horizontal scaling, such as increasing block size to handle more transactions. Unlocking UTXO's can be executed in parallel and enables massive scaling. |
-| Scaffolding / Framework | Ethereum uses scaffolding tools like [**Hardhat**](https://hardhat.org/) or [**Truffle**](https://trufflesuite.com/truffle/) to set up the development environment, compile, deploy, and test smart contracts. | The [**sCrypt CLI**](https://www.npmjs.com/package/scrypt-cli) handles all these tasks, eliminating the need for separate tools as in Ethereum. |
-| Libraries | Ethereum developers use [**web3.js**](https://web3js.org/#/) or [**ethers.js**](https://docs.ethers.org) to interact with Ethereum nodes, accounts, smart contracts, and to listen for blockchain events. | In the BSV ecosystem, **sCrypt** takes care of these functionalities as [part of its framework](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md). |
-| Developer Platform / Service | Ethereum developers often use services like [**Alchemy**](https://www.alchemy.com/) or [**Infura**](https://www.infura.io/) to access Ethereum nodes and interact with the Ethereum network without running an Ethereum node themselves. | For BSV, developers use [**sCrypt**'s web development platform](https://scrypt.io), which manages and tracks deployed contracts, provides a platform for contract interaction, and simplifies the overall development process. |
-| IDE | For Ethereum the most popular IDE is [**Remix**](http://remix.ethereum.org/) which is specifically built for Solidity. It also has a Solidity debugger. An alternative is using [VS Code](https://code.visualstudio.com/) with plugins for Solidity. | **sCrypt** is compatible with any environment for developing TypeScript. The most popular being [VS Code](https://code.visualstudio.com/). No plugins needed. |
-| Wallet | For Ethereum, [**Metamask**](https://metamask.io/) is a popular browser extension wallet used for managing user identities, signing transactions, and interacting with smart contracts. | On BSV, developers and users can use [**Sensilet**](https://sensilet.com/), a wallet that can be easily integrated into web3 solutions for the BSV blockchain. |
-| Block Explorer | Ethereum's [**Etherscan**](https://etherscan.io/) is a widely used block explorer for viewing transaction history, contract source codes, and network status. | In the BSV world, [**WhatsOnChain**](https://whatsonchain.com/) serves a similar purpose, providing a comprehensive view of BSV transactions, blocks, and contract details. |
+| Execution Environment | [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/) (EVM) | [Bitcoin Virtual Machine](https://xiaohuiliu.medium.com/introduction-to-bitcoin-smart-contracts-9c0ea37dc757) (BVM)|
+| Model | Account | [UTXO](./overview.md#how-do-bitcoin-smart-contracts-work) |
+| Transaction Fee | $1-10 | $0.00001 |
+| Transactions Per Second | 15 | 3000+ |
+| Transaction Processing | Sequential | Parallel |
+| Scalability | Vertical | Horizontal |
+| Paradigm | Impure | Pure |
 
+
+# Smart contract development on Bitcoin vs Ethereum
+
+Besides unboundedly scalable fundation, Bitcoin also offers superior smart cotnract developer experience.
+
+The table below shows a comparison of popular Ethereum development tools and their counterparts in the Bitcoin ecosystem.
+
+There are two noticeable differences.
+1. Bitcoin smart contract is written in TypeScript, one of the most popular programming languages tens of millions of Web2 developers are already familiar with. They do not have to learn a new niche programming language like Solidity, placing a high barrier to entry. They can reuse all of their favoriate tools, such as Visual Studio Code, [WebStorm](https://www.jetbrains.com/webstorm/), and NPM. 
+2. Ethereum's development tools are **fragmented**. They are developed by different entities, who are often competitors. There is disincentive to make them more interoperable, thus they don't communicate with each other well. By contrast, sCrypt takes a more holistic and systematic approach. It builds a unified full-stack platform that encompasses most tools, from programming language, to framework/libraries. Developed synergistically, they are fully compatible with each other, greatly simplifing and streamlining development process.
+
+
+|| Ethereum | Bitcoin |
+|---|---|---|
+| Programming Language | [Solidity](https://soliditylang.org/) | [sCrypt DSL](https://docs.scrypt.io/) |
+| Framework | [Hardhat](https://hardhat.org/) / [Truffle](https://trufflesuite.com/truffle/) | [The sCrypt CLI](https://www.npmjs.com/package/scrypt-cli) |
+| Libraries | [Web3.js](https://web3js.org/#/) / [Ethers.js](https://docs.ethers.org) | [scrypt-ts](https://docs.scrypt.io/how-to-write-a-contract/) |
+| Developer Platform | [Alchemy](https://www.alchemy.com/) / [Infura](https://www.infura.io/) | [sCrypt](https://scrypt.io) |
+| IDE | [Remix](https://remix.ethereum.org)[^1] | [Visual Studio Code](https://code.visualstudio.com/) |
+| Wallet | [MetaMask](https://metamask.io/) | [Sensilet](https://sensilet.com/) |
+| Block Explorer | [Etherscan](https://etherscan.io/) | [WhatsOnChain](https://whatsonchain.com/) |
+
+[^1]: Visual Studio Code can also be used for Solidity with various extentions. However, its support is extremely limited compared to that of sCrypt, a TypeScript DSL, which is supported out of box without any extension. For example, [VS Code debugger](./how-to-debug-a-contract.md) has first-class comprehensive support for sCrypt, but does not suppport Solidity.
 
 ## Example Code
 
@@ -62,20 +84,12 @@ class Counter extends SmartContract {
         this.count = count
     }
 
-    @method(SigHash.ANYONECANPAY_SINGLE)
+    @method()
     public incremenCounter() {
-        // Increment counter value.
         this.count++
 
-        // Enforce next output to include smart contract with updated counter value.
-        const amount: bigint = this.ctx.utxo.value
-        const output: ByteString = this.buildStateOutput(this.ctx.utxo.value)
-        assert(this.ctx.hashOutputs == hash256(output))
+        assert(hash256(outhis.buildStateOutput(this.ctx.utxo.value)) == this.ctx.hashOutputs)
     }
 
 }
 ```
-
-## Conclusion
-
-As a developer, you will notice that sCrypt does a lot of the heavy lifting, providing a streamlined, all-in-one framework for smart contract development on BSV. In contrast to Ethereum, where multiple tools and services need to be combined for a complete smart contract development environment, sCrypt encompasses most of these functionalities in a single platform, which can greatly simplify your development process.
