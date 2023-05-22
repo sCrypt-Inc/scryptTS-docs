@@ -135,8 +135,8 @@ export async function GET(request: Request) {
       const { access_token } = data;
       // save access_token
       token.access_token = access_token;
-      // redirect to home page.
-      redirect('/');
+      // redirect to balance page.
+      redirect('/balance');
     }
 
   }
@@ -185,12 +185,12 @@ export default async function Balance() {
 
 <center>src/app/balance/page.tsx</center>
 
-After creating `DotWalletSigner` with `accessToken`, you can call all interfaces of `DotWalletSigner` as in other signers.
+After creating `DotWalletSigner` with access token, you can call all interfaces of `DotWalletSigner` as in other signers.
 
 Congrats! You have completed the integration of DotWallet.
 
 Full code is [here](https://github.com/zhfnjust/dotwallet-example).
 
-------
+------------------------
 
 [1] `client_secret` is usually stored in the backend service. It's used to exchange code for access token.
