@@ -14,9 +14,13 @@ An easier alternative is to leverage `sCrypt` infrastructure service, which trac
 
 Go to the [sCrypt homepage](https://scrypt.io) to create your free account.
 
+![](../../static/img/homepage.png)
+
 ### Step 2: Get API Key
 
 Sign in and click on the copy icon to copy your API Key.
+
+![](../../static/img/api-keys.png)
 
 ## Integration
 
