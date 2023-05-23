@@ -13,6 +13,7 @@ Ethereum is a global state machine, whose state consists of all smart contracts 
 In Bitcoin, transaction processing is independent of each other since all information needed is localized. There is no shared global state. Bitcoin is maximally parallelizable by design.
 
 Detailed side-by-side comparison can be found [here](ttps://xiaohuiliu.medium.com/bitcoin-vs-ethereum-smart-contracts-921e0a12b043), which is concisely summarized below.
+
 || Ethereum | Bitcoin |
 |---|---|---|
 | Execution Environment | [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/) (EVM) | [Bitcoin Virtual Machine](https://xiaohuiliu.medium.com/introduction-to-bitcoin-smart-contracts-9c0ea37dc757) (BVM)|
