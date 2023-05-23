@@ -49,19 +49,19 @@ To avoid security issues, any request for using or obtaining `access_token` must
 
 1. Before using DotWallet, you need to register and create a app on [DotWallet Developer Platform](https://developers.DotWallet.com/en).
 
-![](../../static/img/DotWallet-create-dapp.png)
+![](../../static/img/dotWallet-create-dapp.png)
 
 2. After creating the app, you will receive an email containing `app_id` and `secret`.
 
 
-![](../../static/img/DotWallet-mail.png)
+![](../../static/img/dotWallet-mail.png)
 
 3. Next, you need to set [redirection URI](https://www.oauth.com/oauth2-servers/redirect-uris). Redirect URLs are a critical part of the OAuth flow. After a user successfully authorizes an application, the authorization server will redirect the user back to the application. For example, in the figure below, we filled in two redirection URIs.
   
 - [https://dotwallet-example.vercel.app/callback/](https://dotwallet-example.vercel.app/callback/) is the redirection URI used for product deployment.
 - [http://localhost:3000/callback/](http://localhost:3000/callback/) is the redirection URI used for development and debugging.
 
-![](../../static/img/DotWallet-uris.png)
+![](../../static/img/dotWallet-uris.png)
 
 
 :::note
@@ -100,7 +100,7 @@ export default async function Home() {
 
 If the user clicks the **DotWallet Login** button, the page will be redirected to the authorization server page.
 
-![](../../static/img/DotWallet-auth.png)
+![](../../static/img/dotWallet-auth.png)
 
 
 2. After the user clicks **Agree to authorize** to log in, the authorization server redirect the user to the redirection URI. The following code receives the `code` through the callback uri. Then exchange the `code` for `access_token` and save it.
