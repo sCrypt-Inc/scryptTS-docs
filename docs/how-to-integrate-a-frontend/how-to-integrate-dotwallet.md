@@ -108,7 +108,7 @@ If the user clicks the **DotWallet Login** link, the page will be redirected to 
 
 2. After the user clicks **Agree to authorize** to log in, the authorization server redirects the user to the redirection URI. The following code receives the `code` through the callback uri,  exchanges the `code` for `access_token` and save it.
 
-Inside the [app directory](https://nextjs.org/docs/app/building-your-application/routing/defining-routes#creating-routes), folders are used to define routes in nextjs. we create `src/app/callback/route.ts` to handle the redirection request.
+Inside the `app` directory, folders are used to [define routes](https://nextjs.org/docs/app/building-your-application/routing/defining-routes#creating-routes) in nextjs. we create `src/app/callback/route.ts` to handle the redirection request.
 
 ```ts
 import { redirect, notFound } from 'next/navigation';
