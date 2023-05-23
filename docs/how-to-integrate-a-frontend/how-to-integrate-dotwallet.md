@@ -82,12 +82,12 @@ Here is an example to integration DotWallet in [Nextjs](https://nextjs.org/), a 
 
 ```ts
 export default async function Home() {
-  const loginUrl = `https://api.ddpurse.com/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(
-      process.env.REDIRECT_URI || ''
-    )}&response_type=code&scope=${encodeURIComponent(
-      "user.info"
-    )}&state=${crypto.randomUUID()}`;
-  
+    const client_id = process.env.CLIENT_ID;
+    const redirect_uri = encodeURIComponent(process.env.REDIRECT_URI || '');
+    const scope = encodeURIComponent("user.info autopay.bsv");
+    const state = crypto.randomUUID();
+    const loginUrl = `https://api.ddpurse.com/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&scope=${scope}&state=${state}`;
+    
     return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="m-4 p-4 bg-blue-200 font-bold rounded-lg">
@@ -107,6 +107,8 @@ If the user clicks the **DotWallet Login** link, the page will be redirected to 
 
 
 2. After the user clicks **Agree to authorize** to log in, the authorization server redirects the user to the redirection URI. The following code receives the `code` through the callback uri,  exchanges the `code` for `access_token` and save it.
+
+Inside the [app directory](https://nextjs.org/docs/app/building-your-application/routing/defining-routes#creating-routes), folders are used to define routes in nextjs. we create `src/app/callback/route.ts` to handle the redirection request.
 
 ```ts
 import { redirect, notFound } from 'next/navigation';
@@ -156,7 +158,6 @@ export async function GET(request: Request) {
 sCrypt SDK provides `DotWalletSigner` for quick integration with DotWallet.
 
 After redirect to the `/balance` page, we can create a `DotWalletSigner` with the OAuth access token, which is passed as the first argument.
-
 
 
 ```ts
