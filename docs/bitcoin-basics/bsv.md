@@ -25,9 +25,10 @@ You can generate a Bitcoin private key from a random value:
 
 ```ts
 const privKey = bsv.PrivateKey.fromRandom()
+// Same as: const privKey = bsv.PrivateKey.fromRandom(bsv.Network.mainnet)
 ```
 
-This will generate a private key for the Bitcoin main network. To create a key for the test network (also referred to as "testnet"), pass a string `bsv.Networks.testnet` object:
+This will generate a private key for the Bitcoin main network. To create a key for the test network (also referred to as "testnet"), pass the `bsv.Networks.testnet` object:
 
 ```ts
 const privKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)

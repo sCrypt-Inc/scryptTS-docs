@@ -40,12 +40,11 @@ You can initialize these providers like this:
 ```ts
 let dummyProvider = new DummyProvider();
 
-// mainnet
-
+// Mainnet
 let provider = new DefaultProvider();
+// Or explicitly: let provider = new DefaultProvider(bsv.Networks.mainnet);
 
-// testnet
-
+// Testnet
 let provider = new DefaultProvider(bsv.Networks.testnet);
 ```
 
