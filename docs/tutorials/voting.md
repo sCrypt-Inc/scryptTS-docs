@@ -640,6 +640,60 @@ useEffect(() => {
 }, []);
 ```
 
+### Deploy to GitHub Pages
+
+After pushing the frontend project to your GitHub account, it's easy to publish a website with GitHub Pages, so that users can interact with your dApp with the browser.
+
+#### Step 1. Add `homepage` to `package.json`
+
+Open your `package.json` and add a `homepage` field for your project.
+
+```json
+{
+  "name": "voting",
+  "homepage": "https://[YOUR-GITHUB-USERNAME].github.io/[YOUR-REPO-NAME]"
+  ...
+}
+```
+
+For example, our demo repo is at https://github.com/sCrypt-Inc/voting, so we set
+
+```
+https://sCrypt-Inc.github.io/voting
+```
+
+as the homepage, where `sCrypt-Inc` is our GitHub username, and `voting` is the repo name.
+
+#### Step 2. Install `gh-pages` and add `scripts` in `package.json`
+
+Run the following command to install the dependency.
+
+```sh
+npm install --save gh-pages
+```
+
+Then add two scripts in `package.json`.
+
+```json
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
+  ...
+},
+```
+
+:::note
+The `predeploy` script will run automatically before `deploy` is run.
+:::
+
+#### Step 3. Deploy the site
+
+Run the following command to deploy the website.
+
+```sh
+npm run deploy
+```
+
 ### Conclusion
 
 Congratulations! You have successfully completed a fullstack voting dapp fully on Bitcoin.
