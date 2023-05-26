@@ -642,7 +642,7 @@ useEffect(() => {
 
 ### Deploy to GitHub Pages
 
-After pushing the frontend project to your GitHub account, it's easy to publish a website with GitHub Pages, so that users can interact with your dApp with the browser.
+After pushing the frontend project to your GitHub account, it's easy to [publish a website with GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages), so that users can interact with your dApp with the browser.
 
 #### Step 1. Add `homepage` to `package.json`
 
@@ -693,6 +693,12 @@ Run the following command to deploy the website.
 ```sh
 npm run deploy
 ```
+
+#### Step 4. Update GitHub project settings
+
+After running the `deploy` script, don't forget to update your GitHub project settings to use `gh-pages` branch. Go to `Settings --> Code and automation/Pages`, and select `gh-pages` as the branch used by the GitHub Pages site.
+
+![](../../static/img/gh-pages.png)
 
 ### Conclusion
 
