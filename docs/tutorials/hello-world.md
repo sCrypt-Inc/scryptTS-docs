@@ -69,7 +69,7 @@ Let's create a file named `deploy.ts` in the root of the project, containing cod
 
 ```ts
 import { Helloworld } from './src/contracts/helloworld'
-import { getDefaultSigner } from './tests/testnet/utils/txHelper'
+import { getDefaultSigner } from './tests/utils/txHelper'
 import { toByteString, sha256 } from 'scrypt-ts'
 
 (async () => {
