@@ -129,8 +129,8 @@ reverseByteString(s1, 32) // 6cfeea2d7a1d51249f0624ee98151bfa259d095642e253d8e2d
 
 ```ts
 const message = toByteString('001122')
-slice(message, 1) // '1122'
-slice(message, 1, 2) // '11'
+slice(message, 1n) // '1122'
+slice(message, 1n, 2n) // '11'
 ```
 
 ### Bitwise Operator
