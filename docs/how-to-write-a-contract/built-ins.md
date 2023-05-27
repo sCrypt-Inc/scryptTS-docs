@@ -125,6 +125,14 @@ const s1 = toByteString('793ff39de7e1dce2d853e24256099d25fa1b1598ee24069f24511d7
 reverseByteString(s1, 32) // 6cfeea2d7a1d51249f0624ee98151bfa259d095642e253d8e2dce1e79df33f79
 ```
 
+- `slice(byteString: ByteString, start: BigInt, end?: BigInt): ByteString` return a substring from `start` to, but not including, `end`. If `end` is not specified, the substring continues to the last byte.
+
+```ts
+const message = toByteString('001122')
+slice(message, 1n) // '1122'
+slice(message, 1n, 2n) // '11'
+```
+
 ### Bitwise Operator
 
 Bigint in the Bitcoin is stored in [sign–magnitude format](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude), not [two's complement format](https://en.wikipedia.org/wiki/Signed_number_representations#Two's_complement) commonly used. If the operands are all nonnegative, the result of the operation is consistent with TypeScript's bitwise operator, except `~`. Otherwise, the operation results may be inconsistent and thus undefined. It is strongly recommended to **NEVER** apply bitwise operations on negative numbers.

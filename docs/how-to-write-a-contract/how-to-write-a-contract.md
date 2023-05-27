@@ -305,8 +305,6 @@ toByteString('world', c) // invalid, not passing boolean literal to the 2nd para
 
 * `+`: concatenate
 
-* `ByteString.slice(start: number, end?: number)`: return a substring from `start` to, but not including, `end`. If `end` is not specified, the substring continues to the last byte. Since `ByteString` is a byte array and each byte consists of two hex characters, `start` and `end` must be even.
-
 ```ts
 const str0 = toByteString('01ab23ef68')
 const str1 = toByteString('656c6c6f20776f726c64')
@@ -319,10 +317,6 @@ str0 === str1
 // concatenation
 str0 + str1
 // '01ab23ef68656c6c6f20776f726c64'
-
-// slice
-str1.slice(2, 6)
-// `6c6c`, not '6c6f2077', since each byte has two hex characters
 ```
 
 #### `number`
