@@ -656,6 +656,8 @@ Open your `package.json` and add a `homepage` field for your project.
 }
 ```
 
+![](../../static/img/voting-homepage.png)
+
 For example, our demo repo is at https://github.com/sCrypt-Inc/voting, so we set
 
 ```
@@ -681,6 +683,8 @@ Then add two scripts in `package.json`.
   ...
 },
 ```
+
+![](../../static/img/voting-scripts.png)
 
 :::note
 The `predeploy` script will run automatically before `deploy` is run.
