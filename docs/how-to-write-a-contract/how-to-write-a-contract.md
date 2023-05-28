@@ -339,14 +339,6 @@ for (let i: number = 0 i < 10 i++) {
 }
 ```
 
-* Calling `slice(start: number, end?: number)` function on a `ByteString`
-
-```ts
-let b: ByteString = toByteString("001122")
-let end: bigint = 4n
-b.slice(0, Number(end))
-// "0011"
-```
 It can also be used in defining [compile-time constants](#compile-time-constant).
 
 
