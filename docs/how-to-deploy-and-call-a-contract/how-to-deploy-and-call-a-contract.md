@@ -156,7 +156,7 @@ export class P2PKH extends SmartContract {
     readonly pubKeyHash: PubKeyHash;
 
     constructor(pubKeyHash: PubKeyHash) {
-        super(pubKeyHash);
+        super(..arguments);
         this.pubKeyHash = pubKeyHash;
     }
 

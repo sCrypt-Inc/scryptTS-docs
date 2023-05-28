@@ -200,7 +200,7 @@ class MethodsDemo extends SmartContract {
   readonly y: bigint;
 
   constructor(x: bigint, y: bigint) {
-    super(x, y);
+    super(...arguments);
     this.x = x;
     this.y = y;
   }
