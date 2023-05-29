@@ -1,8 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 ---
 
-# Tutorial 7: Voting
+# Tutorial 6: Voting
 
 ## Overview
 

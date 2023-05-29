@@ -1,8 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
-# Tutorial 6: Zero Knowledge Proofs
+# Tutorial 5: Zero Knowledge Proofs
 
 ## Overview 
 

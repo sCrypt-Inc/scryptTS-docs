@@ -1,8 +1,8 @@
 ---
-sidebar_position: 8
+sidebar_position: 7
 ---
 
-# Tutorial 8: Escrow
+# Tutorial 7: Escrow
 
 ## Overview
 

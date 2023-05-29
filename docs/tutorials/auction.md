@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Tutorial 3: Auction
+# Tutorial 2: Auction
 
 ## Overview
 

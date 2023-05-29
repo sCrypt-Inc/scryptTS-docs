@@ -238,7 +238,7 @@ const instance = Counter.fromTx(tx, atOutputIndex)
 // and we can use it to interact with the contract
 ```
 
-Let's look at a more complex example.
+A complete example can be found [here](./call-deployed).
 
 ### Method with Signatures
 

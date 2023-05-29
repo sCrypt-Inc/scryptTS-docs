@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
-# Tutorial 4: Oracle
+# Tutorial 3: Oracle
 
 ## Overview
 

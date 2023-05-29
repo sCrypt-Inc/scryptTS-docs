@@ -1,11 +1,11 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 
-# Tutorial 2: Interact with a Deployed Contract
+# Interact with a Deployed Contract
 
 ## Overview
-In this tutorial, we will interact with a deployed smart contract by calling its public method.
+In this tutorial, we will interact with a deployed smart contract by calling its public method, in a separate process or by a different party.
 We need to create an instance corresponding to the deployed contract on chain.
 
 ## The Smart Contract
