@@ -113,38 +113,13 @@ const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
 const signer = new TestWallet(privateKey, new DefaultProvider(network));
 ```
 
+The `privateKey` must have enough coins. Learn how to fund it on a testnet using a [faucet](./faucet).
+
 Then just connect it to your contract instance like this:
 
 ```ts
 await instance.connect(signer);
 ```
-
-## Faucet
-
-It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
-
-Before deploy and call a contract, you need to have a funded address:
-
-1. Generate a private key with the following command, after creating a project:
-
-```sh
-scrypt project demo
-cd demo
-npm install
-npm run genprivkey
-```
-
-The command will generate a private key and store it in a `.env` file in our project's root directory. It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key.
-
-2. Fund the private key's address with some testnet coins. You could use this [faucet](https://scrypt.io/faucet) to receive test coins.
-
-![faucet](../../static/img/faucet.gif)
-
-### Use the Sensilet Wallet
-
-Alternatively, if you have already installed [Sensilet](https://sensilet.com/), you can extract and use its private key on testnet as follows.
-
-![](../../static/img/extract-sensilet-private-key.gif)
 
 
 ## Contract Deployment
