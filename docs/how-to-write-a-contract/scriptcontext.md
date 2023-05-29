@@ -120,10 +120,8 @@ class DesignatedReceivers extends SmartContract {
     const bobOutput: ByteString = Utils.buildPublicKeyHashOutput(bob, 1000n)
     let outputs = aliceOutput + bobOutput
 
-    if (this.changeAmount > 0) {
-      // require a change output
-      outputs += this.buildChangeOutput();
-    }
+    // require a change output
+    outputs += this.buildChangeOutput();
 
     // ensure outputs are actually from the spending transaction as expected
     assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')

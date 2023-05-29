@@ -102,9 +102,7 @@ const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(highestBidder, h
 ```ts
 let outputs: ByteString = auctionOutput + refundOutput
 // Add change output.
-if (this.changeAmount > 0) {
-    outputs += this.buildChangeOutput()
-}
+outputs += this.buildChangeOutput()
 ```
 
 At last, we require the transaction to have these outputs using `ScriptContext`.
@@ -134,9 +132,7 @@ public bid(bidder: PubKeyHash, bid: bigint) {
 
     let outputs: ByteString = auctionOutput + refundOutput
     // Add change output.
-    if (this.changeAmount > 0) {
-        outputs += this.buildChangeOutput()
-    }
+    outputs += this.buildChangeOutput()
 
     assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
 }
@@ -247,9 +243,7 @@ export class Auction extends SmartContract {
         let outputs: ByteString = auctionOutput + refundOutput
 
         // Add change output.
-        if (this.changeAmount > 0) {
-            outputs += this.buildChangeOutput()
-        }
+        outputs += this.buildChangeOutput()
 
         assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
     }

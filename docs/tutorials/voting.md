@@ -98,9 +98,7 @@ After we increment the candidate's votes and update the contract state, we make 
 
 ```ts
 let outputs: ByteString = this.buildStateOutput(this.ctx.utxo.value)
-if (this.changeAmount > 0n) {
-  outputs += this.buildChangeOutput()
-}
+outputs += this.buildChangeOutput()
 assert(this.ctx.hashOutputs === hash256(outputs), 'hashOutputs mismatch')
 ```
 
@@ -115,10 +113,9 @@ public vote(name: Name) {
   // restrict tx outputs
   // to contain the latest state with the same balance
   let outputs: ByteString = this.buildStateOutput(this.ctx.utxo.value)
-  if (this.changeAmount > 0n) {
-    // to contain the change output when necessary
-    outputs += this.buildChangeOutput()
-  }
+  // to contain the change output when necessary
+  outputs += this.buildChangeOutput()
+
   assert(this.ctx.hashOutputs === hash256(outputs), 'hashOutputs mismatch')
 }
 ```
@@ -171,9 +168,7 @@ export class Voting extends SmartContract {
         this.increaseVotesReceived(name)
         // output containing the latest state and the same balance
         let outputs: ByteString = this.buildStateOutput(this.ctx.utxo.value)
-        if (this.changeAmount > 0n) {
-            outputs += this.buildChangeOutput()
-        }
+        outputs += this.buildChangeOutput()
         assert(this.ctx.hashOutputs === hash256(outputs), 'hashOutputs mismatch')
     }
 

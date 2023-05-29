@@ -196,9 +196,8 @@ else {
     outputs = this.buildStateOutput(this.ctx.utxo.value);
 }
 
-if(this.changeAmount > 0n) {
-    outputs += this.buildChangeOutput();
-}
+outputs += this.buildChangeOutput();
+
 ```
 
 ### Step 3
@@ -273,9 +272,8 @@ export class TicTacToe extends SmartContract {
             outputs = this.buildStateOutput(this.ctx.utxo.value);
         }
 
-        if (this.changeAmount > 0n) {
-            outputs += this.buildChangeOutput();
-        }
+        outputs += this.buildChangeOutput();
+
         // make sure the transaction contains the expected outputs built above
         assert(this.ctx.hashOutputs === hash256(outputs), "check hashOutputs failed");
     }
