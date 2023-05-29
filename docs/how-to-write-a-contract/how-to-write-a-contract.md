@@ -489,13 +489,13 @@ const byte: ByteString = toByteString("ff")
 Bitcoin does not allow unbounded loops for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
 
 ```ts
-for(let $i = 0n; $i < $maxLoopCount; $i++) {
+for (let $i = 0; $i < $maxLoopCount; $i++) {
   ...
 }
 ```
 
 :::note
-* the initial value must be `0`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
+* the initial value must be `0` or `0n`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
 * `$maxLoopCount` must be a [CTC](#compile-time-constant).
 * `$i` can be arbitrary name, e.g., `i`, `j`, or `k`. It can be both a `number` or a `bigint` type.
 * `break` and `continue` are currently not allowed, but can be emulated like
@@ -503,8 +503,9 @@ for(let $i = 0n; $i < $maxLoopCount; $i++) {
 
 ```ts
 // emulate break
-let done = false;
-for (let i = 0n; i < 3; i++) {
+let x = 3n
+let done = false
+for (let i = 0; i < 3; i++) {
     if (!done) {
         x = x * 2n
         if (x >= 8n) {

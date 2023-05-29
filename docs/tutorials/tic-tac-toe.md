@@ -213,7 +213,7 @@ assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
 
 Congratulations, you have completed the `TicTacToe` contract!
 
-The [final complete code](https://github.com/sCrypt-Inc/tic-tac-toe/blob/f098108b11e54428f37e2814992ca9f4385a89de/src/contracts/tictactoe.ts) is as follows:
+The [final complete code](https://github.com/sCrypt-Inc/tic-tac-toe/blob/main/src/contracts/tictactoe.ts) is as follows:
 
 ```ts
 export class TicTacToe extends SmartContract {

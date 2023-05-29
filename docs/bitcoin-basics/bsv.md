@@ -5,7 +5,7 @@ sidebar_position: 1
 
 sCrypt exports a submodule named `bsv` which is an interface that helps you manage low-level things for the Bitcoin blockchain, such as creating key pairs, building, signing and serializing Bitcoin transactions and more.
 
-In the context of sCrypt it is mainly used for managing key pairs and defining custom transaction builders, as demonstrated in [this section](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md).
+In the context of sCrypt, it is mainly used for managing key pairs and defining custom transaction builders, as demonstrated in [this section](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md).
 
 The goal of this section is to guide you through the basics of using the `bsv` submodule.
 

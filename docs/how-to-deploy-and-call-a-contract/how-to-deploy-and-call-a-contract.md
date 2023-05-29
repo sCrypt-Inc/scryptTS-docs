@@ -5,37 +5,67 @@ sidebar_position: 1
 # How to Deploy & Call a Contract
 
 
-## Setup
+## Core Concepts
+After you've finished writing a contract, you can deploy and call it. But first, you should learn how a smart contract interacts with the blockchain. In this section, we will go over some fundamental concepts in detail.
 
-It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
+![](../../static/img/call.png)
+[Credit: moonbeam](https://docs.moonbeam.network/tutorials/eth-api/how-to-build-a-dapp)
 
-Before deploy and call a contract, you need to:
+### Compile the Contract
 
-1. Generate a private key with the following command:
+First, call function `SmartContract.compile()` to compile the contract to Bitcoin script, so it can be included in a transaction's output.
 
-```sh
-npm run genprivkey
+```ts
+await MyContract.compile()
 ```
 
-The command will generate a private key and store it in a `.env` file in our project's root directory. It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key.
+### Contract Instance
+As explained in the [Overview section](../overview.md), an `sCrypt` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object.
 
-2. Fund the private key's address with some testnet coins. You could use this [faucet](https://scrypt.io/faucet) to receive test coins.
+```ts
+// construct a new instance of `MyContract`
+let instance = new MyContract(...initArgs);
+```
 
-![faucet](../../static/img/faucet.gif)
+### Provider
 
-### Use the Sensilet Wallet
+A `Provider` is an abstraction of a standard Bitcoin node that provides connection to the Bitcoin network, for read and write access to the blockchain.
 
-Alternatively, if you have already installed [Sensilet](https://sensilet.com/), you can extract and use its private key on testnet as follows.
+sCrypt already has a few built-in providers:
 
-![](../../static/img/extract-sensilet-private-key.gif)
+* `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
 
-## Introduction
+* `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcoin, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
 
+* See full list of providers [here](../reference/classes/Provider.md#hierarchy).
 
-After you've finished writing a contract, you can deploy and call it. But first, you should learn how a smart contract interacts with the blockchain.
+You can initialize these providers like this:
 
+```ts
+let dummyProvider = new DummyProvider();
 
-As explained in the [Overview section](../overview.md), an `sCrypt` contract is based on the Bitcoin UTXO model. A **constract instance** is an abstraction that represents a specific contract deployed on-chain, so you can use it to interact with the contract like a normal TypeScript object. In this section, we will go over some fundamental concepts in detail.
+// mainnet
+
+let provider = new DefaultProvider();
+
+// testnet
+
+let provider = new DefaultProvider(bsv.Networks.testnet);
+```
+
+### Signer
+
+A `Signer` is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
+
+#### TestWallet
+
+For testing purposes only, we have a built-in wallet called `TestWallet`. It can be created like this:
+
+```ts
+const signer = new TestWallet(privateKey, provider);
+```
+
+`privateKey` can be a single private key or an array of private keys that the wallet can use to sign transactions. The ability of the wallet to send transactions is assigned to `provider`. In other words, a `TestWallet` serves as both a signer and a provider.
 
 
 ### Tx Builders
@@ -76,21 +106,46 @@ This section could be summarized as the diagram below:
 
 ## Prepare a Signer and Provider
 
-As we mentioned in the [testing section](../how-to-test-a-contract.md), a signer and a provider should be connected to a contract before deployment and call.
-
-
-For local testing, we can use the `TestWallet` introduced [before](../how-to-test-a-contract#testwallet), with a mock provider. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](../how-to-test-a-contract.md#provider).
+A signer and a provider must be connected to a contract instance before deployment and call. When we are ready to deploy the contract to the testnet/mainnet, we need a real provider like [DefaultProvider](#provider).
 
 ```ts
 const network = bsv.Networks.testnet; // or bsv.Networks.mainnet
 const signer = new TestWallet(privateKey, new DefaultProvider(network));
 ```
 
-Don't forget to connect the signer to the contract instance as well:
+Then just connect it to your contract instance like this:
 
 ```ts
 await instance.connect(signer);
 ```
+
+## Faucet
+
+It is highly recommended to test your contract on the [testnet](https://test.whatsonchain.com/) after passing local tests. It ensures that a contract can be successfully deployed and invoked as expected on the blockchain.
+
+Before deploy and call a contract, you need to have a funded address:
+
+1. Generate a private key with the following command, after creating a project:
+
+```sh
+scrypt project demo
+cd demo
+npm install
+npm run genprivkey
+```
+
+The command will generate a private key and store it in a `.env` file in our project's root directory. It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key.
+
+2. Fund the private key's address with some testnet coins. You could use this [faucet](https://scrypt.io/faucet) to receive test coins.
+
+![faucet](../../static/img/faucet.gif)
+
+### Use the Sensilet Wallet
+
+Alternatively, if you have already installed [Sensilet](https://sensilet.com/), you can extract and use its private key on testnet as follows.
+
+![](../../static/img/extract-sensilet-private-key.gif)
+
 
 ## Contract Deployment
 
@@ -113,16 +168,80 @@ console.log(`Smart contract successfully deployed with txid ${tx.id}`);
 ```
 
 ## Contract Call
+To facilitate calling a contract's public `@method`, we have injected a runtime object named `methods` in your contract class. For each public `@method` of your contract (e.g., `contract.foo`), a function with the same name and signature (including list of parameters and return type, i.e., void) is added into `methods` (e.g., `contract.methods.foo`). In addition, there is an `options` appended as the last paramter.
 
-Similar to what we described in [this section](../how-to-test-a-contract#call-a-public-method), you can call a contract's public `@method` on the blockchain as follows:
+Assume you have a contract like this:
 
 ```ts
-// build and send tx for calling `foo`
-const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, opts);
-console.log(`Smart contract method successfully called with txid ${tx.id}`);
+Class MyContract extends SmartContract {
+  ...
+  @method()
+  public foo(arg1, arg2) {...}
+}
+```
+You can check it like this:
+
+```ts
+let instance = new MyContract();
+console.log(typeof instance.methods.foo) // output `function`
 ```
 
-The major differences between here and local tests are:
+This function is designed to invoke the corresponding `@method` of the same name on chain, meaning calling it will spend the previous contract UTXO in a new transaction. You can call it like this:
+
+```ts
+// Note: `instance.methods.foo` should be passed in all arguments and in the same order that `instance.foo` would take.
+
+// Additionally, it can accept an optional "options" argument to control the behavior of the function.
+
+const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
+```
+
+
+What actually happens during the call is the following.
+
+1. Build an unsigned transaction by calling the tx builder, which can be a default or a customized one introduced in [this section](./how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx#customizedcalltxbuilder), for a public `@method`.
+
+2. Use the instance's signer to sign the transaction. Note that `instance.foo` could be invoked during this process in order to get a valid unlocking script for the input.
+
+3. User the instance's connected provider to send the transaction.
+
+#### MethodCallOptions
+
+The `options` argument is of type `MethodCallOptions`:
+
+```ts
+/**
+ * A option type to call a contract public `@method` function.
+ * Used to specify the behavior of signers and transaction builders.
+ * For example, specifying a transaction builder to use a specific change address or specifying a signer to use a specific public key to sign.
+ */
+export interface MethodCallOptions<T> {
+  /**
+   * The private key(s) associated with these address(es) or public key(s)
+   * must be used to sign the contract input,
+   * and the callback function will receive the results of the signatures as an argument named `sigResponses`
+   * */
+  readonly pubKeyOrAddrToSign?: PublicKeysOrAddressesOption;
+  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
+  readonly next?: StatefulNext<T>[] | StatefulNext<T>,
+  /** The `lockTime` of the method calling tx */
+  readonly lockTime?: number;
+  /** The `sequence` of the input spending previous contract UTXO in the method calling tx */
+  readonly sequence?: number;
+  /** The previous contract UTXO to spend in the method calling tx */
+  readonly fromUTXO?: UTXO;
+  /** The P2PKH change output address */
+  readonly changeAddress?: AddressOption;
+  /** verify the input script before send transaction */
+  readonly verify?: boolean;
+  /** Whether to call multiple contracts at the same time in one transaction */
+  readonly multiContractCall?: true;
+  /** Pass the `ContractTransaction` of the previous call as an argument to the next call, only used if `multiContractCall = true`.  */
+  readonly partialContractTx?: ContractTransaction;
+}
+```
+
+The major differences between here and [local tests](../how-to-test-a-contract.md#test-a-contract-locally) are:
 1. the contract needs to be deployed first;
 2. the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
 

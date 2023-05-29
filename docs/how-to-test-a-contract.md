@@ -15,54 +15,6 @@ Now we will take a look at the file `tests/local/demo.ts`. This file contains co
 
 But before going into details, you should learn some basic models of sCrypt for signing and sending transactions.
 
-## Compile the Contract
-
-First, call function `SmartContract.compile()` to compile the contract before doing any testing.
-
-```ts
-await Demo.compile()
-```
-
-## Provider
-
-A `Provider` is an abstraction of a standard Bitcoin node that provides connection to the Bitcoin network, for read and write access to the blockchain.
-
-sCrypt already has a few built-in providers:
-
-* `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
-
-* `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcoin, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
-
-* See full list of providers [here](./reference/classes/Provider.md#hierarchy).
-
-You can initialize these providers like this:
-
-```ts
-let dummyProvider = new DummyProvider();
-
-// mainnet
-
-let provider = new DefaultProvider();
-
-// testnet
-
-let provider = new DefaultProvider(bsv.Networks.testnet);
-```
-
-## Signer
-
-A `Signer` is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
-
-### TestWallet
-
-For testing purposes only, we have a built-in wallet called `TestWallet`. It can be created like this:
-
-```ts
-const signer = new TestWallet(privateKey, provider);
-```
-
-`privateKey` can be a single private key or an array of private keys that the wallet can use to sign transactions. The ability of the wallet to send transactions is assigned to `provider`. In other words, a `TestWallet` serves as both a signer and a provider.
-
 ## Test a Contract Locally
 
 Compared to other blockchains, smart contracts on Bitcoin are **pure**.
@@ -74,7 +26,7 @@ Smart contracts are similar to mathematical functions. Thus, we can test a contr
 
 ### Prepare a Signer and Provider
 
-The `TestWallet` and `DummyProvider` combination would be ideal for local tests because it can sign the contract call transactions without actually sending them.
+For local testing, we can use the `TestWallet`, with a mock provider. The `TestWallet` and `DummyProvider` combination would be ideal for local tests because it can sign the contract call transactions without actually sending them.
 
 Such a signer may be declared as below:
 
@@ -82,7 +34,7 @@ Such a signer may be declared as below:
 let signer = new TestWallet(privateKey, new DummyProvider());
 ```
 
-Then just connect it to your contract instance like this:
+Don't forget to connect the signer to the contract instance as well:
 
 ```ts
 await instance.connect(signer);
@@ -90,84 +42,19 @@ await instance.connect(signer);
 
 ### Call a Public Method
 
-To facilitate calling a contract's public `@method`, we have injected a runtime object named `methods` in your contract class. For each public `@method` of your contract (e.g., `contract.foo`), a function with the same name and signature (including list of parameters and return type, i.e., void) is added into `methods` (e.g., `contract.methods.foo`). In addition, there is an `options` appended as the last paramter.
-
-Assume you have a contract like this:
+Similar to what we described in [this section](../how-to-test-a-contract#call-a-public-method), you can call a contract's public `@method` on the blockchain as follows:
 
 ```ts
-Class MyContract extends SmartContract {
-  ...
-  @method()
-  public foo(arg1, arg2) {...}
-}
-```
-You can check it like this:
-
-```ts
-let instance = new MyContract();
-console.log(typeof instance.methods.foo) // output `function`
-```
-
-This function is designed to invoke the corresponding `@method` of the same name on chain, meaning calling it will spend the previous contract UTXO in a new transaction. You can call it like this:
-
-```ts
-// Note: `instance.methods.foo` should be passed in all arguments and in the same order that `instance.foo` would take.
-
-// Additionally, it can accept an optional "opts" argument to control the behavior of the function.
-
+// build and send tx for calling `foo`
 const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
+console.log(`Smart contract method successfully called with txid ${tx.id}`);
 ```
-
-
-#### MethodCallOptions
-
-The `options` argument is of type `MethodCallOptions`:
-
-```ts
-/**
- * A option type to call a contract public `@method` function.
- * Used to specify the behavior of signers and transaction builders.
- * For example, specifying a transaction builder to use a specific change address or specifying a signer to use a specific public key to sign.
- */
-export interface MethodCallOptions<T> {
-  /**
-   * The private key(s) associated with these address(es) or public key(s)
-   * must be used to sign the contract input,
-   * and the callback function will receive the results of the signatures as an argument named `sigResponses`
-   * */
-  readonly pubKeyOrAddrToSign?: PublicKeysOrAddressesOption;
-  /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
-  readonly next?: StatefulNext<T>[] | StatefulNext<T>,
-  /** The `lockTime` of the method calling tx */
-  readonly lockTime?: number;
-  /** The `sequence` of the input spending previous contract UTXO in the method calling tx */
-  readonly sequence?: number;
-  /** The previous contract UTXO to spend in the method calling tx */
-  readonly fromUTXO?: UTXO;
-  /** The P2PKH change output address */
-  readonly changeAddress?: AddressOption;
-  /** verify the input script before send transaction */
-  readonly verify?: boolean;
-  /** Whether to call multiple contracts at the same time in one transaction */
-  readonly multiContractCall?: true;
-  /** Pass the `ContractTransaction` of the previous call as an argument to the next call, only used if `multiContractCall = true`.  */
-  readonly partialContractTx?: ContractTransaction;
-}
-```
-
-What actually happens during the call is the following.
-
-1. Build an unsigned transaction by calling the tx builder, which can be a default or a customized one introduced in [this section](./how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx#customizedcalltxbuilder), for a public `@method`.
-
-2. Use the instance's signer to sign the transaction. Note that `instance.foo` could be invoked during this process in order to get a valid unlocking script for the input.
-
-3. User the instance's connected provider to send the transaction.
 
 Remember that the tx is not actually sent anywhere in a local test because we connect to a mock provider.
 
 ### Verify the Tx input for the method call
 
-In the previous step, the signed `tx` for the contract call and its input index are returned. You can call `verifyScript` on the returned `tx` to verify that the contract method call (in the given tx input) is successful.
+In the previous step, the signed `tx` for the contract call and its input index are returned. You can call `verifyScript` on the returned `tx` to verify that the contract method call at the given tx input index is successful.
 
 ```ts
 let result = tx.verifyScript(atInputIndex)
@@ -253,7 +140,7 @@ nextInstance.increment();
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
   {
     // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
-    fromUTXO: getDummyContractUTXO(balance),
+    fromUTXO: getDummyUTXO(balance),
 
     // the `next` instance and its balance should be provided here
     next: {
@@ -306,7 +193,7 @@ As described in [this section](#call-a-public-method), we can build a call trans
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
   {
     // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
-    fromUTXO: getDummyContractUTXO(balance),
+    fromUTXO: getDummyUTXO(balance),
 
     // the `next` instance and its balance should be provided here
     next: {
@@ -331,6 +218,6 @@ As before, we can just use the following command:
 ```sh
 npm run test
 ```
-Full code is [here](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/counter.ts).
+Full code is [here](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/counter.test.ts).
 
 You may visit [here](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md) to see more details on contract deployment and call.
