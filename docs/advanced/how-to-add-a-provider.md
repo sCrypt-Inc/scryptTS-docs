@@ -5,7 +5,7 @@ sidebar_position: 1
 # How to Add a Provider
 
 
-In the [contract testing section](../how-to-test-a-contract.md#provider), we learned about the Provider class in sCrypt. This class serves as an abstraction of a Bitcoin node, allowing your application to communicate with the Bitcoin network.
+In the [contract testing section](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider), we learned about the Provider class in sCrypt. This class serves as an abstraction of a Bitcoin node, allowing your application to communicate with the Bitcoin network.
 
 `sCrypt` provides the following providers by default:
 

@@ -87,7 +87,7 @@ You cannot simply call `Helloworld.compile()` at the front end, since it only wo
 
 ## Integrate Wallet
 
-You will integrate [Sensilet](https://sensilet.com/), a MetaMask-like wallet, into the project.
+You will integrate [Sensilet](https://sensilet.com/), a browser extension wallet similar to [MetaMask](https://metamask.io/), into the project.
 
 :::info
 You can refer to this [guide](../advanced/how-to-add-a-signer.md) to add support for other wallets.

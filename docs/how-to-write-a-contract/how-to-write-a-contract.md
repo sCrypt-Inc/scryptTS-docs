@@ -45,7 +45,7 @@ A smart contract can have two kinds of properties:
 2. Without `@prop` decorator: these properties are regular TypeScript properties without any special requirement, meaning they can use any types. Accessing these properties is prohibited in methods decorated with the `@method` decorator.
 
 
-### `@prop(stateful: boolean = false)` decorator
+### `@prop` decorator
 
 Use this decorator to mark any property that intends to be stored on chain.
 
@@ -200,7 +200,7 @@ class MethodsDemo extends SmartContract {
   readonly y: bigint;
 
   constructor(x: bigint, y: bigint) {
-    super(x, y);
+    super(...arguments);
     this.x = x;
     this.y = y;
   }
@@ -305,8 +305,6 @@ toByteString('world', c) // invalid, not passing boolean literal to the 2nd para
 
 * `+`: concatenate
 
-* `ByteString.slice(start: number, end?: number)`: return a substring from `start` to, but not including, `end`. If `end` is not specified, the substring continues to the last byte. Since `ByteString` is a byte array and each byte consists of two hex characters, `start` and `end` must be even.
-
 ```ts
 const str0 = toByteString('01ab23ef68')
 const str1 = toByteString('656c6c6f20776f726c64')
@@ -319,10 +317,6 @@ str0 === str1
 // concatenation
 str0 + str1
 // '01ab23ef68656c6c6f20776f726c64'
-
-// slice
-str1.slice(2, 6)
-// `6c6c`, not '6c6f2077', since each byte has two hex characters
 ```
 
 #### `number`
@@ -345,14 +339,6 @@ for (let i: number = 0 i < 10 i++) {
 }
 ```
 
-* Calling `slice(start: number, end?: number)` function on a `ByteString`
-
-```ts
-let b: ByteString = toByteString("001122")
-let end: bigint = 4n
-b.slice(0, Number(end))
-// "0011"
-```
 It can also be used in defining [compile-time constants](#compile-time-constant).
 
 
@@ -503,13 +489,13 @@ const byte: ByteString = toByteString("ff")
 Bitcoin does not allow unbounded loops for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
 
 ```ts
-for(let $i = 0n; $i < $maxLoopCount; $i++) {
+for (let $i = 0; $i < $maxLoopCount; $i++) {
   ...
 }
 ```
 
 :::note
-* the initial value must be `0`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
+* the initial value must be `0` or `0n`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
 * `$maxLoopCount` must be a [CTC](#compile-time-constant).
 * `$i` can be arbitrary name, e.g., `i`, `j`, or `k`. It can be both a `number` or a `bigint` type.
 * `break` and `continue` are currently not allowed, but can be emulated like
@@ -517,8 +503,9 @@ for(let $i = 0n; $i < $maxLoopCount; $i++) {
 
 ```ts
 // emulate break
-let done = false;
-for (let i = 0n; i < 3; i++) {
+let x = 3n
+let done = false
+for (let i = 0; i < 3; i++) {
     if (!done) {
         x = x * 2n
         if (x >= 8n) {

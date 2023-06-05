@@ -31,7 +31,9 @@ class DemoContract extends SmartContract {
   // ...
 
   // customize the deployment tx by overriding `SmartContract.buildDeployTransaction` method
-  override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
+  override async buildDeployTransaction(utxos: UTXO[], amount: number, 
+    changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
+    
     const deployTx = new bsv.Transaction()
       // add p2pkh inputs for paying tx fees
       .from(utxos)
@@ -108,30 +110,6 @@ Note that the parameters of your customized tx builder consist of the following 
 - `options` is of type [`MethodCallOptions`](../how-to-test-a-contract.md#methodcalloptions).
 - `...args: any` is an argument list the same as the bound pubic `@method`.
 
-```ts
-instance.bindTxBuilder('bid', Auction.buildTxForBid)
-
-class Auction extends SmartContract {
-  // ...
-
-  @method(SigHash.ALL)
-  public bid(bidder: PubKeyHash, bid: bigint) {
-    // ...
-  }
-
-  static buildTxForBid(
-    current: Auction,
-    options: MethodCallOptions<Auction>,
-    // the following arguments are the same as the bound public `@method`
-    bidder: PubKeyHash,
-    bid: bigint
-  ): Promise<ContractTransaction> {
-    // ...
-  }
-}
-```
-
-You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/f63c37038a03bc51267e816d9441969d3e1d2ece/src/contracts/auction.ts#L130-L172) for more details.
 
 ## Notes
 

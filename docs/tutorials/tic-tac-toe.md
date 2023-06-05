@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
-# Tutorial 5: Tic Tac Toe
+# Tutorial 4: Tic Tac Toe
 
 ## Overview
 In this tutorial, we will go over how to use sCrypt to build a Tic-Tac-Toe Contract on Bitcoin.
@@ -196,9 +196,8 @@ else {
     outputs = this.buildStateOutput(this.ctx.utxo.value);
 }
 
-if(this.changeAmount > 0n) {
-    outputs += this.buildChangeOutput();
-}
+outputs += this.buildChangeOutput();
+
 ```
 
 ### Step 3
@@ -214,7 +213,7 @@ assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
 
 Congratulations, you have completed the `TicTacToe` contract!
 
-The [final complete code](https://github.com/sCrypt-Inc/tic-tac-toe/blob/f098108b11e54428f37e2814992ca9f4385a89de/src/contracts/tictactoe.ts) is as follows:
+The [final complete code](https://github.com/sCrypt-Inc/tic-tac-toe/blob/main/src/contracts/tictactoe.ts) is as follows:
 
 ```ts
 export class TicTacToe extends SmartContract {
@@ -273,9 +272,8 @@ export class TicTacToe extends SmartContract {
             outputs = this.buildStateOutput(this.ctx.utxo.value);
         }
 
-        if (this.changeAmount > 0n) {
-            outputs += this.buildChangeOutput();
-        }
+        outputs += this.buildChangeOutput();
+
         // make sure the transaction contains the expected outputs built above
         assert(this.ctx.hashOutputs === hash256(outputs), "check hashOutputs failed");
     }

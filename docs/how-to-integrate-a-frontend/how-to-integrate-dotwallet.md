@@ -189,7 +189,7 @@ export default async function Balance() {
 
 <center>src/app/balance/page.tsx</center>
 
-After creating `DotWalletSigner` with access token, you can call all interfaces of `DotWalletSigner` as in other [signers](../how-to-test-a-contract.md#signer).
+After creating `DotWalletSigner` with access token, you can call all interfaces of `DotWalletSigner` as in other [signers](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#signer).
 For example, the example uses the signer to check user's balance.
 
 Congrats! You have completed the integration of DotWallet. Full code is [here](https://github.com/zhfnjust/dotwallet-example).
