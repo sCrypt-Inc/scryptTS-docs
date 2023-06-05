@@ -65,7 +65,7 @@ Before we deploy the contract, follow [the instruction](../how-to-deploy-and-cal
 
 2. To [call a smart contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call), call one of its public method.
 
-Let's create a file named `deploy.ts` in the root of the project, containing code to deploy and call the `Helloworld` contract:
+Overwrite `deploy.ts` in the root of the project with the following code to deploy and call the `Helloworld` contract:
 
 ```ts
 import { Helloworld } from './src/contracts/helloworld'
