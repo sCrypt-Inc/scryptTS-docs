@@ -343,7 +343,7 @@ To use it, we first have to initialize it according to [this guide](../advanced/
 ```ts
 Scrypt.init({
   apiKey: 'YOUR_API_KEY',
-  network: 'testnet'
+  network: bsv.Networks.testnet
 })
 ```
 
