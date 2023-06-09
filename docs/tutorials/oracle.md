@@ -10,7 +10,10 @@ In this tutorial, we will go over how to build a smart contract that consumes of
 
 ### What is an Oracle?
 A blockchain oracle is a third-party service or agent that provides external data to a blockchain network. It is a bridge between the blockchain and the external world, enabling smart contracts to access, verify, and incorporate data from outside the blockchain. This allows smart contracts to execute based on real-world events and conditions, enhancing their utility and functionality.
-![](../../static/img/oracle.jpeg) [Credit: bitnovo](https://blog.bitnovo.com/en/what-is-a-blockchain-oracle/)
+
+![](../../static/img/oracle.jpeg) 
+
+[Credit: bitnovo](https://blog.bitnovo.com/en/what-is-a-blockchain-oracle/)
 
 The data supplied by oracles can include various types of information, such as stock prices, weather data, election results, and sports scores.
 
