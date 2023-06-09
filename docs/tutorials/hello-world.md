@@ -10,7 +10,7 @@ In this tutorial, we will go over how to quickly create a “Hello World” smar
 
 ## Create a new project
 
-Make sure [all prerequisite tools](../installation) are installed.
+Make sure [all prerequisite tools](../../installation) are installed.
 
 Run the following commands to create a new project:
 
