@@ -272,7 +272,7 @@ Before deploying the contract, we need to create a `.env` file and save your pri
 PRIVATE_KEY=xxxxx
 ```
 
-If you don't have a private key, you can follow [this guide](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#setup) to generate one using Sensilet wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
+If you don't have a private key, you can follow [this guide](../../how-to-deploy-and-call-a-contract/faucet) to generate one using Sensilet wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
 
 Run the following command to deploy the contract.
 
@@ -343,7 +343,7 @@ To use it, we first have to initialize it according to [this guide](../advanced/
 ```ts
 Scrypt.init({
   apiKey: 'YOUR_API_KEY',
-  network: 'testnet'
+  network: bsv.Networks.testnet
 })
 ```
 

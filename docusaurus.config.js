@@ -64,7 +64,7 @@ const config = {
             label: 'Docs',
           },
           {
-            href: 'https://learn.scrypt.io/',
+            href: 'https://academy.scrypt.io/',
             label: 'Learn',
             position: 'right',
           },

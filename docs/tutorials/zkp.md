@@ -13,8 +13,10 @@ In this tutorial we will go over how to create a zero-knowledge proof (ZKP) and 
 SNARK (zero-knowledge Succinct Non-interactive ARguments of Knowledge) is a type of ZKP that is amenable for blockchains. The generated proof is “succinct” and “non-interactive”: a proof is only a few hundred bytes and can be verified in constant time and within a few milliseconds, without needing to ask additional questions of the prover. Together, these properties make zk-SNARK especially suitable for blockchains, where on-chain storage and computation can be expensive and senders often go offline after sending a transaction. 
 
 A proof is constructed off-chain by a prover who generates the proof using a secret input (often referred to as the "witness") and a public input. The prover can then use this proof as an input for an sCrypt smart contract, which can verify the validity of the proof using a verification key and the public input.
+
 ![](../../static/img/zksnark-verifier.png)
-[Source](https://www.altoros.com/blog/securing-a-blockchain-with-a-noninteractive-zero-knowledge-proof/)
+
+[Credit: altoros](https://www.altoros.com/blog/securing-a-blockchain-with-a-noninteractive-zero-knowledge-proof/)
 
 
 There are many tools for creating such proofs, [ZoKrates](https://github.com/sCrypt-Inc/zokrates) and [SnarkJS](https://github.com/sCrypt-Inc/snarkjs) are among the most popular. 
@@ -297,7 +299,7 @@ Take a look at it using [a block explorer](https://test.whatsonchain.com/tx/3012
 
 Congratulations! You have successfully created a zk-SNARK and verified it on-chain!
 
-If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, take a look at our free [course](https://learn.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-64187ae0d1a6cb859d18d72a), which will teach you how to create a ZK Battleship game.
+If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, take a look at our free [course](https://academy.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-64187ae0d1a6cb859d18d72a), which will teach you how to create a ZK Battleship game.
 Additionally, it teaches you to use [snarkjs/circom](https://github.com/sCrypt-Inc/snarkjs).
 
 To know more about ZKP, you can refer to [this awesome list](https://github.com/sCrypt-Inc/awesome-zero-knowledge-proofs).

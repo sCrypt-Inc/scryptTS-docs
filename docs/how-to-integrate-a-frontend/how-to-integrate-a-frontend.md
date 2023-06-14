@@ -119,4 +119,4 @@ await instance.connect(signer);
 
 Afterwards, you can interact with the contract from the front end by [calling its method](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) as usual.
 
-Go [here](https://learn.scrypt.io) to see a full example on how to build a Tic-Tac-Toe game on chain.
+Go [here](https://academy.scrypt.io) to see a full example on how to build a Tic-Tac-Toe game on chain.
