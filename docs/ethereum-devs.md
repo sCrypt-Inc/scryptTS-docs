@@ -89,7 +89,7 @@ class Counter extends SmartContract {
     public incremenCounter() {
         this.count++
 
-        assert(hash256(outhis.buildStateOutput(this.ctx.utxo.value)) == this.ctx.hashOutputs)
+        assert(hash256(this.buildStateOutput(this.ctx.utxo.value)) == this.ctx.hashOutputs)
     }
 
 }
