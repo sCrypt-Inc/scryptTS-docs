@@ -15,6 +15,53 @@ Now we will take a look at the file `tests/local/demo.ts`. This file contains co
 
 But before going into details, you should learn some basic models of sCrypt for signing and sending transactions.
 
+## Compile the Contract
+
+First, call function `SmartContract.compile()` to compile the contract before doing any testing.
+
+```ts
+await Demo.compile()
+```
+
+## Provider
+
+A `Provider` is an abstraction of a standard Bitcoin node that provides connection to the Bitcoin network, for read and write access to the blockchain.
+
+sCrypt already has a few built-in providers:
+
+* `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
+
+* `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcoin, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
+
+* See full list of providers [here](./reference/classes/Provider.md#hierarchy).
+
+You can initialize these providers like this:
+
+```ts
+let dummyProvider = new DummyProvider();
+
+// Mainnet
+let provider = new DefaultProvider();
+// Or explicitly: let provider = new DefaultProvider(bsv.Networks.mainnet);
+
+// Testnet
+let provider = new DefaultProvider(bsv.Networks.testnet);
+```
+
+## Signer
+
+A `Signer` is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
+
+### TestWallet
+
+For testing purposes only, we have a built-in wallet called `TestWallet`. It can be created like this:
+
+```ts
+const signer = new TestWallet(privateKey, provider);
+```
+
+`privateKey` can be a single private key or an array of private keys that the wallet can use to sign transactions. The ability of the wallet to send transactions is assigned to `provider`. In other words, a `TestWallet` serves as both a signer and a provider.
+
 ## Test a Contract Locally
 
 Compared to other blockchains, smart contracts on Bitcoin are **pure**.
