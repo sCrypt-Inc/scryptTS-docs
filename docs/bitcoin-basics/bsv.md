@@ -28,7 +28,7 @@ const privKey = bsv.PrivateKey.fromRandom()
 // Same as: const privKey = bsv.PrivateKey.fromRandom(bsv.Network.mainnet)
 ```
 
-This will generate a private key for the Bitcoin main network. To create a key for the test network (also referred to as "testnet"), pass the `bsv.Networks.testnet` object:
+This will generate a private key for the Bitcoin main network. To create a key for the test network (also referred to as "testnet"), do the following instead:
 
 ```ts
 const privKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
@@ -39,7 +39,7 @@ The main difference between a mainnet and a testnet key is how they get serializ
 You can also create key object from serialized keys:
 ```ts
 const privKey = bsv.PrivateKey.fromWIF('cVDFHtcTU1wn92AkvTyDbtVqyUJ1SFQTEEanAWJ288xvA7TEPDcZ')
-//const privKey = bsv.PrivateKey.fromString('e3a9863f4c43576cdc316986ba0343826c1e0140b0156263ba6f464260456fe8')
+const privKey2 = bsv.PrivateKey.fromString('e3a9863f4c43576cdc316986ba0343826c1e0140b0156263ba6f464260456fe8')
 ```
 
 You can see the decimal value of the private key the following way:
