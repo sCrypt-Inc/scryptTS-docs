@@ -96,7 +96,10 @@ You can refer to this [guide](../advanced/how-to-add-a-signer.md) to add support
 To request access to the wallet, you can use its `requestAuth` method. 
 
 ```ts
-const provider = new DefaultProvider(bsv.Networks.testnet);
+const provider = new DefaultProvider({
+    network: bsv.Networks.testnet
+});
+
 const signer = new SensiletSigner(provider);
 
 // request authentication
