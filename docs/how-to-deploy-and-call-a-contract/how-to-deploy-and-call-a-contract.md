@@ -139,7 +139,7 @@ const initBalance = 1234;
 
 // build and send tx for deployment
 const deployTx = await instance.deploy(initBalance);
-console.log(`Smart contract successfully deployed with txid ${tx.id}`);
+console.log(`Smart contract successfully deployed with txid ${deployTx.id}`);
 ```
 
 ## Contract Call
