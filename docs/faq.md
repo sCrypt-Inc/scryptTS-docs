@@ -9,9 +9,12 @@ sidebar_position: 15
 You would mainly get two different errors when broadcasting a double-spending transaction, depending on the status of the transaction you're trying to double-spend.
 
 - If the transaction you're trying to double-spend is still unconfirmed and in the mempool, the error would be `txn-mempool-conflict`.
-- If the transaction you're trying to double-spend is already confirmed, the error would be `Missing inputs`.
 
 ![](../static/img/txn-mempool-conflict.png)
+
+- If the transaction you're trying to double-spend is already confirmed, the error would be `Missing inputs`.
+
+![](../static/img/missing-inputs.png)
 
 To fix this, just wait a while, request the latest UTXO of your address from the provider, then rebuild a transaction to broadcast.
 
