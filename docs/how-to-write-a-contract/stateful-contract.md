@@ -21,7 +21,7 @@ Since the new output contains the same contract code, its spending transaction m
 We can create a stateful contract using the following command:
 
 ```sh
-scrypt project --state my-project
+scrypt project --state counter
 ```
 
 Note the `state` option is turned on.
@@ -56,13 +56,15 @@ increment(): void {
 ```ts
 // make sure balance in the contract does not change
 const amount: bigint = this.ctx.utxo.value
-// output containing the latest state
-const output: ByteString = this.buildStateOutput(amount)
-// verify current tx has this single output
-assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
+// outputs containing the latest state and an optional change output
+const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
+// verify unlocking tx has the same outputs
+assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
 ```
 
-The built-in function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. We keep the satoshis unchanged in the example. If all outputs (only a single output here) we create in the contract hashes to `hashOutputs` in [ScriptContext](scriptcontext.md), we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
+The built-in function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. We keep the satoshis unchanged in the example. The built-in functin `this.buildChangeOutput()` creates a P2PKH change output when necessary. It will calculate the change amount automatically, and use the signer's address by default.
+
+If all outputs we create in the contract hashes to `hashOutputs` in [ScriptContext](scriptcontext.md), we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
 
 
 The complete stateful contract is as follows:
@@ -78,21 +80,21 @@ export class Counter extends SmartContract {
     this.count = count
   }
 
-  @method(SigHash.ANYONECANPAY_SINGLE)
+  @method()
   public incrementOnChain() {
     this.increment()
 
     // make sure balance in the contract does not change
     const amount: bigint = this.ctx.utxo.value
-    // output containing the latest state
-    const output: ByteString = this.buildStateOutput(amount)
-    // verify current tx has this single output
-    assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
+    // outputs containing the latest state and an optional change output
+    const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
+    // verify unlocking tx has the same outputs
+    assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
   }
 
   @method()
   increment(): void {
-      this.count++
+    this.count++
   }
 }
 ```

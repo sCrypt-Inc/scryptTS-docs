@@ -23,18 +23,22 @@ export class Counter extends SmartContract {
         this.count = count
     }
 
-    @method(SigHash.ANYONECANPAY_SINGLE)
+    @method()
     public incrementOnChain() {
         // Increment counter.
-        this.count++
+        this.increment()
 
         // Ensure next output will contain this contracts code w
         // the updated count property.
         const amount: bigint = this.ctx.utxo.value
-        const output: ByteString = this.buildStateOutput(amount)
-        assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
+        const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
+        assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
     }
 
+    @method()
+    increment(): void {
+        this.count++
+    }
 }
 ```
 
@@ -46,9 +50,7 @@ To deploy the smart contract, we define the following function:
 async function deploy(initialCount = 100n): Promise<string> {
     const instance = new Counter(initialCount)
     await instance.connect(getDefaultSigner())
-
-    const balance = 1
-    const tx = await instance.deploy(balance)
+    const tx = await instance.deploy(1)
     console.log(`Counter deployed: ${tx.id}, the count is: ${instance.count}`)
     return tx.id
 }
@@ -65,16 +67,14 @@ async function callIncrementOnChain(
     atOutputIndex = 0
 ): Promise<string> {
     // Fetch TX via provider and reconstruct contract instance.
-    const signer = new getDefaultSigner()
+    const signer = getDefaultSigner()
     const tx = await signer.connectedProvider.getTransaction(txId)
     const instance = Counter.fromTx(tx, atOutputIndex)
-    
-    //console.log(`Deployed counter value: ${instance.count}`)
 
     await instance.connect(signer)
 
     const nextInstance = instance.next()
-    nextInstance.count++
+    nextInstance.increment()
 
     const { tx: callTx } = await instance.methods.incrementOnChain({
         next: {
