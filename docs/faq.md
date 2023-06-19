@@ -20,7 +20,7 @@ To fix this, just wait a while, request the latest UTXO of your address from the
 
 ## Input string too short
 
-If you didn't set the `PRIVATE_KEY` environment variable in `.env` file before running the integration test on testnet, or deploying the contract, you would get an `Input string too short` error.
+If you do not set the `PRIVATE_KEY` environment variable in `.env` file before deploying a contract, you would get an `Input string too short` error.
 
 ![](../static/img/no-private-key.png)
 
@@ -28,7 +28,7 @@ Please follow [this guide](./how-to-deploy-and-call-a-contract/faucet.md) to gen
 
 ## No sufficient utxos
 
-If you didn't fund your private key's address before running the integration test on testnet, or deploying the contract, you would get a `No sufficient utxos` error.
+If you don't fund your private key's address before deploying a contract, you would get a `No sufficient utxos` error.
 
 ![](../static/img/insufficient-balance.png)
 
