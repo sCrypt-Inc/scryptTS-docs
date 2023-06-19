@@ -16,7 +16,13 @@ You would mainly get two different errors when broadcasting a double-spending tr
 
 ![](../static/img/missing-inputs.png)
 
-To fix this, just wait a while, request the latest UTXO of your address from the provider, then rebuild a transaction to broadcast.
+If you encounter these errors when interacting with the dApp, it is mainly because the state of the contract has changed, but your browser has not been updated in time, such as the contract has been called by another user. At this time, it is equivalent to that you are interacting with the contract instance that is not in the latest state, resulting in a double-spending.
+
+To fix this issue, you generally only need to wait for a few seconds, the browser will automatically obtain the latest contract instance after receiving the contract state-change event, or manually refresh the browser yourself, and then try again.
+
+If you encounter these errors when running the testnet cases, it is mainly because the provider failed to update your UTXO in time so they returned UTXOs that have already been spent when you request. Using these UTXOs that have been spent to build transactions will result in a double-spending. This situation is not common, it might be because there are too many transactions on the blockchain network at this time, the provider cannot update UTXO timely, or somehow the provider's server load is heavy. 
+
+To fix this issue, you generally only need to wait a few seconds and re-run the test. If it still can't be solved, you can also increase the time gap between sending transactions, for example, add a `sleep` ahead of requesting the UTXO after sending transactions, so that the provider has enough time to update the UTXO.
 
 ## Input string too short
 
