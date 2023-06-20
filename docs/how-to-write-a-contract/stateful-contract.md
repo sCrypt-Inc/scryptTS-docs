@@ -21,7 +21,7 @@ Since the new output contains the same contract code, its spending transaction m
 We can create a stateful contract using the following command:
 
 ```sh
-scrypt project --state counter
+npx scrypt-cli project --state counter
 ```
 
 Note the `state` option is turned on.

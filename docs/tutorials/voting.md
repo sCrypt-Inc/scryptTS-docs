@@ -646,7 +646,7 @@ Open your `package.json` and add a `homepage` field for your project.
 ```json
 {
   "name": "voting",
-  "homepage": "https://[YOUR-GITHUB-USERNAME].github.io/[YOUR-REPO-NAME]"
+  "homepage": "https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME"
   ...
 }
 ```

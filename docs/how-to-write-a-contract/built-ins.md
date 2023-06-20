@@ -125,7 +125,7 @@ const s1 = toByteString('793ff39de7e1dce2d853e24256099d25fa1b1598ee24069f24511d7
 reverseByteString(s1, 32) // 6cfeea2d7a1d51249f0624ee98151bfa259d095642e253d8e2dce1e79df33f79
 ```
 
-- `slice(byteString: ByteString, start: BigInt, end?: BigInt): ByteString` return a substring from `start` to, but not including, `end`. If `end` is not specified, the substring continues to the last byte.
+- `slice(byteString: ByteString, start: BigInt, end?: BigInt): ByteString` return a sub-byte string from `start` to, but not including, `end`. If `end` is not specified, the sub-byte string continues to the last byte.
 
 ```ts
 const message = toByteString('001122')
@@ -183,7 +183,7 @@ rshift(1024n, 11n) // 0n
 
 ## `SmartContract` Methods
 
-The following `@methods` come with the `SmartContract` base class.
+The following `@method`s come with the `SmartContract` base class.
 
 ### `compile`
 
@@ -205,7 +205,7 @@ const size = demo.scriptSize
 
 ### `loadArtifact`
 
-Function `static loadArtifact(artifact: MergedArtifact)` loads the contract artifact file in order to rebuild a contract instance, it's usually called at the front end.
+Function `static loadArtifact(artifact: MergedArtifact)` loads the contract artifact file in order to rebuild a contract class, it's usually called at the front end.
 
 ```ts
 import { TicTacToe } from './contracts/tictactoe';

@@ -7,7 +7,7 @@ sidebar_position: 2
 In the UTXO model, the context of validating a smart contract is the UTXO containing it and the transaction spending it, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` (2 inputs and 2 outputs) is spending the second output of `tx0` (3 inputs and 3 outputs), the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
 ![](../../static/img/scriptContext.jpg)
 
-The context only contains local information, different from account-based blockchains whose context consists of the global state of the entire blockchain (as in Ethereum). A single shared global state across all smart contracts kills scalability, since they all have to sequentially processed due to potential race conditions.
+The context only contains local information, different from account-based blockchains whose context consists of the global state of the entire blockchain (as in Ethereum). A single shared global state across all smart contracts kills scalability, since they all have to be sequentially processed due to potential race conditions.
 
 This context is expressed in the `ScriptContext` interface.
 ```ts
@@ -56,15 +56,15 @@ The table shows the meaning of each field of the `ScriptContext` structure.
 | utxo.script | locking script of the UTXO |
 | utxo.outpoint.txid | txid of the transaction being spent |
 | utxo.outpoint.outputIndex | index of the UTXO in the outputs |
-| hashPrevouts | If the `ANYONECANPAY` [SIGHASH type](#sighash-type) is not set, it's double SHA256 of the serialization of all input outpoints . Otherwise, it's a `unit256` of `0x0000......0000`. |
+| hashPrevouts | If the `ANYONECANPAY` [SIGHASH type](#sighash-type) is not set, it's double SHA256 of the serialization of all input outpoints. Otherwise, it's a `unit256` of `0x0000......0000`. |
 | hashSequence | If none of the `ANYONECANPAY`, `SINGLE`, `NONE` [SIGHASH type](#sighash-type) is set, it's double SHA256 of the serialization of sequence of all inputs. Otherwise, it's a `unit256` of `0x0000......0000`. |
 | sequence | sequence of the input  |
 | hashOutputs | If the [SIGHASH type](#sighash-type) is neither `SINGLE` nor `NONE`, it's double SHA256 of the serialization of all outputs. If the [SIGHASH type](#sighash-type) is `SINGLE` and the input index is smaller than the number of outputs, it's the double SHA256 of the output with the same index as the input. Otherwise, it's a `unit256` of `0x0000......0000`. |
 | locktime | locktime of the transaction |
 | sigHashType| sighash type of the signature |
 
-You can directly access the context through `this.ctx` in any public `@method`.
-It can be considered additional information a public method gets when called, besides its function parameters.
+You can directly access the context through `this.ctx` in any public `@method`. It can be considered additional information a public method gets when called, besides its function parameters.
+
 The example below accesses the [locktime](https://learnmeabitcoin.com/technical/locktime) of the spending transaction.
 
 ```ts
@@ -97,8 +97,9 @@ propagateState(outputs: ByteString) : boolean {
 
 ### Access inputs and outputs
 
-The inputs and outpus of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and validate they hash to the expected digest, which ensures they are actually from the spending transaction.
-The following example ensure both Alice and Bob get 1000 satoshis from the contract.
+The inputs and outputs of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and validate they hash to the expected digest, which ensures they are actually from the spending transaction.
+
+The following example ensures both Alice and Bob get 1000 satoshis from the contract.
 
 ```ts
 class DesignatedReceivers extends SmartContract {

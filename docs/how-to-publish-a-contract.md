@@ -97,7 +97,7 @@ describe('Test SmartContractLib `Lib`', () => {
 The following command will create a demo scryptTS library along with tests and  scaffolding:
 
 ```sh
-scrypt project --lib <your-lib-name>
+npx scrypt-cli project --lib <your-lib-name>
 ```
 
 Note the `lib` option is turned on.

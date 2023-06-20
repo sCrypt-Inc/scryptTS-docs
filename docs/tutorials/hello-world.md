@@ -15,7 +15,7 @@ Make sure [all prerequisite tools](../../installation) are installed.
 Run the following commands to create a new project:
 
 ```sh
-scrypt project helloworld
+npx scrypt-cli project helloworld
 cd helloworld
 npm install
 ```

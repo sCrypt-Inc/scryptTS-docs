@@ -7,19 +7,19 @@ sidebar_position: 3
 The `deploy` command allows you to deploy an instance of a smart contract to the blockchain. You can simply run the following command in the root of an `sCrypt` project:
 
 ```sh
-scrypt deploy
+npx scrypt-cli deploy
 ```
 
 or
 
 ```sh
-scrypt d
+npx scrypt-cli d
 ```
 
 By default, the CLI tool will run a script named `deploy.ts` located in the root of the project. You can also specify a different deployment script using the `--file` or `-f` option.
 
 ```sh
-scrypt d -f myCustomDeploy.ts
+npx scrypt-cli d -f myCustomDeploy.ts
 ```
 
 If the project was created using sCrypt CLI, it will already have a `deploy.ts` file present (except for [library](../how-to-publish-a-contract.md) projects). If not, the `deploy` command will generate a sample `deploy.ts` file.

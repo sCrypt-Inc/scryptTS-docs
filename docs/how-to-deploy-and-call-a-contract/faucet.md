@@ -11,7 +11,7 @@ Before deploy and call a contract, you need to have a funded address:
 1. Generate a private key with the following command, after creating a project:
 
 ```sh
-scrypt project demo
+npx scrypt-cli project demo
 cd demo
 npm install
 npm run genprivkey
