@@ -205,7 +205,7 @@ const size = demo.scriptSize
 
 ### `loadArtifact`
 
-Function `static loadArtifact(artifact: MergedArtifact)` loads the contract artifact file in order to rebuild a contract class, it's usually called at the front end.
+Function `static loadArtifact(artifact: Artifact)` loads the contract artifact file in order to initialize the contract class, it's usually called at the front end.
 
 ```ts
 import { TicTacToe } from './contracts/tictactoe';
