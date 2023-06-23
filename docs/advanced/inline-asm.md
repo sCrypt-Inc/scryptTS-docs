@@ -64,15 +64,18 @@ This is due to the new `apply-asm` command in`package.json`:
     ...
 ```
 
-Lastly, because we used a variable in the ASM code (`$pubKeyHash`), we must set its value after each contract instantiation. We do this using the `replaceAsmVars` function:
+## Set Inline Assembly Variables
+Assembly variables can be replaced with literal Script in ASM format using `setAsmVars()`. Each variable is prefixed by its unique scope, namely, the contract and the function it is under.
 
 ```ts
-// Set ASM var values.
-// Keep in mind, that these are NOT constructor parameters and must be set separately.
-p2pkhInstance.replaceAsmVars({
-    // Key must be formatted "ContractName.methodName.varName".
+p2pkh = new P2PKH(PubKeyHash(toHex(myPublicKeyHash)))
+
+// Set ASM variable
+// Keep in mind that these are NOT constructor parameters and must be set separately.
+asmVarValues = {
     'P2PKH.unlock.pubKeyHash': toHex(myPublicKeyHash)
-})
+}
+p2pkh.setAsmVars(asmVarValues)
 ```
 
 
