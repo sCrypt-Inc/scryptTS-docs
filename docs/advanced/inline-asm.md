@@ -64,6 +64,18 @@ This is due to the new `apply-asm` command in`package.json`:
     ...
 ```
 
+Lastly, because we used a variable in the ASM code (`$pubKeyHash`), we must set its value after each contract instantiation. We do this using the `replaceAsmVars` function:
+
+```ts
+// Set ASM var values.
+// Keep in mind, that these are NOT constructor parameters and must be set separately.
+p2pkhInstance.replaceAsmVars({
+    // Key must be formatted "ContractName.methodName.varName".
+    'P2PKH.unlock.pubKeyHash': toHex(myPublicKeyHash)
+})
+```
+
+
 For more information, please refer to [here](https://scryptdoc.readthedocs.io/en/latest/asm.html).
 
 :::note
