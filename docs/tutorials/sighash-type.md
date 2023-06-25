@@ -8,7 +8,55 @@ sidebar_position: 8
 
 In this tutorial, we will go deep into the SigHash type and introduce how to use it in the smart contract.
 
-As described in the [doc](../how-to-write-a-contract/scriptcontext.md#sighash-type) before, different SigHash type decides which part of the spending transaction is included in `ScriptContext`. More specifically, it will affect the value of 4 fields: `hashPrevouts`, `hashSequence`, `hashOutputs`, and `sigHashType`.
+## Introduction
+
+### Digital Signature
+
+A digital signature is a mathematical scheme that consists of two parts：
+
+- an algorithm for creating a signature, using a private key to sign a message.
+
+```
+sign(privateKey, message) --> signature
+```
+
+- an algorithm that allows anyone to verify the signature, given also the message and a public key.
+
+```
+verify(signature, publicKey, message) --> true/false
+```
+
+The private key and the public key always appear in pairs, and the public key can be calculated from the private key, but not vice versa. Thus, you will always publish the public key so anyone can verify your signature, and keep the private key safe so only you can provide the correct signature.
+
+Digital signatures are used to represent the authenticity and integrity of a message, since any modification to the message invalidates the signature, causing signature verification to fail. It is also proof that someone owns the private key, since the signature cannot be forged and it can be successfully verified with the corresponding public key only if it is signed with the correct private key.
+
+### Bitcoin Signature
+
+Digital signatures are applied to messages, which in the case of bitcoin, are the transactions themselves. The signature implies a commitment by the signer to specific transaction data. In the simplest form, the signature applies to the entire transaction, thereby committing all the inputs, outputs, and other transaction fields. The P2PKH transaction is a simple example of using signatures, which is widely used in bitcoin.
+
+Bitcoin signatures have a way of indicating which part of a transaction’s data is included signed by the private key using a SigHash flag. The included transaction data, that's so call `ScriptContext`. Every signature has a SIGHASH flag and the flag can be different from input to input. 
+
+There are three SigHash flags: `ALL`, `NONE`, and `SINGLE`.
+
+| SIGHASH flag | Description                                                  |
+| ------------ | ------------------------------------------------------------ |
+| ALL          | Signature applies to all inputs and outputs                  |
+| NONE         | Signature applies to all inputs, none of the outputs         |
+| SINGLE       | Signature applies to all inputs but only the one output with the same index number as the signed input |
+
+In addition, there is a modifier flag `ANYONECANPAY`, which can be combined with each of the preceding flags. When `ANYONECANPAY` is set, only one input is signed, leaving the rest inputs open for modification.
+
+| SIGHASH flag         | Description                                                  |
+| -------------------- | ------------------------------------------------------------ |
+| ALL\|ANYONECANPAY    | Signature applies to one input and all outputs               |
+| NONE\|ANYONECANPAY   | Signature applies to one input, none of the outputs          |
+| SINGLE\|ANYONECANPAY | Signature applies to one input and the output with the same index number |
+
+All the six flags can be summarized in the following diagram.
+
+![](../../static/img/sighashtypes.png)
+
+As described in the [doc](../how-to-write-a-contract/scriptcontext.md#sighash-type) before, different SigHash type decides which part of the spending transaction is included in `ScriptContext`. More specifically, it will affect the value of four fields: `hashPrevouts`, `hashSequence`, `hashOutputs`, and `sigHashType`.
 
 | Field        | Description                                                  |
 | ------------ | ------------------------------------------------------------ |
@@ -17,7 +65,25 @@ As described in the [doc](../how-to-write-a-contract/scriptcontext.md#sighash-ty
 | hashOutputs  | If the [SIGHASH type](#sighash-type) is neither `SINGLE` nor `NONE`, it's double SHA256 of the serialization of all outputs. If the [SIGHASH type](#sighash-type) is `SINGLE` and the input index is smaller than the number of outputs, it's the double SHA256 of the output with the same index as the input. Otherwise, it's a `unit256` of `0x0000......0000`. |
 | sigHashType  | sighash type of the signature                                |
 
-## Counter
+## Use Cases
+
+For a P2PKH transaction that uses SigHash `ALL`, it cannot be modified in any way after it is signed. Since the signature in the input is committed to all inputs and outputs of the transaction, if any signed message changes, the signature becomes invalid, thus the transaction becomes invalid. This is fine in most cases, because the senders don't want others to be able to modify the transaction after they've signed it.
+
+Let’s look at some other examples using different SigHash types and how they can be used in practice.
+
+### Crowdfunding
+
+Someone attempting to raise funds can construct a transaction with a single output. The single output pays the target amount to the fundraiser. Such a transaction is obviously invalid, as it has no inputs. However, others can now amend it by adding an input of their own, as a donation. They sign their own input with `ALL|ANYONECANPAY` without invalidating all the other existing signatures. Unless enough inputs are gathered to reach the value of the output, the transaction is invalid. Each donation is a "pledge" which cannot be collected by the fundraiser until the entire target amount is raised.
+
+### Blank Check
+
+Someone attempting to write a blank check can construct a transaction with several inputs and no outputs, and sign all the inputs with SigHash `NONE`. The signatures in the input are only committed to all inputs of the transaction, this allows anyone to add their desired outputs to the transaction to claim the funds in the input.
+
+### Smart Contracts
+
+The SigHash type can also be used in smart contract implementations. Since it's associated with the signature, we can specify different SigHash types on the `@method` decorator when the public method requires a signature as its parameter or accesses the `ScriptContext` in it.
+
+#### Counter
 
 Check the [Counter](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/counter.ts) contract again in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate) repository. It's quite simple and records how many times it has been called since deployment.
 
@@ -58,9 +124,7 @@ The following [transaction](https://test.whatsonchain.com/tx/845f22b728deb23acac
 
 SigHash type `ALL` means not only signing all outputs but also all inputs of the spending transaction. This means that neither inputs nor outputs can be changed after the transaction is sealed. Otherwise, the signatures in all transaction inputs will become invalid.
 
-![](../../static/img/sighashtypes.png)
-
-## Advanced Counter
+#### Advanced Counter
 
 Noted that in the state transition of Counter, there's always only one UTXO that contains the latest contract state. When the contract is called, it spends the UTXO of the current state and creates a UTXO of the new state. Moreover, the contract input index of the spending transaction and the contract output index are the same.
 
@@ -90,7 +154,7 @@ export class AdvancedCounter extends SmartContract {
 }
 ```
 
-You can check the [complete code](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/advancedCounter.ts) in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate). We choose `SINGLE|ANYONECANPAY` here, but as described above, it's good to use `SINGLE` as well.
+You can check the [complete code](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/advancedCounter.ts) in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate). We choose `SINGLE|ANYONECANPAY` here, but as it's described above, it's good to use `SINGLE` as well.
 
 The following [transaction](https://test.whatsonchain.com/tx/e06d86f8d8b867c503eca799bb542b5f1d1f81aa75ad00ab4377d65764bef68c) is a contract calling transaction of AdvancedCounter, as you can see it also contains two outputs but we only build one input then check if it hashes to `hashOutputs` in the public method. The reason for this is that we use the SigHash type `SINGLE|ANYONECANPAY`.
 
