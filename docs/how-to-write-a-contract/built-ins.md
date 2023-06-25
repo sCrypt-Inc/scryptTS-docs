@@ -342,14 +342,14 @@ const { tx: callTx, atInputIndex } = await auction.methods.bid(
 ```
 
 :::note
-If you use a [customized call tx builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md), you must explicitly set the change output of the transaction in the builder beforehand. Otherwise, you cannot call `this.changeAmount` or `this.buildChangeOutput`  in the contract.
+`this.changeAmount` and `this.buildChangeOutput` can be accessed directly when using the [default call tx builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#default-1), but if you use use a [customized call tx builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#customize-1), you need to explicitly [set the transaction change output](..//bitcoin-basics/bsv.md#constructing-transactions) in the builder beforehand.
 :::
 
 ```ts
 const unsignedTx: bsv.Transaction = new bsv.Transaction()
   // add inputs and outputs
   // ...
-  // add change output
+  // add change output explicitly
   // otherwise you cannot call `this.changeAmount` and `this.buildChangeOutput` in the contract
   .change(options.changeAddress);
 ```
