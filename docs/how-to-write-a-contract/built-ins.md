@@ -354,6 +354,46 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
   .change(options.changeAddress);
 ```
 
+### `insertCodeSeparator`
+
+Function `insertCodeSeparator(): void` will insert an [`OP_CODESEPARATOR`](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR) at the part of the code, where it's invoked.
+
+```ts
+export class OCS extends SmartContract {
+
+    @prop()
+    readonly pubKeyHash: PubKeyHash;
+
+    constructor(pubKeyHash: PubKeyHash) {
+        super(pubKeyHash);
+        this.pubKeyHash = pubKeyHash;
+    }
+
+    @method()
+    public unlock(sig0: Sig, sig1: Sig pubkey: PubKey) {
+        assert(hash160(pubkey) == this.pubKeyHash, 'pubKeyHash check failed');
+        this.insertCodeSeparator()
+        assert(this.checkSig(sig0, pubkey));
+        this.insertCodeSeparator()
+        assert(this.checkSig(sig1, pubkey));
+    }
+
+}
+```
+
+In the above instance, the unlock method calls the `insertCodeSeparator` function. This implies that each invocation of `checkSig` will use the code below the most recent invocation of `insertCodeSeparator` within the signature verification process. This includes the invocation of `insertCodeSeparator` itself.
+
+Therefore, this functionality requires us to modify the script when creating a signature. This is so that the signature signs only the necessary subscript, instead of the entire locking script. We can achieve this script alteration using the [`subScript`](../reference/classes/bsv.Script-1.md#subscript) function, which returns the subscript, cut at the n-th occurence of `OP_CODESEPARATOR`:
+
+```ts
+const tx = newTx();
+let demo = new OCS(PubKeyHash(toHex(pkh)))
+demo.to = { tx, inputIndex }
+
+const sig0 = signTx(tx, privateKey, demo.lockingScript.subScript(0), inputSatoshis)
+const sig1 = signTx(tx, privateKey, demo.lockingScript.subScript(1), inputSatoshis)
+```
+
 ### `fromTx`
 
 Function `static fromTx(tx: bsv.Transaction, atOutputIndex: number, offchainValues?: Record<string, any>)` creates an instance with its state synchronized to a given transaction output, identified by `tx` the transaction and `atOutputIndex` the output index. It is needed to [create an up-to-date instance of a contract](./../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction).
