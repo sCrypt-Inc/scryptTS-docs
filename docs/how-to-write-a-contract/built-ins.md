@@ -356,7 +356,7 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
 
 ### `insertCodeSeparator`
 
-Function `insertCodeSeparator(): void` will insert an [`OP_CODESEPARATOR`](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR) at the part of the code, where it's invoked.
+Method `insertCodeSeparator(): void` will insert an [`OP_CODESEPARATOR`](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR), where it is invoked.
 
 ```ts
 export class OCS extends SmartContract {
@@ -381,7 +381,7 @@ export class OCS extends SmartContract {
 }
 ```
 
-In the above instance, the unlock method calls the `insertCodeSeparator` function. This implies that each invocation of `checkSig` will use the code below the most recent invocation of `insertCodeSeparator` within the signature verification process. This includes the invocation of `insertCodeSeparator` itself.
+In the above example, the `unlock` method calls `insertCodeSeparator`. This implies that each invocation of `checkSig` will use the code below the most recent invocation of `insertCodeSeparator` within the signature verification process. This includes the invocation of `insertCodeSeparator` itself.
 
 Therefore, this functionality requires us to modify the script when creating a signature. This is so that the signature signs only the necessary subscript, instead of the entire locking script. We can achieve this script alteration using the [`subScript`](../reference/classes/bsv.Script-1.md#subscript) function, which returns the subscript, cut at the n-th occurence of `OP_CODESEPARATOR`:
 
