@@ -162,7 +162,7 @@ tx.change('n4fTXc2kaKXHyaxmuH5FTKiJ8Tr4fCPHFy')
 For the fee rate, you can also change it by calling `feePerKb`.
 
 ```ts
-tx.feePerKb(500)
+tx.feePerKb(50)
 ```
 
 ### Signing
