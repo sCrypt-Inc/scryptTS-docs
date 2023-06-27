@@ -4,19 +4,21 @@ sidebar_position: 15
 
 # FAQ
 
-## Script evaluated failed
+## Smart contract call failure
 
-If you receive a `mandatory-script-verify-flag-failed` error when broadcasting a transaction, it means that one or more inputs to the transaction have incorrect unlock scripts that cannot be verified by miners when attempting to spend those UTXOs.
+If you receive a `mandatory-script-verify-flag-failed` error when broadcasting a transaction, it means that one or more inputs calling a contract fails.
 
-There are many reasons why the script evaluated failed, `Script evaluated without error but finished with a false/empty top stack element` is the most common situation, it indicates that the evaluation result of the unlocking script combined locking script is false, just as it describes.
+There are several possibilities for the failure.
+
+`Script evaluated without error but finished with a false/empty top stack element` is the most common one. It means one of [assert](./how-to-write-a-contract/built-ins.md#assert) fails.
 
 ![](../static/img/mandatory-script-verify-flag-failed.png)
 
-Another common error is `Signature must be zero for failed CHECK(MULTI)SIG operation`, which means the signature in the unlocking script is not correct and cannot pass the verification of function `checkSig`.
+Another common error is `Signature must be zero for failed CHECK(MULTI)SIG operation`, which means the signature is invalid in [checkSig](./how-to-write-a-contract/built-ins.md#checksig) or [checkMultiSig](./how-to-write-a-contract/built-ins.md#checkmultisig).
 
 ![](../static/img/checksig-failed.png)
 
-To fix this kind of error, you should re-check your contract code and the contract-calling transaction to ensure that the input unlocking script is correct.
+You need to [debug the contract](./how-to-debug-a-contract.md).
 
 ## Broadcast double-spending transactions
 
