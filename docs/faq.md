@@ -4,6 +4,20 @@ sidebar_position: 15
 
 # FAQ
 
+## Script evaluated failed
+
+If you receive a `mandatory-script-verify-flag-failed` error when broadcasting a transaction, it means that one or more inputs to the transaction have incorrect unlock scripts that cannot be verified by miners when attempting to spend those UTXOs.
+
+There are many reasons why the script evaluated failed, `Script evaluated without error but finished with a false/empty top stack element` is the most common situation, it indicates that the evaluation result of the unlocking script combined locking script is false, just as it describes.
+
+![](../static/img/mandatory-script-verify-flag-failed.png)
+
+Another common error is `Signature must be zero for failed CHECK(MULTI)SIG operation`, which means the signature in the unlocking script is not correct and cannot pass the verification of function `checkSig`.
+
+![](../static/img/checksig-failed.png)
+
+To fix this kind of error, you should re-check your contract code and the contract-calling transaction to ensure that the input unlocking script is correct.
+
 ## Broadcast double-spending transactions
 
 You could get two different errors when broadcasting a double-spending transaction, depending on the status of the transaction you're trying to double-spend.
@@ -41,21 +55,3 @@ If you don't fund your private key's address before deploying a contract, you wo
 ![](../static/img/insufficient-balance.png)
 
 Please fund your address with our [faucet](https://scrypt.io/faucet/) first.
-
-## Script evaluated failed
-
-If you receive a `mandatory-script-verify-flag-failed` error when broadcasting a transaction, it means that one or more inputs to the transaction have incorrect unlock scripts that cannot be verified by miners when attempting to spend those UTXOs.
-
-There are many reasons why the script evaluated failed, `Script evaluated without error but finished with a false/empty top stack element` is the most common situation, it indicates that the evaluation result of the unlocking script combined locking script is false, just as it describes.
-
-![](../static/img/mandatory-script-verify-flag-failed.png)
-
-Another common error is `Signature must be zero for failed CHECK(MULTI)SIG operation`, which means the signature in the unlocking script is not correct and cannot pass the verification of function `checkSig`.
-
-![](../static/img/checksig-failed.png)
-
-The specific reasons for other failures can be found in the [Node code](https://github.com/bitcoin-sv/bitcoin-sv/blob/v1.0.15/src/script/script_error.cpp#L9-L108).
-
-![](../static/img/script-failures.png)
-
-To fix this kind of error, you should re-check your contract code and the contract-calling transaction to ensure that the input unlocking script is correct.
