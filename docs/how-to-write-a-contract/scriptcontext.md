@@ -28,6 +28,8 @@ export interface ScriptContext {
   locktime: bigint,
   /** [SIGHASH flag]{@link https://wiki.bitcoinsv.io/index.php/SIGHASH_flags} used by this input */
   sigHashType: SigHashType,
+  /** get the whole serialized sighash preimage */
+  serialize(): SigHashPreimage,
 }
 
 export interface UTXO {
@@ -154,7 +156,11 @@ There are a total of 6 sigHash types to choose from:
 | ANYONECANPAY_NONE | Sign its own input and no output |
 | ANYONECANPAY_SINGLE | Sign its own input and the output with the same index |
 
+### Serialization
 
+You have the option to convert `this.ctx` into a `SigHashPreimage` object through serialization. This can be achieved by invoking the `this.ctx.serialize()` method. The output object adheres to the format utilized during the signing or verification of transactions. 
+
+A noteworthy application of a serialized preimage can be found in the creation of custom SigHash flags. An example is the [SIGHASH_ANYPREVOUT](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/sighashAnyprevout.ts#L34), which showcases this process.
 
 
 ### Debugging
