@@ -4,6 +4,22 @@ sidebar_position: 15
 
 # FAQ
 
+## Smart contract call failure
+
+If you receive a `mandatory-script-verify-flag-failed` error when broadcasting a transaction, it means that one or more inputs calling a contract fails.
+
+There are several possibilities for the failure.
+
+`Script evaluated without error but finished with a false/empty top stack element` is the most common one. It means one of [assert](./how-to-write-a-contract/built-ins.md#assert) fails.
+
+![](../static/img/mandatory-script-verify-flag-failed.png)
+
+Another common error is `Signature must be zero for failed CHECK(MULTI)SIG operation`, which means the signature is invalid in [checkSig](./how-to-write-a-contract/built-ins.md#checksig) or [checkMultiSig](./how-to-write-a-contract/built-ins.md#checkmultisig).
+
+![](../static/img/checksig-failed.png)
+
+You need to [debug the contract](./how-to-debug-a-contract.md).
+
 ## Broadcast double-spending transactions
 
 You could get two different errors when broadcasting a double-spending transaction, depending on the status of the transaction you're trying to double-spend.
