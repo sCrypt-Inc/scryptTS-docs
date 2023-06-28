@@ -196,7 +196,7 @@ export interface MethodCallOptions<T> {
    * must be used to sign the contract input,
    * and the callback function will receive the results of the signatures as an argument named `sigResponses`
    * */
-  readonly pubKeyOrAddrToSign?: PublicKeysOrAddressesOption;
+  readonly pubKeyOrAddrToSign?: PublicKeysOrAddressesOption | SignaturesOption;
   /** The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract */
   readonly next?: StatefulNext<T>[] | StatefulNext<T>,
   /** The `lockTime` of the method calling tx */
