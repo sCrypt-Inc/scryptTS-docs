@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Tutorial 8: SigHash Type
+# SigHash Types
 
 ## Overview
 
@@ -67,17 +67,17 @@ As described in the [doc](../how-to-write-a-contract/scriptcontext.md#sighash-ty
 
 ## Use Cases
 
-For a P2PKH transaction that uses SigHash `ALL`, it cannot be modified in any way after it is signed. Since the signature in the input is committed to all inputs and outputs of the transaction, if any signed message changes, the signature becomes invalid, thus the transaction becomes invalid. This is fine in most cases, because the senders don't want others to be able to modify the transaction after they've signed it.
+For a transaction signed with the default sighash `ALL`, it cannot be modified in any way. This is because the signature commits to all inputs and outputs of the transaction, if any part changes, the signature and thus the transactio becomes invalid. This is desirable in most cases, because the sender does not want others to temper with the signed transaction.
 
-Let’s look at some other examples using different SigHash types and how they can be used in practice.
+Let’s look at some examples using non-default sighash types.
 
 ### Crowdfunding
 
-Someone attempting to raise funds can construct a transaction with a single output. The single output pays the target amount to the fundraiser. Such a transaction is obviously invalid, as it has no inputs. However, others can now amend it by adding an input of their own, as a donation. They sign their own input with `ALL|ANYONECANPAY` without invalidating all the other existing signatures. Unless enough inputs are gathered to reach the value of the output, the transaction is invalid. Each donation is a "pledge" which cannot be collected by the fundraiser until the entire target amount is raised.
+Someone attempting to raise funds can construct a transaction with a single output. The single output pays a target amount to a fundraiser. Such a transaction is obviously invalid, as it has no inputs. Others can amend it by adding an input of their own, as a donation. They sign their own input with `ALL | ANYONECANPAY` and pass the partially signed transactions to the next donor. `ALL` ensures the output and thus the target and fundraiser cannot be modified. `ANYONECANPAY` ensures anyone can pay by adding new inputs without invalidating existing donors' signatures. Each donation is a "pledge" which cannot be collected by the fundraiser until the entire target amount is raised.
 
 ### Blank Check
 
-Someone attempting to write a blank check can construct a transaction with several inputs and no outputs, and sign all the inputs with SigHash `NONE`. The signatures in the input are only committed to all inputs of the transaction, this allows anyone to add their desired outputs to the transaction to claim the funds in the input.
+Someone attempting to write a blank check can construct a transaction with several inputs and no output, and sign all the inputs with `NONE`. The signatures only commit to inputs of the transaction. This allows anyone to add their desired outputs to the transaction to spend the funds in anyway she wants.
 
 ### Smart Contracts
 
