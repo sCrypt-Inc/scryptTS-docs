@@ -155,7 +155,7 @@ There are a total of 6 sigHash types to choose from:
 | ANYONECANPAY_SINGLE | Sign its own input and the output with the same index |
 
 
-
+For more information, please refer to [this detailed guide](../advanced/sighash-type.md).
 
 ### Debugging
 
