@@ -126,41 +126,44 @@ let tx = new bsv.Transaction()
 Because the transaction will need an input that provides it with some funds, we can use the `from` function to add one that unlocks the specified [UTXO](https://wiki.bitcoinsv.io/index.php/UTXO):
 
 ```ts
-let tx = new bsv.Transaction()
-    .from({
-        // TXID that contains the output you want to unlock:
-        txId: 'f50b8c6dedea6a4371d17040a9e8d2ea73d369177737fb9f47177fbda7d4d387',
-        // Index of the UTXO:
-        outputIndex: 0,
-        // Script of the UTXO. In this case it's a regular P2PKH script:
-        script: bsv.Script.fromASM('OP_DUP OP_HASH160 fde69facc20be6eee5ebf5f0ae96444106a0053f OP_EQUALVERIFY OP_CHECKSIG').toHex(),
-        // Value locked in the UTXO in satoshis:
-        satoshis: 99904
-    })
+tx.from({
+    // TXID that contains the output you want to unlock:
+    txId: 'f50b8c6dedea6a4371d17040a9e8d2ea73d369177737fb9f47177fbda7d4d387',
+    // Index of the UTXO:
+    outputIndex: 0,
+    // Script of the UTXO. In this case it's a regular P2PKH script:
+    script: bsv.Script.fromASM('OP_DUP OP_HASH160 fde69facc20be6eee5ebf5f0ae96444106a0053f OP_EQUALVERIFY OP_CHECKSIG').toHex(),
+    // Value locked in the UTXO in satoshis:
+    satoshis: 99904
+})
 ```
 
 Now, the transaction needs an output that will pay to the address `mxXPxaRvFE3178Cr6KK7nrQ76gxjvBQ4UQ` in our example:
 
 ```ts
-let tx = new bsv.Transaction()
-    .from({
-        // TXID that contains the output you want to unlock:
-        txId: 'f50b8c6dedea6a4371d17040a9e8d2ea73d369177737fb9f47177fbda7d4d387',
-        // Index of the UTXO:
-        outputIndex: 0,
-        // Script of the UTXO. In this case it's a regular P2PKH script:
-        script: bsv.Script.fromASM('OP_DUP OP_HASH160 fde69facc20be6eee5ebf5f0ae96444106a0053f OP_EQUALVERIFY OP_CHECKSIG').toHex(),
-        // Value locked in the UTXO in satoshis:
-        satoshis: 99904
-    }).addOutput(
-        new bsv.Transaction.Output({
-            script: bsv.Script.buildPublicKeyHashOut('mxXPxaRvFE3178Cr6KK7nrQ76gxjvBQ4UQ'),
-            satoshis: 99804,
-        })
-    )
+tx.addOutput(
+    new bsv.Transaction.Output({
+        script: bsv.Script.buildPublicKeyHashOut('mxXPxaRvFE3178Cr6KK7nrQ76gxjvBQ4UQ'),
+        satoshis: 99804,
+    })
+)
 ```
 
-Notice how the output value is 100 less than the value of the UTXO we're unlocking. This difference is the [transaction fee](https://wiki.bitcoinsv.io/index.php/Transaction_fees) (sometimes also called the miner fee).
+Notice how the output value is 100 satoshis less than the value of the UTXO we're unlocking. This difference is the [transaction fee](https://wiki.bitcoinsv.io/index.php/Transaction_fees) (sometimes also called the miner fee). The transaction fees are picked up by miners when they mine a block, so adding a transaction fee basically acts as an incentive for miners to include your transaction in a block.
+
+The amount of transaction fee you should pay depends on the fee rate and the bytes of the transaction. By adding an additional output to the transaction, we can control how much the transaction fee is actually paid. This output is called the change output. By adjusting the amount of change output, we can pay as little transaction fees as possible while meeting the needs of miners.
+
+You can directly call the `change` function to add a change output to the transaction without calculating the change amount by yourself. This function is smart enough that it will only add the change output when the difference between all inputs and outputs is more than the required transaction fee.
+
+```ts
+tx.change('n4fTXc2kaKXHyaxmuH5FTKiJ8Tr4fCPHFy')
+```
+
+For the fee rate, you can also change it by calling `feePerKb`.
+
+```ts
+tx.feePerKb(50)
+```
 
 ### Signing
 
