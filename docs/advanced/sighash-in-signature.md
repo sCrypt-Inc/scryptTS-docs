@@ -93,32 +93,11 @@ public unlock(sig: Sig, pubkey: PubKey) {
 }
 ```
 
-According to the doc [Method with Signatures](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#method-with-signatures), we can call this `unlock` method like this:
-
-```ts
-// call
-const { tx } = await p2pkh.methods.unlock(
-    // the first argument `sig` is replaced by a callback function which will return the needed signature
-    (sigResps) => findSig(sigResps, publicKey),
-
-    // the second argument is still the value of `pubkey`
-    PubKey(toHex(publicKey)),
-
-    // method call options
-    {
-        // A request for signer to sign with the private key corresponding to a public key
-        pubKeyOrAddrToSign: publicKey
-    } as MethodCallOptions<P2PKH>
-)
-```
-
 Noted that we pass `pubKeyOrAddrToSign: publicKey` in `MethodCallOptions` directly without specifying a sighash type, which means using the default sighash type `ALL` to sign. The above code can also be wrote like the following:
 
 ```ts
-import { SigHash } from 'scryptlib/dist/scryptTypes';
-
 const { tx } = await p2pkh.methods.unlock(
-    (sigResps) => findSig(sigResps, publicKey),
+    (sigResps) => findSig(sigResps, publicKey, SigHash.SINGLE),
     PubKey(toHex(publicKey)),
     {
         pubKeyOrAddrToSign: {
@@ -141,28 +120,5 @@ const { tx } = await p2pkh.methods.unlock(
             sigHashType: SigHash.SINGLE, // sign with SINGLE
         }
     } as MethodCallOptions<P2PKH>
-)
-```
-
-Actually, option `pubKeyOrAddrToSign` can take much more flexible arguments, the following is an example.
-
-```ts
-const { tx } = await instance.methods.unlock(
-    (sigResps) => findSig(sigResps, publicKey1, SigHash.SINGLE),
-    (sigResps) => findSig(sigResps, publicKey3, SigHash.NONE),
-    (sigResps) => findSig(sigResps, publicKey4, SigHash.ALL),
-    (sigResps) => findSig(sigResps, publicKey5),
-    ...
-    {
-        pubKeyOrAddrToSign: [{
-            pubKeyOrAddr: [publicKey1, publicKey2],
-            sigHashType: SigHash.SINGLE,
-        }, {
-            pubKeyOrAddr: publicKey3,
-            sigHashType: SigHash.NONE,
-        }, {
-            pubKeyOrAddr: [publicKey4, publicKey5],
-        }]
-    } as MethodCallOptions<ExampleContract>
 )
 ```
