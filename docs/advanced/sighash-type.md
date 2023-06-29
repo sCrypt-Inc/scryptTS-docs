@@ -104,7 +104,7 @@ There are two changes to specify a sighash type, which defaults to `ALL` if not 
 The following example uses `SINGLE`.
 
 ```ts
-const sighash = SigHash.SINGLE
+const sighash = SignatureHashType.SINGLE
 const { tx } = await p2pkh.methods.unlock(
     (sigResps) => findSig(sigResps, publicKey, sighash), // 2) specify SINGLE as well when finding a signature
     PubKey(toHex(publicKey)),
