@@ -356,7 +356,7 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
 
 ### `insertCodeSeparator`
 
-Method `insertCodeSeparator(): void` will insert an [`OP_CODESEPARATOR`](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR), where it is invoked.
+Method `insertCodeSeparator(): void` inserts an [`OP_CODESEPARATOR`](../advanced/codeseparator.md), where it is invoked.
 
 ```ts
 export class CodeSeparator extends SmartContract {
@@ -387,7 +387,6 @@ export class CodeSeparator extends SmartContract {
 }
 ```
 
-Take a look at the [Code Separator page](../advanced/codeseparator.md) for a detailed description of the methods functionality.
 
 ### `fromTx`
 
