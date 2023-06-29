@@ -359,40 +359,35 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
 Method `insertCodeSeparator(): void` will insert an [`OP_CODESEPARATOR`](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR), where it is invoked.
 
 ```ts
-export class OCS extends SmartContract {
+export class CodeSeparator extends SmartContract {
 
     @prop()
-    readonly pubKeyHash: PubKeyHash;
+    readonly addresses: FixedArray<PubKeyHash, 3>;
 
-    constructor(pubKeyHash: PubKeyHash) {
-        super(pubKeyHash);
-        this.pubKeyHash = pubKeyHash;
+    constructor(addresses: FixedArray<PubKeyHash, 3>) {
+        super(...arguments);
+        this.addresses = addresses;
     }
 
     @method()
-    public unlock(sig0: Sig, sig1: Sig pubkey: PubKey) {
-        assert(hash160(pubkey) == this.pubKeyHash, 'pubKeyHash check failed');
+    public unlock(sigs: FixedArray<Sig, 3>, pubKeys: FixedArray<PubKey, 3>) {
+        assert(hash160(pubKeys[0]) == this.addresses[0]);
         this.insertCodeSeparator()
-        assert(this.checkSig(sig0, pubkey));
+        assert(this.checkSig(sigs[0], pubKeys[0]));
+
         this.insertCodeSeparator()
-        assert(this.checkSig(sig1, pubkey));
+        assert(hash160(pubKeys[1]) == this.addresses[1]);
+        assert(this.checkSig(sigs[1], pubKeys[1]));
+
+        this.insertCodeSeparator()
+        assert(hash160(pubKeys[2]) == this.addresses[2]);
+        assert(this.checkSig(sigs[2], pubKeys[2]));
     }
 
 }
 ```
 
-In the above example, the `unlock` method calls `insertCodeSeparator`. This implies that each invocation of `checkSig` will use the code below the most recent invocation of `insertCodeSeparator` within the signature verification process. This includes the invocation of `insertCodeSeparator` itself.
-
-Therefore, this functionality requires us to modify the script when creating a signature. This is so that the signature signs only the necessary subscript, instead of the entire locking script. We can achieve this script alteration using the [`subScript`](../reference/classes/bsv.Script-1.md#subscript) function, which returns the subscript, cut at the n-th occurence of `OP_CODESEPARATOR`:
-
-```ts
-const tx = newTx();
-let demo = new OCS(PubKeyHash(toHex(pkh)))
-demo.to = { tx, inputIndex }
-
-const sig0 = signTx(tx, privateKey, demo.lockingScript.subScript(0), inputSatoshis)
-const sig1 = signTx(tx, privateKey, demo.lockingScript.subScript(1), inputSatoshis)
-```
+Take a look at the [Code Separator page](../advanced/codeseparator.md) for a detailed description of the methods functionality.
 
 ### `fromTx`
 
