@@ -4,73 +4,47 @@ sidebar_position: 9
 
 # Sighash in `@method()`
 
-In this section, we will introduce how to specify different sighash types in `@method()` decorator to simplify the implementation of smart contracts.
+In this section, we will introduce how to specify different sighash types in the `@method()` decorator.
 
 :::note
-The following content is only capable with those contracts that access `ScriptContext` in their public method.
+Sighash here only affects contracts that access `ScriptContext` in their public methods.
 :::note
 
 #### Counter
 
-Check the [Counter](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/counter.ts) contract again in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate) repository. It's quite simple and records how many times it has been called since deployment.
+Let us use the [Counter](../how-to-write-a-contract/stateful-contract.md) contract as an example. It simply records how many times it has been called since deployment.
 
-```ts
-export class Counter extends SmartContract {
-    ...
-    
-    @method()
-    public incrementOnChain() {
-        ...
-        
-        const amount: bigint = this.ctx.utxo.value
-        const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
-        assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
-    }
-    
-    ...
-}
-```
+Noted that the `@method` [decorator](../how-to-write-a-contract/how-to-write-a-contract.md#method-decorator) takes a sighash type as a parameter, whose default is `ALL`. According to the [doc](../how-to-write-a-contract/scriptcontext.md#sighash-type),  `hashOutputs` is the double SHA256 of the serialization of **all outputs** when the sighash type is `ALL`. The [default calling transaction builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#default-1) adds a change output when necessary. That's why we need to add a change output when building outputs of the spending transaction in the public method: we need to build all the outputs that are included in `hashOutputs`. Otherwise, contract call will fail.
 
-In the public method, we first build the `outputs` of the spending transaction. It contains not only an output with the next contract state, but also a P2PKH change output.
-
-```ts
-const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
-```
-
-Then validate if they hash to the `hashOutputs` of `ScriptContext`.
-
-```ts
-assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
-```
-
-Noted that the `@method` [decorator](../how-to-write-a-contract/how-to-write-a-contract.md#method-decorator) takes a sighash type as a parameter, it defaults to sighash `ALL`. According to the [doc](../how-to-write-a-contract/scriptcontext.md#sighash-type),  `hashOutputs` is the double SHA256 of the serialization of **all outputs** when the sighash type is neither `SINGLE` nor `NONE`. The [default transaction builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#default-1) will add a change output when necessary. That's why we need to add a change output when building outputs of the spending transaction in the public method: we need to build all the outputs that are included in `hashOutputs`. Otherwise, it will fail verification.
-
-The following [transaction](https://test.whatsonchain.com/tx/845f22b728deb23acacbc6f58f23ffde9c3e2be976e08c57f2bdcb417e3eacc5) is a contract calling transaction of Counter, as you can see it contains two outputs just like we described above.
+The following [transaction](https://test.whatsonchain.com/tx/845f22b728deb23acacbc6f58f23ffde9c3e2be976e08c57f2bdcb417e3eacc5) is a contract calling transaction of `Counter`. As you can see, it contains two outputs: one for the new state, the other for change.
 
 ![](../../static/img/counter-call.png)
 
 #### Advanced Counter
 
-Noted that in the state transition of Counter, there's always only one UTXO that contains the latest contract state. When the contract is called, it spends the UTXO of the current state and creates a UTXO of the new state. Moreover, the contract input index of the spending transaction and the contract output index are the same.
+Noted that in the state transition of `Counter`, there is always only one UTXO that contains the latest contract state. When the contract is called, it spends the UTXO of the current state and creates a UTXO of the new state. Moreover, the contract input index of the spending transaction and the contract output index are the same.
 
-In fact, we only care about the contract-related UTXO in the transaction inputs and outputs when calling Counter, and do not care about other inputs and outputs, such as P2PKHs. Thus, we can use sighash type `SINGLE` or `SINGLE|ANYONECANPAY` to simplify the contract.
+In fact, we only care about the contract-related UTXO in the transaction inputs and outputs when calling Counter, and do not care about other inputs and outputs. Thus, we can use `SINGLE | ANYONECANPAY` to simplify the contract.
+`SINGLE` lets us focus on the contract output itself.
+`ANYONECANPAY` allows anyone to add inputs for this contract calling transaction to, e.g., pay fees.
 
-Both of these sighash types only focus on the contract output itself, which is what we want, it matches the format of the Counter calling transaction exactly. There is more flexibility with the `ANYONECANPAY` flag, which only signs the contract input itself and excludes all the other inputs. This feature is useful in some cases, such as when someone else adds inputs for this contract calling transaction to pay the fees, it will not invalidate the signature in the contract input.
 
-We can do some modifications for the original Counter, there are only two places:
+We make two changes to the original Counter.
 
-1. Using `@method(SigHash.ANYONECANPAY_SINGLE)`  to indicate using sighash type `SINGLE|ANYONECANPAY` 
-2. Build the `output` that only contains the contract's new state, without all the other outputs.
+1. Using `@method(SigHash.ANYONECANPAY_SINGLE)`
+2. Build an `output` that only contains the contract's new state, without the change output.
 
 ```ts
 export class AdvancedCounter extends SmartContract {
     ...
     
+    // 1) add ANYONECANPAY_SINGLE
     @method(SigHash.ANYONECANPAY_SINGLE)
     public incrementOnChain() {
         ...
         
         const amount: bigint = this.ctx.utxo.value
+        // 2) remove change output
         const output: ByteString = this.buildStateOutput(amount)
         assert(this.ctx.hashOutputs == hash256(output), 'hashOutputs mismatch')
     }
@@ -79,19 +53,21 @@ export class AdvancedCounter extends SmartContract {
 }
 ```
 
-You can check the [complete code](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/advancedCounter.ts) in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate). We choose `SINGLE|ANYONECANPAY` here, but as we described above, it's good to use `SINGLE` as well.
+You can check the [complete code here](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/advancedCounter.ts).
 
-The following [transaction](https://test.whatsonchain.com/tx/e06d86f8d8b867c503eca799bb542b5f1d1f81aa75ad00ab4377d65764bef68c) is a contract calling transaction of AdvancedCounter, as you can see it also contains two outputs but we only build one input then check if it hashes to `hashOutputs` in the public method. The reason for this is that we use the sighash type `SINGLE|ANYONECANPAY`.
+The following [transaction](https://test.whatsonchain.com/tx/e06d86f8d8b867c503eca799bb542b5f1d1f81aa75ad00ab4377d65764bef68c) is a contract calling transaction of `AdvancedCounter`. You can see it also contains two outputs, but we only use one output when checking if it hashes to `hashOutputs` in the public method, since we use `SINGLE`.
 
 ![](../../static/img/advanced-counter-call.png)
 
 ## More examples
 
-Use different sighash types in `@method()` decorator will change the value of `ScriptContext`. This is useful in some cases.
+Use different sighash types in `@method()` decorator will change the value of `ScriptContext`. This is useful in many cases.
 
-If your contract needs to restrict all outputs of the spending transaction, then use sighash `ALL`. If your contract state will always only transform in one UTXO, then consider using sighash `SINGLE` to simplify it. If you want to enable someone else could add inputs after the transaction is sealed, such as for paying transaction fees, then apply the `ANYONECANPAY` modifier.
+- If your contract needs to restrict all inputs and outputs of the spending transaction, use `ALL`.
+- If your contract is stateful and the state is always in a single output, simplify it using `SINGLE`.
+- If you want to enable someone else could add inputs after the transaction is sealed, such as for paying transaction fees, apply the `ANYONECANPAY` modifier.
 
-There are many other contracts like AdvancedCounter that use sighash types in `@method()`,  you can check more examples in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate).
+You can check find examples in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate).
 
 - [AnyoneCanSpend](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/acs.ts)
 - [Clone](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/clone.ts)
