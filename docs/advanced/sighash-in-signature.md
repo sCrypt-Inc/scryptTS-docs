@@ -77,11 +77,11 @@ Someone attempting to raise funds can construct a transaction with a single outp
 
 Someone attempting to write a blank check can construct a transaction with several inputs and no output, and sign all the inputs with `NONE`. The signatures only commit to inputs of the transaction. This allows anyone to add their desired outputs to the transaction to spend the funds in anyway she wants.
 
-## How to Use it in sCrypt
+## How to generate a signature with a specific sighash
 
-For those contract public methods that require one or more signatures as the parameters, we can specify different sighash types for the signatures when calling it.
+For those contract public methods that require one or more signatures as input parameters, we can specify different sighash types for the signatures when calling it.
 
-Check the [P2PKH](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/p2pkh.ts) contract again in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate) repository, it requires a `sig` and a `pubey` to unlock.
+Take the [P2PKH contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#method-with-signatures) as an example, it requires a signature to `unlock`.
 
 ```ts
 @method()
@@ -93,31 +93,22 @@ public unlock(sig: Sig, pubkey: PubKey) {
 }
 ```
 
-Noted that we pass `pubKeyOrAddrToSign: publicKey` in `MethodCallOptions` directly without specifying a sighash type, which means using the default sighash type `ALL` to sign. The above code can also be wrote like the following:
+There are two changes to specify a sighash type, which defaults to `ALL` if not specified explicitly.
+
+1. Pass a `SignatureOption` object to `pubKeyOrAddrToSign` to specify the sighash type.
+2. Pass the sighash as the third parameter of `findSig()`.
+
+The following example uses `SINGLE`.
 
 ```ts
+const sighash = SigHash.SINGLE
 const { tx } = await p2pkh.methods.unlock(
-    (sigResps) => findSig(sigResps, publicKey, SigHash.SINGLE),
+    (sigResps) => findSig(sigResps, publicKey, sighash), // 2) specify SINGLE as well when finding a signature
     PubKey(toHex(publicKey)),
     {
         pubKeyOrAddrToSign: {
             pubKeyOrAddr: publicKey,
-            sigHashType: SigHash.ALL,  // specify the sighash type when signing
-        }
-    } as MethodCallOptions<P2PKH>
-)
-```
-
-We can pass a `SignatureOption` object to `pubKeyOrAddrToSign` to specify the sighash type, and if the signature is signed with the non-default sighash type, don't forget to pass it to `findSig`, otherwise, you will not get the corresponding signature. The third parameter of `findSig` method is a sighash type defaults to `ALL`.
-
-```ts
-const { tx } = await p2pkh.methods.unlock(
-    (sigResps) => findSig(sigResps, publicKey, SigHash.SINGLE), // specify SINGLE as well when find sig
-    PubKey(toHex(publicKey)),
-    {
-        pubKeyOrAddrToSign: {
-            pubKeyOrAddr: publicKey,
-            sigHashType: SigHash.SINGLE, // sign with SINGLE
+            sigHashType: sighash, // 1) sign with SINGLE
         }
     } as MethodCallOptions<P2PKH>
 )
