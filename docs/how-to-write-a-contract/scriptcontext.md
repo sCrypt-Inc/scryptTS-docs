@@ -162,6 +162,9 @@ For more information, please refer to [this detailed guide](../advanced/sighash-
 
 You have the option to convert `this.ctx` into a `SigHashPreimage` object through serialization. This can be achieved by invoking the `this.ctx.serialize()` method. The output object adheres to the format utilized during the signing or verification of transactions. 
 
+![](../../static/img/sighashpreimage0.png)
+[Format: Source](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm)
+
 A noteworthy application of a serialized preimage can be found in the creation of custom SigHash flags. An example is the [SIGHASH_ANYPREVOUT](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/sighashAnyprevout.ts#L34), which showcases this process.
 
 ### Debugging
