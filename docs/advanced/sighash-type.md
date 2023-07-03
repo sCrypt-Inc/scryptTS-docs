@@ -117,6 +117,7 @@ const { tx } = await p2pkh.methods.unlock(
 )
 ```
 
+You can check the more detailed [example](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/p2pkh-anyonecanpay.ts) about how to generate and use a signature with a specific sighash in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate).
 
 ## 2. Sighash Types in `@method()` Parameters
 
