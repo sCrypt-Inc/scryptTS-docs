@@ -13,6 +13,10 @@ Part 5, `scriptCode`, usually contains the entire smart contract, i.e., locking 
 
 ![](../../static/img/opcs.png)
 
+If multiple instances of `OP_CODESEPARATOR` are present, a subsequent `checkSig` will only use the part of the locking script after (and including) **the most recent** occurrence of `OP_CODESEPARATOR` as the `scriptCode`.
+
+![](../../static/img/opcs_mul.png)
+
 
 ## How to Insert Code Separators
 
