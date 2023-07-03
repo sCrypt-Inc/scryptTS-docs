@@ -9,7 +9,7 @@ This section will show how to integrate your smart contract to a frontend, so us
 We use [React](https://reactjs.org/) as our frontend framework as an example. We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the front end project.
 
 :::note
-Currently, the only supported frontend frameworks is React. We anticipate to add supports for other frameworks over time.
+Currently, the supported frontend frameworks are React and [Next.js](https://nextjs.org/). We anticipate to add supports for other frameworks over time.
 :::
 
 ## Setup
@@ -25,6 +25,14 @@ npx create-react-app helloworld --template typescript
 ![](../../static/img/react-scaffold.png)
 
 We will do most work under the `src` directory.
+
+### Next.js
+
+Run the following command to create a Next.js project, named `helloworld`.
+
+```bash
+npx create-next-app helloworld --typescript
+```
 
 ### `sCrypt`
 
