@@ -101,10 +101,10 @@ There are two changes to specify a sighash type, which defaults to `ALL` if not 
 1. Pass a `SignatureOption` object to `pubKeyOrAddrToSign` to specify the sighash type.
 2. Pass the sighash as the third parameter of `findSig()`.
 
-The following example uses `SINGLE`.
+The following example uses `ANYONECANPAY | SINGLE`.
 
 ```ts
-const sighash = SignatureHashType.SINGLE
+const sighash = SignatureHashType.ANYONECANPAY_SINGLE
 const { tx } = await p2pkh.methods.unlock(
     (sigResps) => findSig(sigResps, publicKey, sighash), // 2) specify SINGLE as well when finding a signature
     PubKey(toHex(publicKey)),
@@ -117,7 +117,7 @@ const { tx } = await p2pkh.methods.unlock(
 )
 ```
 
-You can check the more detailed [example](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/p2pkh-anyonecanpay.ts) about how to generate and use a signature with a specific sighash in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate).
+You can find the full example in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/p2pkh-anyonecanpay.ts).
 
 ## 2. Sighash Types in `@method()` Parameters
 
