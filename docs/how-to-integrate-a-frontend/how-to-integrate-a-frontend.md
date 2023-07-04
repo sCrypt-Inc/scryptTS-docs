@@ -5,16 +5,13 @@ sidebar_position: 8
 # How to Integrate With a Frontend
 
 This section will show how to integrate your smart contract to a frontend, so users can interact with it.
-
-We use [React](https://reactjs.org/) as our frontend framework as an example. We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the front end project.
-
-:::note
-Currently, the supported frontend frameworks are [React](https://react.dev) and [Next.js](https://nextjs.org/). We anticipate to add supports for other frameworks over time.
-:::
+We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the front end project.
 
 ## Setup
 
-### React
+### Step 1
+Create your frontend project as usual.
+#### React
 
 Run the following command to create a React project, named `helloworld`.
 
@@ -26,7 +23,7 @@ npx create-react-app helloworld --template typescript
 
 We will do most work under the `src` directory.
 
-### Next.js
+#### Next.js
 
 Run the following command to create a `Next.js` project, named `helloworld`.
 
@@ -34,16 +31,21 @@ Run the following command to create a `Next.js` project, named `helloworld`.
 npx create-next-app helloworld --typescript
 ```
 
-### `sCrypt`
+:::note
+Currently, we support frontend frameworks [React](https://react.dev) and [Next.js](https://nextjs.org/). We anticipate to add supports for other frameworks over time.
+:::
 
-Run the `init` command of the [CLI](../installation.md#the-scrypt-cli-tool) to turn it into an `sCrypt` project.
+
+### Step 2
+
+Run the `init` command of the [CLI](../installation.md#the-scrypt-cli-tool) to add `sCrypt` support in your project.
 
 ```bash
 cd helloworld
 npx scrypt-cli init
 ```
 
-This installs all the dependencies and configs the contract development environment.
+This installs all the dependencies and configures the contract development environment.
 After this, we are ready to go!
 
 ## Load Contract
