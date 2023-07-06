@@ -176,7 +176,7 @@ public close(sig: Sig) {
 
 Using [default tx builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#default-1) cannot meet our demand when calling `bid`, since the second output - the refund P2PKH output - is not a new contract instance.
 
-In Function `static bidTxBuilder(options: MethodCallOptions<Auction>, bidder: PubKeyHash, bid: bigint): Promise<ContractTransaction>`, we add all three outputs as designed.
+In Function `static bidTxBuilder(current: Auction, options: MethodCallOptions<Auction>, bidder: PubKey, bid: bigint): Promise<ContractTransaction>`, we add all three outputs as designed.
 
 ```ts
 const unsignedTx: Transaction = new Transaction()
@@ -259,9 +259,12 @@ export class Auction extends SmartContract {
     }
 
     // User defined transaction builder for calling function `bid`
-    static bidTxBuilder(options: MethodCallOptions<Auction>, bidder: PubKey, bid: bigint): Promise<ContractTransaction> {
-        const current = options.current
-
+    static bidTxBuilder(
+        current: Auction,
+        options: MethodCallOptions<Auction>,
+        bidder: PubKey,
+        bid: bigint
+    ): Promise<ContractTransaction> {
         const nextInstance = current.next()
         nextInstance.bidder = bidder
 
@@ -269,12 +272,19 @@ export class Auction extends SmartContract {
             // add contract input
             .addInput(current.buildContractInput(options.fromUTXO))
             // build next instance output
-            .addOutput(new Transaction.Output({script: nextInstance.lockingScript, satoshis: Number(bid),}))
+            .addOutput(
+                new Transaction.Output({
+                    script: nextInstance.lockingScript,
+                    satoshis: Number(bid),
+                })
+            )
             // build refund output
             .addOutput(
                 new Transaction.Output({
-                    script: Script.fromHex(Utils.buildPublicKeyHashScript(hash160(current.bidder))),
-                    satoshis: options.fromUTXO?.satoshis ?? current.from.tx.outputs[current.from.outputIndex].satoshis,
+                    script: Script.fromHex(
+                        Utils.buildPublicKeyHashScript(hash160(current.bidder))
+                    ),
+                    satoshis: current.balance,
                 })
             )
             // build change output
