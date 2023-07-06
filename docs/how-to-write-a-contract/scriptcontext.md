@@ -67,7 +67,7 @@ The table shows the meaning of each field of the `ScriptContext` structure.
 
 You can directly access the context through `this.ctx` in any public `@method`. It can be considered additional information a public method gets when called, besides its function parameters.
 
-The example below accesses the [locktime](https://learnmeabitcoin.com/technical/locktime) of the spending transaction.
+The example below accesses the [locktime](https://learnmeabitcoin.com/technical/locktime) of the spending transaction. The contract is a time lock, which only be called after mature time.
 
 ```ts
 class CheckLockTimeVerify extends SmartContract {
