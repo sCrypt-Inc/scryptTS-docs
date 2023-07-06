@@ -91,7 +91,7 @@ const config = {
           {
             /* Only visible under docs. See src/custom/custom.css */
             href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
-            label: 'GitHub',
+            label: 'Suggest an improvement for this page',
             position: 'right',
           },
           {
