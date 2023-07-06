@@ -70,7 +70,7 @@ You can directly access the context through `this.ctx` in any public `@method`. 
 The example below accesses the [locktime](https://learnmeabitcoin.com/technical/locktime) of the spending transaction. The contract is a time lock, which only be called after mature time.
 
 ```ts
-class CheckLockTimeVerify extends SmartContract {
+class TimeLock extends SmartContract {
   @prop()
   readonly matureTime: bigint // Can be timestamp or block height.
 
@@ -80,7 +80,7 @@ class CheckLockTimeVerify extends SmartContract {
   }
 
   @method()
-  public timelock() {
+  public unlock() {
     assert(this.ctx.locktime >= this.matureTime, "locktime too low")
   }
 }
