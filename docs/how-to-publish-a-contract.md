@@ -148,11 +148,7 @@ The `scrypt.index.json` file will be generated at TypeScript compile time in the
 }
 ```
 
-You should always publish the auto-generated sCrypt files along with the package. If you are familiar with sCrypt development and want to apply some improvements to the auto-generated files, for example using an inline asm function to replace an ordinary function to reduce the final script size, you could just modify the auto-generated file as you wish before publishing it. Take a look at how [scrytp-ts-lib](https://github.com/sCrypt-Inc/scrypt-ts-lib/tree/master/optimizations) does it.
-
-:::note
-You should modify the auto-generated files with caution and make sure that the modification passes the tests.
-:::
+You should always publish the auto-generated sCrypt files along with the package.
 
 ## Related Tools
 
