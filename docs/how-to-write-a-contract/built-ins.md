@@ -209,7 +209,7 @@ Function `static loadArtifact(artifact: Artifact)` loads the contract artifact f
 
 ```ts
 import { TicTacToe } from './contracts/tictactoe';
-var artifact = require('../artifacts/src/contracts/tictactoe.json');
+import artifact from '../artifacts/tictactoe.json';
 TicTacToe.loadArtifact(artifact);
 ```
 

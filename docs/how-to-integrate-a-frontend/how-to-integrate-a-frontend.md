@@ -88,7 +88,7 @@ npx scrypt-cli compile
 
 ![](../../static/img/scrypt-cli-compile.png)
 
-After the compilation, you will get an JSON artifact file at `artifacts/src/contracts/helloworld.json`.
+After the compilation, you will get an JSON artifact file at `artifacts/helloworld.json`.
 
 ![](../../static/img/contract-artifacts.png)
 
@@ -98,7 +98,7 @@ Now with the contract artifact file, you directly load it in the `index.tsx` fil
 
 ```ts
 import { Helloworld } from './contracts/helloworld';
-import artifact from '../artifacts/src/contracts/helloworld.json';
+import artifact from '../artifacts/helloworld.json';
 Helloworld.loadArtifact(artifact);
 ```
 

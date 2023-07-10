@@ -312,7 +312,7 @@ Before writing the front-end code, we need to load the contract artifact in `src
 
 ```ts
 import { Voting } from './contracts/voting';
-var artifact = require('../artifacts/src/contracts/voting.json');
+import artifact from '../artifacts/voting.json';
 Voting.loadArtifact(artifact);
 ```
 
