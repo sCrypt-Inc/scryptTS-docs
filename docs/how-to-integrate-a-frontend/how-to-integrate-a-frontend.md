@@ -31,10 +31,27 @@ Run the following command to create a `Next.js` project, named `helloworld`.
 npx create-next-app helloworld --typescript
 ```
 
-:::note
-Currently, we support frontend frameworks [React](https://react.dev) and [Next.js](https://nextjs.org/). We anticipate to add supports for other frameworks over time.
+#### Vue.js
+
+Run the following command to create a `Vue.js` project, named `helloworld`.
+
+```bash
+npx @vue/cli create helloworld
+```
+
+When setting up the project, select `Manually select features` and enable TypeScript.
+
+![](../../static/img/vue-cli-1.png)
+
+![](../../static/img/vue-cli-2.png)
+
+:::caution
+For now, we must use [webpack](https://webpack.js.org/) instead of [Vite](https://vitejs.dev/) to bundle the project.
 :::
 
+:::note
+Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), and [Vue](https://vuejs.org/). We anticipate to add supports for other frameworks over time.
+:::
 
 ### Step 2
 
