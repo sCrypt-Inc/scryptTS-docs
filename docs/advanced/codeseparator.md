@@ -55,7 +55,7 @@ In the above example, the `unlock` method calls `insertCodeSeparator`. Each invo
 
 ### Generate a Signature
 When `OP_CODESEPARATOR` is used, we need to change the way to get signatures.
-This is because the signature so far signes the entire locking script, instead of a subscript with everything before OCS removed. 
+This is because conventionally, the signature covers the entire locking script, instead of a subscript with everything before OCS removed. 
 We can achieve this by passing the index of `insertCodeSeparator` as a method call parameter, to specify which `OP_CODESEPARATOR` divides the locking script.
 Let's take a look at an example for the smart contract above:
 
