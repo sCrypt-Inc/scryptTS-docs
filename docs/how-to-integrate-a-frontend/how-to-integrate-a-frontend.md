@@ -49,8 +49,16 @@ When setting up the project, select `Manually select features` and enable TypeSc
 For now, we must use [webpack](https://webpack.js.org/) instead of [Vite](https://vitejs.dev/) to bundle the project.
 :::
 
+#### Angular
+
+Run the following command to create a `Angular` project, named `helloworld`.
+
+```bash
+npx @angular/cli new helloworld
+```
+
 :::note
-Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), and [Vue](https://vuejs.org/). We anticipate to add supports for other frameworks over time.
+Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), and [Angular](https://angular.io/). We anticipate to add supports for other frameworks over time.
 :::
 
 ### Step 2
