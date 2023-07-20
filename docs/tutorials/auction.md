@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Tutorial 2: Auction
+# Tutorial 3: Auction
 
 ## Overview
 
@@ -165,6 +165,7 @@ We don't place any constraint on transaction outputs here, because the auctionee
 // Close the auction if deadline is reached.
 @method()
 public close(sig: Sig) {
+    ...
     // Check deadline
     assert(this.ctx.locktime >= this.auctionDeadline, 'auction is not over yet')
     // Check signature of the auctioneer.
@@ -251,8 +252,24 @@ export class Auction extends SmartContract {
     // Close the auction if deadline is reached.
     @method()
     public close(sig: Sig) {
+        // Check if using block height.
+        if (this.auctionDeadline < Auction.LOCKTIME_BLOCK_HEIGHT_MARKER) {
+            // Enforce nLocktime field to also use block height.
+            assert(this.ctx.locktime < Auction.LOCKTIME_BLOCK_HEIGHT_MARKER)
+        }
+        
+        // Check nSequence is less than UINT_MAX.
+        assert(
+            this.ctx.sequence < Auction.UINT_MAX,
+            'input sequence should less than UINT_MAX'
+        )
+
         // Check deadline
-        assert(this.ctx.locktime >= this.auctionDeadline, 'auction is not over yet')
+        assert(
+            this.ctx.locktime >= this.auctionDeadline,
+            'auction is not over yet'
+        )
+
 
         // Check signature of the auctioneer.
         assert(this.checkSig(sig, this.auctioneer), 'signature check failed')
