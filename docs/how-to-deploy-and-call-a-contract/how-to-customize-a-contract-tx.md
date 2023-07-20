@@ -107,7 +107,7 @@ instance.bindTxBuilder("unlock", (current: T, options: MethodCallOptions<T>, ...
 Note that the parameters of your customized tx builder consist of the following parts:
 
 - `current` is the actual instance of the smart contract.
-- `options` is of type [`MethodCallOptions`](../how-to-test-a-contract.md#methodcalloptions).
+- `options` is of type [`MethodCallOptions`](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#methodcalloptions).
 - `...args: any` is an argument list the same as the bound pubic `@method`.
 
 
