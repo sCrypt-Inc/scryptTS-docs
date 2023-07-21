@@ -23,6 +23,7 @@ Detailed side-by-side comparison can be found [here](ttps://xiaohuiliu.medium.co
 | Transaction Processing | Sequential | Parallel |
 | Scalability | Vertical | Horizontal |
 | Paradigm | Impure | Pure |
+| Miner Extractable Value (MEV) | Yes | No |
 
 
 # Smart contract development on Bitcoin vs Ethereum
