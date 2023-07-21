@@ -28,6 +28,7 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 - [\_privateKeys](TestWallet.md#_privatekeys)
 - [\_utxoManagers](TestWallet.md#_utxomanagers)
 - [provider](TestWallet.md#provider)
+- [splitFeeTx](TestWallet.md#splitfeetx)
 
 ### Accessors
 
@@ -39,7 +40,9 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 ### Methods
 
 - [addPrivateKey](TestWallet.md#addprivatekey)
+- [checkPrivateKeys](TestWallet.md#checkprivatekeys)
 - [connect](TestWallet.md#connect)
+- [enableSplitFeeTx](TestWallet.md#enablesplitfeetx)
 - [getBalance](TestWallet.md#getbalance)
 - [getDefaultAddress](TestWallet.md#getdefaultaddress)
 - [getDefaultPubKey](TestWallet.md#getdefaultpubkey)
@@ -73,7 +76,7 @@ Reminder: DO NOT USE IT IN PRODUCTION ENV.
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:14
+dist/bsv/wallets/test-wallet.d.ts:15
 
 ## Properties
 
@@ -83,7 +86,7 @@ dist/bsv/wallets/test-wallet.d.ts:14
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:33
+dist/bsv/wallets/test-wallet.d.ts:36
 
 ___
 
@@ -93,7 +96,7 @@ ___
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:32
+dist/bsv/wallets/test-wallet.d.ts:35
 
 ___
 
@@ -103,7 +106,7 @@ ___
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:35
+dist/bsv/wallets/test-wallet.d.ts:38
 
 ___
 
@@ -117,7 +120,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:48
+dist/bsv/abstract-signer.d.ts:57
 
 ___
 
@@ -151,7 +154,17 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:47
+dist/bsv/abstract-signer.d.ts:56
+
+___
+
+### splitFeeTx
+
+• `Private` **splitFeeTx**: `any`
+
+#### Defined in
+
+dist/bsv/wallets/test-wallet.d.ts:14
 
 ## Accessors
 
@@ -165,7 +178,7 @@ dist/bsv/abstract-signer.d.ts:47
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:34
+dist/bsv/wallets/test-wallet.d.ts:37
 
 ___
 
@@ -179,7 +192,7 @@ ___
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:21
+dist/bsv/wallets/test-wallet.d.ts:23
 
 ___
 
@@ -205,7 +218,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:121
+dist/bsv/abstract-signer.d.ts:130
 
 ___
 
@@ -219,7 +232,7 @@ ___
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:20
+dist/bsv/wallets/test-wallet.d.ts:22
 
 ## Methods
 
@@ -239,7 +252,21 @@ dist/bsv/wallets/test-wallet.d.ts:20
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:22
+dist/bsv/wallets/test-wallet.d.ts:24
+
+___
+
+### checkPrivateKeys
+
+▸ **checkPrivateKeys**(): [`Network`](../interfaces/bsv.Networks.Network.md)
+
+#### Returns
+
+[`Network`](../interfaces/bsv.Networks.Network.md)
+
+#### Defined in
+
+dist/bsv/wallets/test-wallet.d.ts:25
 
 ___
 
@@ -265,7 +292,27 @@ Connect a provider to `this`.
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:30
+dist/bsv/wallets/test-wallet.d.ts:33
+
+___
+
+### enableSplitFeeTx
+
+▸ **enableSplitFeeTx**(`on`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `on` | `boolean` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+dist/bsv/wallets/test-wallet.d.ts:16
 
 ___
 
@@ -293,7 +340,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:141
+dist/bsv/abstract-signer.d.ts:150
 
 ___
 
@@ -313,7 +360,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:23
+dist/bsv/wallets/test-wallet.d.ts:26
 
 ___
 
@@ -333,7 +380,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:24
+dist/bsv/wallets/test-wallet.d.ts:27
 
 ___
 
@@ -363,7 +410,7 @@ The public key result.
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:25
+dist/bsv/wallets/test-wallet.d.ts:28
 
 ___
 
@@ -392,7 +439,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:29
+dist/bsv/wallets/test-wallet.d.ts:32
 
 ___
 
@@ -414,13 +461,13 @@ true | false
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:15
+dist/bsv/wallets/test-wallet.d.ts:17
 
 ___
 
 ### listUnspent
 
-▸ **listUnspent**(`address`, `options`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
 
 Get a list of the P2PKH UTXOs.
 
@@ -429,7 +476,7 @@ Get a list of the P2PKH UTXOs.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
+| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
 
 #### Returns
 
@@ -443,7 +490,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:31
+dist/bsv/wallets/test-wallet.d.ts:34
 
 ___
 
@@ -465,7 +512,7 @@ A promise which resolves to if the wallet has been authenticated and the authent
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:16
+dist/bsv/wallets/test-wallet.d.ts:18
 
 ___
 
@@ -494,7 +541,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:128
+dist/bsv/abstract-signer.d.ts:137
 
 ___
 
@@ -523,7 +570,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:28
+dist/bsv/wallets/test-wallet.d.ts:31
 
 ___
 
@@ -556,7 +603,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:26
+dist/bsv/wallets/test-wallet.d.ts:29
 
 ___
 
@@ -585,7 +632,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-dist/bsv/wallets/test-wallet.d.ts:27
+dist/bsv/wallets/test-wallet.d.ts:30
 
 ___
 
@@ -613,4 +660,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:150
+dist/bsv/abstract-signer.d.ts:159

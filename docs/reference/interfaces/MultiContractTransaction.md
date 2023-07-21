@@ -22,7 +22,7 @@ The input indices of previous contract UTXOs to spend in the method calling tx
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:60
+dist/smart-contract/types/contract-call.d.ts:74
 
 ___
 
@@ -34,7 +34,7 @@ The subsequent contract instance(s) produced in the outputs of the method callin
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:62
+dist/smart-contract/types/contract-call.d.ts:76
 
 ___
 
@@ -46,4 +46,4 @@ The method calling tx
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:58
+dist/smart-contract/types/contract-call.d.ts:72

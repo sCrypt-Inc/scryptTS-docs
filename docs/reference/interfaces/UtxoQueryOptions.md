@@ -8,29 +8,15 @@ The optional conditions for querying P2PKH UTXO.
 
 ### Properties
 
-- [cursor](UtxoQueryOptions.md#cursor)
-- [minSatoshis](UtxoQueryOptions.md#minsatoshis)
-- [size](UtxoQueryOptions.md#size)
+- [estimateSize](UtxoQueryOptions.md#estimatesize)
+- [feePerKb](UtxoQueryOptions.md#feeperkb)
+- [unspentValue](UtxoQueryOptions.md#unspentvalue)
 
 ## Properties
 
-### cursor
+### estimateSize
 
-• `Optional` **cursor**: `number`
-
-start cursor
-
-#### Defined in
-
-dist/bsv/abstract-provider.d.ts:16
-
-___
-
-### minSatoshis
-
-• `Optional` **minSatoshis**: `number`
-
-The lower limit of the total satoshis of the returned UTXO list.
+• **estimateSize**: `number`
 
 #### Defined in
 
@@ -38,12 +24,20 @@ dist/bsv/abstract-provider.d.ts:14
 
 ___
 
-### size
+### feePerKb
 
-• `Optional` **size**: `number`
-
-max number of returned records
+• **feePerKb**: `number`
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:18
+dist/bsv/abstract-provider.d.ts:15
+
+___
+
+### unspentValue
+
+• **unspentValue**: `number`
+
+#### Defined in
+
+dist/bsv/abstract-provider.d.ts:13

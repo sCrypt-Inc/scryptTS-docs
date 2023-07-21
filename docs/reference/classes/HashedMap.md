@@ -83,11 +83,11 @@ dist/smart-contract/builtins/hashed-map.d.ts:27
 
 #### Inherited from
 
-Map.\_\_@toStringTag@24
+Map.[toStringTag]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:135
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:137
 
 ___
 
@@ -101,7 +101,7 @@ Map.size
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:48
+node_modules/typescript/lib/lib.es2015.collection.d.ts:46
 
 ___
 
@@ -111,11 +111,11 @@ ___
 
 #### Inherited from
 
-Map.\_\_@species@598
+Map.[species]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:317
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:319
 
 ## Methods
 
@@ -159,7 +159,7 @@ Map.clear
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:23
+node_modules/typescript/lib/lib.es2015.collection.d.ts:21
 
 ___
 

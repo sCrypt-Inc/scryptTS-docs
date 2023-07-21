@@ -35,7 +35,7 @@ length of `ByteString` to denote input sequence
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1139
+dist/smart-contract/builtins/functions.d.ts:1147
 
 ___
 
@@ -47,7 +47,7 @@ length of `ByteString` to denote a outpoint
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1149
+dist/smart-contract/builtins/functions.d.ts:1157
 
 ___
 
@@ -59,7 +59,7 @@ length of `ByteString` to denote output value
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1141
+dist/smart-contract/builtins/functions.d.ts:1149
 
 ___
 
@@ -71,7 +71,7 @@ length of `ByteString` to denote a public key hash
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1145
+dist/smart-contract/builtins/functions.d.ts:1153
 
 ___
 
@@ -83,7 +83,7 @@ length of `ByteString` to denote a public key (compressed)
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1143
+dist/smart-contract/builtins/functions.d.ts:1151
 
 ___
 
@@ -95,4 +95,4 @@ length of `ByteString` to denote a tx id
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1147
+dist/smart-contract/builtins/functions.d.ts:1155

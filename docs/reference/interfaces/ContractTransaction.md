@@ -23,7 +23,7 @@ The input index of previous contract UTXO to spend in the method calling tx
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:49
+dist/smart-contract/types/contract-call.d.ts:63
 
 ___
 
@@ -35,7 +35,7 @@ The first element of nexts, this value should be set for user convenience.
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:53
+dist/smart-contract/types/contract-call.d.ts:67
 
 ___
 
@@ -47,7 +47,7 @@ The subsequent contract instance(s) produced in the outputs of the method callin
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:51
+dist/smart-contract/types/contract-call.d.ts:65
 
 ___
 
@@ -59,4 +59,4 @@ The method calling tx
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:47
+dist/smart-contract/types/contract-call.d.ts:61
