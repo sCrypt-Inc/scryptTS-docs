@@ -110,6 +110,67 @@ Note that the parameters of your customized tx builder consist of the following 
 - `options` is of type [`MethodCallOptions`](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#methodcalloptions).
 - `...args: any` is an argument list the same as the bound pubic `@method`.
 
+In our example, the first input is the one that will reference the UTXO, where our smart contract instance is currently deployed. We use the `buildContractInput` function to to build the input. Note, that during the execution of the tx builder function, this input won't contain any script. The script will get populated by the method arguments at a later stage of the method call.
+
+The tx builder will return an object, which contains the following:
+
+- `tx` is the unsigned transaction of our method call.
+- `atInputIndex` is the index of the input which will reference the UTXO, where our smart contract instance is currently deployed.
+- `nexts` is an array of objects that represent the contracts next instance or instances, if we're calling a [stateful smart contract](../how-to-write-a-contract/stateful-contract.md).
+
+### Stateful Contracts
+
+If we're calling a [stateful contract](../how-to-write-a-contract/stateful-contract.md) using a custom tx builder, we have to define the next instance of our deployed contract within it. This instance will contain updated stateful property values in accordance with the logic of the smart contract.
+
+The tx builder for our [auction smart contract](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/auction.ts) is a good example:
+```ts
+static bidTxBuilder(
+    current: Auction,
+    options: MethodCallOptions<Auction>,
+    bidder: PubKey,
+    bid: bigint
+): Promise<ContractTransaction> {
+    const nextInstance = current.next()
+    nextInstance.bidder = bidder
+
+    const unsignedTx: Transaction = new Transaction()
+        // add contract input
+        .addInput(current.buildContractInput(options.fromUTXO))
+        // build next instance output
+        .addOutput(
+            new Transaction.Output({
+                script: nextInstance.lockingScript,
+                satoshis: Number(bid),
+            })
+        )
+        // build refund output
+        .addOutput(
+            new Transaction.Output({
+                script: Script.fromHex(
+                    Utils.buildPublicKeyHashScript(hash160(current.bidder))
+                ),
+                satoshis: current.balance,
+            })
+        )
+        // build change output
+        .change(options.changeAddress)
+
+    return Promise.resolve({
+        tx: unsignedTx,
+        atInputIndex: 0,
+        nexts: [
+            {
+                instance: nextInstance,
+                atOutputIndex: 0,
+                balance: Number(bid),
+            },
+        ],
+    })
+}
+```
+
+As we can observe, a new instance is created using the current instances `next()` function. The new instances `bidder` property is then updated. This new instance is then being included as the first output of the new transaction. It is then required to include the next instance in the `nexts` array of the returned object.
+
 
 ## Notes
 
