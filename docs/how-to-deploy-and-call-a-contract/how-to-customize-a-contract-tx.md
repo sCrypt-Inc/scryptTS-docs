@@ -79,51 +79,20 @@ For contract calls, the default tx builder creates a transaction with the follow
 
 ### Customize
 
-You can customize a tx builder for a public `@method` of your contract by calling `bindTxBuilder`. The first parameter is the public method name, and the second parameter is the customized tx builder.
+You can customize a tx builder for a public `@method` of your contract by calling `bindTxBuilder`. The first parameter is the public method name, and the second parameter is the customized tx builder of type [MethodCallTxBuilder](../reference/interfaces/MethodCallTxBuilder).
+
+`MethodCallTxBuilder` takes three parameters:
+
+1. `current: T`: the actual instance of the smart contract T.
+2. `options`: of type [`MethodCallOptions<T>`](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#methodcalloptions).
+3. `...args: any`: the same list of arguments as the bound pubic `@method`.
+
+Take tx builder for our [auction smart contract](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/auction.ts) as an example:
 
 ```ts
-// bind a customized tx builder for the public method `MyContract.unlock`
-instance.bindTxBuilder("unlock", (current: T, options: MethodCallOptions<T>, ...args: any) => { 
-  // the tx is NOT signed
-  const unsignedTx: bsv.Transaction = new bsv.Transaction()
-    // add contract input
-    .addInput(current.buildContractInput(options.fromUTXO))
-    // add a p2pkh output
-    .addOutput(new bsv.Transaction.Output({
-        script: bsv.Script.fromHex(Utils.buildPublicKeyHashScript(args[0])),
-        satoshis: args[1]
-    }))
-    // add change output
-    .change(options.changeAddress)
+// bind a customized tx builder for the public method `Auction.bid`
+auction.bindTxBuilder('bid', Auction.bidTxBuilder)
 
-  return Promise.resolve({
-    tx: unsignedTx,
-    atInputIndex: 0, // the contract input's index
-    nexts: []
-  })         
-})
-```
-
-Note that the parameters of your customized tx builder consist of the following parts:
-
-- `current` is the actual instance of the smart contract.
-- `options` is of type [`MethodCallOptions`](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#methodcalloptions).
-- `...args: any` is an argument list the same as the bound pubic `@method`.
-
-In our example, the first input is the one that will reference the UTXO, where our smart contract instance is currently deployed. We use the `buildContractInput` function to to build the input. Note, that during the execution of the tx builder function, this input won't contain any script. The script will get populated by the method arguments at a later stage of the method call.
-
-The tx builder will return an object, which contains the following:
-
-- `tx` is the unsigned transaction of our method call.
-- `atInputIndex` is the index of the input which will reference the UTXO, where our smart contract instance is currently deployed.
-- `nexts` is an array of objects that represent the contracts next instance or instances, if we're calling a [stateful smart contract](../how-to-write-a-contract/stateful-contract.md).
-
-### Stateful Contracts
-
-If we're calling a [stateful contract](../how-to-write-a-contract/stateful-contract.md) using a custom tx builder, we have to define the next instance of our deployed contract within it. This instance will contain updated stateful property values in accordance with the logic of the smart contract.
-
-The tx builder for our [auction smart contract](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/auction.ts) is a good example:
-```ts
 static bidTxBuilder(
     current: Auction,
     options: MethodCallOptions<Auction>,
@@ -169,8 +138,16 @@ static bidTxBuilder(
 }
 ```
 
-As we can observe, a new instance is created using the current instances `next()` function. The new instances `bidder` property is then updated. This new instance is then being included as the first output of the new transaction. It is then required to include the next instance in the `nexts` array of the returned object.
 
+In this example, we customize the calling transaction for the publid `@method` `bid`. `...args` resolves to its parameters: `bidder: PubKey` and `bid: bigint`. The first input is the one that will reference the UTXO, where our smart contract instance currently resides. We use the `buildContractInput` function to to build the input. Note that during the execution of the tx builder function, this input's script is empty. The script will get populated by the method arguments at a later stage of the method call.
+
+The tx builder will return an object:
+
+- `tx`: the unsigned transaction of our method call.
+- `atInputIndex`: the index of the input which will reference the smart contract UTXO.
+- `nexts`: an array of objects that represent the contract's next instance(s). 
+
+When we are calling a [stateful smart contract](../how-to-write-a-contract/stateful-contract.md), we have to define the next instance of our contract. This instance will contain updated states. As we can see, first a new instance is created using the current instance's `next()` function. The new instance's `bidder` property is then updated. This new instance is then included in the 0-th output of the new transaction and goes into the `nexts` array of the returned object.
 
 ## Notes
 
