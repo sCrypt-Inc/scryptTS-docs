@@ -793,7 +793,7 @@ ___
 
 ▸ **setAsmVars**(`asmVarValues`): `void`
 
-If the compiled contract contains any ASM variable templates (e.g. <P2PKH.unlock.pubKeyHash>),
+If the compiled contract contains any ASM variable templates (e.g. P2PKH.unlock.pubKeyHash),
 replace them with the passed values.
 
 #### Parameters

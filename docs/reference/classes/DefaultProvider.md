@@ -59,6 +59,7 @@ and it is also robust enough for use in production.
 - [setMaxListeners](DefaultProvider.md#setmaxlisteners)
 - [updateNetwork](DefaultProvider.md#updatenetwork)
 - [getEventListeners](DefaultProvider.md#geteventlisteners)
+- [getMaxListeners](DefaultProvider.md#getmaxlisteners-1)
 - [isProvider](DefaultProvider.md#isprovider)
 - [listenerCount](DefaultProvider.md#listenercount-1)
 - [on](DefaultProvider.md#on-1)
@@ -121,7 +122,7 @@ ___
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:328
+node_modules/@types/node/events.d.ts:357
 
 ___
 
@@ -137,7 +138,7 @@ Sets or gets the default captureRejection value for all emitters.
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:333
+node_modules/@types/node/events.d.ts:362
 
 ___
 
@@ -151,7 +152,7 @@ ___
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:334
+node_modules/@types/node/events.d.ts:363
 
 ___
 
@@ -173,7 +174,7 @@ regular `'error'` listener is installed.
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:327
+node_modules/@types/node/events.d.ts:356
 
 ## Accessors
 
@@ -218,7 +219,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:354
+node_modules/@types/node/events.d.ts:383
 
 ___
 
@@ -307,7 +308,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:610
+node_modules/@types/node/events.d.ts:639
 
 ___
 
@@ -345,7 +346,7 @@ v6.0.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:673
+node_modules/@types/node/events.d.ts:702
 
 ___
 
@@ -446,7 +447,7 @@ v1.0.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:526
+node_modules/@types/node/events.d.ts:555
 
 ___
 
@@ -577,7 +578,7 @@ v3.2.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:620
+node_modules/@types/node/events.d.ts:649
 
 ___
 
@@ -615,7 +616,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:539
+node_modules/@types/node/events.d.ts:568
 
 ___
 
@@ -646,7 +647,7 @@ v10.0.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:499
+node_modules/@types/node/events.d.ts:528
 
 ___
 
@@ -701,7 +702,7 @@ v0.1.101
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:385
+node_modules/@types/node/events.d.ts:414
 
 ___
 
@@ -754,7 +755,7 @@ v0.3.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:414
+node_modules/@types/node/events.d.ts:443
 
 ___
 
@@ -796,7 +797,7 @@ v6.0.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:638
+node_modules/@types/node/events.d.ts:667
 
 ___
 
@@ -836,7 +837,7 @@ v6.0.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:654
+node_modules/@types/node/events.d.ts:683
 
 ___
 
@@ -891,7 +892,7 @@ v9.4.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:569
+node_modules/@types/node/events.d.ts:598
 
 ___
 
@@ -927,7 +928,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:510
+node_modules/@types/node/events.d.ts:539
 
 ___
 
@@ -1033,7 +1034,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:494
+node_modules/@types/node/events.d.ts:523
 
 ___
 
@@ -1128,7 +1129,7 @@ v0.3.5
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:520
+node_modules/@types/node/events.d.ts:549
 
 ___
 
@@ -1209,6 +1210,60 @@ v15.2.0, v14.17.0
 #### Defined in
 
 node_modules/@types/node/events.d.ts:299
+
+___
+
+### getMaxListeners
+
+▸ `Static` **getMaxListeners**(`emitter`): `number`
+
+Returns the currently set max amount of listeners.
+
+For `EventEmitter`s this behaves exactly the same as calling `.getMaxListeners` on
+the emitter.
+
+For `EventTarget`s this is the only way to get the max event listeners for the
+event target. If the number of event handlers on a single EventTarget exceeds
+the max set, the EventTarget will print a warning.
+
+```js
+import { getMaxListeners, setMaxListeners, EventEmitter } from 'node:events';
+
+{
+  const ee = new EventEmitter();
+  console.log(getMaxListeners(ee)); // 10
+  setMaxListeners(11, ee);
+  console.log(getMaxListeners(ee)); // 11
+}
+{
+  const et = new EventTarget();
+  console.log(getMaxListeners(et)); // 10
+  setMaxListeners(11, et);
+  console.log(getMaxListeners(et)); // 11
+}
+```
+
+**`Since`**
+
+v18.17.0
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `emitter` | `EventEmitter` \| `_DOMEventTarget` |
+
+#### Returns
+
+`number`
+
+#### Inherited from
+
+[Provider](Provider.md).[getMaxListeners](Provider.md#getmaxlisteners-1)
+
+#### Defined in
+
+node_modules/@types/node/events.d.ts:328
 
 ___
 
@@ -1539,4 +1594,4 @@ v15.4.0
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:317
+node_modules/@types/node/events.d.ts:346

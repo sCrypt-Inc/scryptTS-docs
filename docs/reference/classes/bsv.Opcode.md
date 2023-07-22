@@ -982,7 +982,7 @@ Nothing
 
 **`Output`**
 
-<Stack size>
+Stack size
 
 **`Static`**
 
@@ -1640,7 +1640,7 @@ The item `n` back in the stack is copied to the top.
 
 **`Input`**
 
-xn ... x2 x1 x0 <n>
+xn ... x2 x1 x0 {n}
 
 **`Output`**
 
@@ -1849,7 +1849,7 @@ The item `n` back in the stack is copied to the top.
 
 **`Input`**
 
-xn ... x2 x1 x0 <n>
+xn ... x2 x1 x0 {n}
 
 **`Output`**
 
