@@ -1,27 +1,27 @@
-[scrypt-ts](../README.md) / ContractArtifact
+[scrypt-ts](../README.md) / Artifact
 
-# Interface: ContractArtifact
+# Interface: Artifact
 
 ## Table of contents
 
 ### Properties
 
-- [abi](ContractArtifact.md#abi)
-- [alias](ContractArtifact.md#alias)
-- [asm](ContractArtifact.md#asm)
-- [buildType](ContractArtifact.md#buildtype)
-- [compilerVersion](ContractArtifact.md#compilerversion)
-- [contract](ContractArtifact.md#contract)
-- [file](ContractArtifact.md#file)
-- [hex](ContractArtifact.md#hex)
-- [library](ContractArtifact.md#library)
-- [md5](ContractArtifact.md#md5)
-- [sourceMap](ContractArtifact.md#sourcemap)
-- [sourceMapFile](ContractArtifact.md#sourcemapfile)
-- [sources](ContractArtifact.md#sources)
-- [stateProps](ContractArtifact.md#stateprops)
-- [structs](ContractArtifact.md#structs)
-- [version](ContractArtifact.md#version)
+- [abi](Artifact.md#abi)
+- [alias](Artifact.md#alias)
+- [asm](Artifact.md#asm)
+- [buildType](Artifact.md#buildtype)
+- [compilerVersion](Artifact.md#compilerversion)
+- [contract](Artifact.md#contract)
+- [file](Artifact.md#file)
+- [hex](Artifact.md#hex)
+- [library](Artifact.md#library)
+- [md5](Artifact.md#md5)
+- [sourceMap](Artifact.md#sourcemap)
+- [sourceMapFile](Artifact.md#sourcemapfile)
+- [sources](Artifact.md#sources)
+- [stateProps](Artifact.md#stateprops)
+- [structs](Artifact.md#structs)
+- [version](Artifact.md#version)
 
 ## Properties
 

@@ -1,63 +1,67 @@
-[scrypt-ts](../README.md) / SensiletSigner
+[scrypt-ts](../README.md) / DotwalletSigner
 
-# Class: SensiletSigner
+# Class: DotwalletSigner
 
-a [signer][https://docs.scrypt.io/how-to-test-a-contract#signer](https://docs.scrypt.io/how-to-test-a-contract#signer) which implemented the protocol with the [sensilet wallet][https://sensilet.com](https://sensilet.com),
-and dapps can use to interact with the Sensilet wallet
+a [signer][https://docs.scrypt.io/how-to-test-a-contract#signer](https://docs.scrypt.io/how-to-test-a-contract#signer) which implemented the protocol with the [dotwallet][https://www.dotwallet.com/en](https://www.dotwallet.com/en),
+and dapps can use to interact with the dotwallet.
 
 ## Hierarchy
 
 - [`Signer`](Signer.md)
 
-  ↳ **`SensiletSigner`**
+  ↳ **`DotwalletSigner`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](SensiletSigner.md#constructor)
+- [constructor](DotwalletSigner.md#constructor)
 
 ### Properties
 
-- [\_address](SensiletSigner.md#_address)
-- [\_isSigner](SensiletSigner.md#_issigner)
-- [\_target](SensiletSigner.md#_target)
-- [getConnectedTarget](SensiletSigner.md#getconnectedtarget)
-- [provider](SensiletSigner.md#provider)
-- [DEBUG\_TAG](SensiletSigner.md#debug_tag)
+- [\_address](DotwalletSigner.md#_address)
+- [\_isSigner](DotwalletSigner.md#_issigner)
+- [accessToken](DotwalletSigner.md#accesstoken)
+- [default\_public\_key](DotwalletSigner.md#default_public_key)
+- [provider](DotwalletSigner.md#provider)
+- [sender](DotwalletSigner.md#sender)
+- [state](DotwalletSigner.md#state)
+- [utxos\_public\_key](DotwalletSigner.md#utxos_public_key)
+- [DEBUG\_TAG](DotwalletSigner.md#debug_tag)
 
 ### Accessors
 
-- [connectedProvider](SensiletSigner.md#connectedprovider)
+- [connectedProvider](DotwalletSigner.md#connectedprovider)
 
 ### Methods
 
-- [connect](SensiletSigner.md#connect)
-- [getBalance](SensiletSigner.md#getbalance)
-- [getDefaultAddress](SensiletSigner.md#getdefaultaddress)
-- [getDefaultPubKey](SensiletSigner.md#getdefaultpubkey)
-- [getNetwork](SensiletSigner.md#getnetwork)
-- [getPubKey](SensiletSigner.md#getpubkey)
-- [getSignatures](SensiletSigner.md#getsignatures)
-- [isAuthenticated](SensiletSigner.md#isauthenticated)
-- [listUnspent](SensiletSigner.md#listunspent)
-- [requestAuth](SensiletSigner.md#requestauth)
-- [signAndsendTransaction](SensiletSigner.md#signandsendtransaction)
-- [signMessage](SensiletSigner.md#signmessage)
-- [signRawTransaction](SensiletSigner.md#signrawtransaction)
-- [signTransaction](SensiletSigner.md#signtransaction)
-- [isSigner](SensiletSigner.md#issigner)
+- [connect](DotwalletSigner.md#connect)
+- [getBalance](DotwalletSigner.md#getbalance)
+- [getDefaultAddress](DotwalletSigner.md#getdefaultaddress)
+- [getDefaultPubKey](DotwalletSigner.md#getdefaultpubkey)
+- [getNetwork](DotwalletSigner.md#getnetwork)
+- [getPubKey](DotwalletSigner.md#getpubkey)
+- [getSignatures](DotwalletSigner.md#getsignatures)
+- [isAuthenticated](DotwalletSigner.md#isauthenticated)
+- [listUnspent](DotwalletSigner.md#listunspent)
+- [requestAuth](DotwalletSigner.md#requestauth)
+- [signAndsendTransaction](DotwalletSigner.md#signandsendtransaction)
+- [signMessage](DotwalletSigner.md#signmessage)
+- [signRawTransaction](DotwalletSigner.md#signrawtransaction)
+- [signTransaction](DotwalletSigner.md#signtransaction)
+- [isSigner](DotwalletSigner.md#issigner)
 
 ## Constructors
 
 ### constructor
 
-• **new SensiletSigner**(`provider`)
+• **new DotwalletSigner**(`accessToken`, `provider`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
+| `accessToken` | `string` |
 | `provider` | [`Provider`](Provider.md) |
 
 #### Overrides
@@ -66,7 +70,7 @@ and dapps can use to interact with the Sensilet wallet
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:14
+dist/bsv/signers/dotwallet-signer.d.ts:18
 
 ## Properties
 
@@ -76,7 +80,7 @@ dist/bsv/signers/sensilet-signer.d.ts:14
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:13
+dist/bsv/signers/dotwallet-signer.d.ts:13
 
 ___
 
@@ -94,23 +98,23 @@ dist/bsv/abstract-signer.d.ts:57
 
 ___
 
-### \_target
+### accessToken
 
-• `Private` **\_target**: `any`
+• `Private` **accessToken**: `any`
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:12
+dist/bsv/signers/dotwallet-signer.d.ts:12
 
 ___
 
-### getConnectedTarget
+### default\_public\_key
 
-• `Private` **getConnectedTarget**: `any`
+• `Private` **default\_public\_key**: `any`
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:28
+dist/bsv/signers/dotwallet-signer.d.ts:16
 
 ___
 
@@ -128,13 +132,43 @@ dist/bsv/abstract-signer.d.ts:56
 
 ___
 
-### DEBUG\_TAG
+### sender
 
-▪ `Static` `Readonly` **DEBUG\_TAG**: ``"SensiletSigner"``
+• `Private` **sender**: `any`
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:11
+dist/bsv/signers/dotwallet-signer.d.ts:15
+
+___
+
+### state
+
+• `Private` **state**: `any`
+
+#### Defined in
+
+dist/bsv/signers/dotwallet-signer.d.ts:14
+
+___
+
+### utxos\_public\_key
+
+• `Private` **utxos\_public\_key**: `any`
+
+#### Defined in
+
+dist/bsv/signers/dotwallet-signer.d.ts:17
+
+___
+
+### DEBUG\_TAG
+
+▪ `Static` `Readonly` **DEBUG\_TAG**: ``"DotwalletSigner"``
+
+#### Defined in
+
+dist/bsv/signers/dotwallet-signer.d.ts:11
 
 ## Accessors
 
@@ -166,7 +200,7 @@ dist/bsv/abstract-signer.d.ts:130
 
 ### connect
 
-▸ **connect**(`provider`): `Promise`<[`SensiletSigner`](SensiletSigner.md)\>
+▸ **connect**(`provider`): `Promise`<[`DotwalletSigner`](DotwalletSigner.md)\>
 
 Connect a provider to `this`.
 
@@ -178,7 +212,7 @@ Connect a provider to `this`.
 
 #### Returns
 
-`Promise`<[`SensiletSigner`](SensiletSigner.md)\>
+`Promise`<[`DotwalletSigner`](DotwalletSigner.md)\>
 
 #### Overrides
 
@@ -186,7 +220,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:29
+dist/bsv/signers/dotwallet-signer.d.ts:32
 
 ___
 
@@ -214,7 +248,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:32
+dist/bsv/signers/dotwallet-signer.d.ts:35
 
 ___
 
@@ -234,7 +268,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:30
+dist/bsv/signers/dotwallet-signer.d.ts:33
 
 ___
 
@@ -254,7 +288,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:36
+dist/bsv/signers/dotwallet-signer.d.ts:39
 
 ___
 
@@ -268,7 +302,7 @@ ___
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:31
+dist/bsv/signers/dotwallet-signer.d.ts:34
 
 ___
 
@@ -298,7 +332,7 @@ The public key result.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:37
+dist/bsv/signers/dotwallet-signer.d.ts:40
 
 ___
 
@@ -327,7 +361,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:41
+dist/bsv/signers/dotwallet-signer.d.ts:44
 
 ___
 
@@ -349,7 +383,7 @@ true | false
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:19
+dist/bsv/signers/dotwallet-signer.d.ts:23
 
 ___
 
@@ -372,13 +406,13 @@ Get a list of the P2PKH UTXOs.
 
 A promise which resolves to a list of UTXO for the query options.
 
-#### Inherited from
+#### Overrides
 
 [Signer](Signer.md).[listUnspent](Signer.md#listunspent)
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:144
+dist/bsv/signers/dotwallet-signer.d.ts:51
 
 ___
 
@@ -400,7 +434,7 @@ A promise which resolves to if the wallet has been authenticated and the authent
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:24
+dist/bsv/signers/dotwallet-signer.d.ts:28
 
 ___
 
@@ -458,7 +492,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:40
+dist/bsv/signers/dotwallet-signer.d.ts:43
 
 ___
 
@@ -491,7 +525,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:38
+dist/bsv/signers/dotwallet-signer.d.ts:41
 
 ___
 
@@ -520,7 +554,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:39
+dist/bsv/signers/dotwallet-signer.d.ts:42
 
 ___
 

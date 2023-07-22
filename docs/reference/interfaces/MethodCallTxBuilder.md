@@ -2,6 +2,10 @@
 
 # Interface: MethodCallTxBuilder<T\>
 
+A transaction builder.
+The default transaction builder only supports fixed-format call transactions.
+Some complex contracts require a custom transaction builder to successfully call the contract.
+
 ## Type parameters
 
 | Name | Type |
@@ -13,10 +17,6 @@
 ### MethodCallTxBuilder
 
 ▸ **MethodCallTxBuilder**(`current`, `options`, `...args`): `Promise`<[`ContractTransaction`](ContractTransaction.md)\>
-
-A transaction builder.
-The default transaction builder only supports fixed-format call transactions.
-Some complex contracts require a custom transaction builder to successfully call the contract.
 
 #### Parameters
 
@@ -32,4 +32,4 @@ Some complex contracts require a custom transaction builder to successfully call
 
 #### Defined in
 
-dist/smart-contract/types/contract-call.d.ts:70
+dist/smart-contract/types/contract-call.d.ts:84

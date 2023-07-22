@@ -86,11 +86,11 @@ dist/smart-contract/builtins/hashed-set.d.ts:26
 
 #### Inherited from
 
-Set.\_\_@toStringTag@24
+Set.[toStringTag]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:143
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:145
 
 ___
 
@@ -104,7 +104,7 @@ Set.size
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:115
+node_modules/typescript/lib/lib.es2015.collection.d.ts:113
 
 ___
 
@@ -114,11 +114,11 @@ ___
 
 #### Inherited from
 
-Set.\_\_@species@598
+Set.[species]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:320
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:322
 
 ## Methods
 
@@ -134,11 +134,11 @@ Iterates over values in the set.
 
 #### Inherited from
 
-Set.\_\_@iterator@86
+Set.[iterator]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.iterable.d.ts:172
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:170
 
 ___
 
@@ -185,7 +185,7 @@ Set.clear
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:98
+node_modules/typescript/lib/lib.es2015.collection.d.ts:96
 
 ___
 
@@ -251,7 +251,7 @@ Set.entries
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.iterable.d.ts:176
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:174
 
 ___
 
@@ -278,7 +278,7 @@ Set.forEach
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:107
+node_modules/typescript/lib/lib.es2015.collection.d.ts:105
 
 ___
 
@@ -327,7 +327,7 @@ Set.keys
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.iterable.d.ts:180
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:178
 
 ___
 
@@ -347,4 +347,4 @@ Set.values
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.iterable.d.ts:185
+node_modules/typescript/lib/lib.es2015.iterable.d.ts:183

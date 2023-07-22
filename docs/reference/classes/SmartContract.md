@@ -30,6 +30,7 @@ class YourSmartContract extends SmartContract {
 
 ### Accessors
 
+- [asmArgs](SmartContract.md#asmargs)
 - [balance](SmartContract.md#balance)
 - [changeAddress](SmartContract.md#changeaddress)
 - [changeAmount](SmartContract.md#changeamount)
@@ -40,6 +41,7 @@ class YourSmartContract extends SmartContract {
 - [lockingScript](SmartContract.md#lockingscript)
 - [methods](SmartContract.md#methods)
 - [provider](SmartContract.md#provider)
+- [scriptHash](SmartContract.md#scripthash)
 - [scriptSize](SmartContract.md#scriptsize)
 - [signer](SmartContract.md#signer)
 - [utxo](SmartContract.md#utxo)
@@ -57,9 +59,11 @@ class YourSmartContract extends SmartContract {
 - [connect](SmartContract.md#connect)
 - [deploy](SmartContract.md#deploy)
 - [getStateScript](SmartContract.md#getstatescript)
+- [insertCodeSeparator](SmartContract.md#insertcodeseparator)
 - [isStateful](SmartContract.md#isstateful)
 - [markAsGenesis](SmartContract.md#markasgenesis)
 - [next](SmartContract.md#next)
+- [setAsmVars](SmartContract.md#setasmvars)
 - [setDataPartInASM](SmartContract.md#setdatapartinasm)
 - [setDataPartInHex](SmartContract.md#setdatapartinhex)
 - [sigTypeOfMethod](SmartContract.md#sigtypeofmethod)
@@ -89,7 +93,7 @@ class YourSmartContract extends SmartContract {
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:148
+dist/smart-contract/contract.d.ts:155
 
 ## Properties
 
@@ -99,7 +103,7 @@ dist/smart-contract/contract.d.ts:148
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:394
+dist/smart-contract/contract.d.ts:421
 
 ___
 
@@ -109,7 +113,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:398
+dist/smart-contract/contract.d.ts:425
 
 ___
 
@@ -122,7 +126,7 @@ In other words, it's the start point for the lifecycle of `this` instance.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:98
+dist/smart-contract/contract.d.ts:100
 
 ___
 
@@ -132,7 +136,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:396
+dist/smart-contract/contract.d.ts:423
 
 ___
 
@@ -142,7 +146,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:397
+dist/smart-contract/contract.d.ts:424
 
 ___
 
@@ -152,7 +156,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:395
+dist/smart-contract/contract.d.ts:422
 
 ___
 
@@ -165,9 +169,25 @@ In other words, it's the end point for the lifecycle of `this` instance.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:103
+dist/smart-contract/contract.d.ts:105
 
 ## Accessors
+
+### asmArgs
+
+• `get` **asmArgs**(): `AsmVarValues`
+
+Returns set ASM variable values.
+
+#### Returns
+
+`AsmVarValues`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:207
+
+___
 
 ### balance
 
@@ -181,7 +201,7 @@ Get the current locked balance of the contract
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:443
+dist/smart-contract/contract.d.ts:470
 
 ___
 
@@ -201,7 +221,7 @@ the change address of to.tx
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:277
+dist/smart-contract/contract.d.ts:304
 
 ___
 
@@ -221,7 +241,7 @@ amount in satoshis
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:271
+dist/smart-contract/contract.d.ts:298
 
 ___
 
@@ -237,7 +257,7 @@ Returns code part of the lockingScript, in hex format.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:185
+dist/smart-contract/contract.d.ts:192
 
 ___
 
@@ -256,7 +276,7 @@ You can directly access the context through `this.ctx` in any public @method.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:453
+dist/smart-contract/contract.d.ts:480
 
 ___
 
@@ -270,7 +290,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:326
+dist/smart-contract/contract.d.ts:353
 
 ___
 
@@ -286,7 +306,7 @@ A set of functions for debugging contracts, which can only be called in `@method
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:439
+dist/smart-contract/contract.d.ts:466
 
 ___
 
@@ -302,7 +322,7 @@ Returns a lockingScript of contract.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:177
+dist/smart-contract/contract.d.ts:184
 
 ___
 
@@ -318,7 +338,7 @@ An object to access all public `@method`s
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:402
+dist/smart-contract/contract.d.ts:429
 
 ___
 
@@ -334,7 +354,23 @@ Get the connected [provider][https://docs.scrypt.io/how-to-test-a-contract#provi
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:351
+dist/smart-contract/contract.d.ts:378
+
+___
+
+### scriptHash
+
+• `get` **scriptHash**(): `string`
+
+Returns sha256 hash of the current locking script, formatted as a LE hex string.
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:196
 
 ___
 
@@ -350,7 +386,7 @@ Returns script size of lockingScript.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:181
+dist/smart-contract/contract.d.ts:188
 
 ___
 
@@ -366,7 +402,7 @@ Get the connected [signer][https://docs.scrypt.io/how-to-test-a-contract#signer]
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:347
+dist/smart-contract/contract.d.ts:374
 
 ___
 
@@ -382,7 +418,7 @@ Get the utxo where the contract is currently located
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:447
+dist/smart-contract/contract.d.ts:474
 
 ## Other Methods
 
@@ -405,7 +441,7 @@ Bind a transation builder for a public `@method`
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:410
+dist/smart-contract/contract.d.ts:437
 
 ___
 
@@ -423,7 +459,7 @@ A built-in function to create an [change output][https://wiki.bitcoinsv.io/index
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:217
+dist/smart-contract/contract.d.ts:239
 
 ___
 
@@ -447,13 +483,13 @@ an input that includes the contract
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:420
+dist/smart-contract/contract.d.ts:447
 
 ___
 
 ### buildDeployTransaction
 
-▸ **buildDeployTransaction**(`utxos`, `amount`, `changeAddress?`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+▸ **buildDeployTransaction**(`utxos`, `amount`, `changeAddress`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
 
 creates a tx to deploy the contract. Users override it to cutomize a deployment tx as below.
 
@@ -487,7 +523,7 @@ override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddre
 | :------ | :------ | :------ |
 | `utxos` | [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[] | represents one or more P2PKH inputs for paying transaction fees. |
 | `amount` | `number` | the balance of contract output |
-| `changeAddress?` | `string` \| [`Address`](bsv.Address.md) | a change address |
+| `changeAddress` | `string` \| [`Address`](bsv.Address.md) | a change address |
 
 #### Returns
 
@@ -495,7 +531,7 @@ override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddre
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:381
+dist/smart-contract/contract.d.ts:408
 
 ___
 
@@ -521,7 +557,7 @@ an output containing the new state
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:211
+dist/smart-contract/contract.d.ts:233
 
 ___
 
@@ -547,7 +583,7 @@ true if `txPreimage` is the preimage of the current transaction. Otherwise false
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:258
+dist/smart-contract/contract.d.ts:280
 
 ___
 
@@ -579,7 +615,7 @@ true if `txPreimage` is the preimage of the current transaction. Otherwise false
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:243
+dist/smart-contract/contract.d.ts:265
 
 ___
 
@@ -606,7 +642,7 @@ true if `txPreimage` is the preimage of the current transaction. Otherwise false
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:251
+dist/smart-contract/contract.d.ts:273
 
 ___
 
@@ -628,7 +664,7 @@ connect a provider or a signer.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:343
+dist/smart-contract/contract.d.ts:370
 
 ___
 
@@ -642,7 +678,7 @@ Deploy the contract
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `amount?` | `number` | satoshis locked in the contract |
+| `amount?` | `number` | satoshis locked in the contract, 1 sat by default |
 | `options?` | `Object` | An optional parameter that can specify the change address |
 | `options.address?` | [`Address`](bsv.Address.md) | - |
 | `options.changeAddress?` | [`Address`](bsv.Address.md) | - |
@@ -655,7 +691,7 @@ The transaction id of the successfully deployed contract
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:388
+dist/smart-contract/contract.d.ts:415
 
 ___
 
@@ -675,7 +711,24 @@ a locking script that containing the new state
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:223
+dist/smart-contract/contract.d.ts:245
+
+___
+
+### insertCodeSeparator
+
+▸ **insertCodeSeparator**(): `void`
+
+Insert and OP_CODESEPARATOR at this point of the functions logic.
+More detail about [OP_CODESEPARATOR][https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR)
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:285
 
 ___
 
@@ -693,7 +746,7 @@ true if contract has a `@prop(true)` property
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:425
+dist/smart-contract/contract.d.ts:452
 
 ___
 
@@ -709,7 +762,7 @@ Mark the contract as genesis contracts
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:204
+dist/smart-contract/contract.d.ts:226
 
 ___
 
@@ -732,7 +785,30 @@ a cloned contract instance with `this.from = undefined` and `this.to = undefined
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:198
+dist/smart-contract/contract.d.ts:220
+
+___
+
+### setAsmVars
+
+▸ **setAsmVars**(`asmVarValues`): `void`
+
+If the compiled contract contains any ASM variable templates (e.g. <P2PKH.unlock.pubKeyHash>),
+replace them with the passed values.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `asmVarValues` | `AsmVarValues` | type that contains the actual values. |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+dist/smart-contract/contract.d.ts:203
 
 ___
 
@@ -754,7 +830,7 @@ set the data part of the contract in ASM format
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:320
+dist/smart-contract/contract.d.ts:347
 
 ___
 
@@ -776,7 +852,7 @@ set the data part of the contract in hex format
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:325
+dist/smart-contract/contract.d.ts:352
 
 ___
 
@@ -800,26 +876,27 @@ a sigHash type
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:431
+dist/smart-contract/contract.d.ts:458
 
 ___
 
 ### compile
 
-▸ `Static` **compile**(): `Promise`<`TranspileError`[]\>
+▸ `Static` **compile**(): `Promise`<[`Artifact`](../interfaces/Artifact.md)\>
 
-compiling the scrypt source which is the output of transpiling. only used for testing.
+compiling the scrypt source which is the output of transpiling. Calling this function to output the contract artifact file.
+only used for testing.
 This function should not be called in production environment.
 
 #### Returns
 
-`Promise`<`TranspileError`[]\>
+`Promise`<[`Artifact`](../interfaces/Artifact.md)\>
 
-errors if compiling fails
+if compiling succeed, otherwise it throws error.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:119
+dist/smart-contract/contract.d.ts:124
 
 ___
 
@@ -835,7 +912,7 @@ it's required to pass all their offchain raw data at this transaction moment
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+| `T` | extends [`SmartContract`](SmartContract.md) |
 
 #### Parameters
 
@@ -852,23 +929,23 @@ it's required to pass all their offchain raw data at this transaction moment
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:471
+dist/smart-contract/contract.d.ts:498
 
 ___
 
 ### getArtifact
 
-▸ `Static` **getArtifact**(): [`ContractArtifact`](../interfaces/ContractArtifact.md)
+▸ `Static` **getArtifact**(): [`Artifact`](../interfaces/Artifact.md)
 
 The contract class needs to call this function before instantiating.
 
 #### Returns
 
-[`ContractArtifact`](../interfaces/ContractArtifact.md)
+[`Artifact`](../interfaces/Artifact.md)
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:131
+dist/smart-contract/contract.d.ts:138
 
 ___
 
@@ -883,7 +960,7 @@ The contract class needs to call this function before instantiating.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `artifact` | [`ContractArtifact`](../interfaces/ContractArtifact.md) | a merged contract artifact object |
+| `artifact` | [`Artifact`](../interfaces/Artifact.md) | a merged contract artifact object |
 
 #### Returns
 
@@ -891,13 +968,13 @@ The contract class needs to call this function before instantiating.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:125
+dist/smart-contract/contract.d.ts:132
 
 ___
 
 ### multiContractCall
 
-▸ `Static` **multiContractCall**(`partialContractTx`, `signer`): `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
+▸ `Static` **multiContractCall**(`partialContractTx`, `signer`, `options?`): `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
 
 When the `@method`s of multiple contracts is called in a transaction, this function signs and broadcasts the final transaction.
 
@@ -907,6 +984,7 @@ When the `@method`s of multiple contracts is called in a transaction, this funct
 | :------ | :------ | :------ |
 | `partialContractTx` | [`ContractTransaction`](../interfaces/ContractTransaction.md) | a `ContractTransation` with a unsigned transation. |
 | `signer` | [`Signer`](Signer.md) | a signer to sign the transation. |
+| `options?` | [`MultiContractCallOptions`](../interfaces/MultiContractCallOptions.md) | - |
 
 #### Returns
 
@@ -916,7 +994,7 @@ a `MultiContractTransation` with a signed transation.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:482
+dist/smart-contract/contract.d.ts:509
 
 ___
 
@@ -939,7 +1017,7 @@ parse call data when a contract public method called in a transation.
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:489
+dist/smart-contract/contract.d.ts:516
 
 ___
 
@@ -970,7 +1048,7 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:265
+dist/smart-contract/contract.d.ts:292
 
 ___
 
@@ -1000,4 +1078,4 @@ https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:230
+dist/smart-contract/contract.d.ts:252

@@ -2,7 +2,7 @@
 
 # Class: DefaultProvider
 
-The default provider is the safest, easiest way to begin developing on Bitcoin,
+The default provider is the safest, easiest way to begin developing on Bitcon,
 and it is also robust enough for use in production.
 
 ## Hierarchy
@@ -97,7 +97,7 @@ dist/providers/default-provider.d.ts:22
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:97
+dist/bsv/abstract-provider.d.ts:95
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:328
+node_modules/@types/node/events.d.ts:328
 
 ___
 
@@ -137,7 +137,7 @@ Sets or gets the default captureRejection value for all emitters.
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:333
+node_modules/@types/node/events.d.ts:333
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:334
+node_modules/@types/node/events.d.ts:334
 
 ___
 
@@ -173,7 +173,7 @@ regular `'error'` listener is installed.
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:327
+node_modules/@types/node/events.d.ts:327
 
 ## Accessors
 
@@ -218,7 +218,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:354
+node_modules/@types/node/events.d.ts:354
 
 ___
 
@@ -307,7 +307,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:610
+node_modules/@types/node/events.d.ts:610
 
 ___
 
@@ -345,7 +345,7 @@ v6.0.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:669
+node_modules/@types/node/events.d.ts:673
 
 ___
 
@@ -401,7 +401,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:61
+dist/bsv/abstract-provider.d.ts:59
 
 ___
 
@@ -446,17 +446,17 @@ v1.0.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:526
+node_modules/@types/node/events.d.ts:526
 
 ___
 
 ### getNetwork
 
-▸ **getNetwork**(): `Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
+▸ **getNetwork**(): [`Network`](../interfaces/bsv.Networks.Network.md)
 
 #### Returns
 
-`Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
+[`Network`](../interfaces/bsv.Networks.Network.md)
 
 The network this provider is connected to.
 
@@ -549,9 +549,12 @@ ___
 
 ### listenerCount
 
-▸ **listenerCount**(`eventName`): `number`
+▸ **listenerCount**(`eventName`, `listener?`): `number`
 
 Returns the number of listeners listening to the event named `eventName`.
+
+If `listener` is provided, it will return how many times the listener
+is found in the list of the listeners of the event.
 
 **`Since`**
 
@@ -562,6 +565,7 @@ v3.2.0
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `eventName` | `string` \| `symbol` | The name of the event being listened for |
+| `listener?` | `Function` | The event handler function |
 
 #### Returns
 
@@ -573,7 +577,7 @@ v3.2.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:616
+node_modules/@types/node/events.d.ts:620
 
 ___
 
@@ -611,7 +615,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:539
+node_modules/@types/node/events.d.ts:539
 
 ___
 
@@ -642,7 +646,7 @@ v10.0.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:499
+node_modules/@types/node/events.d.ts:499
 
 ___
 
@@ -697,7 +701,7 @@ v0.1.101
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:385
+node_modules/@types/node/events.d.ts:385
 
 ___
 
@@ -750,7 +754,7 @@ v0.3.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:414
+node_modules/@types/node/events.d.ts:414
 
 ___
 
@@ -792,7 +796,7 @@ v6.0.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:634
+node_modules/@types/node/events.d.ts:638
 
 ___
 
@@ -832,7 +836,7 @@ v6.0.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:650
+node_modules/@types/node/events.d.ts:654
 
 ___
 
@@ -887,7 +891,7 @@ v9.4.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:569
+node_modules/@types/node/events.d.ts:569
 
 ___
 
@@ -923,7 +927,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:510
+node_modules/@types/node/events.d.ts:510
 
 ___
 
@@ -1029,7 +1033,7 @@ v0.1.26
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:494
+node_modules/@types/node/events.d.ts:494
 
 ___
 
@@ -1089,7 +1093,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:74
+dist/bsv/abstract-provider.d.ts:72
 
 ___
 
@@ -1124,13 +1128,13 @@ v0.3.5
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:520
+node_modules/@types/node/events.d.ts:520
 
 ___
 
 ### updateNetwork
 
-▸ **updateNetwork**(`network`): `Promise`<`boolean`\>
+▸ **updateNetwork**(`network`): `void`
 
 update provider network
 
@@ -1142,7 +1146,7 @@ update provider network
 
 #### Returns
 
-`Promise`<`boolean`\>
+`void`
 
 #### Overrides
 
@@ -1204,7 +1208,7 @@ v15.2.0, v14.17.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:299
+node_modules/@types/node/events.d.ts:299
 
 ___
 
@@ -1232,7 +1236,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:103
+dist/bsv/abstract-provider.d.ts:101
 
 ___
 
@@ -1276,7 +1280,7 @@ Since v3.2.0 - Use `listenerCount` instead.
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:271
+node_modules/@types/node/events.d.ts:271
 
 ___
 
@@ -1362,7 +1366,7 @@ that iterates `eventName` events emitted by the `emitter`
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:254
+node_modules/@types/node/events.d.ts:254
 
 ___
 
@@ -1472,7 +1476,7 @@ v11.13.0, v10.16.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:194
+node_modules/@types/node/events.d.ts:194
 
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
 
@@ -1494,7 +1498,7 @@ node_modules/@types/node/ts4.8/events.d.ts:194
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:195
+node_modules/@types/node/events.d.ts:195
 
 ___
 
@@ -1535,4 +1539,4 @@ v15.4.0
 
 #### Defined in
 
-node_modules/@types/node/ts4.8/events.d.ts:317
+node_modules/@types/node/events.d.ts:317

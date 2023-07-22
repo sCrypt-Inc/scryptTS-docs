@@ -3,6 +3,7 @@
 # Enumeration: ProviderEvent
 
 The provider is an EventEmitter, and the following are all the events it can emit.
+https://stackoverflow.com/a/50511773
 
 ## Table of contents
 
@@ -21,7 +22,7 @@ The provider will send a 'Connected' event after the connection is successful.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:25
+dist/bsv/abstract-provider.d.ts:23
 
 ___
 
@@ -33,4 +34,4 @@ After the network connected to the provider changes, it will issue the 'NetworkC
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:27
+dist/bsv/abstract-provider.d.ts:25

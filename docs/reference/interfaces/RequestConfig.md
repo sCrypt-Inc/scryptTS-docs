@@ -41,7 +41,7 @@ ___
 
 ### network
 
-• `Optional` **network**: ``"testnet"`` \| ``"mainnet"``
+• `Optional` **network**: [`Network`](bsv.Networks.Network.md)
 
 #### Defined in
 

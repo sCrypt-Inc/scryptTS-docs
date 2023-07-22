@@ -31,7 +31,7 @@
 
 #### Defined in
 
-dist/client/apis/contract-api.d.ts:34
+dist/client/apis/contract-api.d.ts:36
 
 ## Properties
 
@@ -41,7 +41,7 @@ dist/client/apis/contract-api.d.ts:34
 
 #### Defined in
 
-dist/client/apis/contract-api.d.ts:33
+dist/client/apis/contract-api.d.ts:35
 
 ## Methods
 
@@ -59,7 +59,7 @@ If this error occurs, you need to re-acquire the contract instance
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+| `T` | extends [`SmartContract`](SmartContract.md) |
 
 #### Parameters
 
@@ -76,7 +76,7 @@ a contract instance contains latest state
 
 #### Defined in
 
-dist/client/apis/contract-api.d.ts:47
+dist/client/apis/contract-api.d.ts:49
 
 ___
 
@@ -90,7 +90,7 @@ Subscribe to notifications of contract status changes by contract ID,
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+| `T` | extends [`SmartContract`](SmartContract.md) |
 
 #### Parameters
 
@@ -107,4 +107,4 @@ a SubScription, which can be used to unsubscribe
 
 #### Defined in
 
-dist/client/apis/contract-api.d.ts:54
+dist/client/apis/contract-api.d.ts:56

@@ -10,6 +10,10 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
   ↳ [`SensiletSigner`](SensiletSigner.md)
 
+  ↳ [`DotwalletSigner`](DotwalletSigner.md)
+
+  ↳ [`TAALSigner`](TAALSigner.md)
+
   ↳ [`TestWallet`](TestWallet.md)
 
 ## Table of contents
@@ -58,7 +62,7 @@ A `Signer` is a class which in some way directly or indirectly has access to a p
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:49
+dist/bsv/abstract-signer.d.ts:58
 
 ## Properties
 
@@ -68,7 +72,7 @@ dist/bsv/abstract-signer.d.ts:49
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:48
+dist/bsv/abstract-signer.d.ts:57
 
 ___
 
@@ -78,7 +82,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:47
+dist/bsv/abstract-signer.d.ts:56
 
 ## Accessors
 
@@ -100,7 +104,7 @@ the connected provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:121
+dist/bsv/abstract-signer.d.ts:130
 
 ## Methods
 
@@ -122,7 +126,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:68
+dist/bsv/abstract-signer.d.ts:77
 
 ___
 
@@ -146,7 +150,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:141
+dist/bsv/abstract-signer.d.ts:150
 
 ___
 
@@ -162,7 +166,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:78
+dist/bsv/abstract-signer.d.ts:87
 
 ___
 
@@ -178,7 +182,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:73
+dist/bsv/abstract-signer.d.ts:82
 
 ___
 
@@ -204,7 +208,7 @@ The public key result.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:85
+dist/bsv/abstract-signer.d.ts:94
 
 ___
 
@@ -229,7 +233,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:115
+dist/bsv/abstract-signer.d.ts:124
 
 ___
 
@@ -247,7 +251,7 @@ true | false
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:54
+dist/bsv/abstract-signer.d.ts:63
 
 ___
 
@@ -272,7 +276,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:135
+dist/bsv/abstract-signer.d.ts:144
 
 ___
 
@@ -290,7 +294,7 @@ A promise which resolves to if the wallet has been authenticated and the authent
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:59
+dist/bsv/abstract-signer.d.ts:68
 
 ___
 
@@ -315,7 +319,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:128
+dist/bsv/abstract-signer.d.ts:137
 
 ___
 
@@ -340,7 +344,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:108
+dist/bsv/abstract-signer.d.ts:117
 
 ___
 
@@ -369,7 +373,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:94
+dist/bsv/abstract-signer.d.ts:103
 
 ___
 
@@ -394,7 +398,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:101
+dist/bsv/abstract-signer.d.ts:110
 
 ___
 
@@ -418,4 +422,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:150
+dist/bsv/abstract-signer.d.ts:159

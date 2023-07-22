@@ -11,6 +11,7 @@ scrypt-ts
 ### Enumerations
 
 - [ProviderEvent](enums/ProviderEvent.md)
+- [SignatureHashType](enums/SignatureHashType.md)
 
 ### Other Classes
 
@@ -18,6 +19,7 @@ scrypt-ts
 - [BsvApi](classes/BsvApi.md)
 - [ContractApi](classes/ContractApi.md)
 - [DefaultProvider](classes/DefaultProvider.md)
+- [DotwalletSigner](classes/DotwalletSigner.md)
 - [DummyProvider](classes/DummyProvider.md)
 - [FunctionCall](classes/FunctionCall.md)
 - [GorillapoolProvider](classes/GorillapoolProvider.md)
@@ -26,6 +28,7 @@ scrypt-ts
 - [SensibleProvider](classes/SensibleProvider.md)
 - [SensiletSigner](classes/SensiletSigner.md)
 - [Signer](classes/Signer.md)
+- [TAALSigner](classes/TAALSigner.md)
 - [TaalProvider](classes/TaalProvider.md)
 - [TestWallet](classes/TestWallet.md)
 - [WhatsonchainProvider](classes/WhatsonchainProvider.md)
@@ -48,13 +51,14 @@ scrypt-ts
 
 ### Interfaces
 
-- [ContractArtifact](interfaces/ContractArtifact.md)
+- [Artifact](interfaces/Artifact.md)
 - [ContractCalledEvent](interfaces/ContractCalledEvent.md)
 - [ContractTransaction](interfaces/ContractTransaction.md)
 - [DefaultProviderOption](interfaces/DefaultProviderOption.md)
 - [LogConfig](interfaces/LogConfig.md)
 - [MethodCallOptions](interfaces/MethodCallOptions.md)
 - [MethodCallTxBuilder](interfaces/MethodCallTxBuilder.md)
+- [MultiContractCallOptions](interfaces/MultiContractCallOptions.md)
 - [MultiContractTransaction](interfaces/MultiContractTransaction.md)
 - [Outpoint](interfaces/Outpoint.md)
 - [RequestConfig](interfaces/RequestConfig.md)
@@ -98,6 +102,8 @@ scrypt-ts
 - [Sig](README.md#sig)
 - [SigHashPreimage](README.md#sighashpreimage)
 - [SigHashType](README.md#sighashtype)
+- [SignatureOption](README.md#signatureoption)
+- [SignaturesOption](README.md#signaturesoption)
 - [SubBytes](README.md#subbytes)
 - [TxHash](README.md#txhash)
 - [UTXO](README.md#utxo)
@@ -157,6 +163,7 @@ scrypt-ts
 - [buildOpreturnScript](README.md#buildopreturnscript)
 - [buildPublicKeyHashScript](README.md#buildpublickeyhashscript)
 - [fill](README.md#fill)
+- [filterUTXO](README.md#filterutxo)
 - [findSig](README.md#findsig)
 - [findSigs](README.md#findsigs)
 - [getDummyP2pkhUTXOs](README.md#getdummyp2pkhutxos)
@@ -168,6 +175,8 @@ scrypt-ts
 - [mapIter](README.md#mapiter)
 - [or](README.md#or)
 - [parseAddresses](README.md#parseaddresses)
+- [parseSignatureOption](README.md#parsesignatureoption)
+- [slice](README.md#slice)
 - [toByteString](README.md#tobytestring)
 - [toHex](README.md#tohex)
 - [toNumber](README.md#tonumber)
@@ -223,7 +232,7 @@ ___
 
 #### Defined in
 
-dist/bsv/types.d.ts:4
+dist/bsv/types.d.ts:5
 
 ___
 
@@ -233,7 +242,7 @@ ___
 
 #### Defined in
 
-dist/bsv/types.d.ts:5
+dist/bsv/types.d.ts:6
 
 ___
 
@@ -285,7 +294,7 @@ ___
 
 #### Defined in
 
-dist/bsv/types.d.ts:3
+dist/bsv/types.d.ts:4
 
 ___
 
@@ -343,7 +352,7 @@ ___
 
 #### Defined in
 
-dist/bsv/types.d.ts:6
+dist/bsv/types.d.ts:7
 
 ___
 
@@ -353,7 +362,7 @@ ___
 
 #### Defined in
 
-dist/bsv/types.d.ts:7
+dist/bsv/types.d.ts:8
 
 ___
 
@@ -363,7 +372,7 @@ ___
 
 #### Defined in
 
-dist/bsv/types.d.ts:8
+dist/bsv/types.d.ts:9
 
 ___
 
@@ -439,6 +448,34 @@ node_modules/scryptlib/dist/scryptTypes.d.ts:55
 
 ___
 
+### SignatureOption
+
+Ƭ **SignatureOption**: `Object`
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `csIdx?` | `number` | Index of the OP_CODESEPARATOR to split the previous output script at during verification. If undefined, the whole script is used. |
+| `pubKeyOrAddr` | [`PublicKeysOrAddressesOption`](README.md#publickeysoraddressesoption) | - |
+| `sigHashType?` | [`SignatureHashType`](enums/SignatureHashType.md) | - |
+
+#### Defined in
+
+dist/bsv/types.d.ts:10
+
+___
+
+### SignaturesOption
+
+Ƭ **SignaturesOption**: [`SignatureOption`](README.md#signatureoption) \| [`SignatureOption`](README.md#signatureoption)[]
+
+#### Defined in
+
+dist/bsv/types.d.ts:19
+
+___
+
 ### SubBytes
 
 Ƭ **SubBytes**: [`PubKey`](README.md#pubkey) \| [`Sig`](README.md#sig) \| [`Sha256`](README.md#sha256) \| [`Sha1`](README.md#sha1) \| [`SigHashType`](README.md#sighashtype) \| [`Ripemd160`](README.md#ripemd160) \| [`OpCodeType`](README.md#opcodetype)
@@ -465,7 +502,7 @@ ___
 
 #### Defined in
 
-dist/bsv/types.d.ts:2
+dist/bsv/types.d.ts:3
 
 ___
 
@@ -507,7 +544,7 @@ dist/client/index.d.ts:4
 ▸ **lshift**(`x`, `n`): `bigint`
 
 Arithmetic left shift, returns `x * 2^n`.
-More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
+More detail about [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
 
 #### Parameters
 
@@ -522,7 +559,7 @@ More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-cont
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:133
+dist/smart-contract/builtins/functions.d.ts:141
 
 ___
 
@@ -531,7 +568,7 @@ ___
 ▸ **rshift**(`x`, `n`): `bigint`
 
 Arithmetic right shift, returns `x / 2^n`.
-More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
+More detail about [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator](https://docs.scrypt.io/how-to-write-a-contract/built-ins#bitwise-operator)
 
 #### Parameters
 
@@ -546,7 +583,7 @@ More detail abourt [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-cont
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:139
+dist/smart-contract/builtins/functions.d.ts:147
 
 ___
 
@@ -570,7 +607,7 @@ ByteString can be converted to bigint using function byteString2Int.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:24
+dist/smart-contract/builtins/functions.d.ts:32
 
 ___
 
@@ -595,13 +632,13 @@ Otherwise, converts the number `n` to a ByteString of the specified size, includ
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:19
+dist/smart-contract/builtins/functions.d.ts:27
 
 ___
 
 ### len
 
-▸ **len**(`a`): `number`
+▸ **len**(`a`): `bigint`
 
 Returns the length of the ByteString. Not the length of the string.
 
@@ -613,13 +650,13 @@ Returns the length of the ByteString. Not the length of the string.
 
 #### Returns
 
-`number`
+`bigint`
 
 The length of the ByteString.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:31
+dist/smart-contract/builtins/functions.d.ts:39
 
 ___
 
@@ -635,7 +672,7 @@ It is often useful when converting a number between little-endian and big-endian
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `b` | [`ByteString`](README.md#bytestring) | a ByteString to be reversed |
-| `size` | `number` | the size of the ByteString. |
+| `size` | `bigint` | the size of the ByteString. |
 
 #### Returns
 
@@ -645,7 +682,7 @@ reversed ByteString.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:40
+dist/smart-contract/builtins/functions.d.ts:48
 
 ___
 
@@ -709,7 +746,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:109
+dist/smart-contract/builtins/functions.d.ts:117
 
 ___
 
@@ -738,7 +775,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:121
+dist/smart-contract/builtins/functions.d.ts:129
 
 ___
 
@@ -764,7 +801,7 @@ The hash in the form of a ByteString.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:77
+dist/smart-contract/builtins/functions.d.ts:85
 
 ___
 
@@ -791,7 +828,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:87
+dist/smart-contract/builtins/functions.d.ts:95
 
 ___
 
@@ -818,7 +855,7 @@ The hash in the form of a string.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:97
+dist/smart-contract/builtins/functions.d.ts:105
 
 ___
 
@@ -842,7 +879,7 @@ The input `a` is made positive.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:53
+dist/smart-contract/builtins/functions.d.ts:61
 
 ___
 
@@ -865,7 +902,7 @@ Returns the largest of `a` and `b`.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:63
+dist/smart-contract/builtins/functions.d.ts:71
 
 ___
 
@@ -888,7 +925,7 @@ Returns the smallest of `a` and `b`.
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:58
+dist/smart-contract/builtins/functions.d.ts:66
 
 ___
 
@@ -912,7 +949,7 @@ Returns true if `x` is within the specified range (left-inclusive), false otherw
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:68
+dist/smart-contract/builtins/functions.d.ts:76
 
 ___
 
@@ -1106,7 +1143,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `s` | ``0`` \| `SigHash` |
+| `s` | ``0`` \| [`SignatureHashType`](enums/SignatureHashType.md) |
 
 #### Returns
 
@@ -1206,13 +1243,34 @@ Note that `length` must be a numeric literal or a compiled-time constant
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:10
+dist/smart-contract/builtins/functions.d.ts:18
+
+___
+
+### filterUTXO
+
+▸ **filterUTXO**(`utxos`, `options`): [`IUnspentOutput`](interfaces/bsv.Transaction.IUnspentOutput.md)[]
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `utxos` | [`IUnspentOutput`](interfaces/bsv.Transaction.IUnspentOutput.md)[] |
+| `options` | [`UtxoQueryOptions`](interfaces/UtxoQueryOptions.md) |
+
+#### Returns
+
+[`IUnspentOutput`](interfaces/bsv.Transaction.IUnspentOutput.md)[]
+
+#### Defined in
+
+dist/bsv/utils.d.ts:12
 
 ___
 
 ### findSig
 
-▸ **findSig**(`sigResponses`, `pubKeyOrAddr`): [`Sig`](README.md#sig)
+▸ **findSig**(`sigResponses`, `pubKeyOrAddr`, `sigHashType?`): [`Sig`](README.md#sig)
 
 #### Parameters
 
@@ -1220,6 +1278,7 @@ ___
 | :------ | :------ |
 | `sigResponses` | [`SignatureResponse`](interfaces/SignatureResponse.md)[] |
 | `pubKeyOrAddr` | [`PublicKey`](classes/bsv.PublicKey.md) \| [`Address`](classes/bsv.Address.md) |
+| `sigHashType?` | [`SignatureHashType`](enums/SignatureHashType.md) |
 
 #### Returns
 
@@ -1227,20 +1286,20 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:6
+dist/smart-contract/utils/index.d.ts:7
 
 ___
 
 ### findSigs
 
-▸ **findSigs**(`sigResponses`, `pubKeysOrAddrs`): [`Sig`](README.md#sig)[]
+▸ **findSigs**(`sigResponses`, `queries`): [`Sig`](README.md#sig)[]
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `sigResponses` | [`SignatureResponse`](interfaces/SignatureResponse.md)[] |
-| `pubKeysOrAddrs` | ([`PublicKey`](classes/bsv.PublicKey.md) \| [`Address`](classes/bsv.Address.md))[] |
+| `queries` | ([`PublicKey`](classes/bsv.PublicKey.md) \| [`Address`](classes/bsv.Address.md) \| [`SignatureOption`](README.md#signatureoption))[] |
 
 #### Returns
 
@@ -1248,7 +1307,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:7
+dist/smart-contract/utils/index.d.ts:8
 
 ___
 
@@ -1268,7 +1327,7 @@ ___
 
 #### Defined in
 
-dist/bsv/utils.d.ts:3
+dist/bsv/utils.d.ts:4
 
 ___
 
@@ -1282,7 +1341,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:4
+dist/smart-contract/utils/index.d.ts:5
 
 ___
 
@@ -1302,7 +1361,7 @@ ___
 
 #### Defined in
 
-dist/bsv/utils.d.ts:4
+dist/bsv/utils.d.ts:5
 
 ___
 
@@ -1364,7 +1423,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:9
+dist/smart-contract/utils/index.d.ts:10
 
 ___
 
@@ -1391,7 +1450,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:8
+dist/smart-contract/utils/index.d.ts:9
 
 ___
 
@@ -1418,14 +1477,14 @@ ___
 
 ### parseAddresses
 
-▸ **parseAddresses**(`publicKeysOrAddresses`, `network?`): [`AddressOption`](README.md#addressoption)[]
+▸ **parseAddresses**(`publicKeysOrAddresses`, `network`): [`AddressOption`](README.md#addressoption)[]
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `publicKeysOrAddresses` | [`PublicKeysOrAddressesOption`](README.md#publickeysoraddressesoption) |
-| `network?` | [`Network`](interfaces/bsv.Networks.Network.md) |
+| `network` | [`Network`](interfaces/bsv.Networks.Network.md) |
 
 #### Returns
 
@@ -1433,7 +1492,52 @@ ___
 
 #### Defined in
 
-dist/bsv/utils.d.ts:6
+dist/bsv/utils.d.ts:7
+
+___
+
+### parseSignatureOption
+
+▸ **parseSignatureOption**(`signaturesOption`, `network`): { `address`: [`AddressOption`](README.md#addressoption) ; `sigHashType`: [`SignatureHashType`](enums/SignatureHashType.md)  }[]
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `signaturesOption` | [`PublicKeysOrAddressesOption`](README.md#publickeysoraddressesoption) \| [`SignaturesOption`](README.md#signaturesoption) |
+| `network` | [`Network`](interfaces/bsv.Networks.Network.md) |
+
+#### Returns
+
+{ `address`: [`AddressOption`](README.md#addressoption) ; `sigHashType`: [`SignatureHashType`](enums/SignatureHashType.md)  }[]
+
+#### Defined in
+
+dist/bsv/utils.d.ts:8
+
+___
+
+### slice
+
+▸ **slice**(`byteString`, `start`, `end?`): [`ByteString`](README.md#bytestring)
+
+Returns a section of a ByteString.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `byteString` | [`ByteString`](README.md#bytestring) | The ByteString. |
+| `start` | `BigInt` | The beginning byte index of the specified portion of ByteString, included. |
+| `end?` | `BigInt` | The end byte index of the specified portion of ByteString, excluded. If this value is not specified, the sub-section continues to the end of ByteString. |
+
+#### Returns
+
+[`ByteString`](README.md#bytestring)
+
+#### Defined in
+
+dist/smart-contract/builtins/functions.d.ts:11
 
 ___
 
@@ -1499,7 +1603,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/utils/index.d.ts:5
+dist/smart-contract/utils/index.d.ts:6
 
 ___
 
@@ -1520,7 +1624,7 @@ ___
 
 #### Defined in
 
-dist/bsv/utils.d.ts:5
+dist/bsv/utils.d.ts:6
 
 ___
 
@@ -1567,7 +1671,7 @@ asserts condition
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:127
+dist/smart-contract/builtins/functions.d.ts:135
 
 ___
 

@@ -1,64 +1,65 @@
-[scrypt-ts](../README.md) / SensiletSigner
+[scrypt-ts](../README.md) / TAALSigner
 
-# Class: SensiletSigner
+# Class: TAALSigner
 
-a [signer][https://docs.scrypt.io/how-to-test-a-contract#signer](https://docs.scrypt.io/how-to-test-a-contract#signer) which implemented the protocol with the [sensilet wallet][https://sensilet.com](https://sensilet.com),
-and dapps can use to interact with the Sensilet wallet
+A `Signer` is a class which in some way directly or indirectly has access to a private key, which can sign messages and transactions to authorize the network to perform operations.
 
 ## Hierarchy
 
 - [`Signer`](Signer.md)
 
-  ↳ **`SensiletSigner`**
+  ↳ **`TAALSigner`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](SensiletSigner.md#constructor)
+- [constructor](TAALSigner.md#constructor)
 
 ### Properties
 
-- [\_address](SensiletSigner.md#_address)
-- [\_isSigner](SensiletSigner.md#_issigner)
-- [\_target](SensiletSigner.md#_target)
-- [getConnectedTarget](SensiletSigner.md#getconnectedtarget)
-- [provider](SensiletSigner.md#provider)
-- [DEBUG\_TAG](SensiletSigner.md#debug_tag)
+- [\_app\_name](TAALSigner.md#_app_name)
+- [\_isSigner](TAALSigner.md#_issigner)
+- [\_port](TAALSigner.md#_port)
+- [assertIsAuthenticated](TAALSigner.md#assertisauthenticated)
+- [provider](TAALSigner.md#provider)
+- [signCustomInput](TAALSigner.md#signcustominput)
 
 ### Accessors
 
-- [connectedProvider](SensiletSigner.md#connectedprovider)
+- [connectedProvider](TAALSigner.md#connectedprovider)
 
 ### Methods
 
-- [connect](SensiletSigner.md#connect)
-- [getBalance](SensiletSigner.md#getbalance)
-- [getDefaultAddress](SensiletSigner.md#getdefaultaddress)
-- [getDefaultPubKey](SensiletSigner.md#getdefaultpubkey)
-- [getNetwork](SensiletSigner.md#getnetwork)
-- [getPubKey](SensiletSigner.md#getpubkey)
-- [getSignatures](SensiletSigner.md#getsignatures)
-- [isAuthenticated](SensiletSigner.md#isauthenticated)
-- [listUnspent](SensiletSigner.md#listunspent)
-- [requestAuth](SensiletSigner.md#requestauth)
-- [signAndsendTransaction](SensiletSigner.md#signandsendtransaction)
-- [signMessage](SensiletSigner.md#signmessage)
-- [signRawTransaction](SensiletSigner.md#signrawtransaction)
-- [signTransaction](SensiletSigner.md#signtransaction)
-- [isSigner](SensiletSigner.md#issigner)
+- [connect](TAALSigner.md#connect)
+- [getBalance](TAALSigner.md#getbalance)
+- [getDefaultAddress](TAALSigner.md#getdefaultaddress)
+- [getDefaultPubKey](TAALSigner.md#getdefaultpubkey)
+- [getNetwork](TAALSigner.md#getnetwork)
+- [getPubKey](TAALSigner.md#getpubkey)
+- [getSignatures](TAALSigner.md#getsignatures)
+- [isAuthenticated](TAALSigner.md#isauthenticated)
+- [listUnspent](TAALSigner.md#listunspent)
+- [requestAuth](TAALSigner.md#requestauth)
+- [signAndsendTransaction](TAALSigner.md#signandsendtransaction)
+- [signMessage](TAALSigner.md#signmessage)
+- [signRawTransaction](TAALSigner.md#signrawtransaction)
+- [signTransaction](TAALSigner.md#signtransaction)
+- [updateInputsWithInfo](TAALSigner.md#updateinputswithinfo)
+- [isSigner](TAALSigner.md#issigner)
 
 ## Constructors
 
 ### constructor
 
-• **new SensiletSigner**(`provider`)
+• **new TAALSigner**(`provider`, `app_name?`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `provider` | [`Provider`](Provider.md) |
+| `app_name?` | `string` |
 
 #### Overrides
 
@@ -66,17 +67,17 @@ and dapps can use to interact with the Sensilet wallet
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:14
+dist/bsv/signers/taal-signer/index.d.ts:14
 
 ## Properties
 
-### \_address
+### \_app\_name
 
-• `Private` **\_address**: `any`
+• `Private` **\_app\_name**: `any`
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:13
+dist/bsv/signers/taal-signer/index.d.ts:13
 
 ___
 
@@ -94,23 +95,23 @@ dist/bsv/abstract-signer.d.ts:57
 
 ___
 
-### \_target
+### \_port
 
-• `Private` **\_target**: `any`
+• `Private` **\_port**: `any`
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:12
+dist/bsv/signers/taal-signer/index.d.ts:12
 
 ___
 
-### getConnectedTarget
+### assertIsAuthenticated
 
-• `Private` **getConnectedTarget**: `any`
+• `Private` **assertIsAuthenticated**: `any`
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:28
+dist/bsv/signers/taal-signer/index.d.ts:20
 
 ___
 
@@ -128,13 +129,13 @@ dist/bsv/abstract-signer.d.ts:56
 
 ___
 
-### DEBUG\_TAG
+### signCustomInput
 
-▪ `Static` `Readonly` **DEBUG\_TAG**: ``"SensiletSigner"``
+• `Private` **signCustomInput**: `any`
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:11
+dist/bsv/signers/taal-signer/index.d.ts:41
 
 ## Accessors
 
@@ -166,7 +167,7 @@ dist/bsv/abstract-signer.d.ts:130
 
 ### connect
 
-▸ **connect**(`provider`): `Promise`<[`SensiletSigner`](SensiletSigner.md)\>
+▸ **connect**(`provider`): `Promise`<[`TAALSigner`](TAALSigner.md)\>
 
 Connect a provider to `this`.
 
@@ -178,7 +179,7 @@ Connect a provider to `this`.
 
 #### Returns
 
-`Promise`<[`SensiletSigner`](SensiletSigner.md)\>
+`Promise`<[`TAALSigner`](TAALSigner.md)\>
 
 #### Overrides
 
@@ -186,7 +187,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:29
+dist/bsv/signers/taal-signer/index.d.ts:21
 
 ___
 
@@ -214,7 +215,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:32
+dist/bsv/signers/taal-signer/index.d.ts:37
 
 ___
 
@@ -234,7 +235,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:30
+dist/bsv/signers/taal-signer/index.d.ts:22
 
 ___
 
@@ -254,21 +255,21 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:36
+dist/bsv/signers/taal-signer/index.d.ts:23
 
 ___
 
 ### getNetwork
 
-▸ **getNetwork**(): `Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
+▸ **getNetwork**(): `Promise`<`any`\>
 
 #### Returns
 
-`Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
+`Promise`<`any`\>
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:31
+dist/bsv/signers/taal-signer/index.d.ts:26
 
 ___
 
@@ -298,7 +299,7 @@ The public key result.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:37
+dist/bsv/signers/taal-signer/index.d.ts:24
 
 ___
 
@@ -306,20 +307,20 @@ ___
 
 ▸ **getSignatures**(`rawTxHex`, `sigRequests`): `Promise`<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
 
-Get the requested transaction signatures for the raw transaction.
+Get signatures with api
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `rawTxHex` | `string` | The raw transaction hex to get signatures from. |
-| `sigRequests` | [`SignatureRequest`](../interfaces/SignatureRequest.md)[] | The signature requst informations, see details in `SignatureRequest`. |
+| `rawTxHex` | `string` | a transation raw hex |
+| `sigRequests` | [`SignatureRequest`](../interfaces/SignatureRequest.md)[] | a `SignatureRequest` array for the some inputs of the transaction. |
 
 #### Returns
 
 `Promise`<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
 
-A promise which resolves to a list of `SignatureReponse` corresponding to `sigRequests`.
+a `SignatureResponse` array
 
 #### Overrides
 
@@ -327,7 +328,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:41
+dist/bsv/signers/taal-signer/index.d.ts:35
 
 ___
 
@@ -349,7 +350,7 @@ true | false
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:19
+dist/bsv/signers/taal-signer/index.d.ts:15
 
 ___
 
@@ -400,7 +401,7 @@ A promise which resolves to if the wallet has been authenticated and the authent
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:24
+dist/bsv/signers/taal-signer/index.d.ts:16
 
 ___
 
@@ -458,7 +459,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:40
+dist/bsv/signers/taal-signer/index.d.ts:36
 
 ___
 
@@ -491,7 +492,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:38
+dist/bsv/signers/taal-signer/index.d.ts:25
 
 ___
 
@@ -520,7 +521,28 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:39
+dist/bsv/signers/taal-signer/index.d.ts:28
+
+___
+
+### updateInputsWithInfo
+
+▸ **updateInputsWithInfo**(`tx`, `inputInfos`): [`Transaction`](bsv.Transaction-1.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tx` | [`Transaction`](bsv.Transaction-1.md) |
+| `inputInfos` | `InputInfo`[] |
+
+#### Returns
+
+[`Transaction`](bsv.Transaction-1.md)
+
+#### Defined in
+
+dist/bsv/signers/taal-signer/index.d.ts:27
 
 ___
 

@@ -153,7 +153,7 @@ OP_0
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:154
+dist/smart-contract/builtins/functions.d.ts:162
 
 ___
 
@@ -173,7 +173,7 @@ OP_0NOTEQUAL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:632
+dist/smart-contract/builtins/functions.d.ts:640
 
 ___
 
@@ -193,7 +193,7 @@ OP_1
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:196
+dist/smart-contract/builtins/functions.d.ts:204
 
 ___
 
@@ -213,7 +213,7 @@ OP_10
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:256
+dist/smart-contract/builtins/functions.d.ts:264
 
 ___
 
@@ -233,7 +233,7 @@ OP_11
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:262
+dist/smart-contract/builtins/functions.d.ts:270
 
 ___
 
@@ -253,7 +253,7 @@ OP_12
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:268
+dist/smart-contract/builtins/functions.d.ts:276
 
 ___
 
@@ -273,7 +273,7 @@ OP_13
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:274
+dist/smart-contract/builtins/functions.d.ts:282
 
 ___
 
@@ -293,7 +293,7 @@ OP_14
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:280
+dist/smart-contract/builtins/functions.d.ts:288
 
 ___
 
@@ -313,7 +313,7 @@ OP_15
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:286
+dist/smart-contract/builtins/functions.d.ts:294
 
 ___
 
@@ -333,7 +333,7 @@ OP_16
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:292
+dist/smart-contract/builtins/functions.d.ts:300
 
 ___
 
@@ -353,7 +353,7 @@ OP_1ADD
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:590
+dist/smart-contract/builtins/functions.d.ts:598
 
 ___
 
@@ -373,7 +373,7 @@ OP_1NEGATE
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:184
+dist/smart-contract/builtins/functions.d.ts:192
 
 ___
 
@@ -393,7 +393,7 @@ OP_1SUB
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:596
+dist/smart-contract/builtins/functions.d.ts:604
 
 ___
 
@@ -413,7 +413,7 @@ OP_2
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:208
+dist/smart-contract/builtins/functions.d.ts:216
 
 ___
 
@@ -433,7 +433,7 @@ OP_2DIV
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:608
+dist/smart-contract/builtins/functions.d.ts:616
 
 ___
 
@@ -453,7 +453,7 @@ OP_2DROP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:410
+dist/smart-contract/builtins/functions.d.ts:418
 
 ___
 
@@ -473,7 +473,7 @@ OP_2DUP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:416
+dist/smart-contract/builtins/functions.d.ts:424
 
 ___
 
@@ -493,7 +493,7 @@ OP_2MUL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:602
+dist/smart-contract/builtins/functions.d.ts:610
 
 ___
 
@@ -513,7 +513,7 @@ OP_2OVER
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:428
+dist/smart-contract/builtins/functions.d.ts:436
 
 ___
 
@@ -533,7 +533,7 @@ OP_2ROT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:434
+dist/smart-contract/builtins/functions.d.ts:442
 
 ___
 
@@ -553,7 +553,7 @@ OP_2SWAP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:440
+dist/smart-contract/builtins/functions.d.ts:448
 
 ___
 
@@ -573,7 +573,7 @@ OP_3
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:214
+dist/smart-contract/builtins/functions.d.ts:222
 
 ___
 
@@ -593,7 +593,7 @@ OP_3DUP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:422
+dist/smart-contract/builtins/functions.d.ts:430
 
 ___
 
@@ -613,7 +613,7 @@ OP_4
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:220
+dist/smart-contract/builtins/functions.d.ts:228
 
 ___
 
@@ -633,7 +633,7 @@ OP_5
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:226
+dist/smart-contract/builtins/functions.d.ts:234
 
 ___
 
@@ -653,7 +653,7 @@ OP_6
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:232
+dist/smart-contract/builtins/functions.d.ts:240
 
 ___
 
@@ -673,7 +673,7 @@ OP_7
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:238
+dist/smart-contract/builtins/functions.d.ts:246
 
 ___
 
@@ -693,7 +693,7 @@ OP_8
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:244
+dist/smart-contract/builtins/functions.d.ts:252
 
 ___
 
@@ -713,7 +713,7 @@ OP_9
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:250
+dist/smart-contract/builtins/functions.d.ts:258
 
 ___
 
@@ -733,7 +733,7 @@ OP_ABS
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:620
+dist/smart-contract/builtins/functions.d.ts:628
 
 ___
 
@@ -753,7 +753,7 @@ OP_ADD
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:638
+dist/smart-contract/builtins/functions.d.ts:646
 
 ___
 
@@ -773,7 +773,7 @@ OP_AND
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:548
+dist/smart-contract/builtins/functions.d.ts:556
 
 ___
 
@@ -793,7 +793,7 @@ OP_BIN2NUM
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:530
+dist/smart-contract/builtins/functions.d.ts:538
 
 ___
 
@@ -813,7 +813,7 @@ OP_BOOLAND
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:680
+dist/smart-contract/builtins/functions.d.ts:688
 
 ___
 
@@ -833,7 +833,7 @@ OP_BOOLOR
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:686
+dist/smart-contract/builtins/functions.d.ts:694
 
 ___
 
@@ -853,7 +853,7 @@ OP_CAT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:512
+dist/smart-contract/builtins/functions.d.ts:520
 
 ___
 
@@ -873,7 +873,7 @@ OP_CHECKMULTISIG
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:802
+dist/smart-contract/builtins/functions.d.ts:810
 
 ___
 
@@ -893,7 +893,7 @@ OP_CHECKMULTISIGVERIFY
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:808
+dist/smart-contract/builtins/functions.d.ts:816
 
 ___
 
@@ -914,7 +914,7 @@ OP_CHECKSIG
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:790
+dist/smart-contract/builtins/functions.d.ts:798
 
 ___
 
@@ -934,7 +934,7 @@ OP_CHECKSIGVERIFY
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:796
+dist/smart-contract/builtins/functions.d.ts:804
 
 ___
 
@@ -955,7 +955,7 @@ OP_CODESEPARATOR
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:783
+dist/smart-contract/builtins/functions.d.ts:791
 
 ___
 
@@ -975,7 +975,7 @@ OP_DEPTH
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:452
+dist/smart-contract/builtins/functions.d.ts:460
 
 ___
 
@@ -995,7 +995,7 @@ OP_DIV
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:656
+dist/smart-contract/builtins/functions.d.ts:664
 
 ___
 
@@ -1015,7 +1015,7 @@ OP_DROP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:458
+dist/smart-contract/builtins/functions.d.ts:466
 
 ___
 
@@ -1035,7 +1035,7 @@ OP_DUP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:464
+dist/smart-contract/builtins/functions.d.ts:472
 
 ___
 
@@ -1065,7 +1065,7 @@ ENDIF`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:367
+dist/smart-contract/builtins/functions.d.ts:375
 
 ___
 
@@ -1096,7 +1096,7 @@ ENDIF`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:380
+dist/smart-contract/builtins/functions.d.ts:388
 
 ___
 
@@ -1116,7 +1116,7 @@ OP_EQUAL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:566
+dist/smart-contract/builtins/functions.d.ts:574
 
 ___
 
@@ -1136,7 +1136,7 @@ OP_EQUALVERIFY
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:572
+dist/smart-contract/builtins/functions.d.ts:580
 
 ___
 
@@ -1156,7 +1156,7 @@ OP_FALSE
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:160
+dist/smart-contract/builtins/functions.d.ts:168
 
 ___
 
@@ -1176,7 +1176,7 @@ OP_FROMALTSTACK
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:404
+dist/smart-contract/builtins/functions.d.ts:412
 
 ___
 
@@ -1196,7 +1196,7 @@ OP_GREATERTHAN
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:716
+dist/smart-contract/builtins/functions.d.ts:724
 
 ___
 
@@ -1216,7 +1216,7 @@ OP_GREATERTHANOREQUAL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:728
+dist/smart-contract/builtins/functions.d.ts:736
 
 ___
 
@@ -1236,7 +1236,7 @@ OP_HASH160
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:770
+dist/smart-contract/builtins/functions.d.ts:778
 
 ___
 
@@ -1256,7 +1256,7 @@ OP_HASH256
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:776
+dist/smart-contract/builtins/functions.d.ts:784
 
 ___
 
@@ -1294,7 +1294,7 @@ ENDIF`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:324
+dist/smart-contract/builtins/functions.d.ts:332
 
 ___
 
@@ -1314,7 +1314,7 @@ OP_IFDUP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:446
+dist/smart-contract/builtins/functions.d.ts:454
 
 ___
 
@@ -1334,7 +1334,7 @@ OP_PUBKEY
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:886
+dist/smart-contract/builtins/functions.d.ts:894
 
 ___
 
@@ -1354,7 +1354,7 @@ OP_INVERT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:542
+dist/smart-contract/builtins/functions.d.ts:550
 
 ___
 
@@ -1374,7 +1374,7 @@ OP_LESSTHAN
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:710
+dist/smart-contract/builtins/functions.d.ts:718
 
 ___
 
@@ -1394,7 +1394,7 @@ OP_LESSTHANOREQUAL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:722
+dist/smart-contract/builtins/functions.d.ts:730
 
 ___
 
@@ -1414,7 +1414,7 @@ OP_LSHIFT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:668
+dist/smart-contract/builtins/functions.d.ts:676
 
 ___
 
@@ -1434,7 +1434,7 @@ OP_MAX
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:740
+dist/smart-contract/builtins/functions.d.ts:748
 
 ___
 
@@ -1454,7 +1454,7 @@ OP_MIN
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:734
+dist/smart-contract/builtins/functions.d.ts:742
 
 ___
 
@@ -1474,7 +1474,7 @@ OP_MOD
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:662
+dist/smart-contract/builtins/functions.d.ts:670
 
 ___
 
@@ -1494,7 +1494,7 @@ OP_MUL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:650
+dist/smart-contract/builtins/functions.d.ts:658
 
 ___
 
@@ -1514,7 +1514,7 @@ OP_NEGATE
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:614
+dist/smart-contract/builtins/functions.d.ts:622
 
 ___
 
@@ -1534,7 +1534,7 @@ OP_NIP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:470
+dist/smart-contract/builtins/functions.d.ts:478
 
 ___
 
@@ -1554,7 +1554,7 @@ OP_NOP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:298
+dist/smart-contract/builtins/functions.d.ts:306
 
 ___
 
@@ -1574,7 +1574,7 @@ OP_NOP1
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:814
+dist/smart-contract/builtins/functions.d.ts:822
 
 ___
 
@@ -1594,7 +1594,7 @@ OP_NOP10
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:868
+dist/smart-contract/builtins/functions.d.ts:876
 
 ___
 
@@ -1614,7 +1614,7 @@ OP_NOP2
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:820
+dist/smart-contract/builtins/functions.d.ts:828
 
 ___
 
@@ -1634,7 +1634,7 @@ OP_NOP3
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:826
+dist/smart-contract/builtins/functions.d.ts:834
 
 ___
 
@@ -1654,7 +1654,7 @@ OP_NOP4
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:832
+dist/smart-contract/builtins/functions.d.ts:840
 
 ___
 
@@ -1674,7 +1674,7 @@ OP_NOP5
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:838
+dist/smart-contract/builtins/functions.d.ts:846
 
 ___
 
@@ -1694,7 +1694,7 @@ OP_NOP6
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:844
+dist/smart-contract/builtins/functions.d.ts:852
 
 ___
 
@@ -1714,7 +1714,7 @@ OP_NOP7
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:850
+dist/smart-contract/builtins/functions.d.ts:858
 
 ___
 
@@ -1734,7 +1734,7 @@ OP_NOP8
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:856
+dist/smart-contract/builtins/functions.d.ts:864
 
 ___
 
@@ -1754,7 +1754,7 @@ OP_NOP9
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:862
+dist/smart-contract/builtins/functions.d.ts:870
 
 ___
 
@@ -1774,7 +1774,7 @@ OP_NOT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:626
+dist/smart-contract/builtins/functions.d.ts:634
 
 ___
 
@@ -1812,7 +1812,7 @@ ENDIF`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:343
+dist/smart-contract/builtins/functions.d.ts:351
 
 ___
 
@@ -1832,7 +1832,7 @@ OP_NUM2BIN
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:524
+dist/smart-contract/builtins/functions.d.ts:532
 
 ___
 
@@ -1852,7 +1852,7 @@ OP_NUMEQUAL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:692
+dist/smart-contract/builtins/functions.d.ts:700
 
 ___
 
@@ -1872,7 +1872,7 @@ OP_NUMEQUALVERIFY
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:698
+dist/smart-contract/builtins/functions.d.ts:706
 
 ___
 
@@ -1892,7 +1892,7 @@ OP_NUMNOTEQUAL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:704
+dist/smart-contract/builtins/functions.d.ts:712
 
 ___
 
@@ -1912,7 +1912,7 @@ OP_OR
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:554
+dist/smart-contract/builtins/functions.d.ts:562
 
 ___
 
@@ -1932,7 +1932,7 @@ OP_OVER
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:476
+dist/smart-contract/builtins/functions.d.ts:484
 
 ___
 
@@ -1952,7 +1952,7 @@ OP_PICK
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:482
+dist/smart-contract/builtins/functions.d.ts:490
 
 ___
 
@@ -1972,7 +1972,7 @@ OP_PUBKEY
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:880
+dist/smart-contract/builtins/functions.d.ts:888
 
 ___
 
@@ -1992,7 +1992,7 @@ OP_PUBKEYHASH
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:874
+dist/smart-contract/builtins/functions.d.ts:882
 
 ___
 
@@ -2012,7 +2012,7 @@ OP_PUSHDATA1
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:166
+dist/smart-contract/builtins/functions.d.ts:174
 
 ___
 
@@ -2032,7 +2032,7 @@ OP_PUSHDATA2
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:172
+dist/smart-contract/builtins/functions.d.ts:180
 
 ___
 
@@ -2052,7 +2052,7 @@ OP_PUSHDATA4
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:178
+dist/smart-contract/builtins/functions.d.ts:186
 
 ___
 
@@ -2072,7 +2072,7 @@ OP_RESERVED
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:190
+dist/smart-contract/builtins/functions.d.ts:198
 
 ___
 
@@ -2092,7 +2092,7 @@ OP_RESERVED1
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:578
+dist/smart-contract/builtins/functions.d.ts:586
 
 ___
 
@@ -2112,7 +2112,7 @@ OP_RESERVED2
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:584
+dist/smart-contract/builtins/functions.d.ts:592
 
 ___
 
@@ -2132,7 +2132,7 @@ OP_RETURN
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:392
+dist/smart-contract/builtins/functions.d.ts:400
 
 ___
 
@@ -2152,7 +2152,7 @@ OP_RIPEMD160
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:752
+dist/smart-contract/builtins/functions.d.ts:760
 
 ___
 
@@ -2172,7 +2172,7 @@ OP_ROLL
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:488
+dist/smart-contract/builtins/functions.d.ts:496
 
 ___
 
@@ -2192,7 +2192,7 @@ OP_ROT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:494
+dist/smart-contract/builtins/functions.d.ts:502
 
 ___
 
@@ -2212,7 +2212,7 @@ OP_RSHIFT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:674
+dist/smart-contract/builtins/functions.d.ts:682
 
 ___
 
@@ -2232,7 +2232,7 @@ OP_SHA1
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:758
+dist/smart-contract/builtins/functions.d.ts:766
 
 ___
 
@@ -2252,7 +2252,7 @@ OP_SHA256
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:764
+dist/smart-contract/builtins/functions.d.ts:772
 
 ___
 
@@ -2272,7 +2272,7 @@ OP_SIZE
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:536
+dist/smart-contract/builtins/functions.d.ts:544
 
 ___
 
@@ -2292,7 +2292,7 @@ OP_SPLIT
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:518
+dist/smart-contract/builtins/functions.d.ts:526
 
 ___
 
@@ -2312,7 +2312,7 @@ OP_SUB
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:644
+dist/smart-contract/builtins/functions.d.ts:652
 
 ___
 
@@ -2332,7 +2332,7 @@ OP_SWAP
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:500
+dist/smart-contract/builtins/functions.d.ts:508
 
 ___
 
@@ -2352,7 +2352,7 @@ OP_TOALTSTACK
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:398
+dist/smart-contract/builtins/functions.d.ts:406
 
 ___
 
@@ -2372,7 +2372,7 @@ OP_TRUE
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:202
+dist/smart-contract/builtins/functions.d.ts:210
 
 ___
 
@@ -2392,7 +2392,7 @@ OP_TUCK
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:506
+dist/smart-contract/builtins/functions.d.ts:514
 
 ___
 
@@ -2416,7 +2416,7 @@ OP_VER
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:305
+dist/smart-contract/builtins/functions.d.ts:313
 
 ___
 
@@ -2438,7 +2438,7 @@ DISABLED
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:349
+dist/smart-contract/builtins/functions.d.ts:357
 
 ___
 
@@ -2458,7 +2458,7 @@ OP_VERIFY
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:386
+dist/smart-contract/builtins/functions.d.ts:394
 
 ___
 
@@ -2480,7 +2480,7 @@ DISABLED
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:355
+dist/smart-contract/builtins/functions.d.ts:363
 
 ___
 
@@ -2500,7 +2500,7 @@ OP_WITHIN
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:746
+dist/smart-contract/builtins/functions.d.ts:754
 
 ___
 
@@ -2520,4 +2520,4 @@ OP_XOR
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:560
+dist/smart-contract/builtins/functions.d.ts:568
