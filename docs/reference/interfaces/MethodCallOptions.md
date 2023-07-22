@@ -16,32 +16,17 @@ For example, specifying a transaction builder to use a specific change address o
 
 ### Properties
 
-- [autoPayFee](MethodCallOptions.md#autopayfee)
 - [changeAddress](MethodCallOptions.md#changeaddress)
-- [exec](MethodCallOptions.md#exec)
 - [fromUTXO](MethodCallOptions.md#fromutxo)
 - [lockTime](MethodCallOptions.md#locktime)
 - [multiContractCall](MethodCallOptions.md#multicontractcall)
 - [next](MethodCallOptions.md#next)
 - [partialContractTx](MethodCallOptions.md#partialcontracttx)
-- [partiallySigned](MethodCallOptions.md#partiallysigned)
 - [pubKeyOrAddrToSign](MethodCallOptions.md#pubkeyoraddrtosign)
 - [sequence](MethodCallOptions.md#sequence)
 - [verify](MethodCallOptions.md#verify)
 
 ## Properties
-
-### autoPayFee
-
-• `Optional` `Readonly` **autoPayFee**: `boolean`
-
-auto add utxo to pay transaction fee, default is true
-
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:48
-
-___
 
 ### changeAddress
 
@@ -52,18 +37,6 @@ The P2PKH change output address
 #### Defined in
 
 dist/smart-contract/types/contract-call.d.ts:36
-
-___
-
-### exec
-
-• `Optional` `Readonly` **exec**: `boolean`
-
-execute a contract's public method to to check if arguments are valid, default is true
-
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:46
 
 ___
 
@@ -127,21 +100,9 @@ dist/smart-contract/types/contract-call.d.ts:42
 
 ___
 
-### partiallySigned
-
-• `Optional` `Readonly` **partiallySigned**: `boolean`
-
-signer does not contain all private keys, it is used when multiple parties are required to perform signature authorization, default is false， only work in single call
-
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:44
-
-___
-
 ### pubKeyOrAddrToSign
 
-• `Optional` `Readonly` **pubKeyOrAddrToSign**: [`PublicKeysOrAddressesOption`](../README.md#publickeysoraddressesoption) \| [`SignaturesOption`](../README.md#signaturesoption)
+• `Optional` `Readonly` **pubKeyOrAddrToSign**: [`PublicKeysOrAddressesOption`](../README.md#publickeysoraddressesoption)
 
 The private key(s) associated with these address(es) or public key(s)
 must be used to sign the contract input,
@@ -169,7 +130,7 @@ ___
 
 • `Optional` `Readonly` **verify**: `boolean`
 
-verify transaction before send transaction
+verify the input script before send transaction
 
 #### Defined in
 

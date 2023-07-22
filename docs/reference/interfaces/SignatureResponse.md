@@ -8,25 +8,12 @@
 
 ### Properties
 
-- [csIdx](SignatureResponse.md#csidx)
 - [inputIndex](SignatureResponse.md#inputindex)
 - [publicKey](SignatureResponse.md#publickey)
 - [sig](SignatureResponse.md#sig)
 - [sigHashType](SignatureResponse.md#sighashtype)
 
 ## Properties
-
-### csIdx
-
-• `Optional` **csIdx**: `number`
-
-The index of the OP_CODESEPARATOR to split the previous output script at.
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:41
-
-___
 
 ### inputIndex
 
@@ -36,7 +23,7 @@ The index of input.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:33
+dist/bsv/abstract-signer.d.ts:26
 
 ___
 
@@ -48,7 +35,7 @@ The public key bound with the `sig`.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:37
+dist/bsv/abstract-signer.d.ts:30
 
 ___
 
@@ -60,7 +47,7 @@ The signature.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:35
+dist/bsv/abstract-signer.d.ts:28
 
 ___
 
@@ -72,4 +59,4 @@ The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:39
+dist/bsv/abstract-signer.d.ts:32

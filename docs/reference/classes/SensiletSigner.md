@@ -2,8 +2,7 @@
 
 # Class: SensiletSigner
 
-a [signer][https://docs.scrypt.io/how-to-test-a-contract#signer](https://docs.scrypt.io/how-to-test-a-contract#signer) which implemented the protocol with the [sensilet wallet][https://sensilet.com](https://sensilet.com),
-and dapps can use to interact with the Sensilet wallet
+A `Signer` is a class which in some way directly or indirectly has access to a private key, which can sign messages and transactions to authorize the network to perform operations.
 
 ## Hierarchy
 
@@ -66,7 +65,7 @@ and dapps can use to interact with the Sensilet wallet
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:14
+dist/bsv/signers/sensilet-signer.d.ts:10
 
 ## Properties
 
@@ -76,7 +75,7 @@ dist/bsv/signers/sensilet-signer.d.ts:14
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:13
+dist/bsv/signers/sensilet-signer.d.ts:9
 
 ___
 
@@ -90,7 +89,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:57
+dist/bsv/abstract-signer.d.ts:48
 
 ___
 
@@ -100,7 +99,7 @@ ___
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:12
+dist/bsv/signers/sensilet-signer.d.ts:8
 
 ___
 
@@ -110,7 +109,7 @@ ___
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:28
+dist/bsv/signers/sensilet-signer.d.ts:24
 
 ___
 
@@ -124,7 +123,7 @@ ___
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:56
+dist/bsv/abstract-signer.d.ts:47
 
 ___
 
@@ -134,7 +133,7 @@ ___
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:11
+dist/bsv/signers/sensilet-signer.d.ts:7
 
 ## Accessors
 
@@ -160,7 +159,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:130
+dist/bsv/abstract-signer.d.ts:121
 
 ## Methods
 
@@ -186,7 +185,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:29
+dist/bsv/signers/sensilet-signer.d.ts:25
 
 ___
 
@@ -214,7 +213,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:32
+dist/bsv/signers/sensilet-signer.d.ts:28
 
 ___
 
@@ -234,7 +233,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:30
+dist/bsv/signers/sensilet-signer.d.ts:26
 
 ___
 
@@ -254,7 +253,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:36
+dist/bsv/signers/sensilet-signer.d.ts:32
 
 ___
 
@@ -268,7 +267,7 @@ ___
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:31
+dist/bsv/signers/sensilet-signer.d.ts:27
 
 ___
 
@@ -298,7 +297,7 @@ The public key result.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:37
+dist/bsv/signers/sensilet-signer.d.ts:33
 
 ___
 
@@ -327,7 +326,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:41
+dist/bsv/signers/sensilet-signer.d.ts:37
 
 ___
 
@@ -349,7 +348,7 @@ true | false
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:19
+dist/bsv/signers/sensilet-signer.d.ts:15
 
 ___
 
@@ -378,7 +377,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:144
+dist/bsv/abstract-signer.d.ts:135
 
 ___
 
@@ -400,7 +399,7 @@ A promise which resolves to if the wallet has been authenticated and the authent
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:24
+dist/bsv/signers/sensilet-signer.d.ts:20
 
 ___
 
@@ -429,7 +428,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:137
+dist/bsv/abstract-signer.d.ts:128
 
 ___
 
@@ -458,7 +457,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:40
+dist/bsv/signers/sensilet-signer.d.ts:36
 
 ___
 
@@ -491,7 +490,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:38
+dist/bsv/signers/sensilet-signer.d.ts:34
 
 ___
 
@@ -520,7 +519,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-dist/bsv/signers/sensilet-signer.d.ts:39
+dist/bsv/signers/sensilet-signer.d.ts:35
 
 ___
 
@@ -548,4 +547,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:159
+dist/bsv/abstract-signer.d.ts:150

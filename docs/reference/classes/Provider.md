@@ -85,7 +85,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:31
+dist/bsv/abstract-provider.d.ts:33
 
 ## Properties
 
@@ -95,7 +95,7 @@ dist/bsv/abstract-provider.d.ts:31
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:95
+dist/bsv/abstract-provider.d.ts:97
 
 ___
 
@@ -109,7 +109,7 @@ EventEmitter.captureRejectionSymbol
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:328
+node_modules/@types/node/ts4.8/events.d.ts:328
 
 ___
 
@@ -125,7 +125,7 @@ EventEmitter.captureRejections
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:333
+node_modules/@types/node/ts4.8/events.d.ts:333
 
 ___
 
@@ -139,7 +139,7 @@ EventEmitter.defaultMaxListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:334
+node_modules/@types/node/ts4.8/events.d.ts:334
 
 ___
 
@@ -161,7 +161,7 @@ EventEmitter.errorMonitor
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:327
+node_modules/@types/node/ts4.8/events.d.ts:327
 
 ## Methods
 
@@ -192,7 +192,7 @@ EventEmitter.addListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:354
+node_modules/@types/node/ts4.8/events.d.ts:354
 
 ___
 
@@ -210,7 +210,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:40
+dist/bsv/abstract-provider.d.ts:42
 
 ___
 
@@ -277,7 +277,7 @@ EventEmitter.emit
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:610
+node_modules/@types/node/ts4.8/events.d.ts:610
 
 ___
 
@@ -315,13 +315,13 @@ EventEmitter.eventNames
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:673
+node_modules/@types/node/ts4.8/events.d.ts:669
 
 ___
 
 ### getBalance
 
-▸ `Abstract` **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+▸ `Abstract` **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
 
 Get the balance of BSVs in satoshis for an address.
 
@@ -329,7 +329,7 @@ Get the balance of BSVs in satoshis for an address.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address?` | [`Address`](bsv.Address.md) | The query address. |
+| `address` | [`Address`](bsv.Address.md) | The query address. |
 
 #### Returns
 
@@ -339,7 +339,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:91
+dist/bsv/abstract-provider.d.ts:93
 
 ___
 
@@ -363,7 +363,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:59
+dist/bsv/abstract-provider.d.ts:61
 
 ___
 
@@ -379,7 +379,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:53
+dist/bsv/abstract-provider.d.ts:55
 
 ___
 
@@ -404,23 +404,23 @@ EventEmitter.getMaxListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:526
+node_modules/@types/node/ts4.8/events.d.ts:526
 
 ___
 
 ### getNetwork
 
-▸ `Abstract` **getNetwork**(): [`Network`](../interfaces/bsv.Networks.Network.md)
+▸ `Abstract` **getNetwork**(): `Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
 
 #### Returns
 
-[`Network`](../interfaces/bsv.Networks.Network.md)
+`Promise`<[`Network`](../interfaces/bsv.Networks.Network.md)\>
 
 The network this provider is connected to.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:49
+dist/bsv/abstract-provider.d.ts:51
 
 ___
 
@@ -444,7 +444,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:78
+dist/bsv/abstract-provider.d.ts:80
 
 ___
 
@@ -460,7 +460,7 @@ check if provider is ready
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:35
+dist/bsv/abstract-provider.d.ts:37
 
 ___
 
@@ -485,18 +485,15 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:85
+dist/bsv/abstract-provider.d.ts:87
 
 ___
 
 ### listenerCount
 
-▸ **listenerCount**(`eventName`, `listener?`): `number`
+▸ **listenerCount**(`eventName`): `number`
 
 Returns the number of listeners listening to the event named `eventName`.
-
-If `listener` is provided, it will return how many times the listener
-is found in the list of the listeners of the event.
 
 **`Since`**
 
@@ -507,7 +504,6 @@ v3.2.0
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `eventName` | `string` \| `symbol` | The name of the event being listened for |
-| `listener?` | `Function` | The event handler function |
 
 #### Returns
 
@@ -519,7 +515,7 @@ EventEmitter.listenerCount
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:620
+node_modules/@types/node/ts4.8/events.d.ts:616
 
 ___
 
@@ -557,7 +553,7 @@ EventEmitter.listeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:539
+node_modules/@types/node/ts4.8/events.d.ts:539
 
 ___
 
@@ -588,7 +584,7 @@ EventEmitter.off
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:499
+node_modules/@types/node/ts4.8/events.d.ts:499
 
 ___
 
@@ -643,7 +639,7 @@ EventEmitter.on
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:385
+node_modules/@types/node/ts4.8/events.d.ts:385
 
 ___
 
@@ -696,7 +692,7 @@ EventEmitter.once
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:414
+node_modules/@types/node/ts4.8/events.d.ts:414
 
 ___
 
@@ -738,7 +734,7 @@ EventEmitter.prependListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:638
+node_modules/@types/node/ts4.8/events.d.ts:634
 
 ___
 
@@ -778,7 +774,7 @@ EventEmitter.prependOnceListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:654
+node_modules/@types/node/ts4.8/events.d.ts:650
 
 ___
 
@@ -833,7 +829,7 @@ EventEmitter.rawListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:569
+node_modules/@types/node/ts4.8/events.d.ts:569
 
 ___
 
@@ -869,7 +865,7 @@ EventEmitter.removeAllListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:510
+node_modules/@types/node/ts4.8/events.d.ts:510
 
 ___
 
@@ -975,7 +971,7 @@ EventEmitter.removeListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:494
+node_modules/@types/node/ts4.8/events.d.ts:494
 
 ___
 
@@ -999,7 +995,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:65
+dist/bsv/abstract-provider.d.ts:67
 
 ___
 
@@ -1027,7 +1023,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:72
+dist/bsv/abstract-provider.d.ts:74
 
 ___
 
@@ -1062,13 +1058,13 @@ EventEmitter.setMaxListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:520
+node_modules/@types/node/ts4.8/events.d.ts:520
 
 ___
 
 ### updateNetwork
 
-▸ `Abstract` **updateNetwork**(`network`): `void`
+▸ `Abstract` **updateNetwork**(`network`): `Promise`<`boolean`\>
 
 update provider network
 
@@ -1080,11 +1076,11 @@ update provider network
 
 #### Returns
 
-`void`
+`Promise`<`boolean`\>
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:45
+dist/bsv/abstract-provider.d.ts:47
 
 ___
 
@@ -1138,7 +1134,7 @@ EventEmitter.getEventListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:299
+node_modules/@types/node/ts4.8/events.d.ts:299
 
 ___
 
@@ -1162,7 +1158,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:101
+dist/bsv/abstract-provider.d.ts:103
 
 ___
 
@@ -1206,7 +1202,7 @@ EventEmitter.listenerCount
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:271
+node_modules/@types/node/ts4.8/events.d.ts:271
 
 ___
 
@@ -1292,7 +1288,7 @@ EventEmitter.on
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:254
+node_modules/@types/node/ts4.8/events.d.ts:254
 
 ___
 
@@ -1402,7 +1398,7 @@ EventEmitter.once
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:194
+node_modules/@types/node/ts4.8/events.d.ts:194
 
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
 
@@ -1424,7 +1420,7 @@ EventEmitter.once
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:195
+node_modules/@types/node/ts4.8/events.d.ts:195
 
 ___
 
@@ -1465,4 +1461,4 @@ EventEmitter.setMaxListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:317
+node_modules/@types/node/ts4.8/events.d.ts:317

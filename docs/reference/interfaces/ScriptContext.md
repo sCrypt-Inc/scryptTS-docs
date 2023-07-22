@@ -19,10 +19,6 @@ and the user does not need to calculate it explicitly
 - [utxo](ScriptContext.md#utxo)
 - [version](ScriptContext.md#version)
 
-### Methods
-
-- [serialize](ScriptContext.md#serialize)
-
 ## Properties
 
 ### hashOutputs
@@ -126,19 +122,3 @@ version number of [transaction][https://wiki.bitcoinsv.io/index.php/Bitcoin_Tran
 #### Defined in
 
 dist/smart-contract/contract.d.ts:43
-
-## Methods
-
-### serialize
-
-▸ **serialize**(): [`SigHashPreimage`](../README.md#sighashpreimage)
-
-get the whole serialized sighash preimage
-
-#### Returns
-
-[`SigHashPreimage`](../README.md#sighashpreimage)
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:66

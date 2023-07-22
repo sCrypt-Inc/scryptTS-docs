@@ -17,7 +17,6 @@ ContractCalledEvent is the relevant information when the contract is called, suc
 - [args](ContractCalledEvent.md#args)
 - [methodName](ContractCalledEvent.md#methodname)
 - [nexts](ContractCalledEvent.md#nexts)
-- [tx](ContractCalledEvent.md#tx)
 
 ## Properties
 
@@ -25,7 +24,7 @@ ContractCalledEvent is the relevant information when the contract is called, suc
 
 • **args**: `SupportedParamType`[]
 
-public function arguments
+function arguments
 
 #### Defined in
 
@@ -55,15 +54,3 @@ If a stateless contract is called, `nexts` is empty.
 #### Defined in
 
 dist/client/apis/contract-api.d.ts:26
-
-___
-
-### tx
-
-• **tx**: [`Transaction`](../classes/bsv.Transaction-1.md)
-
-transaction where contract is called
-
-#### Defined in
-
-dist/client/apis/contract-api.d.ts:32

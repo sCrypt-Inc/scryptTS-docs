@@ -48,7 +48,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1057
+node_modules/bsv/index.d.ts:1055
 
 ## Properties
 
@@ -58,7 +58,7 @@ node_modules/bsv/index.d.ts:1057
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1060
+node_modules/bsv/index.d.ts:1058
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1061
+node_modules/bsv/index.d.ts:1059
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1059
+node_modules/bsv/index.d.ts:1057
 
 ## Methods
 
@@ -92,7 +92,7 @@ node_modules/bsv/index.d.ts:1059
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1069
+node_modules/bsv/index.d.ts:1067
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1066
+node_modules/bsv/index.d.ts:1064
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1065
+node_modules/bsv/index.d.ts:1063
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1063
+node_modules/bsv/index.d.ts:1061
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1068
+node_modules/bsv/index.d.ts:1066
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1064
+node_modules/bsv/index.d.ts:1062
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1067
+node_modules/bsv/index.d.ts:1065
 
 ___
 
@@ -203,7 +203,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1072
+node_modules/bsv/index.d.ts:1070
 
 ___
 
@@ -224,7 +224,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1073
+node_modules/bsv/index.d.ts:1071
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1077
+node_modules/bsv/index.d.ts:1075
 
 ___
 
@@ -264,7 +264,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1071
+node_modules/bsv/index.d.ts:1069
 
 ___
 
@@ -284,7 +284,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1076
+node_modules/bsv/index.d.ts:1074
 
 ___
 
@@ -304,7 +304,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1078
+node_modules/bsv/index.d.ts:1076
 
 ___
 
@@ -324,4 +324,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1079
+node_modules/bsv/index.d.ts:1077

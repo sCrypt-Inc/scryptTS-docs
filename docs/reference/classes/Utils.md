@@ -42,7 +42,7 @@ number of string to denote output value
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:902
+dist/smart-contract/builtins/functions.d.ts:894
 
 ___
 
@@ -54,7 +54,7 @@ number of string to denote a public key hash
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:904
+dist/smart-contract/builtins/functions.d.ts:896
 
 ## Methods
 
@@ -78,7 +78,7 @@ a ByteString contains the data payload
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:955
+dist/smart-contract/builtins/functions.d.ts:947
 
 ___
 
@@ -103,7 +103,7 @@ a `ByteString` that represents an output
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:936
+dist/smart-contract/builtins/functions.d.ts:928
 
 ___
 
@@ -128,7 +128,7 @@ a P2PKH output
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:949
+dist/smart-contract/builtins/functions.d.ts:941
 
 ___
 
@@ -152,7 +152,7 @@ a `ByteString` that represents P2PKH script
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:942
+dist/smart-contract/builtins/functions.d.ts:934
 
 ___
 
@@ -176,7 +176,7 @@ returns a number
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:917
+dist/smart-contract/builtins/functions.d.ts:909
 
 ___
 
@@ -200,7 +200,7 @@ return a `ByteString` of the VarInt field
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:923
+dist/smart-contract/builtins/functions.d.ts:915
 
 ___
 
@@ -225,7 +225,7 @@ returns a `ByteString`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:911
+dist/smart-contract/builtins/functions.d.ts:903
 
 ___
 
@@ -249,4 +249,4 @@ return a `ByteString` appended the VarInt
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:929
+dist/smart-contract/builtins/functions.d.ts:921

@@ -38,4 +38,4 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1268
+node_modules/bsv/index.d.ts:1266

@@ -9,11 +9,8 @@
 ### Properties
 
 - [address](SignatureRequest.md#address)
-- [csIdx](SignatureRequest.md#csidx)
 - [data](SignatureRequest.md#data)
 - [inputIndex](SignatureRequest.md#inputindex)
-- [outputIndex](SignatureRequest.md#outputindex)
-- [prevTxId](SignatureRequest.md#prevtxid)
 - [satoshis](SignatureRequest.md#satoshis)
 - [scriptHex](SignatureRequest.md#scripthex)
 - [sigHashType](SignatureRequest.md#sighashtype)
@@ -28,20 +25,7 @@ The address(es) of corresponding private key(s) required to sign the input.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:15
-
-___
-
-### csIdx
-
-• `Optional` **csIdx**: `number`
-
-Index of the OP_CODESEPARATOR to split the previous output script at during verification.
-If undefined, the whole script is used.
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:24
+dist/bsv/abstract-signer.d.ts:13
 
 ___
 
@@ -53,7 +37,7 @@ The extra information for signing.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:26
+dist/bsv/abstract-signer.d.ts:19
 
 ___
 
@@ -65,27 +49,7 @@ The index of input to sign.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:11
-
-___
-
-### outputIndex
-
-• **outputIndex**: `number`
-
-#### Defined in
-
 dist/bsv/abstract-signer.d.ts:9
-
-___
-
-### prevTxId
-
-• **prevTxId**: `string`
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:8
 
 ___
 
@@ -97,7 +61,7 @@ The previous output satoshis value of the input to spend.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:13
+dist/bsv/abstract-signer.d.ts:11
 
 ___
 
@@ -109,7 +73,7 @@ The previous output script of input, default value is a P2PKH locking script for
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:17
+dist/bsv/abstract-signer.d.ts:15
 
 ___
 
@@ -121,4 +85,4 @@ The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:19
+dist/bsv/abstract-signer.d.ts:17

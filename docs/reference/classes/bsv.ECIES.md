@@ -32,7 +32,7 @@
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1008
+node_modules/bsv/index.d.ts:1006
 
 ## Methods
 
@@ -52,7 +52,7 @@ node_modules/bsv/index.d.ts:1008
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1013
+node_modules/bsv/index.d.ts:1011
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1012
+node_modules/bsv/index.d.ts:1010
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1010
+node_modules/bsv/index.d.ts:1008
 
 ___
 
@@ -112,4 +112,4 @@ ___
 
 #### Defined in
 
-node_modules/bsv/index.d.ts:1011
+node_modules/bsv/index.d.ts:1009

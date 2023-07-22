@@ -21,7 +21,7 @@ The address(es) whose corresponding private key(s) should be used to sign the tx
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:50
+dist/bsv/abstract-signer.d.ts:41
 
 ___
 
@@ -33,4 +33,4 @@ The `SignatureRequest` for the some inputs of the transaction.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:48
+dist/bsv/abstract-signer.d.ts:39
