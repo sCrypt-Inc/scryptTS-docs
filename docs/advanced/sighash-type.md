@@ -184,7 +184,7 @@ Use different sighash types in `@method()` decorator will change the value of `S
 - If your contract is stateful and the state is always in a single output, simplify it using `SINGLE`.
 - If you want to enable someone else could add inputs after the transaction is sealed, such as for paying transaction fees, apply the `ANYONECANPAY` modifier.
 
-You can check find examples in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate).
+You can find these examples in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate).
 
 - [AnyoneCanSpend](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/acs.ts)
 - [Clone](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/clone.ts)
