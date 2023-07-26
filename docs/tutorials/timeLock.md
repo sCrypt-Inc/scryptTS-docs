@@ -44,18 +44,18 @@ readonly matureTime: bigint // Can be a timestamp or block height.
 public unlock() {
     // Ensure nSequence is less than UINT_MAX.
     assert(
-        this.ctx.sequence < LockTime.UINT_MAX,
+        this.ctx.sequence < TimeLock.UINT_MAX,
         'input sequence should less than UINT_MAX'
     )
 
     // Check if using block height.
     if (
-        this.matureTime < LockTime.LOCKTIME_BLOCK_HEIGHT_MARKER
+        this.matureTime < TimeLock.LOCKTIME_BLOCK_HEIGHT_MARKER
     ) {
         // Enforce nLocktime field to also use block height.
         assert(
             this.ctx.locktime <
-                LockTime.LOCKTIME_BLOCK_HEIGHT_MARKER,
+                TimeLock.LOCKTIME_BLOCK_HEIGHT_MARKER,
             'locktime should be less than 500000000'
         )
     }
@@ -80,5 +80,5 @@ For more information on how the `locktime` and `sequence` values work, please re
 
 Congratulations! You have completed the time-lock tutorial!
 
-The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/cltv.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/cltv.ts).
+The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/timeLock.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/timeLock.ts).
 
