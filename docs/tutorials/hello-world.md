@@ -57,6 +57,25 @@ Now let’s look at what is in the smart contract.
 - `assert`: throws an error and makes the method call fail if its first argument is `false`. Here it ensures the passed message hashed to the expected digest.
 
 
+## Compile Contract
+
+1. Run following command to compile the `Helloworld` contract:
+
+```sh
+npx scrypt-cli compile
+```
+
+This command will generate a contract artifact file at `artifacts\helloworld.json`.
+
+2. Or call the `compile()` function in the code:
+
+
+```ts
+await Helloworld.compile()
+```
+
+
+
 ## Contract Deployment & Call
 
 Before we deploy the contract, follow [the instruction](../../how-to-deploy-and-call-a-contract/faucet) to fund a Bitcoin key.
@@ -94,6 +113,7 @@ import { toByteString, sha256 } from 'scrypt-ts'
 ```
 
 Run the following command:
+
 ```
 npx ts-node deploy.ts
 ```

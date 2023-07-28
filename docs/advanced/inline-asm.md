@@ -51,18 +51,17 @@ Variables can be defined by prefix `$`, as in `$pubKeyHash`.
 
 We could also define multiple substitutions for multiple methods, if needed.
 
-Now, after every project build, the function body will be replaced with script, as could be seen in `artifacts/P2PKH.scrypt`.
+Now, you can compile the contracts with `--asm` option:
+
+```sh
+npx scrypt-cli compile --asm
+```
+
+Now, after compiling, the function body will be replaced with script, as could be seen in `artifacts/P2PKH.scrypt`.
 
 ![](../../static/img/asm.png)
 
 
-This is due to the new `apply-asm` command in`package.json`:
-```json
-"scripts": {
-    "build": "tsc && npm run apply-asm",
-    "apply-asm": "node .asm/apply_asm.js",
-    ...
-```
 
 ## Set Inline Assembly Variables
 Assembly variables can be replaced with literal Script in ASM format using `setAsmVars()`. Each variable is prefixed by its unique scope, namely, the contract and the function it is under.

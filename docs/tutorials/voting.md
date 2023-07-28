@@ -216,7 +216,7 @@ Compile the contract with the following command:
 npx scrypt-cli compile
 ```
 
-This command will generate a contract artifact file at `artifacts\src\contracts\voting.json`.
+This command will generate a contract artifact file at `artifacts\voting.json`.
 
 ### Contract Deployment
 
