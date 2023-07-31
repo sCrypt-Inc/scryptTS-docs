@@ -49,9 +49,9 @@ In addition, there is a modifier flag `ANYONECANPAY`, which can be combined with
 
 | Sighash flag         | Description                                                  |
 | -------------------- | ------------------------------------------------------------ |
-| ALL\|ANYONECANPAY    | Signature applies to one input and all outputs               |
-| NONE\|ANYONECANPAY   | Signature applies to one input, none of the outputs          |
-| SINGLE\|ANYONECANPAY | Signature applies to one input and the output with the same index number |
+| ALL \| ANYONECANPAY    | Signature applies to one input and all outputs               |
+| NONE \| ANYONECANPAY   | Signature applies to one input, none of the outputs          |
+| SINGLE \| ANYONECANPAY | Signature applies to one input and the output with the same index number |
 
 All the six flags can be summarized in the following diagram.
 
