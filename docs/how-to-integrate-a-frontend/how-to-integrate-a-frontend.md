@@ -13,7 +13,7 @@ We assume that you already have the basic knowledge of frontend development, so 
 Create your frontend project as usual.
 #### React
 
-Run the following command to create a React project, named `helloworld`.
+Run the following command to create a [React](https://react.dev/) project named `helloworld`.
 
 ```bash
 npx create-react-app helloworld --template typescript
@@ -25,19 +25,45 @@ We will do most work under the `src` directory.
 
 #### Next.js
 
-Run the following command to create a `Next.js` project, named `helloworld`.
+Run the following command to create a [Next.js](https://nextjs.org/) project named `helloworld`.
 
 ```bash
-npx create-next-app helloworld --typescript
+npx create-next-app helloworld --typescript --use-npm
 ```
+
+![](../../static/img/create-next-app.png)
 
 #### Vue.js
 
-Run the following command to create a `Vue.js` project, named `helloworld`.
+##### Bundled with Vite
+
+Run the following command to create a [Vue](https://vuejs.org/) 3.x project bundled with [Vite](https://vitejs.dev/) named `helloworld`.
+
+```bash
+npm create vue@3
+```
+
+![](../../static/img/create-vue3-vite-app.png)
+
+If you'd like to use Vue 2.x, run the following command to initialize the project scaffold.
+
+```bash
+npm create vue@2
+```
+
+![](../../static/img/create-vue2-vite-app.png)
+
+##### Bundled with Webpack
+
+Run the following command to create a [Vue](https://vuejs.org/) project bundled with [Webpack](https://webpack.js.org/) named `helloworld`.
 
 ```bash
 npx @vue/cli create helloworld
 ```
+
+:::tip
+Both Vue 3.x and 2.x bundled with Webpack are both supported as well.
+:::
 
 When setting up the project, select `Manually select features` and enable TypeScript.
 
@@ -45,20 +71,28 @@ When setting up the project, select `Manually select features` and enable TypeSc
 
 ![](../../static/img/vue-cli-2.png)
 
-:::caution
-For now, we must use [webpack](https://webpack.js.org/) instead of [Vite](https://vitejs.dev/) to bundle the project.
-:::
-
 #### Angular
 
-Run the following command to create a `Angular` project, named `helloworld`.
+Run the following command to create a [Angular](https://angular.io/) project named `helloworld`.
 
 ```bash
 npx @angular/cli new helloworld
 ```
 
+![](../../static/img/create-angular-app.png)
+
+#### Svelte
+
+Run the following command to create a [Svelte](https://svelte.dev/) project named `helloworld`.
+
+```bash
+npm create svelte@latest helloworld
+```
+
+![](../../static/img/create-svelte-app.png)
+
 :::note
-Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), and [Angular](https://angular.io/). We anticipate to add supports for other frameworks over time.
+Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), [Angular](https://angular.io/), and [Svelte](https://svelte.dev/). We anticipate to add supports for other frameworks over time.
 :::
 
 ### Step 2
