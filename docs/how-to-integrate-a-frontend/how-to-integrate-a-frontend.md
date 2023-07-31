@@ -62,7 +62,7 @@ npx @vue/cli create helloworld
 ```
 
 :::tip
-Both Vue 3.x and 2.x bundled with Webpack are both supported as well.
+Vue 3.x and 2.x bundled with Webpack are both supported.
 :::
 
 When setting up the project, select `Manually select features` and enable TypeScript.
