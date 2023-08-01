@@ -25,7 +25,7 @@ We will do most work under the `src` directory.
 
 #### Next.js
 
-Run the following command to create a [Next.js](https://nextjs.org/) project named `helloworld`.
+Run the following command to create a [Next.js](https://nextjs.org/) project.
 
 ```bash
 npx create-next-app helloworld --typescript --use-npm
@@ -35,9 +35,9 @@ npx create-next-app helloworld --typescript --use-npm
 
 #### Vue.js
 
-##### Bundled with Vite
+##### Vite
 
-Run the following command to create a [Vue](https://vuejs.org/) 3.x project bundled with [Vite](https://vitejs.dev/) named `helloworld`.
+Run the following command to create a [Vue](https://vuejs.org/) 3.x project bundled with [Vite](https://vitejs.dev/).
 
 ```bash
 npm create vue@3
@@ -53,9 +53,9 @@ npm create vue@2
 
 ![](../../static/img/create-vue2-vite-app.png)
 
-##### Bundled with Webpack
+##### Webpack
 
-Run the following command to create a [Vue](https://vuejs.org/) project bundled with [Webpack](https://webpack.js.org/) named `helloworld`.
+Run the following command to create a [Vue](https://vuejs.org/) project bundled with [Webpack](https://webpack.js.org/).
 
 ```bash
 npx @vue/cli create helloworld
@@ -73,7 +73,7 @@ When setting up the project, select `Manually select features` and enable TypeSc
 
 #### Angular
 
-Run the following command to create a [Angular](https://angular.io/) project named `helloworld`.
+Run the following command to create an [Angular](https://angular.io/) project.
 
 ```bash
 npx @angular/cli new helloworld
@@ -83,7 +83,7 @@ npx @angular/cli new helloworld
 
 #### Svelte
 
-Run the following command to create a [Svelte](https://svelte.dev/) project named `helloworld`.
+Run the following command to create a [Svelte](https://svelte.dev/) project.
 
 ```bash
 npm create svelte@latest helloworld
