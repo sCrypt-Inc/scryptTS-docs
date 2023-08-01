@@ -2,13 +2,13 @@
 sidebar_position: 2
 ---
 
-# Tutorial 2: Time-Lock
+# Tutorial 2: Time Lock
 
 ## Overview
 
 In this tutorial, we will go over how to create a smart contract, which has a public method, that can only be unlocked once a certain point in time has passed.
 
-### What is a time-lock?
+### What is a time lock?
 
 In the context of smart contracts, a time-lock is a feature that restricts the spending of specific bitcoins until a specified future time or block height is reached. sCrypt offers capabilities to implement these types of time-locks in your smart contracts, providing a mechanism to ensure a transaction won't be included in a block before a certain point in time or block height is reached. In other words, the smart contract's method cannot be successfully invoked until that point in time has passed.
 

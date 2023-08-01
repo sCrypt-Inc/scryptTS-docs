@@ -35,7 +35,7 @@ Digital signatures are used to represent the authenticity and integrity of a mes
 
 Digital signatures are applied to messages, which in the case of bitcoin, are the transactions themselves. The signature implies a commitment by the signer to specific transaction data. In the simplest form, the signature applies to the entire transaction, thereby committing all the inputs, outputs, and other transaction fields. The P2PKH transaction is a simple example of using signatures, which is widely used in bitcoin.
 
-Bitcoin signatures have a way of indicating which part of a transaction’s data is included signed by the private key using a sighash flag. The included transaction data, that's so call `ScriptContext`. Every signature has a sighash flag and the flag can be different from signature to signature. 
+Using a sighash flag, a Bitcoin signature specifies which parts of a transaction’s data is included and thus signed by a private key. The included transaction data is the so called [ScriptContext](../how-to-write-a-contract/scriptcontext.md). Every signature has a sighash flag and the flag can be different from signature to signature. 
 
 There are three sighash flags: `ALL`, `NONE`, and `SINGLE`.
 
