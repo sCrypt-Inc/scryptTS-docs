@@ -191,4 +191,6 @@ await instance.connect(signer);
 
 Afterwards, you can interact with the contract from the front end by [calling its method](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) as usual.
 
-Go [here](https://academy.scrypt.io) to see a full example on how to build a Tic-Tac-Toe game on chain.
+[This repo](https://github.com/sCrypt-Inc/counter-demos) contains a counter example, integrated with all supported frameworks.
+
+Go to the [sCrypt Academy](https://academy.scrypt.io) to see a step-by-step guide on how to build a Tic-Tac-Toe game on chain.
