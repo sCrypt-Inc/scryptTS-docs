@@ -150,29 +150,86 @@ public unlock(x: bigint) {
 ```
 
 :::note
-The last function call of a public `@method` method **must** be an `assert()` function call, unless it is a `console.log()` call.
+In addition to the following special cases, the last statement of a public `@method` method **must** be an `assert()` statement.
 :::
+
+
+1. last statement is a `console.log();` statement, and the `console.log();` statement is preceded by an `assert()` statement.
+2. last statement is `for` statement, and the last statement in the loop body is `assert()` statement.
+3. last statement is `if-else` statement, and the last statement of each conditional branch is `assert()` statement.
 
 ```ts
 class PublicMethodDemo extends SmartContract {
+
+
+  @method()
+  public foo() {
+    // valid, last statement is `assert();` statement
+    assert(true); 
+  }
+
+  @method()
+  public foo() {
+    // valid, `console.log` calling will be ignored when verifying the last `assert` statement
+    assert(true); // 
+    console.log();
+    console.log();
+  }
+
+  @method()
+  public foo() {
+    // valid, last statement is `for` statement
+    for (let index = 0; index < 3; index++) {
+        assert(true);
+    }
+  }
+
+  @method()
+  public foo(z: bigint) {
+    // valid, last statement is `if-else` statement
+    if(z > 3n) {
+        assert(true)
+    } else {
+        assert(true)
+    }
+  }
+
   @method()
   public foo() {
     // invalid, the last statement of public method should be an `assert` function call
   }
 
   @method()
-  public bar() {
+  public foo() {
     assert(true);
     return 1n;  // invalid, because a public method cannot return any value
   }
 
   @method()
-  public foobar() {
-      console.log();
-      // valid, `console.log` calling will be ignored when verifying the last `assert` statement
-      assert(true);
-      console.log();
-      console.log();
+  public foo() {
+    // invalid, the last statement in the for statement body doesn't end with `assert()` statement.
+    for (let index = 0; index < 3; index++) {
+        assert(true);
+        z + 3n;
+    }
+  }
+
+  @method()
+  public foo() {
+    // invalid, not each conditional branch end with `assert()` statement.
+    if(z > 3n) {
+      assert(true)
+    } else {
+        
+    }
+  }
+
+  @method()
+  public foo() {
+    // invalid, not each conditional branch end with `assert()` statement.
+    if(z > 3n) {
+      assert(true)
+    }
   }
 }
 ```
