@@ -132,6 +132,24 @@ class DesignatedReceivers extends SmartContract {
 }
 ```
 
+### Prevouts
+
+Through the `hashPrevouts` field of `ScriptContext`, we can access the hash of Prevouts:
+
+> If the `ANYONECANPAY` flag is not set, `hashPrevouts` is the double SHA256 of the serialization of all input outpoints;
+> Otherwise, hashPrevouts is a uint256 of `0x0000......0000`.
+
+But we can access the full prevouts via `this.prevouts`. Before you start using it, you need to make sure `this.prevouts` is valid:
+
+```ts
+assert(this.ctx.hashPrevouts == hash256(this.prevouts), 'hashPrevouts mismatch')
+```
+
+:::note
+Accessing `this.prevouts` in `ANYONECANPAY` methods will get empty.
+:::
+
+
 ### SigHash Type
 
 [SigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) decides which part of the spending transaction is included in `ScriptContext`.
