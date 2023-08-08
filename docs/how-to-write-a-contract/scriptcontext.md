@@ -139,15 +139,10 @@ Through the `hashPrevouts` field of `ScriptContext`, we can access the hash of P
 > If the `ANYONECANPAY` flag is not set, `hashPrevouts` is the double SHA256 of the serialization of all input outpoints;
 > Otherwise, hashPrevouts is a uint256 of `0x0000......0000`.
 
-But we can access the full prevouts via `this.prevouts`. Before you start using it, you need to make sure `this.prevouts` is valid:
+But we can access the full prevouts via `this.prevouts`. 
 
-```ts
-assert(this.ctx.hashPrevouts == hash256(this.prevouts), 'hashPrevouts mismatch')
-```
-
-:::note
-Accessing `this.prevouts` in `ANYONECANPAY` methods will get empty.
-:::
+- If the `ANYONECANPAY` flag is not set, the hash of `this.prevouts` is equal to `this.ctx.hashPrevouts`.
+- Otherwise, `this.prevouts` will be empty.
 
 
 ### SigHash Type
