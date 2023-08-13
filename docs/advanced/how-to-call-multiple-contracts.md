@@ -138,7 +138,7 @@ await main()
 
 
 :::note
-- You must bind a [transition builder](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#tx-builders) to each contract instance, since [the default](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#customize-1) only spends a single contract UTXO.
+- You must bind a [transaction builder](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#tx-builders) to each contract instance, since [the default](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#customize-1) only spends a single contract UTXO.
 - If the called contracts need signatures from different private keys to be called, the signer passed to `multiContractCall` must have all private keys.
 :::
 
