@@ -8,18 +8,24 @@ It is highly recommended to test your contract on the [testnet](https://test.wha
 
 Before deploy and call a contract, you need to have a funded address:
 
-1. Generate a private key with the following command, after creating a project:
+
+1. Create a new project. Skip this step if you have already created a project:
 
 ```sh
 npx scrypt-cli project demo
 cd demo
+```
+
+2. Generate a private key with the following command executed from the root of the project:
+
+```sh
 npm install
 npm run genprivkey
 ```
 
 The command will generate a private key and store it in a `.env` file in our project's root directory. It also outputs the [Bitcoin address](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) corresponding to our private key.
 
-2. Fund the private key's address with some testnet coins. You could use this [faucet](https://scrypt.io/faucet) to receive test coins.
+3. Fund the private key's address with some testnet coins. You could use this [faucet](https://scrypt.io/faucet) to receive test coins.
 
 ![faucet](../../static/img/faucet.gif)
 
