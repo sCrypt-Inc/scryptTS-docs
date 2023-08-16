@@ -117,11 +117,11 @@ console.log(`Counter contract called,  tx: ${tx.id}`)
 
 Often, your app needs to be notified when a contract gets called and updated. It is essential to be able to listen to such events in real time that can alert your app whenever something relevant occurs on chain. For example, in your front-end, you can refresh the web page to show the user the latest state of a contract, upon event notifications.
 
-With the `sCrypt` service, you can easily subscribe to a contract's events by its contract ID, using ethier websockets or webhooks techniques depending on your requirements.
+With the `sCrypt` service, you can easily subscribe to a contract's events by its contract ID, using ethier websockets (client side) or webhooks (server side) per your requirements.
 
 #### Websockets
 
-Using websockets to listen contract events is such an easy job because we provide a dedicated API in our client SDK. Just using the `Scrypt.contractApi.subscribe` method. It takes two parameters:
+To use websockets to listen for contract events, just use the `Scrypt.contractApi.subscribe` dedicated API in our client SDK, which takes two parameters:
 
 1. `options: SubscribeOptions<T>`: it includes a contract class, a contract ID, and a optional list of method names monitored.
 
@@ -160,19 +160,21 @@ const subscription = Scrypt.contractApi.subscribe({
 });
 ```
 
-Please note that by using this API, you do not need any backend services of your own; the code usually runs in your users browsers. But there might be a security issue because of the exposure of your API key to the public. So it’s highly recommended that you just use it in demo projects for trusted users.
+:::note
+When using this API, you do not need any backend services of your own; the code usually runs in your users' browsers. There is a security issue because of exposure of your API key. So it’s highly recommended that you just use it in demo projects for trusted users.
+:::
 
 #### Webhooks
 
-There is another method for listening to contract events in a more secure and effective way. Just use our webhooks service to push event data to your own backend service.
+There is an alternative for listening to contract events in a more secure and effective way. Just use our webhook service to push event data to your own backend service.
 
 #### Webhook Management
 
-You need to create a valid webhook in our service before trying to receive any event data. You can find all webhook management features on the `webhooks` web page.
+First, you need to create a valid webhook in our service before trying to receive any event data. You can manage webhooks on the `webhooks` page of our console.
 
 ![](../../static/img/create-webhook.png)
 
-To create a valid webhook, you need to provide important information like this:
+To create a valid webhook, you need to provide the following information:
 
 1. **Webhook URL**
 
@@ -184,18 +186,18 @@ A webhook can only receive events from a single network. It must be either `test
 
 3. **Contract ID**
 
-A webhook must listen to a certain contract ID, i.e., the deployment TX ID, and its output index. In other words, it will be notified only when this contract is called on the chain.
+A webhook must listen to a certain [contract ID](#step-3-get-contract-id). In other words, it will be notified only when this contract is called on chain.
 
-Please also note that the contract can be listened to only if it is deployed and called through our SDK or services.
+Please note that the contract can only be listened to if it is deployed and called using our SDK or services.
 
 4. **Contract Artifact**
 
-A contract artifact is also needed for decoding the call data on the chain. You can usually find it in the `artifact` folder of your scrypt project. It's **required** if the contract ID was newly added to our service, and after that, it becomes optional. Also, you can only update those artifacts created by you.
+A [contract artifact](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md#2-load-artifact) is also needed to decode call data on the chain. You can usually find it in the `artifact` folder of your sCrypt project. It is **required** if the contract ID was newly registered to our service. It becomes optional if it has been registered before. Also, you can only update artifacts registered first by you.
 
 
 #### Webhook Request and Response
 
-When a contract is called on chain, we will push event data through an http POST request with a body like this to your webhook URLs:
+When a contract is called on chain, we will push event data through a http POST request with a body like this to your webhook URL:
 
 ```json
 {
@@ -229,29 +231,29 @@ When a contract is called on chain, we will push event data through an http POST
 }
 ```
 
-Here we can explain more details about the `events` data in the request:
+The request details the `events` data:
 
 * `eventType`: The type name of the event. Currently only `utxoSpent` available.
 
-* `spentUtxo`: The specified utxo of the contract been spent in the event.
+* `spentUtxo`: The specified utxo of the contract spent in the event.
 
-* `contractId`: The contract ID of the event belongs to.
+* `contractId`: The contract ID that the event belongs to.
 
 * `spentBy`: The specified input index of the contract call tx from which the event comes.
 
-* `createdInSpentTxOutputs`: Newly generated contract utxo(s) in the spent tx if it's stateful contract.
+* `createdInSpentTxOutputs`: Newly generated contract utxo(s) in the spent tx if it's a stateful contract.
 
-* `id`: Unique event Id.
+* `id`: Unique event id.
 
 * `methodName`: The method name of the contract call of the event.
 
-* `args`: The arguments list the contract call of the event.
+* `args`: The argument list of the contract call of the event.
 
-You need to return an HTTP code of 200 for a successful acknowledgement. We will auto-pause the webhook after several unsuccessful deliveries. You need to manually reactivate it on the `webhooks` web page before we start pushing notifications to it again. Another important thing is that for a single event, there might be more than one notification pushed to the webhook, so make sure you have this situation handled.
+You need to return a HTTP code of 200 for a successful acknowledgement. We will automatically pause the webhook after several unsuccessful deliveries. You need to manually reactivate it on the `webhooks` page before we start pushing notifications to it again. For a single event, there might be more than one notification pushed to the webhook, so make sure you have this situation handled.
 
 #### Webhook Security
 
-To keep your webhook requests secure, we add a signature header `x-scrypt-signature` for each request by signing the request data with your own API key using the HMAC-SHA256` algorithm. So you can verify it if you like. It's generated using code like this:
+To keep your webhook requests secure, we add a signature header `x-scrypt-signature` for each request by signing the request data with your own API key using the [HMAC-SHA256](https://en.wikipedia.org/wiki/HMAC) algorithm. So you can verify it if you wnat. It can be generated using code like this:
 
 ```
 const signature = crypto.createHmac('sha256', apiKey).update(JSON.stringify(body)).digest('hex');
