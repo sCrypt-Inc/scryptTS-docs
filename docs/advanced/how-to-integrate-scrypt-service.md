@@ -195,6 +195,80 @@ Please note that the contract can only be listened to if it is deployed and call
 A [contract artifact](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md#2-load-artifact) is also needed to decode call data on the chain. You can usually find it in the `artifact` folder of your sCrypt project. It is **required** if the contract ID was newly registered to our service. It becomes optional if it has been registered before. Also, you can only update artifacts registered first by you.
 
 
+Besides adding webhook in dashboard, you can add webhooks programmatically.
+
+```js
+function main() {
+
+    fetch('https://api.scrypt.io/webhooks/create', { // use 'https://testnet-api.scrypt.io' fro testnet
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer [Your API key]"
+        },
+        method: 'POST',
+        body:  JSON.stringify({
+            url: 'http://127.0.0.1:3005/api/webhooks/test_notify',
+            contractId: {
+                txId: "1fa604263d2a16f6292f788e391b83ea7037fb9eb2ed0055ab5802ab2d090ef5",
+                outputIndex: 0
+            },
+            desc: "test webhook",
+            artifact: {
+                "version": 9,
+                "compilerVersion": "1.19.0+commit.72eaeba",
+                "contract": "Demo",
+                "md5": "cd1a4305e8c9c821c0c003a5990f6cfc",
+                "structs": [],
+                "library": [],
+                "alias": [],
+                "abi": [
+                    {
+                        "type": "function",
+                        "name": "add",
+                        "index": 0,
+                        "params": [
+                            {
+                                "name": "z",
+                                "type": "int"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "function",
+                        "name": "sub",
+                        "index": 1,
+                        "params": [
+                            {
+                                "name": "z",
+                                "type": "int"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "constructor",
+                        "params": [
+                            {
+                                "name": "x",
+                                "type": "int"
+                            },
+                            {
+                                "name": "y",
+                                "type": "int"
+                            }
+                        ]
+                    }
+                ],
+                "stateProps": [],
+                "buildType": "debug",
+                "file": "file:///...",
+                "hex": "<x><y>5279008763537952795279615179517993517a75517a75619c77777777675279518763537952795279949c7777777767006868",
+                "sourceMapFile": ""
+            }
+        })
+    }).then(res => res.json()).then(data => console.log(data))
+}
+```
+
 #### Webhook Request and Response
 
 When a contract is called on chain, we will push event data through a http POST request with a body like this to your webhook URL:
