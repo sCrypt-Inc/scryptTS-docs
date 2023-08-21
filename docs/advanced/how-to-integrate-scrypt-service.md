@@ -332,3 +332,15 @@ To keep your webhook requests secure, we add a signature header `x-scrypt-signat
 ```
 const signature = crypto.createHmac('sha256', apiKey).update(JSON.stringify(body)).digest('hex');
 ```
+
+#### Webhook Limit
+
+The number of webhooks that each user can create is limited. The following is the limit on the number of webhooks that users of different grades can create.
+
+
+| Grade | limt on testnet    | limt on mainnet  |
+| ------------- | ------------- | ------------- |
+| Starter  | 10 | 10 |
+| Pro | 100   | 100   |
+| Business | 200   | 200   |
+| Enterprise | 300   | 300   |
