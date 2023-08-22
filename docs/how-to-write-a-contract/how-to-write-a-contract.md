@@ -527,6 +527,33 @@ public unlock(sig: Sig, pubkey: PubKey) {
 }
 ```
 
+### Import Types
+
+All types can be imported from `scrypt-ts` package:
+
+```ts
+import {
+    ByteString,
+    Pubkey,
+    FixedArray,
+    Sig,
+    PubKeyHash
+} from 'scrypt-ts'
+```
+
+This may not when work [`isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) is enabled. At this time you need to use [Type-Only Imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export):
+
+
+```ts
+import type {
+    ByteString,
+    FixedArray
+} from 'scrypt-ts'
+```
+
+
+
+
 ## Statements
 
 There are some constraints on these following statements within `@method`s, except [variable declarations](#Variable-declarations).
