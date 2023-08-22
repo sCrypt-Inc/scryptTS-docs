@@ -51,7 +51,7 @@ async function main() {
             nextInstance.count++
 
             const tx = new bsv.Transaction()
-            tx.addInput(current.buildContractInput(options.fromUTXO)).addOutput(
+            tx.addInput(current.buildContractInput()).addOutput(
                 new bsv.Transaction.Output({
                     script: nextInstance.lockingScript,
                     satoshis: current.balance,
@@ -94,7 +94,7 @@ async function main() {
             if (options.partialContractTx) {
                 const unSignedTx = options.partialContractTx.tx
                 unSignedTx.addInput(
-                    current.buildContractInput(options.fromUTXO)
+                    current.buildContractInput()
                 )
 
                 return Promise.resolve({

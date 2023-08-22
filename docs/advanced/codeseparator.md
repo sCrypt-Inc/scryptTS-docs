@@ -81,7 +81,6 @@ const { tx: callTx, atInputIndex } = await demo.methods.unlock(
     },
     publicKeys.map((publicKey) => PubKey(toHex(publicKey))) as FixedArray<PubKey, 3>,
     {
-        fromUTXO: dummyUTXO,
         pubKeyOrAddrToSign
     } as MethodCallOptions<CodeSeparator>
 )

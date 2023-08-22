@@ -143,6 +143,7 @@ console.log(`Smart contract successfully deployed with txid ${deployTx.id}`);
 ```
 
 ## Contract Call
+
 To facilitate calling a contract's public `@method`, we have injected a runtime object named `methods` in your contract class. For each public `@method` of your contract (e.g., `contract.foo`), a function with the same name and signature (including list of parameters and return type, i.e., void) is added into `methods` (e.g., `contract.methods.foo`). In addition, there is an `options` appended as the last paramter.
 
 Assume you have a contract like this:
@@ -203,8 +204,6 @@ export interface MethodCallOptions<T> {
   readonly lockTime?: number;
   /** The `sequence` of the input spending previous contract UTXO in the method calling tx */
   readonly sequence?: number;
-  /** The previous contract UTXO to spend in the method calling tx */
-  readonly fromUTXO?: UTXO;
   /** The P2PKH change output address */
   readonly changeAddress?: AddressOption;
   /** verify the input script before send transaction */

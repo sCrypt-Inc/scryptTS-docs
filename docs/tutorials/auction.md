@@ -182,14 +182,14 @@ In Function `static bidTxBuilder(current: Auction, options: MethodCallOptions<Au
 ```ts
 const unsignedTx: Transaction = new Transaction()
     // add contract input
-    .addInput(current.buildContractInput(options.fromUTXO))
+    .addInput(current.buildContractInput())
     // build next instance output
     .addOutput(new Transaction.Output({script: nextInstance.lockingScript, satoshis: Number(bid),}))
     // build refund output
     .addOutput(
         new Transaction.Output({
             script: Script.fromHex(Utils.buildPublicKeyHashScript(current.bidder)),
-            satoshis: options.fromUTXO?.satoshis ?? current.from.tx.outputs[current.from.outputIndex].satoshis,
+            satoshis: current.balance,
         })
     )
     // build change output
@@ -287,7 +287,7 @@ export class Auction extends SmartContract {
 
         const unsignedTx: Transaction = new Transaction()
             // add contract input
-            .addInput(current.buildContractInput(options.fromUTXO))
+            .addInput(current.buildContractInput())
             // build next instance output
             .addOutput(
                 new Transaction.Output({

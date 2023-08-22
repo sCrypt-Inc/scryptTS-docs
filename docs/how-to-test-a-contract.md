@@ -6,14 +6,15 @@ sidebar_position: 5
 
 Before using a smart contract in production, one should always test it carefully, especially because any bug in it may cause **real economic losses**.
 
-There are two different kinds of tests recommended for every project using `sCrypt`:
 
-* **Local Unit Testing**
-* **Testnet Integration Testing**
+Create a sample project with [the sCrypt CLI Tool](./installation.md#the-scrypt-cli-tool):
 
-Now we will take a look at the file `tests/local/demo.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet and a subsequent public method call on the contract.
+```sh
+npx scrypt-cli project demo
+```
 
-But before going into details, you should learn some basic models of sCrypt for signing and sending transactions.
+Now we will take a look at the file `tests/demo.test.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet or local and a subsequent public method call on the contract.
+
 
 ## Compile the Contract
 
@@ -23,81 +24,37 @@ First, call function `SmartContract.compile()` to compile the contract before do
 await Demo.compile()
 ```
 
-## Provider
+## Instantiate the Contract
 
-A `Provider` is an abstraction of a standard Bitcoin node that provides connection to the Bitcoin network, for read and write access to the blockchain.
-
-sCrypt already has a few built-in providers:
-
-* `DummyProvider`: A mockup provider just for local tests. It does not connect to the Bitcoin blockchain and thus cannot send transactions.
-
-* `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcoin, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
-
-* See full list of providers [here](./reference/classes/Provider.md#hierarchy).
-
-You can initialize these providers like this:
+Instantiate the contract and connect a [signer](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#signer).
 
 ```ts
-let dummyProvider = new DummyProvider();
-
-// Mainnet
-let provider = new DefaultProvider();
-// Or explicitly: let provider = new DefaultProvider(bsv.Networks.mainnet);
-
-// Testnet
-let provider = new DefaultProvider(bsv.Networks.testnet);
+instance = new Demo(sha256(toByteString('hello world', true)))
+// connect a signer
+await instance.connect(getDefaultSigner())
 ```
 
-## Signer
 
-A `Signer` is an abstraction of private keys, which can be used to sign messages and transactions. A simple signer would be a single private key, while a complex signer is a wallet.
+## Contract Deployment
 
-### TestWallet
-
-For testing purposes only, we have a built-in wallet called `TestWallet`. It can be created like this:
+To deploy a smart contract, simply call its `deploy()` method:
 
 ```ts
-const signer = new TestWallet(privateKey, provider);
+const deployTx = await instance.deploy(1)
+console.log('Demo contract deployed: ', deployTx.id)
 ```
 
-`privateKey` can be a single private key or an array of private keys that the wallet can use to sign transactions. The ability of the wallet to send transactions is assigned to `provider`. In other words, a `TestWallet` serves as both a signer and a provider.
+## Call a Public Method
 
-## Test a Contract Locally
-
-Compared to other blockchains, smart contracts on Bitcoin are **pure**.
-
-* Given the same input, its public method always returns the same boolean output: success or failure. It has no internal state.
-* A public method call causes no side effects.
-
-Smart contracts are similar to mathematical functions. Thus, we can test a contract locally without touching the Bitcoin blockchain. If it passes tests off chain, we are confident it will behave the same on chain.
-
-### Prepare a Signer and Provider
-
-For local testing, we can use the `TestWallet`, with a mock provider. The `TestWallet` and `DummyProvider` combination would be ideal for local tests because it can sign the contract call transactions without actually sending them.
-
-Such a signer may be declared as below:
+You can call a contract's public `@method` on the blockchain as follows:
 
 ```ts
-let signer = new TestWallet(privateKey, new DummyProvider());
+// build and send tx by calling `unlock()` on methods object.
+const { tx: callTx, atInputIndex } = await instance.methods.unlock(
+    toByteString('hello world', true)
+)
+console.log('Demo contract called: ', callTx.id)
 ```
-
-Don't forget to connect the signer to the contract instance as well:
-
-```ts
-await instance.connect(signer);
-```
-
-### Call a Public Method
-
-Similar to what we described in [this section](../how-to-test-a-contract#call-a-public-method), you can call a contract's public `@method` on the blockchain as follows:
-
-```ts
-// build and send tx for calling `foo`
-const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
-console.log(`Smart contract method successfully called with txid ${tx.id}`);
-```
-
-Remember that the tx is not actually sent anywhere in a local test because we connect to a mock provider.
 
 ### Verify the Tx input for the method call
 
@@ -108,59 +65,81 @@ let result = tx.verifyScript(atInputIndex)
 console.log(result.success) // Output: true or false
 ```
 
-### Integrate with a testing framework
+## Integrate with a testing framework
 
-You can use whatever testing framework you like to write unit tests for your contract. For example, a local test using [Mocha](https://mochajs.org/) is shown below:
+You can use whatever testing framework you like to write unit tests for your contract. For example, a test using [Mocha](https://mochajs.org/) is shown below:
 
 ```js
+
 describe('Test SmartContract `Demo`', () => {
-  let signer;
-  let demo;
+    let instance: Demo
 
-  before(async () => {
-    // compile contract
-    await Demo.compile()
+    before(async () => {
+        await Demo.compile()
+        instance = new Demo(sha256(toByteString('hello world', true)))
+        await instance.connect(getDefaultSigner())
+    })
 
-    // create a test wallet as signer, connected to a dummy provider
-    signer = new TestWallet(privateKey, new DummyProvider())
+    it('should pass the public method unit test successfully.', async () => {
+        const deployTx = await instance.deploy(1)
+        console.log('Demo contract deployed: ', deployTx.id)
 
-    // initialize a contract instance
-    demo = new Demo(1n, 2n)
+        const { tx: callTx, atInputIndex } = await instance.methods.unlock(
+            toByteString('hello world', true)
+        )
+        console.log('Demo contract called: ', callTx.id)
 
-    // connect the instance to signer
-    await demo.connect(signer)
-  })
+        const result = callTx.verifyScript(atInputIndex)
+        expect(result.success, result.error).to.eq(true)
+    })
 
-  it('should pass the public method unit test successfully.', async () => {
-    // call `demo.methods.add` to get a signed tx
-    const { tx: callTx, atInputIndex } = await demo.methods.add(
-      // pass in the right argument
-      3n,
-      // set method call options
-      {
-        // Since `demo.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
-        fromUTXO: dummyUTXO
-      } as MethodCallOptions<Demo>
-    )
+    it('should throw with wrong message.', async () => {
+        const deployTx = await instance.deploy(1)
+        console.log('Demo contract deployed: ', deployTx.id)
 
-    let result = callTx.verifyScript(atInputIndex)
-    expect(result.success, result.error).to.eq(true)
-  })
-
-  it('should pass the non-public method unit test', () => {
-    expect(demo.sum(3n, 4n)).to.be.eq(7n)
-  })
-
-  it('should throw error', () => {
-    return expect(
-	  // Using the wrong argument when calling this function just results in an error.
-      demo.methods.add(4n, { fromUTXO: dummyUTXO })
-    ).to.be.rejectedWith(/add check failed/)
-  })
+        return expect(
+            instance.methods.unlock(toByteString('wrong message', true))
+        ).to.be.rejectedWith(/Hash does not match/)
+    })
 })
 ```
 
- ## Test a Stateful Contract
+## Running the tests
+
+
+Compared to other blockchains, smart contracts on Bitcoin are **pure**.
+
+* Given the same input, its public method always returns the same boolean output: success or failure. It has no internal state.
+* A public method call causes no side effects.
+
+
+Thus, you can run tests in two different environments:
+
+
+1. **Local**: Running tests without touching the Bitcoin blockchain. Transactions are constructed with dummy UTXOs. If it passes tests off chain, we are confident it will behave the same on chain. 
+
+Run the tests in the `Local` environment using the following command:
+
+```sh
+npm run test
+```
+
+
+2. **Testnet**: Running tests on the testnet of Bitcoin blockchain. Transactions are constructed with real UTXOs on the testnet.
+
+
+Run the tests in the `Testnet` environment using the following command:
+
+```sh
+npm run testnet
+```
+
+:::note
+Run tests in a `Testnet` environment. Need to get some test coins from [faucet](./how-to-deploy-and-call-a-contract/faucet.md).
+:::
+
+
+## Test a Stateful Contract
 
 Stateful contact testing is very similar to what we have described above. The only different is that you have to be aware of smart contract instance changes after method calls.
 
@@ -172,7 +151,11 @@ Now, let's look at how to test the `incrementOnChain` method call:
 // initialize the first instance, i.e., deployment
 let counter = new Counter(0n);
 // connect it to a signer
-counter.connect(dummySigner());
+await counter.connect(getDefaultSigner());
+
+
+const deployTx = await counter.deploy(1)
+console.log('Counter contract deployed: ', deployTx.id)
 
 // set the current instance to be the first instance
 let current = counter;
@@ -186,9 +169,6 @@ nextInstance.increment();
 // call the method of current instance to apply the updates on chain
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
   {
-    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
-    fromUTXO: getDummyUTXO(balance),
-
     // the `next` instance and its balance should be provided here
     next: {
       instance: nextInstance,
@@ -239,9 +219,6 @@ As described in [this section](#call-a-public-method), we can build a call trans
 ```ts
 const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
   {
-    // Since `counter.deploy` hasn't been called before, a fake UTXO of the contract should be passed in.
-    fromUTXO: getDummyUTXO(balance),
-
     // the `next` instance and its balance should be provided here
     next: {
       instance: nextInstance,
@@ -265,6 +242,9 @@ As before, we can just use the following command:
 ```sh
 npm run test
 ```
-Full code is [here](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/counter.test.ts).
 
-You may visit [here](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md) to see more details on contract deployment and call.
+or
+
+```sh
+npm run testnet
+```
