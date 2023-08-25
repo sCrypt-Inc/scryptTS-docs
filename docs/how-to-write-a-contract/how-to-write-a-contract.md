@@ -10,23 +10,25 @@ A smart contract is a class that extends the `SmartContract` base class. A simpl
 import { SmartContract, method, prop, assert } from "scrypt-ts"
 
 class Demo extends SmartContract {
+
   @prop()
-  readonly x: bigint
+  sum: bigint
 
-  constructor(x: bigint) {
+  @prop()
+  diff: bigint
+  
+  constructor(sum: bigint, diff: bigint) {
     super(...arguments)
-    this.x = x
+    this.sum = sum
+    this.diff = diff
+  }
+  
+  @method()
+  public unlock(x: bigint, y: bigint) {
+    assert(x + y == this.sum, 'incorrect sum')
+    assert(x - y == this.diff, 'incorrect diff')
   }
 
-  @method()
-  public unlock(x: bigint) {
-    assert(this.add(this.x, 1n) == x, 'incorrect sum')
-  }
-
-  @method()
-  add(x0: bigint, x1:bigint) : bigint {
-    return x0 + x1
-  }
 }
 ```
 
