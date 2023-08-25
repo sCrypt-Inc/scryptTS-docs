@@ -13,7 +13,36 @@ Create a sample project with [the sCrypt CLI Tool](./installation.md#the-scrypt-
 npx scrypt-cli project demo
 ```
 
-Now we will take a look at the file `tests/demo.test.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet or local and a subsequent public method call on the contract.
+This will create a complete sCrypt project, which includes a sample smart contract `Demo`:
+
+```ts
+import {
+    assert,
+    ByteString,
+    method,
+    prop,
+    sha256,
+    Sha256,
+    SmartContract,
+} from 'scrypt-ts'
+
+export class Demo extends SmartContract {
+    @prop()
+    hash: Sha256
+
+    constructor(hash: Sha256) {
+        super(...arguments)
+        this.hash = hash
+    }
+
+    @method()
+    public unlock(message: ByteString) {
+        assert(sha256(message) == this.hash, 'Hash does not match')
+    }
+}
+```
+
+Let us now open the file `tests/demo.test.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet or local and a subsequent public method call on the contract.
 
 
 ## Compile the Contract
