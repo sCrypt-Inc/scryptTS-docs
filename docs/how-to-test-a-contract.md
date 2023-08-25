@@ -49,11 +49,10 @@ console.log('Demo contract deployed: ', deployTx.id)
 You can call a contract's public `@method` on the blockchain as follows:
 
 ```ts
-// build and send tx by calling `unlock()` on methods object.
-const { tx: callTx, atInputIndex } = await instance.methods.unlock(
+// build and send tx by calling `unlock()` on `methods` object.
+await instance.methods.unlock(
     toByteString('hello world', true)
 )
-console.log('Demo contract called: ', callTx.id)
 ```
 
 ## Integrate with a testing framework
