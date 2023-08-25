@@ -170,8 +170,6 @@ const provider = new DefaultProvider({
 });
 
 const signer = new SensiletSigner(provider);
-// or const signer = new TAALSigner(provider);
-// or const signer = new DotwalletSigner(YourAccessToken, provider);
 
 // request authentication
 const { isAuthenticated, error } = await signer.requestAuth();
