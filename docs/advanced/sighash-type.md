@@ -29,13 +29,20 @@ verify(signature, publicKey, message) --> true/false
 
 The private key and the public key always appear in pairs, and the public key can be calculated from the private key, but not vice versa. Thus, you will always publish the public key so anyone can verify your signature, and keep the private key safe so only you can provide the correct signature.
 
+![](../../static/img/signing.png)
+
 Digital signatures are used to represent the authenticity and integrity of a message, since any modification to the message invalidates the signature, causing signature verification to fail. It is also proof that someone owns the private key, since the signature cannot be forged and it can be successfully verified with the corresponding public key only if it is signed with the correct private key.
 
 ### Bitcoin Signature
 
-Digital signatures are applied to messages, which in the case of bitcoin, are the transactions themselves. The signature implies a commitment by the signer to specific transaction data. In the simplest form, the signature applies to the entire transaction, thereby committing all the inputs, outputs, and other transaction fields. The P2PKH transaction is a simple example of using signatures, which is widely used in bitcoin.
+Digital signatures are applied to messages, which in the case of bitcoin, are the transactions themselves. The signature implies a commitment by the signer to specific transaction data. In the simplest form, the signature applies to the entire transaction (excluding the unlocking scripts), thereby committing all the inputs, outputs, and other transaction fields. The P2PKH transaction is a simple example of using signatures, which is widely used in bitcoin.
 
 Using a sighash flag, a Bitcoin signature specifies which parts of a transaction’s data is included and thus signed by a private key. The included transaction data is the so called [ScriptContext](../how-to-write-a-contract/scriptcontext.md). Every signature has a sighash flag and the flag can be different from signature to signature. 
+
+The image below illustrates what data would be signed using an `ALL` sighash flag. The data being signed is highlighted in green.
+
+![](../../static/img/signingTx.png)
+
 
 There are three sighash flags: `ALL`, `NONE`, and `SINGLE`.
 
