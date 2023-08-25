@@ -121,6 +121,12 @@ Then just connect it to your contract instance like this:
 await instance.connect(signer);
 ```
 
+:::note
+`TestWallet` is just a `Signer` provided by sCrypt for testing. In a real production environment (Mainnet), you should use `SensiletSigner`, `DotwalletSigner`, `TAALSigner`. 
+See [here](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md) how to use them.
+:::
+
+
 
 ## Contract Deployment
 
