@@ -16,7 +16,7 @@ The main differences from [calling a single contract](../how-to-deploy-and-call-
 4. Finally invoke `SmartContract.multiContractCall(partialContractTx: ContractTransaction, signer: Signer)` to sign and broadcast the complete transaction
 
 
-The following is an [example code](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/multi_contracts_call.ts) of calling two contracts at the same time:
+The following is an [example code](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/multi_contracts_call.test.ts) of calling two contracts at the same time:
 
 
 ```ts

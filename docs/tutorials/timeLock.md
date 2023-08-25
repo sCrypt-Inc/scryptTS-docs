@@ -80,5 +80,5 @@ For more information on how the `locktime` and `sequence` values work, please re
 
 Congratulations! You have completed the time-lock tutorial!
 
-The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/timeLock.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/timeLock.ts).
+The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/timeLock.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/timeLock.ts).
 

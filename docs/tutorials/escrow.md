@@ -174,5 +174,5 @@ The method checks the buyers signature validity. It also checks the transaction 
 
 Congratulations! You have completed the escrow tutorial!
 
-The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/multisigEscrow.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/multisigEscrow.ts).
+The full code can be found in our [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/multisigEscrow.ts).
 

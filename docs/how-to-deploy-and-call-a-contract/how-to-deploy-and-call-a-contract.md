@@ -344,7 +344,7 @@ console.log('contract called: ', callTx.id);
 
 ```
 
-More examples can be found [here](https://github.com/sCrypt-Inc/boilerplate/tree/master/tests/testnet).
+More examples can be found [here](https://github.com/sCrypt-Inc/boilerplate/tree/master/tests/).
 
 
 ### Running the code

@@ -181,5 +181,5 @@ As we can see, if the target price is reached, only Alice is able to unlock the 
 
 Congratulations! You have completed the oracle tutorial!
 
-The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/local/priceBet.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/priceBet.ts).
+The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/priceBet.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/priceBet.ts).
 
