@@ -71,7 +71,7 @@ for (let i = 0; i < publicKeys.length; i++) {
                               // the second occurence of `insertCodeSeparator` will be signed.
     })
 }
-const { tx: callTx, atInputIndex } = await demo.methods.unlock(
+const callContract = async () => await demo.methods.unlock(
     (sigResps) => {
       // Inside the signature responses we can observe,
       // which instance of the `insertCodeSeparator` the signature
@@ -81,11 +81,10 @@ const { tx: callTx, atInputIndex } = await demo.methods.unlock(
     },
     publicKeys.map((publicKey) => PubKey(toHex(publicKey))) as FixedArray<PubKey, 3>,
     {
-        fromUTXO: dummyUTXO,
         pubKeyOrAddrToSign
     } as MethodCallOptions<CodeSeparator>
 )
-let result = callTx.verifyScript(atInputIndex)
+expect(callContract()).not.throw
 ```
 
 

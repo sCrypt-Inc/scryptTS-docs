@@ -330,12 +330,17 @@ class Auction extends SmartContract {
     assert(hash256(outputs) == this.ctx.hashOutputs, 'hashOutputs check failed')
   }
 }
+```
+
+
+Call `Auction` contract with a custom change address.
+
+```ts
 
 const { tx: callTx, atInputIndex } = await auction.methods.bid(
   PubKeyHash(toHex(publicKeyHashNewBidder)),
   BigInt(balance + 1),
   {
-    fromUTXO: getDummyUTXO(balance),
     changeAddress: addressNewBidder, // specify the change address of method calling tx explicitly
   } as MethodCallOptions<Auction>
 )
