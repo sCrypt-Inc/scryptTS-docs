@@ -56,15 +56,6 @@ const { tx: callTx, atInputIndex } = await instance.methods.unlock(
 console.log('Demo contract called: ', callTx.id)
 ```
 
-### Verify the Tx input for the method call
-
-In the previous step, the signed `tx` for the contract call and its input index are returned. You can call `verifyScript` on the returned `tx` to verify that the contract method call at the given tx input index is successful.
-
-```ts
-let result = tx.verifyScript(atInputIndex)
-console.log(result.success) // Output: true or false
-```
-
 ## Integrate with a testing framework
 
 You can use whatever testing framework you like to write unit tests for your contract. For example, a test using [Mocha](https://mochajs.org/) is shown below:
@@ -81,25 +72,20 @@ describe('Test SmartContract `Demo`', () => {
     })
 
     it('should pass the public method unit test successfully.', async () => {
-        const deployTx = await instance.deploy(1)
-        console.log('Demo contract deployed: ', deployTx.id)
+        await instance.deploy(1)
 
-        const { tx: callTx, atInputIndex } = await instance.methods.unlock(
+        const callContract = async () => await instance.methods.unlock(
             toByteString('hello world', true)
         )
-        console.log('Demo contract called: ', callTx.id)
 
-        const result = callTx.verifyScript(atInputIndex)
-        expect(result.success, result.error).to.eq(true)
+        expect(callContract()).not.throw
     })
 
     it('should throw with wrong message.', async () => {
-        const deployTx = await instance.deploy(1)
-        console.log('Demo contract deployed: ', deployTx.id)
+        await instance.deploy(1)
 
-        return expect(
-            instance.methods.unlock(toByteString('wrong message', true))
-        ).to.be.rejectedWith(/Hash does not match/)
+        const callContract = async () => await instance.methods.unlock(toByteString('wrong message', true))
+        expect(callContract()).to.be.rejectedWith(/Hash does not match/)
     })
 })
 ```
@@ -131,7 +117,7 @@ npm run test
 Run the tests in the `Testnet` environment using the following command:
 
 ```sh
-npm run testnet
+npm run test:testnet
 ```
 
 :::note
@@ -167,7 +153,7 @@ let nextInstance = current.next();
 nextInstance.increment();
 
 // call the method of current instance to apply the updates on chain
-const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
+const callContract = async () => await current.methods.incrementOnChain(
   {
     // the `next` instance and its balance should be provided here
     next: {
@@ -177,10 +163,7 @@ const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
   } as MethodCallOptions<Counter>
 );
 
-// check the validity of the input script generated for the method call.
-let result = tx_i.verifyScript(atInputIndex);
-expect(result.success, result.error).to.eq(true);
-
+expect(callContract()).not.throw
 ```
 
 In general, we call the method of a stateful contract in 3 steps:
@@ -217,7 +200,7 @@ This is the **SAME** method we call on chain in `incrementOnChain`, thanks to th
 As described in [this section](#call-a-public-method), we can build a call transaction. The only difference here is that we pass in the `next` instance and its balance as a method call option in a stateful contract. So the method (i.e., `incrementOnChain`) have all the information to verify that all updates made to the `next` instance follow the state transition rules in it.
 
 ```ts
-const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
+const callContract = async () =>  await current.methods.incrementOnChain(
   {
     // the `next` instance and its balance should be provided here
     next: {
@@ -226,13 +209,7 @@ const { tx: tx_i, atInputIndex } = await current.methods.incrementOnChain(
     }
   } as MethodCallOptions<Counter>
 );
-```
-
-Finally, we can check the validity of the method call as before.
-
-```ts
-let result = tx_i.verifyScript(atInputIndex);
-expect(result.success, result.error).to.eq(true);
+expect(callContract()).not.throw
 ```
 
 ### Running the tests
@@ -246,5 +223,5 @@ npm run test
 or
 
 ```sh
-npm run testnet
+npm run test:testnet
 ```
