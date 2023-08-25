@@ -84,7 +84,7 @@ Someone attempting to write a blank check can construct a transaction with sever
 
 For those contract public methods that require one or more signatures as input parameters, we can specify different sighash types for the signatures when calling it.
 
-Take the [P2PKH contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#method-with-signatures) as an example, it requires a signature to `unlock`.
+Take the [P2PKH contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#method-with-signatures) as an example, it requires a single signature to `unlock`.
 
 ```ts
 @method()
@@ -101,23 +101,38 @@ There are two changes to specify a sighash type, which defaults to `ALL` if not 
 1. Pass a `SignatureOption` object to `pubKeyOrAddrToSign` to specify the sighash type.
 2. Pass the sighash as the third parameter of `findSig()`.
 
-The following example uses `ANYONECANPAY | SINGLE`.
+Let's examine a usage example. Suppose we have the aforementioned `P2PKH` contract deployed, and we wish to call or unlock it. 
+However, we encounter an issue: we don't possess sufficient funds to cover the network fees for the new contract call transaction. Fortunately, a generous friend offers to cover these fees for us. 
+In this scenario, we can employ the `ANYONECANPAY | ALL` flag with our signature to unlock the deployed `P2PKH` contract. This allows our friend to append another input to our transaction, contributing funds to pay the network fee.
 
+To illustrate, we would structure the contract call as follows:
 ```ts
-const sighash = SignatureHashType.ANYONECANPAY_SINGLE
+const sighashType = SignatureHashType.ANYONECANPAY_ALL
 const { tx } = await p2pkh.methods.unlock(
-    (sigResps) => findSig(sigResps, publicKey, sighash), // 2) specify SINGLE as well when finding a signature
+    // Pass the first parameter, the signature, to `unlock`.
+    // Once the transaction is signed, signatures are returned in `SignatureResponse[]`.
+    // Identify the required signature(s) using the public key, address, and the sighash type specified.
+    (sigResps) => findSig(sigResps, publicKey, sighashType), 
     PubKey(toHex(publicKey)),
     {
+        // Direct the signer to use the private key associated with `publicKey` and the specified sighash type to sign this transaction.
         pubKeyOrAddrToSign: {
             pubKeyOrAddr: publicKey,
-            sigHashType: sighash, // 1) sign with SINGLE
-        }
+            sigHashType: sighashType,
+        },
+        // This flag ensures the call tx is only created locally and not broadcasted.
+        partiallySigned: true,
+        // Prevents automatic addition of fee inputs.
+        autoPayFee: false,
     } as MethodCallOptions<P2PKH>
 )
 ```
 
-You can find the full example in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/p2pkh-anyonecanpay.ts).
+Executing the above will yield the entire contract call transaction without broadcasting it. We can subsequently pass this transaction to our friend. Since we applied the `ANYONECANPAY` sighash flag, adding an additional input will not invalidate our signature. This is because network nodes will exclusively use the first input to authenticate our signature.
+
+To further elaborate, we might also use the `ANYONECANPAY | SINGLE` flag. This would grant our friend the capability to append extra outputs to our transaction. This can be advantageous, for instance, if he wishes to reclaim a portion of his contributed funds as change, especially if he used an UTXO with an excessive amount of locked-in funds.
+
+You can find a full code example in our project [boilerplate](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/p2pkh-anyonecanpay.test.ts).
 
 ## 2. Sighash Types in `@method()` Parameters
 
