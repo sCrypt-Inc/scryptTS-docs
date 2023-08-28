@@ -58,45 +58,9 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'overview',
-            position: 'left',
-            label: 'Docs',
-          },
-          {
-            href: 'https://academy.scrypt.io/',
-            label: 'Learn',
-            position: 'right',
-          },
-          {
-            href: 'https://by-example.scrypt.io/',
-            label: 'By Example',
-            position: 'right',
-          },
-          {
-            href: 'https://github.com/sCrypt-Inc/awesome-scrypt/',
-            label: 'Developers',
-            position: 'right',
-          },
-          {
-            href: 'https://scrypt.io/faucet',
-            label: 'Faucet',
-            position: 'right',
-          },
-          {
-            href: 'https://github.com/sCrypt-Inc/',
-            label: 'GitHub',
-            position: 'right',
-          },
-          {
             /* Only visible under docs. See src/custom/custom.css */
             href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
             label: 'Suggest an improvement for this page',
-            position: 'right',
-          },
-          {
-            href: 'https://classic.scrypt.io',
-            label: 'Classic',
             position: 'right',
           },
         ],
@@ -106,36 +70,6 @@ const config = {
         links: [
           {
             items: [
-              {
-                html: `
-<div class="community-links">
-  <ul>
-      <li><a title="Email sCrypt" target="_blank" href="mailto:support@scrypt.io"><img src="/img/email.png"
-                  alt="Email sCrypt"></a></li>
-      <li><a title="sCrypt Medium" target="_blank" href="https://medium.com/@xiaohuiliu"><img src="/img/medium.png"
-                  alt="sCrypt Medium"></a></li>
-      <li><a title="sCrypt GitHub" target="_blank" href="https://github.com/sCrypt-Inc"><img src="/img/github.png"
-                  alt="sCrypt GitHub"></a></li>
-      <li><a title="sCrypt Telegram" target="_blank" href="https://t.me/joinchat/GwaRAxKT16JjXyHt5PuhHw"><img
-                  src="/img/telegram.png" alt="sCrypt Telegram"></a></li>
-      <li><a title="sCrypt Slack" target="_blank"
-              href="https://join.slack.com/t/scryptworkspace/shared_invite/enQtNzQ1OTMyNDk1ODU3LTJmYjE5MGNmNDZhYmYxZWM4ZGY2MTczM2NiNTIxYmFhNTVjNjE5MGYwY2UwNDYxMTQyNGU2NmFkNTY5MmI1MWM"><img
-                  src="/img/slack.png" alt="sCrypt Slack"></a></li>
-      <li><a title="sCrypt Twitter" target="_blank" href="https://twitter.com/sinoTrinity"><img
-                  src="/img/twitter.png" alt="sCrypt Twitter"></a></li>
-      <li><a title="sCrypt WeChat" target="_blank" href="/img/wechat-qrcode.jpg"><img src="/img/wechat.png"
-                  alt="sCrypt WeChat"></a></li>
-      <li><a title="sCrypt in BSV Discord" target="_blank" href="https://discord.gg/bsv"><img src="/img/discord.png"
-                  alt="sCrypt in BSV Discord"></a></li>
-      <li><a title="sCrypt on Reddit" target="_blank" href="https://www.reddit.com/r/sCrypt"><img
-                  src="/img/reddit.png" alt="sCrypt on Reddit"></a></li>
-      <li><a title="sCrypt on Youtube" target="_blank"
-              href="https://www.youtube.com/channel/UCzQsmR836zW8b1kh03Ht04w"><img src="/img/yt.png"
-                  alt="sCrypt on Youtube"></a></li>
-  </ul>
-</div>
-                `
-              },
             ],
           },
         ],
