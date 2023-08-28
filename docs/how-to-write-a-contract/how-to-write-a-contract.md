@@ -584,7 +584,23 @@ for (let $i = 0; $i < $maxLoopCount; $i++) {
 
 :::note
 * the initial value must be `0` or `0n`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
-* `$maxLoopCount` must be a [CTC](#compile-time-constant).
+* `$maxLoopCount` must be a [CTC](#compile-time-constant) or a CTC expression, for example:
+
+```ts 
+const N = 4
+
+// valid, `N` is a CTC
+for (let i = 0; i < N; i++) { ... }
+
+// valid, `2 * N - 1` is a CTC expression
+for (let i = 0; i < 2 * N - 1; i++) { ... }
+
+const M = N + 1
+
+// valid, `M` is a CTC expression
+for (let i = 0; i < M; i++) { ... }
+```
+
 * `$i` can be arbitrary name, e.g., `i`, `j`, or `k`. It can be both a `number` or a `bigint` type.
 * `break` and `continue` are currently not allowed, but can be emulated like
 :::
