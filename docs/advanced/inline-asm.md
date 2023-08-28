@@ -42,7 +42,7 @@ Say you want to substitute the `unlock` function with manual script, you edit th
 ```json
 {
   "P2PKH": {
-    "unlock": "op_dup op_hash160 $pubKeyHash op_equalverify op_checksig"
+    "unlock": "OP_DUP OP_HASH160 $pubKeyHash OP_EQUALVERIFY OP_CHECKSIG"
   }
 }
 ```
