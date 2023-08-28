@@ -9,7 +9,7 @@ A smart contract is a class that extends the `SmartContract` base class. A simpl
 ```ts
 import { SmartContract, method, prop, assert } from "scrypt-ts"
 
-class Demo extends SmartContract {
+class Equations extends SmartContract {
 
   @prop()
   sum: bigint
@@ -32,9 +32,9 @@ class Demo extends SmartContract {
 }
 ```
 
-Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members decorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
+The smart contract above requires solving for two equations with unknown variable `x` and `y`.
 
-The smart contract mentioned above exposes a single public method. This method evaluates successfully when the correct values of `x` and `y` are passed, ensuring that `x + y = this.sum` and `x - y = this.diff`. The values of the `sum` and `diff` properties are set during the deployment of the smart contract.
+Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members decorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
 :::note
 You can use [the sCrypt template Repl](https://replit.com/@msinkec/sCrypt) and play with the code in your browser!
