@@ -35,7 +35,15 @@ You could get two different errors when broadcasting a double-spending transacti
 ### 1) for developers
 If you encounter these errors when running code, e.g., testing on testnet, it is likely because the [provider](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider) you are using fails to update your UTXO in time and return UTXOs that have already been spent when you request. Using these UTXOs that have been spent to build transactions will result in a double-spending. This situation is transitory and is caused by the provider not updating UTXO set timely due to, e.g., the provider's server overloading due to heavy blockchain traffic.
 
-To fix this issue, you generally only need to wait a few seconds and retry. If it still persists, you can also increase the time interal between sending consecutive transactions, for example, `sleep` for some time after sending transactions before requesting the UTXO again, so that the provider has enough time to update the UTXO set.
+To fix this issue, you generally only need to wait a few seconds and retry. If it still persists, you can also increase the time interal between sending consecutive transactions, for example, `sleep` for some time after sending transactions before requesting the UTXO again, so that the provider has enough time to update the UTXO set:
+
+```ts
+// ... contract call #1
+
+await sleep(2000) // Sleep for 2 seconds
+
+// ... contract call #2
+```
 
 ### 2) for dApp users
 If you encounter these errors when [using a dApp](./how-to-integrate-a-frontend/how-to-integrate-a-frontend.md), it is likely because the state of dApp's contract has been changed by another user, who is interacting with the dApp at the same time. You are interacting with the contract instance that is stale, resulting in a double-spending.
