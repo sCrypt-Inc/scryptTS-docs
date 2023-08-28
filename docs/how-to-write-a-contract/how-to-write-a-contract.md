@@ -690,7 +690,7 @@ for(let i=0; i< X.M1; i++) {}
 ## Functions
 
 ### Built-in Functions
-You can refer to [Built-ins](./built-ins.md) for a full list of functions and libraries built into `scryptTS`.
+You can refer to [Built-ins](./built-ins.md) for a full list of functions and libraries built into `sCrypt`.
 
 ### Whitelisted Functions
 Be default, all Javascript/TypeScript built-in functions and global variables are not allowed in `@method`s, except the following kinds.

@@ -130,26 +130,26 @@ Compared to other blockchains, smart contracts on Bitcoin are **pure**.
 Thus, you can run tests in two different environments:
 
 
-1. **Local**: Running tests without touching the Bitcoin blockchain. Transactions are constructed with dummy UTXOs. If it passes tests off chain, we are confident it will behave the same on chain. 
+1. **Local**: Running tests locally without touching the Bitcoin blockchain. Transactions are constructed with dummy UTXOs. If it passes tests off chain, we are confident it will behave the same on chain.
 
-Run the tests in the `Local` environment using the following command:
+Run tests in the `local` environment using the following command:
 
 ```sh
 npm run test
 ```
 
 
-2. **Testnet**: Running tests on the testnet of Bitcoin blockchain. Transactions are constructed with real UTXOs on the testnet.
+1. **Testnet**: Running tests on the testnet of Bitcoin blockchain. Transactions are constructed with real UTXOs on the testnet.
 
 
-Run the tests in the `Testnet` environment using the following command:
+Run tests in the `testnet` environment using the following command:
 
 ```sh
 npm run test:testnet
 ```
 
 :::note
-Run tests in a `Testnet` environment. Need to get some test coins from [faucet](./how-to-deploy-and-call-a-contract/faucet.md).
+When running tests in a `testnet` environment, you need to get some test coins from a [faucet](./how-to-deploy-and-call-a-contract/faucet.md).
 :::
 
 

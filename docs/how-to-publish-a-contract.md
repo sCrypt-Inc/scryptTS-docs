@@ -94,7 +94,7 @@ describe('Test SmartContractLib `Lib`', () => {
 
 ## Create and Publish a Library Project Using sCrypt CLI
 
-The following command will create a demo scryptTS library along with tests and  scaffolding:
+The following command will create a demo `sCrypt` library along with tests and  scaffolding:
 
 ```sh
 npx scrypt-cli project --lib <your-lib-name>

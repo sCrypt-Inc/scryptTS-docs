@@ -327,7 +327,7 @@ You need to return a HTTP code of 200 for a successful acknowledgement. We will 
 
 #### Webhook Security
 
-To keep your webhook requests secure, we add a signature header `x-scrypt-signature` for each request by signing the request data with your own API key using the [HMAC-SHA256](https://en.wikipedia.org/wiki/HMAC) algorithm. So you can verify it if you wnat. It can be generated using code like this:
+To keep your webhook requests secure, we add a signature header `x-scrypt-signature` for each request by signing the request data with your own API key using the [HMAC-SHA256](https://en.wikipedia.org/wiki/HMAC) algorithm. So you can verify it if you want. It can be generated using code like this:
 
 ```
 const signature = crypto.createHmac('sha256', apiKey).update(JSON.stringify(body)).digest('hex');
