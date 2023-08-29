@@ -168,9 +168,9 @@ When using this API, you do not need any backend services of your own; the code 
 
 There is an alternative for listening to contract events in a more secure and effective way. Just use our webhook service to push event data to your own backend service.
 
-#### Webhook Management
+##### Webhook Management
 
-First, you need to create a valid webhook in our service before trying to receive any event data. You can manage webhooks on the `webhooks` page of our console.
+First, you need to create a valid webhook in our service before trying to receive any event data. You can manage webhooks on the `webhooks` page of our dashboard.
 
 ![](../../static/img/create-webhook.png)
 
@@ -192,15 +192,15 @@ Please note that the contract can only be listened to if it is deployed and call
 
 4. **Contract Artifact**
 
-A [contract artifact](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md#2-load-artifact) is also needed to decode call data on the chain. You can usually find it in the `artifact` folder of your sCrypt project. It is **required** if the contract ID was newly registered to our service. It becomes optional if it has been registered before. Also, you can only update artifacts registered first by you.
+A [contract artifact](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md#2-load-artifact) is also needed to decode call data on chain. You can usually find it in the `artifact` folder of your sCrypt project. It is **required** if the contract ID was newly registered to our service. It becomes optional if it has been registered before. Also, you can only update artifacts registered first by you.
 
 
-Besides adding webhook in dashboard, you can add webhooks programmatically.
+Besides adding webhooks in dashboard, you can add them **programmatically**.
 
 ```js
 function main() {
 
-    fetch('https://api.scrypt.io/webhooks/create', { // use 'https://testnet-api.scrypt.io' fro testnet
+    fetch('https://api.scrypt.io/webhooks/create', { // use 'https://testnet-api.scrypt.io' for testnet
         headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer [Your API key]"
@@ -269,7 +269,7 @@ function main() {
 }
 ```
 
-#### Webhook Request and Response
+##### Webhook Request and Response
 
 When a contract is called on chain, we will push event data through a http POST request with a body like this to your webhook URL:
 
@@ -325,20 +325,20 @@ The request details the `events` data:
 
 You need to return a HTTP code of 200 for a successful acknowledgement. We will automatically pause the webhook after several unsuccessful deliveries. You need to manually reactivate it on the `webhooks` page before we start pushing notifications to it again. For a single event, there might be more than one notification pushed to the webhook, so make sure you have this situation handled.
 
-#### Webhook Security
+##### Webhook Security
 
-To keep your webhook requests secure, we add a signature header `x-scrypt-signature` for each request by signing the request data with your own API key using the [HMAC-SHA256](https://en.wikipedia.org/wiki/HMAC) algorithm. So you can verify it if you want. It can be generated using code like this:
+To keep your webhook requests secure, we add a signature header `x-scrypt-signature` for each request by signing the request data with your own API key using the [HMAC-SHA256](https://en.wikipedia.org/wiki/HMAC) algorithm. You can verify it if you want. It can be generated using code like this:
 
 ```
 const signature = crypto.createHmac('sha256', apiKey).update(JSON.stringify(body)).digest('hex');
 ```
 
-#### Webhook Limit
+##### Webhook Limit
 
-The number of webhooks that each user can create is limited. The following is the limit on the number of webhooks that users of different grades can create.
+The number of webhooks that each user can create is limited. The following is the limit on the number of webhooks that users of different plans can create.
 
 
-| Grade | limt on testnet    | limt on mainnet  |
+| Plan | limt on testnet    | limt on mainnet  |
 | ------------- | ------------- | ------------- |
 | Starter  | 10 | 10 |
 | Pro | 100   | 100   |
