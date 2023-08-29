@@ -138,13 +138,6 @@ static bidTxBuilder(
 }
 ```
 
-:::note
-If the static function `bidTxBuilder` is renamed by convention to `buildTxForBid`, there is no need to explicitly call `auction.bindTxBuilder('bid', Auction.bidTxBuilder)`.
-
-The agreed rule is: `buildTxFor${camelCaseCapitalized(methodName)}`. `camelCaseCapitalized()` capitalizes the first letter of `methodName`.
-:::
-
-
 In this example, we customize the calling transaction for the publid `@method` `bid`. `...args` resolves to its parameters: `bidder: PubKey` and `bid: bigint`. The first input is the one that will reference the UTXO, where our smart contract instance currently resides. We use the `buildContractInput` function to to build the input. Note that during the execution of the tx builder function, this input's script is empty. The script will get populated by the method arguments at a later stage of the method call.
 
 The tx builder will return an object:
@@ -155,7 +148,25 @@ The tx builder will return an object:
 
 When we are calling a [stateful smart contract](../how-to-write-a-contract/stateful-contract.md), we have to define the next instance of our contract. This instance will contain updated states. As we can see, first a new instance is created using the current instance's `next()` function. The new instance's `bidder` property is then updated. This new instance is then included in the 0-th output of the new transaction and goes into the `nexts` array of the returned object.
 
+#### Implicit binding by naming convention
 
+As a shortcut, if a static function of type `MethodCallTxBuilder` is named `buildTxFor${camelCaseCapitalized(methodName)}`, there is no need to explicitly call `bindTxBuilder()`, where `camelCaseCapitalized()` capitalizes the first letter of `methodName`.
+
+In the above example, if the static function `bidTxBuilder` is renamed to `buildTxForBid`, it will be the tx builder for calling `bid` implicitly. There is no need to explicitly call `auction.bindTxBuilder('bid', Auction.buildTxForBid)`.
+
+```ts
+// no need to bind explicitly
+// auction.bindTxBuilder('bid', Auction.buildTxForBid)
+
+// buildTxForBid is a customized tx builder for the public method `Auction.bid`
+static buildTxForBid(
+    current: Auction,
+    options: MethodCallOptions<Auction>,
+    bidder: PubKey,
+    bid: bigint
+): Promise<ContractTransaction> {
+...
+```
 
 ## Notes
 
