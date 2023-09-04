@@ -45,12 +45,12 @@ export class Demo extends SmartContract {
 Let us now open the file `tests/demo.test.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet or local and a subsequent public method call on the contract.
 
 
-## Compile the Contract
+## Load Artifact
 
-First, call function `SmartContract.compile()` to compile the contract before doing any testing.
+First, call function `SmartContract.loadArtifact()` to load the contract artifact file in order to initialize the contract class before testing.
 
 ```ts
-await Demo.compile()
+Demo.loadArtifact()
 ```
 
 ## Instantiate the Contract
@@ -93,7 +93,7 @@ describe('Test SmartContract `Demo`', () => {
     let instance: Demo
 
     before(async () => {
-        await Demo.compile()
+        Demo.loadArtifact()
         instance = new Demo(sha256(toByteString('hello world', true)))
         await instance.connect(getDefaultSigner())
     })

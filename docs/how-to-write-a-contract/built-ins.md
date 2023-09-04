@@ -205,7 +205,11 @@ const size = demo.scriptSize
 
 ### `loadArtifact`
 
-Function `static loadArtifact(artifact: Artifact)` loads the contract artifact file in order to initialize the contract class, it's usually called at the front end.
+Function `static loadArtifact(artifactFile: Artifact | string | undefined = undefined)` loads the contract artifact file in order to initialize the contract class.
+
+If no parameters are passed when calling, the function will load the artifact file from the default directory. This form is generally used when [testing](../how-to-test-a-contract.md#load-artifact) the contract.
+
+You can also manually specify the artifact file path, or pass the artifact itself directly. This form will be used when the method is called at the front end.
 
 ```ts
 import { TicTacToe } from './contracts/tictactoe';
