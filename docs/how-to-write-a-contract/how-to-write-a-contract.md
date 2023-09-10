@@ -32,7 +32,7 @@ class Equations extends SmartContract {
 }
 ```
 
-The smart contract above requires solving for two equations with unknown variable `x` and `y`.
+The smart contract above requires solving for two equations with unknown variables, `x` and `y`.
 
 Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members decorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
