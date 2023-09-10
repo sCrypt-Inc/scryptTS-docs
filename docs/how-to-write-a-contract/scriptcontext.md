@@ -67,7 +67,7 @@ The table shows the meaning of each field of the `ScriptContext` structure.
 
 You can directly access the context through `this.ctx` in any public `@method`. It can be considered additional information a public method gets when called, besides its function parameters.
 
-The example below accesses the [locktime](https://learnmeabitcoin.com/technical/locktime) of the spending transaction. The contract is a time lock, which only be called after mature time.
+The example below accesses the [locktime](https://learnmeabitcoin.com/technical/locktime) of the spending transaction. The contract is a time lock, which can only be called after mature time.
 
 ```ts
 class TimeLock extends SmartContract {
@@ -99,7 +99,7 @@ propagateState(outputs: ByteString) : boolean {
 
 ### Access inputs and outputs
 
-The inputs and outputs of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and validate they hash to the expected digest, which ensures they are actually from the spending transaction.
+The inputs and outputs of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and validate the hash to the expected digest, which ensures they are actually from the spending transaction.
 
 The following example ensures both Alice and Bob get 1000 satoshis from the contract.
 
