@@ -461,7 +461,7 @@ assert(arrayA[0] = 0n)
 
 ### User-defined Types
 
-Users can be define customized types using `type` or `interface`, made of basic types.[^1]
+Users can best define customized types using `type` or `interface`, made of basic types.[^1]
 
 ```ts
 type ST = {
