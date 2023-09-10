@@ -32,7 +32,7 @@ class Equations extends SmartContract {
 }
 ```
 
-The smart contract above requires solving for two equations with unknown variable `x` and `y`.
+The smart contract above requires solving for two equations with unknown variables, `x` and `y`.
 
 Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members decorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
@@ -461,7 +461,7 @@ assert(arrayA[0] = 0n)
 
 ### User-defined Types
 
-Users can be define customized types using `type` or `interface`, made of basic types.[^1]
+Users can best define customized types using `type` or `interface`, made of basic types.[^1]
 
 ```ts
 type ST = {
@@ -545,7 +545,7 @@ import {
 } from 'scrypt-ts'
 ```
 
-This may not when work [`isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) is enabled. At this time you need to use [Type-Only Imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export):
+This may not work when [`isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) is enabled. At this time you need to use [Type-Only Imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export):
 
 
 ```ts
@@ -711,7 +711,7 @@ for(let i=0; i< X.M1; i++) {}
 You can refer to [Built-ins](./built-ins.md) for a full list of functions and libraries built into `sCrypt`.
 
 ### Whitelisted Functions
-Be default, all Javascript/TypeScript built-in functions and global variables are not allowed in `@method`s, except the following kinds.
+By default, all Javascript/TypeScript built-in functions and global variables are not allowed in `@method`s, except the following kinds.
 
 #### `console.log`
 

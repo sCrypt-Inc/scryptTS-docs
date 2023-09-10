@@ -179,7 +179,7 @@ rshift(1024n, 11n) // 0n
 
 ### Exit
 
-- `exit(status: boolean): void` Call this function will terminate contract execution. If `status` is `true` then the contract succeeds; otherwise, it fails.
+- `exit(status: boolean): void` Calling this function will terminate contract execution. If `status` is `true` then the contract succeeds; otherwise, it fails.
 
 ## `SmartContract` Methods
 

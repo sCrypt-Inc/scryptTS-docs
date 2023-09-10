@@ -173,7 +173,7 @@ OK, now that we have the transaction constructed, it's time to sign it. First, w
 tx = tx.seal().sign('cNSb8V7pRt6r5HrPTETq2Li2EWYEjA7EcQ1E8V2aGdd6UzN9EuMw')
 ```
 
-Viola! Thats it. This will add the necessary data to the transaction's input script. That being the signature along with the public key of our signing key.
+Viola! That's it. This will add the necessary data to the transaction's input script. That being the signature along with the public key of our signing key.
 
 Now our transaction is ready to be posted to the blockchain. You can serialize the transaction the following way:
 
