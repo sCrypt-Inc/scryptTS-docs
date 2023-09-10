@@ -185,7 +185,7 @@ What actually happens during the call is the following.
 
 2. Use the instance's signer to sign the transaction. Note that `instance.foo` could be invoked during this process in order to get a valid unlocking script for the input.
 
-3. User the instance's connected provider to send the transaction.
+3. Use the instance's connected provider to send the transaction.
 
 #### MethodCallOptions
 
