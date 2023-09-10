@@ -545,7 +545,7 @@ import {
 } from 'scrypt-ts'
 ```
 
-This may not when work [`isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) is enabled. At this time you need to use [Type-Only Imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export):
+This may not work when [`isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) is enabled. At this time you need to use [Type-Only Imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export):
 
 
 ```ts
