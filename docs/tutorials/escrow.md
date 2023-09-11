@@ -32,11 +32,11 @@ static readonly N_ARBITERS = 3
 
 // Buyer (Alice) address.
 @prop()
-readonly buyerAddr: PubKeyHash
+readonly buyerAddr: Addr
 
 // Seller (Bob) address.
 @prop()
-readonly sellerAddr: PubKeyHash
+readonly sellerAddr: Addr
 
 // Arbiter public keys.
 @prop()
@@ -65,7 +65,7 @@ public confirmPayment(
 ) {
     // Validate buyer sig.
     assert(
-        hash160(buyerPubKey) == this.buyerAddr,
+        pubKey2Addr(buyerPubKey) == this.buyerAddr,
         'invalid public key for buyer'
     )
     assert(
@@ -104,7 +104,7 @@ public refund(
 ) {
     // Validate buyer sig.
     assert(
-        hash160(buyerPubKey) == this.buyerAddr,
+        pubKey2Addr(buyerPubKey) == this.buyerAddr,
         'invalid public key for buyer'
     )
     assert(
@@ -138,7 +138,7 @@ The method takes as inputs in the buyers signature, along with her public key.
 @method()
 public refundDeadline(buyerSig: Sig, buyerPubKey: PubKey) {
     assert(
-        hash160(buyerPubKey) == this.buyerAddr,
+        pubKey2Addr(buyerPubKey) == this.buyerAddr,
         'invalid public key for buyer'
     )
     assert(

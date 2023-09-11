@@ -69,8 +69,9 @@ within(2n, 0n, 2n) // false
 - `ripemd160(a: ByteString): Ripemd160` Returns the [RIPEMD160](https://en.wikipedia.org/wiki/RIPEMD) hash result of `a`.
 - `sha1(a: ByteString): Sha1` Returns the [SHA1](https://en.wikipedia.org/wiki/SHA-1) hash result of `a`.
 - `sha256(a: ByteString): Sha256` Returns the [SHA256](https://www.movable-type.co.uk/scripts/sha256.html) hash result of `a`.
-- `hash160(a: ByteString): Ripemd160` Actually returns `ripemd160(sha256(a))`
-- `hash256(a: ByteString): Sha256` Actually returns `sha256(sha256(a))`
+- `hash160(a: ByteString): Ripemd160` Actually returns `ripemd160(sha256(a))`.
+- `pubKey2Addr(pk: PubKey): Addr` Wrapper function of `hash160`.
+- `hash256(a: ByteString): Sha256` Actually returns `sha256(sha256(a))`.
 
 ### ByteString Operations
 
@@ -233,20 +234,20 @@ For example, Pay-to-Public-Key-Hash ([P2PKH](https://learnmeabitcoin.com/guide/p
 
 ```ts
 class P2PKH extends SmartContract {
-  // public key hash of the recipient.
+  // Address of the recipient.
   @prop()
-  readonly pubKeyHash: PubKeyHash
+  readonly address: Addr
 
-  constructor(pubKeyHash: PubKeyHash) {
+  constructor(address: Addr) {
     super(...arguments)
-    this.pubKeyHash = pubKeyHash
+    this.address = address
   }
 
   @method()
   public unlock(sig: Sig, pubkey: PubKey) {
-    // check if the passed public key belongs to the specified public key hash
-    assert(hash160(pubkey) == this.pubKeyHash, 'public key hashes are not equal')
-    // check signature validity
+    // Check if the passed public key belongs to the specified public key hash.
+    assert(pubKey2Addr(pubkey) == this.pubKeyHash, 'address does not correspond to address')
+    // Check signature validity.
     assert(this.checkSig(sig, pubkey), 'signature check failed')
   }
 }
@@ -260,13 +261,13 @@ The function compares the first signature against each public key until it finds
 
 ```ts
 class MultiSigPayment extends SmartContract {
-  // public key hashes of the 3 recipients
+  // Addresses of the 3 recipients.
   @prop()
-  readonly pubKeyHashes: FixedArray<PubKeyHash, 3>
+  readonly addresses: FixedArray<Addr, 3>
 
-  constructor(pubKeyHashes: FixedArray<PubKeyHash, 3>) {
+  constructor(addresses: FixedArray<Addr, 3>) {
     super(...arguments)
-    this.pubKeyHashes = pubKeyHashes
+    this.addresses = addresses
   }
 
   @method()
@@ -274,11 +275,11 @@ class MultiSigPayment extends SmartContract {
       signatures: FixedArray<Sig, 3>, 
       publicKeys: FixedArray<PubKey, 3>
     ) {
-    // check if the passed public keys belong to the specified public key hashes
+    // Check if the passed public keys belong to the specified addresses.
     for (let i = 0; i < 3; i++) {
-      assert(hash160(publicKeys[i]) == this.pubKeyHashes[i], 'public key hash mismatch¸')
+      assert(pubKey2Addr(publicKeys[i]) == this.addresses[i], 'address mismatch')
     }
-    // validate signatures
+    // Validate signatures.
     assert(this.checkMultiSig(signatures, publicKeys), 'checkMultiSig failed')
   }
 }
@@ -314,9 +315,9 @@ class Auction extends SmartContract {
   // ...
 
   @method()
-  public bid(bidder: PubKeyHash, bid: bigint) {
+  public bid(bidder: Addr, bid: bigint) {
     
-    // ...
+    // Addr
 
     // Auction continues with a higher bidder.
     const auctionOutput: ByteString = this.buildStateOutput(bid)
@@ -342,7 +343,7 @@ Call `Auction` contract with a custom change address.
 ```ts
 
 const { tx: callTx, atInputIndex } = await auction.methods.bid(
-  PubKeyHash(toHex(publicKeyHashNewBidder)),
+  Addr(addressNewBidder.toByteString()),
   BigInt(balance + 1),
   {
     changeAddress: addressNewBidder, // specify the change address of method calling tx explicitly
@@ -371,25 +372,25 @@ Method `insertCodeSeparator(): void` inserts an [`OP_CODESEPARATOR`](../advanced
 export class CodeSeparator extends SmartContract {
 
     @prop()
-    readonly addresses: FixedArray<PubKeyHash, 3>;
+    readonly addresses: FixedArray<Addr, 3>;
 
-    constructor(addresses: FixedArray<PubKeyHash, 3>) {
+    constructor(addresses: FixedArray<Addr, 3>) {
         super(...arguments);
         this.addresses = addresses;
     }
 
     @method()
     public unlock(sigs: FixedArray<Sig, 3>, pubKeys: FixedArray<PubKey, 3>) {
-        assert(hash160(pubKeys[0]) == this.addresses[0]);
+        assert(pubKey2Addr(pubKeys[0]) == this.addresses[0]);
         this.insertCodeSeparator()
         assert(this.checkSig(sigs[0], pubKeys[0]));
 
         this.insertCodeSeparator()
-        assert(hash160(pubKeys[1]) == this.addresses[1]);
+        assert(pubKey2Addr(pubKeys[1]) == this.addresses[1]);
         assert(this.checkSig(sigs[1], pubKeys[1]));
 
         this.insertCodeSeparator()
-        assert(hash160(pubKeys[2]) == this.addresses[2]);
+        assert(pubKey2Addr(pubKeys[2]) == this.addresses[2]);
         assert(this.checkSig(sigs[2], pubKeys[2]));
     }
 
@@ -540,18 +541,18 @@ const lockingScript = toByteString('01020304')
 Utils.buildOutput(lockingScript, 1n) // '01000000000000000401020304'
 ```
 
-- `static buildPublicKeyHashScript(pubKeyHash: PubKeyHash ): ByteString` Build a [Pay to Public Key Hash (P2PKH)](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Pay_to_Public_Key_Hash_.28P2PKH.29) script from a public key hash.
+- `static buildPublicKeyHashScript(pubKeyHash: PubKeyHash ): ByteString` Build a [Pay to Public Key Hash (P2PKH)](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Pay_to_Public_Key_Hash_.28P2PKH.29) script from a public key hash / address.
 
 ```ts
-const pubKeyHash = PubKeyHash(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildPublicKeyHashScript(pubKeyHash) // '76a914001122334455667788990011223344556677889988ac'
+const address = Addr(toByteString('0011223344556677889900112233445566778899'))
+Utils.buildPublicKeyHashScript(address) // '76a914001122334455667788990011223344556677889988ac'
 ```
 
 - `static buildPublicKeyHashOutput(pubKeyHash: PubKeyHash, amount: bigint): ByteString` Build a P2PKH output from the public key hash.
 
 ```ts
-const pubKeyHash = PubKeyHash(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildPublicKeyHashOutput(pubKeyHash, 1n) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
+const address = Addr(toByteString('0011223344556677889900112233445566778899'))
+Utils.buildPublicKeyHashOutput(address, 1n) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
 ```
 
 - `static buildOpreturnScript(data: ByteString): ByteString` Build a data-carrying [FALSE OP_RETURN](https://wiki.bitcoinsv.io/index.php/OP_RETURN) script from `data` payload.

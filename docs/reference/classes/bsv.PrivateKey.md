@@ -23,6 +23,7 @@
 - [toAddress](bsv.PrivateKey.md#toaddress)
 - [toBigNumber](bsv.PrivateKey.md#tobignumber)
 - [toBuffer](bsv.PrivateKey.md#tobuffer)
+- [toByteString](bsv.PrivateKey.md#tobytestring)
 - [toHex](bsv.PrivateKey.md#tohex)
 - [toJSON](bsv.PrivateKey.md#tojson)
 - [toObject](bsv.PrivateKey.md#toobject)
@@ -155,6 +156,20 @@ ___
 #### Defined in
 
 node_modules/bsv/index.d.ts:1044
+
+___
+
+### toByteString
+
+▸ **toByteString**(): [`ByteString`](../README.md#bytestring)
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+#### Defined in
+
+dist/smart-contract/bsv/privateKey.d.ts:5
 
 ___
 

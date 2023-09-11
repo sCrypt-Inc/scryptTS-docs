@@ -183,12 +183,12 @@ The `P2PKH` output can be built using `Utils.buildPublicKeyHashOutput(pkh: PubKe
 // build the transation outputs
 let outputs = toByteString('');
 if (this.won(play)) {
-    outputs = Utils.buildPublicKeyHashOutput(hash160(player), this.ctx.utxo.value);
+    outputs = Utils.buildPublicKeyHashOutput(pubKey2Addr(player), this.ctx.utxo.value);
 }
 else if (this.full()) {
     const halfAmount = this.ctx.utxo.value / 2n;
-    const aliceOutput = Utils.buildPublicKeyHashOutput(hash160(this.alice), halfAmount);
-    const bobOutput = Utils.buildPublicKeyHashOutput(hash160(this.bob), halfAmount);
+    const aliceOutput = Utils.buildPublicKeyHashOutput(pubKey2Addr(this.alice), halfAmount);
+    const bobOutput = Utils.buildPublicKeyHashOutput(pubKey2Addr(this.bob), halfAmount);
     outputs = aliceOutput + bobOutput;
 }
 else {
@@ -259,12 +259,12 @@ export class TicTacToe extends SmartContract {
         // build the transation outputs
         let outputs = toByteString('');
         if (this.won(play)) {
-            outputs = Utils.buildPublicKeyHashOutput(hash160(player), this.ctx.utxo.value);
+            outputs = Utils.buildPublicKeyHashOutput(pubKey2Addr(player), this.ctx.utxo.value);
         }
         else if (this.full()) {
             const halfAmount = this.ctx.utxo.value / 2n;
-            const aliceOutput = Utils.buildPublicKeyHashOutput(hash160(this.alice), halfAmount);
-            const bobOutput = Utils.buildPublicKeyHashOutput(hash160(this.bob), halfAmount);
+            const aliceOutput = Utils.buildPublicKeyHashOutput(pubKey2Addr(this.alice), halfAmount);
+            const bobOutput = Utils.buildPublicKeyHashOutput(pubKey2Addr(this.bob), halfAmount);
             outputs = aliceOutput + bobOutput;
         }
         else {

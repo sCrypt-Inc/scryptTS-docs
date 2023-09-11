@@ -88,7 +88,7 @@ dist/providers/gorillapool-provider.d.ts:10
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:95
+dist/bsv/abstract-provider.d.ts:96
 
 ___
 
@@ -388,7 +388,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:59
+dist/bsv/abstract-provider.d.ts:60
 
 ___
 
@@ -1080,7 +1080,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:72
+dist/bsv/abstract-provider.d.ts:73
 
 ___
 
@@ -1277,7 +1277,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:101
+dist/bsv/abstract-provider.d.ts:102
 
 ___
 

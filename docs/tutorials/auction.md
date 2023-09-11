@@ -60,7 +60,7 @@ const deployTx = await auction.deploy(minBid)
 
 ### Bid
 
-In method `public bid(bidder: PubKeyHash, bid: bigint)`, we need to check if the bidder has a higher bid than the previous one. If so, we update the highest bidder in the contract state and refund the previous bidder.
+In method `public bid(bidder: Addr, bid: bigint)`, we need to check if the bidder has a higher bid than the previous one. If so, we update the highest bidder in the contract state and refund the previous bidder.
 
 We can read the previous highest bid from the balance of the contract UTXO.
 
@@ -116,7 +116,7 @@ As `bid` is called continuously, the state of the contract is constantly updated
 ```ts
 // Call this public method to bid with a higher offer.
 @method()
-public bid(bidder: PubKeyHash, bid: bigint) {
+public bid(bidder: Addr, bid: bigint) {
     const highestBid: bigint = this.ctx.utxo.value
     assert(bid > highestBid, 'the auction bid is lower than the current highest bid')
 
@@ -240,7 +240,7 @@ export class Auction extends SmartContract {
         const auctionOutput: ByteString = this.buildStateOutput(bid)
 
         // Refund previous highest bidder.
-        const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(hash160(highestBidder), highestBid)
+        const refundOutput: ByteString = Utils.buildPublicKeyHashOutput(pubKey2Addr(highestBidder), highestBid)
         let outputs: ByteString = auctionOutput + refundOutput
 
         // Add change output.
@@ -299,7 +299,7 @@ export class Auction extends SmartContract {
             .addOutput(
                 new Transaction.Output({
                     script: Script.fromHex(
-                        Utils.buildPublicKeyHashScript(hash160(current.bidder))
+                        Utils.buildPublicKeyHashScript(pubKey2Addr(current.bidder))
                     ),
                     satoshis: current.balance,
                 })

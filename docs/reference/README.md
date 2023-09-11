@@ -83,6 +83,7 @@ scrypt-ts
 
 ### Other Type Aliases
 
+- [Addr](README.md#addr)
 - [AddressOption](README.md#addressoption)
 - [AddressesOption](README.md#addressesoption)
 - [ByteString](README.md#bytestring)
@@ -136,6 +137,7 @@ scrypt-ts
 
 - [hash160](README.md#hash160)
 - [hash256](README.md#hash256)
+- [pubKey2Addr](README.md#pubkey2addr)
 - [ripemd160](README.md#ripemd160-2)
 - [sha1](README.md#sha1-2)
 - [sha256](README.md#sha256-2)
@@ -149,6 +151,7 @@ scrypt-ts
 
 ### Other Functions
 
+- [Addr](README.md#addr-1)
 - [OpCodeType](README.md#opcodetype-1)
 - [PrivKey](README.md#privkey-1)
 - [PubKey](README.md#pubkey-1)
@@ -159,9 +162,11 @@ scrypt-ts
 - [Sig](README.md#sig-1)
 - [SigHashPreimage](README.md#sighashpreimage-1)
 - [SigHashType](README.md#sighashtype-1)
+- [alterFileExt](README.md#alterfileext)
 - [and](README.md#and)
 - [buildOpreturnScript](README.md#buildopreturnscript)
 - [buildPublicKeyHashScript](README.md#buildpublickeyhashscript)
+- [camelCaseCapitalized](README.md#camelcasecapitalized)
 - [fill](README.md#fill)
 - [filterUTXO](README.md#filterutxo)
 - [findSig](README.md#findsig)
@@ -220,11 +225,23 @@ let bbb: FixedArray<FixedArray<FixedArray<bigint, 1>, 2>, 3> = [[[1n], [1n]], [[
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:37
+dist/smart-contract/builtins/types.d.ts:62
 
 ___
 
 ## Other Type Aliases
+
+### Addr
+
+Ƭ **Addr**: [`PubKeyHash`](README.md#pubkeyhash)
+
+#### Defined in
+
+dist/smart-contract/builtins/types.d.ts:29
+
+dist/smart-contract/builtins/types.d.ts:22
+
+___
 
 ### AddressOption
 
@@ -254,7 +271,7 @@ a ByteString represents a byte array.
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:8
+dist/smart-contract/builtins/types.d.ts:33
 
 ___
 
@@ -324,25 +341,25 @@ ___
 
 ### PubKey
 
-Ƭ **PubKey**: `Bytes` & { `__type`: ``"PubKey"``  }
+Ƭ **PubKey**: `_PubKey`
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:70
+dist/smart-contract/builtins/types.d.ts:25
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:39
+dist/smart-contract/builtins/types.d.ts:18
 
 ___
 
 ### PubKeyHash
 
-Ƭ **PubKeyHash**: [`Ripemd160`](README.md#ripemd160)
+Ƭ **PubKeyHash**: `_PubKeyHash`
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:73
+dist/smart-contract/builtins/types.d.ts:28
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:48
+dist/smart-contract/builtins/types.d.ts:21
 
 ___
 
@@ -378,49 +395,49 @@ ___
 
 ### Ripemd160
 
-Ƭ **Ripemd160**: `Bytes` & { `__type`: ``"Ripemd160"``  }
+Ƭ **Ripemd160**: `_Ripemd160`
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:72
+dist/smart-contract/builtins/types.d.ts:27
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:45
+dist/smart-contract/builtins/types.d.ts:20
 
 ___
 
 ### Sha1
 
-Ƭ **Sha1**: `Bytes` & { `__type`: ``"Sha1"``  }
+Ƭ **Sha1**: `_Sha1`
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:74
+dist/smart-contract/builtins/types.d.ts:30
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:49
+dist/smart-contract/builtins/types.d.ts:24
 
 ___
 
 ### Sha256
 
-Ƭ **Sha256**: `Bytes` & { `__type`: ``"Sha256"``  }
+Ƭ **Sha256**: `_Sha256`
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:75
+dist/smart-contract/builtins/types.d.ts:31
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:52
+dist/smart-contract/builtins/types.d.ts:23
 
 ___
 
 ### Sig
 
-Ƭ **Sig**: `Bytes` & { `__type`: ``"Sig"``  }
+Ƭ **Sig**: `_Sig`
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:71
+dist/smart-contract/builtins/types.d.ts:26
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:42
+dist/smart-contract/builtins/types.d.ts:19
 
 ___
 
@@ -478,7 +495,7 @@ ___
 
 ### SubBytes
 
-Ƭ **SubBytes**: [`PubKey`](README.md#pubkey) \| [`Sig`](README.md#sig) \| [`Sha256`](README.md#sha256) \| [`Sha1`](README.md#sha1) \| [`SigHashType`](README.md#sighashtype) \| [`Ripemd160`](README.md#ripemd160) \| [`OpCodeType`](README.md#opcodetype)
+Ƭ **SubBytes**: `PubKey` \| `Sig` \| `Sha256` \| `Sha1` \| [`SigHashType`](README.md#sighashtype) \| `Ripemd160` \| [`OpCodeType`](README.md#opcodetype)
 
 #### Defined in
 
@@ -516,7 +533,7 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:21
+dist/smart-contract/builtins/types.d.ts:46
 
 ## Variables
 
@@ -559,7 +576,7 @@ More detail about [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contr
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:141
+dist/smart-contract/builtins/functions.d.ts:149
 
 ___
 
@@ -583,7 +600,7 @@ More detail about [Bitwise Operator][https://docs.scrypt.io/how-to-write-a-contr
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:147
+dist/smart-contract/builtins/functions.d.ts:155
 
 ___
 
@@ -715,7 +732,7 @@ returns true if equal; otherwise returns false
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:43
+dist/smart-contract/builtins/types.d.ts:68
 
 ___
 
@@ -723,7 +740,7 @@ ___
 
 ### hash160
 
-▸ **hash160**(`a`): [`Ripemd160`](README.md#ripemd160)
+▸ **hash160**(`a`): `Ripemd160`
 
 A RIPEMD160 hash of a SHA256 hash, which is always 160 bits or 20 bytes long.
 This value is commonly used inside Bitcoin, particularly for Bitcoin
@@ -740,7 +757,7 @@ https://en.wikipedia.org/wiki/RIPEMD
 
 #### Returns
 
-[`Ripemd160`](README.md#ripemd160)
+`Ripemd160`
 
 The hash in the form of a string.
 
@@ -752,7 +769,7 @@ ___
 
 ### hash256
 
-▸ **hash256**(`a`): [`Sha256`](README.md#sha256)
+▸ **hash256**(`a`): `Sha256`
 
 A double SHA256 hash, which is always 256 bits or 32 bytes bytes long. This
 hash function is commonly used inside Bitcoin, particularly for the hash of a
@@ -769,7 +786,7 @@ https://www.movable-type.co.uk/scripts/sha256.html
 
 #### Returns
 
-[`Sha256`](README.md#sha256)
+`Sha256`
 
 The hash in the form of a string.
 
@@ -779,9 +796,34 @@ dist/smart-contract/builtins/functions.d.ts:129
 
 ___
 
+### pubKey2Addr
+
+▸ **pubKey2Addr**(`a`): [`Addr`](README.md#addr)
+
+Get Addr for PubKey.
+Under the hood this just wraps the hash160 function.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `PubKey` |
+
+#### Returns
+
+[`Addr`](README.md#addr)
+
+address for the passed public key.
+
+#### Defined in
+
+dist/smart-contract/builtins/functions.d.ts:137
+
+___
+
 ### ripemd160
 
-▸ **ripemd160**(`a`): [`Ripemd160`](README.md#ripemd160)
+▸ **ripemd160**(`a`): `Ripemd160`
 
 A RIPEMD160 hash, which is always 160 bits or 20 bytes long.
 See:
@@ -795,7 +837,7 @@ https://en.wikipedia.org/wiki/RIPEMD
 
 #### Returns
 
-[`Ripemd160`](README.md#ripemd160)
+`Ripemd160`
 
 The hash in the form of a ByteString.
 
@@ -807,7 +849,7 @@ ___
 
 ### sha1
 
-▸ **sha1**(`a`): [`Sha1`](README.md#sha1)
+▸ **sha1**(`a`): `Sha1`
 
 A SHA or SHA1 hash, which is always 160 bits or 20 bytes long.
 
@@ -822,7 +864,7 @@ https://en.wikipedia.org/wiki/SHA-1
 
 #### Returns
 
-[`Sha1`](README.md#sha1)
+`Sha1`
 
 The hash in the form of a string.
 
@@ -834,7 +876,7 @@ ___
 
 ### sha256
 
-▸ **sha256**(`a`): [`Sha256`](README.md#sha256)
+▸ **sha256**(`a`): `Sha256`
 
 A SHA256 hash, which is always 256 bits or 32 bytes long.
 
@@ -849,7 +891,7 @@ https://www.movable-type.co.uk/scripts/sha256.html
 
 #### Returns
 
-[`Sha256`](README.md#sha256)
+`Sha256`
 
 The hash in the form of a string.
 
@@ -955,6 +997,26 @@ ___
 
 ## Other Functions
 
+### Addr
+
+▸ **Addr**(`b`): [`Addr`](README.md#addr)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) |
+
+#### Returns
+
+[`Addr`](README.md#addr)
+
+#### Defined in
+
+dist/smart-contract/builtins/types.d.ts:29
+
+___
+
 ### OpCodeType
 
 ▸ **OpCodeType**(`b`): [`OpCodeType`](README.md#opcodetype)
@@ -1003,7 +1065,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `Bytes` |
+| `b` | [`ByteString`](README.md#bytestring) |
 
 #### Returns
 
@@ -1011,7 +1073,7 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:70
+dist/smart-contract/builtins/types.d.ts:25
 
 ___
 
@@ -1023,7 +1085,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `Bytes` |
+| `b` | [`ByteString`](README.md#bytestring) |
 
 #### Returns
 
@@ -1031,7 +1093,7 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:73
+dist/smart-contract/builtins/types.d.ts:28
 
 ___
 
@@ -1043,7 +1105,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `Bytes` |
+| `b` | [`ByteString`](README.md#bytestring) |
 
 #### Returns
 
@@ -1051,7 +1113,7 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:72
+dist/smart-contract/builtins/types.d.ts:27
 
 ___
 
@@ -1063,7 +1125,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `Bytes` |
+| `b` | [`ByteString`](README.md#bytestring) |
 
 #### Returns
 
@@ -1071,7 +1133,7 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:74
+dist/smart-contract/builtins/types.d.ts:30
 
 ___
 
@@ -1083,7 +1145,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `Bytes` |
+| `b` | [`ByteString`](README.md#bytestring) |
 
 #### Returns
 
@@ -1091,7 +1153,7 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:75
+dist/smart-contract/builtins/types.d.ts:31
 
 ___
 
@@ -1103,7 +1165,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `b` | `Bytes` |
+| `b` | [`ByteString`](README.md#bytestring) |
 
 #### Returns
 
@@ -1111,7 +1173,7 @@ ___
 
 #### Defined in
 
-node_modules/scryptlib/dist/scryptTypes.d.ts:71
+dist/smart-contract/builtins/types.d.ts:26
 
 ___
 
@@ -1152,6 +1214,28 @@ ___
 #### Defined in
 
 node_modules/scryptlib/dist/scryptTypes.d.ts:86
+
+___
+
+### alterFileExt
+
+▸ **alterFileExt**(`filename`, `toExt`, `fromExt?`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `filename` | `string` |
+| `toExt` | `string` |
+| `fromExt?` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+dist/smart-contract/utils/index.d.ts:11
 
 ___
 
@@ -1204,7 +1288,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `pubKeyHash` | [`Ripemd160`](README.md#ripemd160) |
+| `pubKeyHash` | `Ripemd160` |
 
 #### Returns
 
@@ -1213,6 +1297,26 @@ ___
 #### Defined in
 
 node_modules/scryptlib/dist/builtins.d.ts:23
+
+___
+
+### camelCaseCapitalized
+
+▸ **camelCaseCapitalized**(`str`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `str` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+dist/smart-contract/utils/index.d.ts:12
 
 ___
 
@@ -1562,7 +1666,7 @@ Otherwise, `literal` should be in the format of utf8 literal, i.e. `hello world`
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:16
+dist/smart-contract/builtins/types.d.ts:41
 
 ___
 
@@ -1671,7 +1775,7 @@ asserts condition
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:135
+dist/smart-contract/builtins/functions.d.ts:143
 
 ___
 

@@ -8,11 +8,22 @@ The optional conditions for querying P2PKH UTXO.
 
 ### Properties
 
+- [additional](UtxoQueryOptions.md#additional)
 - [estimateSize](UtxoQueryOptions.md#estimatesize)
 - [feePerKb](UtxoQueryOptions.md#feeperkb)
 - [unspentValue](UtxoQueryOptions.md#unspentvalue)
 
 ## Properties
+
+### additional
+
+• `Optional` **additional**: `number`
+
+#### Defined in
+
+dist/bsv/abstract-provider.d.ts:16
+
+___
 
 ### estimateSize
 

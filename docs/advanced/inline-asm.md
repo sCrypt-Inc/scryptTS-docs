@@ -19,18 +19,18 @@ Your contract is at `src/contracts/p2pkh.ts`:
 ```ts
 export class P2PKH extends SmartContract {
     @prop()
-    readonly pubKeyHash: PubKeyHash
+    readonly address: Addr
 
-    constructor(pubKeyHash: PubKeyHash) {
+    constructor(address: Addr) {
         super(...arguments)
-        this.pubKeyHash = pubKeyHash
+        this.address = address
     }
 
     @method()
     public unlock(sig: Sig, pubkey: PubKey) {
         assert(
-            hash160(pubkey) == this.pubKeyHash,
-            'public key hashes are not equal'
+            pubKey2Addr(pubkey) == this.address,
+            'public key does not correspond to address'
         )
         assert(this.checkSig(sig, pubkey), 'signature check failed')
     }
@@ -67,12 +67,12 @@ Now, after compiling, the function body will be replaced with script, as could b
 Assembly variables can be replaced with literal Script in ASM format using `setAsmVars()`. Each variable is prefixed by its unique scope, namely, the contract and the function it is under.
 
 ```ts
-p2pkh = new P2PKH(PubKeyHash(toHex(myPublicKeyHash)))
+p2pkh = new P2PKH(Addr(myAddress.toByteString()))
 
 // Set ASM variable
 // Keep in mind that these are NOT constructor parameters and must be set separately.
 asmVarValues = {
-    'P2PKH.unlock.pubKeyHash': toHex(myPublicKeyHash)
+    'P2PKH.unlock.address': myAddress.toByteString()
 }
 p2pkh.setAsmVars(asmVarValues)
 ```

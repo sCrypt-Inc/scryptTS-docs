@@ -218,7 +218,7 @@ Signer.connectedProvider
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:130
+dist/bsv/abstract-signer.d.ts:133
 
 ___
 
@@ -272,15 +272,18 @@ ___
 
 ### connect
 
-▸ **connect**(`provider`): `Promise`<[`TestWallet`](TestWallet.md)\>
+▸ **connect**(`provider?`): `Promise`<[`TestWallet`](TestWallet.md)\>
 
-Connect a provider to `this`.
+Connect a provider to `this`. If a new provider is specified when connecting,
+a connection will be established for the new provider and then switched to the new provider.
+If no new provider is specified, a connection is established for signer's built-in provider.
+If neither exists, an exception is thrown.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `provider` | [`Provider`](Provider.md) | The target provider. |
+| `provider?` | [`Provider`](Provider.md) | The target provider. |
 
 #### Returns
 
@@ -340,7 +343,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:150
+dist/bsv/abstract-signer.d.ts:153
 
 ___
 
@@ -535,13 +538,13 @@ Sign transaction and broadcast it
 
 A promise which resolves to the transaction id.
 
-#### Inherited from
+#### Overrides
 
 [Signer](Signer.md).[signAndsendTransaction](Signer.md#signandsendtransaction)
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:137
+dist/bsv/wallets/test-wallet.d.ts:39
 
 ___
 
@@ -660,4 +663,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:159
+dist/bsv/abstract-signer.d.ts:162

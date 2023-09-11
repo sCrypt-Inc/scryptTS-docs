@@ -161,21 +161,24 @@ Signer.connectedProvider
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:130
+dist/bsv/abstract-signer.d.ts:133
 
 ## Methods
 
 ### connect
 
-▸ **connect**(`provider`): `Promise`<[`TAALSigner`](TAALSigner.md)\>
+▸ **connect**(`provider?`): `Promise`<[`TAALSigner`](TAALSigner.md)\>
 
-Connect a provider to `this`.
+Connect a provider to `this`. If a new provider is specified when connecting,
+a connection will be established for the new provider and then switched to the new provider.
+If no new provider is specified, a connection is established for signer's built-in provider.
+If neither exists, an exception is thrown.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `provider` | [`Provider`](Provider.md) | The target provider. |
+| `provider?` | [`Provider`](Provider.md) | The target provider. |
 
 #### Returns
 
@@ -379,7 +382,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:144
+dist/bsv/abstract-signer.d.ts:147
 
 ___
 
@@ -430,7 +433,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:137
+dist/bsv/abstract-signer.d.ts:140
 
 ___
 
@@ -570,4 +573,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:159
+dist/bsv/abstract-signer.d.ts:162

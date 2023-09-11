@@ -86,7 +86,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:31
+dist/bsv/abstract-provider.d.ts:32
 
 ## Properties
 
@@ -96,7 +96,7 @@ dist/bsv/abstract-provider.d.ts:31
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:95
+dist/bsv/abstract-provider.d.ts:96
 
 ___
 
@@ -211,7 +211,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:40
+dist/bsv/abstract-provider.d.ts:41
 
 ___
 
@@ -340,7 +340,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:91
+dist/bsv/abstract-provider.d.ts:92
 
 ___
 
@@ -364,7 +364,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:59
+dist/bsv/abstract-provider.d.ts:60
 
 ___
 
@@ -380,7 +380,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:53
+dist/bsv/abstract-provider.d.ts:54
 
 ___
 
@@ -421,7 +421,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:49
+dist/bsv/abstract-provider.d.ts:50
 
 ___
 
@@ -445,7 +445,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:78
+dist/bsv/abstract-provider.d.ts:79
 
 ___
 
@@ -461,7 +461,7 @@ check if provider is ready
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:35
+dist/bsv/abstract-provider.d.ts:36
 
 ___
 
@@ -486,7 +486,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:85
+dist/bsv/abstract-provider.d.ts:86
 
 ___
 
@@ -1000,7 +1000,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:65
+dist/bsv/abstract-provider.d.ts:66
 
 ___
 
@@ -1028,7 +1028,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:72
+dist/bsv/abstract-provider.d.ts:73
 
 ___
 
@@ -1085,7 +1085,7 @@ update provider network
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:45
+dist/bsv/abstract-provider.d.ts:46
 
 ___
 
@@ -1217,7 +1217,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:101
+dist/bsv/abstract-provider.d.ts:102
 
 ___
 

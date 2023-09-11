@@ -21,6 +21,7 @@
 - [inspect](bsv.PublicKey.md#inspect)
 - [toAddress](bsv.PublicKey.md#toaddress)
 - [toBuffer](bsv.PublicKey.md#tobuffer)
+- [toByteString](bsv.PublicKey.md#tobytestring)
 - [toDER](bsv.PublicKey.md#toder)
 - [toHex](bsv.PublicKey.md#tohex)
 - [toObject](bsv.PublicKey.md#toobject)
@@ -127,6 +128,20 @@ ___
 #### Defined in
 
 node_modules/bsv/index.d.ts:1065
+
+___
+
+### toByteString
+
+▸ **toByteString**(): [`ByteString`](../README.md#bytestring)
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+#### Defined in
+
+dist/smart-contract/bsv/publicKey.d.ts:5
 
 ___
 

@@ -106,12 +106,12 @@ The following example ensures both Alice and Bob get 1000 satoshis from the cont
 ```ts
 class DesignatedReceivers extends SmartContract {
   @prop()
-  readonly alice: PubKeyHash
+  readonly alice: Addr
 
   @prop()
-  readonly bob: PubKeyHash
+  readonly bob: Addr
 
-  constructor(alice: PubKeyHash, bob: PubKeyHash) {
+  constructor(alice: Addr, bob: Addr) {
     super(...arguments)
     this.alice = alice
     this.bob = bob

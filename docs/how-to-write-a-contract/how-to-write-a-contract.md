@@ -510,7 +510,9 @@ There are several domain types, specific to the Bitcoin context, used to further
 
 * `Ripemd160` - a RIPEMD-160 hash
 
-* `PubKeyHash` - an alias for `Ripemd160`, usually representing a bitcoin address.
+* `Addr` - an alias for `Ripemd160`, usually representing a bitcoin address.
+
+* `PubKeyHash` - another alias for `Ripemd160`
 
 * `Sha1` - a SHA-1 hash
 
@@ -541,7 +543,7 @@ import {
     Pubkey,
     FixedArray,
     Sig,
-    PubKeyHash
+    Addr
 } from 'scrypt-ts'
 ```
 

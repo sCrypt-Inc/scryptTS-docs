@@ -59,7 +59,7 @@ If this error occurs, you need to re-acquire the contract instance
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md) |
+| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
 
 #### Parameters
 
@@ -90,7 +90,7 @@ Subscribe to notifications of contract status changes by contract ID,
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md) |
+| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
 
 #### Parameters
 

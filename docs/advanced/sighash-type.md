@@ -97,7 +97,7 @@ Take the [P2PKH contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and
 @method()
 public unlock(sig: Sig, pubkey: PubKey) {
     // Check if the passed public key belongs to the specified address.
-    assert(hash160(pubkey) == this.pubKeyHash, 'public key hashes are not equal')
+    assert(pubKey2Addr(pubkey) == this.address, 'public key does not correspond to address')
     // Check signature validity.
     assert(this.checkSig(sig, pubkey), 'signature check failed')
 }

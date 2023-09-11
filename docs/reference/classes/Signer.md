@@ -104,21 +104,24 @@ the connected provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:130
+dist/bsv/abstract-signer.d.ts:133
 
 ## Methods
 
 ### connect
 
-▸ `Abstract` **connect**(`provider`): `Promise`<[`Signer`](Signer.md)\>
+▸ `Abstract` **connect**(`newProvider?`): `Promise`<[`Signer`](Signer.md)\>
 
-Connect a provider to `this`.
+Connect a provider to `this`. If a new provider is specified when connecting,
+a connection will be established for the new provider and then switched to the new provider.
+If no new provider is specified, a connection is established for signer's built-in provider.
+If neither exists, an exception is thrown.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `provider` | [`Provider`](Provider.md) | The target provider. |
+| `newProvider?` | [`Provider`](Provider.md) | The target provider. |
 
 #### Returns
 
@@ -126,7 +129,7 @@ Connect a provider to `this`.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:77
+dist/bsv/abstract-signer.d.ts:80
 
 ___
 
@@ -150,7 +153,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:150
+dist/bsv/abstract-signer.d.ts:153
 
 ___
 
@@ -166,7 +169,7 @@ A promise which resolves to the address to the default private key of the signer
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:87
+dist/bsv/abstract-signer.d.ts:90
 
 ___
 
@@ -182,7 +185,7 @@ A promise which resolves to the public key of the default private key of the sig
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:82
+dist/bsv/abstract-signer.d.ts:85
 
 ___
 
@@ -208,7 +211,7 @@ The public key result.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:94
+dist/bsv/abstract-signer.d.ts:97
 
 ___
 
@@ -233,7 +236,7 @@ A promise which resolves to a list of `SignatureReponse` corresponding to `sigRe
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:124
+dist/bsv/abstract-signer.d.ts:127
 
 ___
 
@@ -276,7 +279,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:144
+dist/bsv/abstract-signer.d.ts:147
 
 ___
 
@@ -319,7 +322,7 @@ A promise which resolves to the transaction id.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:137
+dist/bsv/abstract-signer.d.ts:140
 
 ___
 
@@ -344,7 +347,7 @@ A promise which resolves to the signautre of the message.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:117
+dist/bsv/abstract-signer.d.ts:120
 
 ___
 
@@ -373,7 +376,7 @@ A promise which resolves to the signed transaction hex string.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:103
+dist/bsv/abstract-signer.d.ts:106
 
 ___
 
@@ -398,7 +401,7 @@ A promise which resolves to the signed transaction object.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:110
+dist/bsv/abstract-signer.d.ts:113
 
 ___
 
@@ -422,4 +425,4 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-signer.d.ts:159
+dist/bsv/abstract-signer.d.ts:162

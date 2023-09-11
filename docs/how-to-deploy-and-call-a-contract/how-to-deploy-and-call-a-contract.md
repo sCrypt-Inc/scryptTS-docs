@@ -247,25 +247,25 @@ A complete example can be found [here](./call-deployed).
 
 ### Method with Signatures
 
-A contract public `@method` often needs a signature argument for authentication. Take this [Pay To Pubkey Hash (P2PKH)](https://learnmeabitcoin.com/technical/p2pkh) contract for example:
+A contract public `@method` often needs a signature argument for authentication. Take this [Pay To PubKey Hash (P2PKH)](https://learnmeabitcoin.com/technical/p2pkh) contract for example:
 
 ```ts
 export class P2PKH extends SmartContract {
     @prop()
-    readonly pubKeyHash: PubKeyHash;
+    readonly address: Addr
 
-    constructor(pubKeyHash: PubKeyHash) {
-        super(..arguments);
-        this.pubKeyHash = pubKeyHash;
+    constructor(address: Addr) {
+        super(..arguments)
+        this.address = address
     }
 
     @method()
     public unlock(sig: Sig, pubkey: PubKey) {
-        // make sure the `pubkey` is the one locked with its hash value in the constructor
-        assert(hash160(pubkey) == this.pubKeyHash, 'pubKeyHash check failed');
+        // make sure the `pubkey` is the one locked with its address in the constructor
+        assert(pubKey2Addr(pubkey) == this.address, 'address check failed')
 
 	   // make sure the `sig` is signed by the private key corresponding to the `pubkey`
-        assert(this.checkSig(sig, pubkey), 'signature check failed');
+        assert(this.checkSig(sig, pubkey), 'signature check failed')
     }
 }
 ```
@@ -315,14 +315,12 @@ await P2PKH.compile()
 
 // public key of the `privateKey`
 const publicKey = privateKey.publicKey
-// hash of the `publicKey`
-const pkh = bsv.crypto.Hash.sha256ripemd160(publicKey.toBuffer())
 
 // setup signer
 const signer = new TestWallet(privateKey, new DefaultProvider());
 
 // initialize an instance with `pkh`
-let p2pkh = new P2PKH(PubKeyHash(toHex(pkh)))
+let p2pkh = new P2PKH(Addr(publicKey.toAddress().toByteString()))
 
 // connect the signer
 await p2pkh.connect(signer);

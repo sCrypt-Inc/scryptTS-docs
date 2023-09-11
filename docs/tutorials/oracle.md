@@ -48,9 +48,9 @@ oraclePubKey: RabinPubKey
 
 // Addresses of both players.
 @prop()
-alicePkh: PubKeyHash
+aliceAddr: Addr
 @prop()
-bobPkh: PubKeyHash
+bobAddr: Addr
 ```
 
 Notice that the type `RabinPubKey`, which represents a Rabin public key, is not a standard type. You can import it the following way:

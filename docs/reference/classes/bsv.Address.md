@@ -20,6 +20,7 @@
 
 - [isValid](bsv.Address.md#isvalid)
 - [toBuffer](bsv.Address.md#tobuffer)
+- [toByteString](bsv.Address.md#tobytestring)
 - [toHex](bsv.Address.md#tohex)
 - [toObject](bsv.Address.md#toobject)
 - [toString](bsv.Address.md#tostring)
@@ -113,6 +114,20 @@ ___
 #### Defined in
 
 node_modules/bsv/index.d.ts:1426
+
+___
+
+### toByteString
+
+▸ **toByteString**(): [`ByteString`](../README.md#bytestring)
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+#### Defined in
+
+dist/smart-contract/bsv/address.d.ts:5
 
 ___
 

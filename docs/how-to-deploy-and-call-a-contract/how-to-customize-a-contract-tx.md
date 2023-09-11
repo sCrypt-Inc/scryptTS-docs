@@ -116,7 +116,7 @@ static bidTxBuilder(
         .addOutput(
             new Transaction.Output({
                 script: Script.fromHex(
-                    Utils.buildPublicKeyHashScript(hash160(current.bidder))
+                    Utils.buildPublicKeyHashScript(pubKey2Addr(current.bidder))
                 ),
                 satoshis: current.balance,
             })
