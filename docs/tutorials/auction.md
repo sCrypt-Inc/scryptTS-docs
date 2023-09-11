@@ -198,7 +198,7 @@ const unsignedTx: Transaction = new Transaction()
 
 ## Conclusion
 
-Congratulations, you have completed the `Auction` contract!
+Congratulations, you have completed the `Auction` contract! To use it in practice, you can refer to this example of [an NFT auction](https://xiaohuiliu.medium.com/integrate-ordinals-with-smart-contracts-on-bitcoin-part-2-d638b7ca3742).
 
 The [final complete code](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/auction.ts) is as follows:
 
