@@ -87,7 +87,7 @@ Map.[toStringTag]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:137
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:135
 
 ___
 
@@ -101,7 +101,7 @@ Map.size
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:46
+node_modules/typescript/lib/lib.es2015.collection.d.ts:48
 
 ___
 
@@ -115,7 +115,7 @@ Map.[species]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:319
+node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:317
 
 ## Methods
 
@@ -159,7 +159,7 @@ Map.clear
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:21
+node_modules/typescript/lib/lib.es2015.collection.d.ts:23
 
 ___
 

@@ -39,7 +39,7 @@ A reader to parse a ByteString buffer
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1059
+dist/smart-contract/builtins/functions.d.ts:1067
 
 ## Properties
 
@@ -49,7 +49,7 @@ dist/smart-contract/builtins/functions.d.ts:1059
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1057
+dist/smart-contract/builtins/functions.d.ts:1065
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1058
+dist/smart-contract/builtins/functions.d.ts:1066
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1054
+dist/smart-contract/builtins/functions.d.ts:1062
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1056
+dist/smart-contract/builtins/functions.d.ts:1064
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1055
+dist/smart-contract/builtins/functions.d.ts:1063
 
 ## Methods
 
@@ -107,7 +107,7 @@ true if all have been read
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1064
+dist/smart-contract/builtins/functions.d.ts:1072
 
 ___
 
@@ -125,7 +125,7 @@ true if the read byte not equal to '00'
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1074
+dist/smart-contract/builtins/functions.d.ts:1082
 
 ___
 
@@ -143,7 +143,7 @@ true if all have been read
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1069
+dist/smart-contract/builtins/functions.d.ts:1077
 
 ___
 
@@ -161,4 +161,4 @@ a number
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1079
+dist/smart-contract/builtins/functions.d.ts:1087

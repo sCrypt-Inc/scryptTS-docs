@@ -18,8 +18,10 @@ The SensibleProvider is backed by [Sensible][https://github.com/sensible-contrac
 
 ### Properties
 
+- [\_isConnected](SensibleProvider.md#_isconnected)
 - [\_isProvider](SensibleProvider.md#_isprovider)
 - [apiKey](SensibleProvider.md#apikey)
+- [assertConnected](SensibleProvider.md#assertconnected)
 - [network](SensibleProvider.md#network)
 - [captureRejectionSymbol](SensibleProvider.md#capturerejectionsymbol)
 - [captureRejections](SensibleProvider.md#capturerejections)
@@ -85,9 +87,19 @@ The SensibleProvider is backed by [Sensible][https://github.com/sensible-contrac
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:11
+dist/providers/sensible-provider.d.ts:12
 
 ## Properties
+
+### \_isConnected
+
+• `Private` **\_isConnected**: `any`
+
+#### Defined in
+
+dist/providers/sensible-provider.d.ts:11
+
+___
 
 ### \_isProvider
 
@@ -99,7 +111,7 @@ dist/providers/sensible-provider.d.ts:11
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:95
+dist/bsv/abstract-provider.d.ts:96
 
 ___
 
@@ -110,6 +122,16 @@ ___
 #### Defined in
 
 dist/providers/sensible-provider.d.ts:10
+
+___
+
+### assertConnected
+
+• `Private` **assertConnected**: `any`
+
+#### Defined in
+
+dist/providers/sensible-provider.d.ts:18
 
 ___
 
@@ -199,7 +221,7 @@ node_modules/@types/node/events.d.ts:356
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:12
+dist/providers/sensible-provider.d.ts:13
 
 ## Methods
 
@@ -252,7 +274,7 @@ a connected provider. Throw an exception if the connection fails.
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:14
+dist/providers/sensible-provider.d.ts:15
 
 ___
 
@@ -385,7 +407,7 @@ A promise which resolves to the address balance status.
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:19
+dist/providers/sensible-provider.d.ts:21
 
 ___
 
@@ -413,7 +435,7 @@ The estimated fee in satoshis.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:59
+dist/bsv/abstract-provider.d.ts:60
 
 ___
 
@@ -433,7 +455,7 @@ The fee rate for sending transactions through this provider.
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:24
+dist/providers/sensible-provider.d.ts:26
 
 ___
 
@@ -478,7 +500,7 @@ The network this provider is connected to.
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:16
+dist/providers/sensible-provider.d.ts:17
 
 ___
 
@@ -506,7 +528,7 @@ The query result with the transaction information.
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:23
+dist/providers/sensible-provider.d.ts:25
 
 ___
 
@@ -526,7 +548,7 @@ check if provider is ready
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:13
+dist/providers/sensible-provider.d.ts:14
 
 ___
 
@@ -555,7 +577,7 @@ A promise which resolves to a list of UTXO for the query options.
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:18
+dist/providers/sensible-provider.d.ts:20
 
 ___
 
@@ -1073,7 +1095,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:17
+dist/providers/sensible-provider.d.ts:19
 
 ___
 
@@ -1105,7 +1127,7 @@ A promise which resolves to the hash of the transaction that has been sent.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:72
+dist/bsv/abstract-provider.d.ts:73
 
 ___
 
@@ -1166,7 +1188,7 @@ update provider network
 
 #### Defined in
 
-dist/providers/sensible-provider.d.ts:15
+dist/providers/sensible-provider.d.ts:16
 
 ___
 
@@ -1302,7 +1324,7 @@ Returns `true` if and only if `object` is a Provider.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:101
+dist/bsv/abstract-provider.d.ts:102
 
 ___
 
