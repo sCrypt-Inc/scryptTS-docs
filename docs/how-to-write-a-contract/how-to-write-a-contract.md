@@ -527,7 +527,7 @@ There are several domain types, specific to the Bitcoin context, used to further
 ```ts
 @method()
 public unlock(sig: Sig, pubkey: PubKey) {
-    // hash160() takes a ByteString as input, but can accept pubkey here, which if of type PubKey
+    // The hash160() function takes a ByteString as input, but it can also accept 'pubkey', which is of type PubKey.
     assert(hash160(pubkey) == this.pubKeyHash)
     assert(this.checkSig(sig, pubkey), 'signature check failed')
 }
