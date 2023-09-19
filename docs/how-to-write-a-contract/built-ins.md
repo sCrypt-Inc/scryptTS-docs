@@ -206,19 +206,17 @@ const size = demo.scriptSize
 
 ### `loadArtifact`
 
-Function `static loadArtifact(artifactFile: Artifact | string | undefined = undefined)` loads the contract artifact file from the path you passed in order to initialize the contract class.
+Function `static loadArtifact(artifactFile: Artifact | string | undefined = undefined)` loads the contract artifact file from the path you passed in to initialize the contract class.
 
-If no parameters are passed when calling, the function will load the artifact file from the default directory. This form is generally used when [testing](../how-to-test-a-contract.md#load-artifact) the contract.
+If no parameter is passed when calling, the function will load the artifact file from the default directory. This is generally used during [testing](../how-to-test-a-contract.md#load-artifact).
 
-You can also pass the artifact itself directly. This form will be used when the method is called at the front end.
+You can also pass the artifact path directly. This is usually used when the method is called when [interacting with a contract at the front end](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
 
 ```ts
 import { TicTacToe } from './contracts/tictactoe';
 import artifact from '../artifacts/tictactoe.json';
 TicTacToe.loadArtifact(artifact);
 ```
-
-You may visit [here](https://academy.scrypt.io/en/courses/Build-a-Tic-tac-toe-Game-with-sCrypt-614c387bc0974f55df5af1e5/lessons/2/chapters/1) for more details about how to add a front end to a contract.
 
 ### `checkSig`
 
