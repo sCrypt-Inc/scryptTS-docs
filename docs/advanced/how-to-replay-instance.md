@@ -1,6 +1,6 @@
 # How to Replay Instance to the latest states
 
-With [sCrypt Service](./how-to-integrate-scrypt-service.md) and [sCrypt client](./how-to-integrate-scrypt-service.md#step-1-initialize-client), we can easily create a contract instance with the latest states as follows.
+With [sCrypt Service](./how-to-integrate-scrypt-service.md) and [sCrypt client](./how-to-integrate-scrypt-service.md#step-1-initialize-client), we can easily create a contract instance with the latest state as follows.
 
 ```ts
 const currentInstance = await Scrypt.contractApi.getLatestInstance(
@@ -9,9 +9,9 @@ const currentInstance = await Scrypt.contractApi.getLatestInstance(
 )
 ```
 
-This is good to use but it doesn't work for the smart contract with stateful properties of type [HashedMap](../how-to-write-a-contract/built-ins.md#hashedmap) or [HashedSet](../how-to-write-a-contract/built-ins.md#hashedset).
+However, it doesn't work for the smart contract with states of type [HashedMap](../how-to-write-a-contract/built-ins.md#hashedmap) or [HashedSet](../how-to-write-a-contract/built-ins.md#hashedset), since each instance only contains hashed values, not originals.
 
-In this section, we will take [contract](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/crowdfundReplay.ts) `src/contracts/crowdfundReplay.ts` in [boilerplate](https://github.com/sCrypt-Inc/boilerplate) as an example, and introduce how to replay these contract instances to the latest states.
+In this section, we will take [contract CrowdfundReplay](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/crowdfundReplay.ts) `src/contracts/crowdfundReplay.ts` as an example, and introduce how to replay these contract instances to the latest states.
 
 This crowdfund contract contains a HahsedMap `donators` record of the donors' public key and their donation satoshi amount.
 
