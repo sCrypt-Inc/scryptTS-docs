@@ -221,7 +221,7 @@ export interface MethodCallOptions<T> {
 }
 ```
 
-The major differences between here and [local tests](../how-to-test-a-contract.md#test-a-contract-locally) are:
+The major differences between here and [local tests](../how-to-test-a-contract.md#run-tests) are:
 1. the contract needs to be deployed first;
 2. the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
 

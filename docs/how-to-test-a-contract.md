@@ -117,7 +117,7 @@ describe('Test SmartContract `Demo`', () => {
 })
 ```
 
-## Running the tests
+## Run tests
 
 
 Compared to other blockchains, smart contracts on Bitcoin are **pure**.
@@ -138,7 +138,7 @@ npm run test
 ```
 
 
-1. **Testnet**: Running tests on the testnet of Bitcoin blockchain. Transactions are constructed with real UTXOs on the testnet.
+2. **Testnet**: Running tests on the testnet of Bitcoin blockchain. Transactions are constructed with real UTXOs on the testnet.
 
 
 Run tests in the `testnet` environment using the following command:
@@ -237,7 +237,7 @@ const call = async () => current.methods.incrementOnChain(
 await expect(call()).not.to.be.rejected
 ```
 
-### Running the tests
+### Run tests
 
 As before, we can just use the following command:
 
