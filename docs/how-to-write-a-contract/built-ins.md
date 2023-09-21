@@ -362,6 +362,32 @@ const unsignedTx: bsv.Transaction = new bsv.Transaction()
   .change(options.changeAddress);
 ```
 
+### `timeLock`
+
+Function `timeLock(locktime: bigint): boolean` returns whether the calling transaction has its [`nLocktime`](https://wiki.bitcoinsv.io/index.php/NLocktime_and_nSequence) value set to a point past the passed `locktime` value. This value can either be a UNIX timestamp or a block height. Additionally, it ensures the value of `nSequence` is set to less than `0xFFFFFFFF`.
+
+If we assert the returned value to be `true`, we have effectively ensured that the public method of our smart contract cannot be successfully invoked until the specified time has passed.
+
+```ts
+class TimeLock extends SmartContract {
+  
+  @prop()
+  locktime: bigint
+
+  // ...
+
+  @method()
+  public unlock() {
+    assert(this.timeLock(this.locktime), 'time lock not yet expired')  
+  }
+    
+}
+```
+
+:::note
+This mechanism can be employed solely to ensure that a method can be called **after** a specific point in time. In contrast, it cannot be employed to ensure that a method is called **before** a specific point in time. 
+:::
+
 ### `insertCodeSeparator`
 
 Method `insertCodeSeparator(): void` inserts an [`OP_CODESEPARATOR`](../advanced/codeseparator.md), where it is invoked.
