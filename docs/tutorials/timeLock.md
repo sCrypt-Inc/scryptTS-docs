@@ -24,14 +24,13 @@ In sCrypt, a time-lock can be enforced by constraining the `locktime` and `seque
 
 Note that the value of `locktime` can either be a Unix timestamp or a block height. For this value to be enforced, `sequence` also needs to be set to a value less than `0xffffffff`.
 
+sCrypt offers a convenient built-in function `timeLock` to enforce this constraint.
+
 ## Contract properties
 
 Let's declare the properties of our smart contract:
 
 ```ts
-static readonly LOCKTIME_BLOCK_HEIGHT_MARKER = 500000000
-static readonly UINT_MAX = 0xffffffffn
-
 // Time after which our public method can be called.
 @prop()
 readonly matureTime: bigint // Can be a timestamp or block height.
@@ -42,37 +41,21 @@ readonly matureTime: bigint // Can be a timestamp or block height.
 ```ts
 @method()
 public unlock() {
-    // Ensure nSequence is less than UINT_MAX.
-    assert(
-        this.ctx.sequence < TimeLock.UINT_MAX,
-        'input sequence should less than UINT_MAX'
-    )
-
-    // Check if using block height.
-    if (
-        this.matureTime < TimeLock.LOCKTIME_BLOCK_HEIGHT_MARKER
-    ) {
-        // Enforce nLocktime field to also use block height.
-        assert(
-            this.ctx.locktime <
-                TimeLock.LOCKTIME_BLOCK_HEIGHT_MARKER,
-            'locktime should be less than 500000000'
-        )
-    }
-    assert(
-        this.ctx.locktime >= this.matureTime,
-        'locktime has not yet expired'
-    )
+    // The following assertion ensures that the `unlock` method can
+    // not be successfully invoked until `matureTime` has passed.
+    assert(this.timeLock(this.matureTime), 'time lock not yet expired')
 }
 ```
 
-We can observe that our public method first asserts that the `sequence` value of our calling transaction is less than `UINT_MAX`. This ensures that the Bitcoin network will enforce the `locktime` value.
+It is important to note that this mechanism can be employed solely to ensure that a method can be called **after** a specific point in time. In contrast, it cannot be employed to ensure that a method is called **before** a specific point in time. 
+
+## How does it work?
+
+Under the hood, the `timeLock` function asserts that the `sequence` value of our calling transaction is less than `UINT_MAX`. This ensures that the Bitcoin network will enforce the `locktime` value.
 
 Next, it checks if our target time-lock value indicates a block height or a Unix timestamp. If it's using a block height, i.e. the time-lock value is less than 500,000,000, the method also ensures that the `locktime` value of the calling transaction corresponds to a block height.
 
-Lastly, the method verifies that the value of `locktime` is greater than or equal to the time-lock we have set in the contract's property.
-
-It is important to note that this mechanism can be employed solely to ensure that a method can be called **after** a specific point in time. In contrast, it cannot be employed to ensure that a method is called **before** a specific point in time. 
+Lastly, the method verifies that the value of `locktime` is greater than or equal to the time-lock we have passed as an argument.
 
 For more information on how the `locktime` and `sequence` values work, please read the [BSV wiki page](https://wiki.bitcoinsv.io/index.php/NLocktime_and_nSequence)."
 
@@ -81,4 +64,3 @@ For more information on how the `locktime` and `sequence` values work, please re
 Congratulations! You have completed the time-lock tutorial!
 
 The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/timeLock.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/timeLock.ts).
-
