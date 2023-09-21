@@ -171,6 +171,7 @@ scrypt-ts
 - [filterUTXO](README.md#filterutxo)
 - [findSig](README.md#findsig)
 - [findSigs](README.md#findsigs)
+- [fromByteString](README.md#frombytestring)
 - [getDummyP2pkhUTXOs](README.md#getdummyp2pkhutxos)
 - [getDummySig](README.md#getdummysig)
 - [getRandomAddress](README.md#getrandomaddress)
@@ -225,7 +226,7 @@ let bbb: FixedArray<FixedArray<FixedArray<bigint, 1>, 2>, 3> = [[[1n], [1n]], [[
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:62
+dist/smart-contract/builtins/types.d.ts:118
 
 ___
 
@@ -233,13 +234,15 @@ ___
 
 ### Addr
 
-Ƭ **Addr**: [`PubKeyHash`](README.md#pubkeyhash)
+Ƭ **Addr**: `_PubKeyHash`
+
+A domain specific subtype of `ByteString`, representing an address.
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:29
+dist/smart-contract/builtins/types.d.ts:75
 
-dist/smart-contract/builtins/types.d.ts:22
+dist/smart-contract/builtins/types.d.ts:37
 
 ___
 
@@ -271,7 +274,7 @@ a ByteString represents a byte array.
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:33
+dist/smart-contract/builtins/types.d.ts:89
 
 ___
 
@@ -343,11 +346,13 @@ ___
 
 Ƭ **PubKey**: `_PubKey`
 
+A domain specific subtype of `ByteString`, representing a public key.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:25
+dist/smart-contract/builtins/types.d.ts:51
 
-dist/smart-contract/builtins/types.d.ts:18
+dist/smart-contract/builtins/types.d.ts:21
 
 ___
 
@@ -355,11 +360,13 @@ ___
 
 Ƭ **PubKeyHash**: `_PubKeyHash`
 
+A domain specific subtype of `ByteString`, representing an address.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:28
+dist/smart-contract/builtins/types.d.ts:69
 
-dist/smart-contract/builtins/types.d.ts:21
+dist/smart-contract/builtins/types.d.ts:33
 
 ___
 
@@ -397,11 +404,13 @@ ___
 
 Ƭ **Ripemd160**: `_Ripemd160`
 
+A domain specific subtype of `ByteString`, representing a RIPEMD-160 hash.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:27
+dist/smart-contract/builtins/types.d.ts:63
 
-dist/smart-contract/builtins/types.d.ts:20
+dist/smart-contract/builtins/types.d.ts:29
 
 ___
 
@@ -409,11 +418,13 @@ ___
 
 Ƭ **Sha1**: `_Sha1`
 
+A domain specific subtype of `ByteString`, representing a SHA-1 hash.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:30
+dist/smart-contract/builtins/types.d.ts:81
 
-dist/smart-contract/builtins/types.d.ts:24
+dist/smart-contract/builtins/types.d.ts:45
 
 ___
 
@@ -421,11 +432,13 @@ ___
 
 Ƭ **Sha256**: `_Sha256`
 
+A domain specific subtype of `ByteString`, representing a SHA-256 hash.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:31
+dist/smart-contract/builtins/types.d.ts:87
 
-dist/smart-contract/builtins/types.d.ts:23
+dist/smart-contract/builtins/types.d.ts:41
 
 ___
 
@@ -433,11 +446,13 @@ ___
 
 Ƭ **Sig**: `_Sig`
 
+A domain specific subtype of `ByteString`, representing a signature.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:26
+dist/smart-contract/builtins/types.d.ts:57
 
-dist/smart-contract/builtins/types.d.ts:19
+dist/smart-contract/builtins/types.d.ts:25
 
 ___
 
@@ -533,7 +548,7 @@ The auto keyword specifies that the type of the variable, of basic type, declare
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:46
+dist/smart-contract/builtins/types.d.ts:102
 
 ## Variables
 
@@ -732,7 +747,7 @@ returns true if equal; otherwise returns false
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:68
+dist/smart-contract/builtins/types.d.ts:124
 
 ___
 
@@ -1001,19 +1016,23 @@ ___
 
 ▸ **Addr**(`b`): [`Addr`](README.md#addr)
 
+Creates an `Addr` instance from a `ByteString`.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `b` | [`ByteString`](README.md#bytestring) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) | Input ByteString. |
 
 #### Returns
 
 [`Addr`](README.md#addr)
 
+- A domain specific address representation.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:29
+dist/smart-contract/builtins/types.d.ts:75
 
 ___
 
@@ -1061,19 +1080,23 @@ ___
 
 ▸ **PubKey**(`b`): [`PubKey`](README.md#pubkey)
 
+Creates a `PubKey` instance from a `ByteString`.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `b` | [`ByteString`](README.md#bytestring) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) | Input ByteString. |
 
 #### Returns
 
 [`PubKey`](README.md#pubkey)
 
+- A domain specific public key representation.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:25
+dist/smart-contract/builtins/types.d.ts:51
 
 ___
 
@@ -1081,19 +1104,23 @@ ___
 
 ▸ **PubKeyHash**(`b`): [`PubKeyHash`](README.md#pubkeyhash)
 
+Creates a `PubKeyHash` instance from a `ByteString`.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `b` | [`ByteString`](README.md#bytestring) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) | Input ByteString. |
 
 #### Returns
 
 [`PubKeyHash`](README.md#pubkeyhash)
 
+- A domain specific address representation.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:28
+dist/smart-contract/builtins/types.d.ts:69
 
 ___
 
@@ -1101,19 +1128,23 @@ ___
 
 ▸ **Ripemd160**(`b`): [`Ripemd160`](README.md#ripemd160)
 
+Creates a `Ripemd160` instance from a `ByteString`.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `b` | [`ByteString`](README.md#bytestring) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) | Input ByteString. |
 
 #### Returns
 
 [`Ripemd160`](README.md#ripemd160)
 
+- A domain specific RIPEMD-160 hash representation.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:27
+dist/smart-contract/builtins/types.d.ts:63
 
 ___
 
@@ -1121,19 +1152,23 @@ ___
 
 ▸ **Sha1**(`b`): [`Sha1`](README.md#sha1)
 
+Creates a `Sha1` instance from a `ByteString`.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `b` | [`ByteString`](README.md#bytestring) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) | Input ByteString. |
 
 #### Returns
 
 [`Sha1`](README.md#sha1)
 
+- A domain specific SHA-1 hash representation.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:30
+dist/smart-contract/builtins/types.d.ts:81
 
 ___
 
@@ -1141,19 +1176,23 @@ ___
 
 ▸ **Sha256**(`b`): [`Sha256`](README.md#sha256)
 
+Creates a `Sha256` instance from a `ByteString`.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `b` | [`ByteString`](README.md#bytestring) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) | Input ByteString. |
 
 #### Returns
 
 [`Sha256`](README.md#sha256)
 
+- A domain specific SHA-256 hash representation.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:31
+dist/smart-contract/builtins/types.d.ts:87
 
 ___
 
@@ -1161,19 +1200,23 @@ ___
 
 ▸ **Sig**(`b`): [`Sig`](README.md#sig)
 
+Creates a `Sig` instance from a `ByteString`.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `b` | [`ByteString`](README.md#bytestring) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `b` | [`ByteString`](README.md#bytestring) | Input ByteString. |
 
 #### Returns
 
 [`Sig`](README.md#sig)
 
+- A domain specific digital signature representation.
+
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:26
+dist/smart-contract/builtins/types.d.ts:57
 
 ___
 
@@ -1412,6 +1455,30 @@ ___
 #### Defined in
 
 dist/smart-contract/utils/index.d.ts:8
+
+___
+
+### fromByteString
+
+▸ **fromByteString**(`bs`): `string`
+
+convert ByteString to utf8 string
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `bs` | [`ByteString`](README.md#bytestring) | ByteString |
+
+#### Returns
+
+`string`
+
+utf8 string
+
+#### Defined in
+
+dist/smart-contract/utils/index.d.ts:18
 
 ___
 
@@ -1666,7 +1733,7 @@ Otherwise, `literal` should be in the format of utf8 literal, i.e. `hello world`
 
 #### Defined in
 
-dist/smart-contract/builtins/types.d.ts:41
+dist/smart-contract/builtins/types.d.ts:97
 
 ___
 

@@ -33,7 +33,7 @@ double-SHA256 hash of the serialization of some/all output amount with its locki
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:60
+dist/smart-contract/contract.d.ts:61
 
 ___
 
@@ -45,7 +45,7 @@ double-SHA256 hash of the serialization of some/all input outpoints, see [hashPr
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:54
+dist/smart-contract/contract.d.ts:55
 
 ___
 
@@ -57,7 +57,7 @@ double-SHA256 hash of the serialization of some/all input sequence values, see [
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:56
+dist/smart-contract/contract.d.ts:57
 
 ___
 
@@ -69,7 +69,7 @@ locktime of [transaction][https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactio
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:62
+dist/smart-contract/contract.d.ts:63
 
 ___
 
@@ -81,7 +81,7 @@ sequence number of [transaction input][https://wiki.bitcoinsv.io/index.php/Bitco
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:58
+dist/smart-contract/contract.d.ts:59
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:64
+dist/smart-contract/contract.d.ts:65
 
 ___
 
@@ -113,7 +113,7 @@ the specific UTXO spent by this transaction input
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:45
+dist/smart-contract/contract.d.ts:46
 
 ___
 
@@ -125,7 +125,7 @@ version number of [transaction][https://wiki.bitcoinsv.io/index.php/Bitcoin_Tran
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:43
+dist/smart-contract/contract.d.ts:44
 
 ## Methods
 
@@ -141,4 +141,4 @@ get the whole serialized sighash preimage
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:66
+dist/smart-contract/contract.d.ts:67

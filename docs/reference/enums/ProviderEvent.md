@@ -22,7 +22,7 @@ The provider will send a 'Connected' event after the connection is successful.
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:23
+dist/bsv/abstract-provider.d.ts:24
 
 ___
 
@@ -34,4 +34,4 @@ After the network connected to the provider changes, it will issue the 'NetworkC
 
 #### Defined in
 
-dist/bsv/abstract-provider.d.ts:25
+dist/bsv/abstract-provider.d.ts:26

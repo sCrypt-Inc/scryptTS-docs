@@ -51,7 +51,7 @@ and use `SigHash.value(preimage: SigHashPreimage)` to access the value field of 
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:972
+dist/smart-contract/builtins/functions.d.ts:985
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:975
+dist/smart-contract/builtins/functions.d.ts:988
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:976
+dist/smart-contract/builtins/functions.d.ts:989
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:977
+dist/smart-contract/builtins/functions.d.ts:990
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:973
+dist/smart-contract/builtins/functions.d.ts:986
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:974
+dist/smart-contract/builtins/functions.d.ts:987
 
 ## Methods
 
@@ -125,7 +125,7 @@ return hashOutputs `ByteString` in 32-byte hash
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1037
+dist/smart-contract/builtins/functions.d.ts:1050
 
 ___
 
@@ -149,7 +149,7 @@ return hashPrevouts `ByteString` in 32-byte little endian
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:989
+dist/smart-contract/builtins/functions.d.ts:1002
 
 ___
 
@@ -173,7 +173,7 @@ return hashSequence `ByteString` in 32-byte little endian
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:995
+dist/smart-contract/builtins/functions.d.ts:1008
 
 ___
 
@@ -197,7 +197,7 @@ return nLocktime
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1049
+dist/smart-contract/builtins/functions.d.ts:1062
 
 ___
 
@@ -221,7 +221,7 @@ return nLocktime `ByteString` in 4-byte little endian
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1043
+dist/smart-contract/builtins/functions.d.ts:1056
 
 ___
 
@@ -245,7 +245,7 @@ return nSequence
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1031
+dist/smart-contract/builtins/functions.d.ts:1044
 
 ___
 
@@ -269,7 +269,7 @@ return nSequence `ByteString` in 4-byte little endian
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1025
+dist/smart-contract/builtins/functions.d.ts:1038
 
 ___
 
@@ -293,7 +293,7 @@ return version `ByteString` in 4-byte little endian
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:983
+dist/smart-contract/builtins/functions.d.ts:996
 
 ___
 
@@ -317,7 +317,7 @@ return outpoint `ByteString` in 32-byte hash + 4-byte little endian
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1001
+dist/smart-contract/builtins/functions.d.ts:1014
 
 ___
 
@@ -341,7 +341,7 @@ return scriptCode `ByteString`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1007
+dist/smart-contract/builtins/functions.d.ts:1020
 
 ___
 
@@ -365,7 +365,7 @@ return sighash type
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1055
+dist/smart-contract/builtins/functions.d.ts:1068
 
 ___
 
@@ -389,7 +389,7 @@ return value
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1019
+dist/smart-contract/builtins/functions.d.ts:1032
 
 ___
 
@@ -413,4 +413,4 @@ return value `ByteString` in 8-byte little endian
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1013
+dist/smart-contract/builtins/functions.d.ts:1026

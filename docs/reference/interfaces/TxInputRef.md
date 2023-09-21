@@ -21,7 +21,7 @@ an index indicating the position of inputs in this transaction
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:16
+dist/smart-contract/contract.d.ts:17
 
 ___
 
@@ -33,4 +33,4 @@ transaction object
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:14
+dist/smart-contract/contract.d.ts:15

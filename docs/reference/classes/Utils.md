@@ -17,6 +17,8 @@ The Utils library provides a set of commonly used utility functions.
 
 ### Methods
 
+- [buildAddressOutput](Utils.md#buildaddressoutput)
+- [buildAddressScript](Utils.md#buildaddressscript)
 - [buildOpreturnScript](Utils.md#buildopreturnscript)
 - [buildOutput](Utils.md#buildoutput)
 - [buildPublicKeyHashOutput](Utils.md#buildpublickeyhashoutput)
@@ -58,6 +60,55 @@ dist/smart-contract/builtins/functions.d.ts:912
 
 ## Methods
 
+### buildAddressOutput
+
+▸ `Static` **buildAddressOutput**(`addr`, `amount`): [`ByteString`](../README.md#bytestring)
+
+constructs a standard payment (P2PKH) output from a given address and satoshi amount
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `addr` | `Ripemd160` | the recipient's address |
+| `amount` | `bigint` | the satoshi amount |
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+a `ByteString` representing the P2PKH output
+
+#### Defined in
+
+dist/smart-contract/builtins/functions.d.ts:970
+
+___
+
+### buildAddressScript
+
+▸ `Static` **buildAddressScript**(`addr`): [`ByteString`](../README.md#bytestring)
+
+constructs a standard payment (P2PKH) script from a given address
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `addr` | `Ripemd160` | the recipient's address |
+
+#### Returns
+
+[`ByteString`](../README.md#bytestring)
+
+a `ByteString` representing the P2PKH script
+
+#### Defined in
+
+dist/smart-contract/builtins/functions.d.ts:963
+
+___
+
 ### buildOpreturnScript
 
 ▸ `Static` **buildOpreturnScript**(`data`): [`ByteString`](../README.md#bytestring)
@@ -78,7 +129,7 @@ a ByteString contains the data payload
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:963
+dist/smart-contract/builtins/functions.d.ts:976
 
 ___
 
@@ -111,20 +162,20 @@ ___
 
 ▸ `Static` **buildPublicKeyHashOutput**(`pubKeyHash`, `amount`): [`ByteString`](../README.md#bytestring)
 
-build P2PKH output from PubKeyHash
+constructs a P2PKH output from a given PubKeyHash and satoshi amount
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `pubKeyHash` | `Ripemd160` | the address to receive change coin |
-| `amount` | `bigint` | satoshi amount |
+| `pubKeyHash` | `Ripemd160` | the recipient's public key hash |
+| `amount` | `bigint` | the satoshi amount |
 
 #### Returns
 
 [`ByteString`](../README.md#bytestring)
 
-a P2PKH output
+a `ByteString` representing the P2PKH output
 
 #### Defined in
 
@@ -136,19 +187,19 @@ ___
 
 ▸ `Static` **buildPublicKeyHashScript**(`pubKeyHash`): [`ByteString`](../README.md#bytestring)
 
-build P2PKH script from PubKeyHash
+constructs a P2PKH script from a given PubKeyHash
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `pubKeyHash` | `Ripemd160` | recipient's pubKeyHash |
+| `pubKeyHash` | `Ripemd160` | the recipient's public key hash |
 
 #### Returns
 
 [`ByteString`](../README.md#bytestring)
 
-a `ByteString` that represents P2PKH script
+a `ByteString` representing the P2PKH script
 
 #### Defined in
 

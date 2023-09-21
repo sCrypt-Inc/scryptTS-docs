@@ -44,7 +44,7 @@ serialized `ByteString`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1111
+dist/smart-contract/builtins/functions.d.ts:1124
 
 ___
 
@@ -68,7 +68,7 @@ serialized `ByteString`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1105
+dist/smart-contract/builtins/functions.d.ts:1118
 
 ___
 
@@ -92,4 +92,4 @@ serialized `ByteString`
 
 #### Defined in
 
-dist/smart-contract/builtins/functions.d.ts:1117
+dist/smart-contract/builtins/functions.d.ts:1130

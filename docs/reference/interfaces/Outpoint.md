@@ -21,7 +21,7 @@ index of the specific output
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:34
+dist/smart-contract/contract.d.ts:35
 
 ___
 
@@ -33,4 +33,4 @@ txid of the transaction holding the output
 
 #### Defined in
 
-dist/smart-contract/contract.d.ts:32
+dist/smart-contract/contract.d.ts:33
