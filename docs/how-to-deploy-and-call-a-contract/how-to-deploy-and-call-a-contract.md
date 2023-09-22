@@ -13,10 +13,10 @@ After you've finished writing a contract, you can deploy and call it. But first,
 
 ### Compile the Contract
 
-First, call function `SmartContract.compile()` to compile the contract to Bitcoin script, so it can be included in a transaction's output.
+First, call function `SmartContract.loadArtifact()` to compile the contract to Bitcoin script, so it can be included in a transaction's output.
 
 ```ts
-await MyContract.compile()
+await MyContract.loadArtifact()
 ```
 
 ### Contract Instance
@@ -311,7 +311,7 @@ Here is the complete sample code for the deployment and call of a P2PKH contract
 import { privateKey } from '../../utils/privateKey';
 
 // compile contract
-await P2PKH.compile()
+await P2PKH.loadArtifact()
 
 // public key of the `privateKey`
 const publicKey = privateKey.publicKey
