@@ -196,7 +196,7 @@ The generated project will also contain a deployment script `deploy.ts`. Let's t
 
 ```ts
 async function main() {
-    await Verifier.compile()
+    await Verifier.loadArtifact()
     
     // TODO: Adjust the amount of satoshis locked in the smart contract:
     const amount = 100
@@ -255,7 +255,7 @@ import { getDefaultSigner } from './tests/utils/helper'
 import { PathLike } from 'fs'
 
 export async function call(txId: string, proofPath: PathLike) {
-    await Verifier.compile()
+    await Verifier.loadArtifact()
 
     // Fetch TX via provider and reconstruct contract instance
     const provider = new DefaultProvider()
