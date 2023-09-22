@@ -80,7 +80,7 @@ class TestLib extends SmartContract {
 
 describe('Test SmartContractLib `Lib`', () => {
   before(async() => {
-    await TestLib.compile()
+    await TestLib.loadArtifact()
   })
 
   it('should pass integration test successfully.', () => {
