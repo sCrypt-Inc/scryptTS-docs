@@ -102,20 +102,20 @@ static bidTxBuilder(
     const nextInstance = current.next()
     nextInstance.bidder = bidder
 
-    const unsignedTx: Transaction = new Transaction()
+    const unsignedTx: Transaction = new bsv.Transaction()
         // add contract input
         .addInput(current.buildContractInput())
         // build next instance output
         .addOutput(
-            new Transaction.Output({
+            new bsv.Transaction.Output({
                 script: nextInstance.lockingScript,
                 satoshis: Number(bid),
             })
         )
         // build refund output
         .addOutput(
-            new Transaction.Output({
-                script: Script.fromHex(
+            new bsv.Transaction.Output({
+                script: bsv.Script.fromHex(
                     Utils.buildPublicKeyHashScript(pubKey2Addr(current.bidder))
                 ),
                 satoshis: current.balance,
