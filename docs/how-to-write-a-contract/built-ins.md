@@ -388,6 +388,8 @@ class TimeLock extends SmartContract {
 This mechanism can be employed solely to ensure that a method can be called **after** a specific point in time. In contrast, it cannot be employed to ensure that a method is called **before** a specific point in time. 
 :::
 
+To learn more about time locks, see the [dedicated doc section](../advanced/timeLock.md).
+
 ### `insertCodeSeparator`
 
 Method `insertCodeSeparator(): void` inserts an [`OP_CODESEPARATOR`](../advanced/codeseparator.md), where it is invoked.

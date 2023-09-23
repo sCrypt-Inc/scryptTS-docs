@@ -1,12 +1,12 @@
 ---
-sidebar_position: 2
+sidebar_position: 9
 ---
 
-# Tutorial 2: Time Lock
+# Time Lock
 
 ## Overview
 
-In this tutorial, we will go over how to create a smart contract, which has a public method, that can only be unlocked once a certain point in time has passed.
+In this section, we will go over how to create a smart contract, which has a public method, that can only be unlocked once a certain point in time has passed.
 
 ### What is a time lock?
 
@@ -26,19 +26,13 @@ Note that the value of `locktime` can either be a Unix timestamp or a block heig
 
 sCrypt offers a convenient built-in function `timeLock` to enforce this constraint.
 
-## Contract properties
-
-Let's declare the properties of our smart contract:
-
 ```ts
 // Time after which our public method can be called.
 @prop()
 readonly matureTime: bigint // Can be a timestamp or block height.
-```
 
-## The Time-Locked Public Method
+// ...
 
-```ts
 @method()
 public unlock() {
     // The following assertion ensures that the `unlock` method can
@@ -49,6 +43,53 @@ public unlock() {
 
 It is important to note that this mechanism can be employed solely to ensure that a method can be called **after** a specific point in time. In contrast, it cannot be employed to ensure that a method is called **before** a specific point in time. 
 
+
+#### Calling
+
+Upon a method call to the `unlock` method defined above, we need to set the `locktime` value of the transaction that will call the public method. We can do this by simply setting the `locktime` paramater of `MethodCallOptions`.
+
+```ts
+timeLock.methods.unlock(
+    {
+        lockTime: 1673523720
+    } as MethodCallOptions<TimeLock>
+)
+```
+
+Internally this will also set the inputs `sequence` to a value lower than `0xffffffff`. We can also set this value explicitly.
+
+
+```ts
+timeLock.methods.unlock(
+    {
+        lockTime: 1673523720,
+        sequence: 0
+    } as MethodCallOptions<TimeLock>
+)
+```
+
+Lastly, if we are using a [custom transaction builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md) we need to set these values for the unsigned transaction that we are building there.
+
+```ts
+instance.bindTxBuilder('unlock',
+  async (
+    current: TimeLock,
+    options: MethodCallOptions<TimeLock>
+  ) => {
+
+    // ...
+
+    if (options.lockTime) {
+      unsignedTx.setLockTime(options.lockTime)
+    }
+    unsignedTx.setInputSequence(0, 0)
+    
+    // ...
+  }
+)
+```
+
+
 ## How does it work?
 
 Under the hood, the `timeLock` function asserts that the `sequence` value of our calling transaction is less than `UINT_MAX`. This ensures that the Bitcoin network will enforce the `locktime` value.
@@ -57,10 +98,4 @@ Next, it checks if our target time-lock value indicates a block height or a Unix
 
 Lastly, the method verifies that the value of `locktime` is greater than or equal to the time-lock we have passed as an argument.
 
-For more information on how the `locktime` and `sequence` values work, please read the [BSV wiki page](https://wiki.bitcoinsv.io/index.php/NLocktime_and_nSequence)."
-
-## Conclusion
-
-Congratulations! You have completed the time-lock tutorial!
-
-The full code along with [tests](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/timeLock.test.ts) can be found in sCrypt's [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/timeLock.ts).
+For more information on how the `locktime` and `sequence` values work, please read the [BSV wiki page](https://wiki.bitcoinsv.io/index.php/NLocktime_and_nSequence).
