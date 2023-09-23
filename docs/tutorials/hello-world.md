@@ -67,11 +67,11 @@ npx scrypt-cli compile
 
 This command will generate a contract artifact file at `artifacts\helloworld.json`.
 
-2. Or call the `compile()` function in the code:
+2. Or call the `loadArtifact()` function in the code:
 
 
 ```ts
-await Helloworld.compile()
+await Helloworld.loadArtifact()
 ```
 
 
@@ -95,7 +95,7 @@ import { toByteString, sha256 } from 'scrypt-ts'
 
     const message = toByteString('hello world', true)
 
-    await Helloworld.compile()
+    await Helloworld.loadArtifact()
     const instance = new Helloworld(sha256(message))
 
     // connect to a signer
