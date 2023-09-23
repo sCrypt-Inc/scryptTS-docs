@@ -180,15 +180,15 @@ Using [default tx builder](../how-to-deploy-and-call-a-contract/how-to-customize
 In Function `static bidTxBuilder(current: Auction, options: MethodCallOptions<Auction>, bidder: PubKey, bid: bigint): Promise<ContractTransaction>`, we add all three outputs as designed.
 
 ```ts
-const unsignedTx: Transaction = new Transaction()
+const unsignedTx: Transaction = new bsv.Transaction()
     // add contract input
     .addInput(current.buildContractInput())
     // build next instance output
-    .addOutput(new Transaction.Output({script: nextInstance.lockingScript, satoshis: Number(bid),}))
+    .addOutput(new bsv.Transaction.Output({script: nextInstance.lockingScript, satoshis: Number(bid),}))
     // build refund output
     .addOutput(
-        new Transaction.Output({
-            script: Script.fromHex(Utils.buildPublicKeyHashScript(current.bidder)),
+        new bsv.Transaction.Output({
+            script: bsv.Script.fromHex(Utils.buildPublicKeyHashScript(current.bidder)),
             satoshis: current.balance,
         })
     )
@@ -285,20 +285,20 @@ export class Auction extends SmartContract {
         const nextInstance = current.next()
         nextInstance.bidder = bidder
 
-        const unsignedTx: Transaction = new Transaction()
+        const unsignedTx: Transaction = new bsv.Transaction()
             // add contract input
             .addInput(current.buildContractInput())
             // build next instance output
             .addOutput(
-                new Transaction.Output({
+                new bsv.Transaction.Output({
                     script: nextInstance.lockingScript,
                     satoshis: Number(bid),
                 })
             )
             // build refund output
             .addOutput(
-                new Transaction.Output({
-                    script: Script.fromHex(
+                new bsv.Transaction.Output({
+                    script: bsv.Script.fromHex(
                         Utils.buildPublicKeyHashScript(pubKey2Addr(current.bidder))
                     ),
                     satoshis: current.balance,

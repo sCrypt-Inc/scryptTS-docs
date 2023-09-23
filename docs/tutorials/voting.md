@@ -243,7 +243,7 @@ const signer = new TestWallet(privateKey, new DefaultProvider({
 }))
 
 async function main() {
-    await Voting.compile()
+    await Voting.loadArtifact()
 
     const candidateNames: FixedArray<Name, typeof N> = [
         toByteString('iPhone', true),

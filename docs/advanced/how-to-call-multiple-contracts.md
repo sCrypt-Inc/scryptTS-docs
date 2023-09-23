@@ -25,8 +25,8 @@ import { getDefaultSigner } from '../utils/helper'
 import { HashPuzzle } from '../../src/contracts/hashPuzzle'
 
 async function main() {
-    await Counter.compile()
-    await HashPuzzle.compile()
+    await Counter.loadArtifact()
+    await HashPuzzle.loadArtifact()
 
     const signer = getDefaultSigner()
     let counter = new Counter(1n)
