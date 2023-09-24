@@ -87,7 +87,7 @@ applyOffchainUpdatesForRefund(donator: PubKey) {
 ```
 
 :::note
-Those method names **MUST** follow the pattern `applyOffchainUpdatesForXxx` where `Xxx` is the name of the corresponding public method with first letter capitalized
+Those method names **MUST** follow the pattern `applyOffchainUpdatesForXxx` where `Xxx` is the name of the corresponding public method with first letter capitalized This pattern is used to make it easy to identify helper functions in the codebase.
 :::
 
 In this example, we only need to add two helper functions because `collect` doesn't change any stateful properties.
@@ -109,6 +109,7 @@ const instance = CrowdfundReplay.fromTx(
     }
 )
 ```
+**Note**: To learn more about how the `fromTx()` and `getTransaction()` function works, please see the documentation: [here](../how-to-write-a-contract/built-ins.md#fromtx).
 
 ## Step 3. Replay Instance to Latest States
 
@@ -124,5 +125,6 @@ if (latestInstance) {
     ...
 }
 ```
+**Note**: If the `replayToLatest()` function returns `null`, it means that there are no state changes for the contract instance. This can happen if the contract has not been interacted with since it was deployed, or if all state changes have been undone.
 
 You can also refer to the full complete [test code](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/crowdfundReplay.test.ts#L109-L137) for more details.
