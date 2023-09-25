@@ -247,8 +247,9 @@ To decrypt a message:
 ```ts
 const decryption = new bsv.ECIES()
 decryption.privateKey(recipientPrivateKey)
-const msg = decryption.decrypt(ciphertext).toString()
+const msg = decryption.decrypt(ciphertext)
 console.log(msg)
+// "Hello sCrypt!"
 ```
 
 In this example, `recipientPrivateKey` is the private key of the recipient (the one corresponding to the public key used for encryption).
