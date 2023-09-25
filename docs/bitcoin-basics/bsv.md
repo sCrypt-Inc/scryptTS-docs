@@ -213,6 +213,45 @@ const opRetScript: bsv.Script = bsv.Script.buildSafeDataOut(['Hello', 'from', 's
 
 We can add the resulting `bsv.Script` object to an output as we showed [above](#constructing-transactions).
 
+## ECIES
+
+ECIES (Elliptic Curve Integrated Encryption Scheme) is a hybrid encryption scheme that combines the strengths of public-key cryptography and symmetric encryption. It allows two parties, each having an elliptic curve key pair, to exchange encrypted messages. The `bsv` submodule provides the `ECIES` class to easily implement this encryption scheme in your sCrypt projects.
+
+Here's how to use it:
+
+### Encryption
+
+To encrypt a message using ECIES:
+
+1. First, create an instance of the `ECIES` class.
+2. Specify the public key of the recipient with the `publicKey` method.
+3. Call the `encrypt` method with the message you wish to encrypt.
+
+```ts
+const msg = 'Hello sCrypt!'
+const encryption = new bsv.ECIES()
+encryption.publicKey(recipientPublicKey)
+const ciphertext = encryption.encrypt(msg)
+```
+
+In this example, `recipientPublicKey` is the recipient's public key.
+
+### Decryption
+
+To decrypt a message:
+
+1. Create another instance of the `ECIES` class.
+2. Set the recipient's private key using the `privateKey` method.
+3. Call the `decrypt` method, passing the ciphertext you wish to decrypt.
+
+```ts
+const decryption = new bsv.ECIES()
+decryption.privateKey(recipientPrivateKey)
+const msg = decryption.decrypt(ciphertext).toString()
+console.log(msg)
+```
+
+In this example, `recipientPrivateKey` is the private key of the recipient (the one corresponding to the public key used for encryption).
 
 ## References
 
