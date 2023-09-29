@@ -4,9 +4,12 @@ sidebar_position: 3
 
 # Funglible Tokens - FTs
 
-Just like NFTs, `scrypt-ts` also supports fungible tokens. Under the hood it utilizes the [`bsv-20` protocol](https://docs.1satordinals.com/bsv20).
+Just like NFTs, `scrypt-ord` also supports fungible tokens. Under the hood it utilizes the [`bsv-20` protocol](https://docs.1satordinals.com/bsv20).
 
-Currently, the SDK supports both v1 and v2 of the `bsv-20` FT protocol.
+BSV-20 is a protocol for creating fungible tokens on the Bitcoin SV blockchain. Fungible tokens are interchangeable with each other, and can be used to represent a variety of assets, such as currencies, securities, and in-game items.
+
+`scrypt-ord` supports both v1 and v2 of the `BSV-20` FT protocol.
+
 
 
 ## v1
