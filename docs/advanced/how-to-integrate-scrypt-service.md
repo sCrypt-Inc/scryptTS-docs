@@ -203,7 +203,7 @@ const fs = require('fs').promises;
 const util = require('util');
 
 // Async function to read a JSON file
-async function fetchArtifactFromFile(filePath) {
+async function readArtifactFromFile(filePath) {
   try {
     // Read the file using fs.promises.readFile and await for the result
     const data = await fs.readFile(filePath, 'utf8');
@@ -226,7 +226,7 @@ async function main() {
     const artifactFilePath = 'path_to_your_json_file.json';
 
     // Fetch the JSON artifact data from the file
-    const artifact = await fetchArtifactFromFile(artifactFilePath);
+    const artifact = await readArtifactFromFile(artifactFilePath);
 
     const apiKey = '[Your API key]';
     const webhookUrl = 'https://api.scrypt.io/webhooks/create'; // Use 'https://testnet-api.scrypt.io' for testnet
