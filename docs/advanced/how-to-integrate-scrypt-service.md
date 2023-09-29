@@ -198,6 +198,28 @@ A [contract artifact](../how-to-integrate-a-frontend/how-to-integrate-a-frontend
 Besides adding webhooks in dashboard, you can add them **programmatically**.
 
 ```js
+
+const fs = require('fs').promises; 
+const util = require('util');
+
+// Async function to read a JSON file
+async function fetchArtifactFromFile(filePath) {
+  try {
+    // Read the file using fs.promises.readFile and await for the result
+    const data = await fs.readFile(filePath, 'utf8');
+    
+    // Parse the JSON data
+    const jsonData = JSON.parse(data);
+    
+    // Return the parsed JSON object
+    return jsonData;
+  } catch (error) {
+    // Handle errors, e.g., file not found
+    throw new Error('Error reading JSON file: ' + error.message);
+  }
+}
+
+
 async function main() {
   try {
     // Provide the path to your JSON artifact file
