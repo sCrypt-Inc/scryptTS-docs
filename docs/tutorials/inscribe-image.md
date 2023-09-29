@@ -8,6 +8,9 @@ sidebar_position: 8
 
 In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts) as an example, to introduce how to inscribe an image with [sCrypt](https://scrypt.io/) and transfer the [1Sat Ordinals](https://docs.1satordinals.com/) inscription with a Smart Contract.
 
+**Note**: The contract instance must be funded with some BSV before inscribing the image.
+
+
 To enable all these features, you should install `scrypt-ord` as an dependency in your project.
 
 ```bash
@@ -87,6 +90,15 @@ const { tx: transferTx } = await hashPuzzle.methods.unlock(
 ```
 
 To represent the receiver, we only need to pass the receiver instance to the key `transfer` of struct `MethodCallOptions`.
+
+### Benefits of Using Smart Contracts
+Smart Contracts offer a number of benefits for inscribing and transferring inscriptions, including:
+
+The ability to create complex and efficient transactions. For example, we could use a Smart Contract to create a marketplace for inscriptions, where buyers and sellers can interact in a secure and trustless manner.
+
+The ability to implement custom logic. For example, we could use a Smart Contract to create a voting system, where users can vote on inscriptions using their BSV.
+
+Overall, Smart Contracts offer a powerful and flexible way to interact with inscriptions on the BSV blockchain.
 
 ## Conclusion
 
