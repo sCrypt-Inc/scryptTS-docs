@@ -198,75 +198,72 @@ A [contract artifact](../how-to-integrate-a-frontend/how-to-integrate-a-frontend
 Besides adding webhooks in dashboard, you can add them **programmatically**.
 
 ```js
-function main() {
 
-    fetch('https://api.scrypt.io/webhooks/create', { // use 'https://testnet-api.scrypt.io' for testnet
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer [Your API key]"
-        },
-        method: 'POST',
-        body:  JSON.stringify({
-            url: 'http://127.0.0.1:3005/api/webhooks/test_notify',
-            contractId: {
-                txId: "1fa604263d2a16f6292f788e391b83ea7037fb9eb2ed0055ab5802ab2d090ef5",
-                outputIndex: 0
-            },
-            desc: "test webhook",
-            artifact: {
-                "version": 9,
-                "compilerVersion": "1.19.0+commit.72eaeba",
-                "contract": "Demo",
-                "md5": "cd1a4305e8c9c821c0c003a5990f6cfc",
-                "structs": [],
-                "library": [],
-                "alias": [],
-                "abi": [
-                    {
-                        "type": "function",
-                        "name": "add",
-                        "index": 0,
-                        "params": [
-                            {
-                                "name": "z",
-                                "type": "int"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "function",
-                        "name": "sub",
-                        "index": 1,
-                        "params": [
-                            {
-                                "name": "z",
-                                "type": "int"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "constructor",
-                        "params": [
-                            {
-                                "name": "x",
-                                "type": "int"
-                            },
-                            {
-                                "name": "y",
-                                "type": "int"
-                            }
-                        ]
-                    }
-                ],
-                "stateProps": [],
-                "buildType": "debug",
-                "file": "file:///...",
-                "hex": "<x><y>5279008763537952795279615179517993517a75517a75619c77777777675279518763537952795279949c7777777767006868",
-                "sourceMapFile": ""
-            }
-        })
-    }).then(res => res.json()).then(data => console.log(data))
+const fs = require('fs').promises; 
+const util = require('util');
+
+// Async function to read a JSON file
+async function fetchArtifactFromFile(filePath) {
+  try {
+    // Read the file using fs.promises.readFile and await for the result
+    const data = await fs.readFile(filePath, 'utf8');
+    
+    // Parse the JSON data
+    const jsonData = JSON.parse(data);
+    
+    // Return the parsed JSON object
+    return jsonData;
+  } catch (error) {
+    // Handle errors, e.g., file not found
+    throw new Error('Error reading JSON file: ' + error.message);
+  }
 }
+
+
+async function main() {
+  try {
+    // Provide the path to your JSON artifact file
+    const artifactFilePath = 'path_to_your_json_file.json';
+
+    // Fetch the JSON artifact data from the file
+    const artifact = await fetchArtifactFromFile(artifactFilePath);
+
+    const apiKey = '[Your API key]';
+    const webhookUrl = 'https://api.scrypt.io/webhooks/create'; // Use 'https://testnet-api.scrypt.io' for testnet
+
+    const requestBody = {
+      url: 'http://127.0.0.1:3005/api/webhooks/test_notify',
+      contractId: {
+        txId: "1fa604263d2a16f6292f788e391b83ea7037fb9eb2ed0055ab5802ab2d090ef5",
+        outputIndex: 0
+      },
+      desc: "test webhook",
+      artifact: artifact // Use the fetched artifact data here
+    };
+
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create webhook');
+    }
+
+    const responseData = await response.json();
+    console.log(responseData);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Call the main function to start the process
+main();
+
 ```
 
 ##### Webhook Request and Response
