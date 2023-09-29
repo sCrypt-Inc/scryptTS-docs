@@ -87,7 +87,14 @@ For now, the contract instance holds the token and we try to transfer it to a P2
 Class `BSV20P2PKH` represents a P2PKH address that can hold BSV20 tokens. Its constructor takes BSV20 fields and an receiving address as parameters.
 
 ```ts
-const receiver = new BSV20P2PKH(
+const receiver1 = new BSV20P2PKH(
+    tick,
+    max,
+    lim,
+    Addr(address.toByteString())
+)
+
+const receiver2 = new BSV20P2PKH(
     tick,
     max,
     lim,
@@ -100,15 +107,33 @@ const receiver = new BSV20P2PKH(
 Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashPuzzleFT` as follows.
 
 ```ts
+// Call the contract
 const { tx: transferTx } = await hashPuzzle.methods.unlock(message, {
-    transfer: {
-        instance: receiver,
-        amt: 1n,
+  transfer: [
+    {
+      instance: receiver1,
+      amt: 4n,
     },
-} as MethodCallOptions<HashPuzzleFT>)
+    {
+      instance: receiver2,
+      amt: 4n,
+    },
+  ] as MethodCallOptions<HashPuzzleNFT>,
+})
+
 ```
 
-In this case, we transfer `1` token to the receiver. The default transaction builder will automatically add a token change output on the transaction, you can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `MethodCallOptions`.
+This code will create a transaction that transfers 4 inscriptions to `receiver1` and 4 inscriptions to `receiver2`.
+
+The UTXO model allows us to send inscriptions to multiple receivers in a single transaction. This is because each UTXO can represent multiple inscriptions.
+
+One UTXO with 4 inscriptions for `receiver1`
+
+One UTXO with 4 inscriptions for `receiver2`
+
+The UTXO model is a powerful feature of BSV20 that allows us to create complex and efficient transactions.
+
+ The default transaction builder will automatically add a token change output on the transaction, you can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `MethodCallOptions`.
 
 ## Conclusion
 
