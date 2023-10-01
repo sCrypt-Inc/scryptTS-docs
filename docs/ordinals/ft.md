@@ -14,7 +14,7 @@ BSV-20 is a protocol for creating fungible tokens on the Bitcoin SV blockchain. 
 
 ## v1
 
-Tokens utilizing the first version of the `bsv-20` must be initialized by a **deployment** inscription, which specifies the tokens ticker symbol, amount and mint limit. For more information refer to the [1Sat docs](https://docs.1satordinals.com/bsv20#v1-mint-first-is-first-mode).
+Tokens utilizing the first version of the `bsv-20` must be initialized by a **deployment** inscription, which specifies the token's ticker symbol, amount and mint limit. For more information, refer to the [1Sat docs](https://docs.1satordinals.com/bsv20#v1-mint-first-is-first-mode).
 
 
 To create a v1 token smart contract, have it extend the `BSV20V1` class:
@@ -37,7 +37,8 @@ class HashPuzzleFT extends BSV20V1 {
 }
 ```
 
-As you can see above, the constructor of contract extending the `BSV20V1` takes as parameters all of the needed information for the token deployment, succeeded by other parameters needed you use for your contract (`hash` in this particular example).
+As you can see above, the constructor of contract extending the `BSV20V1` takes as parameters all of the needed information for the token deployment, succeeded by other parameters needed you use for your contract (`hash` in this particular example). 
+Each constructor extending the `BSV20V1` class must also call the instances `init` method and pass the constructors arguments. It is important to call this function **after** the call to `super`.
 
 
 ### Deployment
@@ -76,7 +77,7 @@ console.log("Minted tx: ", mintTx.id);
 
 Note, that if the amount exceeds the limit set above, or the token was already wholely minted, the transaction won't be considered valid by 1Sat indexers.
 
-The minted amount can then be transferred by unlocking the mint transaction:
+The minted amount can then be transferred by calling the contract, as in [regular sCrypt contracts](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
 
 ```ts
 // Transfer
@@ -109,8 +110,9 @@ for (let i = 0; i < 3; i++) {
   // Update instance for next iteration.
   hashPuzzle = recipients[0].instance as HashPuzzleFT;
 }
-
 ```
+
+Note that the new recipient smart contract instance is passed as a parameter named `transfer` during the call to the deployed instance. The `transfer` parameter is an array of contract instances that extend `BSV20V1`.
 
 #### Transfer Existing FT to a Smart Contract
 

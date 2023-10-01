@@ -30,6 +30,8 @@ export class HashPuzzleNFT extends OneSatNFT {
 ```
 
 The contract above represents an NFT that can be unlocked / transferred by providing the secret pre-image of a hash value.
+Each constructor extending the `OneSatNFT` class must also call the instances `init` method and pass the constructors arguments. It is important to call this function **after** the call to `super`.
+
 
 ## Inscribe
 
@@ -96,7 +98,9 @@ const { tx: transferTx } = await instance.methods.unlock(
 console.log("Transferred NFT: ", transferTx.id);
 ```
 
-### Transfer Existing NFT
+The `transfer` parameter can be any single instance of a contract that extends `OneSatNFT`.
+
+### Transfer Existing NFT to a Smart Contract
 
 Suppose you would like to transfer an existing NFT that was already inscribed in the past, which is typically locked using a `P2PKH` lock.
 You can fetch all the needed data for the transfer by either using `fromUTXO` or `getLatestInstance`. The former takes the deployed NFT's current UTXO, while the latter takes the NFT's [origin](https://docs.1satordinals.com/readme/terms#origin).
