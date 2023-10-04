@@ -181,7 +181,7 @@ const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
 
 What actually happens during the call is the following.
 
-1. Build an unsigned transaction by calling the tx builder, which can be a default or a customized one introduced in [this section](./how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx#customizedcalltxbuilder), for a public `@method`.
+1. Build an unsigned transaction by calling the tx builder, which can be a default or a customized one introduced in [this section](./how-to-customize-a-contract-tx.md), for a public `@method`.
 
 2. Use the instance's signer to sign the transaction. Note that `instance.foo` could be invoked during this process in order to get a valid unlocking script for the input.
 
