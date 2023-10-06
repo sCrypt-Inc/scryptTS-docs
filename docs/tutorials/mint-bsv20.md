@@ -6,7 +6,7 @@ sidebar_position: 9
 
 ## Overview
 
-In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts) as an example, to introduce how to mint a BSV20 token (Version 1) with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
+In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts) as an example, to introduce how to mint a BSV20 Token (version 1) with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
 
 To enable all these features, you should install `scrypt-ord` as an dependency in your project.
 
@@ -56,7 +56,7 @@ The base class `BSV20V1` encapsulated helper functions to handle BSV20 tokens. I
 
 ## Deploy and Mint
 
-For BSV20 version 1, tokens must be deployed before mint. We first create an instance of contract `HashPuzzleNFT`, then call `deployToken` to deploy, and call `mint` at last to mint tokens into the contract instance.
+For BSV20 version 1, tokens must be deployed before mint. We first create an instance of contract `HashPuzzleFT`, then call function `deployToken` to deploy the new token, and call `mint` at last to mint tokens into the contract instance.
 
 ```ts
 // BSV20 fields
@@ -68,9 +68,9 @@ const message = toByteString('Hello sCrpyt', true)
 const hash = sha256(message)
 const hashPuzzle = new HashPuzzleFT(tick, max, lim, hash)
 ...
-// deploy BSV20
+// deploy the new BSV20 token $HELLO
 await hashPuzzle.deployToken()
-// mint BSV20 into contract instance
+// mint 10 $HELLO into contract instance
 const mintTx = await hashPuzzle.mint(10n)
 ```
 
@@ -87,19 +87,8 @@ For now, the contract instance holds the token and we try to transfer it to a P2
 Class `BSV20P2PKH` represents a P2PKH address that can hold BSV20 tokens. Its constructor takes BSV20 fields and an receiving address as parameters.
 
 ```ts
-const receiver1 = new BSV20P2PKH(
-    tick,
-    max,
-    lim,
-    Addr(address.toByteString())
-)
-
-const receiver2 = new BSV20P2PKH(
-    tick,
-    max,
-    lim,
-    Addr(address.toByteString())
-)
+const alice = new BSV20P2PKH(tick, max, lim, Addr(addressAlice.toByteString()))
+const bob = new BSV20P2PKH(tick, max, lim, Addr(addressBob.toByteString()))
 ```
 
 ### Step 2. Call the Contract
@@ -111,32 +100,27 @@ Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-dep
 const { tx: transferTx } = await hashPuzzle.methods.unlock(message, {
   transfer: [
     {
-      instance: receiver1,
-      amt: 4n,
+      instance: alice,
+      amt: 2n,
     },
     {
-      instance: receiver2,
-      amt: 4n,
+      instance: bob,
+      amt: 5n,
     },
-  ] as MethodCallOptions<HashPuzzleNFT>,
+  ] as MethodCallOptions<HashPuzzleFT>,
 })
-
 ```
 
-This code will create a transaction that transfers 4 inscriptions to `receiver1` and 4 inscriptions to `receiver2`.
+This code will create a transaction that transfers 2 tokens to `alice` and 5 to `bob`.
 
-The UTXO model allows us to send inscriptions to multiple receivers in a single transaction. This is because each UTXO can represent multiple inscriptions.
+The default transaction builder will automatically add a token change output on the transaction. In this example, it will automatically add a token change output with 3 tokens, paying to the default address of the instance connected signer. You can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `MethodCallOptions`.
 
-One UTXO with 4 inscriptions for `receiver1`
+![](https://aaron67-public.oss-cn-beijing.aliyuncs.com/202310061106325.png)
 
-One UTXO with 4 inscriptions for `receiver2`
-
-The UTXO model is a powerful feature of BSV20 that allows us to create complex and efficient transactions.
-
- The default transaction builder will automatically add a token change output on the transaction, you can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `MethodCallOptions`.
+The UTXO model is a powerful feature of BSV20, we can send tokens to multiple receivers in a single transaction, allowing us to create complex and efficient transactions.
 
 ## Conclusion
 
-Great! You have finished the tutorial on how to mint and transfer the BSV20 token with a Smart Contract.
+Great! You have finished the tutorial on how to mint and transfer the BSV20 Token with a Smart Contract.
 
 The full complete [contract](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/hashPuzzleFT.ts) and [example](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/examples/mintBSV20.ts) can be found in sCrypt's [repository](https://github.com/sCrypt-Inc/scrypt-ord).

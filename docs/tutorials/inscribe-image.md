@@ -47,7 +47,7 @@ The base class `OneSatNFT` encapsulated helper functions to handle inscriptions.
 
 ## Inscribe Image
 
-Things get easier. We first create an instance of contract `HashPuzzleNFT`, then call `mintImageNft` on the instance to inscribe an image.
+Things get easier. We first create an instance of contract `HashPuzzleNFT`, then call `inscribeImage` on the instance to inscribe an image.
 
 ```ts
 // create contract instance
@@ -57,8 +57,12 @@ const hashPuzzle = new HashPuzzleNFT(hash)
 ...
 // inscribe image into contract
 const image = readImage()
-const mintTx = await hashPuzzle.mintImageNft(image, 'image/png')
+const mintTx = await hashPuzzle.inscribeImage(image, 'image/png')
 ```
+
+Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this example, then you can check your inscription on the explorer.
+
+![](https://aaron67-public.oss-cn-beijing.aliyuncs.com/202310061056575.png)
 
 Normally, we use a P2PKH address to receive the inscription, then the inscription is controlled by a private key the same as the general P2PKH.
 
