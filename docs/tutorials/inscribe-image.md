@@ -60,9 +60,15 @@ const image = readImage()
 const mintTx = await hashPuzzle.inscribeImage(image, 'image/png')
 ```
 
-Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this example, then you can check your inscription on the explorer.
+Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this example.
 
-![](https://aaron67-public.oss-cn-beijing.aliyuncs.com/202310061056575.png)
+![](../../static/img/inscribe-image.png)
+
+Then you can check your inscription on the explorer.
+
+![](../../static/img/inscribe-image-inscribe-tx.png)
+
+![](../../static/img/inscribe-image-transfer-tx.png)
 
 Normally, we use a P2PKH address to receive the inscription, then the inscription is controlled by a private key the same as the general P2PKH.
 

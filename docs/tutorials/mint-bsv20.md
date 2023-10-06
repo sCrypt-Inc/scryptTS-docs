@@ -26,11 +26,11 @@ class HashPuzzleFT extends BSV20V1 {
 }
 ```
 
-2. The constructor has extra parameters - `tick`, `max`, and `lim` - representing [BSV20 fields](https://docs.1satordinals.com/bsv20#v1-deploy-first-is-first-mode-only).
+2. The constructor has extra parameters - `tick`, `max`, `lim`, and `dec` - representing [BSV20 fields](https://docs.1satordinals.com/bsv20#v1-deploy-first-is-first-mode-only).
 
 ```ts
-constructor(tick: ByteString, max: bigint, lim: bigint, hash: Sha256) {
-    super(tick, max, lim)
+constructor(tick: ByteString, max: bigint, lim: bigint, dec: bigint, hash: Sha256) {
+    super(tick, max, lim, dec)
     this.init(...arguments)
     this.hash = hash
 }
@@ -63,10 +63,11 @@ For BSV20 version 1, tokens must be deployed before mint. We first create an ins
 const tick = toByteString('HELLO', true)
 const max = 100n
 const lim = 10n
+const dec = 0n
 // create contract instance
 const message = toByteString('Hello sCrpyt', true)
 const hash = sha256(message)
-const hashPuzzle = new HashPuzzleFT(tick, max, lim, hash)
+const hashPuzzle = new HashPuzzleFT(tick, max, lim, dec, hash)
 ...
 // deploy the new BSV20 token $HELLO
 await hashPuzzle.deployToken()
@@ -87,8 +88,8 @@ For now, the contract instance holds the token and we try to transfer it to a P2
 Class `BSV20P2PKH` represents a P2PKH address that can hold BSV20 tokens. Its constructor takes BSV20 fields and an receiving address as parameters.
 
 ```ts
-const alice = new BSV20P2PKH(tick, max, lim, Addr(addressAlice.toByteString()))
-const bob = new BSV20P2PKH(tick, max, lim, Addr(addressBob.toByteString()))
+const alice = new BSV20P2PKH(tick, max, lim, dec, Addr(addressAlice.toByteString()))
+const bob = new BSV20P2PKH(tick, max, lim, dec, Addr(addressBob.toByteString()))
 ```
 
 ### Step 2. Call the Contract
@@ -115,7 +116,15 @@ This code will create a transaction that transfers 2 tokens to `alice` and 5 to 
 
 The default transaction builder will automatically add a token change output on the transaction. In this example, it will automatically add a token change output with 3 tokens, paying to the default address of the instance connected signer. You can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `MethodCallOptions`.
 
-![](https://aaron67-public.oss-cn-beijing.aliyuncs.com/202310061106325.png)
+Execute command `npx ts-node tests/examples/mintBSV20.ts` to run this example.
+
+![](../../static/img/mint-bsv20.png)
+
+Then you can check your token transfer details on the explorer.
+
+![](../../static/img/mint-bsv20-mint-tx.png)
+
+![](../../static/img/mint-bsv20-transfer-tx.png)
 
 The UTXO model is a powerful feature of BSV20, we can send tokens to multiple receivers in a single transaction, allowing us to create complex and efficient transactions.
 
