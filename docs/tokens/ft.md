@@ -140,9 +140,9 @@ class HashPuzzleFTV2 extends BSV20V2 {
 }
 ```
 
-### Mint and Transfer
+### Mint
 
-Let's take a look at how we would mint a v2 fungible token:
+In v1, tokens are deployed and minted in separate transactions, but in v2, all tokens are deployed and minted in one transactions. Here's an example of how you would deploy the new v2 FT:
 
 ```ts
 HashPuzzleFTV2.loadArtifact()
@@ -162,7 +162,13 @@ tokenId = await hashPuzzle.deployToken()
 console.log('token id: ', tokenId)
 ```
 
+:::note
+Since we cannot know the id of the token deployment transaction at the time of deployment, the id is empty.
+:::
+
 The whole token supply is minted within the first transaction, and whoever can unlock the deployment UTXO will gain full control of the whole supply. Additionally, the smart contract itself can enforce rules for the distribution of the tokens.
+
+### Transfer
 
 The minted amount can be transferred by invoking the contract, similar to [standard sCrypt contracts](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
 
@@ -420,6 +426,8 @@ In the above code, a partial transaction is constructed, which unlocks the first
 We then feed that partially constructed transaction via the second contract call, which will unlock the `HashPuzzleFT` instance. Just like the first call, this call also has the `multiContractCall` flag set.
 
 Once the transaction is fully built, we can sign and broadcast it using the `SmartContract.multiContractCall` function.
+
+The above code is an example based on v2, but the same can be achieved using v1.
 
 ## `buildStateOutputFT`
 

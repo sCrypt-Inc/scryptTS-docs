@@ -5,13 +5,13 @@ sidebar_position: 2
 # Non Funglible Tokens - NFTs
 
 
-To create a smart contract that will carry an NFT, have your smart contract extend the `OneSatNFT` class:
+To create a smart contract that will carry an NFT, have your smart contract extend the `OrdinalNFT` class:
 
 ```ts
 import { method, prop, assert, ByteString, sha256, Sha256 } from "scrypt-ts";
-import { OneSatNFT } from "scrypt-ord";
+import { OrdinalNFT } from "scrypt-ord";
 
-export class HashPuzzleNFT extends OneSatNFT {
+export class HashPuzzleNFT extends OrdinalNFT {
   @prop()
   hash: Sha256;
 
@@ -30,7 +30,7 @@ export class HashPuzzleNFT extends OneSatNFT {
 ```
 
 The contract above represents an NFT that can be unlocked / transferred by providing the secret pre-image of a hash value.
-Each constructor extending the `OneSatNFT` class must also call the instances `init` method and pass the constructors arguments. It is important to call this function **after** the call to `super`.
+Each constructor extending the `OrdinalNFT` class must also call the instances `init` method and pass the constructors arguments. It is important to call this function **after** the call to `super`.
 
 
 ## Inscribe
@@ -81,7 +81,9 @@ The value `contentType` must be a MIME-type string. The [`ContentType`](https://
 
 ## Transfer
 
-You can easily transfer a deployed NFT to an Ordinals address by passing a `transfer` value via the method call parameters.
+You can easily transfer a deployed NFT to an Ordinals address by passing a `transfer` value via the method call parameters. 
+
+`OrdNFTP2PKH` is a [P2PKH](https://learnmeabitcoin.com/guide/p2pkh) contract for holding ordinals NFTs. Like a normal P2PKH contract, you need an address to instantiate it.
 
 ```ts
 // ... deploy code from above
@@ -89,7 +91,7 @@ You can easily transfer a deployed NFT to an Ordinals address by passing a `tran
 const { tx: transferTx } = await instance.methods.unlock(
     message, 
     {
-        transfer: new OneSatNFTP2PKH(
+        transfer: new OrdNFTP2PKH(
                 Addr(recipientAddress.toByteString())
             ),
     }
@@ -98,7 +100,7 @@ const { tx: transferTx } = await instance.methods.unlock(
 console.log("Transferred NFT: ", transferTx.id);
 ```
 
-The `transfer` parameter can be any single instance of a contract that extends `OneSatNFT`.
+The `transfer` parameter can be any single instance of a contract that extends `OrdinalNFT`.
 
 ### Transfer Existing NFT to a Smart Contract
 
@@ -112,9 +114,9 @@ const outpoint = '036718e5c603169b9981a55f276adfa7b5d024616ac95e048b05a81258ea23
 
 // Create a P2PKH object from a UTXO
 const utxo: UTXO = OneSatApis.fetchUTXOByOutpoint(outpoint);
-const p2pkh = OneSatNFTP2PKH.fromUTXO(utxo);
+const p2pkh = OrdNFTP2PKH.fromUTXO(utxo);
 // Alternatively, create a P2PKH from an origin
-const p2pkh = await OneSatNFTP2PKH.getLatestInstance(outpoint);
+const p2pkh = await OrdNFTP2PKH.getLatestInstance(outpoint);
 
 // Construct recipient smart contract
 const message = toByteString('super secret', true);
@@ -131,7 +133,7 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
   {
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
-  } as MethodCallOptions<OneSatNFTP2PKH>
+  } as MethodCallOptions<OrdNFTP2PKH>
 );
 
 console.log("Transferred NFT: ", transferTx.id);

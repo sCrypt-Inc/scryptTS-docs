@@ -24,19 +24,21 @@ npm i scrypt-ord
 `scrypt-ord` provides base classes that can be extended with custom smart contract functionality. Unlike the `SmartContract` class, which you would typically extend for a regular sCrypt smart contract, here you should extend these base classes to integrate your smart contract with 1Sat ordinals functionality.
 
 **Non-fungible tokens (NFTs):**
-- `OneSatNFT`
+- `OrdinalNFT`
 
 **Fungible tokens (FTs):**
 - `BSV20V1`
+- `BSV20V2`
 
 There are also pre-made classes that represent standard 1Sat transfers using the widely employed `P2PKH` mechanism:
-- `OneSatNFTP2PKH`
-- `BSV20P2PKH`
+- `OrdNFTP2PKH`
+- `BSV20V1P2PKH`
+- `BSV20V2P2PKH`
 
 Suppose you wish to lock an ordinal token using a custom hash puzzle contract, you would define the smart contract class as shown below:
 
 ```ts
-class HashPuzzleNFT extends OneSatNFT {
+class HashPuzzleNFT extends OrdinalNFT {
     @prop()
     hash: Sha256
 
