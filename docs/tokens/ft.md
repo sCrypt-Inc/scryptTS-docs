@@ -274,7 +274,32 @@ console.log("Transferred FT: ", transferTx.id);
 
 Note, how this mechanism is very similar to a regular Bitcoin transfer. If the FT amount from the inputs exceeds the recipients amount, the leftover will be transferred back to the Ordinal address as change.
 
-TODO: ignore change?
+You can customize the address using the method call option `tokenChangeAddress`:
+
+```ts
+const { tx: transferTx } = await p2pkh.methods.unlock(
+  (sigResps) => findSig(sigResps, `yourPubKey`),
+  PubKey(`yourPubKey`.toByteString()),
+  {
+    transfer: recipient,
+    pubKeyOrAddrToSign: `yourPubKey`,
+    tokenChangeAddress: yourOrdinalAddress
+  } as MethodCallOptions<BSV20V2P2PKH>
+)
+```
+
+You can also skip change altogether by using the `skipTokenChange` option. But be careful! Any leftover tokens will be considered **burned** in this case:
+```ts
+const { tx: transferTx } = await p2pkh.methods.unlock(
+  (sigResps) => findSig(sigResps, `yourPubKey`),
+  PubKey(`yourPubKey`.toByteString()),
+  {
+    transfer: recipient,
+    pubKeyOrAddrToSign: `yourPubKey`,
+    skipTokenChange: true
+  } as MethodCallOptions<BSV20V2P2PKH>
+)
+```
 
 ## Multiple Inputs with Different Contracts
 
