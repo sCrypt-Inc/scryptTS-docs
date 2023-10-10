@@ -11,7 +11,6 @@ BSV-20 is a protocol for creating fungible tokens on the Bitcoin SV blockchain. 
 `scrypt-ord` supports both v1 and v2 of the `BSV-20` FT protocol.
 
 
-
 ## v1
 
 Tokens utilizing the first version of the `bsv-20` must be initialized by a **deployment** inscription, which specifies the token's ticker symbol, amount and mint limit. For more information, refer to the [1Sat docs](https://docs.1satordinals.com/bsv20#v1-mint-first-is-first-mode).
@@ -332,13 +331,42 @@ We then feed that partially constructed transaction via the second contract call
 
 Once the transaction is fully built, we can sign and broadcast it using the `SmartContract.multiContractCall` function.
 
----
-
-1. I revised some sentences for clarity and conciseness.
-2. In the code comments, using “the first sender” and “the second sender” seems more grammatically appropriate and consistent.
-3. Used a more active
-
-
 ## v2
 
 ***Comming soon...***
+
+
+## `buildStateOutputFT`
+
+Any instance of `BSV20V1` or `BSV20V2` contains the `buildStateOutputFT` method. Unlike the regular `buildStateOutput` method, this method inscribes the subsequent amount with an appropriate [BSV-20 transfer inscription](https://docs.1satordinals.com/bsv20#transfer-all-modes). The method takes the number of tokens to be transferred to the subsequent output as an argument.
+
+Below is an example of an FT counter contract:
+
+```ts
+class CounterFTV2 extends BSV20V2 {
+
+    @prop(true)
+    counter: bigint
+
+    constructor(id: ByteString, max: bigint, dec: bigint, counter: bigint) {
+        super(id, max, dec)
+        this.init(...arguments)
+        this.counter = counter
+    }
+
+    @method(SigHash.ANYONECANPAY_SINGLE)
+    public inc(tokenAmt: bigint) {
+        this.counter++
+
+        const outputs = this.buildStateOutputFT(tokenAmt)
+
+        assert(
+            this.ctx.hashOutputs == hash256(outputs),
+            'hashOutputs check failed'
+        )
+    }
+
+}
+```
+
+Each iteration will contain the number of tokens that was passed via `tokenAmt`. Note that this amount cannot be larger than the amount in the previous iteration. If the amount is less than in the previous iteration, the remaining tokens will be returned as change.
