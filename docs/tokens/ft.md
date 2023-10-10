@@ -113,7 +113,97 @@ for (let i = 0; i < 3; i++) {
 
 Note that the new recipient smart contract instance is passed as a parameter named `transfer` during the call to the deployed instance. The `transfer` parameter is an array of contract instances that extend `BSV20V1`.
 
-#### Transfer Existing FT to a Smart Contract
+
+## v2
+
+Version 2 of the `BSV-20` token protocol simplifies the process of minting a new fungible token. In this version, the deployment and minting are done within a single transaction. Unlike v1, v2 lacks a token ticker field. The token is identified by an `id` field, which is the transaction id and output index where the token was minted, in the form of `<txid>_<vout>`.
+
+Please refer to the [official 1Sat documentation](https://docs.1satordinals.com/bsv20#new-in-v2-tickerless-mode) for more info.
+
+To create a v2 token smart contract, have it extend the `BSV20V2` class:
+
+```ts
+class HashPuzzleFTV2 extends BSV20V2 {
+    @prop()
+    hash: Sha256
+
+    constructor(id: ByteString, max: bigint, dec: bigint, hash: Sha256) {
+        super(id, max, dec)
+        this.init(...arguments)
+        this.hash = hash
+    }
+
+    @method()
+    public unlock(message: ByteString) {
+        assert(this.hash == sha256(message), 'hashes are not equal')
+    }
+}
+```
+
+### Mint and Transfer
+
+Let's take a look at how we would mint a v2 fungible token:
+
+```ts
+HashPuzzleFTV2.loadArtifact()
+
+const max = 10000n  // Whole token amount.
+const dec = 0n      // Decimal precision.
+
+hashPuzzle = new HashPuzzleFTV2(
+    toByteString(''),
+    max,
+    dec,
+    sha256(toByteString('super secret', true))
+)
+await hashPuzzle.connect(getDefaultSigner())
+
+tokenId = await hashPuzzle.deployToken()
+console.log('token id: ', tokenId)
+```
+
+The whole token supply is minted within the first transaction, and whoever can unlock the deployment UTXO will gain full control of the whole supply. Additionally, the smart contract itself can enforce rules for the distribution of the tokens.
+
+The minted amount can be transferred by invoking the contract, similar to [standard sCrypt contracts](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
+
+```ts
+// Transfer
+for (let i = 0; i < 3; i++) {
+  // The recipient contract.
+  // Because this particular contract doesn't enforce subsequent outputs,
+  // it could be any other contract or just a P2PKH.
+  const receiver = new HashPuzzleFT(
+    toByteString(tokenId, true),
+    max,
+    dec,
+    sha256(toByteString(`secret${i + 1}`, true))
+  );
+  const recipients: Array<FTReceiver> = [
+    {
+      instance: receiver,
+      amt: 10n,
+    },
+  ];
+
+  // Unlock and transfer.
+  const { tx } = await hashPuzzle.methods.unlock(
+    toByteString(`secret:${i}`, true),
+    {
+      transfer: recipients,
+    }
+  );
+  console.log("Transfer tx: ", tx.id);
+  
+  // Update instance for next iteration.
+  hashPuzzle = recipients[0].instance as HashPuzzleFTV2;
+}
+```
+
+The new recipient smart contract instance is provided as a `transfer` parameter when calling the deployed instance. The `transfer` parameter consists of an array of contract instances derived from `BSV20V2`.
+
+---
+
+## Transfer Existing FT to a Smart Contract
 
 Suppose you'd like to unlock existing UTXOs that carry a FT to a smart contract.
 
@@ -129,9 +219,9 @@ const recipient = new HashPuzzleFT(hash);
 await recipient.connect(getDefaultSigner());
 
 // Create P2PKH object from an UTXO
-// NOTE: You can not use BSV20P2PKH.getLatestInstance for bsv20, it only works for NFT
+// NOTE: You can not use BSV20V2P2PKH.getLatestInstance for BSV-20, it only works for NFTs.
 const utxo: UTXO = ...
-const p2pkh = BSV20P2PKH.fromUTXO(utxo);
+const p2pkh = BSV20V2P2PKH.fromUTXO(utxo);
 await p2pkh.connect(getDefaultSigner());
 
 // Unlock it and transfer the FTs carried by it.
@@ -141,34 +231,33 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
   {
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
-  } as MethodCallOptions<BSV20P2PKH>
+  } as MethodCallOptions<BSV20V2P2PKH>
 );
 
 console.log("Transferred FT: ", transferTx.id);
 ```
 
-Alternatively, you can unlock multiple FT UTXOS and send them to a smart contract. Using the `getBSV20` function you can simply fetch FT UTXOs for a given Ordinal wallet address.
+Alternatively, you can unlock multiple FT UTXOs and send them to a smart contract. Using the `getBSV20` function you can simply fetch FT UTXOs for a given Ordinal wallet address.
 
 ```ts
 // ... initialize recipient smart contract
 
 // Fetch FT UTXOs for given Ordinal address.
-// NOTE: You can not use BSV20P2PKH.getLatestInstance for bsv20, it only works for NFT
-const tick = "DOGE"
-const bsv20P2PKHs = await BSV20P2PKH.getBSV20(tick, `your ordinal address`);
+// NOTE: You can not use BSV20V2P2PKH.getLatestInstance for BSV-20, it only works for NFTs.
+const bsv20P2PKHs = await BSV20V2P2PKH.getBSV20(tokenId, `your ordinal address`);
 
 await Promise.all(bsv20P2PKHs.map((p) => p.connect(signer)));
 
 // Construct recipient smart contract(s)
 const recipients: Array<FTReceiver> = [
   {
-    instance: new HashPuzzleFT(tick, max, lim, sha256(message)),
+    instance: new HashPuzzleFTV2(tokenId, amount, dec, sha256(message)),
     amt: 6n,
   },
 ];
 
 // Transfer
-const { tx, nexts } = await BSV20P2PKH.transfer(
+const { tx, nexts } = await BSV20V2P2PKH.transfer(
   bsv20P2PKHs,
   signer,
   recipients
@@ -179,18 +268,19 @@ console.log("Transferred FT: ", transferTx.id);
 
 Note, how this mechanism is very similar to a regular Bitcoin transfer. If the FT amount from the inputs exceeds the recipients amount, the leftover will be transferred back to the Ordinal address as change.
 
+TODO: ignore change?
 
-### Multiple Inputs with Different Contracts
+## Multiple Inputs with Different Contracts
 
 Suppose we would like to unlock FTs within a single transaction that are located in different smart contracts. We can utilize the same technique demonstrated in the [section for calling multiple contract instances](../advanced/how-to-call-multiple-contracts.md).
 
 ```ts
 // One sender is regular bsv-20 P2PKH.
-const sender0 = BSV20P2PKH.fromUTXO(utxo)
+const sender0 = BSV20V2P2PKH.fromUTXO(utxo)
 await sender0.connect(signer)
 
 // Second sender is a hash puzzle contract.
-const sender1 = HashPuzzleFT.fromUTXO(utxo)
+const sender1 = HashPuzzleFTV2.fromUTXO(utxo)
 await sender1.connect(signer)
 
 // Recipient will be a single hash puzzle contract.
@@ -198,9 +288,9 @@ const recipientAmt = 6n
 const recipients: Array<FTReceiver> = [
     {
         instance: new HashPuzzleFT(
-            tick,
-            max,
-            lim,
+            tokenId,
+            amount,
+            dec,
             sha256(toByteString('next super secret', true))
         ),
         amt: recipientAmt,
@@ -215,8 +305,8 @@ const ordPubKey = await signer.getDefaultPubKey()
 sender0.bindTxBuilder(
     'unlock',
     async (
-        current: BSV20P2PKH,
-        options: MethodCallOptions<BSV20P2PKH>
+        current: BSV20V2P2PKH,
+        options: MethodCallOptions<BSV20V2P2PKH>
     ): Promise<ContractTransaction> => {
         const tx = new bsv.Transaction()
         const nexts: StatefulNext<SmartContract>[] = []
@@ -224,10 +314,10 @@ sender0.bindTxBuilder(
         for (let i = 0; i < recipients.length; i++) {
             const receiver = recipients[i]
 
-            if (receiver.instance instanceof BSV20V1) {
+            if (receiver.instance instanceof BSV20V2) {
                 receiver.instance.setAmt(receiver.amt)
             } else {
-                throw new Error('Unsupported receiver, only BSV20!')
+                throw new Error('Unsupported receiver, only BSV-20!')
             }
 
             tx.addOutput(
@@ -245,10 +335,10 @@ sender0.bindTxBuilder(
         }
 
         if (tokenChangeAmt > 0n) {
-            const p2pkh = new BSV20P2PKH(
-                tick,
-                max,
-                lim,
+            const p2pkh = new BSV20V2P2PKH(
+                tokenId,
+                amount,
+                dec,
                 Addr(ordPubKey.toAddress().toByteString())
             )
 
@@ -286,14 +376,14 @@ let partialContractTx = await sender0.methods.unlock(
     {
         pubKeyOrAddrToSign: ordPubKey,
         multiContractCall: true,
-    } as MethodCallOptions<BSV20P2PKH>
+    } as MethodCallOptions<BSV20V2P2PKH>
 )
 
 sender1.bindTxBuilder(
     'unlock',
     async (
-        current: HashPuzzleFT,
-        options: MethodCallOptions<HashPuzzleFT>
+        current: HashPuzzleFTV2,
+        options: MethodCallOptions<HashPuzzleFTV2>
     ): Promise<ContractTransaction> => {
         if (options.partialContractTx) {
             const tx = options.partialContractTx.tx
@@ -315,7 +405,7 @@ partialContractTx = await sender1.methods.unlock(message1, {
     transfer: recipients,
     pubKeyOrAddrToSign: ordPubKey,
     multiContractCall: true,
-} as MethodCallOptions<BSV20P2PKH>)
+} as MethodCallOptions<BSV20V2P2PKH>)
 
 const { tx } = await SmartContract.multiContractCall(
     partialContractTx,
@@ -325,16 +415,11 @@ const { tx } = await SmartContract.multiContractCall(
 console.log('Transfer tx:', tx.id)
 ```
 
-In the above code, a partial transaction is constructed, which unlocks the first UTXO containing a `BSV20P2PKH` instance. The actual contract call doesn't execute yet, as we set the `multiContractCall` flag within the method call parameters.
+In the above code, a partial transaction is constructed, which unlocks the first UTXO containing a `BSV20V2P2PKH` instance. The actual contract call doesn't execute yet, as we set the `multiContractCall` flag within the method call parameters.
 
 We then feed that partially constructed transaction via the second contract call, which will unlock the `HashPuzzleFT` instance. Just like the first call, this call also has the `multiContractCall` flag set.
 
 Once the transaction is fully built, we can sign and broadcast it using the `SmartContract.multiContractCall` function.
-
-## v2
-
-***Comming soon...***
-
 
 ## `buildStateOutputFT`
 
