@@ -59,3 +59,18 @@ For a deeper exploration, please refer to the respective subsections:
 
 * [Non-Fungible Tokens (NFTs)](./nft.md)
 * [Fungible Tokens (FTs)](./ft.md)
+
+
+## `OrdProvider`
+
+When you use sCrypt 1Sat Ordinals SDK, we recommend that you use `OrdProvider` to create `Signer`. This allows your transactions to be indexed faster.
+
+
+```ts
+export function getDefaultSigner(): TestWallet {
+    return new TestWallet(
+        myPrivateKey,
+        new OrdProvider(bsv.Networks.mainnet)
+    )
+}
+```
