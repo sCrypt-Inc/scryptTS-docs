@@ -6,13 +6,13 @@ sidebar_position: 8
 
 
 ## Overview
-In this tutorial, we will go over how to use [sCrypt](https://scrypt.io/) to build a full-stack dApp on Bitcoin to sell [1Sat Ordinals](https://docs.1satordinals.com/) inscription, including the smart contract and an interactive front-end.
+In this tutorial, we will go over how to use [sCrypt](https://scrypt.io/) to build a full-stack dApp on Bitcoin to sell [1Sat Ordinals](https://docs.1satordinals.com/), including the smart contract and an interactive front-end.
 
 ## Contract
 
-The contract [OrdinalLock](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/ordinalLock.ts) will hold an inscription in it, users will get the inscription only if they pay the target amount satoshis when calling the public method `purchase`. Otherwise, the trade will not happen.
+The contract [OrdinalLock](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/ordinalLock.ts) allows an ordinal to be offered up for sale on a decentralized marketplace. These listings can be purchased by anyone who is able to pay the requested price. Listings can also be cancelled by the person who listed them.
 
-To record the seller and target selling price, we need to add two properties to the contract.
+To record the seller and price, we need to add two properties to the contract.
 
 ```ts
 export class OrdinalLock extends OrdinalNFT {
@@ -33,7 +33,7 @@ Initialize all the `@prop` properties in the constructor.
 ```ts
 constructor(seller: PubKey, amount: bigint) {
     super()
-    this.init(seller, amount)
+    this.init(...arguments)
     this.seller = seller
     this.amount = amount
 }
@@ -41,25 +41,23 @@ constructor(seller: PubKey, amount: bigint) {
 
 ### Methods
 
-The public method `purchase` only needs to confine the transaction's outputs that contain:
+The public method `purchase` only needs to confine the transaction's outputs to contain:
 
-- the inscription output to the buyer
-- the fund output to the seller with the target amount of satoshis
+- transfer ordinal to the buyer
+- payment to the seller
 
 ```ts
 @method()
 public purchase(receiver: Addr) {
     const outputs =
-        Utils.buildAddressOutput(receiver, 1n) + // inscription to the buyer
+        Utils.buildAddressOutput(receiver, 1n) + // ordinal to the buyer
         Utils.buildAddressOutput(hash160(this.seller), this.amount) + // fund to the seller
         this.buildChangeOutput()
     assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs check failed')
 }
 ```
 
-### Final Code
-
-You have completed the `OrdinalLock` contract! The [final complete code](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/ordinalLock.ts) is as follows:
+The [final complete code](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/ordinalLock.ts) is as follows:
 
 ```ts
 import { Addr, prop, method, Utils, hash256, assert, MethodCallOptions, ContractTransaction, bsv, PubKey, hash160 } from 'scrypt-ts'
@@ -82,7 +80,7 @@ export class OrdinalLock extends OrdinalNFT {
     @method()
     public purchase(receiver: Addr) {
         const outputs =
-            Utils.buildAddressOutput(receiver, 1n) + // inscription to the buyer
+            Utils.buildAddressOutput(receiver, 1n) + // ordinal to the buyer
             Utils.buildAddressOutput(hash160(this.seller), this.amount) + // fund to the seller
             this.buildChangeOutput()
         assert(
@@ -124,6 +122,8 @@ export class OrdinalLock extends OrdinalNFT {
     }
 }
 ```
+Note the customized calling method `buildTxForPurchase` ensures the ordinal is in the first input and goes to the first output, which is also a 1sat output.
+
 
 ## Frontend
 
@@ -144,11 +144,11 @@ The sCrypt SDK enables you to easily compile, test, deploy, and call contracts.
 Use the `scrypt-cli` command line to install the SDK.
 
 ```bash
-cd voting
+cd ordinal-lock-demo
 npx scrypt-cli init
 ```
 
-This command will create a contract under `src/contracts`, replace the file with the contract written [above](#final-code).
+This command will create a contract under `src/contracts`. Replace the file with the contract written [above](#final-code).
 
 ### Compile Contract
 
@@ -208,9 +208,9 @@ const signer = new SensiletSigner(provider);
 signerRef.current = signer;
 ```
 
-### Load Inscriptions
+### Load Ordinals
 
-After users connect wallet, we can get the their address. Call the 1Sat Ordinals API to retrieve inscriptions on this address.
+After a user connect wallet, we can get the his address. Call the 1Sat Ordinals API to retrieve ordinals on this address.
 
 ```ts
 useEffect(() => {
@@ -230,9 +230,9 @@ function loadCollections() {
 
 ![](../../static/img/ordinal-lock/load3.png)
 
-### Sell an Inscription
+### List an Ordinal
 
-For each inscription in the collection list, we can click the `Sell` button to sell it after filling in the selling price. Sell an inscription means we need to create a contract instance, and then transfer the inscription into the contract instance.
+For each ordinal in the collection list, we can click the `Sell` button to list it after filling in the selling price, in satoshis. Sell an ordinal means we need to create a contract instance, and then transfer the ordinal into it. Afterwards, the ordinal is under the control of the contract, meaning it can be bought by anyone paying the price to the seller.
 
 ```ts
 async function sell() {
@@ -250,7 +250,7 @@ async function sell() {
         (sigResps) => findSig(sigResps, publicKey),
         PubKey(toHex(publicKey)),
         {
-            transfer: instance,
+            transfer: instance,     // <---- 
             pubKeyOrAddrToSign: publicKey,
         } as MethodCallOptions<OrdNFTP2PKH>
     )
@@ -263,9 +263,9 @@ async function sell() {
 
 ![](../../static/img/ordinal-lock/sell3.png)
 
-### Buy an Inscription
+### Buy an Ordinal
 
-To buy an inscription that is on sale, we only need to call the contract public method `purchase`.
+To buy an ordinal that is on sale, we only need to call the contract public method `purchase`.
 
 ```ts
 async function buy() {
@@ -285,6 +285,6 @@ async function buy() {
 
 ## Conclusion
 
-Congratulations! You have successfully completed a full-stack dApp that can sell 1Sat Ordinals inscription on Bitcoin.
+Congratulations! You have successfully completed a full-stack dApp that can sell 1Sat Ordinals on Bitcoin.
 
 The full example repo can be found [here](https://github.com/sCrypt-Inc/ordinal-lock-demo/tree/sensilet).
