@@ -119,4 +119,4 @@ Counter incrementOnChain called: de43687fd386e92cd892c18600d473bc38d5adb0cc34bbd
 ## Conclusion
 
 Congratulations! You've now deployed AND interacted with a Bitcoin smart contract.
-You can see a complete test example in our [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/testnet/counterFromTx.ts).
+You can see a complete test example in our [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/counterFromTx.ts).
