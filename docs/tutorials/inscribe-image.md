@@ -6,10 +6,11 @@ sidebar_position: 8
 
 ## Overview
 
-In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to inscribe an image with [sCrypt](https://scrypt.io/) and transfer the [1Sat Ordinals](https://docs.1satordinals.com/) inscription with a Smart Contract.
+In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts) as an example, to introduce how to inscribe an image with [sCrypt](https://scrypt.io/) and transfer the [1Sat Ordinals](https://docs.1satordinals.com/) with a Smart Contract.
 
-**Note**: The contract instance must be funded with some BSV before inscribing the image.
-
+:::note
+The contract instance must be funded with some BSV before inscribing the image.
+:::
 
 To enable all these features, you should install `scrypt-ord` as an dependency in your project.
 
@@ -19,10 +20,10 @@ npm install scrypt-ord
 
 ## Contract
 
-The new contract `HashLockNFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts), except it must be derived from `OneSatNFT` instead of `SmartContract`.
+The new contract `HashLockNFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts), except it must be derived from `OrdinalNFT` instead of `SmartContract`.
 
 ```ts
-class HashLockNFT extends OneSatNFT {
+class HashLockNFT extends OrdinalNFT {
     ...
 }
 ```
@@ -30,20 +31,20 @@ class HashLockNFT extends OneSatNFT {
 The contract also stores a hash value in the contract, and it will be unlocked successfully when calling the public method `unlock` with the correct message.
 
 ```ts
-class HashLockNFT extends OneSatNFT {
+class HashLockNFT extends OrdinalNFT {
     @prop()
     hash: Sha256
+    
+    ...
     
     @method()
     public unlock(message: ByteString) {
         assert(this.hash == sha256(message), 'hashes are not equal')
     }
-    
-    ...
 }
 ```
 
-The base class `OneSatNFT` encapsulated helper functions to handle inscriptions. If you want to create your own contract that can interact with the inscription, derive from it.
+The base class `OrdinalNFT` encapsulated helper functions to handle ordinals. If you want to create your own contract that can interact with the Ordinal NFT, derive from it.
 
 ## Inscribe Image
 
@@ -64,7 +65,7 @@ Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this exampl
 
 ![](../../static/img/inscribe-image.png)
 
-Then you can check your inscription on the explorer.
+Then you can check your inscription on the explorer as below, or [view the image](https://ordinals.gorillapool.io/api/files/inscriptions/2a87414ec80652ad192338fcdf55b20f0f80c2eef73b4d978a1ebbb1012210a0_0) via [1Sat Ordinals API](https://ordinals.gorillapool.io/api/docs/).
 
 ![](../../static/img/inscribe-image-inscribe-tx.png)
 
@@ -72,7 +73,7 @@ Then you can check your inscription on the explorer.
 
 Normally, we use a P2PKH address to receive the inscription, then the inscription is controlled by a private key the same as the general P2PKH.
 
-In this example, the inscription is sent to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash Lock is unlocked.
+In this example, the inscription is sent to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash lock is unlocked.
 
 ## Transfer the Inscription
 
@@ -80,10 +81,10 @@ For now, the contract instance holds the inscription and we try to transfer it t
 
 ### Step 1. Create Receiver Instance
 
-Class `OneSatNFTP2PKH` represents a P2PKH address that can hold inscriptions. Its constructor takes one parameter which is the receiving address.
+Class `OrdNFTP2PKH` represents a P2PKH address that can hold inscriptions. Its constructor takes one parameter which is the receiving address.
 
 ```ts
-const receiver = new OneSatNFTP2PKH(Addr(receiverAddress.toByteString()))
+const receiver = new OrdNFTP2PKH(Addr(address.toByteString()))
 ```
 
 ### Step 2. Call the Contract
@@ -94,7 +95,7 @@ Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-dep
 const { tx: transferTx } = await hashLock.methods.unlock(
     message,
     {
-        transfer: receiver,
+        transfer: receiver,  // <-----
     } as MethodCallOptions<HashLockNFT>
 )
 ```
