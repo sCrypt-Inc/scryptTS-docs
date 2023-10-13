@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## Overview
 
-In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts) as an example, to introduce how to inscribe an image with [sCrypt](https://scrypt.io/) and transfer the [1Sat Ordinals](https://docs.1satordinals.com/) inscription with a Smart Contract.
+In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to inscribe an image with [sCrypt](https://scrypt.io/) and transfer the [1Sat Ordinals](https://docs.1satordinals.com/) inscription with a Smart Contract.
 
 **Note**: The contract instance must be funded with some BSV before inscribing the image.
 
@@ -19,10 +19,10 @@ npm install scrypt-ord
 
 ## Contract
 
-The new contract `HashPuzzleNFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts), except it must be derived from `OneSatNFT` instead of `SmartContract`.
+The new contract `HashLockNFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts), except it must be derived from `OneSatNFT` instead of `SmartContract`.
 
 ```ts
-class HashPuzzleNFT extends OneSatNFT {
+class HashLockNFT extends OneSatNFT {
     ...
 }
 ```
@@ -30,7 +30,7 @@ class HashPuzzleNFT extends OneSatNFT {
 The contract also stores a hash value in the contract, and it will be unlocked successfully when calling the public method `unlock` with the correct message.
 
 ```ts
-class HashPuzzleNFT extends OneSatNFT {
+class HashLockNFT extends OneSatNFT {
     @prop()
     hash: Sha256
     
@@ -47,17 +47,17 @@ The base class `OneSatNFT` encapsulated helper functions to handle inscriptions.
 
 ## Inscribe Image
 
-Things get easier. We first create an instance of contract `HashPuzzleNFT`, then call `inscribeImage` on the instance to inscribe an image.
+Things get easier. We first create an instance of contract `HashLockNFT`, then call `inscribeImage` on the instance to inscribe an image.
 
 ```ts
 // create contract instance
 const message = toByteString('Hello sCrpyt', true)
 const hash = sha256(message)
-const hashPuzzle = new HashPuzzleNFT(hash)
+const hashLock = new HashLockNFT(hash)
 ...
 // inscribe image into contract
 const image = readImage()
-const mintTx = await hashPuzzle.inscribeImage(image, 'image/png')
+const mintTx = await hashLock.inscribeImage(image, 'image/png')
 ```
 
 Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this example.
@@ -72,7 +72,7 @@ Then you can check your inscription on the explorer.
 
 Normally, we use a P2PKH address to receive the inscription, then the inscription is controlled by a private key the same as the general P2PKH.
 
-In this example, the inscription is sent to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash puzzle is solved.
+In this example, the inscription is sent to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash Lock is unlocked.
 
 ## Transfer the Inscription
 
@@ -88,14 +88,14 @@ const receiver = new OneSatNFTP2PKH(Addr(receiverAddress.toByteString()))
 
 ### Step 2. Call the Contract
 
-Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashPuzzleNFT` as follows.
+Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashLockNFT` as follows.
 
 ```ts
-const { tx: transferTx } = await hashPuzzle.methods.unlock(
+const { tx: transferTx } = await hashLock.methods.unlock(
     message,
     {
         transfer: receiver,
-    } as MethodCallOptions<HashPuzzleNFT>
+    } as MethodCallOptions<HashLockNFT>
 )
 ```
 
@@ -114,4 +114,4 @@ Overall, Smart Contracts offer a powerful and flexible way to interact with insc
 
 Great! You have finished the tutorial on how to inscribe and transfer the 1Sat Ordinals inscription with a Smart Contract.
 
-The full complete [contract](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/hashPuzzleNFT.ts) and [example](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/examples/inscribeImage.ts) can be found in sCrypt's [repository](https://github.com/sCrypt-Inc/scrypt-ord).
+The full complete [contract](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/hashLockNFT.ts) and [example](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/examples/inscribeImage.ts) can be found in sCrypt's [repository](https://github.com/sCrypt-Inc/scrypt-ord).
