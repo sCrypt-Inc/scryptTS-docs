@@ -248,6 +248,8 @@ function loadCollections() {
 
 ### List an Ordinal
 
+![](https://lucid.app/publicSegments/view/50527d66-0710-4658-b8db-b615d60232f8/image.png)
+
 For each ordinal in the collection list, we can click the `Sell` button to list it after filling in the selling price, in satoshis. Sell an ordinal means we need to create a contract instance, and then transfer the ordinal into it. Afterwards, the ordinal is under the control of the contract, meaning it can be bought by anyone paying the price to the seller.
 
 ```ts
@@ -278,6 +280,8 @@ async function sell() {
 ![](../../static/img/ordinal-lock/sell2.png)
 
 ### Buy an Ordinal
+
+![](https://lucid.app/publicSegments/view/0b52243b-bdbc-4a13-b5b6-9386be80e155/image.png)
 
 To buy an ordinal that is on sale, we only need to call the contract public method `purchase`.
 
