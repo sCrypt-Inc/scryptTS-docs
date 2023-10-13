@@ -2,11 +2,11 @@
 sidebar_position: 10
 ---
 
-# Tutorial 10: Mint BSV20 Token (version 1)
+# Tutorial 10: Mint BSV20 V1 Token
 
 ## Overview
 
-In this tutorial, we will use contract [HashLock](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to mint a BSV20 Token (version 1) with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
+In this tutorial, we will use contract [HashLock](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to mint a BSV20 Token (**version 1**) with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
 
 To enable all these features, you should install `scrypt-ord` as an dependency in your project.
 
