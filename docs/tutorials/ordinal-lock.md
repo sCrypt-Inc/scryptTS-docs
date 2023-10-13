@@ -1,8 +1,8 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 ---
 
-# Tutorial 10: Ordinal Lock
+# Tutorial 11: Ordinal Lock
 
 ## Overview
 In this tutorial, we will go over how to use [sCrypt](https://scrypt.io/) to build a full-stack dApp on Bitcoin to sell [1Sat Ordinals](https://docs.1satordinals.com/), including the smart contract and an interactive front-end.
