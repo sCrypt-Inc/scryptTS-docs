@@ -1,8 +1,8 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 ---
 
-# Tutorial 9: Mint BSV20 Token
+# Tutorial 10: Mint BSV20 Token (version 1)
 
 ## Overview
 
@@ -43,16 +43,16 @@ class HashLockFT extends BSV20V1 {
     @prop()
     hash: Sha256
     
+    ...
+    
     @method()
     public unlock(message: ByteString) {
         assert(this.hash == sha256(message), 'hashes are not equal')
     }
-    
-    ...
 }
 ```
 
-The base class `BSV20V1` encapsulated helper functions to handle BSV20 tokens. If you want to create your own contract that can interact with BSV20 protocol, derive from it.
+The base class `BSV20V1` encapsulated helper functions to handle BSV20 (version 1) tokens. If you want to create your own contract that can interact with BSV20 protocol, derive from it.
 
 ## Deploy and Mint
 
@@ -85,11 +85,11 @@ For now, the contract instance holds the token and we try to transfer it to a P2
 
 ### Step 1. Create Receiver Instance
 
-Class `BSV20P2PKH` represents a P2PKH address that can hold BSV20 tokens. Its constructor takes BSV20 fields and an receiving address as parameters.
+Class `BSV20V1P2PKH` represents a P2PKH address that can hold BSV20 version 1 tokens. Its constructor takes BSV20 fields and an receiving address as parameters.
 
 ```ts
-const alice = new BSV20P2PKH(tick, max, lim, dec, Addr(addressAlice.toByteString()))
-const bob = new BSV20P2PKH(tick, max, lim, dec, Addr(addressBob.toByteString()))
+const alice = new BSV20V1P2PKH(tick, max, lim, dec, addressAlice)
+const bob = new BSV20V1P2PKH(tick, max, lim, dec, addressBob)
 ```
 
 ### Step 2. Call the Contract
@@ -99,17 +99,17 @@ Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-dep
 ```ts
 // Call the contract
 const { tx: transferTx } = await hashLock.methods.unlock(message, {
-  transfer: [
-    {
-      instance: alice,
-      amt: 2n,
-    },
-    {
-      instance: bob,
-      amt: 5n,
-    },
-  ] as MethodCallOptions<HashLockFT>,
-})
+    transfer: [
+        {
+            instance: alice,
+            amt: 2n,
+        },
+        {
+            instance: bob,
+            amt: 5n,
+        },
+    ],
+} as MethodCallOptions<HashLockFT>)
 ```
 
 This code will create a transaction that transfers 2 tokens to `alice` and 5 to `bob`.
