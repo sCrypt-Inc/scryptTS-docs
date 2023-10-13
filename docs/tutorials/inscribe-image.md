@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## Overview
 
-In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts) as an example, to introduce how to inscribe an image with [sCrypt](https://scrypt.io/) and transfer the [1Sat Ordinals](https://docs.1satordinals.com/) with a Smart Contract.
+In this tutorial, we will use contract [HashLock](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to inscribe an image with [sCrypt](https://scrypt.io/) and transfer the [1Sat Ordinals](https://docs.1satordinals.com/) with a Smart Contract.
 
 :::note
 The contract instance must be funded with some BSV before inscribing the image.
@@ -20,7 +20,7 @@ npm install scrypt-ord
 
 ## Contract
 
-The new contract `HashLockNFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts), except it must be derived from `OrdinalNFT` instead of `SmartContract`.
+The new contract `HashLockNFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts), except it must be derived from `OrdinalNFT` instead of `SmartContract`.
 
 ```ts
 class HashLockNFT extends OrdinalNFT {
