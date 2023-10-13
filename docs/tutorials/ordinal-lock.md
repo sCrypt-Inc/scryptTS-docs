@@ -1,9 +1,8 @@
 ---
-sidebar_position: 8
+sidebar_position: 10
 ---
 
-# Tutorial 8: Ordinal Lock
-
+# Tutorial 10: Ordinal Lock
 
 ## Overview
 In this tutorial, we will go over how to use [sCrypt](https://scrypt.io/) to build a full-stack dApp on Bitcoin to sell [1Sat Ordinals](https://docs.1satordinals.com/), including the smart contract and an interactive front-end.
@@ -61,7 +60,7 @@ The [final complete code](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/t
 
 ```ts
 import { Addr, prop, method, Utils, hash256, assert, MethodCallOptions, ContractTransaction, bsv, PubKey, hash160 } from 'scrypt-ts'
-import { OrdinalNFT } from '../scrypt-ord'
+import { OrdinalNFT } from 'scrypt-ord'
 
 export class OrdinalLock extends OrdinalNFT {
     @prop()
@@ -72,7 +71,7 @@ export class OrdinalLock extends OrdinalNFT {
 
     constructor(seller: PubKey, amount: bigint) {
         super()
-        this.init(seller, amount)
+        this.init(...arguments)
         this.seller = seller
         this.amount = amount
     }
@@ -83,6 +82,16 @@ export class OrdinalLock extends OrdinalNFT {
             Utils.buildAddressOutput(receiver, 1n) + // ordinal to the buyer
             Utils.buildAddressOutput(hash160(this.seller), this.amount) + // fund to the seller
             this.buildChangeOutput()
+        assert(
+            this.ctx.hashOutputs == hash256(outputs),
+            'hashOutputs check failed'
+        )
+    }
+
+    @method(SigHash.ANYONECANPAY_SINGLE)
+    public cancel(sig: Sig) {
+        assert(this.checkSig(sig, this.seller), 'seller signature check failed')
+        const outputs = Utils.buildAddressOutput(hash160(this.seller), 1n) // ordinal back to the seller
         assert(
             this.ctx.hashOutputs == hash256(outputs),
             'hashOutputs check failed'
@@ -120,10 +129,33 @@ export class OrdinalLock extends OrdinalNFT {
             nexts: [],
         }
     }
+
+    static async buildTxForCancel(
+        current: OrdinalLock,
+        options: MethodCallOptions<OrdinalLock>
+    ): Promise<ContractTransaction> {
+        const defaultAddress = await current.signer.getDefaultAddress()
+        const tx = new bsv.Transaction()
+            .addInput(current.buildContractInput())
+            .addOutput(
+                new bsv.Transaction.Output({
+                    script: bsv.Script.fromHex(
+                        Utils.buildAddressScript(hash160(current.seller))
+                    ),
+                    satoshis: 1,
+                })
+            )
+            .change(options.changeAddress || defaultAddress)
+        return {
+            tx,
+            atInputIndex: 0,
+            nexts: [],
+        }
+    }
 }
 ```
-Note the customized calling method `buildTxForPurchase` ensures the ordinal is in the first input and goes to the first output, which is also a 1sat output.
 
+Note the customized calling method `buildTxForPurchase` and `buildTxForCancel` ensure the ordinal is in the first input and goes to the first output, which is also a 1sat output.
 
 ## Frontend
 
@@ -145,6 +177,7 @@ Use the `scrypt-cli` command line to install the SDK.
 
 ```bash
 cd ordinal-lock-demo
+npm i scrypt-ord
 npx scrypt-cli init
 ```
 
@@ -170,6 +203,13 @@ import artifact from '../artifacts/ordinalLock.json'
 OrdinalLock.loadArtifact(artifact)
 ```
 
+### Connect Signer to `OrdProvider`
+
+```ts
+const provider = new OrdProvider();
+const signer = new SensiletSigner(provider);
+```
+
 ### Integrate Wallet
 
 Use `requestAuth` method of `signer` to request access to the wallet.
@@ -186,31 +226,9 @@ if (!isAuthenticated) {
 // ...
 ```
 
-### Integrate sCrypt Service
-
-Follow [this guide](../advanced/how-to-integrate-scrypt-service.md) to initialize the client.
-
-```ts
-Scrypt.init({
-  apiKey: 'YOUR_API_KEY',
-  network: bsv.Networks.mainnet
-})
-```
-
-### Connect Signer to `ScryptProvider`
-
-It's required to connect your signer to `ScryptProvider` when using sCrypt service.
-
-```ts
-const provider = new ScryptProvider();
-const signer = new SensiletSigner(provider);
-
-signerRef.current = signer;
-```
-
 ### Load Ordinals
 
-After a user connect wallet, we can get the his address. Call the 1Sat Ordinals API to retrieve ordinals on this address.
+After a user connect wallet, we can get the his address. Call the [1Sat Ordinals API](https://v3.ordinals.gorillapool.io/api/docs/) to retrieve ordinals on this address.
 
 ```ts
 useEffect(() => {
@@ -228,15 +246,13 @@ function loadCollections() {
 
 ![](../../static/img/ordinal-lock/load2.png)
 
-![](../../static/img/ordinal-lock/load3.png)
-
 ### List an Ordinal
 
 For each ordinal in the collection list, we can click the `Sell` button to list it after filling in the selling price, in satoshis. Sell an ordinal means we need to create a contract instance, and then transfer the ordinal into it. Afterwards, the ordinal is under the control of the contract, meaning it can be bought by anyone paying the price to the seller.
 
 ```ts
 async function sell() {
-    const signer = new SensiletSigner(new ScryptProvider())
+    const signer = new SensiletSigner(new OrdProvider())
     const publicKey = await signer.getDefaultPubKey()
 
     const instance = new OrdinalLock(PubKey(toHex(publicKey)), amount)
@@ -261,15 +277,13 @@ async function sell() {
 
 ![](../../static/img/ordinal-lock/sell2.png)
 
-![](../../static/img/ordinal-lock/sell3.png)
-
 ### Buy an Ordinal
 
 To buy an ordinal that is on sale, we only need to call the contract public method `purchase`.
 
 ```ts
 async function buy() {
-    const signer = new SensiletSigner(new ScryptProvider())
+    const signer = new SensiletSigner(new OrdProvider())
     const address = await signer.getDefaultAddress()
     const { tx } = await instance.methods.purchase(Addr(address.toByteString()))
 }
