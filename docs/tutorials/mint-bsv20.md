@@ -6,7 +6,7 @@ sidebar_position: 9
 
 ## Overview
 
-In this tutorial, we will use contract [HashPuzzle](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts) as an example, to introduce how to mint a BSV20 Token (version 1) with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
+In this tutorial, we will use contract [HashLock](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to mint a BSV20 Token (version 1) with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
 
 To enable all these features, you should install `scrypt-ord` as an dependency in your project.
 
@@ -16,12 +16,12 @@ npm install scrypt-ord
 
 ## Contract
 
-The new contract `HashPuzzleFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashPuzzle.ts), except two differences.
+The new contract `HashLockFT` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts), except two differences.
 
 1. It must be derived from `BSV20V1` instead of `SmartContract`.
 
 ```ts
-class HashPuzzleFT extends BSV20V1 {
+class HashLockFT extends BSV20V1 {
     ...
 }
 ```
@@ -39,7 +39,7 @@ constructor(tick: ByteString, max: bigint, lim: bigint, dec: bigint, hash: Sha25
 The contract also stores a hash value in the contract, and it will be unlocked successfully when calling the public method `unlock` with the correct message.
 
 ```ts
-class HashPuzzleFT extends BSV20V1 {
+class HashLockFT extends BSV20V1 {
     @prop()
     hash: Sha256
     
@@ -56,7 +56,7 @@ The base class `BSV20V1` encapsulated helper functions to handle BSV20 tokens. I
 
 ## Deploy and Mint
 
-For BSV20 version 1, tokens must be deployed before mint. We first create an instance of contract `HashPuzzleFT`, then call function `deployToken` to deploy the new token, and call `mint` at last to mint tokens into the contract instance.
+For BSV20 version 1, tokens must be deployed before mint. We first create an instance of contract `HashLockFT`, then call function `deployToken` to deploy the new token, and call `mint` at last to mint tokens into the contract instance.
 
 ```ts
 // BSV20 fields
@@ -65,19 +65,19 @@ const max = 100n
 const lim = 10n
 const dec = 0n
 // create contract instance
-const message = toByteString('Hello sCrpyt', true)
+const message = toByteString('Hello sCrypt', true)
 const hash = sha256(message)
-const hashPuzzle = new HashPuzzleFT(tick, max, lim, dec, hash)
+const hashLock = new HashLockFT(tick, max, lim, dec, hash)
 ...
 // deploy the new BSV20 token $HELLO
-await hashPuzzle.deployToken()
+await hashLock.deployToken()
 // mint 10 $HELLO into contract instance
-const mintTx = await hashPuzzle.mint(10n)
+const mintTx = await hashLock.mint(10n)
 ```
 
 Normally, we use a P2PKH address to receive the token, then the token is controlled by a private key the same as the general P2PKH.
 
-In this example, the token is mint to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash puzzle is solved.
+In this example, the token is mint to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash lock is unlocked.
 
 ## Transfer Token
 
@@ -94,11 +94,11 @@ const bob = new BSV20P2PKH(tick, max, lim, dec, Addr(addressBob.toByteString()))
 
 ### Step 2. Call the Contract
 
-Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashPuzzleFT` as follows.
+Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashLockFT` as follows.
 
 ```ts
 // Call the contract
-const { tx: transferTx } = await hashPuzzle.methods.unlock(message, {
+const { tx: transferTx } = await hashLock.methods.unlock(message, {
   transfer: [
     {
       instance: alice,
@@ -108,7 +108,7 @@ const { tx: transferTx } = await hashPuzzle.methods.unlock(message, {
       instance: bob,
       amt: 5n,
     },
-  ] as MethodCallOptions<HashPuzzleFT>,
+  ] as MethodCallOptions<HashLockFT>,
 })
 ```
 
@@ -132,4 +132,4 @@ The UTXO model is a powerful feature of BSV20, we can send tokens to multiple re
 
 Great! You have finished the tutorial on how to mint and transfer the BSV20 Token with a Smart Contract.
 
-The full complete [contract](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/hashPuzzleFT.ts) and [example](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/examples/mintBSV20.ts) can be found in sCrypt's [repository](https://github.com/sCrypt-Inc/scrypt-ord).
+The full complete [contract](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/hashLockFT.ts) and [example](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/examples/mintBSV20.ts) can be found in sCrypt's [repository](https://github.com/sCrypt-Inc/scrypt-ord).
