@@ -65,7 +65,7 @@ Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this exampl
 
 ![](../../static/img/inscribe-image.png)
 
-Then you can check your inscription on the explorer as below, or [view the image](https://ordinals.gorillapool.io/api/files/inscriptions/2a87414ec80652ad192338fcdf55b20f0f80c2eef73b4d978a1ebbb1012210a0_0) via [1Sat Ordinals API](https://ordinals.gorillapool.io/api/docs/).
+Then you can check your inscription on the explorer.
 
 ![](../../static/img/inscribe-image-inscribe-tx.png)
 
