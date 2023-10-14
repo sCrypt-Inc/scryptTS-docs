@@ -82,10 +82,10 @@ The contract instance holds the inscription and we transfer it to a bitcoin addr
 
 ### Step 1. Create Receiver Instance
 
-Class `OrdNFTP2PKH` represents an address that can hold inscriptions. Its constructor takes one parameter which is the receiving address.
+Class `OrdiNFTP2PKH` represents an address that can hold inscriptions. Its constructor takes one parameter which is the receiving address.
 
 ```ts
-const receiver = new OrdNFTP2PKH(Addr(address.toByteString()))
+const receiver = new OrdiNFTP2PKH(Addr(address.toByteString()))
 ```
 
 ### Step 2. Call the Contract
