@@ -203,10 +203,10 @@ import artifact from '../artifacts/ordinalLock.json'
 OrdinalLock.loadArtifact(artifact)
 ```
 
-### Connect Signer to `OrdProvider`
+### Connect Signer to `OrdiProvider`
 
 ```ts
-const provider = new OrdProvider();
+const provider = new OrdiProvider();
 const signer = new SensiletSigner(provider);
 ```
 
@@ -252,14 +252,14 @@ For each ordinal in the collection list, we can click the `Sell` button to list 
 
 ```ts
 async function sell() {
-    const signer = new SensiletSigner(new OrdProvider())
+    const signer = new SensiletSigner(new OrdiProvider())
     const publicKey = await signer.getDefaultPubKey()
 
     const instance = new OrdinalLock(PubKey(toHex(publicKey)), amount)
     await instance.connect(signer)
 
     const inscriptionUtxo = await parseUtxo(txid, vout)
-    const inscriptionP2PKH = OrdNFTP2PKH.fromUTXO(inscriptionUtxo)
+    const inscriptionP2PKH = OrdiNFTP2PKH.fromUTXO(inscriptionUtxo)
     await inscriptionP2PKH.connect(signer)
 
     const { tx } = await inscriptionP2PKH.methods.unlock(
@@ -268,7 +268,7 @@ async function sell() {
         {
             transfer: instance,     // <---- 
             pubKeyOrAddrToSign: publicKey,
-        } as MethodCallOptions<OrdNFTP2PKH>
+        } as MethodCallOptions<OrdiNFTP2PKH>
     )
 }
 ```
@@ -285,7 +285,7 @@ To buy an ordinal that is on sale, we only need to call the contract public meth
 
 ```ts
 async function buy() {
-    const signer = new SensiletSigner(new OrdProvider())
+    const signer = new SensiletSigner(new OrdiProvider())
     const address = await signer.getDefaultAddress()
     const { tx } = await instance.methods.purchase(Addr(address.toByteString()))
 }
