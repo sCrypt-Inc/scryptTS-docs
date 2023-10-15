@@ -57,13 +57,13 @@ class HashPuzzleNFT extends OrdinalNFT {
 
 For a deeper exploration, please refer to the respective subsections:
 
-* [Non-Fungible Tokens (NFTs)](./nft.md)
-* [Fungible Tokens (FTs)](./ft.md)
+* [Non-Fungible Tokens (NFTs)](nft/nft.md)
+* [Fungible Tokens (FTs)](ft/ft.md)
 
 
 ## `OrdProvider`
 
-When you use sCrypt 1Sat Ordinals SDK, we recommend that you use `OrdProvider` to create `Signer`. This allows your transactions to be indexed faster.
+When you use sCrypt 1Sat Ordinals SDK, we recommend that you use `OrdProvider` as the [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider). This allows your transaction to be indexed instantly, instead of waiting for it to be mined into a block.
 
 
 ```ts
