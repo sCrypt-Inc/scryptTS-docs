@@ -3,7 +3,7 @@ title: "Multiple Inputs with Different Contracts"
 sidebar_position: 2
 ---
 
-Suppose we would like to unlock FTs within a single transaction that are located in different smart contracts. We can utilize the same technique demonstrated in the [section for calling multiple contract instances](../advanced/how-to-call-multiple-contracts.md).
+Suppose we would like to unlock FTs within a single transaction that are located in different smart contracts. We can utilize the same technique demonstrated in the [section for calling multiple contract instances](../../advanced/how-to-call-multiple-contracts.md).
 
 ```ts
 // One sender is regular bsv-20 P2PKH.

@@ -76,7 +76,7 @@ console.log("Minted tx: ", mintTx.id);
 
 Note, that if the amount exceeds the limit set above, or the token was already wholely minted, the transaction won't be considered valid by 1Sat indexers.
 
-The minted amount can then be transferred by calling the contract, as in [regular sCrypt contracts](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
+The minted amount can then be transferred by calling the contract, as in [regular sCrypt contracts](../../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
 
 ```ts
 // Transfer
@@ -170,7 +170,7 @@ The whole token supply is minted within the first transaction, and whoever can u
 
 ### Transfer
 
-The minted amount can be transferred by invoking the contract, similar to [standard sCrypt contracts](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
+The minted amount can be transferred by invoking the contract, similar to [standard sCrypt contracts](../../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
 
 ```ts
 // Transfer
