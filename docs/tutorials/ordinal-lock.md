@@ -59,8 +59,8 @@ public purchase(receiver: Addr) {
 The [final complete code](https://github.com/sCrypt-Inc/scrypt-ord/blob/master/tests/contracts/ordinalLock.ts) is as follows:
 
 ```ts
-import { Addr, prop, method, Utils, hash256, assert, MethodCallOptions, ContractTransaction, bsv, PubKey, hash160 } from 'scrypt-ts'
-import { OrdinalNFT } from 'scrypt-ord'
+import { Addr, prop, method, Utils, hash256, assert, ContractTransaction, bsv, PubKey, hash160, Sig, SigHash } from 'scrypt-ts'
+import { OrdiMethodCallOptions, OrdinalNFT } from '../scrypt-ord'
 
 export class OrdinalLock extends OrdinalNFT {
     @prop()
@@ -100,7 +100,7 @@ export class OrdinalLock extends OrdinalNFT {
 
     static async buildTxForPurchase(
         current: OrdinalLock,
-        options: MethodCallOptions<OrdinalLock>,
+        options: OrdiMethodCallOptions<OrdinalLock>,
         receiver: Addr
     ): Promise<ContractTransaction> {
         const defaultAddress = await current.signer.getDefaultAddress()
@@ -132,7 +132,7 @@ export class OrdinalLock extends OrdinalNFT {
 
     static async buildTxForCancel(
         current: OrdinalLock,
-        options: MethodCallOptions<OrdinalLock>
+        options: OrdiMethodCallOptions<OrdinalLock>
     ): Promise<ContractTransaction> {
         const defaultAddress = await current.signer.getDefaultAddress()
         const tx = new bsv.Transaction()
@@ -268,7 +268,7 @@ async function sell() {
         {
             transfer: instance,     // <---- 
             pubKeyOrAddrToSign: publicKey,
-        } as MethodCallOptions<OrdiNFTP2PKH>
+        } as OrdiMethodCallOptions<OrdiNFTP2PKH>
     )
 }
 ```
@@ -305,4 +305,4 @@ async function buy() {
 
 Congratulations! You have successfully completed a full-stack dApp that can sell 1Sat Ordinals on Bitcoin.
 
-The full example repo can be found [here](https://github.com/sCrypt-Inc/ordinal-lock-demo/tree/sensilet).
+The full example repo can be found [here](https://github.com/sCrypt-Inc/ordinal-lock-demo).

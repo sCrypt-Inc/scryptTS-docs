@@ -109,12 +109,12 @@ const { tx: transferTx } = await hashLock.methods.unlock(message, {
             amt: 5n,
         },
     ],
-} as MethodCallOptions<HashLockFT>)
+} as OrdiMethodCallOptions<HashLockFT>)
 ```
 
 This code will create a transaction that transfers 2 tokens to `alice` and 5 to `bob`.
 
-The default transaction builder will automatically add a token change output on the transaction. In this example, it will automatically add a token change output with 3 tokens, paying to the default address of the instance connected signer. You can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `MethodCallOptions`.
+The default transaction builder will automatically add a token change output on the transaction. In this example, it will automatically add a token change output with 3 tokens, paying to the default address of the instance connected signer. You can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `OrdiMethodCallOptions`.
 
 Execute command `npx ts-node tests/examples/mintBSV20.ts` to run this example.
 

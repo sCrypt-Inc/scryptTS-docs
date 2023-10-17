@@ -11,7 +11,7 @@ To create a smart contract that will carry an NFT, have your smart contract exte
 import { method, prop, assert, ByteString, sha256, Sha256 } from "scrypt-ts";
 import { OrdinalNFT } from "scrypt-ord";
 
-export class HashPuzzleNFT extends OrdinalNFT {
+export class HashLockNFT extends OrdinalNFT {
   @prop()
   hash: Sha256;
 
@@ -38,23 +38,23 @@ Each constructor extending the `OrdinalNFT` class must also call the instances `
 The following code demonstrates how deploy / inscribe the NFT contract:
 
 ```ts
-HashPuzzleNFT.loadArtifact();
+HashLockNFT.loadArtifact();
 
 const text = "Hello sCrypt and 1Sat Ordinals";
 
 const message = toByteString('secret string', true);
 const hash = sha256(message);
 
-const instance = new HashPuzzleNFT(hash);
+const instance = new HashLockNFT(hash);
 
 const signer = getDefaultSigner();
 await instance.connect(signer);
 
-const inscriptionTx = await instance.inscribeTextNft(text);
+const inscriptionTx = await instance.inscribeText(text);
 console.log("Inscribed NFT: ", inscriptionTx.id);
 ```
 
-The `inscribeTextNft` first inscribes the locking script with the specified text and then deploys the contract.
+The `inscribeText` first inscribes the locking script with the specified text and then deploys the contract.
 
 Among text the inscription can contain many other types of data. Here's how you can conveniently inscribe an image:
 
@@ -63,7 +63,7 @@ Among text the inscription can contain many other types of data. Here's how you 
 
 const bb = readFileSync(join(__dirname, "..", "..", "logo.png")).toString("base64");
 
-const tx = await instance.inscribeImageNft(bb, ContentType.PNG);
+const tx = await instance.inscribeImage(bb, ContentType.PNG);
 console.log("Inscribed NFT: ", tx.id);
 ```
 
@@ -83,7 +83,7 @@ The value `contentType` must be a MIME-type string. The [`ContentType`](https://
 
 You can easily transfer a deployed NFT to an Ordinals address by passing a `transfer` value via the method call parameters. 
 
-`OrdNFTP2PKH` is a [P2PKH](https://learnmeabitcoin.com/guide/p2pkh) contract for holding ordinals NFTs. Like a normal P2PKH contract, you need an address to instantiate it.
+`OrdiNFTP2PKH` is a [P2PKH](https://learnmeabitcoin.com/guide/p2pkh) contract for holding ordinals NFTs. Like a normal P2PKH contract, you need an address to instantiate it.
 
 ```ts
 // ... deploy code from above
@@ -91,7 +91,7 @@ You can easily transfer a deployed NFT to an Ordinals address by passing a `tran
 const { tx: transferTx } = await instance.methods.unlock(
     message, 
     {
-        transfer: new OrdNFTP2PKH(
+        transfer: new OrdiNFTP2PKH(
                 Addr(recipientAddress.toByteString())
             ),
     }

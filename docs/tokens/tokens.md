@@ -31,14 +31,14 @@ npm i scrypt-ord
 - `BSV20V2`
 
 There are also pre-made classes that represent standard 1Sat transfers using the widely employed `P2PKH` mechanism:
-- `OrdNFTP2PKH`
+- `OrdiNFTP2PKH`
 - `BSV20V1P2PKH`
 - `BSV20V2P2PKH`
 
 Suppose you wish to lock an ordinal token using a custom hash puzzle contract, you would define the smart contract class as shown below:
 
 ```ts
-class HashPuzzleNFT extends OrdinalNFT {
+class HashLockNFT extends OrdinalNFT {
     @prop()
     hash: Sha256
 
@@ -63,14 +63,14 @@ For a deeper exploration, please refer to the respective subsections:
 
 ## `OrdProvider`
 
-When you use sCrypt 1Sat Ordinals SDK, we recommend that you use `OrdProvider` as the [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider). This allows your transaction to be indexed instantly, instead of waiting for it to be mined into a block.
+When you use sCrypt 1Sat Ordinals SDK, we recommend that you use `OrdiProvider` as the [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider). This allows your transaction to be indexed instantly, instead of waiting for it to be mined into a block.
 
 
 ```ts
 export function getDefaultSigner(): TestWallet {
     return new TestWallet(
         myPrivateKey,
-        new OrdProvider(bsv.Networks.mainnet)
+        new OrdiProvider(bsv.Networks.mainnet)
     )
 }
 ```

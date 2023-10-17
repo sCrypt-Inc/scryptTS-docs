@@ -13,17 +13,17 @@ const outpoint = '036718e5c603169b9981a55f276adfa7b5d024616ac95e048b05a81258ea23
 
 // Create a P2PKH object from a UTXO
 const utxo: UTXO = OneSatApis.fetchUTXOByOutpoint(outpoint);
-const p2pkh = OrdNFTP2PKH.fromUTXO(utxo);
+const p2pkh = OrdiNFTP2PKH.fromUTXO(utxo);
 // Alternatively, create a P2PKH from an origin
-const p2pkh = await OrdNFTP2PKH.getLatestInstance(outpoint);
+const p2pkh = await OrdiNFTP2PKH.getLatestInstance(outpoint);
 
 // Construct recipient smart contract
 const message = toByteString('super secret', true);
 const hash = sha256(message);
-const recipient = new HashPuzzleNFT(hash);
+const recipient = new HashLockNFT(hash);
 await recipient.connect(getDefaultSigner());
 
-// Unlock deployed NFT and send it to the recipient hash puzzle contract
+// Unlock deployed NFT and send it to the recipient hash lock contract
 await p2pkh.connect(getDefaultSigner());
 
 const { tx: transferTx } = await p2pkh.methods.unlock(
@@ -32,23 +32,23 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
   {
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
-  } as MethodCallOptions<OrdNFTP2PKH>
+  } as OrdiMethodCallOptions<OrdiNFTP2PKH>
 );
 
 console.log("Transferred NFT: ", transferTx.id);
 ```
 
-Alternatively, if the NFT is locked using a smart contract, i.e. `HashPuzzleNFT`:
+Alternatively, if the NFT is locked using a smart contract, i.e. `HashLockNFT`:
 
 ```ts
-HashPuzzleNFT.loadArtifact();
+HashLockNFT.loadArtifact();
 
-// Retrieve `HashPuzzleNFT` instance holding the NFT
-const nft = await HashPuzzleNFT.getLatestInstance(outpoint);
+// Retrieve `HashLockNFT` instance holding the NFT
+const nft = await HashLockNFT.getLatestInstance(outpoint);
 await nft.connect(getDefaultSigner());
 
 const hash = sha256(toByteString('next super secret', true));
-const recipient = new HashPuzzleNFT(hash);
+const recipient = new HashLockNFT(hash);
 await recipient.connect(getDefaultSigner());
 
 // Send NFT to recipient

@@ -97,11 +97,11 @@ const { tx: transferTx } = await hashLock.methods.unlock(
     message,
     {
         transfer: receiver,  // <-----
-    } as MethodCallOptions<HashLockNFT>
+    } as OrdiMethodCallOptions<HashLockNFT>
 )
 ```
 
-We pass the receiver instance to `transfer` of struct `MethodCallOptions`.
+We pass the receiver instance to `transfer` of struct `OrdiMethodCallOptions`.
 
 
 ## Conclusion

@@ -19,12 +19,12 @@ Tokens utilizing the first version of the `bsv-20` must be initialized by a **de
 To create a v1 token smart contract, have it extend the `BSV20V1` class:
 
 ```ts
-class HashPuzzleFT extends BSV20V1 {
+class HashLockFT extends BSV20V1 {
     @prop()
     hash: Sha256
 
-    constructor(tick: ByteString, max: bigint, lim: bigint, hash: Sha256) {
-        super(tick, max, lim)
+    constructor(tick: ByteString, max: bigint, lim: bigint, dec: bigint, hash: Sha256) {
+        super(tick, max, lim, dec)
         this.init(...arguments)
         this.hash = hash
     }
@@ -45,20 +45,22 @@ Each constructor extending the `BSV20V1` class must also call the instances `ini
 Here's an example of how you would deploy the new FT:
 
 ```ts
-HashPuzzleFT.loadArtifact();
+HashLockFT.loadArtifact();
 
 const tick = toByteString("DOGE", true);
 const max = 100000n;
 const lim = max / 10n;
+const dec = 0n
 
-const hashPuzzle = new HashPuzzleFT(
+const hashLock = new HashLockFT(
   tick,
   max,
   lim,
+  dec,
   sha256(toByteString("secret0", true))
 );
-await hashPuzzle.connect(getDefaultSigner());
-await hashPuzzle.deployToken();
+await hashLock.connect(getDefaultSigner());
+await hashLock.deployToken();
 ```
 
 ### Mint and Transfer
@@ -70,7 +72,7 @@ Here's how you can mint some amount:
 ```ts
 // Minting
 const amt = 1000n;
-const mintTx = await hashPuzzle.mint(amt);
+const mintTx = await hashLock.mint(amt);
 console.log("Minted tx: ", mintTx.id);
 ```
 
@@ -84,10 +86,11 @@ for (let i = 0; i < 3; i++) {
   // The recipient contract.
   // Because this particular contract doesn't enforce subsequent outputs,
   // it could be any other contract or just a P2PKH.
-  const receiver = new HashPuzzleFT(
+  const receiver = new HashLockFT(
     tick,
     max,
     lim,
+    dec,
     sha256(toByteString(`secret${i + 1}`, true))
   );
   const recipients: Array<FTReceiver> = [
@@ -98,7 +101,7 @@ for (let i = 0; i < 3; i++) {
   ];
 
   // Unlock and transfer.
-  const { tx } = await hashPuzzle.methods.unlock(
+  const { tx } = await hashLock.methods.unlock(
     toByteString(`secret:${i}`, true),
     {
       transfer: recipients,
@@ -107,7 +110,7 @@ for (let i = 0; i < 3; i++) {
   console.log("Transfer tx: ", tx.id);
   
   // Update instance for next iteration.
-  hashPuzzle = recipients[0].instance as HashPuzzleFT;
+  hashLock = recipients[0].instance as HashLockFT;
 }
 ```
 
@@ -123,7 +126,7 @@ Please refer to the [official 1Sat documentation](https://docs.1satordinals.com/
 To create a v2 token smart contract, have it extend the `BSV20V2` class:
 
 ```ts
-class HashPuzzleFTV2 extends BSV20V2 {
+class HashLockFTV2 extends BSV20V2 {
     @prop()
     hash: Sha256
 
@@ -145,20 +148,20 @@ class HashPuzzleFTV2 extends BSV20V2 {
 In v1, tokens are deployed and minted in separate transactions, but in v2, all tokens are deployed and minted in one transactions. Here's an example of how you would deploy the new v2 FT:
 
 ```ts
-HashPuzzleFTV2.loadArtifact()
+HashLockFTV2.loadArtifact()
 
 const max = 10000n  // Whole token amount.
 const dec = 0n      // Decimal precision.
 
-hashPuzzle = new HashPuzzleFTV2(
+hashLock = new HashLockFTV2(
     toByteString(''),
     max,
     dec,
     sha256(toByteString('super secret', true))
 )
-await hashPuzzle.connect(getDefaultSigner())
+await hashLock.connect(getDefaultSigner())
 
-tokenId = await hashPuzzle.deployToken()
+tokenId = await hashLock.deployToken()
 console.log('token id: ', tokenId)
 ```
 
@@ -178,7 +181,7 @@ for (let i = 0; i < 3; i++) {
   // The recipient contract.
   // Because this particular contract doesn't enforce subsequent outputs,
   // it could be any other contract or just a P2PKH.
-  const receiver = new HashPuzzleFT(
+  const receiver = new HashLockFTV2(
     toByteString(tokenId, true),
     max,
     dec,
@@ -192,7 +195,7 @@ for (let i = 0; i < 3; i++) {
   ];
 
   // Unlock and transfer.
-  const { tx } = await hashPuzzle.methods.unlock(
+  const { tx } = await hashLock.methods.unlock(
     toByteString(`secret:${i}`, true),
     {
       transfer: recipients,
@@ -201,7 +204,7 @@ for (let i = 0; i < 3; i++) {
   console.log("Transfer tx: ", tx.id);
   
   // Update instance for next iteration.
-  hashPuzzle = recipients[0].instance as HashPuzzleFTV2;
+  hashLock = recipients[0].instance as HashLockFTV2;
 }
 ```
 

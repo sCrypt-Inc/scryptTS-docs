@@ -8,12 +8,12 @@ Suppose you'd like to unlock existing UTXOs that carry a FT to a smart contract.
 If you would like to unlock a single specific UTXO, you can do the following:
 
 ```ts
-HashPuzzleFT.loadArtifact();
-
+HashLockFT.loadArtifact();
+...
 // Initialize recipient smart contract.
 const message = toByteString('super secret', true);
 const hash = sha256(message);
-const recipient = new HashPuzzleFT(hash);
+const recipient = new HashLockFT(tick, max, lim, dec, hash);
 await recipient.connect(getDefaultSigner());
 
 // Create P2PKH object from an UTXO
@@ -29,7 +29,7 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
   {
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
-  } as MethodCallOptions<BSV20V2P2PKH>
+  } as OrdiMethodCallOptions<BSV20V2P2PKH>
 );
 
 console.log("Transferred FT: ", transferTx.id);
@@ -49,7 +49,7 @@ await Promise.all(bsv20P2PKHs.map((p) => p.connect(signer)));
 // Construct recipient smart contract(s)
 const recipients: Array<FTReceiver> = [
   {
-    instance: new HashPuzzleFTV2(tokenId, amount, dec, sha256(message)),
+    instance: new HashLockFTV2(tokenId, amount, dec, sha256(message)),
     amt: 6n,
   },
 ];
@@ -78,7 +78,7 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
     tokenChangeAddress: yourOrdinalAddress
-  } as MethodCallOptions<BSV20V2P2PKH>
+  } as OrdiMethodCallOptions<BSV20V2P2PKH>
 )
 ```
 
@@ -91,6 +91,6 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
     skipTokenChange: true
-  } as MethodCallOptions<BSV20V2P2PKH>
+  } as OrdiMethodCallOptions<BSV20V2P2PKH>
 )
 ```
