@@ -1,8 +1,8 @@
 ---
-sidebar_position: 11
+sidebar_position: 4
 ---
 
-# Tutorial 11: Ordinal Lock
+# Tutorial 4: Ordinal Lock
 
 ## Overview
 In this tutorial, we will go over how to use [sCrypt](https://scrypt.io/) to build a full-stack dApp on Bitcoin to sell [1Sat Ordinals](https://docs.1satordinals.com/), including the smart contract and an interactive front-end.
@@ -159,7 +159,7 @@ Note the customized calling method `buildTxForPurchase` and `buildTxForCancel` e
 
 ## Frontend
 
-We will add a frontend to the `OrdinalLock` smart contract accroding to this [guide](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
+We will add a frontend to the `OrdinalLock` smart contract accroding to this [guide](../../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
 
 ### Setup Project
 
@@ -242,9 +242,9 @@ function loadCollections() {
 }
 ```
 
-![](../../static/img/ordinal-lock/load1.png)
+![](../../../static/img/ordinal-lock/load1.png)
 
-![](../../static/img/ordinal-lock/load2.png)
+![](../../../static/img/ordinal-lock/load2.png)
 
 ### List an Ordinal
 
@@ -275,9 +275,9 @@ async function sell() {
 
 ![](https://lucid.app/publicSegments/view/50527d66-0710-4658-b8db-b615d60232f8/image.png)
 
-![](../../static/img/ordinal-lock/sell1.png)
+![](../../../static/img/ordinal-lock/sell1.png)
 
-![](../../static/img/ordinal-lock/sell2.png)
+![](../../../static/img/ordinal-lock/sell2.png)
 
 ### Buy an Ordinal
 
@@ -293,13 +293,13 @@ async function buy() {
 
 ![](https://lucid.app/publicSegments/view/0b52243b-bdbc-4a13-b5b6-9386be80e155/image.png)
 
-![](../../static/img/ordinal-lock/buy1.png)
+![](../../../static/img/ordinal-lock/buy1.png)
 
-![](../../static/img/ordinal-lock/buy2.png)
+![](../../../static/img/ordinal-lock/buy2.png)
 
-![](../../static/img/ordinal-lock/buy3.png)
+![](../../../static/img/ordinal-lock/buy3.png)
 
-![](../../static/img/ordinal-lock/buy4.png)
+![](../../../static/img/ordinal-lock/buy4.png)
 
 ## Conclusion
 

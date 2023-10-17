@@ -61,7 +61,7 @@ For a deeper exploration, please refer to the respective subsections:
 * [Fungible Tokens (FTs)](ft/ft.md)
 
 
-## `OrdProvider`
+## `OrdiProvider`
 
 When you use sCrypt 1Sat Ordinals SDK, we recommend that you use `OrdiProvider` as the [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider). This allows your transaction to be indexed instantly, instead of waiting for it to be mined into a block.
 

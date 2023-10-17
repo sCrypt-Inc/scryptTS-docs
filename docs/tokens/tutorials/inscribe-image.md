@@ -1,8 +1,8 @@
 ---
-sidebar_position: 8
+sidebar_position: 1
 ---
 
-# Tutorial 8: Inscribe Image
+# Tutorial 1: Inscribe Image
 
 ## Overview
 
@@ -63,15 +63,15 @@ const mintTx = await hashLock.inscribeImage(image, 'image/png')
 
 Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this example.
 
-![](../../static/img/inscribe-image.png)
+![](../../../static/img/inscribe-image.png)
 
 Then you can check your inscription on the explorer.
 
-![](../../static/img/inscribe-image-inscribe-tx.png)
+![](../../../static/img/inscribe-image-inscribe-tx.png)
 
 Now that the inscription is locked to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash lock is unlocked.
 
-![](../../static/img/inscribe-image-transfer-tx.png)
+![](../../../static/img/inscribe-image-transfer-tx.png)
 
 This is different from using a P2PKH address to receive the inscription, where the inscription is controlled by a private key.
 
@@ -90,7 +90,7 @@ const receiver = new OrdiNFTP2PKH(Addr(address.toByteString()))
 
 ### Step 2. Call the Contract
 
-Similar to [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) before, we call the `unlock` of `HashLockNFT` as follows.
+Similar to [contract calling](../../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) before, we call the `unlock` of `HashLockNFT` as follows.
 
 ```ts
 const { tx: transferTx } = await hashLock.methods.unlock(

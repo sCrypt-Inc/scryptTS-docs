@@ -1,8 +1,8 @@
 ---
-sidebar_position: 9
+sidebar_position: 2
 ---
 
-# Tutorial 9: Mint BSV20 V2 Token
+# Tutorial 2: Mint BSV20 V2 Token
 
 ## Overview
 
@@ -90,7 +90,7 @@ const bob = new BSV20V2P2PKH(toByteString(tokenId, true), max, dec, addressBob)
 
 ### Step 2. Call the Contract
 
-Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashLockFTV2` as follows.
+Just as other [contract calling](../../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashLockFTV2` as follows.
 
 ```ts
 // Call the contract
@@ -114,13 +114,13 @@ The default transaction builder will automatically add a token change output on 
 
 Execute command `npx ts-node tests/examples/mintBSV20V2.ts` to run this example.
 
-![](../../static/img/mint-bsv20v2.png)
+![](../../../static/img/mint-bsv20v2.png)
 
 Then you can check your token transfer details on the explorer.
 
-![](../../static/img/mint-bsv20v2-mint-tx.png)
+![](../../../static/img/mint-bsv20v2-mint-tx.png)
 
-![](../../static/img/mint-bsv20v2-transfer-tx.png)
+![](../../../static/img/mint-bsv20v2-transfer-tx.png)
 
 ## Conclusion
 

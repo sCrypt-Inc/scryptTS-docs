@@ -1,8 +1,8 @@
 ---
-sidebar_position: 10
+sidebar_position: 3
 ---
 
-# Tutorial 10: Mint BSV20 V1 Token
+# Tutorial 3: Mint BSV20 V1 Token
 
 ## Overview
 
@@ -94,7 +94,7 @@ const bob = new BSV20V1P2PKH(tick, max, lim, dec, addressBob)
 
 ### Step 2. Call the Contract
 
-Just as other [contract calling](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashLockFT` as follows.
+Just as other [contract calling](../../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) methods we introduced before, we call the public method `unlock` of `HashLockFT` as follows.
 
 ```ts
 // Call the contract
@@ -118,13 +118,13 @@ The default transaction builder will automatically add a token change output on 
 
 Execute command `npx ts-node tests/examples/mintBSV20.ts` to run this example.
 
-![](../../static/img/mint-bsv20.png)
+![](../../../static/img/mint-bsv20.png)
 
 Then you can check your token transfer details on the explorer.
 
-![](../../static/img/mint-bsv20-mint-tx.png)
+![](../../../static/img/mint-bsv20-mint-tx.png)
 
-![](../../static/img/mint-bsv20-transfer-tx.png)
+![](../../../static/img/mint-bsv20-transfer-tx.png)
 
 The UTXO model is a powerful feature of BSV20, we can send tokens to multiple receivers in a single transaction, allowing us to create complex and efficient transactions.
 
