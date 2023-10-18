@@ -301,6 +301,54 @@ async function buy() {
 
 ![](../../../static/img/ordinal-lock/buy4.png)
 
+## Use Panda Wallet
+
+[Panda Wallet](https://github.com/Panda-Wallet/panda-wallet) is an open-source and non-custodial web3 wallet for BSV and [1Sat Ordinals](https://docs.1satordinals.com/). This wallet allows users to have full control over their funds, providing security and independence in managing their assets.
+
+To support Panda Wallet in the dApp, we simply replace all the `SensiletSigner` with `PandaSigner`, that's all.
+
+```ts
+import { PandaSigner } from "scrypt-ts/dist/bsv/signers/panda-signer"
+```
+
+Different from other [signers](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#signer), we can get two addresses from `PandaSigner` after the user authorizes the connect action:
+
+- `getDefaultAddress()`, the address for sending and receiving BSV, paying transaction fees, etc. The same as other signers.
+- `getOrdAddress()`, the address for receiving Ordinals **only**.
+
+```ts
+const [connectedPayAddress, setConnectedPayAddress] = useState(undefined)
+const [connectedOrdiAddress, setConnectedOrdiAddress] = useState(undefined) 
+...
+async function connect() {
+    const signer = new PandaSigner(new OrdiProvider())   // <---- use `PandaSigner`
+    const { isAuthenticated, error } = await signer.requestAuth()
+    if (!isAuthenticated) {
+        throw new Error(`Unauthenticated: ${error}`)
+    }
+    setConnectedPayAddress(await signer.getDefaultAddress())  // <----
+    setConnectedOrdiAddress(await signer.getOrdAddress())     // <----
+}
+```
+
+### Load Ordinals
+
+![](../../../static/img/ordinal-lock/panda-load1.png)
+
+![](../../../static/img/ordinal-lock/panda-load2.png)
+
+### List an Ordinal
+
+![](../../../static/img/ordinal-lock/panda-sell1.png)
+
+![](../../../static/img/ordinal-lock/panda-sell2.png)
+
+### Buy an Ordinal
+
+![](../../../static/img/ordinal-lock/panda-buy1.png)
+
+![](../../../static/img/ordinal-lock/panda-buy2.png)
+
 ## Conclusion
 
 Congratulations! You have successfully completed a full-stack dApp that can sell 1Sat Ordinals on Bitcoin.
