@@ -311,7 +311,7 @@ To support Panda Wallet in the dApp, we simply replace all the `SensiletSigner` 
 import { PandaSigner } from "scrypt-ts/dist/bsv/signers/panda-signer"
 ```
 
-Different from other [signers](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#signer), we can get two addresses from `PandaSigner` after the user authorizes the connect action:
+Different from other [signers](../../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#signer), we can get two addresses from `PandaSigner` after the user authorizes the connect action:
 
 - `getDefaultAddress()`, the address for sending and receiving BSV, paying transaction fees, etc. The same as other signers.
 - `getOrdAddress()`, the address for receiving Ordinals **only**.
