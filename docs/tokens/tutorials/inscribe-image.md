@@ -65,13 +65,15 @@ Execute command `npx ts-node tests/examples/inscribeImage.ts` to run this exampl
 
 ![](../../../static/img/inscribe-image.png)
 
-Then you can check your inscription on the explorer.
+Then you can check your inscription on a block explorer.
 
 ![](../../../static/img/inscribed-tx.png)
 
-Now that the inscription is locked to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash lock is unlocked.
+Click `Decode`.
 
 ![](../../../static/img/decoded-inscribed-image.png)
+
+Now that the inscription is locked to a contract instance, it is controlled by the smart contract, which means it can only be transferred when the hash lock is unlocked.
 
 This is different from using a P2PKH address to receive the inscription, where the inscription is controlled by a private key.
 
