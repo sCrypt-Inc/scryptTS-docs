@@ -11,6 +11,7 @@ As described in [this section](../how-to-deploy-and-call-a-contract/how-to-deplo
 
 1. `TestWallet` : a simple wallet that can hold multiple private keys, with in-memory utxo management. Should only be used for testing.
 2. `SensiletSigner`: a signer powered by the popular smart contract wallet [Sensilet](https://sensilet.com/). Can be used in production.
+3. `PandaSigner`: another signer powered by the popular web3 wallet [Panda](https://github.com/Panda-Wallet/panda-wallet). Can be used [in production](../tokens/tutorials/ordinal-lock.md#use-panda-wallet).
 
 ## Implementation
 
@@ -427,4 +428,6 @@ const your_signer = new YourSigner(new DefaultProvider());
 // connect the signer to the contract instance
 await instance.connect(your_signer);
 ```
+
+Here is another [user-customized signer](https://github.com/shubham78901/scryptDemo/blob/neucron/tests/utils/neucronSigner.ts).
 
