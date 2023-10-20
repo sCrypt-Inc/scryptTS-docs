@@ -11,18 +11,19 @@ After you've finished writing a contract, you can deploy and call it. But first,
 ![](../../static/img/call.png)
 [Credit: moonbeam](https://docs.moonbeam.network/tutorials/eth-api/how-to-build-a-dapp)
 
-### Compile the Contract
+### Compile and Load Contract
 
-First, you need to `compile` the contract using CLI by running :
+First, you compile the contract using CLI:
 ```ts
 npx scrypt-cli@latest compile
 ```
-to compile the contract to Bitcoin script,so it can be included in a transaction's output. And will create a `JSON` file of your contract in the `artifact` folder so that you can use it when deploying the contract.
+This will create an artifact json file of your contract in the `artifacts` folder.
 
-call function `SmartContract.loadArtifact()` 
-to load the contract before deploying the contract.
+Next you call [loadArtifact](../how-to-write-a-contract/built-ins.md#loadartifact) load the json file, so you have a smart contract class ready to be instantiated.
 ```ts
-await MyContract.loadArtifact()
+import artifact from '../artifacts/mycontract.json'
+
+await MyContract.loadArtifact(artifact)
 ```
 
 ### Contract Instance
@@ -316,7 +317,7 @@ Here is the complete sample code for the deployment and call of a P2PKH contract
 ```ts
 import { privateKey } from '../../utils/privateKey';
 
-// compile contract
+// load contract
 await P2PKH.loadArtifact()
 
 // public key of the `privateKey`
