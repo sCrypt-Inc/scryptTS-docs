@@ -13,8 +13,14 @@ After you've finished writing a contract, you can deploy and call it. But first,
 
 ### Compile the Contract
 
-First, call function `SmartContract.loadArtifact()` to compile the contract to Bitcoin script, so it can be included in a transaction's output.
+First, you need to `compile` the contract using CLI by running :
+```ts
+npx scrypt-cli@latest compile
+```
+to compile the contract to Bitcoin script,so it can be included in a transaction's output. And will create a `JSON` file of your contract in the `artifact` folder so that you can use it when deploying the contract.
 
+call function `SmartContract.loadArtifact()` 
+to load the contract before deploying the contract.
 ```ts
 await MyContract.loadArtifact()
 ```
