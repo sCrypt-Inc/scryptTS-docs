@@ -12,7 +12,7 @@ If the deployed NFT is locked using a regular `P2PKH` you may unlock it like the
 const outpoint = '036718e5c603169b9981a55f276adfa7b5d024616ac95e048b05a81258ea2388_0';
 
 // Create a P2PKH object from a UTXO
-const utxo: UTXO = OneSatApis.fetchUTXOByOutpoint(outpoint);
+const utxo: UTXO = await OneSatApis.fetchUTXOByOutpoint(outpoint);
 const p2pkh = OrdiNFTP2PKH.fromUTXO(utxo);
 // Alternatively, create a P2PKH from an origin
 const p2pkh = await OrdiNFTP2PKH.getLatestInstance(outpoint);
