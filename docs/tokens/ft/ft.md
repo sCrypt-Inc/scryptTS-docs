@@ -130,8 +130,8 @@ class HashLockFTV2 extends BSV20V2 {
     @prop()
     hash: Sha256
 
-    constructor(id: ByteString, max: bigint, dec: bigint, hash: Sha256) {
-        super(id, max, dec)
+    constructor(id: ByteString, sym: ByteString, max: bigint, dec: bigint, hash: Sha256) {
+        super(id, sym, max, dec)
         this.init(...arguments)
         this.hash = hash
     }
@@ -143,18 +143,20 @@ class HashLockFTV2 extends BSV20V2 {
 }
 ```
 
-### Mint
+### Deploy+Mint
 
 In v1, tokens are deployed and minted in separate transactions, but in v2, all tokens are deployed and minted in one transactions. Here's an example of how you would deploy the new v2 FT:
 
 ```ts
 HashLockFTV2.loadArtifact()
 
+const sym = toByteString('sCrypt', true)
 const max = 10000n  // Whole token amount.
 const dec = 0n      // Decimal precision.
 
 hashLock = new HashLockFTV2(
     toByteString(''),
+    sym,
     max,
     dec,
     sha256(toByteString('super secret', true))
@@ -164,6 +166,17 @@ await hashLock.connect(getDefaultSigner())
 tokenId = await hashLock.deployToken()
 console.log('token id: ', tokenId)
 ```
+
+v2 supports adding additional meta information when deploying token, such as:
+
+```ts
+const tokenId = await hashLock.deployToken({
+  icon: "/content/<Inscription Origin OR B protocol outpoint>"
+})
+console.log('token id: ', tokenId)
+```
+
+
 
 :::note
 Since we cannot know the id of the token deployment transaction at the time of deployment, the id is empty.
@@ -183,6 +196,7 @@ for (let i = 0; i < 3; i++) {
   // it could be any other contract or just a P2PKH.
   const receiver = new HashLockFTV2(
     toByteString(tokenId, true),
+    sym,
     max,
     dec,
     sha256(toByteString(`secret${i + 1}`, true))

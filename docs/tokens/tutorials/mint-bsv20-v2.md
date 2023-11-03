@@ -26,11 +26,11 @@ class HashLockFTV2 extends BSV20V2 {
 }
 ```
 
-2. The constructor has extra parameters - `id`, `max`, and `dec` - representing [BSV20 V2 fields](https://docs.1satordinals.com/bsv20#v2-deploy+mint-tickerless-mode).
+2. The constructor has extra parameters - `id`, `sym`, `max`, and `dec` - representing [BSV20 V2 fields](https://docs.1satordinals.com/bsv20#v2-deploy+mint-tickerless-mode).
 
 ```ts
-constructor(id: ByteString, max: bigint, dec: bigint, hash: Sha256) {
-    super(id, max, dec)
+constructor(id: ByteString, sym: ByteString, max: bigint, dec: bigint, hash: Sha256) {
+    super(id, sym, max, dec)
     this.init(...arguments)
     this.hash = hash
 }
@@ -60,12 +60,13 @@ We first create an instance of contract `HashLockFTV2`, then call function `depl
 
 ```ts
 // BSV20 V2 fields
+const sym = toByteString('sCrypt', true)
 const max = 10n
 const dec = 0n
 // create contract instance
 const message = toByteString('Hello sCrypt', true)
 const hash = sha256(message)
-const hashLock = new HashLockFTV2(toByteString(''), max, dec, hash)
+const hashLock = new HashLockFTV2(toByteString(''), sym, max, dec, hash)
 ...
 // deploy the new BSV20V2 token
 const tokenId = await hashLock.deployToken()
@@ -84,8 +85,8 @@ For now, the contract instance holds the token and we try to transfer it to a P2
 Class `BSV20V2P2PKH` represents a P2PKH address that can hold BSV20 V2 tokens. Its constructor takes BSV20 V2 fields and an receiving address as parameters.
 
 ```ts
-const alice = new BSV20V2P2PKH(toByteString(tokenId, true), max, dec, addressAlice )
-const bob = new BSV20V2P2PKH(toByteString(tokenId, true), max, dec, addressBob)
+const alice = new BSV20V2P2PKH(toByteString(tokenId, true), sym, max, dec, addressAlice )
+const bob = new BSV20V2P2PKH(toByteString(tokenId, true), sym, max, dec, addressBob)
 ```
 
 ### Step 2. Call the Contract
