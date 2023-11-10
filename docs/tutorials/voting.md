@@ -710,6 +710,11 @@ The repo is [here](https://github.com/sCrypt-Inc/voting). And an online example 
 
 Webhooks are also a viable option for server-side use and can offer an alternative to using websockets in client-side for listening to smart contract updates.
 
+### Advantages of Using Webhooks over Websockets
+
+Webhooks offer several advantages over websockets, particularly for server-side applications. They are more resource-efficient, using stateless HTTP requests instead of maintaining persistent connections, thereby reducing server load. This makes them easier to scale and integrate with existing web infrastructure. Webhooks are also more efficient in data handling, as they transmit information only upon specific event occurrences. A considerable advantage when subscribing to sCrypt contract events is eliminating the need to store API keys or sensitive information on the client side.
+
+However, a notable drawback is the requirement of a public-facing server, adding complexity and security considerations. The choice over whether you should use webhooks or websockets depends on your applications needs.
 
 ### Setup Webhook Server
 
