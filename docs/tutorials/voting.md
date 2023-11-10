@@ -704,3 +704,128 @@ After running the `deploy` script, don't forget to update your GitHub project se
 Congratulations! You have successfully completed a fullstack voting dapp fully on Bitcoin.
 
 The repo is [here](https://github.com/sCrypt-Inc/voting). And an online example is [here](http://classic.scrypt.io/voting).
+
+
+## Using Webhook on Server 
+
+Webhooks are also a viable option for server-side use and can offer an alternative to using websockets in client-side for listening to smart contract updates.
+
+### Advantages of Using Webhooks over Websockets
+
+Webhooks offer several advantages over websockets, particularly for server-side applications. They are more resource-efficient, using stateless HTTP requests instead of maintaining persistent connections, thereby reducing server load. This makes them easier to scale and integrate with existing web infrastructure. Webhooks are also more efficient in data handling, as they transmit information only upon specific event occurrences. A considerable advantage when subscribing to sCrypt contract events is eliminating the need to store API keys or sensitive information on the client side.
+
+However, a notable drawback is the requirement of a public-facing server, adding complexity and security considerations. The choice over whether you should use webhooks or websockets depends on your applications needs.
+
+### Setup Webhook Server
+
+Webhooks involve setting up a server that will receive HTTP requests whenever a certain event occurs (like user votes). Let's setup a simple Express server to listen to these webhook events.
+
+```ts
+const express = require("express");
+const app = express();
+const port = process.env.port || 3000;
+
+app.use(express.json())
+
+app.post("/webhook", (req, res) => {
+  console.log("Received a webhook");
+  console.log(req.body);
+  res.status(200).send("OK");
+});
+
+app.listen(port, () => {
+    console.log(`Webhook server is listening on port ${port}`);
+});
+```
+
+### Subscribing to Contract Events 
+
+After our server is up and running, it is necessary to create a webhook within our service prior to attempting to obtain any event information. Webhooks can be configured and maintained on the `webhooks` section of our dashboard.
+
+![](../../static/img/create-webhook.png)
+
+Please refer to the [main webhook doc](https://docs.scrypt.io/advanced/how-to-integrate-scrypt-service#webhooks) for more information.
+
+### Processing Webhook Events
+
+Once your webhook server receives a POST request, it can process the data as per the requirements of your app. In the case of our voting dApp, we can update the contract instance each time a vote is cast.
+
+```ts
+app.post("/webhook", (req, res) => {
+  console.log("Received a webhook event");
+
+  const events = req.body.events;
+  
+  if (events && events.length > 0) {
+    const utxoSpentEvent = events.find(
+        (event) => event.eventType === 'utxoSpent'
+    )
+
+    if (utxoSpentEvent && utxoSpentEvent.spentBy) {
+        // Parse out method call TXID from request payload.
+        const txId = utxoSpentEvent.spentBy.txId
+
+        // Retrieve the full serialized transaction using a provider.
+        const provider = new DefaultProvider({
+            network: bsv.Networks.testnet,
+        })
+        await provider.connect()
+        const tx = await provider.getTransaction(txId)
+
+        // Reconstruct latest contract instance from serialized tx.
+        latestInstance = Voting.fromTx(tx, 0)
+
+        res.status(200).send("Webhook processed");
+    }
+  }
+});
+```
+
+### Providing Latest Data to Clients
+Since our server now always has the latest contract instance, it can provide information about it to the clients. Let's add a GET endpoint to provide our clients with the latest vote information:
+
+```ts
+app.get("/votes/:index", (req, res) => {
+  const { index } = req.params;
+
+  // Convert index to integer and check if it's a valid array index
+  const arrayIndex = parseInt(index, 10);
+  if (isNaN(arrayIndex) || arrayIndex < 0 || arrayIndex >= items.length) {
+    return res.status(404).send("Item not found");
+  }
+
+  // Retrieve candidate from latest contract instance.
+  const candidate = latestInstance.candidates[arrayIndex];
+  
+  // Send the vote count as a response
+  res.status(200).json(candidates.votesReceived);
+});
+```
+
+Now the client can simply query our server to get the latest vote stats:
+
+```ts
+async function fetchVotes(candidateIdx: number) {
+  try {
+    const response = await fetch(`${serverURL}/votes/${candidateIndex}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.text();
+    const votesReceived = parseInt(text, 10);
+    
+    console.log(votesReceived)
+    
+    // ...
+
+  } catch (e) {
+    setError(e.message);
+    setItem(null);
+  }
+}
+```
+
+### Conclusion
+
+When using webhooks, you handle contract events server-side in the response to HTTP request sent by the sCrypt service. This way, you can immediately process relevant updates and reflect the changes in your dApp, without requiring the client to maintain a persistent connection, and is a great alternative for server-side handling of events.
