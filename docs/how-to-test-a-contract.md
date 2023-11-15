@@ -84,6 +84,34 @@ await instance.methods.unlock(
 )
 ```
 
+## Call a Non-Public Method
+
+It is also possible to call non-public methods locally.
+
+Let's add a non-public method to our contract:
+
+```ts
+@method()
+hashMessage(message: ByteString): ByteString {
+    return sha256(message)
+}
+```
+
+You can now call this method locally like the following:
+
+```ts
+const message: ByteString = toByteString('hello world')
+const hashRes: ByteString = instance.hashMessage(message)
+```
+
+If the method is static, it can be called like this:
+
+```ts
+const hashRes: ByteString = Demo.hashMessage(message)
+```
+
+It should be noted that non-public methods are only directly callable off-chain, i.e. for testing. On-chain, they can only be invoked through a public method.
+
 ## Integrate with a testing framework
 
 You can use whatever testing framework you like to write unit tests for your contract. For example, a test using [Mocha](https://mochajs.org/) is shown below:
