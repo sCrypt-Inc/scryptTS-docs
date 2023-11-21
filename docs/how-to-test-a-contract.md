@@ -42,7 +42,7 @@ export class Demo extends SmartContract {
 }
 ```
 
-Let us now open the file `tests/demo.test.ts`. This file contains code for deployment of our `Demo` contract on the Bitcoin testnet or local and a subsequent public method call on the contract.
+Let us now open the file `tests/demo.test.ts`. This file contains code for deployment of our `Demo` contract locally or on the Bitcoin testnet, and a subsequent  method call on the contract.
 
 
 ## Load Artifact
