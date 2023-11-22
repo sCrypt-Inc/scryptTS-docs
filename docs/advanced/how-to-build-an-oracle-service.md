@@ -6,7 +6,11 @@ sidebar_position: 11
 
 As described in [this tutorial](../tutorials/oracle.md), a blockchain oracle is a third-party service or agent that provides external data to a blockchain network. It is a bridge between the blockchain and the external world, enabling smart contracts to access, verify, and incorporate data from outside the blockchain. Specifically, the oracle service provides external data along with a [Rabin signature](https://en.wikipedia.org/wiki/Rabin_signature_algorithm) of the data, and the smart contract uses this data and verifies the signature before using it.
 
-In this section, we will introduce how to build your own oracle service. For the backend framework, we use [NestJS](https://nestjs.com/) to demo, but you are good to use any familiar framework to build the service. For the Rabin signature part, we have already implemented a library `rabinsig`, which can be imported and used directly.
+[Rabin signature](https://en.wikipedia.org/wiki/Rabin_signature_algorithm) is an alternative digital signature algorithm ([DSA](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm)) to [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) used in Bitcoin. The security of Rabin signature depends on the fact that calculating a modular square-root is as hard as integer factorisation. It has the beautiful **asymmetry** that **signature generation is computationally expensive, but signature verification is computationally cheap**. Therefore, here we choose to use Rabin signature to ensure the integrity of the external arbitrary data provided by the oracle. On one side, when Oracle provides data, it will sign the data, and these signatures are generated off-chain by the oracle. On the other side, when the data is used by smart contracts, only signature verification is required on-chain, which is computationally cheap.
+
+![](../../static/img/oracle.png)
+
+In this section, we will introduce how to build your own oracle service. For the backend framework, we use [NestJS](https://nestjs.com/) to demo, but you are good to use any familiar framework to build the service. For the Rabin signature part, we have already implemented a library [`rabinsig`](https://github.com/sCrypt-Inc/rabin), which can be imported and used directly.
 
 The full complete code of this demo can be found on our [GitHub repo](https://github.com/sCrypt-Inc/oracle-demo).
 
@@ -15,8 +19,7 @@ The full complete code of this demo can be found on our [GitHub repo](https://gi
 Run the following command to create a `NestJS` project.
 
 ```bash
-npm install -g @nestjs/cli
-nest new oracle-demo
+npx @nestjs/cli new oracle-demo
 ```
 
 Then install the project dependencies.
@@ -146,7 +149,7 @@ According to the previous introduction, you can add more APIs to oracle as neede
 
 In [this tutorial](../tutorials/oracle.md), we introduced how to verify and use oracle data in smart contracts.
 
-To verify Rabin signatures in smart contracts, we need to install the `scrypt-ts-lib` library.
+To verify signatures in smart contracts, we need to install the `scrypt-ts-lib` library.
 
 ```bash
 npm install --save scrypt-ts-lib
