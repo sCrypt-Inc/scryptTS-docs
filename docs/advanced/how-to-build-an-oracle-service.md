@@ -12,7 +12,7 @@ The full complete code of this demo can be found on our [GitHub repo](https://gi
 
 ## 1. Scaffold the project
 
-Run the following command to create a NestJS project.
+Run the following command to create a `NestJS` project.
 
 ```bash
 npm install -g @nestjs/cli
@@ -27,11 +27,11 @@ npm install
 npm install --save rabinsig
 ```
 
-## 2. Implement a method to sign Rabin signatures
+## 2. Generate signatures
 
-The oracle will have several methods providing different kinds of data, each needing a Rabin signature. Therefore, we can implement a common method, so that it can be reused and called in different methods.
+An oracle may provide multiple pieces of data, each requiring a signature. We implement a common service, so that it can be reused and called in different places.
 
-The class `RabinService` will load and initialize the Rabin private key from ENVs. We add a method `sign` in this class takes one parameter `dataBuffer` represents the binary data that will be signed.
+The class `RabinService` will load and initialize a private key from ENVs. We add a method `sign` in this class, which takes one parameter `dataBuffer` representing the binary data to be signed.
 
 ```ts
 import { Rabin } from 'rabinsig';
@@ -57,7 +57,7 @@ export class RabinService {
 
 ## 3. Add a timestamp API
 
-The implementation of timestamp API is quite simple. We first get the current `timestamp`, then convert it to a 4 bytes *Buffer* in little-endian, and sign the structed `data` at last.
+Too see how it works, we implement a simple timestamp API. We first get the current timestamp, then convert it to a 4 bytes *Buffer* in little-endian, and sign the structed `data` lastly.
 
 ```ts
 export function getTimestamp() {
@@ -142,7 +142,7 @@ async getPrice(@Param('base') base: string, @Param('query') query: string) {
 
 According to the previous introduction, you can add more APIs to oracle as needed, such as obtaining BSV chain info, etc., which will not be detailed described here.
 
-## 6. Test oralce in a smart contract
+## 6. Use oralce data in a smart contract
 
 In [this tutorial](../tutorials/oracle.md), we introduced how to verify and use oracle data in smart contracts.
 
