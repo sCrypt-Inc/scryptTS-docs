@@ -27,38 +27,33 @@ Then install the project dependencies.
 ```bash
 cd oracle-demo
 npm install
-npm install --save rabinsig
+npm install rabinsig
 ```
 
 ## 2. Generate signatures
 
 An oracle may provide multiple pieces of data, each requiring a signature. We implement a common service, so that it can be reused and called in different places.
 
-The class `RabinService` will load and initialize a private key from ENVs. We add a method `sign` in this class, which takes one parameter `dataBuffer` representing the binary data to be signed.
+The class `SigService` will load and initialize a private key from ENVs. We add a method `sign` in this class, which takes one parameter `dataBuffer` representing the binary data to be signed.
 
 ```ts
-import { Rabin } from 'rabinsig';
+import { Rabin, serialize } from 'rabinsig';
 
-@Injectable()
-export class RabinService {
+export class SigService {
   private rabin = new Rabin();
   // load and init Rabin private key from ENVs
   ...
   sign(dataBuffer: Buffer) {
     const dataHex = dataBuffer.toString('hex');
     const sig = this.rabin.sign(dataHex, this.privKey);
-    return {
-      data: dataHex,
-      signature: {
-        s: toBufferLE(sig.signature).toString('hex'),
-        padding: '00'.repeat(sig.paddingByteCount),
-      },
-    };
+    return { data: dataHex, signature: serialize(sig) };
   }
 }
 ```
 
-## 3. Add a timestamp API
+## 3. Add APIs
+
+### Add a timestamp API
 
 Too see how it works, we implement a simple timestamp API. We first get the current timestamp, then convert it to a 4 bytes *Buffer* in little-endian, and sign the structed `data` lastly.
 
@@ -87,18 +82,20 @@ The response of this API is as follows.
   "data":"017b0b5d65",
   "signature":{
     "s":"4fe8bbcdf26...",
-    "padding":""
+    "padding":"0000"
   }
 }
 ```
 
 For the smart contract, it is only necessary to focus on two parts, `data` and `signature`, and it will resolve and use `data` only when the `signature` verification is passed.
 
+#### API Marker
+
 Note that the first byte in `data` is an identification marker, which not only indicates how the signed data is serialized, but also has a more important role in distinguishing the data from different interfaces.
 
 Without this marker, the smart contract cannot distinguish which interface the passing-in data actually comes from. When oracle has two interfaces that return signed data of the same length, the attacker can pass the data returned from other interfaces to the contract, causing risks. Therefore, different APIs should use different marker values.
 
-## 4. Add a coin price API
+### Add a coin price API
 
 Here we use the [OKX API](https://www.okx.com/docs-v5/en) to obtain the currency price, and this is only for the demo, regardless of the single point of failure problem.
 
@@ -141,18 +138,18 @@ async getPrice(@Param('base') base: string, @Param('query') query: string) {
 }
 ```
 
-## 5. Add more APIs
+### Add more APIs
 
 According to the previous introduction, you can add more APIs to oracle as needed, such as obtaining BSV chain info, etc., which will not be detailed described here.
 
-## 6. Use oralce data in a smart contract
+## 4. Use oralce data in a smart contract
 
 In [this tutorial](../tutorials/oracle.md), we introduced how to verify and use oracle data in smart contracts.
 
 To verify signatures in smart contracts, we need to install the `scrypt-ts-lib` library.
 
 ```bash
-npm install --save scrypt-ts-lib
+npm install scrypt-ts-lib
 ```
 
 Then add the contract under folder `src/contracts`. Here we also use the [PriceBet](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) contract. You can refer to file [priceBet.e2e-spec.ts](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) for the full complete test code.
