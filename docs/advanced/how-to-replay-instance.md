@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # How to Replay a Contract Instance to the Latest State
 
 Using [sCrypt Service](./how-to-integrate-scrypt-service.md) and [sCrypt client](./how-to-integrate-scrypt-service.md#step-1-initialize-client), we can effortlessly create a contract instance reflecting the latest state as follows:
