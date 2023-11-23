@@ -6,13 +6,14 @@ sidebar_position: 11
 
 As described in [this tutorial](../tutorials/oracle.md), a blockchain oracle is a third-party service or agent that provides external data to a blockchain network. It is a bridge between the blockchain and the external world, enabling smart contracts to access, verify, and incorporate data from outside the blockchain. Specifically, the oracle service provides external data along with a [Rabin signature](https://en.wikipedia.org/wiki/Rabin_signature_algorithm) of the data, and the smart contract uses this data and verifies the signature before using it.
 
-[Rabin signature](https://en.wikipedia.org/wiki/Rabin_signature_algorithm) is an alternative digital signature algorithm ([DSA](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm)) to [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) used in Bitcoin. The security of Rabin signature depends on the fact that calculating a modular square-root is as hard as integer factorisation. It has the beautiful **asymmetry** that **signature generation is computationally expensive, but signature verification is computationally cheap**. Therefore, here we choose to use Rabin signature to ensure the integrity of the external arbitrary data provided by the oracle. On one side, when oracle provides data, it will sign the data, and these signatures are generated off-chain by the oracle. On the other side, when the data is used by smart contracts, only signature verification is required on-chain, which is computationally cheap.
+## Rabin signature
+[Rabin signature](https://en.wikipedia.org/wiki/Rabin_signature_algorithm) is an alternative digital signature algorithm ([DSA](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm)) to [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) used in Bitcoin. It has a beautiful **asymmetry** that **signature generation is computationally expensive, but signature verification is cheap**. Therefore, we choose to use Rabin signature to ensure the integrity of the external data provided by the oracle. When an oracle provides data, it will sign the data with its public key off chain. When the data is used by smart contracts, its signature is verified on chain, which is cheap. We do not use the builtin `checkSig` [opcode](https://wiki.bitcoinsv.io/index.php/OP_CHECKSIG) here because it can only check signature against the transaction data, not arbitrary data.
 
 ![](../../static/img/oracle.png)
 
-In this section, we will introduce how to build your own oracle service. For the backend framework, we use [NestJS](https://nestjs.com/) to demo, but you are good to use any familiar framework to build the service. For the Rabin signature part, we have already implemented a library [`rabinsig`](https://github.com/sCrypt-Inc/rabin), which can be imported and used directly.
+In this section, we will introduce how to build your own oracle service. For the backend framework, we use [NestJS](https://nestjs.com/) to illustrate, but you are free to use any familiar framework to build the service. For the Rabin signature part, we have already implemented a library [`rabinsig`](https://github.com/sCrypt-Inc/rabin), which can be imported and used directly.
 
-The full complete code of this demo can be found on our [GitHub repo](https://github.com/sCrypt-Inc/oracle-demo).
+The full complete code of this demo can be found in our [GitHub repo](https://github.com/sCrypt-Inc/oracle-demo).
 
 ## 1. Scaffold the project
 
@@ -22,7 +23,7 @@ Run the following command to create a `NestJS` project.
 npx @nestjs/cli new oracle-demo
 ```
 
-Then install the project dependencies.
+Then install dependencies.
 
 ```bash
 cd oracle-demo
@@ -55,7 +56,7 @@ export class SigService {
 
 ### Add a timestamp API
 
-Too see how it works, we implement a simple timestamp API. We first get the current timestamp, then convert it to a 4 bytes *Buffer* in little-endian, and sign the structed `data` lastly.
+Too see how it works, we implement a simple timestamp API. We first get the current timestamp, then convert it to a 4 bytes *Buffer* in little-endian, and sign the structured data.
 
 ```ts
 export function getTimestamp() {
@@ -87,17 +88,17 @@ The response of this API is as follows.
 }
 ```
 
-For the smart contract, it is only necessary to focus on two parts, `data` and `signature`, and it will resolve and use `data` only when the `signature` verification is passed.
+For the smart contract, it is only necessary to focus on two parts: `data` and `signature`. It should only use and trust `data` when the `signature` verification passes.
 
 #### API Marker
 
-Note that the first byte in `data` is an identification marker, which not only indicates how the signed data is serialized, but also has a more important role in distinguishing the data from different interfaces.
+Note that the first byte in `data` is an identification marker, which not only indicates how the signed data is serialized, but also has a more important role in distinguishing data from different interfaces.
 
-Without this marker, the smart contract cannot distinguish which interface the passing-in data actually comes from. When oracle has two interfaces that return signed data of the same length, the attacker can pass the data returned from other interfaces to the contract, causing risks. Therefore, different APIs should use different marker values.
+Without this marker, the smart contract cannot distinguish which interface the passed data actually comes from. When oracle has two interfaces that return signed data of the same length, the attacker can pass the data returned from another interfaces to the contract, potentially causing issues. Therefore, different APIs should use different marker values.
 
 ### Add a coin price API
 
-Here we use the [OKX API](https://www.okx.com/docs-v5/en) to obtain the currency price, and this is only for the demo, regardless of the single point of failure problem.
+Here we use the [OKX API](https://www.okx.com/docs-v5/en) to obtain a currency's price.
 
 First, wrap the OKX API. Note how the method handles the value of price. Because it is inconvenient for the smart contract to handle *float* numbers, a variable `decimal` is introduced to convert the price value into an integer.
 
@@ -114,7 +115,7 @@ async getOkxPrice(tradingPair: string, decimal: number) {
 }
 ```
 
-Then implement the oracle API following the flow of **obtaining data, serializing data, and signing data**.
+Then implement the oracle API following the order of **obtaining data, serializing it, and signing it**.
 
 ```ts
 @Get('price/:base/:query')
@@ -140,11 +141,11 @@ async getPrice(@Param('base') base: string, @Param('query') query: string) {
 
 ### Add more APIs
 
-According to the previous introduction, you can add more APIs to oracle as needed, such as obtaining BSV chain info, etc., which will not be detailed described here.
+According to the previous introduction, you can add more APIs to your oracle as needed, such as obtaining BSV chain info, etc., which will not be covered here.
 
 ## 4. Use oralce data in a smart contract
 
-In [this tutorial](../tutorials/oracle.md), we introduced how to verify and use oracle data in smart contracts.
+In [this tutorial](../tutorials/oracle.md), we introduce how to verify and use oracle data in smart contracts.
 
 To verify signatures in smart contracts, we need to install the `scrypt-ts-lib` library.
 
@@ -152,4 +153,4 @@ To verify signatures in smart contracts, we need to install the `scrypt-ts-lib` 
 npm install scrypt-ts-lib
 ```
 
-Then add the contract under folder `src/contracts`. Here we also use the [PriceBet](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) contract. You can refer to file [priceBet.e2e-spec.ts](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) for the full complete test code.
+Then add the contract under folder `src/contracts`. Here we also use the [PriceBet](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) contract. You can refer to file [priceBet.e2e-spec.ts](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) for a complete test code.
