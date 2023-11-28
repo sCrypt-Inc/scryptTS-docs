@@ -13,7 +13,7 @@ As described in [this tutorial](../tutorials/oracle.md), a blockchain oracle is 
 
 In this section, we will introduce how to build your own oracle service. For the backend framework, we use [NestJS](https://nestjs.com/) to illustrate, but you are free to use any familiar framework to build the service. For the Rabin signature part, we have already implemented a library [`rabinsig`](https://github.com/sCrypt-Inc/rabin), which can be imported and used directly.
 
-The full complete code of this demo can be found in our [GitHub repo](https://github.com/sCrypt-Inc/oracle-demo).
+The full complete code of this demo can be found in our [GitHub repo](https://github.com/sCrypt-Inc/oracle-demo). You can also refer to the [code](https://github.com/gitzhou/api-witnessonchain) of [WitnessOnChain](https://api.witnessonchain.com), an open-sourced oracle service, for more details.
 
 ## 1. Scaffold the project
 
