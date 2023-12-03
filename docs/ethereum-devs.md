@@ -44,7 +44,7 @@ There are two noticeable differences.
 | Libraries | [Web3.js](https://web3js.org/#/) / [Ethers.js](https://docs.ethers.org) | [scrypt-ts](https://docs.scrypt.io/how-to-write-a-contract/) |
 | Developer Platform | [Alchemy](https://www.alchemy.com/) / [Infura](https://www.infura.io/) | [sCrypt](https://scrypt.io) |
 | IDE | [Remix](https://remix.ethereum.org)[^1] | [Visual Studio Code](https://code.visualstudio.com/) |
-| Wallet | [MetaMask](https://metamask.io/) | [Sensilet](https://sensilet.com/) |
+| Wallet | [MetaMask](https://metamask.io/) | [Panda](https://github.com/Panda-Wallet/panda-wallet) |
 | Block Explorer | [Etherscan](https://etherscan.io/) | [WhatsOnChain](https://whatsonchain.com/) |
 
 [^1]: Visual Studio Code can also be used for Solidity with various extentions. However, its support is extremely limited compared to that of sCrypt, a TypeScript DSL, which is supported out of box without any extension. For example, [VS Code debugger](./how-to-debug-a-contract.md) has first-class comprehensive support for sCrypt, but does not suppport Solidity.

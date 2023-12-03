@@ -154,6 +154,7 @@ const sym = toByteString('sCrypt', true)
 const max = 10000n  // Whole token amount.
 const dec = 0n      // Decimal precision.
 
+// Since we cannot know the id of the token deployment transaction at the time of deployment, the id is empty.
 hashLock = new HashLockFTV2(
     toByteString(''),
     sym,
@@ -176,11 +177,6 @@ const tokenId = await hashLock.deployToken({
 console.log('token id: ', tokenId)
 ```
 
-
-
-:::note
-Since we cannot know the id of the token deployment transaction at the time of deployment, the id is empty.
-:::
 
 The whole token supply is minted within the first transaction, and whoever can unlock the deployment UTXO will gain full control of the whole supply. Additionally, the smart contract itself can enforce rules for the distribution of the tokens.
 
