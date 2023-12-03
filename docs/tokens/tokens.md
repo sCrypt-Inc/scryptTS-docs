@@ -10,7 +10,7 @@ The SDK offers an easy to use interface for deploying and transferring 1Sat Ordi
 
 It facilitates the development of smart contracts for both non-fungible tokens (NFTs) and fungible tokens (FTs).
 You can also inscribe NFT's and BSV20 at [sCrypt](https://inscribe.scrypt.io)
-and a video guide on how to inscribe directly at [YouTube](https://youtu.be/IsNINX3pqKI?si=gcnhbKN-sP-7mPJ5)
+and a video guide on how to inscribe directly can be found at [YouTube](https://youtu.be/IsNINX3pqKI?si=gcnhbKN-sP-7mPJ5).
 
 ## Installation
 
