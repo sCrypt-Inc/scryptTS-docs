@@ -34,7 +34,7 @@ According to the plugin we can see the following information:
 We can also see the status of bsv20 token:
 
 - **validated:** Contains a valid bsv20 token that has been verified
-- **pengding:** Contains an unverified valid bsv20 token
+- **pending:** Contains an unverified valid bsv20 token
 - **invalid:** Contains an invalid bsv20 token
 
 If the transaction is a token deployment transaction, we will see:
