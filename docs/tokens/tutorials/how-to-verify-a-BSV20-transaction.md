@@ -30,6 +30,8 @@ According to the plugin we can see the following information:
 - **op:** operation in bsv20 terms
 - **amount:** bsv20 token amount held by the utxo
 - **owner:** bsv20 token owner
+- **Non-BSV20 input:**: the input does not contain BSV20 tokens
+- **Non-BSV20 output:**: the output does not contain BSV20 tokens
 
 We can also see the status of bsv20 token:
 
