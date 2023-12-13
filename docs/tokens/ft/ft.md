@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Funglible Tokens - FTs
+# Fungible Tokens - FTs
 
 Just like NFTs, `scrypt-ord` also supports fungible tokens. Under the hood it utilizes the [`bsv-20` protocol](https://docs.1satordinals.com/bsv20).
 

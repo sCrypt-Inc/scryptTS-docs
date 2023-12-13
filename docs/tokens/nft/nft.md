@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Non Funglible Tokens - NFTs
+# Non Fungible Tokens - NFTs
 
 
 To create a smart contract that will carry an NFT, have your smart contract extend the `OrdinalNFT` class:
