@@ -156,7 +156,7 @@ You cannot simply call `Helloworld.compile()` at the front end, since it only wo
 
 ## Integrate Wallet
 
-You will integrate [Sensilet](https://sensilet.com/), a browser extension wallet similar to [MetaMask](https://metamask.io/), into the project.
+You will integrate [Panda](https://chromewebstore.google.com/detail/panda-wallet/mlbnicldlpdimbjdcncnklfempedeipj), a browser extension wallet similar to [MetaMask](https://metamask.io/), into the project.
 
 :::info
 You can refer to this [guide](../advanced/how-to-add-a-signer.md) to add support for other wallets.
@@ -169,7 +169,7 @@ const provider = new DefaultProvider({
     network: bsv.Networks.testnet
 });
 
-const signer = new SensiletSigner(provider);
+const signer = new PandaSigner(provider);
 
 // request authentication
 const { isAuthenticated, error } = await signer.requestAuth();

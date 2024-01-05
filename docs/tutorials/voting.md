@@ -272,7 +272,7 @@ Before deploying the contract, we need to create a `.env` file and save your pri
 PRIVATE_KEY=xxxxx
 ```
 
-If you don't have a private key, you can follow [this guide](../../how-to-deploy-and-call-a-contract/faucet) to generate one using Sensilet wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
+If you don't have a private key, you can follow [this guide](../../how-to-deploy-and-call-a-contract/faucet) to generate one using Panda wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
 
 Run the following command to deploy the contract.
 
@@ -353,7 +353,7 @@ It's required to connect your signer to `ScryptProvider` when using sCrypt servi
 
 ```ts
 const provider = new ScryptProvider();
-const signer = new SensiletSigner(provider);
+const signer = new PandaSigner(provider);
 
 signerRef.current = signer;
 ```
@@ -519,7 +519,7 @@ Calling a contract public method is [the same as before](../how-to-deploy-and-ca
 async function voting(e: any) {
   // ...
 
-  const signer = signerRef.current as SensiletSigner;
+  const signer = signerRef.current as PandaSigner;
 
   if (votingContract && signer) {
     const { isAuthenticated, error } = await signer.requestAuth();
@@ -609,7 +609,7 @@ The code to subscribe to contract events is as follows.
 ```ts
 useEffect(() => {
   const provider = new ScryptProvider();
-  const signer = new SensiletSigner(provider);
+  const signer = new PandaSigner(provider);
 
   signerRef.current = signer;
 

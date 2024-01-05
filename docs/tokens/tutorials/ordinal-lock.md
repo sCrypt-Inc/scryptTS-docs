@@ -207,7 +207,7 @@ OrdinalLock.loadArtifact(artifact)
 
 ```ts
 const provider = new OrdiProvider();
-const signer = new SensiletSigner(provider);
+const signer = new PandaSigner(provider);
 ```
 
 ### Integrate Wallet
@@ -252,7 +252,7 @@ For each ordinal in the collection list, we can click the `Sell` button to list 
 
 ```ts
 async function sell() {
-    const signer = new SensiletSigner(new OrdiProvider())
+    const signer = new PandaSigner(new OrdiProvider())
     const publicKey = await signer.getDefaultPubKey()
 
     const instance = new OrdinalLock(PubKey(toHex(publicKey)), amount)
@@ -285,7 +285,7 @@ To buy an ordinal that is on sale, we only need to call the contract public meth
 
 ```ts
 async function buy() {
-    const signer = new SensiletSigner(new OrdiProvider())
+    const signer = new PandaSigner(new OrdiProvider())
     const address = await signer.getDefaultAddress()
     const { tx } = await instance.methods.purchase(Addr(address.toByteString()))
 }
@@ -305,7 +305,7 @@ async function buy() {
 
 [Panda Wallet](https://github.com/Panda-Wallet/panda-wallet) is an open-source and non-custodial web3 wallet for BSV and [1Sat Ordinals](https://docs.1satordinals.com/). This wallet allows users to have full control over their funds, providing security and independence in managing their assets.
 
-To support Panda Wallet in the dApp, we simply replace all the `SensiletSigner` with `PandaSigner`, that's all.
+To support Panda Wallet in the dApp, we simply replace all the `PandaSigner` with `PandaSigner`, that's all.
 
 ```ts
 import { PandaSigner } from "scrypt-ts/dist/bsv/signers/panda-signer"

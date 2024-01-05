@@ -10,7 +10,7 @@ As described in [this section](../how-to-deploy-and-call-a-contract/how-to-deplo
 `sCrypt` provides the following signers by default:
 
 1. `TestWallet` : a simple wallet that can hold multiple private keys, with in-memory utxo management. Should only be used for testing.
-2. `SensiletSigner`: a signer powered by the popular smart contract wallet [Sensilet](https://sensilet.com/). Can be used in production.
+2. `PandaSigner`: a signer powered by the popular smart contract wallet [Panda](https://Panda.com/). Can be used in production.
 3. `PandaSigner`: another signer powered by the popular web3 wallet [Panda](https://github.com/Panda-Wallet/panda-wallet). Can be used [in production](../tokens/tutorials/ordinal-lock.md#use-panda-wallet).
 
 ## Implementation
@@ -33,6 +33,20 @@ export abstract class Signer {
     this._isSigner = true;
     this.provider = provider;
   }
+
+  abstract getNetwork(): Promise<bsv.Networks.Network>;
+
+  /**
+   * Check if the wallet has been authenticated
+   * @returns {boolean} true | false
+   */
+  abstract isAuthenticated(): Promise<boolean>;
+
+  /**
+   * Request wallet authentication
+   * @returns A promise which resolves to if the wallet has been authenticated and the authenticate error message
+   */
+  abstract requestAuth(): Promise<{ isAuthenticated: boolean, error: string }>;
 
   /**
    * Connect a provider to `this`.
@@ -73,7 +87,9 @@ export abstract class Signer {
    * @returns A promise which resolves to the signed transaction hex string.
    * @throws If any input of the transaction can not be signed properly.
    */
-  abstract signRawTransaction(rawTxHex: string, options: SignTransactionOptions): Promise<string>;
+  async signRawTransaction(rawTxHex: string, options: SignTransactionOptions): Promise<string> {
+    ...
+  }
 
   /**
    * Sign a transaction object.
@@ -81,7 +97,9 @@ export abstract class Signer {
    * @param options The options for signing, see the details of `SignTransactionOptions`.
    * @returns A promise which resolves to the signed transaction object.
    */
-  abstract signTransaction(tx: bsv.Transaction, options?: SignTransactionOptions): Promise<bsv.Transaction>;
+  async signTransaction(tx: bsv.Transaction, options?: SignTransactionOptions): Promise<bsv.Transaction>{
+    ...
+  }
 
   /**
    * Sign a message string.
@@ -165,74 +183,136 @@ export abstract class Signer {
 It is recommended that your signer implements all `abstract` methods. For non-`abstract` methods, the default implementation is usually sufficient.
 
 
-### `Example: SensiletSigner`
+### `Example: PandaSigner`
 
-Next, we use the [Sensilet wallet](https://sensilet.com/) as an example to show how to implement a `SensiletSigner`.
+Next, we use the [Panda Wallet](https://github.com/Panda-Wallet/panda-wallet) as an example to show how to implement a `PandaSigner`.
 
 
-1. In the `connect` method, you usually attempt to connect to a provider and save it:
+1. Implement the `isAuthenticated` method to Check if the wallet has been authenticated:
 
 ```ts
-override async connect(provider: Provider): Promise<this> {
-    // we should make sure sensilet is connected  before we connect a provider.
-    const isSensiletConnected = await this.isSensiletConnected();
 
-    if(!isSensiletConnected) {
-      Promise.reject(new Error('Sensilet is not connected!'))
+private _initTarget() {
+    if(this._target) {
+        return;
     }
 
-    if(!provider.isConnected()) {
-      // connect the provider
-      await provider.connect();
+    if (typeof (window as any).panda !== 'undefined') {
+        this._target = (window as any).panda;
+    } else {
+        throw new Error('panda is not installed')
     }
+}
 
-    this.provider = provider;
-    return this;
+/**
+ * Check if the wallet has been authenticated
+ * @returns {boolean} true | false
+ */
+override isAuthenticated(): Promise<boolean> {
+    this._initTarget();
+    return this._target.isConnected();
 }
 ```
 
-2. Returns the address to the default private key of the wallet in `getDefaultAddress`:
+
+2. Implement the `requestAuth` method to request wallet authentication:
 
 ```ts
 /**
- * Get an object that can directly interact with the Sensilet wallet,
- * if there is no connection with the wallet, it will request to establish a connection.
- * @returns SensiletWalletAPI
+ * Request wallet authentication
+ * @returns A promise which resolves to if the wallet has been authenticated and the authenticate error message
  */
-async getConnectedTarget(): Promise<SensiletWalletAPI> {
-
-    const isSensiletConnected = await this.isSensiletConnected();
-    if (!isSensiletConnected) {
-      // trigger connecting to sensilet account when it's not connected.
-      try {
-        const addr = await this._target.requestAccount();
-        this._address = bsv.Address.fromString(addr);
-      } catch (e) {
-        throw new Error('Sensilet requestAccount failed')
-      }
+override async requestAuth(): Promise<{ isAuthenticated: boolean, error: string }> {
+    let isAuthenticated: boolean = false
+    let error: string = ''
+    try {
+        await this.getConnectedTarget()
+        await this.alignProviderNetwork()
+        isAuthenticated = true
+    } catch (e) {
+        error = e.toString()
     }
-    return this.getSensilet();
+    return Promise.resolve({ isAuthenticated, error })
+}
+```
+
+
+
+3. In the `connect` method, you usually attempt to connect to a provider and save it:
+
+```ts
+override async connect(provider?: Provider): Promise<this> {
+    // we should make sure panda is connected  before we connect a provider.
+    const isAuthenticated = await this.isAuthenticated();
+
+    if (!isAuthenticated) {
+        throw new Error('panda is not connected!');
+    }
+
+    if (provider) {
+        if (!provider.isConnected()) {
+            await provider.connect();
+        }
+        this.provider = provider;
+    } else {
+        if (this.provider) {
+            await this.provider.connect();
+        } else {
+            throw new Error(`No provider found`);
+        }
+    }
+
+    return this;
+}
+
+```
+
+4. Returns the address to the default private key of the wallet in `getDefaultAddress`:
+
+```ts
+/**
+ * Get an object that can directly interact with the Panda wallet,
+ * if there is no connection with the wallet, it will request to establish a connection.
+ * @returns PandaAPI
+ */
+private async getConnectedTarget(): Promise<PandaAPI> {
+    const isAuthenticated = await this.isAuthenticated()
+    if (!isAuthenticated) {
+        // trigger connecting to panda account when it's not authorized.
+        try {
+            
+            this._initTarget();
+            const res = await this._target.connect();
+
+            if(res && res.includes("canceled")) {
+                throw new Error(res);
+            }
+
+        } catch (e) {
+            throw new Error(`panda requestAccount failed: ${e}`)
+        }
+    }
+    return this._target;
 }
 
 override async getDefaultAddress(): Promise<bsv.Address> {
-    // 
-    const sensilet = await this.getConnectedTarget();
-    const address = await sensilet.getAddress();
-    return bsv.Address.fromString(address);
+    const panda = await this.getConnectedTarget();
+    const address = await panda.getAddresses();
+    return bsv.Address.fromString(address.bsvAddress);
 }
 ```
 
-3. Returns the public key to the default private key of the wallet in `getDefaultPubKey`:
+5. Returns the public key to the default private key of the wallet in `getDefaultPubKey`:
 
 ```ts
-override async getDefaultPubKey(): Promise<PublicKey> {
-    const sensilet = await this.getConnectedTarget();
-    const pubKey = await sensilet.getPublicKey();
-    return Promise.resolve(new bsv.PublicKey(pubKey));
+override async getDefaultPubKey(): Promise<bsv.PublicKey> {
+    const panda = await this.getConnectedTarget();
+    const pubKey = await panda.getPubKeys();
+    return Promise.resolve(new bsv.PublicKey(pubKey.bsvPubKey));
 }
 ```
 
-4. Since Sensilet is a single-address wallet, we simply ignore the `getPubKey` method:
+6. Since Panda is a single-address wallet, we simply ignore the `getPubKey` method:
 
 ```ts
 override async getPubKey(address: AddressOption): Promise<PublicKey> {
@@ -240,183 +320,74 @@ override async getPubKey(address: AddressOption): Promise<PublicKey> {
 }
 ```
 
-5. Both `signTransaction` and `signRawTransaction` sign the transaction, but their parameters are different. `signRawTransaction` converts the parameters and delegates the implementation of the signing to `signTransaction`.
-
-The following are types used in these two functions:
+7. Both `signTransaction` and `signRawTransaction` sign the transaction, and are already implemented in the base class. You just need to implement the `getSignatures` function. The following code calls panda's `getSignatures` API to request a panda wallet signature.
 
 
 ```ts
-
-/** 
- * `SignatureRequest` contains required informations for a signer to sign a certain input of a transaction.
- */
-export interface SignatureRequest {
-  /** The index of input to sign. */
-  inputIndex: number;
-  /** The previous output satoshis value of the input to spend. */
-  satoshis: number;
-  /** The address(es) of corresponding private key(s) required to sign the input. */
-  address: AddressesOption;
-  /** The previous output script of input, default value is a P2PKH locking script for the `address` if omitted. */
-  scriptHex?: string;
-  /** The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted. */
-  sigHashType?: number;
-  /** The extra information for signing. */
-  data?: unknown;
-}
-
-/** 
- * `SignatureResponse` contains the signing result corresponding to a `SignatureRequest`.
- */
-export interface SignatureResponse {
-  /** The index of input. */
-  inputIndex: number;
-  /** The signature.*/
-  sig: string;
-  /** The public key bound with the `sig`. */
-  publicKey: string;
-  /** The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted. */
-  sigHashType: number;
-}
-
-/** 
- * `SignTransactionOptions` is the options can be provided when signing a transaction.
-*/
-export interface SignTransactionOptions {
-  /** The `SignatureRequest` for the some inputs of the transaction. */
-  sigRequests?: SignatureRequest[];
-  /** The address(es) whose corresponding private key(s) should be used to sign the tx. */
-  address?: AddressesOption;
-}
-```
-
-`signTransaction` will convert the above parameter types to the parameter types required by the [sensilet api](https://doc.sensilet.com/guide/sensilet-api.html#signtx). And call the sensilet api to complete the signature, which is implemented in `getSignatures` function.
-
-```ts
-override async signRawTransaction(rawTxHex: string, options: SignTransactionOptions): Promise<string> {
-    // convert `rawTxHex` to a transation object
-    const sigReqsByInputIndex: Map<number, SignatureRequest> = (options?.sigRequests || []).reduce((m, sigReq) => { m.set(sigReq.inputIndex, sigReq); return m; }, new Map());
-    const tx = new bsv.Transaction(rawTxHex);
-    tx.inputs.forEach((_, inputIndex) => {
-      const sigReq = sigReqsByInputIndex.get(inputIndex);
-      if (!sigReq) {
-        throw new Error(`\`SignatureRequest\` info should be provided for the input ${inputIndex} to call #signRawTransaction`)
-      }
-      const script = sigReq.scriptHex ? new bsv.Script(sigReq.scriptHex) : bsv.Script.buildPublicKeyHashOut(sigReq.address.toString());
-      // set ref output of the input
-      tx.inputs[inputIndex].output = new bsv.Transaction.Output({
-        script,
-        satoshis: sigReq.satoshis
-      })
-    });
-
-    const signedTx = await this.signTransaction(tx, options);
-    return signedTx.toString();
-}
-
-override async signTransaction(tx: Transaction, options?: SignTransactionOptions): Promise<Transaction> {
-
-    const network = await this.getNetwork();
-    // Generate default `sigRequests` if not passed by user
-    const sigRequests: SignatureRequest[] = options?.sigRequests?.length ? options.sigRequests :
-
-      tx.inputs.map((input, inputIndex) => {
-        const useAddressToSign = options && options.address ? options.address :
-          input.output?.script.isPublicKeyHashOut()
-            ? input.output.script.toAddress(network)
-            : this._address;
-
-        return {
-          inputIndex,
-          satoshis: input.output?.satoshis,
-          address: useAddressToSign,
-          scriptHex: input.output?.script?.toHex(),
-          sigHashType: DEFAULT_SIGHASH_TYPE,
-        }
-      })
-
-    const sigResponses = await this.getSignatures(tx.toString(), sigRequests);
-
-    // Set the acquired signature as an unlocking script for the transaction
-    tx.inputs.forEach((input, inputIndex) => {
-      const sigResp = sigResponses.find(sigResp => sigResp.inputIndex === inputIndex);
-      if (sigResp && input.output?.script.isPublicKeyHashOut()) {
-        var unlockingScript = new bsv.Script("")
-        .add(Buffer.from(sigResp.sig, 'hex'))
-        .add(Buffer.from(sigResp.publicKey, 'hex'));
-        
-        input.setScript(unlockingScript)
-      }
-    })
-
-    return tx;
-}
 
 /**
- * Get signatures with sensilet api
+ * Get signatures with Panda api
  * @param rawTxHex a transation raw hex
  * @param sigRequests a `SignatureRequest` array for the some inputs of the transaction.
  * @returns a `SignatureResponse` array
  */
-async getSignatures(rawTxHex: string, sigRequests: SignatureRequest[]): Promise<SignatureResponse[]> {
+override async getSignatures(rawTxHex: string, sigRequests: SignatureRequest[]): Promise<SignatureResponse[]> {
+    const panda = await this.getConnectedTarget();
     const network = await this.getNetwork()
-    // convert `sigRequests` to the parameter type required by sensilet `signTx` api
-    const inputInfos = sigRequests.flatMap((sigReq) => {
-      const addresses = parseAddresses(sigReq.address, network);
-      return addresses.map(address => {
-        return {
-          txHex: rawTxHex,
-          inputIndex: sigReq.inputIndex,
-          scriptHex: sigReq.scriptHex || bsv.Script.buildPublicKeyHashOut(address).toHex(),
-          satoshis: sigReq.satoshis,
-          sigtype: sigReq.sigHashType || DEFAULT_SIGHASH_TYPE,
-          address: address.toString()
-        }
-      });
+
+    const sigRequests_ = sigRequests.map(sigReq => ({
+        prevTxid: sigReq.prevTxId,
+        outputIndex: sigReq.outputIndex,
+        inputIndex: sigReq.inputIndex,
+        satoshis: sigReq.satoshis,
+        address: parseAddresses(sigReq.address, network).map(addr => addr.toString()),
+        script: sigReq.scriptHex,
+        sigHashType: sigReq.sigHashType,
+        csIdx: sigReq.csIdx,
+        data: sigReq.data,
+    }));
+
+    const sigResults = await panda.getSignatures({
+        rawtx: rawTxHex,
+        sigRequests: sigRequests_
     });
 
-    const sensilet = await this.getConnectedTarget();
-    // call sensilet `signTx` api to sign transaction
-    // https://doc.sensilet.com/guide/sensilet-api.html#signtx
-    const sigResults = await sensilet.signTx({
-      list: inputInfos
-    });
-
-    return inputInfos.map((inputInfo, idx) => {
-      return {
-        inputIndex: inputInfo.inputIndex,
-        sig: sigResults.sigList[idx].sig,
-        publicKey: sigResults.sigList[idx].publicKey,
-        sigHashType: sigRequests[idx].sigHashType || DEFAULT_SIGHASH_TYPE
-      }
-    })
+    return sigResults.map(sigResult => ({
+        ...sigResult,
+        publicKey: sigResult.pubKey,
+    }));
 }
 ```
 
-6. Sensilet supports signing messages, if your wallet does not support it, you can throw an exception in the `signMessage` function:
+
+8. Panda supports signing messages, if your wallet does not support it, you can throw an exception in the `signMessage` function:
 
 ```ts
 override async signMessage(message: string, address?: AddressOption): Promise<string> {
     if (address) {
-      throw new Error(`${this.constructor.name}#signMessge with \`address\` param is not supported!`);
+        throw new Error(`${this.constructor.name}#signMessge with \`address\` param is not supported!`);
     }
-    const sensilet = await this.getConnectedTarget();
-    return sensilet.signMessage(message);
+    const panda = await this.getConnectedTarget();
+    const res = await panda.signMessage({message});
+    return res.sig;
 }
 ```
 
-So far, we have implemented all abstract methods. The remaining non-abstract methods can reuse the default implementation, that is, delegating to the connected [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider). If you have a customized implementation, you can override them. For example, we can use the [Sensilet api `getBsvBalance`](https://doc.sensilet.com/guide/sensilet-api.html#getbsvbalance) to obtain the balance of an address.
+So far, we have implemented all abstract methods. The remaining non-abstract methods can reuse the default implementation, that is, delegating to the connected [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider). If you have a customized implementation, you can override them. For example, we can use the Panda api `getBalance` to obtain the balance of an address.
 
 ```ts
 override getBalance(address?: AddressOption): Promise<{ confirmed: number, unconfirmed: number }> {
-    if(address) {
-      return this.connectedProvider.getBalance(address);
+    if (address) {
+        return this.connectedProvider.getBalance(address);
     }
-    return this.getConnectedTarget().then(target => target.getBsvBalance()).then(r => r.balance)
+
+    const panda = await this.getConnectedTarget();
+    const balance = await panda.getBalance();
+    return Promise.resolve({ confirmed: balance.satoshis, unconfirmed: 0 });
 }
 ```
 
-Now we have implemented `SensiletSigner`. The full code is [here](https://gist.github.com/xhliu/73104028deaf95c8b6665bf96496fe11#file-sensiletsigner-ts-L44).
+Now we have implemented `PandaSigner`. The full code is [here](https://gist.github.com/zhfnjust/4448c0c10e2352d0b7f6eeb86dbd6b0f).
 
 ## Use your signer
 
