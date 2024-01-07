@@ -244,7 +244,7 @@ class P2PKH extends SmartContract {
   @method()
   public unlock(sig: Sig, pubkey: PubKey) {
     // Check if the passed public key belongs to the specified public key hash.
-    assert(pubKey2Addr(pubkey) == this.pubKeyHash, 'address does not correspond to address')
+    assert(pubKey2Addr(pubkey) == this.address, 'address does not correspond to address')
     // Check signature validity.
     assert(this.checkSig(sig, pubkey), 'signature check failed')
   }
