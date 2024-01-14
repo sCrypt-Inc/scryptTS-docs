@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # How to Sign P2PKH Inputs Using the Signer Class
 
 In certain scenarios, it is necessary to sign only P2PKH inputs when working with transactions in sCrypt. This documentation will guide you through the process of utilizing the **`Signer`** class to achieve this.
