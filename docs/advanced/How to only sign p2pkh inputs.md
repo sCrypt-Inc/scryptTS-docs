@@ -1,11 +1,15 @@
-#How to Sign P2PKH Inputs Using the Signer Class
+# How to Sign P2PKH Inputs Using the Signer Class
+
 In certain scenarios, it is necessary to sign only P2PKH inputs when working with transactions in sCrypt. This documentation will guide you through the process of utilizing the **`Signer`** class to achieve this.
 
-##Prerequisites
+## Prerequisites
+
 Before proceeding, make sure you have a basic understanding of the sCrypt. library and have set up the required dependencies.
 
-##Implementation
-###1. Initialize a UTXO for P2PKH
+## Implementation
+
+### 1. Initialize a UTXO for P2PKH
+
 Start by defining a P2PKH Unspent Transaction Output (UTXO) that you intend to use for your transaction:
 
 ```ts
@@ -17,21 +21,24 @@ const utxo = {
 };
 ```
 
-###2. Add the P2PKH UTXO to the Transaction
+### 2. Add the P2PKH UTXO to the Transaction
+
 Use the from() method to add the P2PKH UTXO to your transaction. This marks the input as a P2PKH input:
 
 ```ts
 tx.from(utxo);
 ```
 
-###3. Verify Input Script Before Signing
+### 3. Verify Input Script Before Signing
+
 Before signing the transaction, ensure that the input script is empty. This can be done with the following code:
 
 ```ts
 console.log(tx.inputs[2].script.toASM()); // Empty, no signature
 ```
 
-###4. Sign the Transaction
+### 4. Sign the Transaction
+
 Use the Signer class to sign the transaction:
 
 ```ts
@@ -39,14 +46,16 @@ const signer = getDefaultSigner();
 await signer.signTransaction(tx);
 ```
 
-###5. Verify Input Script After Signing
+### 5. Verify Input Script After Signing
+
 After signing, confirm that the input script now contains the signature and public key:
 
 ```ts
 console.log(tx.inputs[2].script.toASM()); // Should contain signature and pubkey
 ```
 
-###Example Implementation
+### Example Implementation
+
 Here is a simplified example demonstrating the steps above within a transaction :
 
 ```ts
@@ -73,6 +82,7 @@ console.log(tx.inputs[2].script.toASM()); // Should contain signature and pubkey
 const finalizedTx = tx.build();
 ```
 
-##Conclusion
+## Conclusion
+
 By following these steps, your transaction sign only P2PKH inputs using the **`Signer`** class in sCrypt. If you encounter any issues or have specific requirements, 
 please refer to the [sCrypt slack channel](https://app.slack.com/client/TLSHKFH5Y/CLSHPUZC3) to seek further assistance.
