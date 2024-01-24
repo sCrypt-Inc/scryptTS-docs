@@ -133,7 +133,7 @@ The second output will pay back the last highest bidder with the amount they wer
 when the auction expires, the auctioneer can close it and take the offer. 
 The auctioneer must also transfers the ordinal to the highest bidder. This is where the contract controls.
 
-![](close)
+![](../../static/img/close.jpg)
 
 The above diagram shows a close transaction on the right. It differs from a bidding transaction in inputs and outputs.
 
@@ -204,7 +204,7 @@ The close method is slightly more involved. First, it checks that the call is ma
 It then authenticates the auctioneer’s signature, auctioneer is the only one allowed to close the auction.
 
 
-![](outpoint)
+![](../../static/img/outpoint.webp)
 
 [this.prevouts](https://docs.scrypt.io/how-to-write-a-contract/scriptcontext/#prevouts) in ScriptContext contains all pointers to the UTXOs referenced in the inputs, called outpoints. An outpoint contains two parts:
 
