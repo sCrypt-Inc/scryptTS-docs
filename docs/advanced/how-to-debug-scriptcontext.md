@@ -36,4 +36,11 @@ and you will see the comparison result:
 
 ![diffoutputs](../../static/img/diffoutputs.png)
 
+
+If the outputs of the transaction is inconsistent with the outputs expected by the contract:
+
+1. Outputs of the transaction is marked green.
+2. Outputs expected by the contract is marked red.
+3. Identical parts are marked in gray.
+   
 Through the printed comparison results, we can intuitively see that the number of satoshis included in the output calculated in the contract is different from the number of satoshis included in the output actually added when constructing the transaction. Now, we have found the source of the error.
