@@ -147,21 +147,18 @@ A public `@method` can be called from an external transaction. The call succeeds
 
 ```ts
 @method()
-public unlock(x: bigint) {
-  // only succeeds if x is 1
-  assert(this.add(this.x, 1n) == x, "unequal")
+public unlock(x: bigint, y: bigint) {
+  assert(x + y == this.sum, 'incorrect sum')
+  assert(x - y == this.diff, 'incorrect diff')
 }
 ```
 
-:::note
-In addition to the following special cases, the last statement of a public `@method` method **must** be an `assert()` statement.
-:::
+#### Ending rule
+A public `@method` method **must** end with `assert()` in all reachable code paths.[^1]
 
+[^1]: `console.log()` calls will be ignored when verifying the above rule.
 
-1. last statement is a `console.log();` statement, and the `console.log();` statement is preceded by an `assert()` statement.
-2. last statement is `for` statement, and the last statement in the loop body is `assert()` statement.
-3. last statement is `if-else` statement, and the last statement of each conditional branch is `assert()` statement.
-
+A detailed example is shown below.
 ```ts
 class PublicMethodDemo extends SmartContract {
 
@@ -244,14 +241,22 @@ Without a `public` modifier, a `@method` is internal and cannot be directly call
 
 ```ts
 @method()
-add(x0: bigint, x1:bigint) : bigint {
-  return x0 + x1
+xyDiff(): bigint {
+  return this.x - this.y
+}
+
+// static method
+@method()
+static add(a: bigint, b: bigint): bigint {
+  return a + b;
 }
 ```
 
 :::note
 **Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that transitively calls itself.
 :::
+
+A more detailed example is shown below.
 
 ```ts
 class MethodsDemo extends SmartContract {
@@ -268,7 +273,7 @@ class MethodsDemo extends SmartContract {
 
   // good, non-public static method without access `@prop` properties
   @method()
-  static sum(a: bigint, b: bigint): bigint {
+  static add(a: bigint, b: bigint): bigint {
     return a + b;
   }
 
@@ -280,9 +285,9 @@ class MethodsDemo extends SmartContract {
 
   // good, public method
   @method()
-  public add(z: bigint) {
+  public checkSum(z: bigint) {
     // good, call `sum` with the class name
-    assert(z == MethodsDemo.sum(this.x, this.y), 'add check failed');
+    assert(z == MethodsDemo.add(this.x, this.y), 'check sum failed');
   }
 
   // good, another public method
@@ -461,7 +466,7 @@ assert(arrayA[0] = 0n)
 
 ### User-defined Types
 
-Users can best define customized types using `type` or `interface`, made of basic types.[^1]
+Users can best define customized types using `type` or `interface`, made of basic types.[^2]
 
 ```ts
 type ST = {
@@ -497,7 +502,7 @@ function printCoord(pt: Point2) {
 
 ```
 
-[^1]: A user-defined type is also passed by value on chain, and by reference off chain, same as a `FixedArray`. It is thus strongly recommended to NEVER mutate the field of a parameter, which is of a user-defined type, inside a function.
+[^2]: A user-defined type is also passed by value on chain, and by reference off chain, same as a `FixedArray`. It is thus strongly recommended to NEVER mutate the field of a parameter, which is of a user-defined type, inside a function.
 
 ### Domain Types
 
@@ -720,9 +725,9 @@ By default, all Javascript/TypeScript built-in functions and global variables ar
 `console.log` can be used for debugging purposes.
 ```ts
 @method()
-add(x0: bigint, x1:bigint) : bigint {
-  console.log(x0)
-  return x0 + x1
+static add(a: bigint, b: bigint): bigint {
+  console.log(a)
+  return a + b;
 }
 ```
 
