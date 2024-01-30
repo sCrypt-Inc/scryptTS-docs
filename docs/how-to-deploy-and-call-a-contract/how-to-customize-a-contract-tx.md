@@ -90,6 +90,11 @@ You can customize a tx builder for a public `@method` of your contract by callin
 Take tx builder for our [auction smart contract](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/auction.ts) as an example:
 
 ```ts
+import Transaction = bsv.Transaction
+........
+........
+
+
 // bind a customized tx builder for the public method `Auction.bid`
 auction.bindTxBuilder('bid', Auction.bidTxBuilder)
 
@@ -122,7 +127,10 @@ static bidTxBuilder(
             })
         )
         // build change output
-        .change(options.changeAddress)
+         if (options.changeAddress) {
+        // build change output
+        unsignedTx.change(options.changeAddress)
+    }
 
     return Promise.resolve({
         tx: unsignedTx,
