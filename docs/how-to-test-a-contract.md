@@ -145,6 +145,17 @@ describe('Test SmartContract `Demo`', () => {
 })
 ```
 
+## Shallow Copy
+
+Sometimes, if you only want to do a shallow copy of some properties, you can pass in the property names as an optional argument like this:
+
+```ts
+let nextInstance = instance.next([‘prop1’, ‘prop2’]);
+```
+In this context the `next` is designed to create a shallow copy of the specified properties, allowing for selective copy rather than a complete copy of the entire contract instance.
+this is very useful when you want to update some specific properties in a stateful contract.
+
+
 ## Run tests
 
 
