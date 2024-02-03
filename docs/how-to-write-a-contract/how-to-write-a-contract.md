@@ -692,6 +692,40 @@ class X {
 }
 ```
 
+* A `number` parameter, it is only allowed if it appears in the `@method` of `SmartContractLib`:
+
+```ts
+export class MyLib extends SmartContractLib {
+    
+    constructor() {
+        super(...arguments)
+    }
+
+    @method()
+    static sum(x: number) : bigint {
+        let sum = 0n;
+        for (let i = 0n; i < x; i++) {
+            sum += i
+        }
+
+        return sum;
+    }
+
+}
+
+export class Demo extends SmartContract {
+
+    constructor() {
+        super(...arguments)
+    }
+
+    @method()
+    public unlock() {
+        assert(MyLib.sum(10) == 45n, 'incorrect sum')
+    }
+}
+```
+
 
 A CTC is required in these cases.
 
@@ -710,6 +744,25 @@ let arr2: FixedArray<bigint, typeof X.M1> = [1n, 2n, 3n]
 for(let i=0; i< 3; i++) {}
 for(let i=0; i< N1; i++) {}
 for(let i=0; i< X.M1; i++) {}
+```
+
+
+* Returns a `FixedArray`
+
+```ts
+export class MyLib extends SmartContractLib {
+
+    constructor() {
+        super(...arguments)
+    }
+
+    @method()
+    // Note: You must use `typeof n | any`
+    static createFixedArray(n: number) : FixedArray<bigint, typeof n | any> {
+        const fa: FixedArray<bigint, typeof n | any> = fill(1n, n);
+        return fa;
+    }
+}
 ```
 
 ## Functions
