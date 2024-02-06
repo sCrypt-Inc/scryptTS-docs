@@ -155,19 +155,6 @@ describe('Test SmartContract `Demo`', () => {
 })
 ```
 
-## Shallow Copy
-
-Sometimes, if you only want to do a shallow copy of some properties, you can pass in the property names as an optional argument like this:
-
-```ts
-const nextInstance = instance.next(
-    {
-        refCloneProps: ['prop1', 'prop2']
-    }
-)
-```
-In this context the `next` is designed to create a shallow copy of the specified properties, allowing for selective copy rather than a complete copy of the entire contract instance.
-
 ## Run tests
 
 
@@ -270,6 +257,19 @@ Then, you should apply all the state updates to the `next` instance. Please note
 nextInstance.increment();
 ```
 This is the **SAME** method we call on chain in `incrementOnChain`, thanks to the fact that both the on-chain smart contract and off-chain code are written in TypeScript.
+
+#### Shallow Copy
+
+Sometimes, if you only want to do a shallow copy of some properties, you can pass in the property names as an optional argument like this:
+
+```ts
+const nextInstance = instance.next(
+    {
+        refCloneProps: ['prop1', 'prop2']
+    }
+)
+```
+In this context the `next` is designed to create a shallow copy of the specified properties, allowing for selective copy rather than a complete copy of the entire contract instance.
 
 ### 3. Call the method on the `current` instance to apply updates on chain
 
