@@ -156,8 +156,6 @@ const nextInstance = instance.next(
     }
 )
 ```
-In this context the `next` is designed to create a shallow copy of the specified properties, allowing for selective copy rather than a complete copy of the entire contract instance.
-
 
 ## Run tests
 
