@@ -232,6 +232,26 @@ The major differences between here and [local tests](../how-to-test-a-contract.m
 1. the contract needs to be deployed first;
 2. the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
 
+#### next
+The `next` property within the `MethodCallOptions` interface in sCrypt is used to specify the subsequent contract instance(s) produced in the outputs of the method calling transaction in a stateful contract. This property allows for the chaining of stateful contract calls within a single transaction.
+
+The transaction builder uses the passed instance(s) to construct outputs of the contract call transaction.      
+
+When writing a [custom call transaction builder](https://github.com/sCrypt-Inc/scryptTS-docs/pull/how-to-customize-a-contract-tx.md#call-tx) we can access the instance like the following :
+
+```ts
+ static unlockTxBuilder(
+        current: Demo,
+        options: MethodCallOptions<Demo>,
+        ...
+    ): Promise<ContractTransaction> {
+        const next = options.next as StatefulNext<Demo>
+
+        ...
+}
+```
+
+
 ### Create a smart contract instance from a transaction
 To interact with a deployed smart contract (i.e., calling its public methods), we need its contract instance corresponding to its latest state on chain, stateful or not. When testing on testnet, we usually put a contract's deployment and its calling (note there could be multiple calls if the contract is stateful) in the same process for convenience, so that we don't need to manage the internal state of the instance manually, because it's always consistent with the transactions on chain.
 
