@@ -29,6 +29,10 @@ The command will generate a private key and store it in a `.env` file in our pro
 
 ![faucet](../../static/img/faucet.gif)
 
+### Use the Panda Wallet
+If you have [Panda wallet](https://chromewebstore.google.com/detail/panda-wallet/mlbnicldlpdimbjdcncnklfempedeipj) installed, you can easily use the testnet private key as follows : 
+![](../../static/img/panda.gif)
+
 ### Use the Sensilet Wallet
 
 Alternatively, if you have already installed [Sensilet](https://sensilet.com/), you can extract and use its private key on testnet as follows.
