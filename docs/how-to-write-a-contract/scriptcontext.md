@@ -86,16 +86,6 @@ class TimeLock extends SmartContract {
 }
 ```
 
-:::note
-Accessing `this.ctx` in **non-public** methods is not allowed.
-:::
-
-```ts
-@method()
-propagateState(outputs: ByteString) : boolean {
-    return this.ctx.hashOutputs == hash256(outputs); // invalid
-}
-```
 
 ### Access inputs and outputs
 

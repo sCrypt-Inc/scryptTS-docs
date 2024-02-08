@@ -73,9 +73,10 @@ const deployTx = await instance.deploy(1)
 console.log('Demo contract deployed: ', deployTx.id)
 ```
 
-## Call a Public Method
+## Call a Method
 
-You can call a contract's public `@method` on the blockchain as follows:
+### Public
+You can call a contract's public `@method` as [before](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call):
 
 ```ts
 // build and send tx by calling `unlock()` on `methods` object.
@@ -84,9 +85,9 @@ await instance.methods.unlock(
 )
 ```
 
-## Call a Non-Public Method
+### Non-Public
 
-It is also possible to call non-public methods locally.
+You can also call non-public methods.
 
 Let's add a non-public method to our contract:
 
@@ -97,20 +98,29 @@ hashMessage(message: ByteString): ByteString {
 }
 ```
 
-You can now call this method locally like the following:
+You can now call this method like the following:
 
 ```ts
 const message: ByteString = toByteString('hello world')
 const hashRes: ByteString = instance.hashMessage(message)
 ```
 
+Note the absence of `.methods` after `instance`, compared to a public method.
+
 If the method is static, it can be called like this:
 
 ```ts
-const hashRes: ByteString = Demo.hashMessage(message)
+@method()
+static hashMessageStatic(message: ByteString): ByteString {
+    return sha256(message)
+}
 ```
 
-It should be noted that non-public methods are only directly callable off-chain, i.e. for testing. On-chain, they can only be invoked through a public method.
+```ts
+const hashRes: ByteString = Demo.hashMessageStatic(message)
+```
+
+It should be noted that non-public methods are only directly callable off-chain, e.g., for testing. On chain, they can only be invoked through a public method.
 
 ## Integrate with a testing framework
 
@@ -247,6 +257,19 @@ Then, you should apply all the state updates to the `next` instance. Please note
 nextInstance.increment();
 ```
 This is the **SAME** method we call on chain in `incrementOnChain`, thanks to the fact that both the on-chain smart contract and off-chain code are written in TypeScript.
+
+#### Shallow Copy
+
+Sometimes, if you only want to do a shallow copy of some properties, you can pass in the property names as an optional argument like this:
+
+```ts
+const nextInstance = instance.next(
+    {
+        refCloneProps: ['prop1', 'prop2']
+    }
+)
+```
+In this context the `next` is designed to create a shallow copy of the specified properties, allowing for selective copy rather than a complete copy of the entire contract instance.
 
 ### 3. Call the method on the `current` instance to apply updates on chain
 

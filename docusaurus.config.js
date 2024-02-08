@@ -60,7 +60,7 @@ const config = {
           {
             /* Only visible under docs. See src/custom/custom.css */
             href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
-            label: 'Suggest an improvement for this page',
+            label: 'Help us improve this page',
             position: 'right',
           },
         ],
