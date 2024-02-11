@@ -96,6 +96,10 @@ async function main() {
                 unSignedTx.addInput(
                     current.buildContractInput()
                 )
+                
+                if (options.changeAddress) {
+                    unSignedTx.change(options.changeAddress)
+                }
 
                 return Promise.resolve({
                     tx: unSignedTx,
@@ -117,6 +121,7 @@ async function main() {
         {
             multiContractCall: true,
             partialContractTx: partialTx,
+            changeAddress: await signer.getDefaultAddress()
         } as MethodCallOptions<HashPuzzle>
     )
 
