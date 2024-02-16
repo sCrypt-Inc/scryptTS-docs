@@ -650,6 +650,7 @@ class MyContract extends SmartContract {
 
   // HashedMap can be a parameter in constructor
   constructor(map: HashedMap<bigint, bigint>) {
+        super(...arguments)
     // assignment is ok, but not calling method
     this.myMap = map;
   }
