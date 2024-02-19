@@ -155,7 +155,7 @@ const max = 10000n  // Whole token amount.
 const dec = 0n      // Decimal precision.
 
 // Since we cannot know the id of the token deployment transaction at the time of deployment, the id is empty.
-hashLock = new HashLockFTV2(
+const hashLock = new HashLockFTV2(
     toByteString(''),
     sym,
     max,
@@ -164,7 +164,7 @@ hashLock = new HashLockFTV2(
 )
 await hashLock.connect(getDefaultSigner())
 
-tokenId = await hashLock.deployToken()
+const tokenId = await hashLock.deployToken()
 console.log('token id: ', tokenId)
 ```
 
