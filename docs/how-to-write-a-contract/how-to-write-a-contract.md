@@ -628,7 +628,7 @@ for (let i = 0; i < 3; i++) {
 
 ### `return`
 
-Due to the lack of native return semantics support in Bitcoin Script, a function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future.
+Due to the lack of native return semantics support in Bitcoin Script, a non-public function currently must end with a `return` statement and it is the only valid place for a `return` statement. This requirement may be relaxed in the future.
 
 ```ts
 @method() m(x: bigint): bigint {
@@ -802,7 +802,7 @@ static add(a: bigint, b: bigint): bigint {
 | `==` | Equal to |
 | `!=` | Not equal to |
 | `===` | Same as `==` |
-| `!==` | Same as `!=` |
+| `!==` | Not same as `!=` |
 | `>` | Greater than |
 | `>=` | Greater than or equal to |
 | `<` | Less than |
