@@ -62,7 +62,7 @@ const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutp
 assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
 ```
 
-The built-in function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. We keep the satoshis unchanged in the example. The built-in functin `this.buildChangeOutput()` creates a P2PKH change output when necessary. It will calculate the change amount automatically, and use the signer's address by default.
+The built-in function `this.buildStateOutput()` creates an output containing the latest state. It takes an input: the number of satoshis in the output. We keep the satoshis unchanged in the example. The built-in function `this.buildChangeOutput()` creates a P2PKH change output when necessary. It will calculate the change amount automatically, and use the signer's address by default.
 
 If all outputs we create in the contract hashes to `hashOutputs` in [ScriptContext](scriptcontext.md), we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
 
