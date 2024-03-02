@@ -193,6 +193,17 @@ npx scrypt-cli compile
 
 This command will generate a contract artifact file under `artifacts`.
 
+## Compile using the `watch` option
+
+Monitoring for Real-Time Error Detection
+
+```sh
+npx scrypt-cli compile --watch
+```
+
+this command will display sCrypt level errors during the compilation process.
+
+
 ### Load Contract Artifact
 
 Before writing the front-end code, we need to load the contract artifact in `src/index.tsx`.
