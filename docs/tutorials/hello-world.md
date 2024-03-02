@@ -74,7 +74,17 @@ This command will generate a contract artifact file at `artifacts\helloworld.jso
 await Helloworld.loadArtifact()
 ```
 
+## Compile using the `watch` option
 
+Monitoring for Real-Time Error Detection
+
+```sh
+npx scrypt-cli compile --watch
+```
+
+The `watch` option in the provided command appears to facilitate continuous monitoring of sCrypt level errors during the compilation process. When invoked with the specified command, it utilizes the "npx scrypt-cli compile --watch" syntax to initiate a watch mode. This mode likely allows users to observe real-time updates and notifications regarding any errors specific to sCrypt, which are distinct from TypeScript errors.
+
+![](../../static/img/watch.gif)
 
 ## Contract Deployment & Call
 
