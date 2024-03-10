@@ -785,3 +785,53 @@ class Constants {
     static readonly OutpointLen: bigint = BigInt(36);
 }
 ```
+
+## Standard Contracts
+
+The following smart contracts come with `sCrypt`.
+
+### P2PKH
+
+```ts
+import { P2PKH } from 'scrypt-ts'
+
+const privateKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
+const publicKey = privateKey.toPublicKey()
+const pubKey = PubKey(toHex(publicKey))
+// create an P2PKH instance
+const instance = new P2PKH(pubKey2Addr(pubKey))
+// connect the contract instance to a signer
+await instance.connect(getDefaultSigner(privateKey))
+// deploy the contract
+await instance.deploy()
+// call the P2PKH contract
+await instance.methods.unlock(
+    (sigResps) => findSig(sigResps, publicKey),
+    pubKey,
+    {
+        pubKeyOrAddrToSign: publicKey,
+    } as MethodCallOptions<P2PKH>
+)
+```
+
+### P2PK
+
+```ts
+import { P2PK } from 'scrypt-ts'
+
+const privateKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
+const publicKey = privateKey.toPublicKey()
+// create an P2PK instance
+const instance = new P2PK(PubKey(toHex(publicKey)))
+// connect the contract instance to a signer
+await instance.connect(getDefaultSigner(privateKey))
+// deploy the contract
+await instance.deploy()
+// call the P2PK contract
+await instance.methods.unlock(
+    (sigResps) => findSig(sigResps, publicKey),
+    {
+        pubKeyOrAddrToSign: publicKey,
+    } as MethodCallOptions<P2PK>
+)
+```
