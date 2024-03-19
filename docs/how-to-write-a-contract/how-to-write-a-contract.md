@@ -713,6 +713,8 @@ export class MyLib extends SmartContractLib {
 
 }
 
+const N = 10
+
 export class Demo extends SmartContract {
 
     constructor() {
@@ -722,6 +724,8 @@ export class Demo extends SmartContract {
     @method()
     public unlock() {
         assert(MyLib.sum(10) == 45n, 'incorrect sum')
+        assert(MyLib.sum(20) == 190n, 'incorrect sum')
+        assert(MyLib.sum(N) == 45n, 'incorrect sum')
     }
 }
 ```
