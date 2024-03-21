@@ -67,7 +67,7 @@ npx scrypt-cli compile
 
 This command will generate a contract artifact file at `artifacts\helloworld.json`.
 
-2. Or call the `loadArtifact()` function in the code:
+2. Then call the `loadArtifact()` function in the code:
 
 
 ```ts
@@ -88,7 +88,15 @@ The `watch` option in the provided command appears to facilitate continuous moni
 
 ## Contract Deployment & Call
 
-Before we deploy the contract, follow [the instruction](../../how-to-deploy-and-call-a-contract/faucet) to fund a Bitcoin key.
+Before we deploy the contract, you need to generate a Bitcoin key.
+
+```bash
+npm run genprivkey
+```
+
+then follow [the instruction](../../how-to-deploy-and-call-a-contract/faucet) to fund the key.
+
+Next, start deploying and calling the contract:
 
 1. To [deploy a smart contract](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-deployment), simply call its `deploy` method.
 
