@@ -103,6 +103,9 @@ import { toByteString, sha256 } from 'scrypt-ts'
 
 (async () => {
 
+    // set network env
+    process.env.NETWORK = 'testnet'
+    
     const message = toByteString('hello world', true)
 
     await Helloworld.loadArtifact()
