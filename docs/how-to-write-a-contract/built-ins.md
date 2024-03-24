@@ -788,9 +788,14 @@ class Constants {
 
 ## Standard Contracts
 
-The following smart contracts come with `sCrypt`.
+The following popular smart contracts come with `sCrypt`, so users do not have to write from scratch [as we did before](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#method-with-signatures).
 
-### P2PKH
+- `P2PKH`: [Pay To PubKey Hash (P2PKH)](https://learnmeabitcoin.com/technical/p2pkh)
+- `P2PK`: [Pay To PubKey (P2PK)](https://learnmeabitcoin.com/technical/p2pk)
+
+They compile to the same Bitcoin Script as in a standard transaction, created using raw Script.
+
+You can use them like any other user-defined smart contracts, as below.
 
 ```ts
 import { P2PKH } from 'scrypt-ts'
@@ -811,27 +816,5 @@ await instance.methods.unlock(
     {
         pubKeyOrAddrToSign: publicKey,
     } as MethodCallOptions<P2PKH>
-)
-```
-
-### P2PK
-
-```ts
-import { P2PK } from 'scrypt-ts'
-
-const privateKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
-const publicKey = privateKey.toPublicKey()
-// create an P2PK instance
-const instance = new P2PK(PubKey(toHex(publicKey)))
-// connect the contract instance to a signer
-await instance.connect(getDefaultSigner(privateKey))
-// deploy the contract
-await instance.deploy()
-// call the P2PK contract
-await instance.methods.unlock(
-    (sigResps) => findSig(sigResps, publicKey),
-    {
-        pubKeyOrAddrToSign: publicKey,
-    } as MethodCallOptions<P2PK>
 )
 ```
