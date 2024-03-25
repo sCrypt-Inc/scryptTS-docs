@@ -76,12 +76,12 @@ You can get a Bitcoin address from either the private key or the public key:
 
 ```ts
 const privKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
-const pubKey = privKey.toPublicKey()
+    const pubKey = privKey.toPublicKey()
 
-console.log(privKey.toAddress())
-// mxRjX2uxHHmS4rdSYcmCcp2G91eseb5PpF
-console.log(pubKey.toAddress())
-// mxRjX2uxHHmS4rdSYcmCcp2G91eseb5PpF
+    console.log(privKey.toAddress().toString())
+    // mxRjX2uxHHmS4rdSYcmCcp2G91eseb5PpF
+    console.log(pubKey.toAddress().toString())
+    // mxRjX2uxHHmS4rdSYcmCcp2G91eseb5PpF
 ```
 
 Read [this wiki page](https://wiki.bitcoinsv.io/index.php/Bitcoin_address) for more information on how Bitcoin addresses get constructed.
