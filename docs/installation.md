@@ -12,6 +12,16 @@ sidebar_position: 2
 Require `Node.js` version `>=16`.
 :::
 
+
+:::note
+If you are using mac computers with apple silicon, make sure [Rosetta](https://support.apple.com/en-us/102527) was installed with following command.
+:::
+
+
+```bash
+softwareupdate --install-rosetta --agree-to-license
+```
+
 2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 3. Next, install the scrypt cli
