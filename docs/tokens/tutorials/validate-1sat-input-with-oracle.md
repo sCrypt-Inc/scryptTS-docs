@@ -24,9 +24,8 @@ The structure of the signed message in response is as follows:
 | marker    | bigint     | 1     | api marker, always be 4n                     |
 | timestamp | bigint     | 4     | timestamp, little-endian                     |
 | network   | bigint     | 1     | network type, 1n for mainnet, 0n for testnet |
-| txid      | ByteString | 32    | txid                                         |
-| vout      | bigint     | 4     | output index, little-endian                  |
-| bsv20     | bigint     | 1     | token type, 0n for NFT, 1n for BSV20         |
+| outpoint  | ByteString | 36    | txid + output index, both in little-endian   |
+| fungible  | bigint     | 1     | token type, 1n for BSV20, 0n for NFT         |
 | amt       | bigint     | 8     | token amount, little endian                  |
 | id        | ByteString | >=66  | inscription id                               |
 
@@ -37,21 +36,20 @@ type Msg = {
     marker: bigint // 1 byte, api marker
     timestamp: bigint // 4 bytes LE
     network: bigint // 1 byte, 1 for mainnet, 0 for testnet
-    txid: ByteString // 32 bytes, txid
-    vout: bigint // 4 bytes LE, output index
-    bsv20: bigint // 1 byte, token type, 0 for NFT, 1 for BSV20
+    outpoint: ByteString // 36 bytes, txid 32 bytes LE + vout 4 bytes LE
+    fungible: bigint // 1 byte, token type, 1 for BSV20, 0 for NFT
     amt: bigint // 8 bytes LE
     id: ByteString
 }
 
+@method()
 static parseMsg(msg: ByteString): Msg {
     return {
         marker: Utils.fromLEUnsigned(slice(msg, 0n, 1n)),
         timestamp: Utils.fromLEUnsigned(slice(msg, 1n, 5n)),
         network: Utils.fromLEUnsigned(slice(msg, 5n, 6n)),
-        txid: slice(msg, 6n, 38n),
-        vout: Utils.fromLEUnsigned(slice(msg, 38n, 42n)),
-        bsv20: Utils.fromLEUnsigned(slice(msg, 42n, 43n)),
+        outpoint: slice(msg, 6n, 42n),
+        fungible: Utils.fromLEUnsigned(slice(msg, 42n, 43n)),
         amt: Utils.fromLEUnsigned(slice(msg, 43n, 51n)),
         id: slice(msg, 51n),
     }
@@ -92,13 +90,7 @@ The public method `unlock` requires three parameters:
 @method()
 public unlock(msg: ByteString, sig: RabinSig, tokenInputIndex: bigint) {
     // retrieve token outpoint from prevouts
-    const txid = reverseByteString(
-        slice(this.prevouts, tokenInputIndex * 36n, tokenInputIndex * 36n + 32n),
-        32n
-    )
-    const vout = Utils.fromLEUnsigned(
-        slice(this.prevouts, tokenInputIndex * 36n + 32n, tokenInputIndex * 36n + 36n)
-    )
+    const outpoint = slice(this.prevouts, tokenInputIndex * 36n, (tokenInputIndex + 1n) * 36n)
     // verify oracle signature
     assert(
         WitnessOnChainVerifier.verifySig(msg, sig, this.oraclePubKey),
@@ -109,9 +101,8 @@ public unlock(msg: ByteString, sig: RabinSig, tokenInputIndex: bigint) {
     // validate data
     assert(message.marker == 4n, 'incorrect oracle message type')
     assert(message.network == 0n, 'incorrect network')
-    assert(message.txid == txid, 'incorrect token txid')
-    assert(message.vout == vout, 'incorrect token vout')
-    assert(message.bsv20 == 1n, 'incorrect token type')
+    assert(message.outpoint == outpoint, 'incorrect token outpoint')
+    assert(message.fungible == 1n, 'incorrect token type')
     assert(message.amt >= this.amt, 'incorrect token amount')
     assert(message.id == this.inscriptionId, 'incorrect inscription id')
 
