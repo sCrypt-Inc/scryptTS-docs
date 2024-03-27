@@ -6,30 +6,19 @@ sidebar_position: 2
 
 ## Prerequisite
 
-1. Install `Node.js` and `NPM` on your machine by following the instructions over [here](https://nodejs.org/en/download).
+1. Install `Node.js` (require version `>=16`) and `NPM` on your machine by following the instructions over [here](https://nodejs.org/en/download).
+
+
+2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
 
 :::note
-Require `Node.js` version `>=16`.
+On Mac computers with Apple silicon like M1/M2, make sure [Rosetta](https://support.apple.com/en-us/102527) is installed. If not, it can be installed with the following command.
 :::
-
-
-:::note
-If you are using mac computers with apple silicon, make sure [Rosetta](https://support.apple.com/en-us/102527) was installed with following command.
-:::
-
 
 ```bash
 softwareupdate --install-rosetta --agree-to-license
 ```
-
-2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-
-3. Next, install the scrypt cli
-
-```sh
-npm install -g scrypt-cli
-```
-This will install the scrypt cli globally to your machine, after which you can create scrypt projects.
 
 
 ## The sCrypt CLI Tool
@@ -40,6 +29,12 @@ We can run the CLI tool directly with `npx` and try it out by creating a demo pr
 
 ```sh
 npx scrypt-cli project demo
+```
+
+Or you can install it globally to your machine.
+
+```sh
+npm install -g scrypt-cli
 ```
 
 :::tip
