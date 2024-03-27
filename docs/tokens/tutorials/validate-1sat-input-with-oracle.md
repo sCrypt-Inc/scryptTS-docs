@@ -2,16 +2,16 @@
 sidebar_position: 5
 ---
 
-# Tutorial 5: Validate 1SatOrdinals Input with Oracle
+# Tutorial 5: Ordinals Oracle
 
 ## Overview
-Miners can decide whether a UTXO is valid but cannot directly determine whether the [1SatOrdinals](https://docs.1satordinals.com/) asset in a UTXO is valid, which requires the participation of the indexer. In many practical applications, verifying the 1SatOrdinals assets carried in certain transaction inputs, such as token swap, token stake, etc is necessary. At this time, we must introduce Oracle to provide additional verification data for the contract to ensure the authenticity and integrity of the information required when unlocking the contract.
+Bitcoin smart contracts can decide whether a UTXO is valid, but cannot directly determine whether the [1SatOrdinals](https://docs.1satordinals.com/) tokens in a UTXO are valid, since they are validated by an external indexer off chain outside of miners. In many practical applications, verifying the Ordinals tokens carried in certain transaction inputs is necessary, such as token swap and token sale. [Oracles](../../tutorials/oracle.md) must be introduced to provide additional verification for the authenticity and integrity of the Ordinals tokens required when calling a contract.
 
-This tutorial will introduce how to use [WitnessOnChain](https://api.witnessonchain.com) Oracle to validate the transaction input containing 1SatOrdinals inscriptions and BSV20 tokens.
+This tutorial will introduce how to use the [WitnessOnChain](https://api.witnessonchain.com) oracle to validate transaction inputs referencing UTXOs containing Ordinals NFTs and BSV20 tokens.
 
 ## WitnessOnChain API
 
-The WitnessOnChain provides an [API](https://api.witnessonchain.com/#/v1/V1Controller_getInscription) to get inscription details from an outpoint.
+WitnessOnChain provides an [API](https://api.witnessonchain.com/#/v1/V1Controller_getInscription) to get inscription details from an outpoint.
 
 ```
 https://api.witnessonchain.com/v1/inscription/bsv/{network}/outpoint/{txid}/{vout}
@@ -30,7 +30,7 @@ The structure of the signed message in response is as follows:
 | amt       | bigint     | 8     | token amount, little endian                  |
 | id        | ByteString | >=66  | inscription id                               |
 
-According to this, we can define a customized type `Msg` and a parser help function in the code.
+According to this, we can define a customized type `Msg` and a helper parser function.
 
 ```ts
 type Msg = {
@@ -58,13 +58,13 @@ static parseMsg(msg: ByteString): Msg {
 }
 ```
 
-## Contract
+## Use in a Contract
 
-In this example, we implemented a demo contract. This contract will be successfully spent only when the second input (that is input #1) of the unlocking transaction contains a specific amount of a certain BSV20 token.
+In this example, we implement a demo contract, which can only be successfully called when the second input (that is input #1) of the spending transaction contains a specific amount of a certain BSV20 token.
 
 ![](../../../static/img/oracle-demo-bsv20-unlocking-tx.png)
 
-To verify the Oracle signed message, we should add Oracle's public key to the contract. To record the specific BSV20 token and required amount, we also need to add another two properties to it.
+To verify the oracle signed message, we should add oracle's public key to the contract. To record the specific BSV20 token and amount, we also need to add another two properties to it.
 
 ```ts
 export class OracleDemoBsv20 extends OrdinalNFT {
@@ -84,8 +84,8 @@ export class OracleDemoBsv20 extends OrdinalNFT {
 
 The public method `unlock` requires three parameters:
 
-- `msg`, Oracle's signed message,
-- `sig`, Oracle's signature
+- `msg`, oracle's signed message,
+- `sig`, oracle's signature
 - `tokenInputIndex`, to mark which input is the token input
 
 ```ts
@@ -119,11 +119,11 @@ public unlock(msg: ByteString, sig: RabinSig, tokenInputIndex: bigint) {
 }
 ```
 
-We first retrieve the token outpoint from `this.prevouts` and verify Oracle's signature, then deserialize Oracle's signed message to do the asserts.
+We first retrieve the token outpoint from `this.prevouts`. We parse the message signed by the oracle and verify it against the outpoint. Now we can use the token information confidently in the remaining contract code, like amount and id.
 
 ## Conclusion
 
 Congratulations! You have successfully completed a tutorial about how to validate 1SatOrdinals inputs with Oracle.
 
-The full example [contract]() and its corresponding [test]() can be found in our [boilerplate](https://github.com/sCrypt-Inc/boilerplate).
+The full example [contract]() and its corresponding [test]() can be found in our [boilerplate repo](https://github.com/sCrypt-Inc/boilerplate).
 
