@@ -65,3 +65,11 @@ If you don't fund your private key's address before deploying a contract, you wo
 ![](../static/img/insufficient-balance.png)
 
 Please fund your address with our [faucet](https://scrypt.io/faucet/) first.
+
+
+## Bad CPU type in executable
+This can occur on a Mac with Apple silicon (ARM processor), since the sCrypt compiler is based on Intel processor. Install [Rosetta](https://support.apple.com/en-us/102527) with the following command.
+
+```bash
+softwareupdate --install-rosetta --agree-to-license
+```
