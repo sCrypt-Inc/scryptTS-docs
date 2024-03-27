@@ -116,5 +116,5 @@ We first retrieve the token outpoint from `this.prevouts`. We parse the message 
 
 Congratulations! You have successfully completed a tutorial about how to validate 1SatOrdinals inputs with Oracle.
 
-The full example [contract]() and its corresponding [test]() can be found in our [boilerplate repo](https://github.com/sCrypt-Inc/boilerplate).
+The full example [contract](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/oracleDemoBsv20.ts) and its corresponding [test](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/oracleDemoBsv20.test.ts) can be found in our [boilerplate repo](https://github.com/sCrypt-Inc/boilerplate).
 
