@@ -216,7 +216,7 @@ class PublicMethodDemo extends SmartContract {
 
   @method()
   public foo() {
-    // invalid, each conditional branch does not end with `assert()`
+    // invalid, because each conditional branch does not end with `assert()`
     if(z > 3n) {
       assert(true)
     } else {
@@ -226,7 +226,7 @@ class PublicMethodDemo extends SmartContract {
 
   @method()
   public foo() {
-    // invalid, each conditional branch does not end with `assert()`
+    // invalid, because each conditional branch does not end with `assert()`
     if(z > 3n) {
       assert(true)
     }
