@@ -196,7 +196,7 @@ class PublicMethodDemo extends SmartContract {
 
   @method()
   public foo() {
-    // invalid, the last statement of every public method should be an `assert()` function call
+    // invalid, the last statement of every public method should be an `assert()` statement
   }
 
   @method()
