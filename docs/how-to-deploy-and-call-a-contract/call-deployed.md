@@ -28,7 +28,7 @@ export class Counter extends SmartContract {
         // Increment counter.
         this.increment()
 
-        // Ensure next output will contain this contracts code w
+        // Ensure next output will contain this contracts code with
         // the updated count property.
         const amount: bigint = this.ctx.utxo.value
         const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
