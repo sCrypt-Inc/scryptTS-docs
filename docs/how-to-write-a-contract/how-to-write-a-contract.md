@@ -207,7 +207,7 @@ class PublicMethodDemo extends SmartContract {
 
   @method()
   public foo() {
-    // invalid, the last statement in the `for` statement body doesn't end with `assert()` statement
+    // invalid, the last statement in the `for` statement body doesn't end with `assert()`
     for (let index = 0; index < 3; index++) {
         assert(true);
         z + 3n;
