@@ -65,7 +65,7 @@ In this example, we implement a demo contract, which can only be successfully ca
 To verify the oracle signed message, we should add oracle's public key to the contract. To record the specific BSV20 token and amount, we also need to add another two properties to it.
 
 ```ts
-export class OracleDemoBsv20 extends OrdinalNFT {
+export class OracleDemoBsv20 extends SmartContract {
     @prop()
     oraclePubKey: RabinPubKey
 
