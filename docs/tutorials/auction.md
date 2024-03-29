@@ -42,7 +42,7 @@ Initialize all the `@prop` properties in the constructor. Note that we don't nee
 ```ts
 constructor(auctioneer: PubKey, auctionDeadline: bigint) {
     super(...arguments)
-    // the initial bidder is the auctioneer himeself
+    // the initial bidder is the auctioneer himself
     this.bidder = auctioneer
     this.auctioneer = auctioneer
     this.auctionDeadline = auctionDeadline
