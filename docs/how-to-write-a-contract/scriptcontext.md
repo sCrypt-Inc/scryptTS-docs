@@ -7,9 +7,12 @@ sidebar_position: 2
 In the UTXO model, the context of validating a smart contract is the UTXO containing it and the transaction spending it, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` (2 inputs and 2 outputs) is spending the second output of `tx0` (3 inputs and 3 outputs), the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
 ![](../../static/img/scriptContext.jpg)
 
-The context only contains local information, different from account-based blockchains whose context consists of the global state of the entire blockchain (as in Ethereum). A single shared global state across all smart contracts kills scalability, since they all have to be sequentially processed due to potential race conditions.
+The context only contains local information.
+This is different from account-based blockchains (like Ethereum) where context consists of the global state of the entire blockchain.
+A single shared global state across all smart contracts jeopardizes scalability because transactions must be sequentially processed, resulting in potential race conditions.
 
 This context is expressed in the `ScriptContext` interface.
+
 ```ts
 export interface ScriptContext {
   /** version number of [transaction]{@link https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction} */
@@ -86,7 +89,6 @@ class TimeLock extends SmartContract {
 }
 ```
 
-
 ### Access inputs and outputs
 
 The inputs and outputs of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and validate the hash to the expected digest, which ensures they are actually from the spending transaction.
@@ -129,11 +131,10 @@ Through the `hashPrevouts` field of `ScriptContext`, we can access the hash of P
 > If the `ANYONECANPAY` flag is not set, `hashPrevouts` is the double SHA256 of the serialization of all input outpoints;
 > Otherwise, hashPrevouts is a uint256 of `0x0000......0000`.
 
-But we can access the full prevouts via `this.prevouts`. 
+But we can access the full prevouts via `this.prevouts`.
 
 - If the `ANYONECANPAY` flag is not set, the hash of `this.prevouts` is equal to `this.ctx.hashPrevouts`.
 - Otherwise, `this.prevouts` will be empty.
-
 
 ### SigHash Type
 
@@ -163,10 +164,22 @@ For more information, please refer to [this detailed guide](../advanced/sighash-
 
 ### Serialization
 
-You have the option to convert `this.ctx` into a `SigHashPreimage` object through serialization. This can be achieved by invoking the `this.ctx.serialize()` method. The output object adheres to the format utilized during the signing or verification of transactions. 
+You have the option to convert `this.ctx` into a `SigHashPreimage` object through serialization. This can be achieved by invoking the `this.ctx.serialize()` method. The output object adheres to the format utilized during the signing or verification of transactions.
 
-![](../../static/img/sighashpreimage0.png)
-[Format: Source](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm)
+```
+nVersion of the transaction (4-byte little endian)
+hashPrevouts (32-byte hash)
+hashSequence (32-byte hash)
+outpoint (32-byte hash + 4-byte little endian)
+scriptCode of the input (serialized as scripts inside CTxOuts)
+value of the output spent by this input (8-byte little endian)
+nSequence of the input (4-byte little endian)
+hashOutputs (32-byte hash)
+nLocktime of the transaction (4-byte little endian)
+sighash type of the signature (4-byte little endian)
+```
+
+[Source](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm)
 
 A noteworthy application of a serialized preimage can be found in the creation of custom SigHash flags. An example is the [SIGHASH_ANYPREVOUT](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/sighashAnyprevout.ts#L34), which showcases this process.
 
