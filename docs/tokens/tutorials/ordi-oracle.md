@@ -5,7 +5,7 @@ sidebar_position: 5
 # Tutorial 5: Ordinals Oracle
 
 ## Overview
-Bitcoin smart contracts can decide whether satoshis in a UTXO are valid, but cannot directly determine whether the [1SatOrdinals](https://docs.1satordinals.com/) tokens in a UTXO are valid. By inspecting a UTXO, a contract can know how many satoshis in it since they are validated by miners on chain. However, the contract cannot be sure how many Ordinals tokens are in it or if it contains a said NFT, since they are validated by an external indexer off chain outside of miners. In many practical applications, verifying the Ordinals tokens carried in certain transaction inputs is necessary, such as token swap and token sale. [Oracles](../../tutorials/oracle.md) must be introduced to provide additional verification for the authenticity and integrity of the Ordinals tokens required when calling a contract.
+Bitcoin smart contracts can decide whether satoshis in a UTXO are valid, but cannot directly determine whether the [1SatOrdinals](https://docs.1satordinals.com/) tokens in a UTXO are valid. By inspecting a UTXO, a contract can know how many satoshis are in it since they are validated by miners on chain. However, the contract cannot be sure how many Ordinals tokens are in it or if it contains a specific NFT, since they are validated by an external indexer off chain outside of miners. In many practical applications, verifying the Ordinals tokens carried in certain transaction inputs is necessary, such as token swap and token sale. [Oracles](../../tutorials/oracle.md) must be introduced to provide additional verification for the authenticity and integrity of the Ordinals tokens required when calling a contract.
 
 This tutorial will introduce how to use the [WitnessOnChain](https://api.witnessonchain.com) oracle to validate transaction inputs referencing UTXOs containing Ordinals NFTs and BSV20 tokens.
 
@@ -73,7 +73,7 @@ export class OracleDemoBsv20 extends SmartContract {
     inscriptionId: ByteString
     @prop()
     amt: bigint
-    
+
     ...
 }
 ```
@@ -117,4 +117,3 @@ We first retrieve the token outpoint from `this.prevouts`. We parse the message 
 Congratulations! You have successfully completed a tutorial about how to validate 1SatOrdinals inputs with Oracle.
 
 The full example [contract](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/oracleDemoBsv20.ts) and its corresponding [test](https://github.com/sCrypt-Inc/boilerplate/blob/master/tests/oracleDemoBsv20.test.ts) can be found in our [boilerplate repo](https://github.com/sCrypt-Inc/boilerplate).
-
