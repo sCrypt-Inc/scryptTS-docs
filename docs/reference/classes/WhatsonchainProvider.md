@@ -2,8 +2,7 @@
 
 # Class: WhatsonchainProvider
 
-The WhatsonchainProvider is backed by [whatsonchain][https://whatsonchain.com](https://whatsonchain.com),
-which is the popular blockchain exxplorer for Bitcoin.
+The WhatsonchainProvider is backed by [WhatsOnChain](https://whatsonchain.com), a popular Bitcoin blockchain explorer.
 
 ## Hierarchy
 

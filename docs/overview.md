@@ -20,8 +20,8 @@ Smart contracts on Bitcoin are based on the UTXO model, which is very different 
 Each bitcoin transaction consists of some inputs and outputs.
 An output contains:
 
-- The amount of bitcoins it contains.
-- bytecodes (called the `locking script`).
+- The amount of bitcoins (satoshis) it contains.
+- bytecodes (the `locking script`).
 
 while an input contains:
 - A reference to the previous transaction output.
@@ -44,7 +44,7 @@ In a regular Bitcoin payment to a [Bitcoin address](https://wiki.bitcoinsv.io/in
 
 ## Learn `sCrypt`
 
-Jump over to the [Installation](./installation.md) section to learn how to create an `sCrypt` project. 
+Jump over to the [Installation](./installation.md) section to learn how to create an `sCrypt` project.
 
 :::tip
 You can also follow this [Youtube series](https://www.youtube.com/playlist?list=PL0Kn1t30VSpGcbwN-bcbU1-x0fRAoq-GI).

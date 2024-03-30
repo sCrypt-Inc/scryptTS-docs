@@ -16,13 +16,13 @@ class Equations extends SmartContract {
 
   @prop()
   diff: bigint
-  
+
   constructor(sum: bigint, diff: bigint) {
     super(...arguments)
     this.sum = sum
     this.diff = diff
   }
-  
+
   @method()
   public unlock(x: bigint, y: bigint) {
     assert(x + y == this.sum, 'incorrect sum')
@@ -84,7 +84,7 @@ static c: bigint
 @prop(true)
 static c: bigint = 1n
 
-// good, `UINT_MAX` is a compile-time constant, and no need to typed explicitly
+// good, `UINT_MAX` is a compile-time constant (CTC), and no need to typed explicitly
 static readonly UINT_MAX = 0xffffffffn
 
 // valid, but not good enough, `@prop()` is not necessary for the CTC
@@ -162,17 +162,16 @@ A detailed example is shown below.
 ```ts
 class PublicMethodDemo extends SmartContract {
 
-
   @method()
   public foo() {
-    // valid, last statement is `assert();` statement
-    assert(true); 
+    // valid, last statement is `assert()` statement
+    assert(true);
   }
 
   @method()
   public foo() {
-    // valid, `console.log` calling will be ignored when verifying the last `assert` statement
-    assert(true); // 
+    // valid, `console.log` calls will be ignored when verifying the last `assert()` statement
+    assert(true); //
     console.log();
     console.log();
   }
@@ -197,7 +196,7 @@ class PublicMethodDemo extends SmartContract {
 
   @method()
   public foo() {
-    // invalid, the last statement of public method should be an `assert` function call
+    // invalid, the last statement of every public method should be an `assert()` statement
   }
 
   @method()
@@ -208,7 +207,7 @@ class PublicMethodDemo extends SmartContract {
 
   @method()
   public foo() {
-    // invalid, the last statement in the for statement body doesn't end with `assert()` statement.
+    // invalid, the last statement in the `for` statement body doesn't end with `assert()`
     for (let index = 0; index < 3; index++) {
         assert(true);
         z + 3n;
@@ -217,17 +216,17 @@ class PublicMethodDemo extends SmartContract {
 
   @method()
   public foo() {
-    // invalid, not each conditional branch end with `assert()` statement.
+    // invalid, because each conditional branch does not end with `assert()`
     if(z > 3n) {
       assert(true)
     } else {
-        
+
     }
   }
 
   @method()
   public foo() {
-    // invalid, not each conditional branch end with `assert()` statement.
+    // invalid, because each conditional branch does not end with `assert()`
     if(z > 3n) {
       assert(true)
     }
@@ -593,7 +592,7 @@ for (let $i = 0; $i < $maxLoopCount; $i++) {
 * the initial value must be `0` or `0n`, the operator `<` (no `<=`), and increment `$i++` (no pre-increment `++$i`).
 * `$maxLoopCount` must be a [CTC](#compile-time-constant) or a CTC expression, for example:
 
-```ts 
+```ts
 const N = 4
 
 // valid, `N` is a CTC
@@ -665,7 +664,7 @@ abs(a: bigint): bigint {
 
 ## Compile-time Constant
 
-A compile-time constant, CTC for short, is a special variable whose value can be determined at compile time. A CTC must be defined in one of the following ways.
+A compile-time constant, or CTC for short, is a special variable whose value can be determined at compile time. A CTC must be defined in one of the following ways:
 
 
 * A number literal like:
@@ -696,7 +695,7 @@ class X {
 
 ```ts
 export class MyLib extends SmartContractLib {
-    
+
     constructor() {
         super(...arguments)
     }
