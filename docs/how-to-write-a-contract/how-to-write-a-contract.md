@@ -37,7 +37,7 @@ The smart contract above requires solving for two equations with unknown variabl
 Class members decorated with `@prop` and `@method` will end up on the blockchain and thus must be a strict subset of TypeScript. Everywhere decorated with them can be regarded in the on-chain context. Members decorated with neither are regular TypeScript and are kept off chain. The significant benefit of `sCrypt` is that both on-chain and off-chain code are written in the same language: TypeScript.
 
 :::note
-You can use [the sCrypt template Repl](https://replit.com/@msinkec/sCrypt) and play with the code in your browser!
+You can use the [sCrypt template on Repl.it](https://replit.com/@msinkec/sCrypt) and play with the code in your browser!
 :::
 
 ## Properties
@@ -84,10 +84,10 @@ static c: bigint
 @prop(true)
 static c: bigint = 1n
 
-// good, `UINT_MAX` is a compile-time constant (CTC), and no need to typed explicitly
+// good, `UINT_MAX` is a compile-time constant (CTC), and doesn't need to be typed explicitly
 static readonly UINT_MAX = 0xffffffffn
 
-// valid, but not good enough, `@prop()` is not necessary for the CTC
+// valid, but not good enough, `@prop()` is not necessary for a CTC
 @prop()
 static readonly UINT_MAX = 0xffffffffn
 
@@ -98,7 +98,7 @@ static readonly UINT_MAX = 0xffffffffn
 
 ## Constructor
 
-A smart contract must have an explicit constructor if it has at least one `@prop` that is not `static`.
+A smart contract must have an explicit `constructor()` if it has at least one `@prop` that is not `static`.
 
 The `super` method **must** be called in the constructor and all the arguments of the constructor should be passed to `super`
 in the same order as they are passed into the constructor. For example,
@@ -114,15 +114,15 @@ class A extends SmartContract {
   readonly p2: boolean
 
   constructor(p0: bigint, p1: bigint, p2: boolean) {
-    super(...arguments)  // same as super(p0, p1, p2)
+    super(...arguments) // same as super(p0, p1, p2)
     this.p0 = p0
     this.p1 = p1
     this.p2 = p2
   }
 }
+
 ```
 [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) is an array containing the values of the arguments passed to that function. `...` is the [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
-
 
 ## Methods
 
@@ -252,7 +252,7 @@ static add(a: bigint, b: bigint): bigint {
 ```
 
 :::note
-**Recursion is disallowed**. A `@method`, public and not, cannot call itself, either directly in its own body or indirectly calls another method that transitively calls itself.
+**Recursion is disallowed**. A `@method`, whether public or not, cannot call itself either directly in its own body, nor indirectly call another method that transitively calls itself.
 :::
 
 A more detailed example is shown below.
@@ -424,7 +424,7 @@ let abb: FixedArray<FixedArray<bigint, 2>, 3> = [[1n, 3n], [1n, 3n], [1n, 3n]]
 ```
 
 :::caution
-A `FixedArray` behaves differently in an on-chain and off-chain context, when passed as a function argument. It is *passed by reference* off chain, as a regular TypeScript/JavaScript array, while *passed by value* on chain. It is thus strongly recommended to NEVER mutate a `FixedArray` parameter's element inside a function.
+A `FixedArray` behaves differently in an on-chain and off-chain context, when passed as a function argument. It is *passed by reference* off chain, as a regular TypeScript/JavaScript array, while *passed by value* on chain. Thus, it is sstrongly recommended to NEVER mutate a `FixedArray` parameter's element inside a function.
 
 ```ts
 class DemoContract extends SmartContract {
@@ -580,7 +580,8 @@ const byte: ByteString = toByteString("ff")
 
 ### `for`
 
-Bitcoin does not allow unbounded loops for security reasons, to prevent DoS attacks. All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
+Bitcoin does not allow unbounded loops for security reasons (eg: to prevent DoS attacks).
+All loops must be bounded at compile time. So if you want to loop inside `@method`, you must strictly use the following format:
 
 ```ts
 for (let $i = 0; $i < $maxLoopCount; $i++) {
