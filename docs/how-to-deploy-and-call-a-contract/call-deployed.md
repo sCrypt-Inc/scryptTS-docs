@@ -6,39 +6,43 @@ sidebar_position: 5
 
 ## Overview
 In this tutorial, we will interact with a deployed smart contract by calling its public method, in a separate process or by a different party.
-We need to create an instance corresponding to the deployed contract on chain.
+
+To do this, we need to create a smart contract instance that corresponds to the deployed contract on chain.
 
 ## The Smart Contract
 
-We will reuse [the `Counter` contract](../how-to-write-a-contract/stateful-contract.md#create-a-stateful-contract).
+We will reuse the stateful `Counter` contract [from a previous step](../how-to-write-a-contract/stateful-contract#create-a-stateful-contract).
 
 ```ts
 export class Counter extends SmartContract {
+  // stateful
+  @prop(true)
+  count: bigint
 
-    @prop(true)
-    count: bigint
+  constructor(count: bigint) {
+      super(...arguments)
+      this.count = count
+  }
 
-    constructor(count: bigint) {
-        super(...arguments)
-        this.count = count
-    }
+  @method()
+  public incrementOnChain() {
+      // Increment counter.
+      this.increment()
 
-    @method()
-    public incrementOnChain() {
-        // Increment counter.
-        this.increment()
+      // Ensure next output will contain this contracts code with
+      // the updated count property.
+      // And make sure balance in the contract does not change
+      const amount: bigint = this.ctx.utxo.value
+      // outputs containing the latest state and an optional change output
+      const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
+      // verify unlocking tx has the same outputs
+      assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
+  }
 
-        // Ensure next output will contain this contracts code with
-        // the updated count property.
-        const amount: bigint = this.ctx.utxo.value
-        const outputs: ByteString = this.buildStateOutput(amount) + this.buildChangeOutput()
-        assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
-    }
-
-    @method()
-    increment(): void {
-        this.count++
-    }
+  @method()
+  increment(): void {
+      this.count++
+  }
 }
 ```
 
