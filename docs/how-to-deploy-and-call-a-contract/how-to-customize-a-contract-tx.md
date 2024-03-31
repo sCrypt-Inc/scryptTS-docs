@@ -31,9 +31,9 @@ class DemoContract extends SmartContract {
   // ...
 
   // customize the deployment tx by overriding `SmartContract.buildDeployTransaction` method
-  override async buildDeployTransaction(utxos: UTXO[], amount: number, 
+  override async buildDeployTransaction(utxos: UTXO[], amount: number,
     changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
-    
+
     const deployTx = new bsv.Transaction()
       // add p2pkh inputs for paying tx fees
       .from(utxos)
@@ -57,7 +57,7 @@ class DemoContract extends SmartContract {
 }
 ```
 
-You may visit the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/f63c37038a03bc51267e816d9441969d3e1d2ece/src/contracts/auction.ts#L100-L127) for more details.
+See the [full code](https://github.com/sCrypt-Inc/boilerplate/blob/f63c37038a03bc51267e816d9441969d3e1d2ece/src/contracts/auction.ts#L100-L127) for more details.
 
 ## Call Tx
 
@@ -126,7 +126,7 @@ static bidTxBuilder(
               satoshis: current.balance,
           })
       )
-    
+
     // build change output
     if (options.changeAddress) {
       // build change output
@@ -153,7 +153,7 @@ The tx builder will return an object:
 
 - `tx`: the unsigned transaction of our method call.
 - `atInputIndex`: the index of the input which will reference the smart contract UTXO.
-- `nexts`: an array of objects that represent the contract's next instance(s). 
+- `nexts`: an array of objects that represent the contract's next instance(s).
 
 When we are calling a [stateful smart contract](../how-to-write-a-contract/stateful-contract.md), we have to define the next instance of our contract. This instance will contain updated states. As we can see, first a new instance is created using the current instance's `next()` function. The new instance's `bidder` property is then updated. This new instance is then included in the 0-th output of the new transaction and goes into the `nexts` array of the returned object.
 
