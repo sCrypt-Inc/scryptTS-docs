@@ -572,6 +572,21 @@ export class Enum extends SmartContract {
 }
 ```
 
+:::note
+`Enum` members can only be initialized with number literal.
+:::
+
+
+```ts
+export enum Status {
+    Pending, //valid
+    Shipped = 3, // valid
+    Accepted, // valid
+    Rejected = "Rejected", // invalid
+    Canceled,
+}
+```
+
 ### Domain Types
 
 There are several domain types, specific to the Bitcoin context, used to further improve type safety. They are all subtypes of `ByteString`. That is, they can be used where a `ByteString` is expected, but not vice versa.
@@ -798,6 +813,17 @@ export class Demo extends SmartContract {
 }
 ```
 
+* All `enum` members are CTCs:
+
+```ts
+export enum Status {
+    Pending,
+    Shipped,
+    Accepted,
+    Rejected,
+    Canceled,
+}
+```
 
 A CTC is required in these cases.
 
