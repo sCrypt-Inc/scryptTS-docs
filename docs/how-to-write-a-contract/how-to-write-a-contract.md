@@ -465,6 +465,8 @@ assert(arrayA[0] = 0n)
 
 ### User-defined Types
 
+#### `type` or `interface`
+
 Users can best define customized types using `type` or `interface`, made of basic types.[^2]
 
 ```ts
@@ -502,6 +504,73 @@ function printCoord(pt: Point2) {
 ```
 
 [^2]: A user-defined type is also passed by value on chain, and by reference off chain, same as a `FixedArray`. It is thus strongly recommended to NEVER mutate the field of a parameter, which is of a user-defined type, inside a function.
+
+
+#### `enum`
+
+sCrypt supports enumerables and they are useful to model choice and keep track of state.
+
+Users can define enums outside of a contract.
+
+
+**Declaring and using Enum**
+
+```ts
+
+// Enum status
+// Pending  - 0
+// Shipped  - 1
+// Accepted - 2
+// Rejected - 3
+// Canceled - 4
+export enum Status {
+    Pending,
+    Shipped,
+    Accepted,
+    Rejected,
+    Canceled,
+}
+
+
+export class Enum extends SmartContract {
+    @prop(true)
+    status: Status
+
+    constructor() {
+        super(...arguments)
+        this.status = Status.Pending
+    }
+
+    @method()
+    get(): Status {
+        return this.status
+    }
+
+    // Update status by passing Int into input
+    @method()
+    set(status: Status): void {
+        this.status = status
+    }
+
+    @method(SigHash.ANYONECANPAY_SINGLE)
+    public unlock() {
+        let s = this.get()
+        assert(s == Status.Pending, 'invalid stauts')
+
+        this.set(Status.Accepted)
+
+        s = this.get()
+
+        assert(s == Status.Accepted, 'invalid stauts')
+
+        assert(
+            this.ctx.hashOutputs ==
+                hash256(this.buildStateOutput(this.ctx.utxo.value)),
+            'hashOutputs check failed'
+        )
+    }
+}
+```
 
 ### Domain Types
 
