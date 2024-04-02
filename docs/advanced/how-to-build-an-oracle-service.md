@@ -143,7 +143,7 @@ async getPrice(@Param('base') base: string, @Param('query') query: string) {
 
 According to the previous introduction, you can add more APIs to your oracle as needed, such as obtaining BSV chain info, etc., which will not be covered here.
 
-## 4. Use oralce data in a smart contract
+## 4. Use oracle data in a smart contract
 
 In [this tutorial](../tutorials/oracle.md), we introduce how to verify and use oracle data in smart contracts.
 
@@ -153,4 +153,4 @@ To verify signatures in smart contracts, we need to install the `scrypt-ts-lib` 
 npm install scrypt-ts-lib
 ```
 
-Then add the contract under folder `src/contracts`. Here we also use the [PriceBet](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) contract. You can refer to file [priceBet.e2e-spec.ts](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) for a complete test code.
+Then add the contract under folder `/src/contracts`. Here we also use the [PriceBet](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) contract. You can refer to file [priceBet.e2e-spec.ts](https://github.com/sCrypt-Inc/oracle-demo/blob/master/src/contracts/priceBet.ts) for a complete test code.
