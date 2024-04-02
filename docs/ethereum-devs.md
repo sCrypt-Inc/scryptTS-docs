@@ -6,7 +6,7 @@ sidebar_position: 12
 
 # Smart contracts on Bitcoin vs Ethereum
 Bitcoin and Ethereum are both layer-1 blockchains with [fully programmable smart contracts](https://xiaohuiliu.medium.com/turing-machine-on-bitcoin-7f0ebe0d52b1).
-However, their designs fundamentally differ. 
+However, their designs are fundamentally different.
 
 Ethereum is a global state machine, whose state consists of all smart contracts deployed on it. Each transaction is an input to the state machine, transitioning it to the next state according to the rules defined in the smart contract the transaction calls. The design imposes severe limitations on scalability, since transactions must be sequentially processed due to potential race conditions.
 
@@ -28,13 +28,13 @@ Detailed side-by-side comparison can be found [here](ttps://xiaohuiliu.medium.co
 
 # Smart contract development on Bitcoin vs Ethereum
 
-Besides unboundedly scalable fundation, Bitcoin also offers superior smart cotnract developer experience.
+In addition to an unboundedly scalable foundation, Bitcoin also offers a superior smart cotnract developer experience.
 
 The table below shows a comparison of popular Ethereum development tools and their counterparts in the Bitcoin ecosystem.
 
 There are two noticeable differences.
-1. Bitcoin smart contract is written in TypeScript, one of the most popular programming languages tens of millions of Web2 developers are already familiar with. They do not have to learn a new niche programming language like Solidity, placing a high barrier to entry. They can reuse all of their favoriate tools, such as Visual Studio Code, [WebStorm](https://www.jetbrains.com/webstorm/), and NPM. 
-2. Ethereum's development tools are **fragmented**. They are developed by different entities, who are often competitors. There is disincentive to make them more interoperable, thus they don't communicate with each other well. By contrast, sCrypt takes a more holistic and systematic approach. It builds a unified full-stack platform that encompasses most tools, from programming language, to framework/libraries. Developed synergistically, they are fully compatible with each other, greatly simplifing and streamlining development process.
+1. Bitcoin smart contract is written in TypeScript, one of the most popular programming languages tens of millions of Web2 developers are already familiar with. They do not have to learn a new niche programming language like Solidity, placing a high barrier to entry. They can reuse their favorite tools, such as [Visual Studio Code](https://code.visualstudio.com/), [WebStorm](https://www.jetbrains.com/webstorm/), and NPM.
+1. Ethereum's development tools are **fragmented**. They are developed by different entities, who are often competitors. There are disincentives to make them more interoperable, thus they don't communicate with each other well. By contrast, sCrypt takes a more holistic and systematic approach. It builds a unified full-stack platform that encompasses most tools, from programming language, to framework/libraries. Developed synergistically, they are fully compatible with each other, greatly simplifying and streamlining the development process.
 
 
 || Ethereum | Bitcoin |
@@ -47,11 +47,11 @@ There are two noticeable differences.
 | Wallet | [MetaMask](https://metamask.io/) | [Panda](https://github.com/Panda-Wallet/panda-wallet) |
 | Block Explorer | [Etherscan](https://etherscan.io/) | [WhatsOnChain](https://whatsonchain.com/) |
 
-[^1]: Visual Studio Code can also be used for Solidity with various extentions. However, its support is extremely limited compared to that of sCrypt, a TypeScript DSL, which is supported out of box without any extension. For example, [VS Code debugger](./how-to-debug-a-contract.md) has first-class comprehensive support for sCrypt, but does not suppport Solidity.
+[^1]: Visual Studio Code can also be used for Solidity with various extensions. However, its support is extremely limited compared to that of sCrypt, a TypeScript DSL, which is supported out of box without any extension. For example, [VS Code debugger](./how-to-debug-a-contract.md) has first-class comprehensive support for sCrypt, but does not suppport Solidity.
 
 ## Example Code
 
-Let's compare a counter smart contract between Solidity and sCrypt.
+Let's compare a `Counter` smart contract between Solidity and sCrypt.
 
 ```js
 pragma solidity >=0.7.0 <0.9.0;

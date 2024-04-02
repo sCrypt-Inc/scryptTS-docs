@@ -39,7 +39,7 @@ dotenv.config()
 // See https://scrypt.io/docs/bitcoin-basics/bsv/#private-keys
 const privateKey = bsv.PrivateKey.fromWIF(process.env.PRIVATE_KEY)
 
-// Prepare signer. 
+// Prepare signer.
 // See https://scrypt.io/docs/how-to-deploy-and-call-a-contract/#prepare-a-signer-and-provider
 const signer = new TestWallet(privateKey, new DefaultProvider())
 
@@ -69,9 +69,9 @@ main()
 Upon a successful execution you should see an output like the following:
 
 ```
-Demoproject contract deployed:  15b8055cfaf9554035f8d3b866f038a04e40b45e28109f1becfe4d0af9f743cd
+Demoproject contract deployed: 15b8055cfaf9554035f8d3b866f038a04e40b45e28109f1becfe4d0af9f743cd
 ```
 
-You can take a look at the deployed smart contract using the [WhatsOnChain block explorer](https://test.whatsonchain.com/tx/15b8055cfaf9554035f8d3b866f038a04e40b45e28109f1becfe4d0af9f743cd). 
-In our example, the first output contains the compiled smart contract code. 
-It is indexed using the hash (double SHA-256) of the script: [eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def](https://test.whatsonchain.com/script/eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def)
+You can take a look at the deployed smart contract using the [WhatsOnChain block explorer](https://test.whatsonchain.com/tx/15b8055cfaf9554035f8d3b866f038a04e40b45e28109f1becfe4d0af9f743cd).
+In our example, the first output contains the compiled smart contract code.
+It is indexed using the hash (double SHA-256) of the script: [eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def](https://test.whatsonchain.com/script/eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def).

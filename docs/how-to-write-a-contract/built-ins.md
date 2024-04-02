@@ -2,11 +2,11 @@
 sidebar_position: 4
 ---
 
-# Built-ins
+# Built-in functions
 
 ## Global Functions
 
-The following functions come with `sCrypt`.
+The following functions come with sCrypt:
 
 ### Assert
 
@@ -20,7 +20,7 @@ assert(false, 'hello')   // throws Error('Execution failed, hello')
 
 ### Fill
 
-- `fill(value: T, length: number): T[length] ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type. 
+- `fill(value: T, length: number): T[length] ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type.
 
 :::note
 `length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
@@ -105,7 +105,7 @@ byteString2Int(toByteString('010000'))  // 1n
 byteString2Int(toByteString('810080'))  // -129n
 ```
 
-- `len(a: ByteString): number` Returns the byte length of `a`. 
+- `len(a: ByteString): number` Returns the byte length of `a`.
 
 ```ts
 const s1 = toByteString('0011', false) // '0011', 2 bytes
@@ -122,7 +122,7 @@ len(s2) // 5
 :::
 
 ```ts
-const s1 = toByteString('793ff39de7e1dce2d853e24256099d25fa1b1598ee24069f24511d7a2deafe6c') 
+const s1 = toByteString('793ff39de7e1dce2d853e24256099d25fa1b1598ee24069f24511d7a2deafe6c')
 reverseByteString(s1, 32) // 6cfeea2d7a1d51249f0624ee98151bfa259d095642e253d8e2dce1e79df33f79
 ```
 
@@ -220,7 +220,7 @@ TicTacToe.loadArtifact(artifact);
 
 ### `checkSig`
 
-Function `checkSig(signature: Sig, publicKey: PubKey): boolean` verifies an ECDSA signature. It takes two inputs: an ECDSA signature and a public key. 
+Function `checkSig(signature: Sig, publicKey: PubKey): boolean` verifies an ECDSA signature. It takes two inputs: an ECDSA signature and a public key.
 
 It returns if the signature matches the public key.
 
@@ -270,7 +270,7 @@ class MultiSigPayment extends SmartContract {
 
   @method()
   public unlock(
-      signatures: FixedArray<Sig, 3>, 
+      signatures: FixedArray<Sig, 3>,
       publicKeys: FixedArray<PubKey, 3>
     ) {
     // Check if the passed public keys belong to the specified addresses.
@@ -294,8 +294,8 @@ class Counter extends SmartContract {
   @method(SigHash.ANYONECANPAY_SINGLE)
   public incOnChain() {
     // ... update state
-      
-    // construct the new state output 
+
+    // construct the new state output
     const output: ByteString = this.buildStateOutput(this.ctx.utxo.value)
 
     // ... verify outputs of current tx
@@ -314,7 +314,7 @@ class Auction extends SmartContract {
 
   @method()
   public bid(bidder: Addr, bid: bigint) {
-    
+
     // Addr
 
     // Auction continues with a higher bidder.
@@ -370,7 +370,7 @@ If we assert the returned value to be `true`, we have effectively ensured that t
 
 ```ts
 class TimeLock extends SmartContract {
-  
+
   @prop()
   locktime: bigint
 
@@ -378,14 +378,14 @@ class TimeLock extends SmartContract {
 
   @method()
   public unlock() {
-    assert(this.timeLock(this.locktime), 'time lock not yet expired')  
+    assert(this.timeLock(this.locktime), 'time lock not yet expired')
   }
-    
+
 }
 ```
 
 :::note
-This mechanism can be employed solely to ensure that a method can be called **after** a specific point in time. In contrast, it cannot be employed to ensure that a method is called **before** a specific point in time. 
+This mechanism can be employed solely to ensure that a method can be called **after** a specific point in time. In contrast, it cannot be employed to ensure that a method is called **before** a specific point in time.
 :::
 
 To learn more about time locks, see the [dedicated doc section](../advanced/timeLock.md).
@@ -457,7 +457,7 @@ Function `async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddr
 override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
     const deployTx = new bsv.Transaction()
       // add p2pkh inputs for paying tx fees
-      .from(utxos) 
+      .from(utxos)
       // add contract output
       .addOutput(new bsv.Transaction.Output({
         script: this.lockingScript,
@@ -483,7 +483,7 @@ Function `bindTxBuilder(methodName: string, txBuilder: MethodCallTxBuilder<Smart
 
 /**
  * A transaction builder.
- * The default transaction builder only supports fixed-format call transactions. 
+ * The default transaction builder only supports fixed-format call transactions.
  * Some complex contracts require a custom transaction builder to successfully call the contract.
  */
 export interface MethodCallTxBuilder<T extends SmartContract> {
@@ -608,7 +608,7 @@ These guidelines must be followed when using `HashedMap` in a contract `@method`
 	- `clear(): void`: Remove all key and value pairs.
 	- `size: number`: Returns the number of elements.
 
-:::note 
+:::note
 `get()` is not listed, since the value itself is not stored and thus must be passed in and verified using `canGet()`.
 :::
 

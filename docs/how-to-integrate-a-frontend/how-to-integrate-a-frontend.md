@@ -92,7 +92,7 @@ npm create svelte@latest helloworld
 ![](../../static/img/create-svelte-app.png)
 
 :::note
-Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), [Angular](https://angular.io/), and [Svelte](https://svelte.dev/). We anticipate to add supports for other frameworks over time.
+Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), [Angular](https://angular.io/), and [Svelte](https://svelte.dev/). We anticipate to add support for other frameworks over time.
 :::
 
 ### Step 2
@@ -104,7 +104,7 @@ cd helloworld
 npx scrypt-cli init
 ```
 
-This installs all the dependencies and configures the contract development environment.
+This command installs the dependencies and configures the contract development environment.
 After this, we are ready to go!
 
 ## Load Contract
@@ -162,7 +162,7 @@ You will integrate [Panda](https://chromewebstore.google.com/detail/panda-wallet
 You can refer to this [guide](../advanced/how-to-add-a-signer.md) to add support for other wallets.
 :::
 
-To request access to the wallet, you can use its `requestAuth` method. 
+To request access to the wallet, you can use its `requestAuth` method.
 
 ```ts
 const provider = new DefaultProvider({

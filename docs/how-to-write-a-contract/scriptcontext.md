@@ -140,13 +140,24 @@ But we can access the full prevouts via `this.prevouts`.
 
 [SigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) decides which part of the spending transaction is included in `ScriptContext`.
 ![](../../static/img/sighashtypes.png)
-It defaults to `SigHash.ALL`, including all inputs and outputs. You can customize it by setting the argument of the `@method()` decorator, e.g.,
+It defaults to `SigHash.ALL`, including all inputs and outputs. You can customize it by setting the argument of the `@method()` decorator, like:
 
 ```ts
+@method(SigHash.ANYONECANPAY_ALL)
+public increment() {
+  ...
+}
+
+@method(SigHash.ANYONECANPAY_NONE)
+public increment() {
+  ...
+}
+
 @method(SigHash.ANYONECANPAY_SINGLE)
 public increment() {
   ...
 }
+
 ```
 
 There are a total of 6 sigHash types to choose from:
@@ -160,7 +171,7 @@ There are a total of 6 sigHash types to choose from:
 | ANYONECANPAY_NONE | Sign its own input and no output |
 | ANYONECANPAY_SINGLE | Sign its own input and the output with the same index |
 
-For more information, please refer to [this detailed guide](../advanced/sighash-type.md).
+For more information, refer to the section on [Sighash Types](../advanced/sighash-type.md).
 
 ### Serialization
 

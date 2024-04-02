@@ -13,13 +13,13 @@ After you've finished writing a contract, you can deploy and call it. But first,
 
 ### Compile and Load Contract
 
-First, you compile the contract using CLI:
+First, compile the contract using the CLI:
 ```ts
-npx scrypt-cli@latest compile
+npx scrypt-cli compile
 ```
-This will create an artifact json file of your contract in the `artifacts` folder.
+This will create an artifact json file of your contract in the `/artifacts` folder.
 
-Next you call [loadArtifact](../how-to-write-a-contract/built-ins.md#loadartifact) load the json file, so you have a smart contract class ready to be instantiated.
+Next, call [loadArtifact](../how-to-write-a-contract/built-ins.md#loadartifact) to load the json file, so you have a smart contract class ready to be instantiated.
 ```ts
 import artifact from '../artifacts/mycontract.json'
 
@@ -44,7 +44,7 @@ sCrypt already has a few built-in providers:
 
 * `DefaultProvider`:  The default provider is the safest, easiest way to begin developing on Bitcoin, and it is also robust enough for use in production. It can be used in testnet as well as mainnet.
 
-* See full list of providers [here](../reference/classes/Provider.md#hierarchy).
+* See a list of [available providers](../reference/classes/Provider.md#hierarchy).
 
 You can initialize these providers like this:
 
@@ -52,11 +52,9 @@ You can initialize these providers like this:
 let dummyProvider = new DummyProvider();
 
 // mainnet
-
 let provider = new DefaultProvider();
 
 // testnet
-
 let provider = new DefaultProvider(bsv.Networks.testnet);
 ```
 
@@ -105,11 +103,9 @@ instance.to.tx
 instance.to.inputIndex
 ```
 
-
 This section could be summarized as the diagram below:
 
 ![](../../static/img/contract_tx.svg)
-
 
 ## Prepare a Signer and Provider
 
@@ -122,23 +118,20 @@ const signer = new TestWallet(privateKey, new DefaultProvider(network));
 
 The `privateKey` must have enough coins. Learn how to fund it on a testnet using a [faucet](./faucet).
 
-Then just connect it to your contract instance like this:
+Then, connect it to your contract instance like this:
 
 ```ts
 await instance.connect(signer);
 ```
 
 :::note
-`TestWallet` is just a `Signer` provided by sCrypt for testing. In a real production environment (Mainnet), you should use `PandaSigner`, `SensiletSigner`, `DotwalletSigner`, `TAALSigner`. 
+`TestWallet` is just a `Signer` provided by sCrypt for testing. In a real production environment (mainnet), you should use `PandaSigner`, `SensiletSigner`, `DotwalletSigner`, `TAALSigner`.
 See [here](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md) how to use them.
 :::
 
-
-
 ## Contract Deployment
 
-To deploy a smart contract, simply call its `deploy` method:
-
+To deploy a smart contract, call its `deploy` method, like this:
 
 ```ts
 // construct a new instance of `MyContract`
@@ -175,7 +168,7 @@ let instance = new MyContract();
 console.log(typeof instance.methods.foo) // output `function`
 ```
 
-This function is designed to invoke the corresponding `@method` of the same name on chain, meaning calling it will spend the previous contract UTXO in a new transaction. You can call it like this:
+This function is designed to invoke the corresponding `@method` of the same name on chain, meaning: calling it will spend the previous contract UTXO in a new transaction. You can call it like this:
 
 ```ts
 // Note: `instance.methods.foo` should be passed in all arguments and in the same order that `instance.foo` would take.
@@ -185,14 +178,11 @@ This function is designed to invoke the corresponding `@method` of the same name
 const { tx, atInputIndex } = await instance.methods.foo(arg1, arg2, options);
 ```
 
-
-What actually happens during the call is the following.
+What actually happens during the call is the following:
 
 1. Build an unsigned transaction by calling the tx builder, which can be a default or a customized one introduced in [this section](./how-to-customize-a-contract-tx.md), for a public `@method`.
-
-2. Use the instance's signer to sign the transaction. Note that `instance.foo` could be invoked during this process in order to get a valid unlocking script for the input.
-
-3. Use the instance's connected provider to send the transaction.
+1. Use the instance's signer to sign the transaction. Note that `instance.foo` could be invoked during this process in order to get a valid unlocking script for the input.
+1. Use the instance's connected `provider` to send the transaction.
 
 #### MethodCallOptions
 
@@ -229,37 +219,40 @@ export interface MethodCallOptions<T> {
 ```
 
 The major differences between here and [local tests](../how-to-test-a-contract.md#run-tests) are:
-1. the contract needs to be deployed first;
-2. the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
+
+1. the contract needs to be deployed first
+1. the contract instance is connected to a real provider, which broadcasts transactions to the blockchain.
 
 #### next
 The `next` property within the `MethodCallOptions` interface in sCrypt is used to specify the subsequent contract instance(s) produced in the outputs of the method calling transaction in a stateful contract. This property allows for the chaining of stateful contract calls within a single transaction.
 
-The transaction builder uses the passed instance(s) to construct outputs of the contract call transaction.      
+The transaction builder uses the passed instance(s) to construct outputs of the contract call transaction.
 
-When writing a [custom call transaction builder](https://github.com/sCrypt-Inc/scryptTS-docs/pull/how-to-customize-a-contract-tx.md#call-tx) we can access the instance like the following :
+When writing a [custom transaction builder](https://github.com/sCrypt-Inc/scryptTS-docs/pull/how-to-customize-a-contract-tx.md#call-tx) we can access the instance like:
 
 ```ts
- static unlockTxBuilder(
-        current: Demo,
-        options: MethodCallOptions<Demo>,
-        ...
-    ): Promise<ContractTransaction> {
-        const next = options.next as StatefulNext<Demo>
+static unlockTxBuilder(
+      current: Demo,
+      options: MethodCallOptions<Demo>,
+      ...
+  ): Promise<ContractTransaction> {
+      const next = options.next as StatefulNext<Demo>
 
-        ...
+      ...
 }
 ```
 
-
 ### Create a smart contract instance from a transaction
+
 To interact with a deployed smart contract (i.e., calling its public methods), we need its contract instance corresponding to its latest state on chain, stateful or not. When testing on testnet, we usually put a contract's deployment and its calling (note there could be multiple calls if the contract is stateful) in the same process for convenience, so that we don't need to manage the internal state of the instance manually, because it's always consistent with the transactions on chain.
 
-In reality, a contract's deployment and its call, and its different calls in the case of a stateful contract, may well be in separate processes. For example, the deployment party is different from the calling party, or multiple parties call it. If so, we need to create a contract instance from an on-chain transaction that represents its latest state, before we can call its method.
+In a production context, a contract's deployment and its call, and its different calls in the case of a stateful contract, may well be in separate processes. For example, the deployment party is different from the calling party, or multiple parties call it. If so, we need to create a contract instance from an on-chain transaction that represents its latest state, before we can call its method.
 
 Typically, we only know the [TXID](https://wiki.bitcoinsv.io/index.php/TXID) of the transaction containing the instance. We can create an instance in two steps:
+
 1. Using TXID, we retrieve the full transaction by calling [getTransaction](../reference/classes/Provider.md#gettransaction) of the [connected provider](../reference/classes/Signer.md#connectedprovider) of the signer.
-2. We can create an contract instance from a transaction's by calling [fromTx()](../how-to-write-a-contract/built-ins.md#fromtx).
+1. We can create an contract instance from a transaction's by calling [fromTx()](../how-to-write-a-contract/built-ins.md#fromtx).
+
 ```ts
 // 1) fetch a transaction from txid
 const tx = await signer.connectedProvider.getTransaction(txId)
@@ -316,19 +309,16 @@ const { tx: callTx } = await p2pkh.methods.unlock(
 );
 
 console.log('contract called: ', callTx.id);
-
 ```
 
-When `p2phk.method.unlock` is called, the option contains `pubKeyOrAddrToSign`, requesting a signature against `publicKey`.
+When `p2pkh.method.unlock` is called, the option contains `pubKeyOrAddrToSign`, requesting a signature against `publicKey`.
 
 The first argument is a signature, which can be obtained in a callback function. The function takes a list of signatures requested in `pubKeyOrAddrToSign` and find the one signature to the right public key/address.
 
 In general, if your `@method` needs `Sig`-typed arguments, you could obtain them as follows:
 
 1. Ensure that the `pubKeyOrAddrToSign` contains all public keys/addresses corresponding to these `Sig`s;
-
-2. Replace each `Sig` argument with a callback function that filters to the right `Sig` from the full list of signature in `sigResps`.
-
+1. Replace each `Sig` argument with a callback function that filters to the right `Sig` from the full list of signature in `sigResps`.
 
 ## Example
 
@@ -366,11 +356,9 @@ const { tx: callTx } = await p2pkh.methods.unlock(
 );
 
 console.log('contract called: ', callTx.id);
-
 ```
 
 More examples can be found [here](https://github.com/sCrypt-Inc/boilerplate/tree/master/tests/).
-
 
 ### Running the code
 
@@ -381,7 +369,7 @@ npm run testnet
 ```
 
 Make sure you fund your address before running this command.
-After a successful run you should see something like the following:
+After a successful run you should see something like:
 
 ```
 P2PKH contract deployed:  f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3
@@ -390,6 +378,6 @@ P2PKH contract called:  dc53da3e80aadcdefdedbeb6367bb8552e381e92b226ab1dc3dc9b33
 
 These are the TXIDs of the transaction which deployed the smart contract and then the one which called its method. You can see the transactions using a [block explorer](https://test.whatsonchain.com/tx/f3f372aa25f159efa93db8c51a4eabbb15935358417ffbe91bfb78f4f0b1d2a3).
 
-
 ### Customize Transactions
-Deploying and calling a contract builds transactions with a certain format, which suffices for many cases. In cases where the tx format does not work for you and you need to customize it, please refer to [this section](./how-to-customize-a-contract-tx.md).
+
+Deploying and calling a contract builds transactions with a certain format, which suffices for many cases. In cases where the tx format does not work for you and you need to customize it, please proceed to the [next section](./how-to-customize-a-contract-tx.md).
