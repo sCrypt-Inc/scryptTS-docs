@@ -555,25 +555,22 @@ export class Enum extends SmartContract {
     @method(SigHash.ANYONECANPAY_SINGLE)
     public unlock() {
         let s = this.get()
-        assert(s == Status.Pending, 'invalid stauts')
+        assert(s == Status.Pending, 'invalid status')
 
         this.set(Status.Accepted)
 
         s = this.get()
 
-        assert(s == Status.Accepted, 'invalid stauts')
+        assert(s == Status.Accepted, 'invalid status')
 
-        assert(
-            this.ctx.hashOutputs ==
-                hash256(this.buildStateOutput(this.ctx.utxo.value)),
-            'hashOutputs check failed'
-        )
+        assert(this.ctx.hashOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)),
+                'hashOutputs check failed')
     }
 }
 ```
 
 :::note
-`Enum` members can only be initialized with number literal.
+`Enum` members can only be initialized with literal numbers, not strings.
 :::
 
 
