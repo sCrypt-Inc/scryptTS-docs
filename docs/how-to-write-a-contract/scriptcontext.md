@@ -15,32 +15,32 @@ This context is expressed in the `ScriptContext` interface.
 
 ```ts
 export interface ScriptContext {
-  /** version number of [transaction]{@link https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction} */
+  // version number of the transaction
   version: ByteString,
-  /** the specific UTXO spent by this transaction input */
+  // the specific UTXO spent by this transaction input
   utxo: UTXO,
-  /** double-SHA256 hash of the serialization of some/all input outpoints, see [hashPrevouts]{@link https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashprevouts} */
+  // double-SHA256 hash of the serialization of some/all input outpoints
   hashPrevouts: ByteString,
-  /** double-SHA256 hash of the serialization of some/all input sequence values, see [hashSequence]{@link https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashsequence} */
+  // double-SHA256 hash of the serialization of some/all input sequence values
   hashSequence: ByteString,
-  /** sequence number of [transaction input]{@link https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Format_of_a_Transaction_Input} */
+  // sequence number of the transaction input
   sequence: bigint,
-  /** double-SHA256 hash of the serialization of some/all output amount with its locking script, see [hashOutputs]{@link https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs} */
+  // double-SHA256 hash of the serialization of some/all output amount with its locking script
   hashOutputs: ByteString,
-  /** locktime of [transaction]{@link https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction} */
+  // locktime of a transaction
   locktime: bigint,
-  /** [SIGHASH flag]{@link https://wiki.bitcoinsv.io/index.php/SIGHASH_flags} used by this input */
+  // SIGHASH flag used by this input
   sigHashType: SigHashType,
-  /** get the whole serialized sighash preimage */
+  // get the whole serialized sighash preimage
   serialize(): SigHashPreimage,
 }
 
 export interface UTXO {
-  /** locking script */
+  // locking script
   script: ByteString,
-  /** amount in satoshis */
+  // amount in satoshis
   value: bigint,
-  /** outpoint referenced by this UTXO */
+  // outpoint referenced by this UTXO
   outpoint: Outpoint,
 }
 
@@ -56,17 +56,17 @@ The table shows the meaning of each field of the `ScriptContext` structure.
 
 | Field  | Description  |
 | ------------- | ------------- |
-| version | version of the transaction  |
+| [version](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction) | version of the transaction  |
 | utxo.value | value of the output spent by this input  |
 | utxo.script | locking script of the UTXO |
 | utxo.outpoint.txid | txid of the transaction being spent |
 | utxo.outpoint.outputIndex | index of the UTXO in the outputs |
-| hashPrevouts | If the `ANYONECANPAY` [SIGHASH type](#sighash-type) is not set, it's double SHA256 of the serialization of all input outpoints. Otherwise, it's a `uint256` of `0x0000......0000`. |
-| hashSequence | If none of the `ANYONECANPAY`, `SINGLE`, `NONE` [SIGHASH type](#sighash-type) is set, it's double SHA256 of the serialization of sequence of all inputs. Otherwise, it's a `uint256` of `0x0000......0000`. |
-| sequence | sequence of the input  |
-| hashOutputs | If the [SIGHASH type](#sighash-type) is neither `SINGLE` nor `NONE`, it's double SHA256 of the serialization of all outputs. If the [SIGHASH type](#sighash-type) is `SINGLE` and the input index is smaller than the number of outputs, it's the double SHA256 of the output with the same index as the input. Otherwise, it's a `uint256` of `0x0000......0000`. |
-| locktime | locktime of the transaction |
-| sigHashType| sighash type of the signature |
+| [hashPrevouts](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashprevouts) | If the `ANYONECANPAY` [SIGHASH type](#sighash-type) is not set, it's double SHA256 of the serialization of all input outpoints. Otherwise, it's a `uint256` of `0x0000......0000`. |
+| [hashSequence](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashsequence) | If none of the `ANYONECANPAY`, `SINGLE`, `NONE` [SIGHASH type](#sighash-type) is set, it's double SHA256 of the serialization of sequence of all inputs. Otherwise, it's a `uint256` of `0x0000......0000`. |
+| [sequence](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Format_of_a_Transaction_Inpu) | sequence of the input  |
+| [hashOutputs](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs) | If the [SIGHASH type](#sighash-type) is neither `SINGLE` nor `NONE`, it's double SHA256 of the serialization of all outputs. If the [SIGHASH type](#sighash-type) is `SINGLE` and the input index is smaller than the number of outputs, it's the double SHA256 of the output with the same index as the input. Otherwise, it's a `uint256` of `0x0000......0000`. |
+| [locktime](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction) | locktime of the transaction |
+| [sigHashType](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) | sighash type of the signature |
 
 You can directly access the context through `this.ctx` in any public `@method`. It can be considered additional information a public method gets when called, besides its function parameters.
 
