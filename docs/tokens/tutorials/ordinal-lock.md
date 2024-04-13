@@ -312,11 +312,13 @@ async function buy() {
 
 ![](../../../static/img/ordinal-lock/buy4.png)
 
-## Use Panda Wallet
+## Use Yours Wallet
 
-[Panda Wallet](https://github.com/Panda-Wallet/panda-wallet) is an open-source and non-custodial web3 wallet for BSV and [1Sat Ordinals](https://docs.1satordinals.com/). This wallet allows users to have full control over their funds, providing security and independence in managing their assets.
+In March 2024, Panda Wallet was rebranded to [Yours Wallet](https://github.com/yours-org/yours-wallet/).
 
-To support Panda Wallet in the dApp, we simply replace all the `PandaSigner` with `PandaSigner`, that's all.
+[Yours Wallet](https://github.com/yours-org/yours-wallet) is an open-source and non-custodial web3 wallet for BSV and [1Sat Ordinals](https://docs.1satordinals.com/). This wallet allows users to have full control over their funds, providing security and independence in managing their assets.
+
+To support Yours Wallet in the dApp, we simply replace all the `PandaSigner` with `PandaSigner`, that's all.
 
 ```ts
 import { PandaSigner } from "scrypt-ts/dist/bsv/signers/panda-signer"

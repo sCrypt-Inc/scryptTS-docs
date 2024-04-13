@@ -272,7 +272,7 @@ Before deploying the contract, we need to create a `.env` file and save your pri
 PRIVATE_KEY=xxxxx
 ```
 
-If you don't have a private key, you can follow [this guide](../../how-to-deploy-and-call-a-contract/faucet) to generate one using Panda wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
+If you don't have a private key, you can follow [this guide](../../how-to-deploy-and-call-a-contract/faucet) to generate one using Yours Wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
 
 Run the following command to deploy the contract.
 
