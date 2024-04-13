@@ -16,7 +16,7 @@ If you view the transaction on WoC, you'll see that the first output contains a 
 
 ![](../static/img/verify-tx-out.png)
 
-This hash is referred to as the `scriptHash`. It's essentially just a `sha256` hash value of the deployed contract's locking script, encoded in a little-endian hex format. It is commonly used as an index by block explorers. You can also get this value locally, via the contract instance's `scriptHash` property:
+This hash is referred to as the `scriptHash`. The scriptHash is a `sha256` hash value of the deployed contract's locking script, encoded in a little-endian hex format. It is commonly used as an index by block explorers. You can also get this value locally, via the contract instance's `scriptHash` property:
 
 ```ts
 console.log(instance.scriptHash)
@@ -35,23 +35,21 @@ There are two ways to verify it.
 
 ## 1. Using WOC sCrypt Plugin
 
-At the deployed transaction on WOC, click on the `ScriptHash` of the first output. It will open a page like this:
+When viewing the deployed transaction on WOC, click on the `ScriptHash` of the first output.
+It will open a page like this:
 
 ![](../static/img/verify-scripthash.png)
 
-You shall see an `sCrypt` tab. Click on it. You'll see a very simple form:
-
+You will see an `sCrypt` tab.
+Click on it and you will see a simple form that allows you to verify the code for an sCrypt contract:
 
 ![](../static/img/verify-submit.png)
 
 In the form you are able to select the version of sCrypt you've used to compile and deploy the contract, along with a text-box in which you need to paste the source code.
 
-
 ![](../static/img/verify-submit-filled.png)
 
-
 Now click `Submit`. If the code is correct, you should see something like the following in a few seconds:
-
 
 ![](../static/img/verify-verified-code.png)
 

@@ -60,7 +60,7 @@ constructor(alice: PubKey, bob: PubKey) {
 
 ## Public Methods
 
-A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in `assert()`. 
+A public `@method` can be called from an external transaction. The call succeeds if it runs to completion without violating any conditions in `assert()`.
 
 The `TicTacToe` contract have a public `@method` called `move()` with `2` parameters:
 
@@ -148,7 +148,7 @@ Contract maintenance state consists of the following three steps:
 
 Update the stateful properties in public `@method`.
 
-A player call `move()` to places the symbol in the board. We should update the stateful properties `board` and `is_alice_turn` in the `move()` `@method`: 
+A player call `move()` to places the symbol in the board. We should update the stateful properties `board` and `is_alice_turn` in the `move()` `@method`:
 
 ```ts
 assert(this.board[Number(n)] === TicTacToe.EMPTY, `board at position ${n} is not empty: ${this.board[Number(n)]}`);
@@ -318,4 +318,4 @@ export class TicTacToe extends SmartContract {
 
 ```
 
-But no dApp is complete if users cannot interact with it. Go [here](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md) to see how to add a front end to it.
+But no dApp is complete if users cannot interact with it. Go [here](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md) to see how to add a front-end to it.

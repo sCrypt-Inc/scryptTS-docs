@@ -20,7 +20,7 @@ export class OrdinalLock extends OrdinalNFT {
 
     @prop()
     amount: bigint
-    
+
     ...
 }
 ```
@@ -159,7 +159,7 @@ Note the customized calling method `buildTxForPurchase` and `buildTxForCancel` e
 
 ## Frontend
 
-We will add a frontend to the `OrdinalLock` smart contract accroding to this [guide](../../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
+We will add a front-end to the `OrdinalLock` smart contract according to this [guide](../../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
 
 ### Setup Project
 
@@ -185,7 +185,7 @@ This command will create a contract under `src/contracts`. Replace the file with
 
 ### Compile Contract
 
-Compile the contract with the following command: 
+Compile the contract with the following command:
 
 ```bash
 npx scrypt-cli compile
@@ -277,7 +277,7 @@ async function sell() {
         (sigResps) => findSig(sigResps, publicKey),
         PubKey(toHex(publicKey)),
         {
-            transfer: instance,     // <---- 
+            transfer: instance,     // <----
             pubKeyOrAddrToSign: publicKey,
         } as OrdiMethodCallOptions<OrdiNFTP2PKH>
     )
@@ -329,7 +329,7 @@ Different from other [signers](../../how-to-deploy-and-call-a-contract/how-to-de
 
 ```ts
 const [connectedPayAddress, setConnectedPayAddress] = useState(undefined)
-const [connectedOrdiAddress, setConnectedOrdiAddress] = useState(undefined) 
+const [connectedOrdiAddress, setConnectedOrdiAddress] = useState(undefined)
 ...
 async function connect() {
     const signer = new PandaSigner(new OrdiProvider())   // <---- use `PandaSigner`

@@ -174,7 +174,7 @@ public close(sigAuctioneer: Sig) {
         'first input is not spending specified ordinal UTXO'
     )
 
-    // Ensure the 1sat ordinal is being payed out to the winning bidder.
+    // Ensure the 1sat ordinal is being paid out to the winning bidder.
     let outputs = Utils.buildPublicKeyHashOutput(hash160(this.bidder), 1n)
 
     // Ensure the second output is paying the bid to the auctioneer.
@@ -372,7 +372,7 @@ export class OrdinalAuction extends SmartContract {
       "first input is not spending specified ordinal UTXO"
     );
 
-    // Ensure the ordinal is being payed out to the winning bidder.
+    // Ensure the ordinal is being paid out to the winning bidder.
     let outputs = Utils.buildPublicKeyHashOutput(pubKey2Addr(this.bidder), 1n);
 
     // Ensure the second output is paying the bid to the auctioneer.

@@ -32,6 +32,10 @@ You could get two different errors when broadcasting a double-spending transacti
 
 ![](../static/img/missing-inputs.png)
 
+The console may show a message like:
+
+`{"status":400,"code":27,"error":"Transaction invalid: missing-inputs"}`
+
 ### 1) for developers
 If you encounter these errors when running code, e.g., testing on testnet, it is likely because the [provider](./how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider) you are using fails to update your UTXO in time and return UTXOs that have already been spent when you request. Using these UTXOs that have been spent to build transactions will result in a double-spending. This situation is transitory and is caused by the provider not updating UTXO set timely due to, e.g., the provider's server overloading due to heavy blockchain traffic.
 

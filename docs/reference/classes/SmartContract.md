@@ -985,7 +985,7 @@ ___
 
 ▸ `Static` **loadArtifact**(`artifactFile?`): `void`
 
-This function is usually called on the frontend.
+This function is usually called on the front-end.
 The contract class needs to call this function before instantiating.
 
 #### Parameters

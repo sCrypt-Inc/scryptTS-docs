@@ -6,17 +6,17 @@
 
 ## OAuth 2.0
 
-OAuth 2.0 is an industry-standard authorization framework that enables third-party applications to access the resources of a user on a web service —- such as Facebook, Google, and Twitter -- without requiring the user to share their credentials directly with the application. It provides a secure and standardized way for users to grant limited access to their protected resources, such as their profile information or photos, to other applications. 
+OAuth 2.0 is an industry-standard authorization framework that enables third-party applications to access the resources of a user on a web service —- such as Facebook, Google, and Twitter -- without requiring the user to share their credentials directly with the application. It provides a secure and standardized way for users to grant limited access to their protected resources, such as their profile information or photos, to other applications.
 It works by introducing an authorization layer between the user, the application, and the web service hosting the user's data. Instead of sharing their username and password with the application, the user is redirected to the web service's authentication server. The user then authenticates themselves on the service, and upon successful authentication, the service issues an access token to the application. This access token represents the user's authorization to access specific resources.
 
-If you are new to OAuth 2.0, check out thse helpful tutorials:
+If you are new to OAuth 2.0, check out these helpful tutorials:
 - [An Illustrated Guide to OAuth and OpenID Connect](https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc)
 - [The Simplest Guide To OAuth 2.0](https://darutk.medium.com/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb)
 - [An Introduction to OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2)
 
 ## DotWallet's user authorization
 
-DotWallet uses OAuth 2.0 to allow third-party applications to safely access certain capabilities authorized by DotWallet users. More specifically, it uses Oauth2's authorization code grant type as the diagram shows. See [RFC6749](https://tools.ietf.org/html/rfc6749#section-4.1) for details. 
+DotWallet uses OAuth 2.0 to allow third-party applications to safely access certain capabilities authorized by DotWallet users. More specifically, it uses Oauth2's authorization code grant type as the diagram shows. See [RFC6749](https://tools.ietf.org/html/rfc6749#section-4.1) for details.
 
 ![](../../static/img/oauth2.png)
 
@@ -24,7 +24,7 @@ DotWallet uses OAuth 2.0 to allow third-party applications to safely access cert
 
 Follow [these steps](https://developers.dotwallet.com/documents/en/#user-authorization) for a user authorization.
 
-1. Construct URI. 
+1. Construct URI.
 
     Example URI: `https://api.ddpurse.com/v1/oauth2/authorize?client_id=YOUR-CLIENT-ID&redirect_uri=http%3A%2F%2FYOUR-REDIRECT-URL&response_type=code&state=YOUR-STATE&scope=user.info`
 
@@ -39,7 +39,7 @@ Follow [these steps](https://developers.dotwallet.com/documents/en/#user-authori
     |scope | Authorization scope. The list of permissions that the user agrees to authorize. These permissions are required for certain API endpoints. Needs to be url_encoded. Use spaces to separate multiple permissions. For a list of currently supported scope permissions, please check the scope list [here](https://developers.dotwallet.com/documents/en/#user-authorization)|
 
 2. Redirect the user to the URI constructed in step 1
-   
+
     After clicking the link, the user will be directed to the DotWallet authorization page. DotWallet will ask the user to log in, and then ask whether they agree to authorize the application for the listed permission scopes.
 
 3. Receive the `code` through the callback uri.
@@ -47,7 +47,7 @@ Follow [these steps](https://developers.dotwallet.com/documents/en/#user-authori
     After the user agrees to authorization in step 2, DotWallet will redirect the client to the `redirect_uri` specified by the application. The authorization code `code` and the provided `state` will be included in the query parameters.
 
 4. Exchange `code` for access_token. The access tokens are credentials used to access protected resources, which are issued by the authorization server.
-   
+
 :::warning
 To avoid security issues, any request for using or obtaining `access_token` must be made from the backend server. Do not disclose your `access_token` and `client_secret`<sup>1</sup> on the client side.
 :::
@@ -64,13 +64,14 @@ To avoid security issues, any request for using or obtaining `access_token` must
 
 ![](../../static/img/dotwallet-mail.png)
 
-1. Next, you need to set [redirection URI](https://www.oauth.com/oauth2-servers/redirect-uris). Redirect URLs are a critical part of the OAuth flow. After a user successfully authorizes an application, the authorization server will redirect the user back to the application. For example, in the figure below `http://localhost:3000/callback/` is the redirection.
+1. Next, you need to set the [redirection URI](https://www.oauth.com/oauth2-servers/redirect-uris).
+Redirect URLs are a critical part of the OAuth flow. After a user successfully authorizes an application, the authorization server will redirect the user back to the application. For example, in the figure below `http://localhost:3000/callback/` is the redirection.
 
 ![](../../static/img/dotwallet-uris.png)
 
 
 :::note
-*Callback domain* in the form is the redirection URIs in OAuth. 
+*Callback domain* in the form is the redirection URIs in OAuth.
 :::
 
 ## Example Implementation
@@ -78,7 +79,7 @@ To avoid security issues, any request for using or obtaining `access_token` must
 
 Here is an example to integration DotWallet in [Nextjs](https://nextjs.org/), a popular React development framework.
 
-1. Construct URI. 
+1. Construct URI.
 
 ```ts
 export default async function Home() {
@@ -87,7 +88,7 @@ export default async function Home() {
     const scope = encodeURIComponent("user.info autopay.bsv");
     const state = crypto.randomUUID();
     const loginUrl = `https://api.ddpurse.com/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&scope=${scope}&state=${state}`;
-    
+
     return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="m-4 p-4 bg-blue-200 font-bold rounded-lg">
