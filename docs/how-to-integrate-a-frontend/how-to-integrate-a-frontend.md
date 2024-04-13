@@ -155,7 +155,7 @@ You cannot simply call `Helloworld.compile()` at the front-end, since it only wo
 
 ## Integrate Wallet
 
-You will integrate [Yours Wallet](https://chromewebstore.google.com/detail/panda-wallet/mlbnicldlpdimbjdcncnklfempedeipj), a wallet as a browser extension, similar to [MetaMask](https://metamask.io/), into the project.
+You will integrate [Yours Wallet](https://chromewebstore.google.com/detail/panda-wallet/mlbnicldlpdimbjdcncnklfempedeipj), a browser extension wallet, similar to [MetaMask](https://metamask.io/), into the project.
 
 :::info
 You can refer to this [guide](../advanced/how-to-add-a-signer.md) to add support for other wallets.
