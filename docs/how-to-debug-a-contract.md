@@ -4,12 +4,12 @@ sidebar_position: 7
 
 # How to Debug a Contract
 
-Debugging an sCrypt contract is as easy as debugging TypeScript, since it is just TypeScript.
+Debugging a sCrypt contract is as easy as debugging TypeScript, since it is just TypeScript.
 
 
-## Use `console.log()`
+## Use console.log()
 
-You can use `console.log()` to print to the console.
+You can use `console.log()` to print output to the console.
 
 
 ```ts
