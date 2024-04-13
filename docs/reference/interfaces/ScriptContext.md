@@ -2,9 +2,8 @@
 
 # Interface: ScriptContext
 
-ScriptContext contains all the information in the transaction's [preimage][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm).
-The preimage is automatically generated during the user's construction of the transaction,
-and the user does not need to calculate it explicitly
+ScriptContext contains all the information in the transaction's [preimage](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm).
+The preimage is automatically generated during the user's construction of the transaction, and the user does not need to calculate it explicitly.
 
 ## Table of contents
 
@@ -29,7 +28,7 @@ and the user does not need to calculate it explicitly
 
 • **hashOutputs**: [`ByteString`](../README.md#bytestring)
 
-double-SHA256 hash of the serialization of some/all output amount with its locking script, see [hashOutputs][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs)
+double-SHA256 hash of the serialization of some/all output amount with its locking script, see [hashOutputs](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs)
 
 #### Defined in
 
