@@ -1,8 +1,6 @@
 # How to integrate DotWallet
 
-
 [DotWallet](https://www.dotWallet.com/en) is a lightweight wallet designed to help users easily and securely manage their digital assets. We will show how to integrate it with sCrypt-powered apps.
-
 
 ## OAuth 2.0
 
@@ -52,7 +50,6 @@ Follow [these steps](https://developers.dotwallet.com/documents/en/#user-authori
 To avoid security issues, any request for using or obtaining `access_token` must be made from the backend server. Do not disclose your `access_token` and `client_secret`<sup>1</sup> on the client side.
 :::
 
-
 ### DotWallet Developer Platform
 
 1. Before using DotWallet, you need to register and create an app on [DotWallet Developer Platform](https://developers.dotwallet.com/en).
@@ -61,7 +58,6 @@ To avoid security issues, any request for using or obtaining `access_token` must
 
 2. After creating the app, you will receive an email containing `app_id` and `secret`.
 
-
 ![](../../static/img/dotwallet-mail.png)
 
 1. Next, you need to set the [redirection URI](https://www.oauth.com/oauth2-servers/redirect-uris).
@@ -69,13 +65,11 @@ Redirect URLs are a critical part of the OAuth flow. After a user successfully a
 
 ![](../../static/img/dotwallet-uris.png)
 
-
 :::note
 *Callback domain* in the form is the redirection URIs in OAuth.
 :::
 
 ## Example Implementation
-
 
 Here is an example to integration DotWallet in [Nextjs](https://nextjs.org/), a popular React development framework.
 
@@ -100,7 +94,6 @@ export default async function Home() {
 ```
 
 <center>src/app/page.tsx</center>
-
 
 If the user clicks the **DotWallet Login** link, the page will be redirected to the wallet authorization page.
 
@@ -153,8 +146,7 @@ export async function GET(request: Request) {
 
 <center>src/app/callback/route.ts</center>
 
-
-### `DotWalletSigner`
+### DotWalletSigner
 
 sCrypt SDK provides `DotWalletSigner` for quick integration with DotWallet.
 
@@ -185,7 +177,6 @@ export default async function Balance() {
     </main>
   );
 }
-
 ```
 
 <center>src/app/balance/page.tsx</center>
@@ -195,6 +186,6 @@ For example, the example uses the signer to check user's balance.
 
 Congrats! You have completed the integration of DotWallet. Full code is [here](https://github.com/zhfnjust/dotwallet-example).
 
-------------------------
+---
 
 [1] `client_secret` is stored in the backend. It's used to exchange authorization code for access token.
