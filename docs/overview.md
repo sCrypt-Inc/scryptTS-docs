@@ -5,27 +5,31 @@ sidebar_position: 1
 
 # Overview
 
-`sCrypt` is an `embedded Domain Specific Language` ([eDSL](https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages)) based on TypeScript for writing smart contracts on Bitcoin SV. `Embedded` means that it is a language inside another language. `sCrypt` is strictly a subset of TypeScript, so all `sCrypt` code is valid TypeScript, but not vice versa.
+`sCrypt` is an [embedded Domain Specific Language (eDSL)](https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages) based on TypeScript for writing smart contracts on Bitcoin SV. *Embedded* means that it is a language inside another language. `sCrypt` is strictly a subset of TypeScript, so all sCrypt code is valid TypeScript, but not vice versa.
 
-We chose [TypeScript](https://www.typescriptlang.org) as the host language because it provides an easy, familiar language (JavaScript), but with type safety, making it easy to get started writing safe smart contracts. There is no need to learn a new programming language or tools if you are already familiar with TypeScript/JavaScript.
-If you're new to TypeScript, check out this helpful [introductory video](https://www.youtube.com/watch?v=ahCwqrYpIuM).
+We chose [TypeScript](https://www.typescriptlang.org) as the host language because it provides a familiar language (JavaScript), but with type safety, making it easy to get started writing safe smart contracts. If you're new to TypeScript, check out this helpful [introductory video](https://www.youtube.com/watch?v=ahCwqrYpIuM).
 
 
 ## How do Bitcoin Smart Contracts work?
 
 Smart contracts on Bitcoin are based on the UTXO model, which is very different from an account model like Ethereum used.
 
-### UTXO model
+### A Bitcoin transaction
 
 Each bitcoin transaction consists of some inputs and outputs.
+A single bitcoin is divisible into 100,000,000 satoshis, similar to how a dollar is divisible into 100 cents or pennies.
+
 An output contains:
 
 - The amount of bitcoins (satoshis) it contains.
 - bytecodes (the `locking script`).
 
-while an input contains:
+While an input contains:
+
 - A reference to the previous transaction output.
 - bytecodes (the `unlocking script`).
+
+### UTXO model
 
 An Unspent Transaction Output (UTXO) is an output not consumed in any transaction yet. The low-level bytecode/opcode is called [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script), which is interpreted by the [Bitcoin Virtual Machine](https://xiaohuiliu.medium.com/introduction-to-bitcoin-smart-contracts-9c0ea37dc757) (BVM).
 
