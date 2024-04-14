@@ -101,7 +101,7 @@ hashMessage(message: ByteString): ByteString {
 You can now call this method like the following:
 
 ```ts
-const message: ByteString = toByteString('hello world')
+const message: ByteString = toByteString('hello world', true)
 const hashRes: ByteString = instance.hashMessage(message)
 ```
 
