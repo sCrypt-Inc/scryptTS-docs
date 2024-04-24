@@ -40,12 +40,12 @@ Scrypt.init({
 })
 ```
 
-### Step 2: Connect a signer
+### Step 2: Connect a signer with `ScryptProvider`
 
 Connect signer to `ScryptProvider`, the required [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider) to use sCrypt service.
 
 ```ts
-const signer = new TestWallet(myPrivateKey)
+const signer = new TestWallet(myPrivateKey, new ScryptProvider())
 const counter = new Counter(0n)
 // connect signer
 await counter.connect(signer)

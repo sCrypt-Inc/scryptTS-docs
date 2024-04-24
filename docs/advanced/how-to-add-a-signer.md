@@ -55,7 +55,7 @@ export abstract class Signer {
   abstract requestAuth(): Promise<{ isAuthenticated: boolean, error: string }>;
 
   /**
-   * alter provider
+   * set provider
    * @param provider The target provider.
    * @returns
    */
