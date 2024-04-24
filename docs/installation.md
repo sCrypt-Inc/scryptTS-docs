@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Installation
 
-## Prerequisite
+## Prerequisites
 
 1. Install `Node.js` (require version `>=16`) and `NPM` on your machine by following the instructions [here](https://nodejs.org/en/download).
 
@@ -39,5 +39,5 @@ npm install -g scrypt-cli
 ```
 
 :::tip
-You can also fork [the demo contract on Repl.it](https://replit.com/@msinkec/scryptTS-demo) and play with the code in your browser.
+You can also fork the [demo contract on Repl.it](https://replit.com/@msinkec/scryptTS-demo) and play with the code in your browser.
 :::

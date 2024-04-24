@@ -2,16 +2,16 @@
 sidebar_position: 8
 ---
 
-# How to Integrate With a Frontend
+# How to integrate with a front-end
 
-This section will show how to integrate your smart contract to a frontend, so users can interact with it.
-We assume that you already have the basic knowledge of frontend development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the front end project.
+This section will show how to integrate your smart contract to a front-end, so users can interact with it.
+We assume that you already have the basic knowledge of front-end development, so we will not spend much time introducing this part of the code, but mostly be focusing on how to interact with the smart contract in the front-end project.
 
-## Setup
+## Create a project
 
-### Step 1
-Create your frontend project as usual.
-#### React
+Create your front-end project using React, Next, Vue, Angular, or Svelte.
+
+### React
 
 Run the following command to create a [React](https://react.dev/) project named `helloworld`.
 
@@ -23,7 +23,7 @@ npx create-react-app helloworld --template typescript
 
 We will do most work under the `src` directory.
 
-#### Next.js
+### Next.js
 
 Run the following command to create a [Next.js](https://nextjs.org/) project.
 
@@ -33,9 +33,9 @@ npx create-next-app helloworld --typescript --use-npm
 
 ![](../../static/img/create-next-app.png)
 
-#### Vue.js
+### Vue.js
 
-##### Vite
+#### Vite
 
 Run the following command to create a [Vue](https://vuejs.org/) 3.x project bundled with [Vite](https://vitejs.dev/).
 
@@ -53,7 +53,7 @@ npm create vue@2
 
 ![](../../static/img/create-vue2-vite-app.png)
 
-##### Webpack
+#### Webpack
 
 Run the following command to create a [Vue](https://vuejs.org/) project bundled with [Webpack](https://webpack.js.org/).
 
@@ -71,7 +71,7 @@ When setting up the project, select `Manually select features` and enable TypeSc
 
 ![](../../static/img/vue-cli-2.png)
 
-#### Angular
+### Angular
 
 Run the following command to create an [Angular](https://angular.io/) project.
 
@@ -81,7 +81,7 @@ npx @angular/cli new helloworld
 
 ![](../../static/img/create-angular-app.png)
 
-#### Svelte
+### Svelte
 
 Run the following command to create a [Svelte](https://svelte.dev/) project.
 
@@ -92,10 +92,10 @@ npm create svelte@latest helloworld
 ![](../../static/img/create-svelte-app.png)
 
 :::note
-Currently, we support frontend frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), [Angular](https://angular.io/), and [Svelte](https://svelte.dev/). We anticipate to add support for other frameworks over time.
+Currently, we support front-end frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), [Angular](https://angular.io/), and [Svelte](https://svelte.dev/). We anticipate to add support for other frameworks over time.
 :::
 
-### Step 2
+## Install the sCrypt CLI
 
 Run the `init` command of the [CLI](../installation.md#the-scrypt-cli-tool) to add `sCrypt` support in your project.
 
@@ -107,16 +107,15 @@ npx scrypt-cli init
 This command installs the dependencies and configures the contract development environment.
 After this, we are ready to go!
 
-## Load Contract
+## Load the Contract
 
-Before interacting with a smart contract at the front end, we need to load the contract class in two steps.
-
+Before interacting with a smart contract at the front-end, we need to load the contract class in two steps.
 
 We'll take a look at how to generate the artifact by ourselves first.
 
 ### 1. Compile Contract
 
-Before you start, you need to get the contract source files, as a frontend developer.
+Before you start, you need to get the contract source files, as a front-end developer.
 
 Let's use the [Helloworld contract](../tutorials/hello-world.md) as an example. Copy and paste `helloworld.ts` into the `src/contracts` directory.
 
@@ -151,12 +150,12 @@ const instance = new Helloworld(sha256(message))
 ```
 
 :::info
-You cannot simply call `Helloworld.compile()` at the front end, since it only works in NodeJS, not in browser.
+You cannot simply call `Helloworld.compile()` at the front-end, since it only works in NodeJS, not in browser.
 :::
 
 ## Integrate Wallet
 
-You will integrate [Panda](https://chromewebstore.google.com/detail/panda-wallet/mlbnicldlpdimbjdcncnklfempedeipj), a browser extension wallet similar to [MetaMask](https://metamask.io/), into the project.
+You will integrate [Yours Wallet](https://chromewebstore.google.com/detail/panda-wallet/mlbnicldlpdimbjdcncnklfempedeipj), a browser extension wallet, similar to [MetaMask](https://metamask.io/), into the project.
 
 :::info
 You can refer to this [guide](../advanced/how-to-add-a-signer.md) to add support for other wallets.
@@ -189,7 +188,7 @@ Now you can connect the wallet to the contract instance as before.
 await instance.connect(signer);
 ```
 
-Afterwards, you can interact with the contract from the front end by [calling its method](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) as usual.
+Afterwards, you can interact with the contract from the front-end by [calling its method](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-call) as usual.
 
 [This repo](https://github.com/sCrypt-Inc/counter-demos) contains a counter example, integrated with all supported frameworks.
 

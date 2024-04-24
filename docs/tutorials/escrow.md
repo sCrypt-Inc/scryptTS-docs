@@ -10,17 +10,17 @@ In this tutorial, we will go over how to create and escrow smart contract with s
 
 ### What is an escrow smart contract?
 
-An escrow smart contract is a type of digital agreement that Bitcoin to facilitate transactions between parties in a secure, trustless manner. 
+An escrow smart contract is a type of digital agreement that uses Bitcoin to facilitate transactions between parties in a secure, trustless manner.
 
 In traditional escrow services, a trusted third party holds assets—like money, property, or goods—on behalf of the transacting parties. The assets are released only when specific conditions are met.
 
-In the case of an escrow smart contract, the "third party" is the smart contract itself, programmed on the blockchain. The contract is written with the conditions of the transaction, and if they are met, the contract can be unlocked and the recipient(s) get payed.
+In the case of an escrow smart contract, the "third party" is the smart contract itself, programmed on the blockchain. The contract is written with the conditions of the transaction, and if they are met, the contract can be unlocked and the recipient(s) are paid.
 
 ### Our implementation
 
 We will implement a specific type of escrow, called a multi-sig escrow. The participants of this contract are a buyer (Alice), a seller (Bob) and one or more arbiters.
 
-Suppose Alice want's to buy a specific item from Bob. They don't trust each other, so they decide to use an escrow smart contract. They pick one or more arbiters, which they both trust. The job of the chosen arbiters is to verify, that the item really gets delivered in the right condition. If the conditions are met, the contract will pay the seller, Bob. In the opposite case, Alice gets a refund. Additionally, Alice is also eligible for a refund after a set period of time in the case the arbiters are not responsive.
+Suppose Alice want's to buy a specific item from Bob. They don't trust each other, so they decide to use an escrow smart contract. They pick one or more arbiters, which they both trust. The job of the chosen arbiters is to verify that the item really gets delivered in the right condition. If the conditions are met, the contract will pay the seller, Bob. In the opposite case, Alice gets a refund. Additionally, Alice is also eligible for a refund after a set period of time in the case the arbiters are not responsive.
 
 ## Contract properties
 
@@ -48,7 +48,9 @@ readonly arbiters: FixedArray<PubKey, typeof MultiSigEscrow.N_ARBITERS>
 readonly deadline: bigint
 ```
 
-## Public method - `confirmPayment`
+## Public methods
+
+### `confirmPayment`
 
 The first method of our contract will be `confirmPayment`. This public method will be called if the item was successfully delivered in the right condition.
 
@@ -72,14 +74,13 @@ public confirmPayment(
         this.checkSig(buyerSig, buyerPubKey),
         'buyer signature check failed'
     )
-
     // Validate arbiter sigs.
     assert(
         this.checkMultiSig(arbiterSigs, this.arbiters),
         'arbiters checkMultiSig failed'
     )
 
-    // Ensure seller gets payed.
+    // Ensure seller gets paid.
     const amount = this.ctx.utxo.value
     const out = Utils.buildPublicKeyHashOutput(this.sellerAddr, amount)
     assert(hash256(out) == this.ctx.hashOutputs, 'hashOutputs mismatch')
@@ -88,11 +89,11 @@ public confirmPayment(
 
 The method validates all signatures are correct and ensures the **seller** receives the funds.
 
-## Public method - `refund`
+### `refund`
 
 Next, we implement the public method `refund`. If the delivery wasn't successful or there is something wrong with the item and needs to be sent back, the buyer is eligible for a refund.
 
-The method again takes as inputs the buyers signature, along with her public key and the signatures of the arbiters.
+The method takes as inputs the buyers signature, their public key, and the signatures of the arbiters.
 
 ```ts
 // Regular refund. Needs arbiters agreement.
@@ -111,7 +112,6 @@ public refund(
         this.checkSig(buyerSig, buyerPubKey),
         'buyer signature check failed'
     )
-
     // Validate arbiter sigs.
     assert(
         this.checkMultiSig(arbiterSigs, this.arbiters),
@@ -127,7 +127,7 @@ public refund(
 
 The method validates all signatures are correct and ensures the **buyer** receives the refund.
 
-## Public method - `refundDeadline`
+### `refundDeadline`
 
 Lastly, we implement the `refundDeadline` method. This method can be called, after the specified contract deadline has been reached. After the deadline, the buyer can receive the refund, even without the arbiters agreement.
 
@@ -174,5 +174,4 @@ The method checks the buyers signature validity. It also checks the transaction 
 
 Congratulations! You have completed the escrow tutorial!
 
-The full code can be found in our [boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/multisigEscrow.ts).
-
+The full code can be found in the [sCrypt boilerplate repository](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/multisigEscrow.ts).

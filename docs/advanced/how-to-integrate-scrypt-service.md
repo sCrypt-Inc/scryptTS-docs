@@ -4,19 +4,20 @@ sidebar_position: 1
 
 # How to Integrate sCrypt Service
 
-Before interacting with a `sCrypt` contract, we must create a contract instance representing the latest state of the contract on chain. Such an instance can be created by calling the  [`fromTx`](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction) method. However, this means your application needs to track and record all contract-related transactions, especially for a stateful contract.
+Before interacting with an existing `sCrypt` contract that exists on chain,
+we must create an instance of the contract based on the latest state of the contract on chain. Such an instance can be created by calling the  [`fromTx`](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#create-a-smart-contract-instance-from-a-transaction) method. However, this means your application needs to track and record all contract-related transactions, especially for a stateful contract.
 
 An easier alternative is to leverage `sCrypt` infrastructure service, which tracks such transactions, so you can focus on your application logic.
 
-## Get Your API Key
+## Get an API Key
 
-### Step 1: Create Your Free Account
+### Create account
 
-Go to the [sCrypt homepage](https://scrypt.io) to create your free account.
+Go to the [sCrypt.io](https://scrypt.io) to create your free account.
 
 ![](../../static/img/homepage.png)
 
-### Step 2: Get API Key
+### Get API key
 
 Sign in and click on the copy icon to copy your API Key.
 
@@ -199,7 +200,7 @@ Besides adding webhooks in dashboard, you can add them **programmatically**.
 
 ```js
 
-const fs = require('fs').promises; 
+const fs = require('fs').promises;
 const util = require('util');
 
 // Async function to read a JSON file
@@ -207,10 +208,10 @@ async function readArtifactFromFile(filePath) {
   try {
     // Read the file using fs.promises.readFile and await for the result
     const data = await fs.readFile(filePath, 'utf8');
-    
+
     // Parse the JSON data
     const jsonData = JSON.parse(data);
-    
+
     // Return the parsed JSON object
     return jsonData;
   } catch (error) {

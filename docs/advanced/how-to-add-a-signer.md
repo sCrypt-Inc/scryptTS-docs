@@ -10,8 +10,7 @@ As described in [this section](../how-to-deploy-and-call-a-contract/how-to-deplo
 `sCrypt` provides the following signers by default:
 
 1. `TestWallet` : a simple wallet that can hold multiple private keys, with in-memory utxo management. Should only be used for testing.
-2. `PandaSigner`: a signer powered by the popular smart contract wallet [Panda](https://Panda.com/). Can be used in production.
-3. `PandaSigner`: another signer powered by the popular web3 wallet [Panda](https://github.com/Panda-Wallet/panda-wallet). Can be used [in production](../tokens/tutorials/ordinal-lock.md#use-panda-wallet).
+1. `PandaSigner`: a signer powered by the popular smart contract wallet [Yours Wallet](https://github.com/yours-org/yours-wallet/). Can be used [in production](../tokens/tutorials/ordinal-lock.md#use-panda-wallet).
 
 ## Implementation
 
@@ -51,26 +50,26 @@ export abstract class Signer {
   /**
    * Connect a provider to `this`.
    * @param provider The target provider.
-   * @returns 
+   * @returns
    */
   abstract connect(provider: Provider): Promise<this>;
 
   // Account
 
   /**
-   * 
+   *
    * @returns A promise which resolves to the address to the default private key of the signer.
    */
   abstract getDefaultAddress(): Promise<bsv.Address>;
 
   /**
-   * 
+   *
    * @returns A promise which resolves to the public key of the default private key of the signer.
    */
   abstract getDefaultPubKey(): Promise<bsv.PublicKey>;
 
   /**
-   * 
+   *
    * @param address The request address, using the default address if omitted.
    * @returns The public key result.
    * @throws If the private key for the address does not belong this signer.
@@ -81,7 +80,7 @@ export abstract class Signer {
 
   /**
    * Sign a raw transaction hex string.
-   * 
+   *
    * @param rawTxHex The raw transaction hex to sign.
    * @param options The options for signing, see the details of `SignTransactionOptions`.
    * @returns A promise which resolves to the signed transaction hex string.
@@ -105,7 +104,7 @@ export abstract class Signer {
    * Sign a message string.
    * @param message The message to be signed.
    * @param address The optional address whose private key will be used to sign `message`, using the default private key if omitted.
-   * @returns A promise which resolves to the signautre of the message. 
+   * @returns A promise which resolves to the signautre of the message.
    */
   abstract signMessage(message: string, address?: AddressOption): Promise<string>;
 
@@ -149,7 +148,7 @@ export abstract class Signer {
   /**
    * Get a list of the P2PKH UTXOs.
    * @param address The address of the returned UTXOs belongs to.
-   * @param options The optional query conditions, see details in `UtxoQueryOptions`. 
+   * @param options The optional query conditions, see details in `UtxoQueryOptions`.
    * @returns  A promise which resolves to a list of UTXO for the query options.
    */
   listUnspent(address: AddressOption, options?: UtxoQueryOptions): Promise<UTXO[]> {
@@ -182,16 +181,13 @@ export abstract class Signer {
 
 It is recommended that your signer implements all `abstract` methods. For non-`abstract` methods, the default implementation is usually sufficient.
 
-
 ### `Example: PandaSigner`
 
-Next, we use the [Panda Wallet](https://github.com/Panda-Wallet/panda-wallet) as an example to show how to implement a `PandaSigner`.
-
+Next, we use the [Yours Wallet](https://github.com/yours-org/yours-wallet) as an example to show how to implement a `PandaSigner`.
 
 1. Implement the `isAuthenticated` method to Check if the wallet has been authenticated:
 
 ```ts
-
 private _initTarget() {
     if(this._target) {
         return;
@@ -236,8 +232,6 @@ override async requestAuth(): Promise<{ isAuthenticated: boolean, error: string 
 }
 ```
 
-
-
 3. In the `connect` method, you usually attempt to connect to a provider and save it:
 
 ```ts
@@ -264,7 +258,6 @@ override async connect(provider?: Provider): Promise<this> {
 
     return this;
 }
-
 ```
 
 4. Returns the address to the default private key of the wallet in `getDefaultAddress`:
@@ -280,7 +273,7 @@ private async getConnectedTarget(): Promise<PandaAPI> {
     if (!isAuthenticated) {
         // trigger connecting to panda account when it's not authorized.
         try {
-            
+
             this._initTarget();
             const res = await this._target.connect();
 
@@ -320,11 +313,9 @@ override async getPubKey(address: AddressOption): Promise<PublicKey> {
 }
 ```
 
-7. Both `signTransaction` and `signRawTransaction` sign the transaction, and are already implemented in the base class. You just need to implement the `getSignatures` function. The following code calls panda's `getSignatures` API to request a panda wallet signature.
-
+7. Both `signTransaction` and `signRawTransaction` sign the transaction, and are already implemented in the base class. You just need to implement the `getSignatures` function. The following code calls panda's `getSignatures` API to request a wallet signature.
 
 ```ts
-
 /**
  * Get signatures with Panda api
  * @param rawTxHex a transation raw hex
@@ -358,7 +349,6 @@ override async getSignatures(rawTxHex: string, sigRequests: SignatureRequest[]):
     }));
 }
 ```
-
 
 8. Panda supports signing messages, if your wallet does not support it, you can throw an exception in the `signMessage` function:
 
@@ -401,4 +391,3 @@ await instance.connect(your_signer);
 ```
 
 Here is another [user-customized signer](https://github.com/shubham78901/scryptDemo/blob/neucron/tests/utils/neucronSigner.ts).
-

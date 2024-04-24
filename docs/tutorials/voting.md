@@ -42,7 +42,7 @@ Since candidates' vote counts can be updated, we mark it [stateful](../how-to-wr
 export const N = 2
 export type Candidates = FixedArray<Candidate, typeof N>
 
-export class Voting extends SmartContract {  
+export class Voting extends SmartContract {
   @prop(true)
   candidates: Candidates
   // ...
@@ -109,7 +109,7 @@ The public function `vote` is now finished.
 public vote(name: Name) {
   // change contract state: add one vote to `candidate` in the list
   this.increaseVotesReceived(name)
-  
+
   // restrict tx outputs
   // to contain the latest state with the same balance
   let outputs: ByteString = this.buildStateOutput(this.ctx.utxo.value)
@@ -185,7 +185,7 @@ export class Voting extends SmartContract {
 
 ## Frontend
 
-We will add a frontend to the voting smart contract according to [this guide](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
+We will add a front-end to the voting smart contract according to [this guide](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
 
 ### Setup Project
 
@@ -210,7 +210,7 @@ This command will create a contract file at `src\contracts\voting.ts`, replace t
 
 ### Compile Contract
 
-Compile the contract with the following command: 
+Compile the contract with the following command:
 
 ```bash
 npx scrypt-cli compile
@@ -236,7 +236,7 @@ dotenv.config()
 // See https://scrypt.io/docs/bitcoin-basics/bsv/#private-keys
 const privateKey = bsv.PrivateKey.fromWIF(process.env.PRIVATE_KEY || '')
 
-// Prepare signer. 
+// Prepare signer.
 // See https://scrypt.io/docs/how-to-deploy-and-call-a-contract/#prepare-a-signer-and-provider
 const signer = new TestWallet(privateKey, new DefaultProvider({
     network: bsv.Networks.testnet
@@ -272,7 +272,7 @@ Before deploying the contract, we need to create a `.env` file and save your pri
 PRIVATE_KEY=xxxxx
 ```
 
-If you don't have a private key, you can follow [this guide](../../how-to-deploy-and-call-a-contract/faucet) to generate one using Panda wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
+If you don't have a private key, you can follow [this guide](../../how-to-deploy-and-call-a-contract/faucet) to generate one using Yours Wallet, then fund the private key's address with our [faucet](https://scrypt.io/faucet/).
 
 Run the following command to deploy the contract.
 
@@ -366,7 +366,7 @@ We can fetch a contract's latest instance by calling the `Scrypt.contractApi.get
 function App() {
   const [votingContract, setContract] = useState<Voting>();
   const [error, setError] = React.useState("");
-  
+
   // ...
 
   async function fetchContract() {
@@ -381,7 +381,7 @@ function App() {
       setError(error.message);
     }
   }
-    
+
   // ...
 }
 ```
@@ -565,8 +565,8 @@ Voting call tx: fc8b3d03b8fa7469d66a165b017fe941fa8ab59c0979457cef2b6415d659e3f7
 
 ### Subscribe to Contract Event
 
-So far, we have a fully working app. However, there is a slight problem. When Alice clicks on the like button for a candadate in her browser, the candidate's vote count in Bob's browser does not increase, unless he manually refreshes. 
-We need a way to listen to contract event. 
+So far, we have a fully working app. However, there is a slight problem. When Alice clicks on the like button for a candadate in her browser, the candidate's vote count in Bob's browser does not increase, unless he manually refreshes.
+We need a way to listen to contract event.
 
 We call `Scrypt.contractApi.subscribe(options: SubscribeOptions<T>, cb: (e: ContractCalledEvent<T>) => void): SubScription` to subscribe to events that the contract has been called. When a contract gets called and updated, we refresh the UI in real time, re-render all the content on the page and show the updated vote count.
 
@@ -584,7 +584,7 @@ interface SubscribeOptions<T> {
 
 If `methodNames` is set, you will be notified only when public functions in the list are called. Otherwise, you will be notified when ANY public function is called.
 
-2. `callback: (event: ContractCalledEvent<T>) => void`: a callback funciton upon receiving notifications. 
+2. `callback: (event: ContractCalledEvent<T>) => void`: a callback funciton upon receiving notifications.
 
 `ContractCalledEvent<T>` contains the relevant information when the contract is called, such as the public function name and function arguments when the call occurs.
 
@@ -620,7 +620,7 @@ useEffect(() => {
     clazz: Voting,
     id: contract_id
   }, (event: ContractCalledEvent<Voting>) => {
-    // update the contract instance 
+    // update the contract instance
     setSuccess({
       txId: event.tx.id,
       candidate: event.args[0] as ByteString,
@@ -637,7 +637,7 @@ useEffect(() => {
 
 ### Deploy to GitHub Pages
 
-After pushing the frontend project to your GitHub account, it's easy to [publish a website with GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages), so that users can interact with your dApp with the browser.
+After pushing the front-end project to your GitHub account, it's easy to [publish a website with GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages), so that users can interact with your dApp with the browser.
 
 #### Step 1. Add `homepage` to `package.json`
 
@@ -706,7 +706,7 @@ Congratulations! You have successfully completed a fullstack voting dapp fully o
 The repo is [here](https://github.com/sCrypt-Inc/voting). And an online example is [here](http://classic.scrypt.io/voting).
 
 
-## Using Webhook on Server 
+## Using Webhook on Server
 
 Webhooks are also a viable option for server-side use and can offer an alternative to using websockets in client-side for listening to smart contract updates.
 
@@ -738,7 +738,7 @@ app.listen(port, () => {
 });
 ```
 
-### Subscribing to Contract Events 
+### Subscribing to Contract Events
 
 After our server is up and running, it is necessary to create a webhook within our service prior to attempting to obtain any event information. Webhooks can be configured and maintained on the `webhooks` section of our dashboard.
 
@@ -755,7 +755,7 @@ app.post("/webhook", (req, res) => {
   console.log("Received a webhook event");
 
   const events = req.body.events;
-  
+
   if (events && events.length > 0) {
     const utxoSpentEvent = events.find(
         (event) => event.eventType === 'utxoSpent'
@@ -796,7 +796,7 @@ app.get("/votes/:index", (req, res) => {
 
   // Retrieve candidate from latest contract instance.
   const candidate = latestInstance.candidates[arrayIndex];
-  
+
   // Send the vote count as a response
   res.status(200).json(candidates.votesReceived);
 });
@@ -814,9 +814,9 @@ async function fetchVotes(candidateIdx: number) {
 
     const data = await response.text();
     const votesReceived = parseInt(text, 10);
-    
+
     console.log(votesReceived)
-    
+
     // ...
 
   } catch (e) {
