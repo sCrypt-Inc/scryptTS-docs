@@ -38,6 +38,33 @@ export abstract class Provider extends EventEmitter  {
   abstract isConnected(): boolean;
 
   /**
+   * call this function in the constructor to initialize connection
+   */
+  protected _initializeConnection() {
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.connect().then((self) => {
+          resolve(self);
+        }, (error) => {
+          reject(error);
+        });
+      }, 0);
+    });
+  }
+
+  /**
+   * check if the connection is ready
+   */
+  protected async _ready(): Promise<void> {
+    if (!this.isConnected()) {
+      try {
+        await this.connect();
+      } catch (error) { throw error }
+    }
+  }
+
+
+  /**
    * Implement the connection provider, for example, verify the api key during the connection process.
    * @returns a connected provider. Throw an exception if the connection fails.
    */
@@ -47,7 +74,7 @@ export abstract class Provider extends EventEmitter  {
    * update provider network
    * @param network  Network type to be updated
    */
-  abstract updateNetwork(network: bsv.Networks.Network): Promise<boolean>;
+  abstract updateNetwork(network: bsv.Networks.Network): Promise<void>;
 
   /**
    * @returns The network this provider is connected to.
@@ -115,14 +142,6 @@ export abstract class Provider extends EventEmitter  {
    */
   abstract getBalance(address: AddressOption): Promise<{ confirmed: number, unconfirmed: number }>;
 
-  /**
-   * Get a list of UTXO for a certain contract instance.
-   * @param genesisTxHash The hash value of deployment transaction of the contract instance.
-   * @param outputIndex The output index of the deployment transaction of the contract instance.
-   * @returns A promise which resolves to a list of transaction UTXO.
-   */
-  abstract getContractUTXOs(genesisTxHash: TxHash, outputIndex: number): Promise<UTXO[]>;
-
   // Inspection
 
   readonly _isProvider: boolean;
@@ -146,42 +165,64 @@ It is recommended that your provider implements all `abstract` methods. For non-
 Let's walk through the process of implementing our own provider. In this example we'll implement a provider for [WhatsOnChain](https://whatsonchain.com) (WoC).
 
 
-1. First let's implement the `isConnected()` and `connect()` functions. Because WoC doesn't need to maintan an open connection, not does it require any authentication by default, it's simply marked as connected by default. If your chosen provider does, here's probably the place to implement the connection logic.
+1. First let's implement the `isConnected()` and `connect()` functions. Because WoC doesn't need to maintan an open connection, not does it require any authentication by default. We just need to check if the API responds correctly. If your chosen provider does, here's probably the place to implement the connection logic.
 
 ```ts
-isConnected(): boolean {
-  return true;
+
+private _network: bsv.Networks.Network;
+private _isConnected: boolean = false;
+
+constructor(network: bsv.Networks.Network) {
+    super();
+    this._network = network;
+    this._initializeConnection();
+}
+
+override isConnected(): boolean {
+    return this._isConnected;
 }
 
 override async connect(): Promise<this> {
-  this.emit(ProviderEvent.Connected, true);
-  return Promise.resolve(this);
+    try {
+      const res = await superagent.get(`${this.apiPrefix}/woc`)
+        .timeout(3000);
+      if (res.ok && res.text === "Whats On Chain") {
+        this._isConnected = true;
+        this.emit(ProviderEvent.Connected, true);
+      } else {
+        throw new Error(`${res.body.msg ? res.body.msg : res.text}`);
+      }
+    } catch (error) {
+      this._isConnected = false;
+      this.emit(ProviderEvent.Connected, false);
+      throw new Error(`connect failed: ${error.message?? "unknown error"}`);
+    }
+
+    return Promise.resolve(this)
 }
 ```
 
 2. Next, we'll implement the network functions. Here, your providers selected network can be toggled. WoC supports both the Bitcoin mainnet along with testnet, so we don't do further checking:
 
 ```ts
-override async updateNetwork(network: bsv.Networks.Network): Promise<boolean> {
+override updateNetwork(network: bsv.Networks.Network): void {
   this._network = network;
   this.emit(ProviderEvent.NetworkChange, network);
-  return Promise.resolve(true);
 }
 
-override async getNetwork(): Promise<bsv.Networks.Network> {
+override getNetwork(): bsv.Networks.Network {
   return Promise.resolve(this._network);
 }
 ```
 
 If your provider is only meant for the testnet, you could do something like this:
 ```ts
-override async updateNetwork(network: bsv.Networks.Network): Promise<boolean> {
+override updateNetwork(network: bsv.Networks.Network): void {
   if (network != bsv.Networks.testnet) {
     throw new Error('Network not supported.')
   }
   this._network = network;
   this.emit(ProviderEvent.NetworkChange, network);
-  return Promise.resolve(true);
 }
 ```
 
@@ -189,7 +230,7 @@ override async updateNetwork(network: bsv.Networks.Network): Promise<boolean> {
 
 ```ts
 override async getFeePerKb(): Promise<number> {
-  return Promise.resolve(50);
+  return Promise.resolve(1);
 }
 ```
 
@@ -197,6 +238,7 @@ override async getFeePerKb(): Promise<number> {
 
 ```ts
 override async sendRawTransaction(rawTxHex: string): Promise<TxHash> {
+  await this._ready();
   // 1 second per KB
   const size = Math.max(1, rawTxHex.length / 2 / 1024); //KB
   const timeout = Math.max(10000, 1000 * size);
@@ -229,7 +271,7 @@ override async listUnspent(
     address: AddressOption, 
     options?: UtxoQueryOptions
     ): Promise<UTXO[]> {
-
+  await this._ready();
   const res = await superagent.get(`${this.apiPrefix}/address/${address}/unspent`);
   const utxos: UTXO[] =
     res.body.map(item => ({
@@ -279,13 +321,6 @@ override async getTransaction(txHash: string): Promise<TransactionResponse> {
 }
 ```
 
-
-Lastly, if our provider doesn't support a certain query, we can simply throw an error by default:
-```ts
-override async getContractUTXOs(genesisTxHash: string, outputIndex?: number): Promise<UTXO[]> {
-    throw new Error("Method #getContractUTXOs not implemented in WhatsonchainProvider.");
-  }
-```
 
 ## Using the Provider
 

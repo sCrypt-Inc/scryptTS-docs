@@ -40,13 +40,15 @@ Scrypt.init({
 })
 ```
 
-### Step 2: Connect `ScryptProvider` with your signer
+### Step 2: Connect a signer with `ScryptProvider`
 
 Connect signer to `ScryptProvider`, the required [provider](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#provider) to use sCrypt service.
 
 ```ts
-const signer = new TestWallet(myPrivateKey)
-await signer.connect(new ScryptProvider())
+const signer = new TestWallet(myPrivateKey, new ScryptProvider())
+const counter = new Counter(0n)
+// connect signer
+await counter.connect(signer)
 ```
 
 ### Step 3: Get Contract ID
@@ -54,9 +56,6 @@ await signer.connect(new ScryptProvider())
 Each contract is uniquely identified by the transaction that [deploy](../how-to-deploy-and-call-a-contract/how-to-deploy-and-call-a-contract.md#contract-deployment) it and the output it is in, which we regard as its ID.
 
 ```ts
-const counter = new Counter(0n)
-// connect signer
-await counter.connect(signer)
 
 const balance = 1
 const deployTx = await counter.deploy(balance)

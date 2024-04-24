@@ -23,6 +23,11 @@ If you want to implement your own signer, you must inherit from the base class `
 /**
  * A `Signer` is a class which in some way directly or indirectly has access to a private key, which can sign messages and transactions to authorize the network to perform operations.
  */
+
+
+/**
+ * A `Signer` is a class which in some way directly or indirectly has access to a private key, which can sign messages and transactions to authorize the network to perform operations.
+ */
 export abstract class Signer {
 
   provider?: Provider;
@@ -32,6 +37,8 @@ export abstract class Signer {
     this._isSigner = true;
     this.provider = provider;
   }
+
+  // Authentication
 
   abstract getNetwork(): Promise<bsv.Networks.Network>;
 
@@ -48,19 +55,11 @@ export abstract class Signer {
   abstract requestAuth(): Promise<{ isAuthenticated: boolean, error: string }>;
 
   /**
-   * Connect a provider to `this`.
+   * set provider
    * @param provider The target provider.
    * @returns
    */
-  abstract connect(provider: Provider): Promise<this>;
-
-  // Account
-
-  /**
-   *
-   * @returns A promise which resolves to the address to the default private key of the signer.
-   */
-  abstract getDefaultAddress(): Promise<bsv.Address>;
+  abstract setProvider(provider: Provider): void;
 
   /**
    *
@@ -69,7 +68,13 @@ export abstract class Signer {
   abstract getDefaultPubKey(): Promise<bsv.PublicKey>;
 
   /**
-   *
+   * 
+   * @returns A promise which resolves to the address to the default private key of the signer.
+   */
+  abstract getDefaultAddress(): Promise<bsv.Address>;
+
+  /**
+   * 
    * @param address The request address, using the default address if omitted.
    * @returns The public key result.
    * @throws If the private key for the address does not belong this signer.
@@ -87,16 +92,18 @@ export abstract class Signer {
    * @throws If any input of the transaction can not be signed properly.
    */
   async signRawTransaction(rawTxHex: string, options: SignTransactionOptions): Promise<string> {
-    ...
+    const signedTx = await this.signTransaction(new bsv.Transaction(rawTxHex), options);
+    return signedTx.toString();
   }
 
   /**
-   * Sign a transaction object.
+   * Sign a transaction object. By default only signs inputs, which are unlocking P2PKH UTXO's.
    * @param tx The transaction object to sign.
    * @param options The options for signing, see the details of `SignTransactionOptions`.
    * @returns A promise which resolves to the signed transaction object.
    */
-  async signTransaction(tx: bsv.Transaction, options?: SignTransactionOptions): Promise<bsv.Transaction>{
+  async signTransaction(tx: bsv.Transaction, options?: SignTransactionOptions): Promise<bsv.Transaction> {
+
     ...
   }
 
@@ -123,17 +130,14 @@ export abstract class Signer {
    */
   get connectedProvider(): Provider {
     if (!this.provider) {
-      throw new Error(`the provider of singer ${this.constructor.name} is not set yet!`);
-    }
-    if (!this.provider.isConnected()) {
-      throw new Error(`the provider of singer ${this.constructor.name} is not connected yet!`);
+      throw new Error(`the provider of signer ${this.constructor.name} is not set yet!`);
     }
 
     return this.provider;
   }
 
   /**
-   * Sign the transaction, then broadcast the transaction
+   * Sign transaction and broadcast it
    * @param tx A transaction is signed and broadcast
    * @param options The options for signing, see the details of `SignTransactionOptions`.
    * @returns A promise which resolves to the transaction id.
@@ -152,7 +156,7 @@ export abstract class Signer {
    * @returns  A promise which resolves to a list of UTXO for the query options.
    */
   listUnspent(address: AddressOption, options?: UtxoQueryOptions): Promise<UTXO[]> {
-    // default implemention using provider, can be overrided.
+    // Default implementation using provider. Can be overriden.
     return this.connectedProvider.listUnspent(address, options);
   }
 
@@ -161,8 +165,9 @@ export abstract class Signer {
    * @param address The query address.
    * @returns A promise which resolves to the address balance status.
    */
-  getBalance(address?: AddressOption): Promise<{ confirmed: number, unconfirmed: number }> {
-    // default implemention using provider, can be overrided.
+  async getBalance(address?: AddressOption): Promise<{ confirmed: number, unconfirmed: number }> {
+    // Default implementation using provider. Can be overriden.
+    address = address ? address : await this.getDefaultAddress();
     return this.connectedProvider.getBalance(address);
   }
 
@@ -176,6 +181,12 @@ export abstract class Signer {
     return !!(value && value._isSigner);
   }
 
+  /**
+   * Align provider's network after the signer is authenticated
+   */
+  async alignProviderNetwork() {
+    ...
+  }
 }
 ```
 
@@ -232,35 +243,8 @@ override async requestAuth(): Promise<{ isAuthenticated: boolean, error: string 
 }
 ```
 
-3. In the `connect` method, you usually attempt to connect to a provider and save it:
 
-```ts
-override async connect(provider?: Provider): Promise<this> {
-    // we should make sure panda is connected  before we connect a provider.
-    const isAuthenticated = await this.isAuthenticated();
-
-    if (!isAuthenticated) {
-        throw new Error('panda is not connected!');
-    }
-
-    if (provider) {
-        if (!provider.isConnected()) {
-            await provider.connect();
-        }
-        this.provider = provider;
-    } else {
-        if (this.provider) {
-            await this.provider.connect();
-        } else {
-            throw new Error(`No provider found`);
-        }
-    }
-
-    return this;
-}
-```
-
-4. Returns the address to the default private key of the wallet in `getDefaultAddress`:
+3. Returns the address to the default private key of the wallet in `getDefaultAddress`:
 
 ```ts
 /**
@@ -295,7 +279,7 @@ override async getDefaultAddress(): Promise<bsv.Address> {
 }
 ```
 
-5. Returns the public key to the default private key of the wallet in `getDefaultPubKey`:
+4. Returns the public key to the default private key of the wallet in `getDefaultPubKey`:
 
 ```ts
 override async getDefaultPubKey(): Promise<bsv.PublicKey> {
@@ -305,7 +289,7 @@ override async getDefaultPubKey(): Promise<bsv.PublicKey> {
 }
 ```
 
-6. Since Panda is a single-address wallet, we simply ignore the `getPubKey` method:
+5. Since Panda is a single-address wallet, we simply ignore the `getPubKey` method:
 
 ```ts
 override async getPubKey(address: AddressOption): Promise<PublicKey> {
@@ -313,7 +297,8 @@ override async getPubKey(address: AddressOption): Promise<PublicKey> {
 }
 ```
 
-7. Both `signTransaction` and `signRawTransaction` sign the transaction, and are already implemented in the base class. You just need to implement the `getSignatures` function. The following code calls panda's `getSignatures` API to request a wallet signature.
+6. Both `signTransaction` and `signRawTransaction` sign the transaction, and are already implemented in the base class. You just need to implement the `getSignatures` function. The following code calls panda's `getSignatures` API to request a wallet signature.
+
 
 ```ts
 /**
@@ -350,7 +335,8 @@ override async getSignatures(rawTxHex: string, sigRequests: SignatureRequest[]):
 }
 ```
 
-8. Panda supports signing messages, if your wallet does not support it, you can throw an exception in the `signMessage` function:
+
+7. Panda supports signing messages, if your wallet does not support it, you can throw an exception in the `signMessage` function:
 
 ```ts
 override async signMessage(message: string, address?: AddressOption): Promise<string> {
