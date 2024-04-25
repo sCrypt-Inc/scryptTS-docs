@@ -75,3 +75,15 @@ export function getDefaultSigner(): TestWallet {
     )
 }
 ```
+
+
+## Indexer APIs
+
+### mainnet
+
+- `gorillapool`: https://ordinals.gorillapool.io/api/docs
+
+### testnet
+  
+- `gorillapool`: https://testnet.ordinals.gorillapool.io/api/docs
+- `scrypt` (only bsv20 v2): https://1sat.scrypt.io/api/docs
