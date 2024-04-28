@@ -13,5 +13,7 @@ If you want to learn more about the fundamentals of Bitcoin, consider exploring 
 
 - [BSV Academy - Bitcoin Theory](https://bitcoinsv.academy/course/bitcoin-theory)
 - [BSV Academy - Bitcoin Essentials](https://bitcoinsv.academy/bitcoin-essentials)
+- [Learn me a Bitcoin](https://learnmeabitcoin.com/)
+- [sCrypt Academy](https://academy.scrypt.io/)
 - [BSV Wiki](https://wiki.bitcoinsv.io/index.php/Main_Page)
 - [Satolearn](https://www.satolearn.com/overview)
