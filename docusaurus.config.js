@@ -58,6 +58,17 @@ const config = {
         },
         items: [
           {
+            type: "doc",
+            docId: "overview",
+            position: "left",
+            label: "BSV",
+          },
+          {
+            position: "left",
+            label: "BTC",
+            to: "/category/btc",
+          },
+          {
             /* Only visible under docs. See src/custom/custom.css */
             href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
             label: 'Help us improve this page',
@@ -86,6 +97,26 @@ const config = {
         indexName: 'scryptTS-docs',
       },
     }),
+
+    plugins: [
+      [
+        'docusaurus-plugin-openapi-docs',
+        {
+          id: "api", // plugin id
+          docsPluginId: "classic", // id of plugin-content-docs or preset for rendering docs
+          config: {
+            scrypt: {
+              specPath: "btc.yaml",
+              outputDir: "docs/btc",
+              sidebarOptions: {
+                groupPathsBy: "tag",
+              },
+            },
+          }
+        },
+      ]
+    ],
+    themes: ["docusaurus-theme-openapi-docs"], // export theme components
 };
 
 module.exports = config;

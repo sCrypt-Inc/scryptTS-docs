@@ -1,0 +1,54 @@
+---
+id: btc-inscription-details
+title: "inscription details"
+description: "Returns details of a specific inscription ID"
+sidebar_label: "inscription details"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVm1v2zYQ/ivX+9IGUCQnHbBB2Lq5XTZ4KJaidjEMTtDS0tniIpEsebLrGfrvw9GyrTRB0e6TRPK5u+deeMcdsloFzOc4MaHw2rG2JuBtgiUd15jjW+LWmwAlsdJ1ALsEBcFRoZe6AH2ShcmvmKB15JUsJyXmuODifAA575Vggk551RCTFwo7NKohzNEQb6y/wwS12HaKK/yc0MvZKygqpQ2c0J4+ttpTiTn7lhIMRUWNwnyHvHWiOLDXZoVdlxxt6fKLZh549vU2bgUcnDWBgpxfjkbyua9/2hYFhbBsazjGDBMsrGEyLHjlXK2LeJD9E0Roh/RJNa4mzE1b113XJfjdY8pfqhLe0seWAmPEXDzEvDOq5cp6/S+Ve9B3D0GTe1EAYxmWtjWlRBIDFa3XvI0ZXJDy5MctV5jPbyUGDXFlpQpWxDHjcoTZgots16euywZhDtlOlx2KXr8+FEbra8yxYnZ5ll1cfp+O0lF6kT8fjX7I1hcodg40ppKQfcSHZI75ESXY503WexAm/c9v1jeKMcc//ppF97RZ2iiuWSKO041arcjDG+LA1hOcw7UjM34zgefp6EEBzSodQAe5LTFnIgfTKDiNDsJCBSrBGuCKhqqO1yvmPgX427ZQKANLbUqwLUMjWtTCtnxjDrQUw1xcDHmWhf1equ3ts4d7ZylM9ka50r4EzX39yeWWbUcM0cUENvR0TRA2mouKSmAbASUFvRI+PjAo57xVRfXkxhyIGruBimoHbQDdOG/XFOXEwU1FXJEHzU8DLLbQqDttVnKlzYrCycJSGx1JaQ5UL8H6w1lhS0pvzKxSDBu1TWCjuQLWTeQbCXxuVBtYkSGv6gSUKYE+ORsIgm3o4LShDSxJcespCP56PH2e3pgb836yhK1tn3qC2tpIdilkKoJD7C/TUXY9nsoXpHT7WB4qJRGwgaLWxR3MK/J0SguVmq1PT9nJfm59/dPh2PUqhoD15TGZW9XUZymMayZvFOs11dtE2MYo1FaVsNYqcv1wVWqGF/BaNo813LP+AA2ZFmws3ifvxe2pxKYNJB2q1uYu5DfmHOazaljJnpwN4sD25NFKc9Uu0sI2B5rnyunj/8Gjs6O6YFtf7PM0SPshxkdj32whW9R2kTUqMPks+CJrlDaZp729kFlHRjm9DyImyOSbcL2U26kLOrWdQegjJOv7tCpin6ZGaWlSymkm1fxygktbrXVBJpAA+8EzdqqoSKKOyf3+ttlsUhVPU+tXWS8asteTV1d/Tq/OL9NRWnFTi96+zDDHC+mIF7LnbOBGmYGt4RQ7Dd97jWp3mjnfOuz7xsr0iTNXK22ERPRo17f7uTwBMMF8ONkHz40Ec13Ko6OygQW+20lXfOfrrpPtjy15mS+3Ca6V12ohnXi+w1IH+S8xX6o60Bdceva2n9tn8NjL4VEX+k1ltih261ZWmOAdbQePFHlL/C8eXxfHL5PQJXa3XYIVqZJ8jMn+YFwU5Hgg8uAZcW82/341wwTV/Un52WSM2h+l8+PLCICZvSPz4kiOZSn8uu4/zaOXUw==
+sidebar_class_name: "get api-method"
+info_path: btc/swagger-petstore-openapi-3-0
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>inscription details</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/inscriptions/{id}"}></MethodEndpoint>
+
+
+
+Returns details of a specific inscription ID
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"id","in":"path","description":"inscription ID","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Inscription ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

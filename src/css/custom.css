@@ -106,8 +106,8 @@
 
 /* Hide navbar items under docs */
 .docs-doc-page .navbar__link {
-  visibility: hidden;
-  display: none;
+  visibility: visible;
+  display: inline-block;
 }
 /* Except docs repo link */
 .docs-doc-page .navbar__link[href="https://github.com/sCrypt-Inc/scryptTS-docs"] {
