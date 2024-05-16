@@ -1,0 +1,54 @@
+---
+id: btc-inscription-content
+title: "inscription content"
+description: "Returns inscription content of a specific inscription ID"
+sidebar_label: "inscription content"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1v20YM/issv7QBZMlJB2wQtm5ulw0eiqWoXQyDY7Rnibauke6ud5Rdz9B/HyjLtpJ4Rbd9knR8jnz4IpI7ZLUKmM5wbELmtWNtTcB5hDkdvzHFt8S1NwH0CQWZNUyGwS5BQXCU6aXO7iHGP2OE1pFX8jnOMcUFZ4MeZNApwQid8qoiJi90dmhURZiiId5Yf4cRauHhFBf4kNzL6SvICqUNnNCePtXaU44p+5oiDFlBlcJ0h7x1ojiw12aFTRMdben8i2Yeefb1NuYCDs6aQEHkV8OhPO7rn9RZRiEs6xKOMcMIDxFKd6icK3XWCpKPQS7tkD6rypWEqanLsomQ6TMnrlT6rLSvwWZMPAjsSVXnsLpSK0o+Olr9s9SZM8KmifCbcx6+VDm8pU81BcYWc/kY886omgvr9V+U70HfPAaN76UCjGVY2trkkk4MlNVe87YtowUpT35Uc4HpbC6JqIgLK6W4on3ZiQiTBWfJrqufJunlOiQ7nTfJqVAD+fWhSmtfYooFs0uT5PLq23gYD+PL9Plw+F2yvkSxd6AzkerYp79P6lgsogS7IpLvPQij7uUX6yvFmOJvf0xbN7VZ2va6Zok8TjZqtSIPb4gDW08wgBtHZvRmDM/j4aNqnhY6gA7y67a5k3swaS9OWgdhoQLlYA1wQX1Vx3+9LaMY4E9bQ6YMLLXJwdYMlWhRC1vzrTnQUgwzcTGkSRL2Z7G282ePzy5iGO+NcqF9Dpq7n0E6jRw7YmhdjGBDT9cEYaM5KygHti0gp6BXwscHBuWctyorntyaA1FjN1BQ6aAOoCvn7Zrae+LgpiAuyIPmpwEWW6jUnTYr6S9mReFkYamNbklpDlQuwfqDLLM5xbdmWiiGjdpGsNFcAOuq5dsSeGhUG1iRIa/KCJTJgT47GwiCrejgtKENLElx7UnaMNyMJs/jW3Nr3o+XsLX1U09QWtuSXQqZguAQ+6t4mNyMJvIEKd0ulodKiQRsICt1dgezgjyd0kK5ZuvjU3aSH2tf/nAQu05FH7C+OiZzq6ryIoZRyeSNYr2mchsJ2zYKpVU5rLVquX64zjXDC3gth8ca7lh/gIpMDbYt3ifvxe2JxKYOJO2y1OYupLdmALNp0a9kT84GcWB78miluagXcWarA82Bcvr4fvDo4qgu2Npn+zz10n6I8dHYv7aQLEq7SCoVmHwSfJZUSpvE095eSKwjo5zeBxGls/sq3Czl79QZndpOL/QtJOmGhsraoUGV0tKklNNMqvrpBJf2WuqMTCABdlNw5FRWkEQdo/v9bbPZxKqVxtavku5qSF6PX13/PrkeXMXDuOCqFL1dmWGKl9IRL+XM2cCVMj1bZ9aJh41qdxqA/2cL6Zpsbzo2nXe7bgTMZDfBCNP+ytHbiSJM2wXhQGceYWEDy8XdTnrlO182jRx/qsnL9JlHuFZeq4X059kOcx3kPcd0qcpAX3D02dtutbiAc8vNWWe6Q2W2KHbLWr4wwjva9vYoWXf+E4+vi+iXSegcm3kTYUEqJ9/GZC8YZRk57l15tOncm9y/Xk8xQnV/fj6Yl632s3S+f9kCYGrvyLw4kmP5FH5N8zdjTtfu
+sidebar_class_name: "get api-method"
+info_path: openapi/btc/swagger-petstore-openapi-3-0
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>inscription content</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/inscriptions/{id}/content"}></MethodEndpoint>
+
+
+
+Returns inscription content of a specific inscription ID
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"id","in":"path","description":"inscription ID","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem><TabItem label={"application/octet-stream"} value={"application/octet-stream"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem><TabItem label={"image/jpeg"} value={"image/jpeg"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem><TabItem label={"image/png"} value={"image/png"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Inscription ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

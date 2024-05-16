@@ -61,12 +61,12 @@ const config = {
             type: "doc",
             docId: "overview",
             position: "left",
-            label: "BSV",
+            label: "SDK",
           },
           {
             position: "left",
-            label: "BTC",
-            to: "/category/btc",
+            label: "OpenAPI",
+            to: "/open-api/overview",
           },
           {
             /* Only visible under docs. See src/custom/custom.css */
@@ -98,25 +98,37 @@ const config = {
       },
     }),
 
-    plugins: [
-      [
-        'docusaurus-plugin-openapi-docs',
-        {
-          id: "api", // plugin id
-          docsPluginId: "classic", // id of plugin-content-docs or preset for rendering docs
-          config: {
-            scrypt: {
-              specPath: "btc.yaml",
-              outputDir: "docs/btc",
-              sidebarOptions: {
-                groupPathsBy: "tag",
-              },
-            },
-          }
-        },
-      ]
+  plugins: [
+    // use multi-instance to render open-api docs, see ref: https://docusaurus.io/docs/docs-multi-instance
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'open-api',
+        path: 'open-api',
+        routeBasePath: 'open-api',
+        sidebarPath: './open-api/sidebars.js',
+        docLayoutComponent: "@theme/DocPage",
+        docItemComponent: "@theme/ApiItem" // derived from docusaurus-theme-openapi-docs
+      },
     ],
-    themes: ["docusaurus-theme-openapi-docs"], // export theme components
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "open-api-doc-generator", // plugin id
+        docsPluginId: "open-api", // id of plugin-content-docs or preset for rendering docs
+        config: {
+          btc: {
+            specPath: "open-api/btc.yaml",
+            outputDir: "open-api/btc",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+        },
+      },
+    ]
+  ],
+  themes: ["docusaurus-theme-openapi-docs"], // export theme components
 };
 
 module.exports = config;
