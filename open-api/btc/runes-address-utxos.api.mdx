@@ -1,0 +1,54 @@
+---
+id: runes-address-utxos
+title: "runes-address-utxos"
+description: "Returns UTXOs of all the Runes of a specific address"
+sidebar_label: "runes-address-utxos"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SsCTxvgxunQkzEMa7sPZJcObYoNKHJQZCbWakuqRG3NDP/3gYrznXVrT7akJ75H8oktkJwHKO7gOhoMMMmgxKC8dqStgQKukaI3QdyOv18FYWdC1rWgCkXCpw0RHCo900rIsvQYAmRgHXrJIUYlFOAZe9KfnkR6tIxx0ssGCT3zt2Bkg1CAQfpl/T1koJnfSapgX9TF+FKoSmojNmiPD1F7LKEgHzGDoCpsJBQt0MJx4EBemzl0Xbbm2uh9mmuDewlLrRtNK46HiH5xQOLkXJu5WCE3LDNZh2M0JjZT9Ds0djYL+H88a+gziCaMDs6agIHP3wyH/NmNfxOVwhBmsRZrB0AGyhpCQ4yXztVapYP8R+BLLeCjbFyNUJhY113XZXB2LPiFLMU1PkQMBAlzeoi5NTJSZb3+jeUSdHYIYusKrhrbd/RBGEtiZqMpuZ4QUEWvaZFMOUXp0Z9HqqC4m3ARGqTKsqnnqYLJMwXkU1J527uxy5Ph8942GPK2/+1yNj8wif+5Mn70NRRQEblQ5Ll1aE6k04Og/MLRQFtg2pWqG27QsgPb2tb94jDQ95HXSxBk/c8n6xtJUMCXb+OUrTYzm65rqpN/L5lVXDk04vzr6MBBqwNx0z/61EouZH9zZNSgb7lUqeXYSM0Zhuic9fR+K7EMuArLyKeD4WDIW84GamRyRm/t4/NjR1i7MdlLZ1ZfQcJHyl0ttWExqTlt3+Y7mJKCDIqtsZPGZgbrXvPxJmZq9ySDygbi+207lQFvfd11vL18pWyCUgc5rbde4l+z25sVR1Xf42Jr8PyUdWQM8LR4NtF6WDzBtMZsqCa88Jq5npngq+t+Kr0Wxwb9URn9pjSLbREreavLz8t/T8c/jPK0gtXlbtJlUKEs0aeqLE/PlUK3Xb6DKbkzeT5/HLPjdh/+3kNP0Y9qenuRAGJs79G8WyskXrK+rvsDFjzCPg==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>runes-address-utxos</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/addresses/{address}/utxo"}></MethodEndpoint>
+
+
+
+Returns UTXOs of all the Runes of a specific address
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"address","in":"path","description":"BTC address","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"limit","in":"query","description":"paging limit","required":false,"schema":{"type":"number"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"offset","in":"query","description":"paging offset","required":false,"schema":{"type":"number"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

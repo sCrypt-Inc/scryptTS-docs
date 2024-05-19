@@ -1,0 +1,54 @@
+---
+id: runes-nameid-info
+title: "runes-nameid-info"
+description: "Returns info of a specific Rune name or ID"
+sidebar_label: "runes-nameid-info"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVVFv4zYM/isGn3aAmziJc02MYVjbu225h+vQpjhgRVAwMl1rtSVVkrvLDP/3gYrbJk1wuy0vkaiP4keaH9WCx3sH2S1cNYocrGLIyQkrjZdaQQZX5BurXCRVoSNdRBg5Q0IWUkTsESmsKdI2WnyAGLQhi+y4yCEDyzeeMEDmJ+wPMRi0WJMnyzFb4EPIQJH/S9sHiEFyTIO+hLdEzpcXkShRqugVbemxkZZyyLxtKAYnSqoRshb8xvDFzlup7qHr4tdYWNOlXeTfDHaY2veHWjHYGa0cOT4fJwn/7Qe4boQg54qmil6KBjEIrTwpz3g0ppIiHAz/dOzUAn3F2lTES+fRN+5C5wRZEkOOHkNFueh3kss/S5NR8j4bjecQw7qxislDwrnKJ+nkWlbSbyCbxUBelEw+g+lkKmaz94TTCaWn43RNNKdpihNEMc9niGlBOU5mOM5TMTmdzk8LkRBNxykmY5EgxODJ1u4Oa91wIpz+PBklk6T/vSAEmp7Pdl+SvC/9XQWZaqrqjbXct+qicHSA7a0v2Foq7/oYxlItFR0nFIrW98f12fLy+rfF1c3nj8vF8uwzxOAMitCxMEpmMzZs6rV+DS5rch5rEy4fpydJejJOlqN5Nj3NpvNBkiR/cJaNXWvICqwcdauu67oY0mO9cY55dEWPDTkPATM6xNwobHyprfyb8i0oPQTtdHERLT5ESvuo0I3KWRDgSDQ2dMBtC2tCS/as8SVktyvu4Zp8qblj7skH4fIRDNdeDNtegd0wSHzYPmuqG/Yyd2SfnjXe2AoyKL03LhsOtSF1gkYOnLAb4wdSA0d7JnPNstrqZpfSi8r4GujVx/stiBs8LH7Rtkbuuk9fliHJwIfdpa+CSi84anRpSEVnvy8OhP98EF33Uy4IkOvXey6UGPRCRRGESjVKztA1xmjrf95JLAauwvbm0SAZJGwy2vkag577ljs2KPdota+D4b8N5L5qnr76oalQKiYQPkjbf9FbWHsBMWQ7UzW8BGzaHZWF5seh1M6zU9uu0dGNrbqOzY8NWW6kVQxPaCWuudi3LeTS8Trv2/4baf1w1Q/Yd9GxSX80kd6IagMct2p4BzE80GbnUeHZ/794fGc5/4XFcw27VRdDSZiTDaXZHp8JQcbvOB6M/T0t/vpxCTHgvibeaCDcfpTUj+cBEC31A6mfXih63kIYSf8AhMqsXw==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>runes-nameid-info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/{nameOrId}/info"}></MethodEndpoint>
+
+
+
+Returns info of a specific Rune name or ID
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"nameOrId","in":"path","description":"Rune name or ID","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"rune_id\": \"840106:129\",\n      \"burned\": \"0\",\n      \"divisibility\": 8,\n      \"etching\": \"535c886ea53e4724bee9e54a3aac9d8aa4feda38a2d4c37597fc0ee524a02c0a\",\n      \"terms_amount\": \"2009010300000000\",\n      \"terms_cap\": \"0\",\n      \"terms_height_l\": null,\n      \"terms_height_h\": null,\n      \"terms_offset_l\": null,\n      \"terms_offset_h\": null,\n      \"mints\": \"0\",\n      \"premine\": \"2009010300000000\",\n      \"rune_name\": \"SATOSHIRUNETITAN\",\n      \"spacers\": \"1088\",\n      \"symbol\": null,\n      \"timestamp\": \"2024-04-20T19:57:59.000Z\",\n      \"turbo\": false\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"rune_id\": \"840106:129\",\n      \"burned\": \"0\",\n      \"divisibility\": 8,\n      \"etching\": \"535c886ea53e4724bee9e54a3aac9d8aa4feda38a2d4c37597fc0ee524a02c0a\",\n      \"terms_amount\": \"2009010300000000\",\n      \"terms_cap\": \"0\",\n      \"terms_height_l\": null,\n      \"terms_height_h\": null,\n      \"terms_offset_l\": null,\n      \"terms_offset_h\": null,\n      \"mints\": \"0\",\n      \"premine\": \"2009010300000000\",\n      \"rune_name\": \"SATOSHIRUNETITAN\",\n      \"spacers\": \"1088\",\n      \"symbol\": null,\n      \"timestamp\": \"2024-04-20T19:57:59.000Z\",\n      \"turbo\": false\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

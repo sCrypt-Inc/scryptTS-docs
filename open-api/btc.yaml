@@ -1,41 +1,24 @@
 openapi: 3.0.3
 info:
-  title: Swagger Petstore - OpenAPI 3.0
+  title: sCrypt Open API
   description: |-
-    This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
-    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
-    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
-    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
-
-    _If you're looking for the Swagger 2.0/OAS 2.0 version of Petstore, then click [here](https://editor.swagger.io/?url=https://petstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Petstore OAS 2.0` menu option!_
-    
-    Some useful links:
-    - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
-    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
-  termsOfService: http://swagger.io/terms/
+    Open API Specification of sCrypt Inc.
   contact:
-    email: apiteam@swagger.io
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.11
-externalDocs:
-  description: Find out more about Swagger
-  url: http://swagger.io
+    email: support@scrypt.io
+  version: 1.0.0
 servers:
-  - url: http://127.0.0.1:3008/v1
+  - url: https://open-api.scrypt.io
 tags:
   - name: BRC-20
   - name: Inscriptions
   - name: Runes
 paths:
-  /btc/{network}/brc20/{ticker}/holders:
+  /btc/{network}/brc20/{ticker}/info:
     get:
       tags:
         - BRC-20
-      summary: holders
-      description: Returns holders of a specific BRC-20 ticker
-      operationId: btc-brc20-holders
+      description: Returns info of a specific BRC-20 ticker
+      operationId: brc20-ticker-info
       parameters:
         - name: network
           in: path
@@ -57,6 +40,62 @@ paths:
               example:
                 statusCode: 0
                 data:
+                  id: '1'
+                  original_tick: ordi
+                  tick: ordi
+                  max_supply: '21000000000000000000000000'
+                  decimals: 18
+                  limit_per_mint: '1000000000000000000000'
+                  remaining_supply: '0'
+                  burned_supply: '0'
+                  is_self_mint: false
+                  deploy_inscription_id: b61b0172d95e266c18aea0c624db987e971a5d6d4ebc2aaed85da4642d635735i0
+                  block_height: 779832
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/brc20/{ticker}/holders:
+    get:
+      tags:
+        - BRC-20
+      description: Returns holders of a specific BRC-20 ticker
+      operationId: brc20-ticker-holders
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: ticker
+          in: path
+          description: BRC-20 ticker
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
                   unused_txes:
                     - pkscript: 512047891af93e1b6fe7bc9ae2d6ed4dcb1372e0d04f0d0d1beb4345765fbadc5ff4
                       wallet: bc1pg7y347f7rdh700y6uttw6nwtzdewp5z0p5x3h66rg4m9lwkutl6qtp7mwe
@@ -69,13 +108,111 @@ paths:
           description: Unauthorized
       security:
         - bearerAuth: []
+  /btc/{network}/brc20/{ticker}/addresses/{address}/balances:
+    get:
+      tags:
+        - BRC-20
+      description: Returns balance of a specific BRC-20 ticker of a specific address
+      operationId: brc20-ticker-address-balance
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: ticker
+          in: path
+          description: BRC-20 ticker
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  overall_balance: '96888000000000000000000'
+                  available_balance: '96888000000000000000000'
+                  block_height: 844187                
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/brc20/addresses/{address}/balances:
+    get:
+      tags:
+        - BRC-20
+      description: Returns balances of all the BRC-20 tickers of a specific address
+      operationId: brc20-address-balances
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - ticker: eyee
+                    overall_balance: '10000000000000000000000'
+                    available_balance: '10000000000000000000000'
+                  - ticker: fcdp
+                    overall_balance: '750000000000000000'
+                    available_balance: '750000000000000000'
+                  - ticker: core
+                    overall_balance: '96888000000000000000000'
+                    available_balance: '96888000000000000000000'
+                  - ticker: 'fc2 '
+                    overall_balance: '10001133000000000000000000000000000'
+                    available_balance: '10001032999999920000000000000000000'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
   /btc/{network}/inscriptions/{id}:
     get:
       tags:
         - Inscriptions
-      summary: inscription details
       description: Returns details of a specific inscription ID
-      operationId: btc-inscription-details
+      operationId: inscription-details
       parameters:
         - name: network
           in: path
@@ -95,7 +232,6 @@ paths:
           content:
             application/json:
               example:
-                
         '400':
           description: Bad Request
         '401':
@@ -108,8 +244,7 @@ paths:
     get:
       tags:
         - Inscriptions
-      summary: inscription content
-      description: Returns inscription content of a specific inscription ID
+      description: Returns content of a specific inscription ID
       operationId: btc-inscription-content
       parameters:
         - name: network
@@ -128,15 +263,27 @@ paths:
         '200':
           description: Successful operation
           content:
-            application/json:
-              example:
             text/plain:
               example:
+            text/html:
+              example:
+            application/xhtml+xml:
+              example:
+            application/xml;q=0.9:
+              example:
+            image/avif:
+              example:
+            image/webp:
+              example:
+            image/apng:
+              example:
+            image/*:
+              example:
+            application/signed-exchange;v=b3;q=0.7:
+              example:
+            application/json:
+              example:
             application/octet-stream:
-              example:
-            image/jpeg:
-              example:
-            image/png:
               example:
         '400':
           description: Bad Request
@@ -146,13 +293,12 @@ paths:
           description: Inscription ID not found
       security:
         - bearerAuth: []
-  /btc/{network}/runes/{nameOrId}/holders:
+  /btc/{network}/runes/{nameOrId}/info:
     get:
       tags:
         - Runes
-      summary: Rune holders
-      description: Returns holders of a specific Rune name or ID
-      operationId: btc-runes-holders
+      description: Returns info of a specific Rune name or ID
+      operationId: runes-nameid-info
       parameters:
         - name: network
           in: path
@@ -172,7 +318,295 @@ paths:
           content:
             application/json:
               example:
-                
+                statusCode: 0
+                data:
+                  - rune_id: '840106:129'
+                    burned: '0'
+                    divisibility: 8
+                    etching: 535c886ea53e4724bee9e54a3aac9d8aa4feda38a2d4c37597fc0ee524a02c0a
+                    terms_amount: '2009010300000000'
+                    terms_cap: '0'
+                    terms_height_l: null
+                    terms_height_h: null
+                    terms_offset_l: null
+                    terms_offset_h: null
+                    mints: '0'
+                    premine: '2009010300000000'
+                    rune_name: SATOSHIRUNETITAN
+                    spacers: '1088'
+                    symbol: null
+                    timestamp: '2024-04-20T19:57:59.000Z'
+                    turbo: false
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Rune name of ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/runes/{nameOrId}/holders:
+    get:
+      tags:
+        - Runes
+      description: Returns holders of a specific Rune name or ID
+      operationId: runes-nameid-holders
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: nameOrId
+          in: path
+          description: Rune name or ID
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:                
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Rune name of ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/runes/{nameOrId}/addresses/{address}/balances:
+    get:
+      tags:
+        - Runes
+      description: Returns balance of a specific Rune name or ID of a specific address
+      operationId: runes-nameid-address-balances
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: nameOrId
+          in: path
+          description: Rune name or ID
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:                
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Rune name of ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/runes/{nameOrId}/addresses/{address}/utxos:
+    get:
+      tags:
+        - Runes
+      description: Returns UTXOs of a specific Rune name or ID of a specific address
+      operationId: runes-nameid-address-utxos
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: nameOrId
+          in: path
+          description: Rune name or ID
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:                
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Rune name of ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/runes/addresses/{address}/balances:
+    get:
+      tags:
+        - Runes
+      description: Returns balances of all the Runes of a specific address
+      operationId: runes-address-balances
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:                
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Rune name of ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/runes/addresses/{address}/utxo:
+    get:
+      tags:
+        - Runes
+      description: Returns UTXOs of all the Runes of a specific address
+      operationId: runes-address-utxos
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:                
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Rune name of ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/runes/outpoints/{outpoint}/balances:
+    get:
+      tags:
+        - Runes
+      description: Returns balances of a specific outpoint
+      operationId: runes-outpoint-balances
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network
+          required: true
+          schema:
+            type: string
+        - name: outpoint
+          in: path
+          description: BTC transaction outpint
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:                
         '400':
           description: Bad Request
         '401':

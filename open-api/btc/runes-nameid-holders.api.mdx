@@ -1,0 +1,54 @@
+---
+id: runes-nameid-holders
+title: "runes-nameid-holders"
+description: "Returns holders of a specific Rune name or ID"
+sidebar_label: "runes-nameid-holders"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVMtu2zAQ/BViTy2gWE6Rk1AUzaMt3EsKJ0EPhg80tbLYSCTDRxpX0L8XS0u2HDtp3JNEcrgzuzvcBjxfOshmMA0KHcwTyNEJK42XWkEGU/TBKsdKXeVoHdMF48wZFLKQgtElpniNTFs2uYIEtEHL6e4khwwsBT0hgMxPuhCQgOGW1+hpkc0aoHPIQKH/re09JCCJ2XBfwnM5F7eXTJRcKrZFW3wI0mIOmbcBE3CixJpD1oBfGQrsvJVqCW2bbLl4jdd2kr9Ktp/d/1BVspa+53kIaFd7RIYvpVqyHrllKXjlDtGoUC/Q7tDoonD4Np4N9AiiOaGd0cqho/MP4zF9duPfBCHQuSJUbOMDSEBo5VF5wnNjKiniQfrL0aUG8InXpkLIVKiqtm0TODsU/ILnbIoPAZ2HiDndx9wpHnyprfyD+Rp0tg8atLVgkyumtGeFDiqneoJDEaz0q+jMBXKL9jz4ErLZnIpQoy81WXsZKxh9k0G68CJtOku2abR92vQma9Ot9R3ax973wVaQQem9cVmaaoPqhBs5csKujB9JDUTY67mh1qxrP1S16RSFga6DtF6DIOl+vmpbcw8ZfP95G/OUqtDxuvRVdO4lsbJrg4qd/5jseac/YDfd449NpBJ2NydKjLpmcxGbjTWXlKELxmjrPw8SS4CqsI58OhqPxrRltPM1j57oTP3C/NhR1mz9dfS06mrn8cmnpuJSkYzYlqZr7QwWXkAC2WDexElJW9sh0mub06/zdK9pFtzhna3alrbXL5LankvHF9Xg1b2YzrO5cFDtPa4GQ+aRV4EwQJPhaKLNYHiFaYPZUs1pYSVxHZngu2k3gd6zQ5P9oIxuk6vVUEQvr798XP4DHW80yT9U9M5o520CJfIcbSzN+vhcCDTDGu6NxZ1R8+3LLSTAd9/7s/cdox8U9fEiAtitvkf1aSPR05L0te1f2Uq6sw==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>runes-nameid-holders</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/{nameOrId}/holders"}></MethodEndpoint>
+
+
+
+Returns holders of a specific Rune name or ID
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"nameOrId","in":"path","description":"Rune name or ID","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"limit","in":"query","description":"paging limit","required":false,"schema":{"type":"number"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"offset","in":"query","description":"paging offset","required":false,"schema":{"type":"number"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

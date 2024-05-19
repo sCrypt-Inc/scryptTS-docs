@@ -1,0 +1,54 @@
+---
+id: runes-outpoint-balances
+title: "runes-outpoint-balances"
+description: "Returns balances of a specific outpoint"
+sidebar_label: "runes-outpoint-balances"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SsCTxugxunQkzEMa7sPZJcNaYcdghwUmam1OpIqUV0zw/99oOKkTpMVW0+WJX488j2yBVI3EcoZTJPFCHMJFUYdjCfjLJQwRUrBRrFQjbIao3BLoUT0qM3SaOESeWcsgQTnMSj2mlRQQuBwJ9vnk607SPAqqBUSBk7bglUrhBIs0i8XbkGC4bReUQ1PsVxcXwpdK2PFo3XAu2QCVlBSSCgh6hpXCsoWaO05cKRg7A10ndzlGoB+PhkFZaPSfJMr3fj8e8o5G0fvbMTI72/GY/7sJ7pKWmOMy9SIXQtBgnaW0BLbK+8bo/ND8TOyUwv4oFa+QShtapqu6yScHQt+oSoxxbuEkSDbnB7afLcqUe2C+Y3Vxujs0IjlIbh/LIDJB2EdiaVLtuLOQkSdgqF1ZnSBKmA4T1RDOZtzE1ZItWNV3CBlBfATFAvSRdtT2RVZMcWWm1i022NXDNQTMdxvpZNCAyXURD6WReE82hPlzSjqsPY0Mg449xbaFbO0oWEIcEcah4GeTP7fGIHsD59cWCmCEr78uM4lG7t02d1Qk0m/5Kziq0crzr9NDvS0fRBX/eyojayWovecWD3qeVc6844rZbjCmLx3gd4PCpPAXdhEPh2NR2O+8i7SSmV59Er/+xTugWsf1fYfA983jvCBCt8oYxlD5qTtKZ7BgjRIKAfzmteM3M0gn8tB0B3EuYTaReIgbbtQEb+Hpuv4+i5hYKXNJdyrYNSC+z9roTKRzxWUS9VEfKbGV9N+hF+LYzvlaGH9pbJr4LxN4j+QcIvrwfriLfNiHMfXzQvQ7PrZzTsJNaoKQ27R5vlca/Q0cDxYMHtD+/njNUhQ++PyZDxy9KOg3l5kA3HtbtG+20Ek/mV8XfcHMkw+SA==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>runes-outpoint-balances</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/outpoints/{outpoint}/balances"}></MethodEndpoint>
+
+
+
+Returns balances of a specific outpoint
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"outpoint","in":"path","description":"BTC transaction outpint","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"null"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
