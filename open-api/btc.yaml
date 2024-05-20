@@ -5,9 +5,9 @@ info:
     Open API Specification of sCrypt Inc.
   contact:
     email: support@scrypt.io
-  version: 1.0.0
+  version: v1
 servers:
-  - url: https://open-api.scrypt.io
+  - url: https://open-api.scrypt.io/v1
 tags:
   - name: BRC-20
   - name: Inscriptions
@@ -245,7 +245,7 @@ paths:
       tags:
         - Inscriptions
       description: Returns content of a specific inscription ID
-      operationId: btc-inscription-content
+      operationId: inscription-content
       parameters:
         - name: network
           in: path
