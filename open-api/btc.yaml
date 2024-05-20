@@ -1,8 +1,6 @@
 openapi: 3.0.3
 info:
   title: sCrypt Open API
-  description: |-
-    Open API Specification of sCrypt Inc.
   contact:
     email: support@scrypt.io
   version: v1
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
         - BRC-20
-      description: Returns info of a specific BRC-20 ticker
+      description: BRC-20 token info
       operationId: brc20-ticker-info
       parameters:
         - name: network
@@ -61,7 +59,7 @@ paths:
     get:
       tags:
         - BRC-20
-      description: Returns holders of a specific BRC-20 ticker
+      description: Holders of a specific BRC-20 token
       operationId: brc20-ticker-holders
       parameters:
         - name: network
@@ -96,12 +94,14 @@ paths:
               example:
                 statusCode: 0
                 data:
-                  unused_txes:
-                    - pkscript: 512047891af93e1b6fe7bc9ae2d6ed4dcb1372e0d04f0d0d1beb4345765fbadc5ff4
-                      wallet: bc1pg7y347f7rdh700y6uttw6nwtzdewp5z0p5x3h66rg4m9lwkutl6qtp7mwe
-                      overall_balance: '100000000000000000000'
-                      available_balance: '100000000000000000000'
-                  block_height: 842921
+                  - pkscript: 0014bf1916dc33dbdd65f60d8b1f65eb35e8120835fc
+                    wallet: bc1qhuv3dhpnm0wktasd3v0kt6e4aqfqsd0uhfdu7d
+                    overall_balance: '8712082383523010000000000'
+                    available_balance: '8712082383523010000000000'
+                  - pkscript: 002042135392c4b08a5d7194640340976513b2b100a3e4f50d56fbd70099c633b81e
+                    wallet: bc1qggf48ykykz996uv5vsp5p9m9zwetzq9run6s64hm6uqfn33nhq0ql9t85q
+                    overall_balance: '1681390956909560000000000'
+                    available_balance: '6038956909560000000000'
         '400':
           description: Bad Request
         '401':
@@ -112,7 +112,7 @@ paths:
     get:
       tags:
         - BRC-20
-      description: Returns balance of a specific BRC-20 ticker of a specific address
+      description: Balance of a specific BRC-20 token of a specific address
       operationId: brc20-ticker-address-balance
       parameters:
         - name: network
@@ -141,9 +141,8 @@ paths:
               example:
                 statusCode: 0
                 data:
-                  overall_balance: '96888000000000000000000'
-                  available_balance: '96888000000000000000000'
-                  block_height: 844187                
+                  overall_balance: '502730000000000000000'
+                  available_balance: '0'
         '400':
           description: Bad Request
         '401':
@@ -154,7 +153,7 @@ paths:
     get:
       tags:
         - BRC-20
-      description: Returns balances of all the BRC-20 tickers of a specific address
+      description: Balances of all the BRC-20 tokens of a specific address
       operationId: brc20-address-balances
       parameters:
         - name: network
@@ -189,18 +188,15 @@ paths:
               example:
                 statusCode: 0
                 data:
-                  - ticker: eyee
-                    overall_balance: '10000000000000000000000'
-                    available_balance: '10000000000000000000000'
-                  - ticker: fcdp
-                    overall_balance: '750000000000000000'
-                    available_balance: '750000000000000000'
-                  - ticker: core
-                    overall_balance: '96888000000000000000000'
-                    available_balance: '96888000000000000000000'
-                  - ticker: 'fc2 '
-                    overall_balance: '10001133000000000000000000000000000'
-                    available_balance: '10001032999999920000000000000000000'
+                  - ticker: ordi
+                    overall_balance: '502730000000000000000'
+                    available_balance: '0'
+                  - ticker: maga
+                    overall_balance: '10500000000000000000000'
+                    available_balance: '0'
+                  - ticker: ordg
+                    overall_balance: '666000000000000000000'
+                    available_balance: '0'
         '400':
           description: Bad Request
         '401':
@@ -211,8 +207,8 @@ paths:
     get:
       tags:
         - Inscriptions
-      description: Returns details of a specific inscription ID
-      operationId: inscription-details
+      description: Ordinals inscription info
+      operationId: inscription-info
       parameters:
         - name: network
           in: path
@@ -232,6 +228,26 @@ paths:
           content:
             application/json:
               example:
+                statusCode: 0
+                data:
+                  address: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                  charms: []
+                  children: []
+                  content_length: 57
+                  content_type: text/plain;charset=utf-8
+                  effective_content_type: text/plain;charset=utf-8
+                  fee: 1464
+                  height: 844353
+                  id: 09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549i0
+                  next: 1d7dd8c77d19e6caa4f14e1d82e1085e1c49c33fd00ba4a54fa287df19c21b7fi0
+                  number: 70932816
+                  parents: []
+                  previous: c2edab35d99d18cf1fd96d66096e3477e10c5fb06e5e3df1fe8c0cfec3f85c17i2
+                  rune: null
+                  sat: null
+                  satpoint: 09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549:0:0
+                  timestamp: 1716240503
+                  value: 330
         '400':
           description: Bad Request
         '401':
@@ -244,7 +260,7 @@ paths:
     get:
       tags:
         - Inscriptions
-      description: Returns content of a specific inscription ID
+      description: Ordinals inscription content
       operationId: inscription-content
       parameters:
         - name: network
@@ -265,6 +281,10 @@ paths:
           content:
             text/plain:
               example:
+                p: brc-20
+                op: transfer
+                tick: MAGA
+                amt: '3000'
             text/html:
               example:
             application/xhtml+xml:
@@ -297,7 +317,7 @@ paths:
     get:
       tags:
         - Runes
-      description: Returns info of a specific Rune name or ID
+      description: Rune token info
       operationId: runes-nameid-info
       parameters:
         - name: network
@@ -349,7 +369,7 @@ paths:
     get:
       tags:
         - Runes
-      description: Returns holders of a specific Rune name or ID
+      description: Holders of a specific Rune token
       operationId: runes-nameid-holders
       parameters:
         - name: network
@@ -381,7 +401,34 @@ paths:
           description: Successful operation
           content:
             application/json:
-              example:                
+              example:
+                statusCode: 0
+                data:
+                  - pkscript: 512094ce6b24219eec616476994848636e1d57551ae031e348a1a0d8a4dcfbd2db2c
+                    wallet_addr: bc1pjn8xkfppnmkxzerkn9yyscmwr4t42xhqx8353gdqmzjde77jmvkq2drg8p
+                    rune_id: '840106:129'
+                    total_balance: '14640700000000'
+                    rune_name: SATOSHIRUNETITAN
+                  - pkscript: 5120844a80e9c09978d4a47184d615820e791977dd179071c5f8d375e59ccaa9b0d7
+                    wallet_addr: bc1ps39gp6wqn9udffr3sntptqsw0yvh0hghjpcut7xnwhjeej4fkrtsl03jmy
+                    rune_id: '840106:129'
+                    total_balance: '13915000000000'
+                    rune_name: SATOSHIRUNETITAN
+                  - pkscript: 512005df61448f8e0cc04a8dccef62207e7f91091b12013127d9fccd7365d09934bc
+                    wallet_addr: bc1pqh0kz3y03cxvqj5denhkygr707gsjxcjqycj0k0ue4ekt5yexj7qh0e659
+                    rune_id: '840106:129'
+                    total_balance: '10000000000000'
+                    rune_name: SATOSHIRUNETITAN
+                  - pkscript: 5120011b49e3dd553c684e471b12e6eea0d017b9e0c69a0638cad6b1174603037560
+                    wallet_addr: bc1pqyd5nc7a257xsnj8rvfwdm4q6qtmncxxngrr3jkkkyt5vqcrw4sq67fk7g
+                    rune_id: '840106:129'
+                    total_balance: '10000000000000'
+                    rune_name: SATOSHIRUNETITAN
+                  - pkscript: 512003f067cd6aee8a1340621e4e3cbeacb9c1ce72583b44a46f142ebeadfe54c078
+                    wallet_addr: bc1pq0cx0nt2a69pxsrzre8re04vh8quuujc8dz2gmc596l2mlj5cpuqp4qwln
+                    rune_id: '840106:129'
+                    total_balance: '10000000000000'
+                    rune_name: SATOSHIRUNETITAN
         '400':
           description: Bad Request
         '401':
@@ -394,7 +441,7 @@ paths:
     get:
       tags:
         - Runes
-      description: Returns balance of a specific Rune name or ID of a specific address
+      description: Balance of a specific Rune token of a specific address
       operationId: runes-nameid-address-balances
       parameters:
         - name: network
@@ -432,7 +479,14 @@ paths:
           description: Successful operation
           content:
             application/json:
-              example:                
+              example:
+                statusCode: 0
+                data:
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    rune_id: '1:0'
+                    rune_name: UNCOMMONGOODS
+                    total_balance: '1005'
         '400':
           description: Bad Request
         '401':
@@ -445,7 +499,7 @@ paths:
     get:
       tags:
         - Runes
-      description: Returns UTXOs of a specific Rune name or ID of a specific address
+      description: UTXOs of a specific Rune token of a specific address
       operationId: runes-nameid-address-utxos
       parameters:
         - name: network
@@ -483,7 +537,34 @@ paths:
           description: Successful operation
           content:
             application/json:
-              example:                
+              example:
+                statusCode: 0
+                data:
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: 914909980a0abb7271f91c4832dac09547e56afb730a540a48b8d46f814cb134:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: a429e7b8f6c3134e657fe63f3bb41a4e0e027f9dcce223fb77a6cfc5dc74a403:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: c985116051d0fbad69bc17d63cce178013fb01fc49160fb099fd464ccd2180eb:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: 69c52b0c1b766101bb99c7bbaa6e9a055ac11d72eb4cf619c17c0313cd478064:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: 2b44144c449052bd1ee0428aab6563fde8b35859a7b1a461accf0c9ffebe1886:1
+                    rune_id: '1:0'
+                    balance: '1'
         '400':
           description: Bad Request
         '401':
@@ -496,7 +577,7 @@ paths:
     get:
       tags:
         - Runes
-      description: Returns balances of all the Runes of a specific address
+      description: Balances of all the Rune tokens of a specific address
       operationId: runes-address-balances
       parameters:
         - name: network
@@ -528,7 +609,19 @@ paths:
           description: Successful operation
           content:
             application/json:
-              example:                
+              example:
+                statusCode: 0
+                data:
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    rune_id: '842029:1175'
+                    rune_name: WHERELAMBOGORILLA
+                    total_balance: '2000000'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    rune_id: '1:0'
+                    rune_name: UNCOMMONGOODS
+                    total_balance: '1005'
         '400':
           description: Bad Request
         '401':
@@ -537,11 +630,11 @@ paths:
           description: Rune name of ID not found
       security:
         - bearerAuth: []
-  /btc/{network}/runes/addresses/{address}/utxo:
+  /btc/{network}/runes/addresses/{address}/utxos:
     get:
       tags:
         - Runes
-      description: Returns UTXOs of all the Runes of a specific address
+      description: UTXOs of all the Runes tokens of a specific address
       operationId: runes-address-utxos
       parameters:
         - name: network
@@ -573,7 +666,34 @@ paths:
           description: Successful operation
           content:
             application/json:
-              example:                
+              example:
+                statusCode: 0
+                data:
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: 914909980a0abb7271f91c4832dac09547e56afb730a540a48b8d46f814cb134:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: a429e7b8f6c3134e657fe63f3bb41a4e0e027f9dcce223fb77a6cfc5dc74a403:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: c985116051d0fbad69bc17d63cce178013fb01fc49160fb099fd464ccd2180eb:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: 69c52b0c1b766101bb99c7bbaa6e9a055ac11d72eb4cf619c17c0313cd478064:1
+                    rune_id: '1:0'
+                    balance: '1'
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    outpoint: 2b44144c449052bd1ee0428aab6563fde8b35859a7b1a461accf0c9ffebe1886:1
+                    rune_id: '1:0'
+                    balance: '1'
         '400':
           description: Bad Request
         '401':
@@ -586,7 +706,7 @@ paths:
     get:
       tags:
         - Runes
-      description: Returns balances of a specific outpoint
+      description: Balances of all the Runes tokens of a specific outpoint
       operationId: runes-outpoint-balances
       parameters:
         - name: network
@@ -597,7 +717,7 @@ paths:
             type: string
         - name: outpoint
           in: path
-          description: BTC transaction outpint
+          description: BTC transaction outpint in format `txid:vout`
           required: true
           schema:
             type: string
@@ -606,7 +726,13 @@ paths:
           description: Successful operation
           content:
             application/json:
-              example:                
+              example:
+                statusCode: 0
+                data:
+                  - pkscript: 5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852
+                    wallet_addr: bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29
+                    rune_id: '1:0'
+                    balance: '1'
         '400':
           description: Bad Request
         '401':

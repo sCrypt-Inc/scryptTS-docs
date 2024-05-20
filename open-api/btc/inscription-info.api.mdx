@@ -1,0 +1,54 @@
+---
+id: inscription-info
+title: "inscription-info"
+description: "Ordinals inscription info"
+sidebar_label: "inscription-info"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVdtu2zgQ/RVhnlpAqam7xL1gk+4F2Zcu2hT7EAQFRQ4tNhKlkJRrx+t/X1BWHKcOgm5XL+LlcOZwOHNmC44tLdBruNSWGzU41WsLNyEIPMyBwjsjlGatDdQjLFBa9hBCP6BhfuFSAIUjwNkMGJhhHTo03tEWNOsQKGh0X3pzCyEo72FgroGv3V5cvQ14w5QOZnTwqmNKa3TBP4FVS43uNYRg8G5UBgVQZ0YMwfIGOwZ0C24zeF/WGaWXsNuFB/dKvOj5+J6Xv/4nHzcebIdeW7R+PybE/57a/zByjtbKsQ0O8YMQeK8daufxbBhaxaeNxWfrD20B16wbWvRD65gb7dteIFASgmBuIsOEMGgtUKh5NGRk/Gx1clcIzNOqwNUm4Xmy7my6zlZVk63vm9WdGGXZ3ItRm7Ec5J24XX6JK8+lYabzT3bjx6oVBvU827P81KJeugZoVjyuzdFwuHaLoWVK/+DtWHQ/jU6elRACSoncqRV++vYzEhFolOZpCA2qZeOAlmmaZEnoH5ICqWTCOK/iqIqzJBd1wkiW54IRQriskohVWU6KqpJllbA65YKUMuepJHHMs7RSBELQuHZAIRKFECUvChFVmHPGUhmlGIkyxoiUGUY8rXiSSEFIzVKWpZLFZSFkVPE4qgu5tzV2NRqgBamSuIzyqQpQuzmeg8GV6kf/TjxGweokE1UlopLLSIoqF3lOqhyTtCgwIjyTNckxw0TISGLJCZfIE1lmPCpU7LNz1AhUj20bgmXuaDj0yufT/44QJdTfy6kOrWPdADQqojxOSUaSEFasHRFokpCd/0JIn0v6CyaC93g3onUwYaJTzEfNRtf0Rt2j2IPSU9Dlk+oMdO8C2Y9a+AoHi3w0ym0msamRGTTno0/T6xtfmx26pvc5s0Q3iZPfgkXt+GI7q8xucVT+drFVYgferlk9aNhoWqDQODdYulj0A+ozNqg3lpvN4N6ofrGKwDt74PLBq8VeDo4ZHcTDW4JZVPx8D4JwHvzem86/Kvz599V0x0lZ/XHl2kl83nrHwbsBdXD+1+WsJIxPSoIdU56uHYehN+6XA0sfX3+lfVA95RCG3rqOTWrzoJSniv7kNbaPqvVinzipcu9uCuR2foVrqB2HEOhxbzhqSyFQJXxzanrrPHy7rZnFj6bd7fzy3Yhmsy+wFTOK1T4211sQyvqxACpZa/EF/q/ezzL/OvjG3vPsreZFpjdwqA2AEG5xc9T5fDf6Lmonzek7SCgBu5udl1MmvFBdb+eNc85xcEdHThrRkyr647crCIE9Teev0ney/iydHy8mQHDV36L++UDO+annt9v9C6ft3cI=
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>inscription-info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/inscriptions/{id}"}></MethodEndpoint>
+
+
+
+Ordinals inscription info
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"id","in":"path","description":"inscription ID","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"address\": \"bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29\",\n    \"charms\": [],\n    \"children\": [],\n    \"content_length\": 57,\n    \"content_type\": \"text/plain;charset=utf-8\",\n    \"effective_content_type\": \"text/plain;charset=utf-8\",\n    \"fee\": 1464,\n    \"height\": 844353,\n    \"id\": \"09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549i0\",\n    \"next\": \"1d7dd8c77d19e6caa4f14e1d82e1085e1c49c33fd00ba4a54fa287df19c21b7fi0\",\n    \"number\": 70932816,\n    \"parents\": [],\n    \"previous\": \"c2edab35d99d18cf1fd96d66096e3477e10c5fb06e5e3df1fe8c0cfec3f85c17i2\",\n    \"rune\": null,\n    \"sat\": null,\n    \"satpoint\": \"09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549:0:0\",\n    \"timestamp\": 1716240503,\n    \"value\": 330\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"address\": \"bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29\",\n    \"charms\": [],\n    \"children\": [],\n    \"content_length\": 57,\n    \"content_type\": \"text/plain;charset=utf-8\",\n    \"effective_content_type\": \"text/plain;charset=utf-8\",\n    \"fee\": 1464,\n    \"height\": 844353,\n    \"id\": \"09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549i0\",\n    \"next\": \"1d7dd8c77d19e6caa4f14e1d82e1085e1c49c33fd00ba4a54fa287df19c21b7fi0\",\n    \"number\": 70932816,\n    \"parents\": [],\n    \"previous\": \"c2edab35d99d18cf1fd96d66096e3477e10c5fb06e5e3df1fe8c0cfec3f85c17i2\",\n    \"rune\": null,\n    \"sat\": null,\n    \"satpoint\": \"09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549:0:0\",\n    \"timestamp\": 1716240503,\n    \"value\": 330\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Inscription ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
