@@ -1,11 +1,11 @@
 ---
-id: brc-20-ticker-address-balance
-title: "brc20-ticker-address-balance"
-description: "Balance of a specific BRC-20 token of a specific address"
-sidebar_label: "brc20-ticker-address-balance"
+id: get-address-brc-20-balance
+title: "Get Address BRC-20 Balance"
+description: "Get BRC-20 balance by address and ticker."
+sidebar_label: "Get Address BRC-20 Balance"
 hide_title: true
 hide_table_of_contents: true
-api: eJylVO9v0zAQ/Vei+8Qkd+kGCClCiG0CNL6AxiY+TBW6OtfFLLE9+1JWQv53dG7arts0ppIv8Y/nu+d7z9cB41WE4hKOz05Gh2OYKCgp6mA8G2ehgGOs0WrK3CzDLHrSZmZ0tkRn7K7J3tvCsgwUIyhwngJKmNMSCpgGfTgesdHXFEYDaDRdRgcFHgM2xBSETQcWG4ICLPEvF65BgREyHrmCBwzPTzJdobHZgM5eNGisJc7+ZNFcWeI9UBDopjWBSig4tKQg6ooahKIDXnjJFTkYewV9r9bpl2yfzj5UYoXcJc2mZE/fcoN7fpaJgKN3NlKU/cPxWH7bwWOrNcU4a+tsLRoo0M4yWRY8el8bnTbyn1EOdUC32PiaZBgZuY0nriQoxgpK5ETGzSlgXf9YyVzA6/Hhm5fjex8owDmaGqc13cGOoZdPwavHOB9jmZ3RTUuRIWEOHmIuLLZcuWB+UykVh0i6DYYXyWNTwkDhqOUKisuJVKohrpyY9Yo4eVK2IJ+yzrvBXH2ejJx3S8X7fBCFYt4Nwz4f7iBKRQrzlanbUEMBFbOPRZ47T3aE3uxHHRae943L5wcgNFYsv4mqS9nucl2LLJFgEF/mSxCoYfDRhQYZCvj8/Tzd3tiZS8cN18kkJ5I4++LJZkdfTwfFUSfFqUFTJ2947wK/X7OUasuVliUWygq8i9xgcsXg6X889y2duo3T/qffDFVhuuXc12isMEs17wYpL2HKGhQUm76SeMrS+gWvBZXVTfS1phMFlYss0bpuipEuQt33snzTUhBrTRTMMRixc9K9NFHGJRQzrCM9cfsXZ8PD3sue2dYevfSwiHYBQqVuZQYKrmlxp6lKB9qN2r2etwOH4ezuFLba4Q4EVof7Sa+gIiwpJK2Wu0dak+c75x70v6128enDuRhn+3Xee40p+qOc3h4nQHYu7n63KZFMhV/f/wXz6pO6
+api: eJydVN9v3DYM/lcEPrWAGl+zDQOMolguaIvuZUOWog/BoeDJTKzFlhSJvvXm+X8fKCt3uTTIuvOL9YMUP/L7yBEYbxLUV7C8OH91uoCVhoaSiTaw9Q5q+ECs5ju1xg6dIbXeKmyaSCkpdI1ia24pnoAGHyii+H1siudZsSsvLOcXQEPAiD0xRQk+gsOeoAZH/JePt6DBSuyA3MJjQMvLc2VatE4Va/WiR+scsfpHJXvjiF+Chkh3g43UQM1xIA3JtNQj1CPwNkisxNG6G5gmvQs/Z/J89DmRneUxYUrx/jPLvd33R1mJcQreJUpyf7pYyO/w8TQYQyldD53aUQYajHdMjsUeQ+isyRfVn0mcRqCv2IeOZJkYeUjnviGoFxoa5AzGbyhi130pQoEaflqc/vzD4tEHGnCDtsN1Rw9sFzDJp+HHpzAvsVEXdDdQYsg2r7+1+eRw4NZH+zc1UnFIZIZoeZs1tiaMFM8GbqG+WkmleuLWi1RviLMm5QqqNZtqLOKaqnU0p4tqnBmfqkIKpWosy6kqOQhTieLmXtRD7KCGljmkuqp8IPcKgz1JJm4Dn1hfbV6DwLhH+YewOtP2EOuOZHkJCvmyn41Al8V7H3tkqOHXz5c5e+uufXa33GWRnEtg9Vsgp85+/1gYR5MZpx5tl7URgo/8yw6lVFtSmksskDUEn7jHrIqi6Web/YClca+z/zVcShGYvnIVOrROgOQSj4W5K1izAQ31foxk8uRo17A7/uR032E7ClcaWp9YXhvHNSb6FLtpkuO7gaIoaaVhg9GKejPNjU2ybqC+xi7RM+m+uCh9/FJ95xR7MulyiG4LAqUbZAcabmn7YIbKwDkO2qMRdwSG4ns8hIPpdwSAe+dpNWloCRuKmav59swYCvzA75txdzAdPry7FOEcNuOj5suvP4npzTIbqEt/S+7tvkSyFXzT9C/+oITM
 sidebar_class_name: "get api-method"
 info_path: open-api/btc/scrypt-open-api
 custom_edit_url: null
@@ -24,13 +24,13 @@ import Markdown from "@theme/Markdown";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>brc20-ticker-address-balance</h1>
+<h1 className={"openapi__heading"}>Get Address BRC-20 Balance</h1>
 
 <MethodEndpoint method={"get"} path={"/btc/{network}/brc20/{ticker}/addresses/{address}/balances"}></MethodEndpoint>
 
 
 
-Balance of a specific BRC-20 token of a specific address
+Get BRC-20 balance by address and ticker.
 
 ## Request
 

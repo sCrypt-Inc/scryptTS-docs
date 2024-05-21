@@ -1,11 +1,11 @@
 ---
-id: runes-nameid-address-balances
-title: "runes-nameid-address-balances"
-description: "Balance of a specific Rune token of a specific address"
-sidebar_label: "runes-nameid-address-balances"
+id: get-address-runes-balance
+title: "Get Address Runes Balance"
+description: "Get rune balance by address and rune name or ID."
+sidebar_label: "Get Address Runes Balance"
 hide_title: true
 hide_table_of_contents: true
-api: eJydVdlu4zYU/RXiPs0Ayki25NgWiqJZ2kEKzLjIgj4ERkCTVxYnEkmTlBPH1b8XlOUtTtOJnySRR/cc3uVwCY5OLaT3cF1JtDAOgKNlRmgnlIQUzmlBJUOiMkKJ1chEJhjxYOLUI8pXG5Rzg9ZCAEqjoT7IFYcUjI9+ImmJgp+0oJPJKrZHa2poiQ6N17IED4QUJLonZR4hAOG1aOpyOBB4e0FYToUkLZp8KqmQEh35h1gxleg+QwAGZ5UwyCF1psIALMuxpJAuwS2057LOCDmFug629LTEkbni7/I3qfBIogy5ujySapu390+6xR3DUohSuDXHrEKzOCDRdCrklKyRW5aMFvYtGlmVEzR7NCrLLP4czwb6AaKxR1utpEXr97tR5B/78W8qxtDarCrIphMhAKakQ+k8nmpdCNZshD+s/2kJ+ExLXaB/tY66yl4ojpBGAXDqaNOa+nFFAyn0Ot2IxtmwO0iwG2VxP6Z02OfD0043HvAk4ZNBL+HJaec0S+KIIovi/mAYc5ZwTFifxYNeFwJ4okWB7sGXFlKYsI7uRdUPK+NZn+NpMuzjfBGz0/i5tMlzbz7Me88v+XzGq2yQv/BKmmqgsxl/nD51hz6TlcQH4Yeuk0br77Yyd98vRt++jb5/HY0ubyAApxwtHto59H9EUQ/qcV3XdQDJW3k9p5xc46xC66DBdA4xd5JWLldGvCBfgZJD0M7cZOTqkkjlSKYqyX0rgUVWGeEWTconSA2as8rlkN6Pff1LdLnyR5w2zdOMSwrhxLFw2dpAHTaeEy7XU1yH7fD4xfa1Dnc8yKKZrw2oMgWkkDunbRqGSqM8oVp8scwstPsiVDjvgBey1nnju3XVjrtqN83rI0Hb1P57BYKgfflDmZL6lvrz79vm/EJmqvlduKIZ5gtPTEYaJTn766rtZMqaTsaSCi/XVlor437bqPTJ90daZdxLDkAr60radHvbFP/nzXt1W25H6Pi7oU2Kw2cX6oIK6YU1KV+2tbyHiWMQQLq9AhqZzdLWljcV9evb+Bvx4wByZZ2Pt1xOqMU7U9S1X165ki81F5ZOih3n+c/zvvLGN0/xiIsdo53TovIY8O74YaKNOb7DtMFsqcb+wwjP9cEDfrpuXfgz+clr9U1l7SKVi11da8Xrin4sJTvSDm/cY1Ssm+hoGfvX8RES1j/X4zqAHClH09RrtXvGGOrdwh7cV3tG+PX3Wz8P+67zymWa6G9q+uW8AZBbP7a/bhQ2U7y6D/4FQSxvAQ==
+api: eJydVdlu4zYU/RXiPs0AaiRbcmwLg6JZ2iAFZlxkwTwERkCTVxYnEkVzceJ49O8FZXlL0nTiJ4nk5T3nbodLsHRqIL2DKyfRwDgAjoZpoayoJKRwgZZoJ5FMaEElQzJZEMq5RmMIlXx1JmmJpNLk8vwIAqgUauqvX/LWwUl7ocEgpytPEICimpZoUXsGS/BuIAWJ9rHSDxCA8AwUtTm8pHV6c0ZYToUkrTX5VFIhJVrykxgxlWg/QwAaZ05o5JBa7TAAw3IsKaRLsAvlsYzVQk6hroMtPC1xpC/5u/hX+2EfCNUm8n8j3dodglKIUtg1xsyhXrwCUXQq5JSsLbcoGS3MWzDSlRPUezBVlhn8NZyN6QeAxt7aqEoaNP68G0X+s+//2jGGxmSuIJsuhABYJS1K6+2pUoVgzUH4w/hLS8AnWqoC/a+x1DpzVnGENAqAU0ub1lQPKxhIodfpRjTOht1Bgt0oi/sxpcM+Hx53uvGAJwmfDHoJT447x1kSRxRZFPcHw5izhGPC+iwe9LoQwCMtCrT3vrSQwoR1VC9yP4yMZ32Ox8mwj/NFzI7jp9IkT735MO89PefzGXfZIH/mTmo3UNmMP0wfu0OfSSfxXviB66TRet1W5vbb2ejr19G3i9Ho/BoCsJWlxX070P5GFPWgHtd1XQeQvJXXU8rJFc4cGguNTee1za2kzuaVFs/IV0bJa6OducnI5TmRlSVZ5ST3rQQGmdPCLpqUT5Bq1CfO5pDejX39S7R55UOcNs3TjEsK4cSycNnKQB36wE24XE9xHbbD4zfb3zpsY/cTZVDP1wLkdAEp5NYqk4ZhpVD+RpU4MkwvlD0SVTjvgCey5nntu3XVjrtsN83rPUHb1H69MoKg/fmr0iX1LfX395smfiGzqrkubNEM85kHJiOFkpz8c9l2MmVNJ2NJhadrnFKVtn9sWPrk+5BWGfeUA1CVsSVtur1tivd0ea9my+34HPIatKmw+GRDVVAhPZ0m0cu2gncwsQwCSLfC3xSx2dqK8aaOfn+riJtSjgPIK2O9v+VyQg3e6qKu/fZKi3yBuTB0UuzozX9G+kIR34ziARc78jqnhfM24DXxw0AbSXwHaWOzhRr7hRYe64MBfrpqtfcz+cXH9E1m7SaVi11ea8brin4sJTvUXr+zh7BYN9HBNPYf4QMorC/X4zqAHClH3dRrdXrCGKrdwr56pfbk7+LPGz8P+1rzQlsa729y+nLaGJCb6gHl7xuG1i9Xr8C/3qtlCQ==
 sidebar_class_name: "get api-method"
 info_path: open-api/btc/scrypt-open-api
 custom_edit_url: null
@@ -24,13 +24,13 @@ import Markdown from "@theme/Markdown";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>runes-nameid-address-balances</h1>
+<h1 className={"openapi__heading"}>Get Address Runes Balance</h1>
 
 <MethodEndpoint method={"get"} path={"/btc/{network}/runes/{nameOrId}/addresses/{address}/balances"}></MethodEndpoint>
 
 
 
-Balance of a specific Rune token of a specific address
+Get rune balance by address and rune name or ID.
 
 ## Request
 

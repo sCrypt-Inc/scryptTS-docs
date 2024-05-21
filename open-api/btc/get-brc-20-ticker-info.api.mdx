@@ -1,11 +1,11 @@
 ---
-id: brc-20-ticker-info
-title: "brc20-ticker-info"
-description: "BRC-20 token info"
-sidebar_label: "brc20-ticker-info"
+id: get-brc-20-ticker-info
+title: "Get BRC-20 Ticker Info"
+description: "Get the infomation of BRC-20 by ticker."
+sidebar_label: "Get BRC-20 Ticker Info"
 hide_title: true
 hide_table_of_contents: true
-api: eJydVG1v4zYM/isGP90B7jlx81ZjGNYW23D7skPXwz4UQSBLTKzFllSJ7pp5/u8DFTdNrrnhcP5iieLLQ/IhOyCxCVA8wM3d7UU+gmUKCoP02pG2BopBnpDdokm0WVtIwTr0gt8/Kiig9DIfXZCWW/QXg4YTXjRI6Nl3B0Y0CAUYpL+t30IKml07QRW8iXd/m8hKaJMM2sm7RmhjkJJ/k6A3Buk9pODxsdUeFRTkW0whyAobAUUHtHMcK5DXZgN9nx7C7yH+f/Qh2xfNbw+zZOXgrAkY+D0fjfh36j60UmII67ZODjWEFKQ1hIZYXzhXaxkfsr8CG3WAz6JxNfIxkKA23FqFUIxSUIIiGM19GHNnvN5oI+oVZwAFWK80pHB6a8TzKrTO1TsoIB+PvvLF4kjdiDpAMV6kUOtG08qhXzWa0cJ501g27pk2m9c4LC5bb1CdynRYBazXg8u1qANyXFfb3UqbQ/FWMcVyNi5H43murqaYz2ZyvBAoRnKWT1R5tZjj1XwspmqmJljKXAhUi6kSk9kkV7PL6fxyqiOK2srtqkK9qQiK+fxqcZn3/KUwOde0G6GSO3xsMRBEnfFbnc9GtFRZr/9BxZyDgLL1mnaR/iUKj/66pQqKhyVTpUGqLGe0QYrjwk+QlSSzbuB9n8XByro9GftsGK2A/ullrlpfQwEVkQtFllmH5kI4/SFIv3P0QdvsaQwc7gXNH0zfPT+PMR3YzJ5gYDnf90pcs3j4xfpGcON/+/M+ZhkhsbmmOk7DLQdOfndokutPHwdqCxmpzZyo4xA4Zz39dEDJVeWU9qVkyCk4G6gRkf7D9J5bMydN6F7n6OzWGnIkfKbM1UIbjhMr2A0NeICSJKRQvC6qGJVFR8tjbXlNVjYQm3RdKQJ+9nXfs/ixRc9dX6bwJLwWJRfmoQOlA5/VEce/gv3d3bB03iffuAzPZjYIhdkBQ6lbvkEKW9wdrWJej98H7YtN+R0YBtt+2adQoVDoY6X2j9dSoqMjszeb8WSOfv35HlIQp3T+gr7R+1lIP9xEheSe+fLjK0C+Mr6+/w/o4l07
+api: eJydVNtu4zYQ/RVhnnYBbWQrvkUoiiZBu0hfukiz6ENgGBQ5tlhLJEOO0riq/r0YWuvY2aTYrl7EyxnOmZkz0wGJTYDiHq5urz/kI1imoDBIrx1pa6CAj0gJVZhos7aN4MPErpM9Oil3CWm5RX8GKViHPgJu1GA3oO4iJLkxawspOOFFg4Se3XZgRINQgEH6y/otpKDZqxNUwUsqV3fXiayENsmATt41QhuDlPyTBL0xSO8hBY8PrfaooCDfYgpBVtgIKDqgnWNfgbw2G+j79OB+H8V/e98Hc0B+u5slg4OzJmDg+3w04t/p86GVEkNYt3VySCSkIK0hNMR44VytZbzI/gxs1AE+icbVyMtAgtpwbRVCMUpBCYpkNBdjzOXxeqONqFccARRgvdKQwumuEU+r0DpX76CAfDx644vJkboRdYBivEih1o2mlUO/ajSzhddNY9q4Ztpsnv3wcdl6g+r0TIdVwHo9PLkWdUD262q7W2lzSN4qhljOxuVoPM/VxRTz2UyOFwLFSM7yiSovFnO8mI/FVM3UBEuZC4FqMVViMpvkanY+nZ9PdWRRW7ldVag3FUExn18szvOevxQmrxXtSqjkFh9aDAQRM/4a89mIlirr9d+oWHMQULZe0y7Kv0Th0V+2VEFxv2SpNEiV5Yg2SLFd+AqykmTWDbrvs9LLfJR1ezH2md63VkD/+KWvWl9DARWRC0WWWYfmg3D6LEi/c3SmbfY4Bnb3hc3vLN+9Po85HdTML8Ggct7vQZyzuPjF+kZw4X/94y5GGSmxuaY6dsM1O05+c2iSy083g7SFjNJmTdSxCZyznn46sOSsckj7VDLlFJwN1Igo/6F735w1J5Xonpvpf0y1IXzCJ8pcLbRhCjG53VCbeyhJQgrF8wyL5eGjo7mytjxcKxuITbquFAE/+7rv+fihRc+CWKbwKLwWJefsvgOlA6/VkfzfiOjd7TCP3iffOCdfjWw4FGYHTKVueQcpbHF3NKV5cn4ftRdD9Ds4DLb9sk+hQqHQx0ztLy+lREdHZl8NzZMW+/jzHaQgTpX+Qtnx9Vcp/XAVAcmd3aL58Zkgb5lf3/8LGzZt8Q==
 sidebar_class_name: "get api-method"
 info_path: open-api/btc/scrypt-open-api
 custom_edit_url: null
@@ -24,13 +24,13 @@ import Markdown from "@theme/Markdown";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>brc20-ticker-info</h1>
+<h1 className={"openapi__heading"}>Get BRC-20 Ticker Info</h1>
 
 <MethodEndpoint method={"get"} path={"/btc/{network}/brc20/{ticker}/info"}></MethodEndpoint>
 
 
 
-BRC-20 token info
+Get the infomation of BRC-20 by ticker.
 
 ## Request
 

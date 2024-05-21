@@ -15,8 +15,8 @@ paths:
     get:
       tags:
         - BRC-20
-      description: BRC-20 token info
-      operationId: brc20-ticker-info
+      description: Get the infomation of BRC-20 by ticker.
+      operationId: Get BRC-20 Ticker Info
       parameters:
         - name: network
           in: path
@@ -59,8 +59,8 @@ paths:
     get:
       tags:
         - BRC-20
-      description: Holders of a specific BRC-20 token
-      operationId: brc20-ticker-holders
+      description: Get the holders of BRC-20 by ticker.
+      operationId: Get BRC-20 Holders
       parameters:
         - name: network
           in: path
@@ -112,8 +112,8 @@ paths:
     get:
       tags:
         - BRC-20
-      description: Balance of a specific BRC-20 token of a specific address
-      operationId: brc20-ticker-address-balance
+      description: Get BRC-20 balance by address and ticker.
+      operationId: Get Address BRC-20 Balance
       parameters:
         - name: network
           in: path
@@ -153,8 +153,8 @@ paths:
     get:
       tags:
         - BRC-20
-      description: Balances of all the BRC-20 tokens of a specific address
-      operationId: brc20-address-balances
+      description: Get BRC-20 balance list by address.
+      operationId: Get Address BRC-20 Balance List
       parameters:
         - name: network
           in: path
@@ -207,8 +207,8 @@ paths:
     get:
       tags:
         - Inscriptions
-      description: Ordinals inscription info
-      operationId: inscription-info
+      description: Get Ordinals inscription info by inscription ID.
+      operationId: Get Inscription Info
       parameters:
         - name: network
           in: path
@@ -260,8 +260,8 @@ paths:
     get:
       tags:
         - Inscriptions
-      description: Ordinals inscription content
-      operationId: inscription-content
+      description: Get Ordinals inscription content info by inscription ID.
+      operationId: Get Inscription Content
       parameters:
         - name: network
           in: path
@@ -317,8 +317,8 @@ paths:
     get:
       tags:
         - Runes
-      description: Rune token info
-      operationId: runes-nameid-info
+      description: Get rune info by rune name or ID.
+      operationId: Get Runes Info
       parameters:
         - name: network
           in: path
@@ -369,8 +369,8 @@ paths:
     get:
       tags:
         - Runes
-      description: Holders of a specific Rune token
-      operationId: runes-nameid-holders
+      description: Get rune holders by Rune name or ID.
+      operationId: Get Runes Holders
       parameters:
         - name: network
           in: path
@@ -441,8 +441,8 @@ paths:
     get:
       tags:
         - Runes
-      description: Balance of a specific Rune token of a specific address
-      operationId: runes-nameid-address-balances
+      description: Get rune balance by address and rune name or ID.
+      operationId: Get Address Runes Balance
       parameters:
         - name: network
           in: path
@@ -499,8 +499,8 @@ paths:
     get:
       tags:
         - Runes
-      description: UTXOs of a specific Rune token of a specific address
-      operationId: runes-nameid-address-utxos
+      description: Get rune UTXO by address and rune name or ID.
+      operationId: Get Address Runes UTXO
       parameters:
         - name: network
           in: path
@@ -577,8 +577,8 @@ paths:
     get:
       tags:
         - Runes
-      description: Balances of all the Rune tokens of a specific address
-      operationId: runes-address-balances
+      description: Get runes balance list by address
+      operationId: Get Address Runes Balance List
       parameters:
         - name: network
           in: path
@@ -634,8 +634,8 @@ paths:
     get:
       tags:
         - Runes
-      description: UTXOs of all the Runes tokens of a specific address
-      operationId: runes-address-utxos
+      description: Get runes UTXO list by address
+      operationId: Get Address Runes UTXO List
       parameters:
         - name: network
           in: path
@@ -706,8 +706,8 @@ paths:
     get:
       tags:
         - Runes
-      description: Balances of all the Runes tokens of a specific outpoint
-      operationId: runes-outpoint-balances
+      description: Get runes balance list by transaction outpoint.
+      operationId: Get Outpoint Runes Balance List
       parameters:
         - name: network
           in: path
