@@ -13,13 +13,13 @@ An easier alternative is to leverage `sCrypt` infrastructure service, which trac
 
 ### Create account
 
-Go to the [sCrypt.io](https://scrypt.io) to create your free account.
+Go to [sCrypt.io](https://scrypt.io) to create your free account.
 
 ![](../../static/img/homepage.png)
 
 ### Get API key
 
-Sign in and click on the copy icon to copy your API Key.
+Sign in and click `Create` to create a new API key. Click `Copy` to copy it.
 
 ![](../../static/img/api-keys.png)
 
