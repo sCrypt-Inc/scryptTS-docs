@@ -17,6 +17,14 @@ Most changes are reflected live without having to restart the server.
 yarn start
 ```
 
+### Generate Open API docs
+
+After updating the `open-api/btc.yaml`, this command need to be run to re-generate all docs in `open-api/btc`:
+
+```
+yarn gen-api-docs
+```
+
 ### Build
 
 This command generates static content in the `/build` directory and can be served using a static content hosting service like S3 or GitHub Pages.

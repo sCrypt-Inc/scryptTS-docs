@@ -1,0 +1,50 @@
+---
+id: brc-20-ticker-info
+title: "brc20-ticker-info"
+description: "BRC-20 token info"
+sidebar_label: "brc20-ticker-info"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVG1v4zYM/isGP90B7jlx81ZjGNYW23D7skPXwz4UQSBLTKzFllSJ7pp5/u8DFTdNrrnhcP5iieLLQ/IhOyCxCVA8wM3d7UU+gmUKCoP02pG2BopBnpDdokm0WVtIwTr0gt8/Kiig9DIfXZCWW/QXg4YTXjRI6Nl3B0Y0CAUYpL+t30IKml07QRW8iXd/m8hKaJMM2sm7RmhjkJJ/k6A3Buk9pODxsdUeFRTkW0whyAobAUUHtHMcK5DXZgN9nx7C7yH+f/Qh2xfNbw+zZOXgrAkY+D0fjfh36j60UmII67ZODjWEFKQ1hIZYXzhXaxkfsr8CG3WAz6JxNfIxkKA23FqFUIxSUIIiGM19GHNnvN5oI+oVZwAFWK80pHB6a8TzKrTO1TsoIB+PvvLF4kjdiDpAMV6kUOtG08qhXzWa0cJ501g27pk2m9c4LC5bb1CdynRYBazXg8u1qANyXFfb3UqbQ/FWMcVyNi5H43murqaYz2ZyvBAoRnKWT1R5tZjj1XwspmqmJljKXAhUi6kSk9kkV7PL6fxyqiOK2srtqkK9qQiK+fxqcZn3/KUwOde0G6GSO3xsMRBEnfFbnc9GtFRZr/9BxZyDgLL1mnaR/iUKj/66pQqKhyVTpUGqLGe0QYrjwk+QlSSzbuB9n8XByro9GftsGK2A/ullrlpfQwEVkQtFllmH5kI4/SFIv3P0QdvsaQwc7gXNH0zfPT+PMR3YzJ5gYDnf90pcs3j4xfpGcON/+/M+ZhkhsbmmOk7DLQdOfndokutPHwdqCxmpzZyo4xA4Zz39dEDJVeWU9qVkyCk4G6gRkf7D9J5bMydN6F7n6OzWGnIkfKbM1UIbjhMr2A0NeICSJKRQvC6qGJVFR8tjbXlNVjYQm3RdKQJ+9nXfs/ixRc9dX6bwJLwWJRfmoQOlA5/VEce/gv3d3bB03iffuAzPZjYIhdkBQ6lbvkEKW9wdrWJej98H7YtN+R0YBtt+2adQoVDoY6X2j9dSoqMjszeb8WSOfv35HlIQp3T+gr7R+1lIP9xEheSe+fLjK0C+Mr6+/w/o4l07
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>brc20-ticker-info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/brc20/{ticker}/info"}></MethodEndpoint>
+
+
+
+BRC-20 token info
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"ticker","in":"path","description":"BRC-20 ticker","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"id\": \"1\",\n    \"original_tick\": \"ordi\",\n    \"tick\": \"ordi\",\n    \"max_supply\": \"21000000000000000000000000\",\n    \"decimals\": 18,\n    \"limit_per_mint\": \"1000000000000000000000\",\n    \"remaining_supply\": \"0\",\n    \"burned_supply\": \"0\",\n    \"is_self_mint\": false,\n    \"deploy_inscription_id\": \"b61b0172d95e266c18aea0c624db987e971a5d6d4ebc2aaed85da4642d635735i0\",\n    \"block_height\": 779832\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"id\": \"1\",\n    \"original_tick\": \"ordi\",\n    \"tick\": \"ordi\",\n    \"max_supply\": \"21000000000000000000000000\",\n    \"decimals\": 18,\n    \"limit_per_mint\": \"1000000000000000000000\",\n    \"remaining_supply\": \"0\",\n    \"burned_supply\": \"0\",\n    \"is_self_mint\": false,\n    \"deploy_inscription_id\": \"b61b0172d95e266c18aea0c624db987e971a5d6d4ebc2aaed85da4642d635735i0\",\n    \"block_height\": 779832\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

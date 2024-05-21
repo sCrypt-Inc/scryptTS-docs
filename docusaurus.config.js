@@ -58,6 +58,17 @@ const config = {
         },
         items: [
           {
+            type: "doc",
+            docId: "overview",
+            position: "left",
+            label: "SDK",
+          },
+          {
+            position: "left",
+            label: "OpenAPI",
+            to: "/open-api/overview",
+          },
+          {
             /* Only visible under docs. See src/custom/custom.css */
             href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
             label: 'Help us improve this page',
@@ -86,6 +97,38 @@ const config = {
         indexName: 'scryptTS-docs',
       },
     }),
+
+  plugins: [
+    // use multi-instance to render open-api docs, see ref: https://docusaurus.io/docs/docs-multi-instance
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'open-api',
+        path: 'open-api',
+        routeBasePath: 'open-api',
+        sidebarPath: './open-api/sidebars.js',
+        docLayoutComponent: "@theme/DocPage",
+        docItemComponent: "@theme/ApiItem" // derived from docusaurus-theme-openapi-docs
+      },
+    ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "open-api-doc-generator", // plugin id
+        docsPluginId: "open-api", // id of plugin-content-docs or preset for rendering docs
+        config: {
+          btc: {
+            specPath: "open-api/btc.yaml",
+            outputDir: "open-api/btc",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+        },
+      },
+    ]
+  ],
+  themes: ["docusaurus-theme-openapi-docs"], // export theme components
 };
 
 module.exports = config;

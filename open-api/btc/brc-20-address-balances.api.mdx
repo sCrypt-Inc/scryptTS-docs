@@ -1,0 +1,50 @@
+---
+id: brc-20-address-balances
+title: "brc20-address-balances"
+description: "Balances of all the BRC-20 tokens of a specific address"
+sidebar_label: "brc20-address-balances"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVV1v20YQ/CuHfUoAOpTdxgWIoqhtpEX60sJ10AdDKFbHlXjx8e58t1SjsPzvxVIU9WHFtRK9iOQNd+b2ZpYtMC4SFPdwfXtzdjGBaQYlJR1NYOMdFHCNFp2mpPxcobWKK1JrrGL/QG69oFIgbeZGKyzLSClBBj5QRKnyvoQCZlFfTM6G1bPZUBUyCBixJqYoMlpwWBMU4Ij/8fEBMjCiIiBX8ETa3Y3SFRqnBrR6VaNxjlj9q5JZOOLXkEGkx8ZEKqHg2FAGSVdUIxQt8CoIV+Jo3AK6Lhvpt7t4nn6L+xoWa2rDG47HhuLqCUnAhXELtUFuWeZo0zEa19Qzins0fj5P9DKeEXoC0VTQKXiXKMn6xWQif/v1U6M1pTRvrBp9ARlo75gcCx5DsEb3C/nHJC+1QJ+wDpbkMjFyk258SVBMMiiRsfcLG/1AUXYZSyOuW1JEa/8eHAYFvJ1c/PDd5OAHGeASjcWZpR3sBKRvY80aF3i05vnk7WHFl1f1sVwcrXp5eXlKzWnXdV0G3x/r9zWW6pYeG0oMPeb8KeaDw4YrH81nKsUwkEg30fCqb+yMMFK8ariC4n4qp1wTV16yvOgt0oeigHzGOm+HBHZ5n/N8yAWlvB0uu3wn84nichP4JloooGIOqchzH8idYTBvko6rwG+Mz5fnIOwbcX+KEddO25U4+lIqweBXuV+DIBsufvGxRoYCfvvrrt+0cXPfv27Y9jm9EWL1eyCnrv54P5gUdW9SqtHY3s4h+Mg/jyqlybKldWdFcgbBJ66xN/KQxC8Owb2Dabex+IbxO7SD6RPnwaJxIqlvdjsc3T3MWEMGxXbY9gLFcZvzk+VtzVHxNIPKJ5YabTvDRB+i7Tp5vB4vcrClSeLZ7Qj54iYPhtxR5Q+02pmYS7SNYPpgnUw0TrlnmEbMlmoqN9EI14kbfHU7jNPX6oUfraPKhofoVru6Noo3p3haSw6k/Y9/nlewebmbdhlUhKWMu/t2WL3SmsJuR59M/L0h8+u7OzHifrgPwrz+AhzT9ON1D1B3EpKfRoV9ZtaT8z+E8wH+
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>brc20-address-balances</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/brc20/addresses/{address}/balances"}></MethodEndpoint>
+
+
+
+Balances of all the BRC-20 tokens of a specific address
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"address","in":"path","description":"BTC address","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"limit","in":"query","description":"paging limit","required":false,"schema":{"type":"number"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"offset","in":"query","description":"paging offset","required":false,"schema":{"type":"number"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"ticker\": \"ordi\",\n      \"overall_balance\": \"502730000000000000000\",\n      \"available_balance\": \"0\"\n    },\n    {\n      \"ticker\": \"maga\",\n      \"overall_balance\": \"10500000000000000000000\",\n      \"available_balance\": \"0\"\n    },\n    {\n      \"ticker\": \"ordg\",\n      \"overall_balance\": \"666000000000000000000\",\n      \"available_balance\": \"0\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"ticker\": \"ordi\",\n      \"overall_balance\": \"502730000000000000000\",\n      \"available_balance\": \"0\"\n    },\n    {\n      \"ticker\": \"maga\",\n      \"overall_balance\": \"10500000000000000000000\",\n      \"available_balance\": \"0\"\n    },\n    {\n      \"ticker\": \"ordg\",\n      \"overall_balance\": \"666000000000000000000\",\n      \"available_balance\": \"0\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
