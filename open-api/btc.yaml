@@ -4,6 +4,13 @@ info:
   contact:
     email: support@scrypt.io
   version: v1
+  description: The sCrypt Open API provides endpoints for accessing and managing various aspects of BRC-20 tokens, Ordinals inscriptions, and Runes on BTC. 
+  
+
+    It allows developers to retrieve detailed information about specific tokens, holders, and balances, as well as to interact with inscription data and Rune specifics.
+
+  
+    The API ensures secure access through JWT bearer authentication.
 servers:
   - url: https://open-api.scrypt.io/v1
 tags:
