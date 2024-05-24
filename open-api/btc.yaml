@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: sCrypt Open API
+  title: Introduction
   contact:
     email: support@scrypt.io
   version: v1
