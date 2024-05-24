@@ -156,6 +156,51 @@ paths:
           description: Unauthorized
       security:
         - bearerAuth: []
+  /btc/{network}/brc20/{ticker}/addresses/{address}/transferable:
+    get:
+      tags:
+        - BRC-20
+      description: Get BRC-20 transferable inscriptions by address and ticker.
+      operationId: Get transferable BRC-20 inscriptions
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: ticker
+          in: path
+          description: BRC-20 ticker
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - tick: good
+                  - inscription_id: eaec96ce4374e66eff53d2d5cc22fbd76c06f8ec0ab1f17ee1bfc2333286360di0
+                  - current_holder_pkscript: a914af9ac77b46c4f94a92e0fd831e6d17e1915cbfc087
+                  - current_holder_wallet: 2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY
+                  - amount: "1000000000000000000"
+                  - genesis_height: 2817428
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
   /btc/{network}/brc20/addresses/{address}/balances:
     get:
       tags:

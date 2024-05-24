@@ -1,0 +1,50 @@
+---
+id: get-transferable-brc-20-inscriptions
+title: "Get transferable BRC-20 inscriptions"
+description: "Get BRC-20 transferable inscriptions by address and ticker."
+sidebar_label: "Get transferable BRC-20 inscriptions"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVW1v2zYQ/isEP7WAG73Y8RuGYUmwdhmwtMtS7KUNAoo6WaxlUiUpO67m/747SVHsJOi6zF/Mo47Hh3fPc1dzLxaOzz/w08uzV3HIrwc8BSetKr0yms/5G/Cs/ca8FdplYEVSAFO693Is2TKRphacY0KnzCu5BHvEB9yU6E4+52kX6yBIF3g/Fh4qhRUr8GAJWM01GnhYg98Yu8TvinCVwuf8IdjTqzMmc6E067zZixVaaLC/mQfn25VTC1y8xOMWPlfKAoLztoIBdzKHleDzmvttSbc6b5Ve8N1u0ANpX/d1HF3C7jyfc02X0H99773ft99yTc6uxHSDo+9xGNLfYXBXSYmBs6pgfRnxFmm0B+3JX5RloWTzIfjk6FDN4VasygJo6bzwlTszKVohQhdeNAWltGD8hTEppwfvlf9GEU9AgJyNJYyGkxGMx5Blx8M0To+ljOMsSSdjGY6zKchQJFEWTQCiJJPxcDiMp+PhOExV2MSVlbWI9CY3RQr2ply211BuZ9FIZDMhJ5NkNJajbDYSsxjCLJ0OIxinGDOaRccSw4bTyVPBNqIogELFF7PXn7LxZn1hfloPL6YXf2i5icdffn331y/HZ7erpfmzOS9WpqKs8Sh89GscFqDBKXeTg1rk6BhPo8konu6ud/gb8NFTJToVKbvEqiOzeeMTPfZ5r0Xlc2PVF2QGRXKAb1F+29QiAWHBnqAHmtdEDFRebqgKC3zfoOXdnAeJl0HdqWoXJFbGYVC3BN8FHQfBBXW33AX7Qud0q13fKbqyBYbMvS/dPAiQXPqVKNURot6W/kiZYB1xgnKH9DcicsvUfbw9rykS7/hOduuEO+3itbErQan/+ferJgNKZ6Y5rnzR6OKMLmZvEQg7eXfekVzIhuQoIVU0cihLY/0PPUrKOD2pTTNCfqjOqxzYg9CstGat0I2BTkujtHcsM5aJRmoozqZ/roQWCzLWwipTYVN1JUh0NVnfi80StBuwtzZVWhTuoIcOmiiXFRKKGc2wSxx91B/1uWfIWrNxLIU1FCRqh4GYBewLuIPbHt8KKaMEUc4wGBOJqTwjACpTsr+41UF3VSIKofEFaDm2gaKgf4yM70MCSM82yuf7EBk1gx5lH901OClvlCu8p0IusYYG0OWI+dyaapEzLCZr68uI4KjNrhUdUWFK4zymkQrY9dNvHD4HJazvu93/HIQdUz3c+qAscCYRyEYHdSexDxwlhp7z+0HXqIy2+kHSC4127zv/gdZQODm+niLWdSIcvLfFbkfb2CgsyR6XxKzGm/SYKkdrFH2GVIKvJOHFZTdjXrL/PGufTEG3KfSWE6iiIguXS9juzXzqj88D+WAQPwNDd/b5EA5m9DMA3B3GSYCVBYGya6rWfj1BVZR+79yjoXzQ1N/8eEU0OuyfD/plO6SfwvTdaSu4K2oC39+niEzeTKp/AJsug/g=
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/scrypt-open-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get transferable BRC-20 inscriptions</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/brc20/{ticker}/addresses/{address}/transferable"}></MethodEndpoint>
+
+
+
+Get BRC-20 transferable inscriptions by address and ticker.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | testnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"ticker","in":"path","description":"BRC-20 ticker","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"address","in":"path","description":"BTC address","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"tick\": \"good\"\n    },\n    {\n      \"inscription_id\": \"eaec96ce4374e66eff53d2d5cc22fbd76c06f8ec0ab1f17ee1bfc2333286360di0\"\n    },\n    {\n      \"current_holder_pkscript\": \"a914af9ac77b46c4f94a92e0fd831e6d17e1915cbfc087\"\n    },\n    {\n      \"current_holder_wallet\": \"2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY\"\n    },\n    {\n      \"amount\": \"1000000000000000000\"\n    },\n    {\n      \"genesis_height\": 2817428\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"tick\": \"good\"\n    },\n    {\n      \"inscription_id\": \"eaec96ce4374e66eff53d2d5cc22fbd76c06f8ec0ab1f17ee1bfc2333286360di0\"\n    },\n    {\n      \"current_holder_pkscript\": \"a914af9ac77b46c4f94a92e0fd831e6d17e1915cbfc087\"\n    },\n    {\n      \"current_holder_wallet\": \"2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY\"\n    },\n    {\n      \"amount\": \"1000000000000000000\"\n    },\n    {\n      \"genesis_height\": 2817428\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
