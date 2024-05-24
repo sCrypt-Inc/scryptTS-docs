@@ -27,7 +27,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -71,7 +71,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -124,7 +124,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -165,7 +165,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -219,7 +219,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -272,7 +272,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -329,7 +329,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -381,7 +381,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -453,7 +453,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -511,7 +511,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -589,7 +589,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -646,7 +646,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
@@ -718,7 +718,7 @@ paths:
       parameters:
         - name: network
           in: path
-          description: BTC chain network (mainnet | signet)
+          description: BTC chain network (mainnet | testnet | signet)
           required: true
           schema:
             type: string
