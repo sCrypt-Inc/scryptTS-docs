@@ -105,10 +105,12 @@ paths:
                     wallet: bc1qhuv3dhpnm0wktasd3v0kt6e4aqfqsd0uhfdu7d
                     overall_balance: '8712082383523010000000000'
                     available_balance: '8712082383523010000000000'
+                    transferable_balance: '0'
                   - pkscript: 002042135392c4b08a5d7194640340976513b2b100a3e4f50d56fbd70099c633b81e
                     wallet: bc1qggf48ykykz996uv5vsp5p9m9zwetzq9run6s64hm6uqfn33nhq0ql9t85q
                     overall_balance: '1681390956909560000000000'
                     available_balance: '6038956909560000000000'
+                    transferable_balance: '1675352000000000000000000'
         '400':
           description: Bad Request
         '401':
@@ -149,7 +151,8 @@ paths:
                 statusCode: 0
                 data:
                   overall_balance: '502730000000000000000'
-                  available_balance: '0'
+                  available_balance: '502730000000000000000'
+                  transferable_balance: '0'
         '400':
           description: Bad Request
         '401':
@@ -243,12 +246,15 @@ paths:
                   - ticker: ordi
                     overall_balance: '502730000000000000000'
                     available_balance: '0'
+                    transferable_balance: '0'
                   - ticker: maga
                     overall_balance: '10500000000000000000000'
                     available_balance: '0'
+                    transferable_balance: '0'
                   - ticker: ordg
                     overall_balance: '666000000000000000000'
                     available_balance: '0'
+                    transferable_balance: '0'
         '400':
           description: Bad Request
         '401':
