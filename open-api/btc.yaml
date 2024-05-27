@@ -193,11 +193,11 @@ paths:
                 statusCode: 0
                 data:
                   - tick: good
-                  - inscription_id: eaec96ce4374e66eff53d2d5cc22fbd76c06f8ec0ab1f17ee1bfc2333286360di0
-                  - current_holder_pkscript: a914af9ac77b46c4f94a92e0fd831e6d17e1915cbfc087
-                  - current_holder_wallet: 2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY
-                  - amount: "1000000000000000000"
-                  - genesis_height: 2817428
+                    inscription_id: eaec96ce4374e66eff53d2d5cc22fbd76c06f8ec0ab1f17ee1bfc2333286360di0
+                    current_holder_pkscript: a914af9ac77b46c4f94a92e0fd831e6d17e1915cbfc087
+                    current_holder_wallet: 2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY
+                    amount: "1000000000000000000"
+                    genesis_height: 2817428
         '400':
           description: Bad Request
         '401':
