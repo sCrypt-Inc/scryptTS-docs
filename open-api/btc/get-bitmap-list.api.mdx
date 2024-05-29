@@ -1,0 +1,50 @@
+---
+id: get-bitmap-list
+title: "Get Bitmap List"
+description: "Get bitmap list."
+sidebar_label: "Get Bitmap List"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vttu3DYQ/RWCTw2geEVR10VRNDbaIEGBFI6DPDhGMCJHu4wlUiaptZ3t/ntBrXa9tjdF/ZInXTiac+aiM7OmHhaOzi/pqfId9PQqohKdsKr3ymg6p2/Rk3o8I61y/oRG1PRoIRy/k5PB9mPyl3KeRrQHCx16tMHxmmrokM6pRn9r7DWNqAp+e/BL+hTs9OKMiCUoTSZr8ksHSmv05B/i0fntnVMLjf4VjajFm0FZlHTu7YARdWKJHdD5mvr7PqA6b5Ve0M0m2hNpVaf8jsbNgPb+GY8eFkovyM7yAaWB1h2D0UNXo30EY5rG4f/D2Zu+AOgqWLveaIcunCdxHC6P/X8chEDnmqEl+6LRiAqjPWof7KHvWyXGg9k3Fz5aU7yDrm8x3DoPfnBnRiKdxxGV4GGs6bYjvk5s5ixEuQf+qkJfyFogYAxcFDnDJEdWIVY8r/OylEXBYizTXOQsSdKageSNECyumeSYQZyWhYppRJemlQGA+pr1MWagV+hu7+z362+26OyitddVma7ENyF109k7HzdC5reJKzC7SavMZddaD5w+5rejzeO8yEPJnoSTHAknZpWAvOaJLGPGuCjLqinqpOG5KGReJawps7IRjMma5Yw1XIgMEibTCoBnTfKTwimOhMOPhMN52bAkTrjkvBZVUSdFJlkCqcwEbxhPoS5YzTiPy4QXKZZZCRlr8rJpRANV/JPCKY+Ekx4JBzIZpyUIkbK4FlAlaZkAB8QqASmKLGHY5JI3edFUlchFEQtWyVoAMJFCmf2ccEp2JByWHKuPgKaQecnKLC1T2RRxJXiRQMGzihc1q1hV8SrPeJozUYi6QGQNS7KigITFeX6kPl2SxoiYfLdx1bbtfVHAANc6S1ZVmkjuZOlEDv1QieVwk90ByOpGlrp3+Q8CYmXK0s3VZrPZRDQ9Jj+nIMk53gzoPB1t2HObTxoGvzRWfUcZ9JM6FINV/n6rMwgW7ZvBL+n88iqIXod+aUKGFridNeGIzmovZutpaGxm2xQ7GrzZ1W4QDbalc7r0vnfz2cz0qF9Dr06csPe9P1FmtmI0QOwYfAziu1XXQx57LQ6e6KTR4XlrRKPp5k9jO/B0Tt9/vhgjU7ox4+fKB3Wl77S3Rg7iQJVBjKqMHajA1Q19b6z/fU8xpDHEs83dij2bKBdLJO4sWJMPPWry5u93pLdmpSQ6glr2RmnvSGMsgXE2hPkDWpIO9HYYrcAqMzgCrkfhHTENOT0/e53ExJtr1C4iH6xUGlpHDrrCRaOX80GjI0aT04uzky/6i37nCbStuXVE4grbMIUc8YZY9FbhColED6pFSUJ2QsKU0QRqM3gSCKhGiT3wtp8nqBpa0ALDkyO32Lbh6g1R2qMF4cmt8stDiiRMrz3LvXc38gx5C7lC7QaLjow9gFOOiF9aMyyW5P3nC7ItLgldi9pPs/MkFKY3zncwjtBpB3i+Gz2q1vphEh/bs6Y283jnZ30LSgeQsYnXU99f0toLGtH5w3K1a/2r8Ps7H2zW6xocfrLtZhNeb1eR8ENI5aBuD9aNH7J7shAdZXaN9wfb1QraIdjQIHkvBtpvRP+BtLd5gLoKD1YFrBcG+Mv5tHq9Ii9eQo9ynF6Cvj9kuOO+q9fmahPRJcIo05fr6fSNENgfRvZsS3ukhG//uKARhcfi9ESMRu9HOf16um3oi/CT/bZnOP5zdJT3fwHvMRx8
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Bitmap List</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/bitmaps"}></MethodEndpoint>
+
+
+
+Get bitmap list.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"bitmap_number\": 1,\n      \"inscription_id\": \"dbceae0a3c761e26e19ee936b688d7710e846c61224b1ad3fcc10b1d3e5a0487i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30676\n    },\n    {\n      \"bitmap_number\": 2,\n      \"inscription_id\": \"019ca6b32d80113c889f7b2f36c7d6921f858fc11db1611f3cc5a21d49aa35f2i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30677\n    },\n    {\n      \"bitmap_number\": 3,\n      \"inscription_id\": \"338f12023d33bc97b275d12a4d5c3f134ab71b133082374e858a51f68ffcfa90i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30678\n    },\n    {\n      \"bitmap_number\": 4,\n      \"inscription_id\": \"a5d048acc410bca92482a3aee92adc7521ef6d3f67f99c6c70c19dbcaa1c4a85i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30681\n    },\n    {\n      \"bitmap_number\": 123,\n      \"inscription_id\": \"caf7d68185484df709c372a735937b1919939653461c7cb7ee1f12577a210660i0\",\n      \"holder\": \"tb1pm240eee2zr09llly77auakn52v942d3sd8sc6apu9chuq5xaad9qd8nps6\",\n      \"inscription_number\": 18414\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

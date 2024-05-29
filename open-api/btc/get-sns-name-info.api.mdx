@@ -1,0 +1,54 @@
+---
+id: get-sns-name-info
+title: "Get SNS Name Info"
+description: "Get SNS name info by name or inscription ID."
+sidebar_label: "Get SNS Name Info"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVdtu2zgQ/RVinlpA9S3OTVgstsnuFu5Dskhc9CE1ihE5sthIpEKO7KRe//tiZMW5eQOkfjEpDmfOHJ6ZWQHjPEJ6BZdnlzBLwFDUwdZsvYMUPhGry7NL5bAiZV3uVXa32figrNuaqsmfPUjA1xRQ9hPz6PKZ2E9c7iGBGgNWxBQk5grEFaTgiJc+XEMCVqLWyAU8h3IyPVW6QOtUZ63eVWidI1b/KqbIm1W0c0f8HhIIdNPYQAZSDg0lEHVBFUK6Ar6rJWrkYN0c1uvkAQhWdB4mD4lNzKugtty8oONNAGZiHGvvIkU5Hw0G8vcsVqM1xZg3pdryDAlo75gciz3WdWl1e9D/EeXSCugWq7okWUZGbuKpNwTpIAGD3IIpfGkoQAqcDW+QbgfNYHFLBzQ214PFwc8jPF7mh1hwTtWPw5v9/aoeQHJPWGZZe3mFZexpX3UHEWstp5svWen19feC7LxgSIej8Wi8L6Ruk/tuRS4H2XBkjvUBHuZmONC5Od43+mhvdDAeHR7m+7kZkzZDxNFQU5YZ0oPRnsnHh0d6tJfvHY3tAJ56dU2VSWLDo6O1/BIY7+L1BI26oJuGIkNrM3xp88Vhw4UP9ieZjdF4xwP9rxiU86xy3zgjaoNIugmW79oSyAgDhY8NF5BezUQKFXHhhZE5cVsycgT9jHV/1Wl/3Y8u9luq+6sdol2DRAmL+zprQgkpFMx1TPt9X5P7gLXtRR3uau5Z318MQULfI7sUqW60+BjfVrniCTpFtzJojeSt28XfPlTIkMLnr9M2Y2kd7XXLokWYOA7eNPqRhlG3GqYKrWCNTV37wH9sIQrtks+G68XwRS1OC1LxVKzVeU1OffxnourgF9ZQVORM7a3jqHIfFLaVZN1coTOqQodz2SwwWN9EhbEmzVH5XJ1cnH4YDRT7a3IxUefBWIdlfPy+MWm9XDSOovJOnUxPe9/cNzdhhWXpl1EZWlApNRsVexWIg6UFKUOMtiTTNlYhTMSCmW9YCQCbW70NvCnSLlSGJTpNsotqSWUp/+yVdUwBNaul5eKJBKXWtyi33mOLU3gTrsjFJlBUrQao40hxEXwzL9Tnr1O1eVwlpUCOu07Tk4epfeQK24bTNYZdzf/Je60eOtdbx0wnQqZb7tclWicQWomvumq5gow1JJA+TJbo4n13ag92dPpZAoWPLNdXqwwjfQnlei2fbxoKUq6zBEQkmImKr1ZgbJS1gTTHMtIrKb676KbBe/XmSbYz3+4jujsQUGUjO0jgmu4eTVSZbb8E8tXJ9iuAdvC9nq0TKAjb8XO16iw/ak01P/LxYqw9aZKf/ppCAvi0Pz3rR633nfh+O9loeip19vsWbVt2gm+9/g83nSJK
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get SNS Name Info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/sns/names/{nameOrInscriptionId}"}></MethodEndpoint>
+
+
+
+Get SNS name info by name or inscription ID.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"holder\": \"tb1qaex0u0vxe6e4dk0v6z8a9wf7ahtfemj7q55mp0\",\n    \"name\": \"bitcoinnews.com\",\n    \"namesapce\": \"com\",\n    \"block_height\": 124245,\n    \"inscription_id\": \"6b12d9c6a7fd10cfd95dc83264277f5fd4ecd1aa21cebbdec023df478c23f384i0\",\n    \"inscription_number\": 188\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+SNS name or inscription ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

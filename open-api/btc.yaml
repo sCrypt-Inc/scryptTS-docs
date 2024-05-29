@@ -17,6 +17,8 @@ tags:
   - name: BRC-20
   - name: Inscriptions
   - name: Runes
+  - name: SNS
+  - name: Bitmap
 paths:
   /btc/{network}/brc20/{ticker}/info:
     get:
@@ -797,6 +799,289 @@ paths:
           description: Unauthorized
         '404':
           description: Rune name of ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/sns/names:
+    get:
+      tags:
+        - SNS
+      description: Get sns name list.
+      operationId: Get SNS Name List
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - holder: tb1phcqfn7yjvc9ra5cn3eeturladmdefr9gqpjz2tzp5djlja26ycrq08l77d
+                    name: bitcoin.
+                    namesapce: ''
+                    block_height: 122477
+                    inscription_id: 0a425cd01f2da929cdd8d577718e5abecfa91a388e8564442d6c09597fc9f993i0
+                    inscription_number: 101
+                  - holder: tb1phcqfn7yjvc9ra5cn3eeturladmdefr9gqpjz2tzp5djlja26ycrq08l77d
+                    name: '85.67'
+                    namesapce: '67'
+                    block_height: 122495
+                    inscription_id: fa983d428a0aeb3d1c4dcea6cad12979c2fb252df7a8def6a2ce58f5d6e6d232i0
+                    inscription_number: 104
+                  - holder: tb1qaex0u0vxe6e4dk0v6z8a9wf7ahtfemj7q55mp0
+                    name: bitcoinnews.com
+                    namesapce: com
+                    block_height: 124245
+                    inscription_id: 6b12d9c6a7fd10cfd95dc83264277f5fd4ecd1aa21cebbdec023df478c23f384i0
+                    inscription_number: 188
+                  - holder: tb1qgtvgsyg0fry0m4w30xl8gzdhxlwrh8cmsl36pv
+                    name: github.com/dannydeezy/ord-unsafe
+                    namesapce: com/dannydeezy/ord-unsafe
+                    block_height: 128589
+                    inscription_id: 985f816a206ef81d4f8c2c432f28e9e0c7dbddbf59e539123535f3794675ec32i0
+                    inscription_number: 222
+                  - holder: tb1qgvpm3425zwrehcws495aq7vtmajhw6hwwh8jdg
+                    name: deezy.io
+                    namesapce: io
+                    block_height: 128619
+                    inscription_id: 67cfc4269d37856f93928e6061e0c935fce6a58568834128702e4f3ab54f1082i0
+                    inscription_number: 231
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/sns/names/{nameOrInscriptionId}:
+    get:
+      tags:
+        - SNS
+      description: Get SNS name info by name or inscription ID.
+      operationId: Get SNS Name Info
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: nameOrInscriptionId
+          in: path
+          description: SNS name or inscription ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  holder: tb1qaex0u0vxe6e4dk0v6z8a9wf7ahtfemj7q55mp0
+                  name: bitcoinnews.com
+                  namesapce: com
+                  block_height: 124245
+                  inscription_id: 6b12d9c6a7fd10cfd95dc83264277f5fd4ecd1aa21cebbdec023df478c23f384i0
+                  inscription_number: 188
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: SNS name or inscription ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/sns/namespaces/{namespace}/names:
+    get:
+      tags:
+        - SNS
+      description: Get sns name list by namespace.
+      operationId: Get SNS Name List by Namespace
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: namespace
+          in: path
+          description: SNS namespace
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - holder: tb1pz753aurxzc4wl7m3x2ttddjxkxq6r0ax9zc3uy9ekq6ns5543e7qqxcyed
+                    name: kkk.sats
+                    namesapce: sats
+                    block_height: 133131
+                    inscription_id: 9332082caabc7c52a3687c7678bdf69b4baa5239c3e6403d740467d12c44385ei0
+                    inscription_number: 777
+                  - holder: tb1psmkng77wj76n3ja5vngmtu7arwsq95y6svx2gaf97329gy5kmzdsvr5tql
+                    name: revofusion.sats
+                    namesapce: sats
+                    block_height: 135294
+                    inscription_id: 125b92d55f219b2d2e4b26d9bc0e5f86354781d13daa14dcdec863ea09c0edd1i0
+                    inscription_number: 1346
+                  - holder: tb1pjt8p0muqg4uk7f5zeryh85upqg4fy4sffz6858z8n3uv8mh50rhq6kvn4c
+                    name: asdasasasayyy.sats
+                    namesapce: sats
+                    block_height: 135348
+                    inscription_id: 595677db897c754bb1b42066b1f268f709c3ddc02148d8081ef679a6b453073ei0
+                    inscription_number: 1355
+                  - holder: tb1p77v9fpq5u3cymw9fthvts3hw7uhrzw7h3c57uy9rd8s7908v8j3sevz553
+                    name: asdasdas.sats
+                    namesapce: sats
+                    block_height: 135348
+                    inscription_id: 6ed3ccc09edcb529404ecea44a83fd8aa523e7c68ed6613f4845ac3f7fcd006bi0
+                    inscription_number: 1356
+                  - holder: tb1pnhvtqn6wzp7c3ltftnnkmntp6rkyeyrdkx9ua8rcdxuv6fgm0g9qtjv9xr
+                    name: income.sats
+                    namesapce: sats
+                    block_height: 135452
+                    inscription_id: dd8762db3ffc1b2b145a6d79833c0b40738f1eaecd3fccf04fc767e494ec0e5ei0
+                    inscription_number: 1371
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/bitmaps:
+    get:
+      tags:
+        - Bitmap
+      description: Get bitmap list.
+      operationId: Get Bitmap List
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - bitmap_number: 1
+                    inscription_id: dbceae0a3c761e26e19ee936b688d7710e846c61224b1ad3fcc10b1d3e5a0487i0
+                    holder: tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3
+                    inscription_number: 30676
+                  - bitmap_number: 2
+                    inscription_id: 019ca6b32d80113c889f7b2f36c7d6921f858fc11db1611f3cc5a21d49aa35f2i0
+                    holder: tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3
+                    inscription_number: 30677
+                  - bitmap_number: 3
+                    inscription_id: 338f12023d33bc97b275d12a4d5c3f134ab71b133082374e858a51f68ffcfa90i0
+                    holder: tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3
+                    inscription_number: 30678
+                  - bitmap_number: 4
+                    inscription_id: a5d048acc410bca92482a3aee92adc7521ef6d3f67f99c6c70c19dbcaa1c4a85i0
+                    holder: tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3
+                    inscription_number: 30681
+                  - bitmap_number: 123
+                    inscription_id: caf7d68185484df709c372a735937b1919939653461c7cb7ee1f12577a210660i0
+                    holder: tb1pm240eee2zr09llly77auakn52v942d3sd8sc6apu9chuq5xaad9qd8nps6
+                    inscription_number: 18414
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/bitmaps/{numberOrInscriptionId}:
+    get:
+      tags:
+        - Bitmap
+      description: Get bitmap info by number or inscription ID.
+      operationId: Get Bitmap Info
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: numberOrInscriptionId
+          in: path
+          description: Bitmap number or inscription ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  inscription_id: caf7d68185484df709c372a735937b1919939653461c7cb7ee1f12577a210660i0
+                  bitmap_number: 123
+                  holder: tb1pm240eee2zr09llly77auakn52v942d3sd8sc6apu9chuq5xaad9qd8nps6
+                  inscription_number: 18414
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Bitmap number or inscription ID not found
       security:
         - bearerAuth: []
 components:
