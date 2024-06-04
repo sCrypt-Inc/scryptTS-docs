@@ -8,18 +8,18 @@ Just like NFTs, `scrypt-ord` also supports fungible tokens. Under the hood it ut
 
 BSV-20 is a protocol for creating fungible tokens on the Bitcoin SV blockchain. Fungible tokens are interchangeable with each other, and can be used to represent a variety of assets, such as currencies, securities, and in-game items.
 
-`scrypt-ord` supports both v1 and v2 of the `BSV-20` FT protocol.
+`scrypt-ord` supports both `BSV-20` and `BSV-21` of the  FT protocol.
 
 
-## v1
+## `BSV-20`
 
 Tokens utilizing the first version of the `bsv-20` must be initialized by a **deployment** inscription, which specifies the token's ticker symbol, amount and mint limit. For more information, refer to the [1Sat docs](https://docs.1satordinals.com/bsv20#v1-mint-first-is-first-mode).
 
 
-To create a v1 token smart contract, have it extend the `BSV20V1` class:
+To create a v1 token smart contract, have it extend the `BSV20` class:
 
 ```ts
-class HashLockFT extends BSV20V1 {
+class HashLockFT extends BSV20 {
     @prop()
     hash: Sha256
 
@@ -36,7 +36,7 @@ class HashLockFT extends BSV20V1 {
 }
 ```
 
-As you can see above, the constructor of contract extending the `BSV20V1` takes as parameters all of the needed information for the token deployment, succeeded by other parameters needed you use for your contract (`hash` in this particular example). 
+As you can see above, the constructor of contract extending the `BSV20` takes as parameters all of the needed information for the token deployment, succeeded by other parameters needed you use for your contract (`hash` in this particular example). 
 Each constructor extending the `BSV20V1` class must also call the instances `init` method and pass the constructors arguments. It is important to call this function **after** the call to `super`.
 
 
@@ -114,19 +114,19 @@ for (let i = 0; i < 3; i++) {
 }
 ```
 
-Note that the new recipient smart contract instance is passed as a parameter named `transfer` during the call to the deployed instance. The `transfer` parameter is an array of contract instances that extend `BSV20V1`.
+Note that the new recipient smart contract instance is passed as a parameter named `transfer` during the call to the deployed instance. The `transfer` parameter is an array of contract instances that extend `BSV20`.
 
 
-## v2
+## `BSV-21`
 
-Version 2 of the `BSV-20` token protocol simplifies the process of minting a new fungible token. In this version, the deployment and minting are done within a single transaction. Unlike v1, v2 lacks a token ticker field. The token is identified by an `id` field, which is the transaction id and output index where the token was minted, in the form of `<txid>_<vout>`.
+Version 2 of the `BSV-21` token protocol simplifies the process of minting a new fungible token. In this version, the deployment and minting are done within a single transaction. Unlike `BSV-20`, `BSV-21` lacks a token ticker field. The token is identified by an `id` field, which is the transaction id and output index where the token was minted, in the form of `<txid>_<vout>`.
 
 Please refer to the [official 1Sat documentation](https://docs.1satordinals.com/bsv20#new-in-v2-tickerless-mode) for more info.
 
-To create a v2 token smart contract, have it extend the `BSV20V2` class:
+To create a `BSV-21` token smart contract, have it extend the `BSV21` class:
 
 ```ts
-class HashLockFTV2 extends BSV20V2 {
+class HashLockFTV2 extends BSV21 {
     @prop()
     hash: Sha256
 
@@ -145,7 +145,7 @@ class HashLockFTV2 extends BSV20V2 {
 
 ### Deploy+Mint
 
-In v1, tokens are deployed and minted in separate transactions, but in v2, all tokens are deployed and minted in one transactions. Here's an example of how you would deploy the new v2 FT:
+In `BSV-20`, tokens are deployed and minted in separate transactions, but in `BSV-21`, all tokens are deployed and minted in one transactions. Here's an example of how you would deploy the new `BSV-21` FT:
 
 ```ts
 HashLockFTV2.loadArtifact()
@@ -218,6 +218,6 @@ for (let i = 0; i < 3; i++) {
 }
 ```
 
-The new recipient smart contract instance is provided as a `transfer` parameter when calling the deployed instance. The `transfer` parameter consists of an array of contract instances derived from `BSV20V2`.
+The new recipient smart contract instance is provided as a `transfer` parameter when calling the deployed instance. The `transfer` parameter consists of an array of contract instances derived from `BSV21`.
 
 ---
