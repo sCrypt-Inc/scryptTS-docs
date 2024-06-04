@@ -44,7 +44,7 @@ The transaction does not contain any BSV20 token input and it has other fields:
 
 ------------------------
 
-[1] We support both BSV20 v1 and [v2](https://docs.1satordinals.com/bsv20#new-in-v2-tickerless-mode).
+[1] We support both BSV20  and [`BSV-20`](https://docs.1satordinals.com/bsv20#new-in-v2-tickerless-mode).
 
 
 
