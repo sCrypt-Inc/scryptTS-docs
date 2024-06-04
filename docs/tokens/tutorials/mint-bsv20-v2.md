@@ -2,11 +2,11 @@
 sidebar_position: 2
 ---
 
-# Tutorial 2: Mint BSV20 V2 Token
+# Tutorial 2: Mint BSV21 Token
 
 ## Overview
 
-In this tutorial, we will use contract [HashLock](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to mint a BSV20 Token (**version 2**) with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
+In this tutorial, we will use contract [HashLock](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts) as an example, to introduce how to mint a BSV21 Token with [sCrypt](https://scrypt.io/) and transfer it with a Smart Contract.
 
 To enable all these features, you should install `scrypt-ord` as an dependency in your project.
 
@@ -18,10 +18,10 @@ npm install scrypt-ord
 
 The new contract `HashLockFTV2` is almost the same as the previous [implementation](https://github.com/sCrypt-Inc/boilerplate/blob/master/src/contracts/hashLock.ts), except two differences.
 
-1. It must be derived from `BSV20V2` instead of `SmartContract`.
+1. It must be derived from `BSV21` instead of `SmartContract`.
 
 ```ts
-class HashLockFTV2 extends BSV20V2 {
+class HashLockFTV2 extends BSV21 {
     ...
 }
 ```
@@ -39,7 +39,7 @@ constructor(id: ByteString, sym: ByteString, max: bigint, dec: bigint, hash: Sha
 The contract also stores a hash value in the contract, and it will be unlocked successfully when calling the public method `unlock` with the correct message.
 
 ```ts
-export class HashLockFTV2 extends BSV20V2 {
+export class HashLockFTV2 extends BSV21 {
     @prop()
     hash: Sha256
     
@@ -52,7 +52,7 @@ export class HashLockFTV2 extends BSV20V2 {
 }
 ```
 
-The base class `BSV20V2` encapsulated helper functions to handle BSV20 V2 tokens. If you want to create your own contract that can interact with BSV20 V2 protocol, derive from it.
+The base class `BSV21` encapsulated helper functions to handle BSV20 V2 tokens. If you want to create your own contract that can interact with BSV20 V2 protocol, derive from it.
 
 ## Deploy Token
 
@@ -82,7 +82,7 @@ For now, the contract instance holds the token and we try to transfer it to a P2
 
 ### Step 1. Create Receiver Instance
 
-Class `BSV20V2P2PKH` represents a P2PKH address that can hold BSV20 V2 tokens. Its constructor takes BSV20 V2 fields and an receiving address as parameters.
+Class `BSV20V2P2PKH` represents a P2PKH address that can hold BSV21 tokens. Its constructor takes BSV20 V2 fields and an receiving address as parameters.
 
 ```ts
 const alice = new BSV20V2P2PKH(toByteString(tokenId, true), sym, max, dec, addressAlice )
@@ -113,7 +113,7 @@ This code will create a transaction that transfers 2 tokens to `alice` and 5 to 
 
 The default transaction builder will automatically add a token change output on the transaction. In this example, it will automatically add a token change output with 3 tokens, paying to the default address of the instance connected signer. You can also specify the token change address by passing the value to the key `tokenChangeAddress` of struct `OrdiMethodCallOptions`.
 
-Execute command `npx ts-node tests/examples/mintBSV20V2.ts` to run this example.
+Execute command `npx ts-node tests/examples/mintBSV21.ts` to run this example.
 
 ![](../../../static/img/mint-bsv20v2.png)
 
