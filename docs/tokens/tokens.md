@@ -33,8 +33,8 @@ npm i scrypt-ord
 
 There are also pre-made classes that represent standard 1Sat transfers using the widely employed `P2PKH` mechanism:
 - `OrdiNFTP2PKH`
-- `BSV20V1P2PKH`
-- `BSV20V2P2PKH`
+- `BSV20P2PKH`
+- `BSV21P2PKH`
 
 Suppose you wish to lock an ordinal token using a custom hash puzzle contract, you would define the smart contract class as shown below:
 
