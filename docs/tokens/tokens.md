@@ -28,8 +28,8 @@ npm i scrypt-ord
 - `OrdinalNFT`
 
 **Fungible tokens (FTs):**
-- `BSV20V1`
-- `BSV20V2`
+- `BSV20`
+- `BSV21`
 
 There are also pre-made classes that represent standard 1Sat transfers using the widely employed `P2PKH` mechanism:
 - `OrdiNFTP2PKH`
@@ -86,4 +86,4 @@ export function getDefaultSigner(): TestWallet {
 ### testnet
   
 - `gorillapool`: https://testnet.ordinals.gorillapool.io/api/docs
-- `scrypt` (only bsv20 v2): https://1sat.scrypt.io/api/docs
+- `scrypt` (only bsv21): https://1sat.scrypt.io/api/docs
