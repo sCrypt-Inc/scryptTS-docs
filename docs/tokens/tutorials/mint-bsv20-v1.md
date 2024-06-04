@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Tutorial 3: Mint BSV20 V1 Token
+# Tutorial 3: Mint BSV20 Token
 
 ## Overview
 
@@ -21,7 +21,7 @@ The new contract `HashLockFT` is almost the same as the previous [implementation
 1. It must be derived from `BSV20V1` instead of `SmartContract`.
 
 ```ts
-class HashLockFT extends BSV20V1 {
+class HashLockFT extends BSV20 {
     ...
 }
 ```
@@ -39,7 +39,7 @@ constructor(tick: ByteString, max: bigint, lim: bigint, dec: bigint, hash: Sha25
 The contract also stores a hash value in the contract, and it will be unlocked successfully when calling the public method `unlock` with the correct message.
 
 ```ts
-class HashLockFT extends BSV20V1 {
+class HashLockFT extends BSV20 {
     @prop()
     hash: Sha256
     
@@ -52,7 +52,7 @@ class HashLockFT extends BSV20V1 {
 }
 ```
 
-The base class `BSV20V1` encapsulated helper functions to handle BSV20 (version 1) tokens. If you want to create your own contract that can interact with BSV20 protocol, derive from it.
+The base class `BSV20` encapsulated helper functions to handle BSV20 (version 1) tokens. If you want to create your own contract that can interact with BSV20 protocol, derive from it.
 
 ## Deploy and Mint
 
@@ -85,7 +85,7 @@ For now, the contract instance holds the token and we try to transfer it to a P2
 
 ### Step 1. Create Receiver Instance
 
-Class `BSV20V1P2PKH` represents a P2PKH address that can hold BSV20 version 1 tokens. Its constructor takes BSV20 fields and an receiving address as parameters.
+Class `BSV20P2PKH` represents a P2PKH address that can hold BSV20 version 1 tokens. Its constructor takes BSV20 fields and an receiving address as parameters.
 
 ```ts
 const alice = new BSV20V1P2PKH(tick, max, lim, dec, addressAlice)
