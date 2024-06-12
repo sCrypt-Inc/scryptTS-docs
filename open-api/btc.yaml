@@ -1602,6 +1602,27 @@ components:
         cap:
           type: integer
           example: 21000
+        divisibility:
+          type: integer
+          example: 10
+        premine:
+          type: integer
+          example: 10000
+        symbol:
+          type: string
+          example: A
+        startHeight:
+          type: integer
+        endHeight:
+          type: integer
+        startOffset:
+          type: integer
+        endOffset:
+          type: integer
+      required:
+          - name
+          - amount
+          - cap
     EtchRuneDTO:
       type: object
       properties:
@@ -1616,6 +1637,13 @@ components:
           example: 546
         rune:
           $ref: '#/components/schemas/RuneDTO'
+
+      required:
+        - receiveAddress
+        - feeRate
+        - postage
+        - rune
+
     MintRuneDTO:
       type: object
       properties:
@@ -1634,7 +1662,12 @@ components:
         repeat:
           type: integer
           example: 10
-
+      required:
+        - receiveAddress
+        - feeRate
+        - postage
+        - runeNameOrId
+        - repeat
     BRC20DeployDTO:
       type: object
       properties:
@@ -1656,7 +1689,13 @@ components:
         max:
           type: string
           example: "21000"
-
+      required:
+        - receiveAddress
+        - feeRate
+        - postage
+        - tick
+        - limit
+        - max
     BRC20MintDTO:
       type: object
       properties:
@@ -1678,7 +1717,13 @@ components:
         repeat:
           type: integer
           example: 100
-
+      required:
+        - receiveAddress
+        - feeRate
+        - postage
+        - tick
+        - amt
+        - repeat
     BRC20TransferDTO:
       type: object
       properties:
@@ -1697,7 +1742,12 @@ components:
         amt:
           type: string
           example: "200"
-
+      required:
+        - receiveAddress
+        - feeRate
+        - postage
+        - tick
+        - amt
     FileDTO: 
       type: object
       properties:
@@ -1707,6 +1757,9 @@ components:
         dataURL:
           type: string
           example: data:text/plain;base64,YXNkZmFzZGZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dmFzZGZhc2Rm
+      required:
+        - filename
+        - dataURL
 
     InscribeDTO:
       type: object
@@ -1723,7 +1776,12 @@ components:
         files:
           type: array
           items:
-            $ref: '#/components/schemas/InscribeDTO'
+            $ref: '#/components/schemas/FileDTO'
+      required:
+        - receiveAddress
+        - feeRate
+        - postage
+        - files
     PayDTO:
       type: object
       properties:
@@ -1733,6 +1791,9 @@ components:
         txId: 
           type: integer
           example: "d925f0fe6bfb13ba126c1408749465ea0b58df7cc472f2b166e70c68d6fb46b3"
+      required:
+        - orderId
+        - txId
   securitySchemes:
     bearerAuth:
       type: http
