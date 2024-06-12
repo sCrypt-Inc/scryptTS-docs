@@ -1,0 +1,54 @@
+---
+id: mint-a-brc-20-token
+title: "Mint a brc20 token"
+description: "Create order to mint a brc20 token."
+sidebar_label: "Mint a brc20 token"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVtFuKjcQ/RXLT/dKJLsBQgBVVRPaSqlUJSJc9eEmD8brZR12bcf2wgW6/94Z72YhASWtqkjB9o5nxjPnHHtHPVs4Ov5O72wiLH3q0EQ4bqXxUis6phMrmBdE41fiNSmk8oSRueXdGOZLoc5ph2ojLMMdtwns+fPIBkwMs6wQXliMtqMKJmCqhF9ru4TvEqMZ5jP6PoWb2YTwjElFGmvypYAZTMjfxAvn65GTCxh8he1WvJTSCkjF21J0qOOZKBgd76jfGIzqvJVqQavqqTYGHzc62aDF29D3bdKnz34iGNfKC+XRFzMmlzzUJXp26HB3nIuePwvusUAWq+ilcPjVCi7kSlwniRXOHefeoeIHK0yOS35+YQyYpcXwarAZJYnqpYt1d2vj9XNs8t6WKZc/i5FKzVa99JZ8FL/0B/algBr2e7Tq0FSIKbT5IAwcVSwAEAdxLuIYTI12AJlPTC/7AzD1ki8/zhxgJTE+K/zHhhA7RkMrDODx8zxDdB+23kwn3Rgh+evsDlpeBS/OaOXqSnfB81HjH0rOoe5pmZMW2/TT5rYpQJ8986Wb6ARmMSCa+dD0wKNAksFgMBwML0bd0RW/TAcDMUj41bB3GaiyafuOzX1JlqM+Hw1ZZmK1vXTZ89KVycpvGd9ufdpd9cQoy7NmZ6FLzLAfX466VX3e/qkj3rCETGvw02BzcWzzTbHSZ9rKLQAcPTnBSyv9JnB4LpgV9hosYPqEZAKuZBpPhygJ+eA3Gs09j3YNe6soFMFFgUcRkiriQWUo+rerV4kobQ57M++NG0cRtEGdMSPPIb+N8edSR6sLSPzQDsxyzVmeQfRxL46HweRpn/YDsq9u+2HyLZrQCW0EA+e1EazUg9+1LRB99I+/ZqEc2PjpXkB+2/f/PX//L0kPOAr4PqAhUO2VaTWdGjbVlNkzpmavVKkO523Icau81UnJD/DNeMA3qJTEurrSGG39L23ZESzYoxohUOD3ej3LBHETtCZ30DRyfX9LQNxWEsyIUInR0HJHUm0JCywDshOmElIwxRY4WTErdekIcwa00RGdEmDx2avqug6B20oqljsiVRsaltHLtFQQRysC98b5o3pUtyDaea7XjiRiJXLkc5BzK0BnYAWWPZxVJASrgx0GZ4TNdekJJiBTydvAmc4RvHWoOcuZghPAzJG1yHP8Bc8oShbqSNbSZ4cpEtSBNsvWuwt5Yt2wVhCnBKCQAFrR1Ij4zOpykRGAHqnRSJCboEaNCp3TRp2hjNjA5oY9eRm/adhuL2v/8rpv2OLFDx+ZHO5iDB1ouGso/50C5cFyvL/ga9Yjl9AZ/KJvxFzNfWAp0ha37nZz5sQ3m1cVLgO9LAoODBEYbI7IBX1IpMMxyE0KSBAfnOrLtLmkv5L//Jg4edZmkakNxaTyEmcwXIrNwaOmegLTTDB8WGHC9ddJndbZDH3sdx/dJyht9Y5rQIDxH9oeau/93cMMy9y8aIpwB1HL1qgG8H9MH+EvvNoCbYJc4fqOApwXZZAVWvtFkWNvNfKdJoaTnazHTzc1TGcIm5/b6tQYhNpU1T88x5U1
+sidebar_class_name: "post api-method"
+info_path: open-api/btc/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Mint a brc20 token</h1>
+
+<MethodEndpoint method={"post"} path={"/btc/{network}/orders/brc20/mint/create"}></MethodEndpoint>
+
+
+
+Create order to mint a brc20 token.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | testnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+Parameters to mint a brc20 token
+
+</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"receiveAddress"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43"}}></SchemaItem><SchemaItem collapsible={false} name={"feeRate"} required={false} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":100}}></SchemaItem><SchemaItem collapsible={false} name={"postage"} required={false} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":546}}></SchemaItem><SchemaItem collapsible={false} name={"tick"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"ordi"}}></SchemaItem><SchemaItem collapsible={false} name={"amt"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"1000"}}></SchemaItem><SchemaItem collapsible={false} name={"repeat"} required={false} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":100}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"orderId\": \"66686819297c5f66e6dc7835\",\n    \"payAddress\": \"tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh\",\n    \"payAmount\": 40592\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"orderId\": \"66686819297c5f66e6dc7835\",\n    \"payAddress\": \"tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh\",\n    \"payAmount\": 40592\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
