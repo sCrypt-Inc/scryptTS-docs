@@ -1,0 +1,54 @@
+---
+id: get-order-info
+title: "Get order info"
+description: "Get order info by order id."
+sidebar_label: "Get order info"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVmlv2zgQ/SsEP7WAG8uK7djGYrFJdtvNAk27qYs92mBBUSOLMUWqJOUjXv/3nZHkIwe6aPPFPJ5m3hxvmA0PYub55BN/51Jw/LbDU/DSqTIoa/iEv4HALF0xZTLLkvVul57wDrclOEHIq/QJFq9L4UQBARx52HCDG4QZCEvr5nivyEMpQs4fu72YXjKZC2VYi2YvCtzhhv3LAvjQrLya4eIlfu7gS6UcII3gKuhwL3MoBJ9seFiX5NUHp8yMb7edPZGaKzL/GpE6Lezq529ycUtgX1rjwdN9HEX089Dyh0pK8D6rNNunEb1IawKYQHhRllrJ+qJ75+mjDYeVKEoNtPRBhMpf2hR3EfIWQey8oPm3ygQmCrFCmw2SQnSWfBJLqs76vLAV+Rr3o/Ewao7SFLkTOCS98j6MZnfeSX0X65UeSj2fuy9VOix0AVKK4XK90POVyaUQoOPVMM+XPl/Fa0nlLS06niG7QX9IGZGgFnCwH1+PX99lw+Xi2v66OL0eXf9p5DIe3v/+/u+3g8tVMbd/oZEM4EYEMhIhwTbTiZNx9E+BITZxTFd4CAMZZVE/6cVJejaGnjiTadTvQzaALI6hl0RDEUEygHHWHyX9NBaD8TDtjc9GUV+eYl239Nfh/eeqdSFSdoMNgK3Ha0zvKeajEVXIrVP3ZIxA/aegXUMxYwPLMP3kF0sEsnIqrGuhJCAcuHM0httbaidUUW5JYzNoQqYr3k2C7G5ahWy7dT/77qbt6223laEHt9hpsHIaP8xDKP2k28XGM69EqU6Q4boMJ8p2Fz1OEjngEKatFDrHak5Oo2hUQ24PlD+QDppGPya+lwUZ4a1c6uLVIDxpFq+tKwT2IP/tj2mdipo1fa4CNTq/MsHZtJJHAhGyFgjKTxFNX5WldeGnfRSUfQq5STnyfSzraQ7MXxKavcMcsPP3VwzFsVAIY2DS0mJveayPY0K2kmHCpKwQRsxosxBO2coz4UuQCLUZu7i5fBVHLNg5GN9hWGllhPY4Dfeu8Zis3FQG/VjDcM6dfDafzRVqVWu79CyFBWgaCB4NMQc4U/AEjwPGCmk9WilhaIyJxFaBEQGVKbl3nFtNjdC4SoQWBiPAnWdL0Jp+0TLGh0NHBrZUIT+myGiQ7FnurfuaJ+WNcoV+KpQxq3sA2hyxkDtbzXKGlWRNcRkpAsdZO8ZOqDA0FjCNVMB2ED95OB4Ua3OYif/zHLUNF2AVuqXG94Lc1Z28aSXziaNkEDk5PEKNaujs+D1AGtji1PP00WaTCA8fnd5u6RjHgCOl4pLaQCTUpyiuVHlao04zrDt8JY4XN+1j8pJ981P3bJTtoTBrTqR0RTtczmF99OSSsr+L5NEz+B3ud4nd3iI0B0H/aVC+mttzbJ4yHH335N17MAHf/DJFrHg4Yx7NlNr6s5x+uGj6ckpa+XHPsJYO8dtu/wP+4Bm+
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get order info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/orders/{orderId}/info"}></MethodEndpoint>
+
+
+
+Get order info by order id.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | testnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"orderId","in":"path","description":"Order ID","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"desc\": \"Mint amax\",\n    \"status\": \"processing\",\n    \"payAmount\": 940960,\n    \"payAddress\": \"tb1pzt8gjsrclj2lxl6clkkrqud6mlmecca6wyvlkxnhcaael2x6hhwshx2yck\",\n    \"postage\": 546,\n    \"receiveAddress\": \"2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY\",\n    \"feeRate\": 500,\n    \"type\": \"brc20_mint\",\n    \"payTx\": \"e5c0f04b12bd79e1a7cd044ef5ef22e1b06a0eb5e9f48b4d2a596d197804c3ed\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"desc\": \"Mint amax\",\n    \"status\": \"processing\",\n    \"payAmount\": 940960,\n    \"payAddress\": \"tb1pzt8gjsrclj2lxl6clkkrqud6mlmecca6wyvlkxnhcaael2x6hhwshx2yck\",\n    \"postage\": 546,\n    \"receiveAddress\": \"2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY\",\n    \"feeRate\": 500,\n    \"type\": \"brc20_mint\",\n    \"payTx\": \"e5c0f04b12bd79e1a7cd044ef5ef22e1b06a0eb5e9f48b4d2a596d197804c3ed\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Order ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

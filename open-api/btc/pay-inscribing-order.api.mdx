@@ -1,0 +1,54 @@
+---
+id: pay-inscribing-order
+title: "Pay inscribing order"
+description: "Pay the order that inscribe inscriptions."
+sidebar_label: "Pay inscribing order"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu4zYQ/RWCT7uAN5ZkWVaMomiStkD6kkXWiz5s8jC8yOZGFlWSSuK6/vfOUIrtXHaLBYoAMUkNZ4aHZ85wywMsPZ9/4VdOacdvR1xpL51pg7ENn/OPsGFhpZmlzziCwExDBkIPg2jpT/iI21Y7oNmlGnYOpqZZ9g7QqAUHax20o6hb3uAEjRsdHqy7w++GorYQVvxlKueLCyZXYBo2WLN3a5zhhP3DgvahH3mzxMF73O70X51xGpMJrtMj7uVKr4HPtzxsWorqg8PU+G532xujj3OrNmTxGgV46zQvQ0jbBN0E8gBtWxsZ8Rh/9eRm+zoDK75qGQgWR+gFoz19je4JxZepjrh+hHVb01JRFGVRpDKdFDLLSzHD6WR2WvDdiIfHZ7sNZrWMCR+2q9NsWiWVLkQl0omANCtkmiflLD/Ni6mGRExLVc2kzGdZlYm0KPQskUWpikrkhZggbBjHhOgMAfp1cYVLtOi0b5ES/VGyJHmN56dOSu191dVsTxr+n+jtc0cgA4TOX1iFswSJAqFH9bFnVX98Pp2kpZJ4NCGgLPPJqSqmeMwS8gxSEEmmRZbgYKKEztOkKmbTLD2t5KwQMk+yAlPqA6GvrsHsKuPWeNm70T6EnIl8qjI5kSqpqlmpVDpDrBKlTmGSyaoQSomiUHJaAZSiLDPQWS61SARMJ7k+DtHqRkU+3h4vOktQ9TyN8OZvIXoOil33FObRJn1t87mBLqysM3/TGdDKa9k5EzYRM6HBaXeGFji9pRywTFeWDtlaHzlKVTnnYxHkeDvU4G4cuerHVBzjJ2kYt7Chk2l3/1Tonatx7yqE1s/HY7z15gO05gTtN204MXZ8n0ZcD3ZoVlsJ9QqjzydJUkaT20Pan6iaepYdJ79nPTnhQ9nTvDfClX7wu3VrQLLxP/5cRDiIZ9cHGfjtQLd9PX676J5q7n+oKxLBysaDDOV12QRnVSeP6gRkrBOUE0OA+a5trQu/7PEkNwR+f/WI3Es5XaCq+wuyZld4G+zs4yVDst0bNGPIxNaianhWWcdADhRk0Ci2hgaWNLkHZ2znGfgWRcwzW7Hz64sPWcKCvdONHzFsKqaB2j9rFaPo5bprMI5tGMr6yU1z01wGBnVtHzxT+l7XpAseHTGnUfpwBZcDnlUrRujQ1aEzBsJ2gVECpjJyH3hla2JlH0pADQ2eAGeePei6pl/0TKroEEf2YMLqOEVGerLPcu/dxzwJN8IK43SodCyyUQ8YYYd0tluuGHKK9TRjVHSoaoOandDFUEEhjHSBQwP8Rrd8dmXbg0D+UF8eyiHoxzBua2yZlEKss+1Q01841jRazg99uC/r2JC9HH7Ie9SBDT0UqC5p63YrwOvPrt7taBnrx5Gi4JAIAoIYjAKgjKcxlkiFjNDfOdu766Grvmc/3PPfPOuwCA2J0j3UHc1weKc3R2+P3S2arjQQ8pRw//WiT+vDgnwcdr/qT6Rd/Y4zZEIbvmt7LK4frz4tSJOGh8c69jTu4IGeF/h/zm/wLz6v4o2SUVzfcqT1soMl2fd+ScXguQi+EL2+Pb6Fx0/nPV0XVEI/79GJFUXY7Hb/AtaZb20=
+sidebar_class_name: "post api-method"
+info_path: open-api/btc/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Pay inscribing order</h1>
+
+<MethodEndpoint method={"post"} path={"/btc/{network}/orders/insc/inscribe/pay"}></MethodEndpoint>
+
+
+
+Pay the order that inscribe inscriptions.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | testnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+Pay a inscribing order
+
+</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"orderId"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"6668661c136c248b76863796"}}></SchemaItem><SchemaItem collapsible={false} name={"txId"} required={false} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":"d925f0fe6bfb13ba126c1408749465ea0b58df7cc472f2b166e70c68d6fb46b3"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"txs\": [\n      {\n        \"txId\": \"5318dcba1bba88439d651268a42a1ab02eb201ab3dbe410f675219fc76bc4026\",\n        \"status\": \"unconfirmed\"\n      },\n      {\n        \"txId\": \"c7b45d2c3cd0ff78dd17b160dd9a32cf6bddb66dc5faa8b882ae24ceb0ba534e\",\n        \"status\": \"pending\"\n      }\n    ],\n    \"status\": \"processing\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"txs\": [\n      {\n        \"txId\": \"5318dcba1bba88439d651268a42a1ab02eb201ab3dbe410f675219fc76bc4026\",\n        \"status\": \"unconfirmed\"\n      },\n      {\n        \"txId\": \"c7b45d2c3cd0ff78dd17b160dd9a32cf6bddb66dc5faa8b882ae24ceb0ba534e\",\n        \"status\": \"pending\"\n      }\n    ],\n    \"status\": \"processing\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

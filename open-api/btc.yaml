@@ -13,6 +13,7 @@ info:
     The API ensures secure access through JWT bearer authentication.
 servers:
   - url: https://open-api.scrypt.io/v1
+  - url: http://localhost:3008/v1
 tags:
   - name: BRC-20
   - name: Inscriptions
@@ -1084,7 +1085,654 @@ paths:
           description: Bitmap number or inscription ID not found
       security:
         - bearerAuth: []
+
+
+  /btc/{network}/orders/{orderId}/info:
+    get:
+      tags:
+        - Order
+      description: Get order info by order id.
+      operationId: Get order info
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: orderId
+          in: path
+          description: Order ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  desc: Mint amax
+                  status: processing
+                  payAmount: 940960
+                  payAddress: tb1pzt8gjsrclj2lxl6clkkrqud6mlmecca6wyvlkxnhcaael2x6hhwshx2yck
+                  postage: 546
+                  receiveAddress: 2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY
+                  feeRate: 500
+                  type: brc20_mint
+                  payTx: e5c0f04b12bd79e1a7cd044ef5ef22e1b06a0eb5e9f48b4d2a596d197804c3ed
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Order ID not found
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/runes/etch/create:
+    post:
+      tags:
+        - Order
+      description: Create order to etch a rune.
+      operationId: Etch a rune
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Create a order to etch
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EtchRuneDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  orderId: 66686819297c5f66e6dc7835
+                  payAddress: tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh
+                  payAmount: 40592
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/runes/etch/pay:
+    post:
+      tags:
+        - Order
+      description: Pay the order that etch a rune.
+      operationId: Pay etching order
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Pay a etching order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  revealTx:
+                    txId: 4c9500f382740f89cd764ab3b625eb7cac5c78beedf0a899198d10b54218f7b1
+                    status: pending
+                  status: processing
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/runes/mint/create:
+    post:
+      tags:
+        - Order
+      description: Create order to mint rune.
+      operationId: Mint a rune
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Create a order to mint rune
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MintRuneDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  orderId: 66686819297c5f66e6dc7835
+                  payAddress: tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh
+                  payAmount: 40592
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/runes/mint/pay:
+    post:
+      tags:
+        - Order
+      description: Pay the order that mint a rune.
+      operationId: Pay minting order
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Pay a minting order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  txs:
+                    - txId: 5318dcba1bba88439d651268a42a1ab02eb201ab3dbe410f675219fc76bc4026
+                      status: unconfirmed
+                    - txId: c7b45d2c3cd0ff78dd17b160dd9a32cf6bddb66dc5faa8b882ae24ceb0ba534e
+                      status: pending
+                  status: processing
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/brc20/deploy/create:
+    post:
+      tags:
+        - Order
+      description: Create order to deploy a brc20 token.
+      operationId: Deploy a brc20 token
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Parameters to deploy a brc20 token
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BRC20DeployDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  orderId: 66686819297c5f66e6dc7835
+                  payAddress: tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh
+                  payAmount: 40592
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/brc20/deploy/pay:
+    post:
+      tags:
+        - Order
+      description: Pay the order that deploy a brc20 token.
+      operationId: Pay deploying order
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Pay a deploying order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  revealTx:
+                    txId: 5318dcba1bba88439d651268a42a1ab02eb201ab3dbe410f675219fc76bc4026
+                    status: unconfirmed
+                  status: processing
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/brc20/mint/create:
+    post:
+      tags:
+        - Order
+      description: Create order to mint a brc20 token.
+      operationId: Mint a brc20 token
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Parameters to mint a brc20 token
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BRC20MintDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  orderId: 66686819297c5f66e6dc7835
+                  payAddress: tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh
+                  payAmount: 40592
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/brc20/mint/pay:
+    post:
+      tags:
+        - Order
+      description: Pay the order that mint a brc20 token.
+      operationId: Pay brc20 minting order
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Pay a brc20 minting order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  txs:
+                    - txId: 5318dcba1bba88439d651268a42a1ab02eb201ab3dbe410f675219fc76bc4026
+                      status: unconfirmed
+                    - txId: c7b45d2c3cd0ff78dd17b160dd9a32cf6bddb66dc5faa8b882ae24ceb0ba534e
+                      status: pending
+                  status: processing
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/brc20/transfer/create:
+    post:
+      tags:
+        - Order
+      description: Create order to transfer a brc20 token.
+      operationId: Transfer a brc20 token
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Parameters to transfer a brc20 token
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BRC20TransferDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  orderId: 66686819297c5f66e6dc7835
+                  payAddress: tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh
+                  payAmount: 40592
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/brc20/transfer/pay:
+    post:
+      tags:
+        - Order
+      description: Pay the order that transfer a brc20 token.
+      operationId: Pay transfering order
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Pay a transfering order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  revealTx:
+                    txId: 5318dcba1bba88439d651268a42a1ab02eb201ab3dbe410f675219fc76bc4026
+                    status: unconfirmed
+                  status: processing
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/insc/inscribe/create:
+    post:
+      tags:
+        - Order
+      description: Create order to inscribe inscriptions.
+      operationId: Inscribe inscriptions
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Parameters to inscribe inscriptions.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InscribeDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  orderId: 66686819297c5f66e6dc7835
+                  payAddress: tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh
+                  payAmount: 40592
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/orders/insc/inscribe/pay:
+    post:
+      tags:
+        - Order
+      description: Pay the order that inscribe inscriptions.
+      operationId: Pay inscribing order
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Pay a inscribing order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  txs:
+                    - txId: 5318dcba1bba88439d651268a42a1ab02eb201ab3dbe410f675219fc76bc4026
+                      status: unconfirmed
+                    - txId: c7b45d2c3cd0ff78dd17b160dd9a32cf6bddb66dc5faa8b882ae24ceb0ba534e
+                      status: pending
+                  status: processing
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
 components:
+
+  schemas:
+    RuneDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          example: MYRUNE
+        amount:
+          type: integer
+          example: 1000
+        cap:
+          type: integer
+          example: 21000
+    EtchRuneDTO:
+      type: object
+      properties:
+        receiveAddress: 
+          type: string
+          example: tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43
+        feeRate: 
+          type: integer
+          example: 100
+        postage: 
+          type: integer
+          example: 546
+        rune:
+          $ref: '#/components/schemas/RuneDTO'
+    MintRuneDTO:
+      type: object
+      properties:
+        receiveAddress: 
+          type: string
+          example: tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43
+        feeRate: 
+          type: integer
+          example: 100
+        postage: 
+          type: integer
+          example: 546
+        runeNameOrId:
+          type: string
+          example: "2819996:536"
+        repeat:
+          type: integer
+          example: 10
+
+    BRC20DeployDTO:
+      type: object
+      properties:
+        receiveAddress: 
+          type: string
+          example: tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43
+        feeRate: 
+          type: integer
+          example: 100
+        postage: 
+          type: integer
+          example: 546
+        tick:
+          type: string
+          example: ordi
+        limit:
+          type: string
+          example: "1000"
+        max:
+          type: string
+          example: "21000"
+
+    BRC20MintDTO:
+      type: object
+      properties:
+        receiveAddress: 
+          type: string
+          example: tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43
+        feeRate: 
+          type: integer
+          example: 100
+        postage: 
+          type: integer
+          example: 546
+        tick:
+          type: string
+          example: ordi
+        amt:
+          type: string
+          example: "1000"
+        repeat:
+          type: integer
+          example: 100
+
+    BRC20TransferDTO:
+      type: object
+      properties:
+        receiveAddress: 
+          type: string
+          example: tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43
+        feeRate: 
+          type: integer
+          example: 100
+        postage: 
+          type: integer
+          example: 546
+        tick:
+          type: string
+          example: ordi
+        amt:
+          type: string
+          example: "200"
+
+    FileDTO: 
+      type: object
+      properties:
+        filename: 
+          type: string
+          example: 1.txt
+        dataURL:
+          type: string
+          example: data:text/plain;base64,YXNkZmFzZGZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dmFzZGZhc2Rm
+
+    InscribeDTO:
+      type: object
+      properties:
+        receiveAddress: 
+          type: string
+          example: tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43
+        feeRate: 
+          type: integer
+          example: 100
+        postage: 
+          type: integer
+          example: 546
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/InscribeDTO'
+    PayDTO:
+      type: object
+      properties:
+        orderId: 
+          type: string
+          example: 6668661c136c248b76863796
+        txId: 
+          type: integer
+          example: "d925f0fe6bfb13ba126c1408749465ea0b58df7cc472f2b166e70c68d6fb46b3"
   securitySchemes:
     bearerAuth:
       type: http
