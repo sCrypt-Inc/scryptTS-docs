@@ -1,0 +1,50 @@
+---
+id: get-sns-name-list-by-address
+title: "Get SNS Name List by Address"
+description: "Get sns name list by address."
+sidebar_label: "Get SNS Name List by Address"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vu9v2zYQ/VcIfloBNbZk/bCEYVgSbEWKoR0SF/2QGsWJPFlsJFIlKSeu5/99oCzLTuKlc7F9siw+8b274z3emlpYGJrd0pt3N3TuUY6GadFYoSTN6Bu0xEhDJNRIKmEsyVcEONdozBn1qGpQg8Ne8R598+6GvHPoP3r0+RZNPdqAhhotase3pm5PmlGJ9l7pO+pR4RgbsCV9KuNidklYCUKSHk1+qkFIiZb8RSwau30yYiHRvqIe1fi1FRo5zaxu0aOGlVgDzdbUrhrHaqwWckE3G28QAoPQl4XscT/CUola2B3H1xb16hlJAwshF2SH3LMUUJljNLKtc9SPaFRRGPx3PAP0BKK5Q5tGSYPGrQfjsft5vP9NyxgaU7QVGc4J9ShT0qK0Dg9NUwnWLYy+GPfRmuID1E2F7tFYsK25VBxpNvYoBwvdySlVxVHTjNrcb7BOY/hWhyb6kjaTwMbjqIwSze/KsPwWlw8YsyoKgrZe8qp6CGSSRCbWYZJy6u2yNQ3Sqe+f5cLW0PSvDTTMrQ0v80qxu88likVpaeZPg3E4cfkdQv4sXBNMgnDCfR8gRpYnwKdFyqZ+hEkYJynwApFhGGDis2IKSR5OWZ4mEE0nLAJWJJEI6ONd+6RnkyANI1fi/zz8Lpb49PDjI+FjEYfjMBwHaciTcYjRpPDjMCyCvODTopgECQcI0glgnga8KGI/Gk/HoQ9FhNHYfzH8yP//wk9ODz85En5a5CzwkyDhkzSBJGRTLJJk4sqfYDBJo5AVQZyiz/OYI0tgAixJWDyFPCnSOHwx/HAz32w2G4+Gx9rtAji5xq8tGks7jP8c80FCa0ulxTfkzi+oQdZqYVddX+UIGvV5a0ua3c5dk9doS+XiWnQO0XliRke5ZaN1b8WbkZFm1JsimtG6f9yMujxSx6GXO9NvdUUzWlrbmGw0Ug3K19CIM8P0qrFnQo2WPnVF3uOy0ahSDKpSGZtNxuNpB5nvpd84l9ra0GEAg2m5TWhvZl1JO5Araffwu9I1WJrRtx9nXUqELFT3ubDOhuiVtFrxlh3YF7DOvrAG4WSatmmUtr8OUbj8u5C3SV/6z6x3ViIxlw5N3jcoyfmfV6TRaik4GoKSN0pIa0ihNIHORJ1Rg+SkBrl17SVooVpDwDTIrCGqIBfXl6+DMbHqDqXxyHvNhYTKkIPjZLxul+tWoiFKkovZ5dkn+UleWQJVpe4N4bjEytm1IVYRjVYLXCLhaEFUyInLjkuYUJJArlpLnABRCDYQbxu0p8qhAsnQ/TPkHqvK/VpFhLSogVlyL2x5KJE4mx9UDrubTqfLm8sVStNqNKQ7A9jniNhSq3ZRkrcfZ2RbXOKOO0rbXzJnrjCNMraG7q7pDeA7c8uj0q3399d3p6P+AFp8sKOmAiEdfXey130r3dLcMurRbD8FGek4h35yi/uJY9tSc4+6bnCfr9c5GPygq83Gvd5e9K7RuDCQVweX+T9G8WTcOCr6DlcHs8sSqtZhuk49mWiYN15gGjB7qrn7o4XjOjHAn677weYVOXmQPKqxfwlydahwp31XytOS80TkvuQ/oGD38Wa+8WiJ0F2Xt+t+9ZwxbA5z+2wKe+T8b36bufP42FOfeGi3+1FNP19s+3DmvOGXQWFnFbS7zv4GByo1/g==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get SNS Name List by Address</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/sns/addresses/{address}/names"}></MethodEndpoint>
+
+
+
+Get sns name list by address.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"holder\": \"tb1pem96azm4s5j9p32t605h57rdkh4hz6hxe6cl522umvdllx2n775s6r479d\",\n      \"name\": \"829811.bitmap\",\n      \"namesapce\": \"bitmap\",\n      \"block_height\": 182043,\n      \"inscription_id\": \"3243d11aa6ecb7ad8f9c815e74679adfeece42e71cf8a7b48cb97a583c5acf75i2\",\n      \"inscription_number\": 32945\n    },\n    {\n      \"holder\": \"tb1pem96azm4s5j9p32t605h57rdkh4hz6hxe6cl522umvdllx2n775s6r479d\",\n      \"name\": \"182046.bitmap\",\n      \"namesapce\": \"bitmap\",\n      \"block_height\": 182046,\n      \"inscription_id\": \"ef640440294d704e53f1644f2bfd8ff327daa293aeb92dff61508041af5e5015i2\",\n      \"inscription_number\": 32951\n    },\n    {\n      \"holder\": \"tb1pem96azm4s5j9p32t605h57rdkh4hz6hxe6cl522umvdllx2n775s6r479d\",\n      \"name\": \"182047.bitmap\",\n      \"namesapce\": \"bitmap\",\n      \"block_height\": 182047,\n      \"inscription_id\": \"9fbc21727d397a74c8ef7735e747e23954cf269e1db6dec7a3ac77c68ab7f964i2\",\n      \"inscription_number\": 32954\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

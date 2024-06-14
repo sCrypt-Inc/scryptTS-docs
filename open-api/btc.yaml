@@ -987,6 +987,69 @@ paths:
           description: Unauthorized
       security:
         - bearerAuth: []
+  /btc/{network}/sns/addresses/{address}/names:
+    get:
+      tags:
+        - SNS
+      description: Get sns name list by address.
+      operationId: Get SNS Name List by Address
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: paging limit
+          required: false
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: paging offset
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - holder: tb1pem96azm4s5j9p32t605h57rdkh4hz6hxe6cl522umvdllx2n775s6r479d
+                    name: 829811.bitmap
+                    namesapce: bitmap
+                    block_height: 182043
+                    inscription_id: 3243d11aa6ecb7ad8f9c815e74679adfeece42e71cf8a7b48cb97a583c5acf75i2
+                    inscription_number: 32945
+                  - holder: tb1pem96azm4s5j9p32t605h57rdkh4hz6hxe6cl522umvdllx2n775s6r479d
+                    name: 182046.bitmap
+                    namesapce: bitmap
+                    block_height: 182046
+                    inscription_id: ef640440294d704e53f1644f2bfd8ff327daa293aeb92dff61508041af5e5015i2
+                    inscription_number: 32951
+                  - holder: tb1pem96azm4s5j9p32t605h57rdkh4hz6hxe6cl522umvdllx2n775s6r479d
+                    name: 182047.bitmap
+                    namesapce: bitmap
+                    block_height: 182047
+                    inscription_id: 9fbc21727d397a74c8ef7735e747e23954cf269e1db6dec7a3ac77c68ab7f964i2
+                    inscription_number: 32954
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
   /btc/{network}/bitmaps:
     get:
       tags:
@@ -1085,6 +1148,63 @@ paths:
           description: Bitmap number or inscription ID not found
       security:
         - bearerAuth: []
+  /btc/{network}/bitmaps/addresses/{address}/assets:
+      get:
+        tags:
+          - Bitmap
+        description: Get bitmap list by address.
+        operationId: Get Bitmap List by Address
+        parameters:
+          - name: network
+            in: path
+            description: BTC chain network (mainnet | testnet | signet)
+            required: true
+            schema:
+              type: string
+          - name: address
+            in: path
+            description: BTC address
+            required: true
+            schema:
+              type: string
+          - name: limit
+            in: query
+            description: paging limit
+            required: false
+            schema:
+              type: number
+          - name: offset
+            in: query
+            description: paging offset
+            required: false
+            schema:
+              type: number
+        responses:
+          '200':
+            description: Successful operation
+            content:
+              application/json:
+                example:
+                  statusCode: 0
+                  data:
+                    - bitmap_number: 1
+                      inscription_id: dbceae0a3c761e26e19ee936b688d7710e846c61224b1ad3fcc10b1d3e5a0487i0
+                      holder: tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3
+                      inscription_number: 30676
+                    - bitmap_number: 2
+                      inscription_id: 019ca6b32d80113c889f7b2f36c7d6921f858fc11db1611f3cc5a21d49aa35f2i0
+                      holder: tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3
+                      inscription_number: 30677
+                    - bitmap_number: 3
+                      inscription_id: 338f12023d33bc97b275d12a4d5c3f134ab71b133082374e858a51f68ffcfa90i0
+                      holder: tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3
+                      inscription_number: 30678
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+        security:
+          - bearerAuth: []
 
 
   /btc/{network}/orders/{orderId}/info:
