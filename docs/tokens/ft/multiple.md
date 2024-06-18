@@ -7,7 +7,7 @@ Suppose we would like to unlock FTs within a single transaction that are located
 
 ```ts
 // One sender is regular bsv-20 P2PKH.
-const sender0 = BSV20V2P2PKH.fromUTXO(utxo)
+const sender0 = BSV21P2PKH.fromUTXO(utxo)
 await sender0.connect(signer)
 
 // Second sender is a hash lock contract.
@@ -36,8 +36,8 @@ const ordPubKey = await signer.getDefaultPubKey()
 sender0.bindTxBuilder(
     'unlock',
     async (
-        current: BSV20V2P2PKH,
-        options: OrdiMethodCallOptions<BSV20V2P2PKH>
+        current: BSV21P2PKH,
+        options: OrdiMethodCallOptions<BSV21P2PKH>
     ): Promise<ContractTransaction> => {
         const tx = new bsv.Transaction()
         const nexts: StatefulNext<SmartContract>[] = []
@@ -45,7 +45,7 @@ sender0.bindTxBuilder(
         for (let i = 0; i < recipients.length; i++) {
             const receiver = recipients[i]
 
-            if (receiver.instance instanceof BSV20V2) {
+            if (receiver.instance instanceof BSV21) {
                 receiver.instance.setAmt(receiver.amt)
             } else {
                 throw new Error('Unsupported receiver, only BSV-20!')
@@ -66,7 +66,7 @@ sender0.bindTxBuilder(
         }
 
         if (tokenChangeAmt > 0n) {
-            const p2pkh = new BSV20V2P2PKH(
+            const p2pkh = new BSV21P2PKH(
                 tokenId,
                 amount,
                 dec,
@@ -107,7 +107,7 @@ let partialContractTx = await sender0.methods.unlock(
     {
         pubKeyOrAddrToSign: ordPubKey,
         multiContractCall: true,
-    } as OrdiMethodCallOptions<BSV20V2P2PKH>
+    } as OrdiMethodCallOptions<BSV21P2PKH>
 )
 
 sender1.bindTxBuilder(
@@ -136,7 +136,7 @@ partialContractTx = await sender1.methods.unlock(message1, {
     transfer: recipients,
     pubKeyOrAddrToSign: ordPubKey,
     multiContractCall: true,
-} as OrdiMethodCallOptions<BSV20V2P2PKH>)
+} as OrdiMethodCallOptions<BSV21P2PKH>)
 
 const { tx } = await SmartContract.multiContractCall(
     partialContractTx,
@@ -146,10 +146,10 @@ const { tx } = await SmartContract.multiContractCall(
 console.log('Transfer tx:', tx.id)
 ```
 
-In the above code, a partial transaction is constructed, which unlocks the first UTXO containing a `BSV20V2P2PKH` instance. The actual contract call doesn't execute yet, as we set the `multiContractCall` flag within the method call parameters.
+In the above code, a partial transaction is constructed, which unlocks the first UTXO containing a `BSV21P2PKH` instance. The actual contract call doesn't execute yet, as we set the `multiContractCall` flag within the method call parameters.
 
 We then feed that partially constructed transaction via the second contract call, which will unlock the `HashLockFTV2` instance. Just like the first call, this call also has the `multiContractCall` flag set.
 
 Once the transaction is fully built, we can sign and broadcast it using the `SmartContract.multiContractCall` function.
 
-The above code is an example based on v2, but the same can be achieved using v1.
+The above code is an example based on `BSV-21`, but the same can be achieved using `BSV-20`.

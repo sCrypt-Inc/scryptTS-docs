@@ -17,9 +17,9 @@ const recipient = new HashLockFT(tick, max, lim, dec, hash);
 await recipient.connect(getDefaultSigner());
 
 // Create P2PKH object from an UTXO
-// NOTE: You can not use BSV20V2P2PKH.getLatestInstance for BSV-20, it only works for NFTs.
+// NOTE: You can not use BSV21P2PKH.getLatestInstance for BSV-20, it only works for NFTs.
 const utxo: UTXO = ...
-const p2pkh = BSV20V2P2PKH.fromUTXO(utxo);
+const p2pkh = BSV21P2PKH.fromUTXO(utxo);
 await p2pkh.connect(getDefaultSigner());
 
 // Unlock it and transfer the FTs carried by it.
@@ -29,7 +29,7 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
   {
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
-  } as OrdiMethodCallOptions<BSV20V2P2PKH>
+  } as OrdiMethodCallOptions<BSV21P2PKH>
 );
 
 console.log("Transferred FT: ", transferTx.id);
@@ -41,8 +41,8 @@ Alternatively, you can unlock multiple FT UTXOs and send them to a smart contrac
 // ... initialize recipient smart contract
 
 // Fetch FT UTXOs for given Ordinal address.
-// NOTE: You can not use BSV20V2P2PKH.getLatestInstance for BSV-20, it only works for NFTs.
-const bsv20P2PKHs = await BSV20V2P2PKH.getBSV20(tokenId, `your ordinal address`);
+// NOTE: You can not use BSV21P2PKH.getLatestInstance for BSV-21, it only works for NFTs.
+const bsv20P2PKHs = await BSV21P2PKH.getBSV20(tokenId, `your ordinal address`);
 
 await Promise.all(bsv20P2PKHs.map((p) => p.connect(signer)));
 
@@ -78,7 +78,7 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
     tokenChangeAddress: yourOrdinalAddress
-  } as OrdiMethodCallOptions<BSV20V2P2PKH>
+  } as OrdiMethodCallOptions<BSV21P2PKH>
 )
 ```
 
@@ -91,18 +91,18 @@ const { tx: transferTx } = await p2pkh.methods.unlock(
     transfer: recipient,
     pubKeyOrAddrToSign: `yourPubKey`,
     skipTokenChange: true
-  } as OrdiMethodCallOptions<BSV20V2P2PKH>
+  } as OrdiMethodCallOptions<BSV21P2PKH>
 )
 ```
 
 # `buildStateOutputFT`
 
-Any instance of `BSV20V1` or `BSV20V2` contains the `buildStateOutputFT` method. Unlike the regular `buildStateOutput` method, this method inscribes the subsequent amount with an appropriate [BSV-20 transfer inscription](https://docs.1satordinals.com/bsv20#transfer-all-modes). The method takes the number of tokens to be transferred to the subsequent output as an argument.
+Any instance of `BSV20` or `BSV21` contains the `buildStateOutputFT` method. Unlike the regular `buildStateOutput` method, this method inscribes the subsequent amount with an appropriate [BSV-20 transfer inscription](https://docs.1satordinals.com/bsv20#transfer-all-modes). The method takes the number of tokens to be transferred to the subsequent output as an argument.
 
 Below is an example of an FT counter contract:
 
 ```ts
-class CounterFTV2 extends BSV20V2 {
+class CounterFTV2 extends BSV21 {
 
     @prop(true)
     counter: bigint
