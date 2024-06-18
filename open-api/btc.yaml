@@ -1226,6 +1226,13 @@ paths:
           required: true
           schema:
             type: string
+        - name: details
+          in: query
+          description: Return Order Details
+          required: false
+          schema:
+            type: string
+            example: "1"
       responses:
         '200':
           description: Successful operation
@@ -1234,15 +1241,31 @@ paths:
               example:
                 statusCode: 0
                 data:
-                  desc: Mint amax
-                  status: processing
-                  payAmount: 940960
-                  payAddress: tb1pzt8gjsrclj2lxl6clkkrqud6mlmecca6wyvlkxnhcaael2x6hhwshx2yck
+                  desc: Etch GOATOKKMMM•KKKG•HHH•AA
+                  status: succeeded
+                  payAmount: 113046
+                  payAddress: tb1p4yg23c5n6t5s44vclh309lgewu0cqmzzlh22c7ehzwfwhzj36y8q7eh74x
                   postage: 546
-                  receiveAddress: 2N9Fjf6wvNoHv3N8NXncw26zQPZM5CxmkoY
+                  receiveAddress: tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43
                   feeRate: 500
-                  type: brc20_mint
-                  payTx: e5c0f04b12bd79e1a7cd044ef5ef22e1b06a0eb5e9f48b4d2a596d197804c3ed
+                  type: runes_etch
+                  payTx: 2338324efd71552c85c8a3903c6f2c960ab804cd6ed294ff12effd81be848608
+                  details:
+                    id: 2821647:742
+                    name: GOATOKKMMM•KKKG•HHH•AA
+                    divisibility: null
+                    symbol: null
+                    premine: null
+                    amount: 1
+                    cap: 21000
+                    startHeight: null
+                    endHeight: null
+                    endOffset: null
+                    revealTx:
+                      txId: f1127254c92ef9e9a716963b472bffbb03c8a64296e5e776a2fe53a0d0d2806c
+                      status: confirmed
+                    dataURL: data:text/plain;base64,YXNkZmFzZGZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dmFzZGZhc2Rm
+                    confirmations: 143
         '400':
           description: Bad Request
         '401':
@@ -1739,6 +1762,9 @@ components:
           type: integer
         endOffset:
           type: integer
+        dataURL:
+          type: string
+          example: data:text/plain;base64,YXNkZmFzZGZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dmFzZGZhc2Rm
       required:
           - name
           - amount
