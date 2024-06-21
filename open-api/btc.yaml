@@ -1109,7 +1109,7 @@ paths:
           description: Unauthorized
       security:
         - bearerAuth: []
-  /btc/{network}/bitmaps/{numberOrInscriptionId}:
+  /btc/{network}/bitmaps/{numberOrInscriptionId}/info:
     get:
       tags:
         - Bitmap
