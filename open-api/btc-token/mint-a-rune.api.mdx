@@ -1,0 +1,54 @@
+---
+id: mint-a-rune
+title: "Mint a rune"
+description: "Create order to mint rune."
+sidebar_label: "Mint a rune"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVl1v2zYU/SvEfWoBNZZjx42FYVjibUAKrClSF31I/EBT1xYTiWTIK7u2p/8+XEqznQ+kGPYkiby6n+cccgcklwGyW7j2OXqYJZBjUF470tZABhOPklBY3hVkRaUNCV8bPIEErEMv2fAqhwz+4i0ZNyEBJ72skNCz9x0YWSFkYJDW1j9AApq9O0kFPA95OZ0IVUhtRGct3lVSG4Mk/haEgdq3oJcG6T0k4PGx1h5zyMjXmEBQBVYSsh3QxnHUQF6bJTTNrDXGQJc237DFq9XKV+p9JY6yhtAQu5HOlVrFXvTuA/vavUzDzu9REffGc+dIY+Bdjwr1Ci/y3GMIL9NOAH/IypW8RPO+cx7Dojr/ONqM89wMFsv16dan6/vUlYOtNKG8x7FZuK15HDyocfo4HPnHyhgcDqBJYIF4IwmPwmhDuER/HKefpk0CzgaSy5+Yng1HTQLcoc+ywmvPUHirgtPz/ng8HmVngxGn49GhpJ9l0zTH3b993rJDVYekn+W0jzRLgDTFVBiwN7XB36fX0DRtjOCsCe1cTtP0JUK+1kphCIu6FHv0w0+hsC9lB4Ek1WFic4QsTSCXFCESARdpNBqNzkfn/fHp+KM6W4xGOMrVx/PBWeTUZo8ShsJj/jAeqvG5LFxqtmehuH8Idb6irVTbLS1OVwMcF2XR/VnZmjMcpmfj06atd/haiZcyFzctSyDa9F/afDOypsJ6vcUc2FNAVXtNm0j2OUqP/qKmArLbGbOuQiosV8fjifnwHvTmpHq7juZNLzYh9HhwocfM66lISGD/fvWvltS+hAwKIheyXs86NB+k0ydB+Y2jE217qz40ybFd1uuVVsmysIGyQZqeR5PZIe2vzNV27MfJ71HJTqBTFv5ujSDpXv60vmIUw6fv09gOHvzNQWn+OMz/Odv/L6WPGN1P0yPSng1Hz3n5hHwH7vWZ7NosbCy4I8eVIW/zWh0BXKoIcKyk5saG2jnr6bd93xktPKQWIqv+C2WfFijChK3FtUMjLr5cCeftSucYBJrcWW0oiIX1QkaaabMU0uSikkYu+WMlvbZ1EDI4VBSEXYjLm8mH01SQfUATEnHtc21kGYQ2+9AhiV6Y60FYIy6nk5M7c2euSMiytOsgclxhyYQOLPoeyWtcociRpC4xF9wdHrG2Rsi5rUlwAnqh1T5wYUtGbxtqLktpFPJXEGssS36SFaxuXioSa03FcYqChWCf5d57iHly37hXaELtMYiIWux6JKjwtl4W4tP3qWjhKJicaKiToRPoxLySUY26s/jpef1kUruDoL19A+joQfiDeq6U2nCoyLtdx/FbmJOCBLLD0d/SvFNofrJLxlhL9lkCzFP+dbeby4DffNk0vPxYo2eFmSXAQJBzRurtDnId+D2HbCHLgG8U8+6mO0Xei/98zXi11m5Rmg1wUmXNX5DAA26OrjvNrEmgQMlXLE643Z20aX2Yso/D3y8OENay9o8LpdDRm7bHYvvl+uuUNaq761Tx0AEv19x7uYYM7uAO4kUu0iTqE6/voJRmWUcdgdYvq5p8KorPRDBW9mo/frlsYTllqvy6705kDvemaf4ByhOcPg==
+sidebar_class_name: "post api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Mint a rune</h1>
+
+<MethodEndpoint method={"post"} path={"/btc/{network}/orders/runes/mint/create"}></MethodEndpoint>
+
+
+
+Create order to mint rune.
+
+
+
+<MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+Create a order to mint rune
+
+</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"receiveAddress"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43"}}></SchemaItem><SchemaItem collapsible={false} name={"feeRate"} required={true} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":100}}></SchemaItem><SchemaItem collapsible={false} name={"postage"} required={true} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":546}}></SchemaItem><SchemaItem collapsible={false} name={"runeNameOrId"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"2819996:536"}}></SchemaItem><SchemaItem collapsible={false} name={"repeat"} required={true} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":10}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"orderId\": \"66686819297c5f66e6dc7835\",\n    \"payAddress\": \"tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh\",\n    \"payAmount\": 40592\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

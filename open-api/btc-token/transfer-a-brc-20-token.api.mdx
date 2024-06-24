@@ -1,0 +1,54 @@
+---
+id: transfer-a-brc-20-token
+title: "Transfer a brc20 token"
+description: "Create order to transfer a brc20 token."
+sidebar_label: "Transfer a brc20 token"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVk1v2zgQ/SvEnLaAGssfcWNhsdjYuwuklxSuix4SH2hqbDGWSIUc2bW9+u+LoRTbTdIUxZ4kSsP5fO+RByC58pDcwa1L0cE8ghS9crokbQ0kMHEoCYXlv4KsICeNX6ITUiyc6sWC7BrNBURgS3SSd92kkMDsVTuIoJROFkjoOOoBjCwQEjBIW+vWEIHmqKWkDJ6nMp5NhMqkNqK1Fr8VUhuDJP4VhJ6aN69XBukdRODwsdIOU0jIVRiBVxkWEpID0K7kqJ6cNiuo63ljjJ7GNt2xxfehPx2T/nEPXgmorCE0xP5kWeZahf50Hjw7PbzMxy4eUBE3yXE3SaPnvw4V6g1ep6lD71/mHwF+k0WZ8ydadMvSoV8WVx+Gu1Gamv5yte3tXbx9iMu8v5fG5w84Mstybx77azWKHwdD91gYg4M+1BEsEaeS8CyMNoQrdOdxunFcR1BaT3L1E9PLwbCOgLRav525danm+LKgtw17cQx1fd7tu+ctOlVxSrLNoQkw5xUFd+PppBc/wfWv2S3UdePdl9b4ZgIc8gUoPldKoffLKhdH7MNPh36s4wCeJFV+YlOEJI4glRTAELgWSDQcDq+GV91Rb/RBXS6HQxym6sNV/zLQaHfEAw/9MV2PBmp0JbMyNvtLnz2sfZVuaC/Vfk/L3qaPoyzP2p2FrTjDQXw56tVNvYPXShzLVEwbYkCw6b60+WJkRZl1eo9pmItHVTlNu8DvBUqH7rqiDJK7OROtQMosV8eDCfnwP+gsSHUOLbPrTmiC7wR+dZ4I11FBjYBjuM2ThFQuhwQyotInnY4t0byXpb7wyu1KutC2s+lCHZ3bJZ1ObpXMM+sp6cfxVTCZn1L/zMxsRn9ewBGV7ARaQeF1YwRR+/KPdYUkSODj11loCQ9/ehKYv08YeM7t/0vgM/524/iMopeD4RMLG6q1TGvoxLq7tKHClhY3hpxNK3WGaqkCqrGQmjvpq7K0jv48Nprd8FQaXGy6LxR8lqHwE7YWtyUacf3pRpTObnSKXqBJS6sNebG0TsjALW1WQppUFNLIFS820mlbeSF9iYq8sEsxnk7eP2mwj8StS7WRuRfaHEP7KHiZVga9sEaMZ5OLe3NvbkjIPLdbL1LcYM4sDgLvkJzGDYoUSeocU8Hd4Zlqa4Rc2IoEJ6CXWh0DZzZnyDahFjKXRiGvvNhinvOTrGB9dFKR2GrKzlMUzP5jlkfvPuTJfeNeofGVQy8CTLHtkaDM2WqViY9fZ6LBn2BGoqFWey6g1epCBglqz9wfHtHfDe1wErRfuAy0PCH8Rp0yl9pwCoGAh5bwd7AgBREkp6O/4TyziJ2xl9Y/469h/jwCJi1vPxwW0uMXl9c1f36s0LHkzCNgkMgFo/juAKn2/J5CspS5xzeq+23aHijvxC9fNV6tt/0ozQ44qbziFUSwxt3Zlaee1xFkKPn6xQk3fydNWu9n7OO0+8WJwsLW7LhWCkt60/ZcfT/dfp5xq9v7ThFOIXByy/cYuYUE7uEewr0uUCiIFX8/QC7NqgqiAo1fljj5vUI+U8RQ2av9+H3cQHbG0Pnj2J0Gi/W8ruv/AOe1pdM=
+sidebar_class_name: "post api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Transfer a brc20 token</h1>
+
+<MethodEndpoint method={"post"} path={"/btc/{network}/orders/brc20/transfer/create"}></MethodEndpoint>
+
+
+
+Create order to transfer a brc20 token.
+
+
+
+<MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+Parameters to transfer a brc20 token
+
+</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"receiveAddress"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"tb1ppresfm876y9ddn3fgw2zr0wj0pl3zanslje9nfpznq3kc90q46rqmnne43"}}></SchemaItem><SchemaItem collapsible={false} name={"feeRate"} required={true} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":100}}></SchemaItem><SchemaItem collapsible={false} name={"postage"} required={true} schemaName={"integer"} qualifierMessage={undefined} schema={{"type":"integer","example":546}}></SchemaItem><SchemaItem collapsible={false} name={"tick"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"ordi"}}></SchemaItem><SchemaItem collapsible={false} name={"amt"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"200"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"orderId\": \"66686819297c5f66e6dc7835\",\n    \"payAddress\": \"tb1qdk94c98ahp0nz5shjksudvtzaczztf2v3e9hlh\",\n    \"payAmount\": 40592\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

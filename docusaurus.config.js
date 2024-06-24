@@ -117,9 +117,16 @@ const config = {
         id: "open-api-doc-generator", // plugin id
         docsPluginId: "open-api", // id of plugin-content-docs or preset for rendering docs
         config: {
-          btc: {
-            specPath: "open-api/btc.yaml",
-            outputDir: "open-api/btc",
+          btcBlockhain: {
+            specPath: "open-api/btc-blockchain.yaml",
+            outputDir: "open-api/btc-blockchain",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+          btcToken: {
+            specPath: "open-api/btc-token.yaml",
+            outputDir: "open-api/btc-token",
             sidebarOptions: {
               groupPathsBy: "tag",
             },

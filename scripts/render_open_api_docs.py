@@ -21,7 +21,7 @@ def remove_tag(content: str, pattern: Pattern) -> str:
 
 
 def traverse_and_modify_files(folder: str):
-    print('Rendering OpenAPI docs...')
+    print(f'Rendering OpenAPI docs in folder {folder} ...')
     # traverse all files in the folder
     for root, dirs, files in os.walk(folder):
         for file in files:
@@ -41,4 +41,5 @@ def traverse_and_modify_files(folder: str):
 if __name__ == "__main__":
     scripts_dir = os.path.dirname(os.path.abspath(__file__))
     project_dir = os.path.dirname(scripts_dir)
-    traverse_and_modify_files(f'{project_dir}/open-api/btc')
+    traverse_and_modify_files(f'{project_dir}/open-api/btc-token')
+    traverse_and_modify_files(f'{project_dir}/open-api/btc-blockchain')

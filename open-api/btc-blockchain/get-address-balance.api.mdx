@@ -1,0 +1,50 @@
+---
+id: get-address-balance
+title: "Get Address Balance"
+description: "Get balance of an address."
+sidebar_label: "Get Address Balance"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVdtu4zYQ/RVinnYB1ZITB06EomgctIvsS4utF/uQNQKaHFtcSyRNjpyLqn8vRpYvWQdpu34xL2c4Z2bOjBoguYyQ38G11gFjxAizBDRGFYwn4yzk8AFJzGUprULhFkJaIbfgASTgPAbJwFvdQ/uXxGRrAgl4GWSFhIE9NWBlhZCDRXpwYQUJGPbiJRXwvevJ9EaoQhorerR4V0ljLZL4WxBG2q6iWVqk95BAwHVtAmrIKdSYQFQFVhLyBujJs9dIwdgltG2yJ9JH869EDrj/7mXG4Oid5czmDZxlGf+9fDzWSmGMi7oU+3RCAspZQkuMl96XRnUX6bfIRg3go6x8ibyMJKmON04j5FkCWlJHZkc4B5oPvd9YrfSm+IalXIXRWRaunteLB1QrvKipvKiXl36snpfZZn0ZHvRYjkIcrYuqfGYuXIR79tOFsaitRn1Pj+5euZo5nifHh7GuIL8aXYyHo3EC0aOlY/Dw+KzDno2z87OrBOhx/2CbQIWVd658y2926jd7xWN24jE7dpa13S+B0Wv1mUgtPuG6xkjQYYanmM9W1lS4YJ5Rs7ogoqqDoadO8nOUAcN1TQXkdzNWRYVUOG6ZJVLXInwF6ZxU2vRab1O5a8q06ZdtOt+3VcSw2fVUHUrIoSDyMU9T59H+JL0ZRBWePA2MSzdDYMkfcHmalk7JsnCR8vMsu+wgswPxv1jUW9Ue099rnB+BXvu834Ig6Re/u1BJghw+fpl2CTF24TpzQ6xauLUUnK7Vkdql6tSOlTRl1xfeu0C/7qPg7HPI25RvhidtOi1QxBtGiz88WnH9563wwW2MxijQau+MpSgWLgjZ9ZyxSyGtFpW0csmbyfRm8NV+tfwSW6ONdcAouqxgbyWoCK5eFuLjl6nYhiu4/Gip79IBU/UuUiW7Zu1Hzevz8UUMzaHv3568fRkIHyn1pTSWXXb1bXo53cGcFCSQH0btXlF8fBhoO1HNEmA9sGnTzGXEz6FsWz5e1xhYy7MENjIYOeca3jWgTeS1hnwhy4hvBPPuUz8134v/PdZfjbU/lPYJmFRZ8w4SWOHT0eeFVf/DJA8Z+gEGO+N21iZQoNQYupRtb6+VQk9Hdicz/sWY+PDblMv3sgW/a7nu9Vc5/TzZinTqVmh/2TMk3jK/tv0HrTTEjA==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-blockchain/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Address Balance</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/addresses/{address}/balance"}></MethodEndpoint>
+
+
+
+Get balance of an address.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"address\": \"tb1ppvndcdvhjelakr420r9zqfwecke5utl5ug8p7czg0vq8rwd7a4rs4qhmlz\",\n    \"chain_stats\": {\n      \"funded_txo_count\": 3,\n      \"funded_txo_sum\": 9457147,\n      \"spent_txo_count\": 1,\n      \"spent_txo_sum\": 270329,\n      \"tx_count\": 3\n    },\n    \"mempool_stats\": {\n      \"funded_txo_count\": 0,\n      \"funded_txo_sum\": 0,\n      \"spent_txo_count\": 0,\n      \"spent_txo_sum\": 0,\n      \"tx_count\": 0\n    }\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

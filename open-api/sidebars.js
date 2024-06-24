@@ -22,12 +22,28 @@ const sidebars = {
     {
       type: "category",
       label: "BTC",
-      link: {
-        type: "generated-index",
-        title: "BTC API",
-        slug: "/btc",
-      },
-      items: require("./btc/sidebar.js"),
+      items: [
+        {
+          type: "category",
+          label: "Blockchain API",
+          link: {
+            type: "generated-index",
+            title: "Blockchain API",
+            slug: "/btc-blockchain",
+          },
+          items: require("./btc-blockchain/sidebar.js"),
+        },
+        {
+          type: "category",
+          label: "Token API",
+          link: {
+            type: "generated-index",
+            title: "Token API",
+            slug: "/btc-token",
+          },
+          items: require("./btc-token/sidebar.js"),
+        },
+      ],
     },
   ]
 

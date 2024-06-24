@@ -1,0 +1,50 @@
+---
+id: get-bitmap-list-by-address
+title: "Get Bitmap List by Address"
+description: "Get bitmap list by address."
+sidebar_label: "Get Bitmap List by Address"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vttu2zgQ/RWCTy2gxrr4IguLxSbBbpFigS5SF31IjWJEjmw2EqmQIyeu1/++oCRfkni7mz70SbcjnjPDmTPccIKF49kNv1BUQc3nAZfohFU1KaN5xt8isbz9xkrliOVrBlJadO6MB9zUaMEjr2SP7dZhf/bY8w7LA16DhQoJrafbcA0V8oxrpHtjb3nAlWergZb8qYSL2SUTS1Ca9Wj2qgKlNRL7mxE66u6cWmik1zzgFu8aZVHyjGyDAXdiiRXwbMNpXXtWR1bpBd9ug70Q2Av9vpAD7kdYSlUp2nHcNWjXz0hqWCi9YDvkgaWA0p2i0U2Vo31EY4rC4f/j2UNfQDT3aFcb7dD573EY+svj9T80QqBzRVOyfZXwgAujCTV5PNR1qUT7YfDV+Z82HB+gqkv0t46AGndpJPIsDLgEgrZyumr80qvJIh/lnviL8oUoc4GAISRiMo4wHmM0RZwm43ycpnIyiUJMh2MxjuJ4mEcgk0KIKMwjmeAIwmE6USEP+NKU0hNwyqM6xBHoFbr7B/vt9qudVHZR2ttpOlyJr0LqorIPFBZCju9jN8HR3XA6cqNbrZuEP9a3k52E48nYb9mTcOIT4YTRVMA4T2KZhlGUiDSdFpM8LpKxmMjxNI6KdJQWIopkHo2jqEiEGEEcyeEUIBkV8U8KZ3IinOREOEmSFlEcxolMklxMJ3k8GckohqEciaSIkiHkkyiPkiRM42QyxHSUwigqxmlRiAKm4U8KJ93Ot9vtNuDDU+V9AZJd412DjniLiZ5jPmpoaGms+obS9yd3KBqraN3VMYJFe97Qkmc3c99UFdLS+Awt2o5sPSjjg5zEYNNb33bQJdgNeiNCN9j0t9sBOIfkvcmhXe2ctrElz/iSqHbZYGBq1G+gVmdO2HVNZ8oMVhH3O3fAZYNBaQSUS+MoS8IwbSHzg/4P3hq63j+OYu8UfhHeO4h/7kA86G/+MLYC4hl/92nW5kXpwrS/K/K9z680WSMbceQZIFrPwAqUl+maujaWfttH4TfBh9xlfhU987vZEpm79Gj2vkbNzv+6YrU1KyXRMdSyNkqTY4WxDFrn8u4IWrIKdGeVK7DKNI6Bq1GQY6ZgF9eXb+KQkblF7QL23kqloXTsqKZc0K5y3Wh0zGh2Mbs8+6w/6ytiUJbm3jGJKyy9RzpGhlkkq3CFTCKBKlEynx2fMGU0g9w0xLwAVSixJ+66oafKoQQt0D85do9l6a9kmNKEFgSxe0XLY4nMe+te5X511+r0efO5Qu0ai461NYB9jhgtrWkWS/bu04x1m8t8zaOm3tnP/MbUxlEFrcH3E+q7R4VHG7c5jIz/OIz0xUf4QIO6BKU9dVvVm76XbnhOggc8Oxw7+nbiAd83lAccxnzfU3NvOY78GptNDg4/2nK79a+78eo7TSoHeXk0Qv81kCdD/qTyW1wfnRhWUDYe07bqi4n2U/47THvMgWruH6zyXC8M8NV1f5x4zV58fDupsX8Jen2scKd9t58vS84TkYc9/wEFu5+3823AlwjtcLrZ9F/PhcD6OLfPzj6P/P/t7zNfeY9N9YmJtquf1PTLRdeIM28Ov+4Vtl7B26H2D4JXFKs=
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Bitmap List by Address</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/bitmaps/addresses/{address}/assets"}></MethodEndpoint>
+
+
+
+Get bitmap list by address.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"bitmap_number\": 1,\n      \"inscription_id\": \"dbceae0a3c761e26e19ee936b688d7710e846c61224b1ad3fcc10b1d3e5a0487i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30676\n    },\n    {\n      \"bitmap_number\": 2,\n      \"inscription_id\": \"019ca6b32d80113c889f7b2f36c7d6921f858fc11db1611f3cc5a21d49aa35f2i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30677\n    },\n    {\n      \"bitmap_number\": 3,\n      \"inscription_id\": \"338f12023d33bc97b275d12a4d5c3f134ab71b133082374e858a51f68ffcfa90i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30678\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
