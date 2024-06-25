@@ -1,0 +1,50 @@
+---
+id: get-address-utxo
+title: "Get Address UTXO"
+description: "Get UTXO of an address."
+sidebar_label: "Get Address UTXO"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVW1v2zYQ/ivCfWoBLabeRWEYlgRb0X7p0DnogNQYTuTJ0mKTCkm5yTz994GyYidN0K31F1Pkc+/33O3B4dpCdQ3nUhqyliysQpBkhel612kFFbwhF1wt/3gf6CZAFeABeQYh6J4MetRbOeNmNRMeQujR4JYcGW9jDwq3BBUocp+1uYEQOq+/R9fCl0YvlpeBaLFTwYwOXm2xU4pc8E/gyLrDyXZrRe41hGDodugMSaicGSgEK1raIlR7cPe9t2qd6dQaxjE8OjKH8p+OnHD/38rKg22vlc9ptYeYMf/3VLkdhCBrm2ETHHMJIQitHCnn8dj3m05MD4u/rBfaA93htt+QP1qHbrCXWhJULASJDqdMu7vOl6QmSZiWZVMntUipYTFjWYEpF8jrQrAySzFPeJ2VJS9F0uRlKss8kjXnJS+iEkLY6cFNug+mvFGhVdOZ7SkL9UaLmz9b6tatgypmUZpkx1u0LVTApp/Ms6TJE5kIxmIRx3UcpzxigjDJmjRHkWdSRlFRZIJlCYvyomS8LrHm8KDPdb50URHxOIt4wccQdrgZCKqS5zxn3Nd3Dj/GLElrKvKI85TqGHlEES9YFmeJ5Iko4jhmxONaoEhlnReU1Qw51o3M07QQx/DjbwqfZZy9GH7GyjhP8zJtsjQuOeaJzLikqCmSuMSsEHkcyTitWVIXUc2iRqZZjpmMy+fhl0UasaI8hR9HRcz4uBrHcQwhfandLlAGH+h2IOtgwkTPMVcKB9dq0/1N0pMFLInBdO5+6qua0JA5H1wL1fXKN/mWXKt9stfkJsb7J1jUTiz2M3XHBT5Ml8V+Po6Lwd1p8OrN7mE+DGYDFbTO9bZaLHRP6gfsuzMrzH3vzjq92EXgy3vCVYvFRgvctNq6KmGsnCCrk9e/e4IeGPjY9yNfvRKYeUwTYzzIp3s6/KrNFh1U8O7jcspGpxo9iXfOMxDeKme0HMQj5qKYmEtb7DYTx/teG/fzMQqfeh/yId+76NnIWbYU2EuPDt73pILz394GvdG7TpINSMled8rZoNEmwGl+dGodoJLBFhWu/cfF8vLsk/qkvCYvTcoOhmwwZYVmqcC1Rg/rNnj3cRkcwg187Um5eeKceVd7bd0Wp8Ezj80XBv2TAPanAfaV5TEXwNGdW/Qb7JQ3NlV2P3fRNdTOc7A6LYxjI/nr01ieemkVgm8DL7ff12jpymzG0V/fDmR8/648WUyHtS/d9R5kZ/1ZQtXgxtJXwnj1YR78r4Nv3kwvBjpforqHI4MBQrih+0cb0jf7dzt5Ss93ePAgPK7GEFpCSWZK2eH1XAjq3SO5Z2vqyWh488vS1+4p875g2mFtveTTjxeH3lzqG1I/HT10/hOmefcv9ajjFw==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-blockchain/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Address UTXO</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/addresses/{address}/utxo"}></MethodEndpoint>
+
+
+
+Get UTXO of an address.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"txid\": \"bedea488fb3bc4ef020057a49ca9b7c0854a639b58898c3f684d861db9989718\",\n      \"vout\": 0,\n      \"status\": {\n        \"confirmed\": true,\n        \"block_height\": 201435,\n        \"block_hash\": \"000000d653f63d3c002c22b224910cea35f46ac65dd11775c0530167809b8ab9\",\n        \"block_time\": 1719251979\n      },\n      \"value\": 8969609\n    },\n    {\n      \"txid\": \"2a534be761994eb2a91e19705253d93c72220e92bcac4db67e5b0a9abfd6447c\",\n      \"vout\": 2,\n      \"status\": {\n        \"confirmed\": true,\n        \"block_height\": 200590,\n        \"block_hash\": \"000000508264684f54289a63d59de1f7328a57c621d24b03b71b01fd456a5d28\",\n        \"block_time\": 1718741078\n      },\n      \"value\": 217209\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

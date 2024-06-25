@@ -1,0 +1,50 @@
+---
+id: get-address-brc-20-balance
+title: "Get Address BRC-20 Balance"
+description: "Get BRC-20 balance by address and ticker."
+sidebar_label: "Get Address BRC-20 Balance"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVdtu3EYM/ZUBnxJAsdZOixZCUdRrtIHzksLdIA/OouCOuKupZ2fkIbXORtW/F5RkrW9wE+tFc+HlkDzktCC4YSguYX5x9uZkBssMSmKbXC0uBijgHYkZ7swKPQZLZrU3WJaJmA2G0oizV5SOIINYU0LVOy9HzdNRbrQwHyxABjUm3JJQUuctBNwSFBBIbmK6ggyc+q5RKngIaL44M7ZCF8wobV5t0YVAYv41QizDit0mkLyGDBJdNy5RCYWkhjJgW9EWoWhB9rV6ZUkubKDrsgnIENPzOIaQJsmXuBnT+L/xHuS+3ctShbmOgYn1/mQ2099949xYS8zrxpupeJCBjUEoiMpjXXtn+4v8H1alFugLbmtPumRBafgslgTFLIMSpQcTd5TQ+79HykABP85Ofno7e/BBBrhD53Hl6RtkJWHgNaUH4jPo9Mvgh6dCnGNpLui6IRboZY4fy3wM2EgVk/tKpRYImGyTnOx7cq4IE6XTRiooLpea2C1JFZXjG5KezHoF+Ups3o6s7PJVsiezvB0I0uVjDYnzdlx2+RiDFpYp7W67oUkeCqhEai7yPNYU3mDtjtimfS1HLua7Y1AWHeSKPPfRoq8iS/F2Nvu5F1keAvlLeTIQ4W44E23UCIx00v0gBNm4+COmLQoU8P7Tok+QC+vYqztRIsB5kBTLxt4hENqeQLRF53uq1XVM8tsUhVZDQx5KsDt+xPxFRYbPVNp8qCmY0z/PTZ3izpXEhkJZRxeEzTomgz2NXdj0E2mLATe62WFysWGDXJMVNnF9O4kkXlHgzHxIpQvo2bgwueast3LRBGITg5kvzo4+h8/hXAx6H2/YlLQjrw3DRqJJJMnRjkxJgs5TaTQ7mjAXg8FVbMQoALd2dnJcRV9SGl3d8iAzyOaGvNe/ROOCUEIr5sZJdRei0UabUE7WucepedNcUeAmEZueAzTmyEiVYrOpzPtPCzMU1yj5KcjY5kdamDqybLHv9nFWPTvO7xWuPcyP73o+RioKfZG89uiCAuk53o4tdgkrsZBBcXgo+i7To2kQT42mp4fJOfXaMgNtE7XWtitk+ph81+nxdUNJW36ZgTJHx0zfj6VjXZdQrNEzPRPuq4txPr823/1OPRn+eIhhDwrKN7qDDK5of+e91GHwMpAPHrEXYBh1Xw7h3vv2AgC3yt2yy6AiLCn1VRtuT62lWu7oPXrQ7g30d78vlEL3h+ODYdhbfxLTL/OhoRba5L8eUqRbxdd1/wEpGzNA
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Address BRC-20 Balance</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/brc20/{ticker}/addresses/{address}/balances"}></MethodEndpoint>
+
+
+
+Get BRC-20 balance by address and ticker.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"overall_balance\": \"502730000000000000000\",\n    \"available_balance\": \"502730000000000000000\",\n    \"transferable_balance\": \"0\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
