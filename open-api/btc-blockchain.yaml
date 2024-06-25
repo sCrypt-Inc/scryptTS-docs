@@ -4,10 +4,7 @@ info:
   contact:
     email: support@scrypt.io
   version: v1
-  description: The sCrypt Open API provides endpoints for accessing and managing BTC. 
-  
-  
-    The API ensures secure access through JWT bearer authentication.
+  description: The blockchain API allows you to query general information about blockchain, including blocks, transactions, and addresses.
 servers:
   - url: https://open-api.scrypt.io/v1
   - url: http://localhost:3008/v1
