@@ -1,0 +1,54 @@
+---
+id: get-address-runes-balance
+title: "Get Address Runes Balance"
+description: "Get rune balance by address and rune name or ID."
+sidebar_label: "Get Address Runes Balance"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVttu2zgQ/RWCTy2gxvItsYXFYpN0t3CB1kXiog+t0dLkyGIjkQo5dOJ69e+LkeRbk+1u8qQLhzxnLmeGG45i6XnymV8FA57PI67AS6dL1NbwhL8BZC4YYAuRCyOBLdZMKOXAeyaMataMKIBZxyavT3jEbQlO0PaJag84bzfUGOyiOYlHvBROFIDgiMGG0zE84QbwzrobHnFNDEqBGf+Z1sXskslMaMNaa/aiENoYQPY3Q/DYvHm9NIAvecQd3AbtQPEEXYCIe5lBIXiy4bguCdWj02bJqyraExEFTN1E/ZLJ1XEAngnVhvQ/fd7bPQcl14XGLcZtALd+AFKKpTZLtrXco6Qi94/BmFAswB3B2DT18P9wdqZPAJqTtS+t8eBpvRfH9Dg+/zpICd6nIWe7euQRl9YgGCR7UZa5lvVC57unTRsO96Ioc6BXjwKDv7QKeBJHXAkUdZGWNw0MT/iw24tFPx33RgPoxWn/rC/E+EyNT7u9/kgNBmoxGg7U4LR7mg76sQAZ989G476SAwUDeSb7o2GPR/xO5DngV0otT/hCdsthHL570789U3A6GJ/Bat2Xp/37wg/uh6txNrz/ka1uVUhH2Q8VjAujMr1VN8u73pgiGQx81SS9bhJvv9vMfHx/OX33bvr+zXT6+ppHHC2K/GsrbdoRx0NezauqqiI+eCyuF0KxK7gN4JHXNt2HNh+NCJhZp3+AaowGD40OdJOyyWtmLLLUBqOolLgHGZzGdR3yBQgH7jxgxpPPc8p/AZhZcnFZF08tl4R3Fig7m7YhVB1y3Hc2WxVXnVY89LN9rTqt76QoD261bUXB5TzhGWLpk07HlmBeiVKfeOnWJZ5o21l1OVX83i7pdHIrRZ5Zj0k/jke1yXzvyjUVdFOxhw7t6psO4W3d03djxKP25S/rCkFV9/bTrA6RNqmtt2ukiuUTg86qIA8qXci60qEQmmj6UJbW4R87Lyg55HKTkVX3gUqnwTG0N2DY+YcJK51daQWegVGl1QY9S61jolYaqZkGQiFMI+2VcNoG3+4vnUUrbe4jpo3MgyKTqVPaiNwzbXaoPmIXV5evenHUjIuIXb+/juqjLyazd+cfTr6YL2aCTOS5vfNMwQpykjghMQfoNKyAKUChc1CMwkSR09YwsbABmS9B6lTLhpmPWGZzBc43INuC2MN4u8XCDApC0QbBCYnsTmPWHsNWWrBvU6fAfaNo+YhGpQ+LQiPWrY6WapL+kuJfbyY+mVjROloWDJkg0cAMms983SweBrH1ruE4y6DODhgfHHhW1xu0WWGYORuWGXv7acaaQmIkTjDY9r4TKoLSeixE3QLbTvGrsX1UI5t9T33OZaEtfoR77JS50Ibo1KratLL+zBcoecST/b2gVnb9az+hd+Km//sxudP3POIkTTpvs1kIDx9dXlX0uxlQpHqlvVjkB0PoXz39aUw+6sUNrA9m7krkgWzqtvFkoN2c/AXSzmYPNacPpwnriQ6+uGoH8kv25LvWoxzbn8KsDxluuW9z+7TgHJB8eA17DottOT2bxvEd7RkUtpureRXxDIQCV2euWT2XEsrDFD+4xBxNxzd/zkgZx3Pmp7lSn/4op98umn4xo97z+45h3YqaS8I/0Gou0Q==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Address Runes Balance</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/{nameOrId}/addresses/{address}/balances"}></MethodEndpoint>
+
+
+
+Get rune balance by address and rune name or ID.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"pkscript\": \"5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852\",\n      \"wallet_addr\": \"bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29\",\n      \"rune_id\": \"1:0\",\n      \"rune_name\": \"UNCOMMONGOODS\",\n      \"total_balance\": \"1005\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

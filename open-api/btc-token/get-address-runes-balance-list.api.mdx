@@ -1,0 +1,54 @@
+---
+id: get-address-runes-balance-list
+title: "Get Address Runes Balance List"
+description: "Get runes balance list by address"
+sidebar_label: "Get Address Runes Balance List"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVtty2zgM/RUOntoZNZZvsa3Z2dkk7WbTSepOkk4fWk9Li7DFRiIVEnTiev3vO5BkO7dtm31bv1gSQJ4DEAfgCkjOPSSf4DwY9DCJQKFPnS5JWwMJHCMJxyYxlbk0KYpcexLTpZBKOfQeIrAlOsn+J6pZcVDbRLWpOGxWnmpPEEEpnSyQ0DHuCowsEBIwSDfWXUEEmnFLSRk8JHN4eSTSTGojGm/xopDaGCTxtyD0VD95PTdILyECh9dBO1SQkAsYgU8zLCQkK6BlyaienDZzWK+jLZFdXD8msvP7Lyi5LjRtMK4DuuUjkFLOtZmLjecOZSZz/xSMCcUU3T0YO5t5/DWcreszgCbs7UtrPHq2d+KY/+7vfxHSFL2fhVxsKwUiSK0hNMT+sixznVaG1jfPi1aAt7Ioc+RHT5KCP7IKIYkjUJJkVTnlVQ0DCfTbnVh2Z6POsIedeNYddKUcDdRov93pDlWvp6bDfk/19tv7s143lpjG3cFw1FVpT2EvHaTdYb8DEdzIPEf6wkcLCUzTdtmPwzdvutcDhfu90QAXy266370tfO+2vxhl/dvv2eJahdkw+66CcWFYzq7V1fymM+JMBoNfNIti2OvEnVHSbg/6m+/NCX386835m9ODs8Px8fj85PT0ACIgSzL/0ggOEk4r/4AP9n8UdDuJHwT74d3R+Oxs/O54PH598USg7Tjuw3qyXq/XEfSeKqZDqcQ5Xgf0BJVP+7HPByMDZdbp76hqp95jJ25NgmkJOxMnr4WxJGY2GMX6AY9pcJqWVZ1NUTp0B4EySD5NuOgLpMxyiHOsOxqboDWltLVqWtO6VbXNVtMm0LdWzeO61QTMvcOjW2w6YXA5JJARlT5ptWyJ5pUs9Z5P3bKkPW1bi3ZVAju/pNXKbSrzzHpKunE8rFwmO/4XLN1am3ej2CqZN4FG4fxeO0HUPPxpXSG51N5+vKzyos3MVss1sTbhxJCzKqR3NC3TStNYSM00fShL6+iPbRR8IhxyfQyL9qN+NA5OkL1CIw7en4jS2YVW6AUaVVptyIuZdUJWPYX7ljRKFNLUTWwhnbbBN+tLZ8mmNveR0CbNg2KXsVPayNwLbbaoPhKH50evOnFUj6xIXLy7iKqtD08uzw7e7302n80JCZnn9sYLhQvMuZkxknBITuMChUKSOkclOE2cOW2NkFMbSPgSUz3Tac3MRyKzuULna5BNQexgvN1gUYYFo2hD6GRK4kZT1mwjFlqKr2On0H3lbPmIJ7MP00ITVU2dTRVJf8T5rxYzn0wu2E5WBMMuxDQow/o1X9bGu0lsoqs5XmZYnQ4aHxx6UdUbNqciKHM2zDPx9uOlqAtJsCLRUNPl97gISuupkFWzb9rDT68O9wpltRshv3RNaUqe8JZaZS61YRKVllaNgj/BlFKIINldRqpNIYKtjNm823Or5EkELELeY7WaSo8fXL5e8+d66LK+lfZymt8ZrP8azoPR/yTzK1zeuUcsZB7Yp2oQzwbazv4fIG19dlATfnGasZ4Z4Ivz5pLxUjz7Uvckx+ajNMu7DDfcN+f5vOQ8IPmTSvoxg83i9WQdQYZSoatSVlsP0hTLu7l9dCO6N3WO31xySd5v5Q9ad7X7k5x+O6wlecny/n3LsFJ7PXz/AUQLGyo=
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Address Runes Balance List</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/addresses/{address}/balances"}></MethodEndpoint>
+
+
+
+Get runes balance list by address
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"pkscript\": \"5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852\",\n      \"wallet_addr\": \"bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29\",\n      \"rune_id\": \"842029:1175\",\n      \"rune_name\": \"WHERELAMBOGORILLA\",\n      \"total_balance\": \"2000000\"\n    },\n    {\n      \"pkscript\": \"5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852\",\n      \"wallet_addr\": \"bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29\",\n      \"rune_id\": \"1:0\",\n      \"rune_name\": \"UNCOMMONGOODS\",\n      \"total_balance\": \"1005\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

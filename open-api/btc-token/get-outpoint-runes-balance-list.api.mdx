@@ -1,0 +1,54 @@
+---
+id: get-outpoint-runes-balance-list
+title: "Get Outpoint Runes Balance List"
+description: "Get runes balance list by transaction outpoint."
+sidebar_label: "Get Outpoint Runes Balance List"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVW1v2zYQ/ivEfWoBNX5NYgvDsCTbihTbUiQu+iE1Gpo8W2wkUiGPShxP/304SXaSpliRfBKpO/KeOz7P3QZIrgKkl3AeLQaYJ6AxKG9KMs5CCu+RhGeTWMhcWoUiN4HEYi3ISxukYj/hIpXOWNqDBFyJXvLfU92dP+usookhjruL/jKBIIFSelkgoWcYG7CyQEjBIt06fw0JGIZRSsrge2zHsxOhMmms6LzFm0Iaa5HEv4IwULsKZmWR3kICHm+i8aghJR8xgaAyLCSkG6B1yVEDeWNXUNfJDsg2tZ8i+b4enLCxYul8IUlc0Z3RaeUiXb0IyJydQ+lswMD2Yb/Pn6fhL6JSGMIy5mJXfUhAOUtoif1lWeZGNYbet8CHNoB3sihz5GUgSTGcOI2Q9hPQkmTzGOV1GwZS2B8M+3K0nA4nYxz2l6PDkZTTQz09GAxHEz0e68Vkf6zHB4OD5XjUl6j6o8PJdKTVWONYHarRZH8ICdzKPEf6KrX2kMJCDcr9fvwW7OjmUOPBeHqI1XqkDkZ3RRjf7VfTbP/uPqtudFxOsnsdrY+Tcnmjr1e3wykXMlr8aphog7QPCXQk5T3U87qu6wTGPyrZsdTiHG8iBoLGZ/Dc55OVkTLnzT3q1mn83Ik5LZgrwi3F6e/COhJLF61mFkFAFb2hdVPNBUqP/ihSBunlnJ+2QMoco19hKwU2QW9BqrfpOF33Gvn1tjwMvc12Wfe6dANwJF9tNRR9DilkRGVIez1Xon0nS7MXlF+XtGdcrxoAU/zBL+31cqdknrlA6ajfnzQu84cELpihLQUfp7EjLF8CHZF53zrxizSLPxsVQAofPs+awhi7dM1xQ0xBOLXknY7qEXWlaqiLhTQMM8SydJ5+22XBT8Ipt+9QDZ6p8ix6Qe4arTj6eCpK7yqjMQi0uq0ka1PIRjrGroS0WhTSyhVvKumNi6E7X3pHTrk8JMJYlUfNLmdeGyvzIIzdRQ2JOD4/eTfsJ22zS8TFPxdJc/Xx6ezvo497X+wXe0pC5rm7DUJjhTlrliMJj+QNVig0kjQ5asFl4spxU5ELF0mEEpVZGtUiC4nIXK7RhzbIlhAPYYLbxqIMC45iLKGXisStoay7RlRGiqszr9FfcbVCwi0+xEVhiDhZx6YGZDjh+jeHGU8mK7aTE9GyCzEMyrDd5uvW+LiIXXYtxlmGzeugDdFjEA3fsHsVQZl3cZWJD59noiWSYEmipa6Z7TEJSheokE1P65r2z6fOE6ZsHlrlKwZepwDCO+qVuTSWMTXS2nSKvoQFKUggfZhqTQielltZs/nRrNkpe54Ai5Iv2WwWMuAnn9c1/76J6LmxzBNgtsoFC+lyA9oEXmtIlzIP+D+5vjnv5tBb8eJZ+sOsu5/SroFB5ZF3kMA1rh/NdG49rwb5kjH7Coy7J6jndQIZSo2+qWprPlIKS3p08NlgfdLW3/8xgwTk01b5XWtsbv8hqF+OW8rPWD6/7iA2amqn23/z2l/v
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Outpoint Runes Balance List</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/outpoints/{outpoint}/balances"}></MethodEndpoint>
+
+
+
+Get runes balance list by transaction outpoint.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"pkscript\": \"5120a3f9284e20f373aa97d961238d44db854d4616f430aec037893dc4de4c7c3852\",\n      \"wallet_addr\": \"bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29\",\n      \"rune_id\": \"1:0\",\n      \"balance\": \"1\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

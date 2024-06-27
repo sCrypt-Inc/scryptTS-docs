@@ -1,0 +1,50 @@
+---
+id: get-brc-20-ticker-info
+title: "Get BRC-20 Ticker Info"
+description: "Get the infomation of BRC-20 by ticker."
+sidebar_label: "Get BRC-20 Ticker Info"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVW1vGzcM/isCP7XANX5J4iSHYVgSbEUKrClSF/2QBq5Oon1adJIi8Zx6nv/7QN01dtJ0WOsvPkmk+JB6HnINJBcJyms4uzp/NR7CTQEak4omkPEOSniNJKhGYdzcN5I3hZ+LzlpUK0FG3WLcgwJ8wJgNLnTv11tNs4m4cHMPBQQZZYOEkcOuwckGoQSHdO/jLRRgOGqQVMNTKGfTc6FqaZzorcWLRhrnkMQ/gjBR95XMwiG9hAIi3rUmooaSYosFJFVjI6FcA60CR00UjVvAZlM8AOny+W8cXVoPlv8/zA0bp+BdwsTn4+GQ/x5fn1qlMKV5a8VDSaEA5R2hI7aXIVij8sHgr8ROa8AvsgkW+TORpDade41QDgvQkjIYw88y4oeKZmGctDPOAErwURso4PGqkV9mqQ3BrqCE8Wj4nV8ujjKNtAnK0XEB1jSGZgHjrDGMFp53zWXj1zNusY3D21UbHerHeybNEtp5f+Vc2oQcN1i/mhn3ULxZTrGajKrh6GisTw5xPJmo0bFEOVST8YGuTo6P8ORoJA/1RB9gpcZSoj4+1PJgcjDWk/3Do/1Dk1FYr25nNZpFTVAeHZ0c7483/Cvg4LlHO5NaXOFdi4kg24y+tfngZEu1j+Zv1Mw5SKjaaGiVhVChjBhPW6qhvL5hqjRIteeMFkhZOHwEg4rUYN0rYDOoohoPB+uOjJuB6USWMC6/KqyNFkqoiUIqBwMf0L2SwewlFVeB9owfLEfAAtjalYOB9Ura2icq94fD42xyswX8nhneUXgX9gPh+RLohcDrzojLmj/+8LGRzI03H6e5EBk1uxtiCsOFo+h1q3aoL1WmPnPGZpGE4CP99pAFV51T7kq9HH2j2ss2CvK36MTpuwsRol8ajUmg08EbR0nMfRQyS8+4hZBOi0Y6ueDFUkbj29T7h+jJK29TIYxTttVschk1ayqJHT6mom+BhbhqHaZCvH/7vshXn11M/zx9t/fJfXIXJKS1/j4JjUu0rHmOJCJSNLhEoZGksahzD459E5aVb0mkgMrMjeqQpULU3mqMqQtSSSudwrQNk/zXWFRjw1GMI4xSkbg3VPfXiKWR4vNl1Bg/c7VSwZ0+tVVjiDhZz0cZZDrn+mdnxlPLJZ+TF61jE2IYPD7y0q66w90i9tl1GKc15tdBl9qISWS+Yf8qguro20Ut3nycio5IggWFjvpmuMckCD5RI3NP7Fv6d0fRI4Kstx32B4ZeT3jCLzQIVhrHELKS1r1gr6EiBQWU2xGXNctbO8Nm7nn2suLYZb2uZMIP0W42vH3XYuQucVMAU1FWrJLrNWiT+Fvv9MTvZPTiqh9SL8UPj9Fnc+w3pVsBg7Itr6CAW1ztjHPuKz8H8smM/QkMve/mZlNAjVJjzDXrDk+VwkA7bt/M1Ecd+PXvUyhAPu5yT7pavv1ZSL+cdWydMvN/3QLkJePbbP4Fqco3uQ==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get BRC-20 Ticker Info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/brc20/{ticker}/info"}></MethodEndpoint>
+
+
+
+Get the infomation of BRC-20 by ticker.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"id\": \"1\",\n    \"original_tick\": \"ordi\",\n    \"tick\": \"ordi\",\n    \"max_supply\": \"21000000000000000000000000\",\n    \"decimals\": 18,\n    \"limit_per_mint\": \"1000000000000000000000\",\n    \"remaining_supply\": \"0\",\n    \"burned_supply\": \"0\",\n    \"is_self_mint\": false,\n    \"deploy_inscription_id\": \"b61b0172d95e266c18aea0c624db987e971a5d6d4ebc2aaed85da4642d635735i0\",\n    \"block_height\": 779832\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

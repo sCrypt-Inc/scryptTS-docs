@@ -1,0 +1,54 @@
+---
+id: get-runes-info
+title: "Get Runes Info"
+description: "Get rune info by rune name or ID."
+sidebar_label: "Get Runes Info"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVm1v2zYQ/ivEfWoBJZYdu3GEYViSdp0LrCkSFwWWBu2ZOltcJVIlj249z/99OEp5a4Jirb+YL0fec8fnudMWGFcBiks4j5YCXGVQUtDetGychQJeEisfLSljl04tNt3EYkPKeTV7vg8ZuJY8iv2s7E+ky9TMLh1k0KLHhpi8+NmCnIUCLPEX5z9BBkb8tMgVfOv8ZH6qdIXGqt5aPWnQWEus/lVMgbtRMCtL/BQy8PQ5Gk8lFOwjZRB0RQ1CsQXetOI1sDd2BbtddgsEGzrzs/K7SM7vR/1Drq7EOLTOBgqyP8pz+bvv4CJqTSEsY61u0gkZaGeZLIs9tm1tdNoY/B3k0BboKzZtTTIMjBzDqSsJijyDEhlTuuW9Phh5mOk4H+bPiuHoCDJYRG8FPOQSq1mbYBamNryBYpoBsa4EfAGTg4meTp8RTg5ofDgaL4iOaDLGA0R9VE4Rx0sq8WCKo3KsDw4nR4dLnRNNRmPMRzpHyIDJN+EDNi5KIBL+UT7MD/L+d2Ohse3xdPOKzKriDzUUNtb1N6vV/VW3XAZ6YNuv3tg2xnLofbSeGmPpcUApaT0/Lo7nZxd/zM7fvn4xn82PX0MGoUWd6AzDfDqVhU2zcLfOTUOBsWnT5aPxXj7eG+Xz4VExOSwmR/t5nv8lUUa/cFAssQ60u9rtdrsMxo9x4wRLdU6fIwWGZDN8aPPWYuTKefMPlZ3R+KHRHRYv1ey5so7V0kVbiiAgkI4+MeByCwtCT/44cgXF5ZVwuCGunDBmRZxULVswWLAebHt57gaSuDDYXmtqNzBdDQjk19cFIPoaCqiY21AMBq4lu4et2Q/ab1reN26wHoLo89auGAxqp7GuXODiIM+nyeTqFvKFiK9T113gN1qUS6DXqMw7I5FBGvzufIPCzVfv5ikVCbUcNyzqgpll78qo76gSdVIlNWgEZoht6zz/dhOFPIKE3GV+PXxQUs6iV+w+kVXHb2aq9W5tSgqKbNk64alaOq8wVQVjVwptqRq0uJLJGr1xMfTnW+/YaVeHTBmr61iKyZkvjcU6KGNvvIZMnZyf7o3yrKvQmbp4fZGlq09m8z+P3+y/t+/tjBXWtfsSVElrqqUciSflib2hNamSGE1NZeoJkjnjrMKFi6xCS9osje6QhUxVri7Jh87JAmu0msKtm+CufXFFjXgxlsmjZvXFcNVfo9YG1cczX5L/KNkKmXSiEBeNYZZgnWwlkOFU8p8OC54K17LPTkUrJiwwuKJuWm+6zbtJ7KPrMM4rSq9DNkRPQSW+Uf8qiivv4qpSr97NVUckJSIky32d3hcStC5wg6lc9xXlQYe8R4ztbdH/X923pzjTVx60NRorTpN2tr1IL2HBGjIobntu0mlautv9lk4+AERlcmi7XWCgt77e7WT5cyQvteEqA6EfLkQZl1soTZBx2Vey70Tz5LzvmU/VD3f2R6PsF9FuQEDVUWaQwSfa3PnCkFryUyAfNv2fQXGd4N3VLoOKsCSf8tZtH2tNLd85+KDN36u9L1/MIQO8X92+qWbp9kdB/XLSsXQujP/1BmISAKQW9B+zK2cU
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Runes Info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/runes/{nameOrId}/info"}></MethodEndpoint>
+
+
+
+Get rune info by rune name or ID.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"rune_id\": \"840106:129\",\n      \"burned\": \"0\",\n      \"divisibility\": 8,\n      \"etching\": \"535c886ea53e4724bee9e54a3aac9d8aa4feda38a2d4c37597fc0ee524a02c0a\",\n      \"terms_amount\": \"2009010300000000\",\n      \"terms_cap\": \"0\",\n      \"terms_height_l\": null,\n      \"terms_height_h\": null,\n      \"terms_offset_l\": null,\n      \"terms_offset_h\": null,\n      \"mints\": \"0\",\n      \"premine\": \"2009010300000000\",\n      \"rune_name\": \"SATOSHIRUNETITAN\",\n      \"spacers\": \"1088\",\n      \"symbol\": null,\n      \"timestamp\": \"2024-04-20T19:57:59.000Z\",\n      \"turbo\": false\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Rune name of ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

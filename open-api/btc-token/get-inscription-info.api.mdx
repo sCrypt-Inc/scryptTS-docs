@@ -1,0 +1,54 @@
+---
+id: get-inscription-info
+title: "Get Inscription Info"
+description: "Get Ordinals inscription info by inscription ID."
+sidebar_label: "Get Inscription Info"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1v2zgM/isCP22A19ixncS+F1zb3Q0dcLeh7bAPXbHJEh1rsyVXL2mzXP77gY7XpmtvuO3yJZJFkQ8p8iE34PnSQXkBJ9oJq3qvjHZwGYHE2z2U8AI9e2Wl0rx1TN2JMqVrw6r1vW8nzw8gAtOj5bQ/kaOCk30ZXRuIoOeWd+jREoYNaN4hlKDRXxv7CSJQZLznvoGvER2dHzPRcKXZKM2edFxpjZ79zTw6v1s5tdTon0IEFq+Csiih9DZgBE402HEoN+DXPVl13iq9hO02ugWi5Dcx3Hf6u2xckrDrjXbo6Hwax/R3X/9ZEAKdq0PLbqMJEQijPWpP8rzvWyWGg8lHR5c2gDe861ukpfPcB3dsJEIZRyC5H8BwKS06ByVUIunzOHx0Or2aS5xlxRxX61TM0pvOZTf5qmjym8/N6kqGetF8lkHbsOjrK/lpeT0tCEvDbUePd0lr1UqLetztUL5vUS99A2U+v/s2RsPjjZ/0LVf6J9Lj0P8SfP1sARFgXaPwaoXv//udGhHKJJtlETSolo2HcpFlaZ5G9JAlxEWdciGKaVJM83Qmq5TH+WwmeRzHoi7ShBf5LJ4XRb0oUl5lQsaLeiayOp5ORZ4VKoYINN54KCGRcykXYj6XSYEzwXlWJxkmcjHFJF7kmIisEGlayziueMbzrObTxVzWSSGmSTWvd7pCV6GFch4X6XSRzIZ6QO3HePYWV8oEeicxRcmrNJdFIZOFqJNaFjM5m8XFDNNsPsckFnldxTPMMZV1UuNCxKJGkdaLXCRzNaXsDBqh1KFtI3Dc7y17oyif/neEyrgkv7zq0Hne9VAm82Q2zeI8TiNY8TYglGkab+kXQfZY0h9xyU7xKqDzMMgkD2XeaB58Y6z6jHInlD0Uukc3z5k2ntUmaEkVDg5FsMqvB9qpkFu0h4HS9OKSarND3xjKmSX6gaboCCaVF5PNyDfbyV75u8lGyS2QXrv6wmbBtlBC433vysnE9Kif8V4dOGHXvT9QZrJKgMjmTq6cTFojeNsY58s0jheDyOUd3DMilB1j7IO+5RdSAiPv0H4nBNG4+MPYjh4eXr49H8JA9D1cV54YA060t0YGscc0XAxMgx1XBNOFvjfW/3brBcWfXN4FfZU8YMlXwTJvPqFmh69PWG/NSkl0DLUc0s6x2ljGB6ZTesm4lqzjmi9ps+KWKmC831vjjTCti5jSog2SRB5rSy5iR6fHz6ZxxE6DRhexs7/OokH10cn5n4evD97pd/rEM9625toxiStsiWLJErPorcIVMomeqxbl0OUocpRKvDLBM9ejULUSO2QuYo1pJVq3M1LxlmuB7s6MM19s+QY7sqK0R8uFZ9fKN6MatlKcfXhlJdoPFC0XUW91oeqU9+SsoaMBpDum+A+XCU/DV3TuDQuaRDzB8A3utu16d7gfxNG7HcbzBofXQe2CRceGfMPxVZhvrAnLhr18e852icSo/lD7sfccUBL0xvmODy1obJ//0vTvpcfmrp39yJTxoCsQkqGgNmPVXkDlBURQ7k8Ve7NOBKWSNPFQ0ZH4ZlNxh29su93S56uAdr0jZMpGXlGhXGxAKkdrCWXNW4ffcOvJ6TgWPGXfPbU86t/4kes13LIqQASfcL03PRG1/BDIB2PND4BQEraXW2rEXFKLu9iMB4dCYO/3rjwYYe7x74vfzyECfp/lvmK1QfujcH4+2mXrOWX+r7fghkIgfNvtP3mnuUA=
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Inscription Info</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/inscriptions/{id}"}></MethodEndpoint>
+
+
+
+Get Ordinals inscription info by inscription ID.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"address\": \"bc1p50ujsn3q7de6497evy3c63xms4x5v9h5xzhvqduf8hzdunru8pfqdkgw29\",\n    \"charms\": [],\n    \"children\": [],\n    \"content_length\": 57,\n    \"content_type\": \"text/plain;charset=utf-8\",\n    \"effective_content_type\": \"text/plain;charset=utf-8\",\n    \"fee\": 1464,\n    \"height\": 844353,\n    \"id\": \"09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549i0\",\n    \"next\": \"1d7dd8c77d19e6caa4f14e1d82e1085e1c49c33fd00ba4a54fa287df19c21b7fi0\",\n    \"number\": 70932816,\n    \"parents\": [],\n    \"previous\": \"c2edab35d99d18cf1fd96d66096e3477e10c5fb06e5e3df1fe8c0cfec3f85c17i2\",\n    \"rune\": null,\n    \"sat\": null,\n    \"satpoint\": \"09f3acc92192536db3a0566da000cf931a9560799f893ab4cd08f6c4f022c549:0:0\",\n    \"timestamp\": 1716240503,\n    \"value\": 330\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Inscription ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

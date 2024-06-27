@@ -1,0 +1,263 @@
+openapi: 3.0.3
+info:
+  title: Introduction
+  contact:
+    email: support@scrypt.io
+  version: v1
+  description: The blockchain API allows you to query general information about blockchain, including blocks, transactions, and addresses.
+servers:
+  - url: https://open-api.scrypt.io/v1
+  - url: http://localhost:3008/v1
+tags:
+  - name: Transactions
+  - name: Addresses
+paths:
+  /btc/{network}/txns/{txid}:
+    get:
+      tags:
+        - Transactions
+      description: Get the summary of a transaction.
+      operationId: Get Transaction Summary
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: txid
+          in: path
+          description: txid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  txid: 56f7bf57e525c33e80e7200e8da054ca49ceacf66ea4c90c944d3a59c5a0c88b
+                  version: 2
+                  locktime: 0
+                  vin:
+                    - txid: d93f4f610f626cee5f97f61f5982057ecbc7990ca04410dc2b6f659f278122ae
+                      vout: 2
+                      prevout:
+                        scriptpubkey: 51204a98aa12ded9f6c53e2164b90dd95d38f4be1c342ceec770c7d62d1844217cec
+                        scriptpubkey_asm: OP_PUSHNUM_1 OP_PUSHBYTES_32 4a98aa12ded9f6c53e2164b90dd95d38f4be1c342ceec770c7d62d1844217cec
+                        scriptpubkey_type: v1_p2tr
+                        scriptpubkey_address: tb1pf2v25yk7m8mv203pvjusmk2a8r6tu8p59nhvwux86ck3s3pp0nkqt30dvt
+                        value: 12500000
+                      scriptsig: ''
+                      scriptsig_asm: ''
+                      witness:
+                        - d24a3dd2508b336cc606533ad2ff69f25ca678a49e54e5aa4304647950494e416ae9ac1d5a4f86b2b97a9081078474f7f2a97288b7aa03a5980f7c5a8e6e2dab
+                        - 79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+                        - '000000'
+                        - 00000002000020ad6b5a00
+                        - 637177644948c8009f33caca46125d3460da41cc884f55b0a3851874bf
+                        - '01'
+                        - '17'
+                        - 60947600a2697601409f697601407c94b2750200006b760120a2636c04000000007e6b012094687660a2636c0200007e6b6094687658a2636c01007e6b5894687c825188766b517e020001947c7600876302000167765187630280006776528763014067765387630120677654876360677655876358677656876354675268686868686868779f696c6c7e7e6b708201208875820140887c827c7e7e7c827c7e7c7eaa6c88ac
+                        - c14a981eda2acd9bf5d789fa1a9b7f95677776d99fd13ec0f658f0e4dbc5b5c878
+                      is_coinbase: false
+                      sequence: 57
+                  vout:
+                    - scriptpubkey: 00141335a6c31f8f3bcbd2598273b8c5ce87abe9f7a1
+                      scriptpubkey_asm: OP_0 OP_PUSHBYTES_20 1335a6c31f8f3bcbd2598273b8c5ce87abe9f7a1
+                      scriptpubkey_type: v0_p2wpkh
+                      scriptpubkey_address: tb1qzv66dscl3uauh5jesfem33wws747naapcgt4c5
+                      value: 12488215
+                  size: 434
+                  weight: 680
+                  fee: 11785
+                  status:
+                    confirmed: true
+                    block_height: 201433
+                    block_hash: 0000001a6bafcde7aac0049912a755770920bcd85e28a19c550079a75d66d918
+                    block_time: 1719250922
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/addresses/{address}/balance:
+    get:
+      tags:
+        - Addresses
+      description: Get balance of an address.
+      operationId: Get Address Balance
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  address: tb1ppvndcdvhjelakr420r9zqfwecke5utl5ug8p7czg0vq8rwd7a4rs4qhmlz
+                  chain_stats:
+                    funded_txo_count: 3
+                    funded_txo_sum: 9457147
+                    spent_txo_count: 1
+                    spent_txo_sum: 270329
+                    tx_count: 3
+                  mempool_stats:
+                    funded_txo_count: 0
+                    funded_txo_sum: 0
+                    spent_txo_count: 0
+                    spent_txo_sum: 0
+                    tx_count: 0
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/addresses/{address}/utxo:
+    get:
+      tags:
+        - Addresses
+      description: Get UTXO of an address.
+      operationId: Get Address UTXO
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - txid: bedea488fb3bc4ef020057a49ca9b7c0854a639b58898c3f684d861db9989718
+                    vout: 0
+                    status:
+                      confirmed: true
+                      block_height: 201435
+                      block_hash: 000000d653f63d3c002c22b224910cea35f46ac65dd11775c0530167809b8ab9
+                      block_time: 1719251979
+                    value: 8969609
+                  - txid: 2a534be761994eb2a91e19705253d93c72220e92bcac4db67e5b0a9abfd6447c
+                    vout: 2
+                    status:
+                      confirmed: true
+                      block_height: 200590
+                      block_hash: 000000508264684f54289a63d59de1f7328a57c621d24b03b71b01fd456a5d28
+                      block_time: 1718741078
+                    value: 217209
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/addresses/{address}/history:
+    get:
+      tags:
+        - Addresses
+      description: Get transaction history of an address.
+      operationId: Get Address Transaction History
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: BTC address
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - txid: 6af65440d87e90788f82984bb6cfb103ca405c75e143b8fa80708f7d712eab23
+                    version: 2
+                    locktime: 200664
+                    vin:
+                      - txid: 82bca1e50a4f4a601eb70c9b120a92ba05ea02ba7c069a68729dbe064a8ff3c4
+                        vout: 2
+                        prevout:
+                          scriptpubkey: 5120b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
+                          scriptpubkey_asm: OP_PUSHNUM_1 OP_PUSHBYTES_32 b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
+                          scriptpubkey_type: v1_p2tr
+                          scriptpubkey_address: tb1phxhc2z7y32rreh5jvpfyanqk6vf08c87qm643sk5w5gsdnnlqx0sutzlnx
+                          value: 117709
+                        scriptsig: ''
+                        scriptsig_asm: ''
+                        witness:
+                          - 1af2cade41b484ba0702bbb6ea56ae762e6406c18a8fb6a16ce3b3d3f80962184296bd053d345bee834cc728e2ba018a9506972a965f2547861d204624d08e79
+                        is_coinbase: false
+                        sequence: 1
+                    vout:
+                      - scriptpubkey: 512021a7769fd29a5a03c42a2281008b7f3c34cccea92d8564035d91f72d8719ff8a
+                        scriptpubkey_asm: OP_PUSHNUM_1 OP_PUSHBYTES_32 21a7769fd29a5a03c42a2281008b7f3c34cccea92d8564035d91f72d8719ff8a
+                        scriptpubkey_type: v1_p2tr
+                        scriptpubkey_address: tb1pyxnhd87jnfdq83p2y2qspzml8s6ven4f9kzkgq6aj8mjmpcel79quhzhcn
+                        value: 50000
+                      - scriptpubkey: 6a47626274340084f2f1b192be00f6694323463ebcad25e5aace52a284bcc264ace8361de5560a30d6852a68e9ee20c8009322ba2eccfba22ca0ae77cbecbe0588ca7ff0fff456fa00
+                        scriptpubkey_asm: OP_RETURN OP_PUSHBYTES_71 626274340084f2f1b192be00f6694323463ebcad25e5aace52a284bcc264ace8361de5560a30d6852a68e9ee20c8009322ba2eccfba22ca0ae77cbecbe0588ca7ff0fff456fa00
+                        scriptpubkey_type: op_return
+                        value: 0
+                      - scriptpubkey: 5120b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
+                        scriptpubkey_asm: OP_PUSHNUM_1 OP_PUSHBYTES_32 b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
+                        scriptpubkey_type: v1_p2tr
+                        scriptpubkey_address: tb1phxhc2z7y32rreh5jvpfyanqk6vf08c87qm643sk5w5gsdnnlqx0sutzlnx
+                        value: 58349
+                    size: 287
+                    weight: 944
+                    fee: 9360
+                    status:
+                      confirmed: true
+                      block_height: 200889
+                      block_hash: 00000066d1ab13394d978f1a1333b7b18a9098edb5c9f8ae77df16785623463d
+                      block_time: 1718930775
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,54 @@
+---
+id: get-inscription-content
+title: "Get Inscription Content"
+description: "Get Ordinals inscription content info by inscription ID."
+sidebar_label: "Get Inscription Content"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1v2zYQ/ivEfWo3xnKSAtvUdZiTbYELdCkSF/2QGihFnS0uEsmQJyeep/8+nKQ4cvO2dp9M+h7ePTzec6cNkFpGSC9gaqMOxpNxNsJcQo7bPaRwgiROQ26sKqMwd1ChnSW0JIxdOJGtd2zT30YgwXkMivfTvHc0CCWOu/MgwaugKiQMTGcDVlUIKVikaxcuQYJhHl5RAV+SO5odC10oY0WPFi8qZaxFEv8IwkjdKpqlRXoJEgJe1SZgDimFGiVEXWClIN0ArT1HjRSMXULTyC0Rkz/JYffeXxVjzuDonY0Y2X4wHvPPrv/zWmuMcVGXYptQkNCnv3WLN5T4UjHHDeCNqnyJvPSQQhb03sG4fQ1IgYKycYEBJJDRl5DCu8nJBCSoiiCFw/F4zHfvXBZUlTsebV2WjQTlfWl0SyS5YdD3N/8BWJWvr96MRz89BDSVWmKiVmbxuPUaM//EWW+Xj1u/e45dWyH5Ht7oQtklvl69yQ5buj88d/Kv6OxzGKcJaS9SQFXdx3K+Xz308kcqF2d4VWMkaDH79zEfrKqpcMH8jXkHenUfNN0pUWEdiYWrbd4+dURdB0PrVnsZqoBhUlMB6cWcC7RCKhzrd4mdVtkESUY62fSia5KBBmKyMXmT6K26I4bVrbTrUEIKBZGPaZI4j3ZPeTOKOqw9jYxLVvvAyrvDpUlSOq3KwkVKD8fjH1vI/I72Oaurk8+Q/FZs7AR6EfK+A4HsF3+4UCku/bcfZ206uJ21xw3xC8HUUnB5rQeyU7qVHVbKMM1Ye+8C/bq9Bb8DX7lL/mr/Xss4rYMgd4lWTN5PhQ9uZXKMAm3unbEUxcIFoVrZG7sUyuaiUlYtebNSwbg69ud9cOS0K6MUxuqyzhnyULuOUhydHe8djKU4qy1GKc7/PJet66Pp7N3k/eiT/WSnJFRZuusoclxhyf2GI4mAFAyuUORIypSYt12fM8clpTJXk4getVkY3TGLUhSuzDHELkimSmU1xrsw0d3GogIrjmIsYVCaxLWhoncjVkaJz6chx/CZsxUlz5pYZ5Uh4ss6NrUk4zHnvz3MfAq1Yjs5UVuGENOgArttue6MwyT2t+s4zgpsXwdtrANG0dYb9q8iqAiuXhbi7ceZ6ApJsA7RUq/5EReBd5Eq1baHfpY8PgR3KmRz197/zwDuJTCYD43stLXphXwBGWmQkA6n7eBzQELajr9bOnMJrEQ+uNlkKuKHUDYN/31VY+AeMpfAJaoyVs/FBnITeZ1DulBlxCcu+uKsH5wvxVfP9Qdv2v+p7BqYVFnzDiRc4nrwfcH95ptI3hv830DC5NDMGwkFqhxDm7DOMNEaPQ2ODL0O2/LJ7zMe37tN74sm1/p9kMjPR13xzlgIv2xptbpgZk3zL5KCiUw=
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Inscription Content</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/inscriptions/{id}/content"}></MethodEndpoint>
+
+
+
+Get Ordinals inscription content info by inscription ID.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"p\": \"brc-20\",\n  \"op\": \"transfer\",\n  \"tick\": \"MAGA\",\n  \"amt\": \"3000\"\n}"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem><TabItem label={"text/html"} value={"text/html"}></TabItem><TabItem label={"application/xhtml+xml"} value={"application/xhtml+xml"}></TabItem><TabItem label={"application/xml;q=0.9"} value={"application/xml;q=0.9"}></TabItem><TabItem label={"image/avif"} value={"image/avif"}></TabItem><TabItem label={"image/webp"} value={"image/webp"}></TabItem><TabItem label={"image/apng"} value={"image/apng"}></TabItem><TabItem label={"image/*"} value={"image/*"}></TabItem><TabItem label={"application/signed-exchange;v=b3;q=0.7"} value={"application/signed-exchange;v=b3;q=0.7"}></TabItem><TabItem label={"application/json"} value={"application/json"}></TabItem><TabItem label={"application/octet-stream"} value={"application/octet-stream"}></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Inscription ID not found
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      

@@ -1,0 +1,50 @@
+---
+id: get-bitmap-list-by-address
+title: "Get Bitmap List by Address"
+description: "Get bitmap list by address."
+sidebar_label: "Get Bitmap List by Address"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vltv2zYU/isEn1ZAjXXxRTaGYUmwFSm2tUhS9CE12iPyyGIjkSp55MT1/N8HSvIlidctfeiTKfMjv+8cntuaEywcn93wM0UV1HwecIlOWFWTMprP+CsklrV7rFSOWLZiIKVF5054wE2NFjzyQvbY7h72R4897bA84DVYqJDQero111Ahn3GNdGfsLQ+48mw1UMEfSzi7PmeiAKVZj2Y/VaC0RmJ/M0JH3cqphUZ6wQNu8UujLEo+I9tgwJ0osAI+W3Na1Z7VkVV6wTebYCcEdkK/LWSP+x6WUlWKthxfGrSrJyQ1LJResC1yz5JD6Y7R6KbK0D6gMXnu8P/x7KDPIJp7tKuNduj8fhyG/ufh/VeNEOhc3pRsFyU84MJoQk0eD3VdKtFuDD47f2jN8R6qukS/dATUuHMjkc/CgEsgaCOni8aPvZpZ5K3cEX9UPhBlJhAwhERMxhHGY4ymiNNknI3TVE4mUYjpcCzGURwPswhkkgsRhVkkExxBOEwnKuQBL0wpPQGnLKpDHIFeoru7t19vP9tJZRelvZ2mw6X4LKTOK3tPYS7k+C52Exx9GU5HbnSrdZPwh/q2spNwPBn7J3tkTnzEnDCaChhnSSzTMIoSkabTfJLFeTIWEzmexlGejtJcRJHMonEU5YkQI4gjOZwCJKM8/kHmTI6YkxwxJ0nSPIrDOJFJkonpJIsnIxnFMJQjkeRRMoRsEmVRkoRpnEyGmI5SGEX5OM1zkcM0/EHmpJv5ZrPZBHx4LLzPQLJL/NKgI95ioqeYdxoaKoxVX1H6/OQORWMVrbo4RrBoTxsq+Oxm7pOqQiqM99Cizci2Bs34ICMxWPelbzPoHOwGfSFCN1j3y80AnEPytcmhXW4rbWNLPuMFUe1mg4GpUb+EWp04YVc1nSgzWEbcv9weNxsMSiOgLIyjWRKGaQuZ7/Vf+dLQ5f6hFbtK4S/hfQXx3x2IB/3id2MrID7jr99ft35ROjftcUU+9/mFJmtkIw5qBoi2ZmAFyst0TV0bS7/urPCP4E3uPL+MntS7N41lZG5Rs9O3F6y2ZqkkOoZa1kZpciw3lkFbs3xdBC1ZBborkkuwyjSuP19bQ0aY0gVMaVE20kPeWKk0lI4dhJML2Nnl+cs4DNhlo9EF7Oqvq6C9+uzi+s/Ttycf9Ad9QQzK0tw5JnGJpS+WnolZJKtwiUwigSpRMu8m7zllNIPMNMRcjULlSnTKXMC6tHAdSQYlaIFuT+PMlosKrDyL0oQWBLE7RUV/DVsqYJ/eWIn2k/eWC3wrd01WKaK2afitVqQ79/5vD3s9BSz9PhnWaA8hL4MK7D7LVbd56MTeuk7jdYHt66B2jUXH2njD/lUYFdY0i4K9fn/NukBiPr9QU99FTnwQ1MZRBW0z6bvhN8eSB0Gy3ren/xh8+kAnvKdBXYLSnrrNoHWftzc8I8EDPtuPOH3q8oDvktcD9iNFn79zX94c+TvW6wwcvrPlZuP/7lq5z2qpHGTlQbv+V0MeDRRHld/i6mA6WULZeExbFp5NtJsovsG0w+yp5v7DKs/1TAN/uuxHlxfs2aPiUY39n6BXhwq32rfv+TznPBK5f/PvULA9vJlvAl4gtI3wZt3vngqB9aFvn8xZD3rNq9+ufeQ9LOCPCnZ7+1FNP591iXjtk/qXncI2x3nbQP8BIas9DA==
+sidebar_class_name: "get api-method"
+info_path: open-api/btc-token/introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Bitmap List by Address</h1>
+
+<MethodEndpoint method={"get"} path={"/btc/{network}/bitmaps/addresses/{address}/assets"}></MethodEndpoint>
+
+
+
+Get bitmap list by address.
+
+
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Successful operation
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": [\n    {\n      \"bitmap_number\": 1,\n      \"inscription_id\": \"dbceae0a3c761e26e19ee936b688d7710e846c61224b1ad3fcc10b1d3e5a0487i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30676\n    },\n    {\n      \"bitmap_number\": 2,\n      \"inscription_id\": \"019ca6b32d80113c889f7b2f36c7d6921f858fc11db1611f3cc5a21d49aa35f2i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30677\n    },\n    {\n      \"bitmap_number\": 3,\n      \"inscription_id\": \"338f12023d33bc97b275d12a4d5c3f134ab71b133082374e858a51f68ffcfa90i0\",\n      \"holder\": \"tb1p0e5anveswxrzkjr7mrglrk984vcjcdnfmrxt0fcd6w2s7e5q495s5knnu3\",\n      \"inscription_number\": 30678\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad Request
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Unauthorized
+
+</div><div></div></TabItem></ApiTabs></div></div>
+      
