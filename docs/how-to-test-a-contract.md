@@ -301,3 +301,64 @@ or
 ```sh
 npm run test:testnet
 ```
+
+
+# How to Test a Contract Library
+
+You can test your smart contract library as a normal class, for example, writing some unit tests:
+
+```ts
+
+class MyLib extends SmartContractLib {
+
+  @prop()
+  readonly buf: ByteString;
+
+  constructor(buf: ByteString) {
+    super(...arguments);
+    this.buf = buf;
+  }
+
+  @method()
+  append(content: ByteString) {
+    this.buf += content;
+  }
+
+  @method()
+  static add(x: bigint, y: bigint): bigint {
+    return x + y;
+  }
+
+}
+
+describe('Test SmartContractLib `MyLib`', () => {
+  it('should pass unit test successfully.', () => {
+    expect(MyLib.add(1n, 2n)).to.eq(3n)
+  })
+})
+```
+
+Also you can write a smart contract using the library, then have some tests for the contract, like:
+
+```ts
+class MyContract extends SmartContract {
+  @method
+  public unlock(x: bigint) {
+    assert(MyLib.add(1n, 2n) == x, 'incorrect sum')
+  }
+}
+
+describe('Test `MyLib` with  `MyContract`', () => {
+  before(async() => {
+    await MyContract.loadArtifact()
+  })
+
+  it('should pass integration test successfully.', () => {
+    let instance = new MyContract()
+    await instance.deploy(1)
+    const call = async () => instance.methods.unlock(3n)
+    await expect(call()).not.to.be.rejected
+  }
+})
+
+```

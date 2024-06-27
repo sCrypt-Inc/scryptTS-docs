@@ -916,3 +916,57 @@ static add(a: bigint, b: bigint): bigint {
 :::note
 `**` is not supported currently.
 :::
+
+
+
+
+## Smart Contract Library
+
+A smart contract library can provide methods which can be reused in many contracts. Developers can use existing libraries to reduce the cost of developing their own contracts.
+
+A smart contract library is different from a smart contract in these ways:
+
+* A smart contract library can not have any public/entry `@method`s, which means a library can not be deployed or called directly through a tx. They can only be called within a smart contract or another library.
+
+* A smart contract library can not have any stateful properties, i.e. `@prop(true)` properties. But a property declared as `@prop()` is fine.
+
+### Write a Smart Contract Library
+
+Using `sCrypt` we can create a smart contract library class like this:
+
+```ts
+class MyLib extends SmartContractLib {
+
+  @prop()
+  readonly buf: ByteString;
+
+  constructor(buf: ByteString) {
+    super(...arguments);
+    this.buf = buf;
+  }
+
+  @method()
+  append(content: ByteString) {
+    this.buf += content;
+  }
+
+  @method()
+  static add(x: bigint, y: bigint): bigint {
+    return x + y;
+  }
+
+}
+```
+
+A smart contract library can be declared as a  class that extends `SmartContractLib`. It may also have `@prop`s and `@method`s like smart contracts which have the same rules [introduced before](./how-to-write-a-contract). A smart contract library can be used within `@method`s like this:
+
+```ts
+class MyContract extends SmartContract {
+  @method()
+  public unlock(x: ByteString) {
+    let myLib = new MyLib(hexToByteString('0123'));
+    myLib.append(x);
+    assert(MyLib.add(1n, 2n) === 3n, 'incorrect sum');
+  }
+}
+```
