@@ -766,6 +766,67 @@ paths:
           description: Rune name of ID not found
       security:
         - bearerAuth: []
+  /btc/{network}/runes/addresses/{address}/history:
+      get:
+        tags:
+          - Runes
+        description: Get runes address history
+        operationId: Get Address Runes history
+        parameters:
+          - name: network
+            in: path
+            description: BTC chain network (mainnet | testnet | signet)
+            required: true
+            schema:
+              type: string
+          - name: address
+            in: path
+            description: BTC address
+            required: true
+            schema:
+              type: string
+          - name: limit
+            in: query
+            description: paging limit
+            required: false
+            schema:
+              type: number
+          - name: offset
+            in: query
+            description: paging offset
+            required: false
+            schema:
+              type: number
+        responses:
+          '200':
+            description: Successful operation
+            content:
+              application/json:
+                example:
+                  statusCode: 0
+                  data:
+                    - event_type: output
+                      txid: 3ee3dd9509f92a07c666a8c62bce2396d56a7e067bc621fefee69532c1c02624
+                      outpoint: 3ee3dd9509f92a07c666a8c62bce2396d56a7e067bc621fefee69532c1c02624:1
+                      rune_name: GREGGREGGREG
+                      amount: '535'
+                      pkscript: 5120fc1c4b64438368912eae7b7ab829024c01cb6c9a2d0e3d304a94b651114547a4
+                      wallet_addr: tb1plswykezrsd5fzt4w0dats2gzfsqukmy6958r6vz2jjm9zy29g7jqcgamag
+                      block_height: 188728
+                    - event_type: input
+                      txid: 9da9aa7aaaf1ae6bcd4a3b103868c83f7b60e7559cca09745378eb0a81902886
+                      outpoint: 3ee3dd9509f92a07c666a8c62bce2396d56a7e067bc621fefee69532c1c02624:1
+                      rune_name: GREGGREGGREG
+                      amount: '535'
+                      pkscript: 5120fc1c4b64438368912eae7b7ab829024c01cb6c9a2d0e3d304a94b651114547a4
+                      wallet_addr: tb1plswykezrsd5fzt4w0dats2gzfsqukmy6958r6vz2jjm9zy29g7jqcgamag
+                      block_height: 188731
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+        security:
+          - bearerAuth: []
   /btc/{network}/runes/outpoints/{outpoint}/balances:
     get:
       tags:
