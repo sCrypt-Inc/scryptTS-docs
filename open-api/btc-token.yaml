@@ -320,6 +320,132 @@ paths:
           description: Inscription ID not found
       security:
         - bearerAuth: []
+  /btc/{network}/inscriptions/addresses/{address}:
+    get:
+      tags:
+        - Inscriptions
+      description: Get Ordinals inscription info by owner address.
+      operationId: Get Inscription Info By Address
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: owner address
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - address: "tb1peuzrdf7eq3xdcyj4dpm2v3u4d4smkyjke6ea90hxegze0lfvd23saenzwk"
+                    charms: []
+                    children: []
+                    content_length: 1782
+                    content_type: "text/html;charset=utf-8"
+                    effective_content_type: "text/html;charset=utf-8"
+                    fee: 3123
+                    height: 201710
+                    id: "e4400aa9cbcadb9c3a4122bce9bff3eb08b1c77e92126d30d8e7dc2cd868bd0bi0"
+                    next: "74849ae6d09c3c93ba51901aa3db7299efbec1b432a9e46ab1ca742be9d29d55i0"
+                    number: 39805
+                    parents: []
+                    previous: "16527b8c8502fa6c6cfdd5e7d9be0311436420c06e9ab7288847536c78d96236i0"
+                    rune: null
+                    sat: 546899263919380
+                    satpoint: "e4400aa9cbcadb9c3a4122bce9bff3eb08b1c77e92126d30d8e7dc2cd868bd0b:0:0"
+                    timestamp: 1719420351
+                    value: 546
+                  - address: "tb1peuzrdf7eq3xdcyj4dpm2v3u4d4smkyjke6ea90hxegze0lfvd23saenzwk"
+                    charms: []
+                    children: []
+                    content_length: 1782
+                    content_type: "text/html;charset=utf-8"
+                    effective_content_type: "text/html;charset=utf-8"
+                    fee: 6245
+                    height: 201557
+                    id: "08a728399f6890af7b49f08d209de1ffb31cadff3a58ef98007453a7bbad6d18i0"
+                    next: "e5f5c999fb4f9204ce3e5dde43d269ef53a5f97ba8baace4df384a01dbcb82f0i0"
+                    number: 39504
+                    parents: []
+                    previous: "b8ec29f1ee4585ceeb3ff86c7f6e3614599390e33f0d592c3696d558f32638b3i0"
+                    rune: null,
+                    sat: 552803740295718
+                    satpoint: "08a728399f6890af7b49f08d209de1ffb31cadff3a58ef98007453a7bbad6d18:0:0"
+                    timestamp: 1719327976
+                    value: 546
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Inscription ID not found
+      security:
+        - bearerAuth: []
+
+  /btc/{network}/inscriptions/output/{outpoint}:
+    get:
+      tags:
+        - Inscriptions
+      description: Get Ordinals inscription info by outpoint.
+      operationId: Get Inscription Info By Outpoint
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: outpoint
+          in: path
+          description: outpoint
+          example: 529036a22c2203fbd74b3080aca1e013bd2e5b3abdc135baaa0a9d4b9e6080c9:0
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - address: "tb1peuzrdf7eq3xdcyj4dpm2v3u4d4smkyjke6ea90hxegze0lfvd23saenzwk"
+                    charms: []
+                    children: []
+                    content_length: 1782
+                    content_type: "text/html;charset=utf-8"
+                    effective_content_type: "text/html;charset=utf-8"
+                    fee: 3123
+                    height: 201710
+                    id: "e4400aa9cbcadb9c3a4122bce9bff3eb08b1c77e92126d30d8e7dc2cd868bd0bi0"
+                    next: "74849ae6d09c3c93ba51901aa3db7299efbec1b432a9e46ab1ca742be9d29d55i0"
+                    number: 39805
+                    parents: []
+                    previous: "16527b8c8502fa6c6cfdd5e7d9be0311436420c06e9ab7288847536c78d96236i0"
+                    rune: null
+                    sat: 546899263919380
+                    satpoint: "e4400aa9cbcadb9c3a4122bce9bff3eb08b1c77e92126d30d8e7dc2cd868bd0b:0:0"
+                    timestamp: 1719420351
+                    value: 546
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Inscription ID not found
+      security:
+        - bearerAuth: []
   /btc/{network}/inscriptions/{id}/content:
     get:
       tags:
