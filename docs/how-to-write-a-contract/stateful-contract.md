@@ -38,7 +38,7 @@ Let's take a look at the contract source file `/src/contracts/counter.ts`.
 
 ### Stateful properties
 
-As shown [before](how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make a property part of the contract stateful, meaning it can be mutated when the contract gets called.
+As shown [before](basics#properties), a `@prop(true)` decorator is used to make a property part of the contract stateful, meaning it can be mutated when the contract gets called.
 
 ```ts
 @prop(true)

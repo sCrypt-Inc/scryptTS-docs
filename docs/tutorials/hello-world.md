@@ -50,8 +50,8 @@ This `Helloworld` contract stores the sha256 hash of a message in the contract p
 Now let’s look at what is in the smart contract.
 
 - `SmartContract`: all smart contracts must extend the `SmartContract` base class.
-- `@prop`:  the [`@prop` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#properties) marks a contract property.
-- `@method`: the [`@method` decorator](../how-to-write-a-contract/how-to-write-a-contract.md#method-decorator) marks a contract method. A [public method](../how-to-write-a-contract/#public-methods) is an entry point to a contract.
+- `@prop`:  the [`@prop` decorator](../how-to-write-a-contract/basics#properties) marks a contract property.
+- `@method`: the [`@method` decorator](../how-to-write-a-contract/basics#method-decorator) marks a contract method. A [public method](../how-to-write-a-contract/basics#public-methods) is an entry point to a contract.
 - `assert`: throws an error and makes the method call fail if its first argument is `false`. Here it ensures the passed message hashed to the expected digest.
 
 ## Compile Contract

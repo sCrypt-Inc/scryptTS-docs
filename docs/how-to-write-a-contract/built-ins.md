@@ -23,7 +23,7 @@ assert(false, 'hello')   // throws Error('Execution failed, hello')
 - `fill(value: T, length: number): T[length] ` Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type.
 
 :::note
-`length` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+`length` must be a [compiled-time constant](./basics#compile-time-constant).
 :::
 
 
@@ -118,7 +118,7 @@ len(s2) // 5
 - `reverseByteString(b: ByteString, size: number): ByteString` Returns reversed bytes of `b` which is of `size` bytes. It is often useful when converting a number between little-endian and big-endian.
 
 :::note
-`size` must be a [compiled-time constant](./how-to-write-a-contract.md#compile-time-constant).
+`size` must be a [compiled-time constant](./basics#compile-time-constant).
 :::
 
 ```ts
@@ -595,7 +595,7 @@ Utils.buildOpreturnScript(data) // '006a0b68656c6c6f20776f726c64'
 
 #### On-chain
 
-The main difference between `HashedMap` and other data types we’ve [previously introduced](../how-to-write-a-contract/#data-types) is that it does NOT store raw data (i.e., keys and values) in the contract on the blockchain. It stores their hashed values instead, to minimize on-chain storage, which is expensive.
+The main difference between `HashedMap` and other data types we’ve [previously introduced](./basics#data-types) is that it does NOT store raw data (i.e., keys and values) in the contract on the blockchain. It stores their hashed values instead, to minimize on-chain storage, which is expensive.
 
 These guidelines must be followed when using `HashedMap` in a contract `@method`, i.e., on-chain context.
 

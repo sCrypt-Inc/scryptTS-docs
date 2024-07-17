@@ -32,13 +32,13 @@ import TabItem from "@theme/TabItem";
 
 Get bitmap info by number or inscription ID.
 
-## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"network","in":"path","description":"BTC chain network (mainnet | testnet | signet)","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"numberOrInscriptionId","in":"path","description":"Bitmap number or inscription ID","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+<div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
 
 Successful operation
 
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"inscription_id\": \"caf7d68185484df709c372a735937b1919939653461c7cb7ee1f12577a210660i0\",\n    \"bitmap_number\": 123,\n    \"holder\": \"tb1pm240eee2zr09llly77auakn52v942d3sd8sc6apu9chuq5xaad9qd8nps6\",\n    \"inscription_number\": 18414\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"inscription_id\": \"caf7d68185484df709c372a735937b1919939653461c7cb7ee1f12577a210660i0\",\n    \"bitmap_number\": 123,\n    \"holder\": \"tb1pm240eee2zr09llly77auakn52v942d3sd8sc6apu9chuq5xaad9qd8nps6\",\n    \"inscription_number\": 18414\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"statusCode\": 0,\n  \"data\": {\n    \"inscription_id\": \"caf7d68185484df709c372a735937b1919939653461c7cb7ee1f12577a210660i0\",\n    \"bitmap_number\": 123,\n    \"holder\": \"tb1pm240eee2zr09llly77auakn52v942d3sd8sc6apu9chuq5xaad9qd8nps6\",\n    \"inscription_number\": 18414\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
 
 Bad Request
 
