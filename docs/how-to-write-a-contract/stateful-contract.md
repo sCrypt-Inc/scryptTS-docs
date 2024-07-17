@@ -58,7 +58,7 @@ increment(): void {
 }
 ```
 
-2. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
+1. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
 
 ```ts
 // make sure balance in the contract does not change
