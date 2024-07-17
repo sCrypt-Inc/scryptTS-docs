@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Smart Contract Language
+# Basics
 
 A smart contract is a class that extends the `SmartContract` base class. A simple example is shown below.
 
