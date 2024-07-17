@@ -5,7 +5,8 @@ sidebar_position: 2
 # ScriptContext
 
 In the UTXO model, the context of validating a smart contract is the UTXO containing it and the transaction spending it, including its inputs and outputs. In the following example, when the second of input of transaction `tx1` (2 inputs and 2 outputs) is spending the second output of `tx0` (3 inputs and 3 outputs), the context for the smart contract in the latter output is roughly the UTXO and `tx1` circled in red.
-![](../../static/img/scriptContext.jpg)
+
+![scriptContext](../../static/img/scriptContext.jpg)
 
 The context only contains local information.
 This is different from account-based blockchains (like Ethereum) where context consists of the global state of the entire blockchain.
@@ -89,7 +90,7 @@ class TimeLock extends SmartContract {
 }
 ```
 
-### Access inputs and outputs
+## Access inputs and outputs
 
 The inputs and outputs of the spending transaction are not directly included in `ScriptContext`, but their hashes/digests. To access them, we can build them first and validate the hash to the expected digest, which ensures they are actually from the spending transaction.
 
@@ -139,7 +140,9 @@ But we can access the full prevouts via `this.prevouts`.
 ### SigHash Type
 
 [SigHash type](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) decides which part of the spending transaction is included in `ScriptContext`.
-![](../../static/img/sighashtypes.png)
+
+![sighashtypes](../../static/img/sighashtypes.png)
+
 It defaults to `SigHash.ALL`, including all inputs and outputs. You can customize it by setting the argument of the `@method()` decorator, like:
 
 ```ts
@@ -177,7 +180,7 @@ For more information, refer to the section on [Sighash Types](../advanced/sighas
 
 You have the option to convert `this.ctx` into a `SigHashPreimage` object through serialization. This can be achieved by invoking the `this.ctx.serialize()` method. The output object adheres to the format utilized during the signing or verification of transactions.
 
-```
+```text
 nVersion of the transaction (4-byte little endian)
 hashPrevouts (32-byte hash)
 hashSequence (32-byte hash)
