@@ -1,10 +1,11 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Stateful Contracts
 
 ## Overview
+
 In Bitcoin's UTXO model, a smart contract is one-off and **stateless** by default, since the UTXO containing the contract is destroyed after being spent. Being stateless allows it to scale, similar to [HTTP](https://stackoverflow.com/questions/5836881/stateless-protocol-and-stateful-protocol) and [REST APIs](https://www.geeksforgeeks.org/restful-statelessness/).
 A smart contract can simulate state by requiring
 the output of the spending transaction containing the same contract but with the updated state, enabled by [ScriptContext](scriptcontext.md).
@@ -36,6 +37,7 @@ This creates a project containing a sample stateful contract named `Counter`. Th
 Let's take a look at the contract source file `/src/contracts/counter.ts`.
 
 ### Stateful properties
+
 As shown [before](how-to-write-a-contract.md#properties), a `@prop(true)` decorator is used to make a property part of the contract stateful, meaning it can be mutated when the contract gets called.
 
 ```ts
@@ -56,7 +58,7 @@ increment(): void {
 }
 ```
 
-2. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
+1. Validate the new state goes into the next UTXO containing the same contract, i.e., the state is maintained.
 
 ```ts
 // make sure balance in the contract does not change

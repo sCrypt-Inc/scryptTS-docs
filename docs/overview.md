@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Overview
 
-`sCrypt` is an [embedded Domain Specific Language (eDSL)](https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages) based on TypeScript for writing smart contracts on Bitcoin SV. *Embedded* means that it is a language inside another language. `sCrypt` is strictly a subset of TypeScript, so all sCrypt code is valid TypeScript, but not vice versa.
+`sCrypt` is an [embedded Domain Specific Language (eDSL)](https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages) based on TypeScript for writing smart contracts on Bitcoin. *Embedded* means that it is a language inside another language. `sCrypt` is strictly a subset of TypeScript, so all sCrypt code is valid TypeScript, but not vice versa.
 
 We chose [TypeScript](https://www.typescriptlang.org) as the host language because it provides a familiar language (JavaScript), but with type safety, making it easy to get started writing safe smart contracts. If you're new to TypeScript, check out this helpful [introductory video](https://www.youtube.com/watch?v=ahCwqrYpIuM).
 
