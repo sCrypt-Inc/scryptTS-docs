@@ -46,6 +46,10 @@ In a regular Bitcoin payment to a [Bitcoin address](https://wiki.bitcoinsv.io/in
 
 `sCrypt` is a high-level language to be compiled into [Bitcoin Script](https://wiki.bitcoinsv.io/index.php/Script). The resulting assembly-like scripts could be used as locking scripts when building transactions.
 
+:::caution
+Currently sCrypt fully works on Bitcoin SV. Full support for other chains like Bitcoin is under way.
+:::
+
 ## Learn `sCrypt`
 
 Jump over to the [Installation](./installation.md) section to learn how to create an `sCrypt` project.
