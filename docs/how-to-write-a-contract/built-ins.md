@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Built-in functions
+# Built-in Functions
 
 ## Global Functions
 
