@@ -61,11 +61,11 @@ const config = {
             type: "doc",
             docId: "overview",
             position: "left",
-            label: "SDK",
+            label: "Docs",
           },
           {
             position: "left",
-            label: "OpenAPI",
+            label: "API",
             to: "/open-api/overview",
           },
           {
