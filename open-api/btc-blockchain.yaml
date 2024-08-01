@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Introduction
+  title: Blockchain API
   contact:
     email: support@scrypt.io
   version: v1
@@ -11,13 +11,17 @@ servers:
 tags:
   - name: Transactions
   - name: Addresses
+  - name: Blocks
+  - name: Scripthash
+  - name: Mempool
+  - name: Fee Estimates
 paths:
   /btc/{network}/txns/{txid}:
     get:
       tags:
         - Transactions
       description: Get the summary of a transaction.
-      operationId: Get Transaction Summary
+      operationId: GetTransactionSummary
       parameters:
         - name: network
           in: path
@@ -90,7 +94,7 @@ paths:
       tags:
         - Addresses
       description: Get balance of an address.
-      operationId: Get Address Balance
+      operationId: GetAddressBalance
       parameters:
         - name: network
           in: path
@@ -136,7 +140,7 @@ paths:
       tags:
         - Addresses
       description: Get UTXO of an address.
-      operationId: Get Address UTXO
+      operationId: GetAddressUTXO
       parameters:
         - name: network
           in: path
@@ -185,7 +189,7 @@ paths:
       tags:
         - Addresses
       description: Get transaction history of an address.
-      operationId: Get Address Transaction History
+      operationId: GetAddressTransactionHistory
       parameters:
         - name: network
           in: path
@@ -207,47 +211,88 @@ paths:
               example:
                 statusCode: 0
                 data:
-                  - txid: 6af65440d87e90788f82984bb6cfb103ca405c75e143b8fa80708f7d712eab23
+                  - txid: bedea488fb3bc4ef020057a49ca9b7c0854a639b58898c3f684d861db9989718
                     version: 2
-                    locktime: 200664
+                    locktime: 0
                     vin:
-                      - txid: 82bca1e50a4f4a601eb70c9b120a92ba05ea02ba7c069a68729dbe064a8ff3c4
-                        vout: 2
+                      - txid: 6fbd7b7d9f7c013f6f7d6d8076c6e4841c8b7748d0f1e7be7f35dfd82fd96e85
+                        vout: 1
                         prevout:
-                          scriptpubkey: 5120b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
-                          scriptpubkey_asm: OP_PUSHNUM_1 OP_PUSHBYTES_32 b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
-                          scriptpubkey_type: v1_p2tr
-                          scriptpubkey_address: tb1phxhc2z7y32rreh5jvpfyanqk6vf08c87qm643sk5w5gsdnnlqx0sutzlnx
-                          value: 117709
+                          scriptpubkey: 0014b8f6d8a9ec9b15db1d2b3d50674b618dc89b3f14
+                          scriptpubkey_asm: OP_0 OP_PUSHBYTES_20 b8f6d8a9ec9b15db1d2b3d50674b618dc89b3f14
+                          scriptpubkey_type: v0_p2wpkh
+                          scriptpubkey_address: tb1qxxpt9dwj7a95np0vmefp3qltmt3q04yymgqg24
+                          value: 9301087
                         scriptsig: ''
                         scriptsig_asm: ''
                         witness:
-                          - 1af2cade41b484ba0702bbb6ea56ae762e6406c18a8fb6a16ce3b3d3f80962184296bd053d345bee834cc728e2ba018a9506972a965f2547861d204624d08e79
+                          - 3045022100a3d0b3b5c9061c97f5294b900e2c6e41c728d331017d8ab09d7f2c88f551477d022028c63c3d0101d8d2afc8d378cc233e6e34b9c30895b009c6f3d5c62352b3658a01
+                          - 022005fbc83d4cbfc8ecfda3e64f5373c9759e1a18b83e48c860206bb97e4d79b3
                         is_coinbase: false
-                        sequence: 1
+                        sequence: 4294967295
                     vout:
-                      - scriptpubkey: 512021a7769fd29a5a03c42a2281008b7f3c34cccea92d8564035d91f72d8719ff8a
-                        scriptpubkey_asm: OP_PUSHNUM_1 OP_PUSHBYTES_32 21a7769fd29a5a03c42a2281008b7f3c34cccea92d8564035d91f72d8719ff8a
-                        scriptpubkey_type: v1_p2tr
-                        scriptpubkey_address: tb1pyxnhd87jnfdq83p2y2qspzml8s6ven4f9kzkgq6aj8mjmpcel79quhzhcn
-                        value: 50000
-                      - scriptpubkey: 6a47626274340084f2f1b192be00f6694323463ebcad25e5aace52a284bcc264ace8361de5560a30d6852a68e9ee20c8009322ba2eccfba22ca0ae77cbecbe0588ca7ff0fff456fa00
-                        scriptpubkey_asm: OP_RETURN OP_PUSHBYTES_71 626274340084f2f1b192be00f6694323463ebcad25e5aace52a284bcc264ace8361de5560a30d6852a68e9ee20c8009322ba2eccfba22ca0ae77cbecbe0588ca7ff0fff456fa00
-                        scriptpubkey_type: op_return
-                        value: 0
-                      - scriptpubkey: 5120b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
-                        scriptpubkey_asm: OP_PUSHNUM_1 OP_PUSHBYTES_32 b9af850bc48a863cde9260524ecc16d312f3e0fe06f558c2d4751106ce7f019f
-                        scriptpubkey_type: v1_p2tr
-                        scriptpubkey_address: tb1phxhc2z7y32rreh5jvpfyanqk6vf08c87qm643sk5w5gsdnnlqx0sutzlnx
-                        value: 58349
-                    size: 287
-                    weight: 944
-                    fee: 9360
+                      - scriptpubkey: 00141d03f1abdfa481c7e4d39685e2d15f3d8fa49119
+                        scriptpubkey_asm: OP_0 OP_PUSHBYTES_20 1d03f1abdfa481c7e4d39685e2d15f3d8fa49119
+                        scriptpubkey_type: v0_p2wpkh
+                        scriptpubkey_address: tb1qdd70v47kl3pka5z7vheyzc47p9dfgf9kz4xzfe
+                        value: 1056478
+                      - scriptpubkey: 0014585856d99b0e5edb33cfaa9b11046903d8b5b6c0
+                        scriptpubkey_asm: OP_0 OP_PUSHBYTES_20 585856d99b0e5edb33cfaa9b11046903d8b5b6c0
+                        scriptpubkey_type: v0_p2wpkh
+                        scriptpubkey_address: tb1qx3qax0q95qucqf6dznakyequ9ukqyyvw79vw93
+                        value: 8969609
+                    size: 248
+                    weight: 663
+                    fee: 27318
                     status:
                       confirmed: true
-                      block_height: 200889
-                      block_hash: 00000066d1ab13394d978f1a1333b7b18a9098edb5c9f8ae77df16785623463d
-                      block_time: 1718930775
+                      block_height: 201435
+                      block_hash: 000000d653f63d3c002c22b224910cea35f46ac65dd11775c0530167809b8ab9
+                      block_time: 1719251979
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/blocks/{block}:
+    get:
+      tags:
+        - Blocks
+      description: Get the summary of a block.
+      operationId: GetBlockSummary
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: block
+          in: path
+          description: Block hash or height
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  id: 0000000a9115ce547cbdd4f71e91d149f56896cfc4a93c992273b4a4e7607aa3
+                  height: 201000
+                  version: 536870912
+                  timestamp: 1719244803
+                  bits: 387458002
+                  nonce: 2740000250
+                  merkle_root: 6f7ed0ad6e1b1946ab7e269d4d7e96ef5e527aafc7a267ba3a875d8e255e4e6d
+                  prev_block_hash: 000000038aadc73b50e9da7ef4ef4a22c9b5c3797073cf939cb707381da3b48f
+                  tx_count: 10
+                  size: 2356
+                  weight: 9465
         '400':
           description: Bad Request
         '401':
@@ -255,6 +300,272 @@ paths:
       security:
         - bearerAuth: []
 
+  /btc/{network}/scripthash/{scripthash}/balance:
+    get:
+      tags:
+        - Scripthash
+      description: Get balance of a scripthash.
+      operationId: GetScripthashBalance
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: scripthash
+          in: path
+          description: BTC scripthash
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  scripthash: e2c73edb0e1ad7d8b792e3d7f19c736f0c50f46dfd9b1f0b1f0b1f0b1f0b1f0b
+                  balance: 12488215
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/scripthash/{scripthash}/utxo:
+    get:
+      tags:
+        - Scripthash
+      description: Get UTXO of a scripthash.
+      operationId: GetScripthashUTXO
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: scripthash
+          in: path
+          description: BTC scripthash
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - txid: bedea488fb3bc4ef020057a49ca9b7c0854a639b58898c3f684d861db9989718
+                    vout: 0
+                    status:
+                      confirmed: true
+                      block_height: 201435
+                      block_hash: 000000d653f63d3c002c22b224910cea35f46ac65dd11775c0530167809b8ab9
+                      block_time: 1719251979
+                    value: 8969609
+                  - txid: 2a534be761994eb2a91e19705253d93c72220e92bcac4db67e5b0a9abfd6447c
+                    vout: 2
+                    status:
+                      confirmed: true
+                      block_height: 200590
+                      block_hash: 000000508264684f54289a63d59de1f7328a57c621d24b03b71b01fd456a5d28
+                      block_time: 1718741078
+                    value: 217209
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/scripthash/{scripthash}/history:
+    get:
+      tags:
+        - Scripthash
+      description: Get transaction history of a scripthash.
+      operationId: GetScripthashTransactionHistory
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: scripthash
+          in: path
+          description: BTC scripthash
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - txid: 1f45e29f1c2f5db5300400e8da084cac93ce5fa66ea6c90c944d3a59c5a0c88b
+                    block_height: 201000
+                    block_hash: 0000000a9115ce547cbdd4f71e91d149f56896cfc4a93c992273b4a4e7607aa3
+                    block_time: 1719244803
+                    value: 12488215
+                  - txid: 2b46e29f1c2f5db5300400e8da084cac93ce5fa66ea6c90c944d3a59c5a0c88c
+                    block_height: 201001
+                    block_hash: 0000000b9115ce547cbdd4f71e91d149f56896cfc4a93c992273b4a4e7607aa4
+                    block_time: 1719244810
+                    value: 217209
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/scripthash/{scripthash}/mempool:
+    get:
+      tags:
+        - Scripthash
+      description: Get mempool transactions of a scripthash.
+      operationId: GetScripthashMempool
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+        - name: scripthash
+          in: path
+          description: BTC scripthash
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - txid: 1e12468f1c129ed0403e5d6a47e5ecf877e06a382cd85dd4fa2ae3f44c9f376b
+                    fee: 1520
+                    vsize: 224
+                    value: 530000
+                  - txid: d5d3a0e0f303b8eea44b8e36e65d0e2ac3fcf9c47e6353dd60ff04d1a1e93a9c
+                    fee: 2430
+                    vsize: 345
+                    value: 920000
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+        
+  /btc/{network}/mempool:
+    get:
+      tags:
+        - Mempool
+      description: Get the status of the mempool.
+      operationId: GetMempoolStatus
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  count: 3756
+                  vsize: 1023144
+                  total_fee: 5461201
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/mempool/recent:
+    get:
+      tags:
+        - Mempool
+      description: Get the list of recent transactions in the mempool.
+      operationId: GetRecentMempoolTransactions
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  - txid: 1e12468f1c129ed0403e5d6a47e5ecf877e06a382cd85dd4fa2ae3f44c9f376b
+                    fee: 1520
+                    vsize: 224
+                    value: 530000
+                  - txid: d5d3a0e0f303b8eea44b8e36e65d0e2ac3fcf9c47e6353dd60ff04d1a1e93a9c
+                    fee: 2430
+                    vsize: 345
+                    value: 920000
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /btc/{network}/fee-estimates:
+    get:
+      tags:
+        - Fee Estimates
+      description: Get fee estimates for transactions.
+      operationId: GetFeeEstimates
+      parameters:
+        - name: network
+          in: path
+          description: BTC chain network (mainnet | testnet | signet)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              example:
+                statusCode: 0
+                data:
+                  fastest_fee: 20
+                  half_hour_fee: 15
+                  hour_fee: 10
+                  economy_fee: 5
+                  minimum_fee: 1
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
 components:
   securitySchemes:
     bearerAuth:
