@@ -75,6 +75,36 @@ within(2n, 0n, 2n) // false
 
 ### ByteString Operations
 
+Basic types allowed to be used in `@props` and `@methods` are `boolean` and `bigint`, along with their wrapper types `Boolean` and `BigInt`.
+
+A `string` literal is not allowed to be used directly without being converted into a ByteString.
+
+```ts
+@method()
+public example(x: bigint, y: ByteString, z: boolean) {
+
+    assert(x == 5n)
+
+    assert(z)
+
+    // Strings must by converted to ByteString before being used
+    // in a smart contract:
+    assert(y == toByteString("hello world!", true))
+
+    // We can also parse hex strings:
+    assert(x == byteString2Int(toByteString('05')))
+
+    // Vice versa, we can turn integers into ByteStrings:
+    assert(int2ByteString(x) == toByteString('05'))
+
+    // Little-endian signed-magnitude representation is being used:
+    assert(int2ByteString(-x) == toByteString('85'))
+    assert(int2ByteString(-x * 1000n) == toByteString('8893'))
+
+}
+
+```
+
 - `int2ByteString(n: bigint, size?: bigint): ByteString` If `size` is omitted, convert `n` is converted to a `ByteString` in [sign-magnitude](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude) little endian format, with as few bytes as possible (a.k.a., minimally encoded). Otherwise, converts the number `n` to a `ByteString` of the specified size, including the sign bit; fails if the number cannot be accommodated.
 
 ```ts
