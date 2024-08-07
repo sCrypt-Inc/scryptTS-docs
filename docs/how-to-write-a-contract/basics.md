@@ -782,6 +782,7 @@ export class MyLib extends SmartContractLib {
     @method()
     static sum(x: number) : bigint {
         let sum = 0n;
+        // Note: `x` is a variable here <--------
         for (let i = 0n; i < x; i++) {
             sum += i
         }
