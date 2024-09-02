@@ -73,3 +73,10 @@ If you want to debug a unit test written with the [Mocha](https://mochajs.org) t
 :::note
 You need to change the contract test file name in [launch.json](https://github.com/sCrypt-Inc/boilerplate/blob/master/.vscode/launch.json#L25) if needed.
 :::
+
+### Debug a ScriptContext Failure
+One common failure is caused by ScriptContext assertions, like
+```typescript
+assert(this.ctx.hashOutputs == hash256(outputs), 'hashOutputs mismatch')
+```
+Refer to [this guide](advanced/how-to-debug-scriptcontext.md) to debug such failures.
