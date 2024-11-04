@@ -26,16 +26,16 @@ softwareupdate --install-rosetta --agree-to-license
 The [sCrypt CLI](https://github.com/sCrypt-Inc/scrypt-cli) tool is used to easily create, compile and publish `sCrypt` projects.
 The CLI provides best practice project scaffolding including dependencies such as sCrypt, a test framework ([Mocha](https://mochajs.org)), code auto-formatting ([Prettier](https://prettier.io)), linting ([ES Lint](https://eslint.org)), and more.
 
-Run the CLI tool directly with `npx` and try it out by creating a demo project:
-
-```sh
-npx scrypt-cli project demo
-```
-
 Or install it globally on your machine.
 
 ```sh
 npm install -g scrypt-cli
+```
+
+Run the CLI tool directly with `npx` and try it out by creating a demo project:
+
+```sh
+npx scrypt-cli project demo
 ```
 
 :::tip
