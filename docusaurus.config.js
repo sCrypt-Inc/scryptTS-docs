@@ -64,11 +64,6 @@ const config = {
             label: "Docs",
           },
           {
-            position: "left",
-            label: "API",
-            to: "/open-api/overview",
-          },
-          {
             /* Only visible under docs. See src/custom/custom.css */
             href: 'https://github.com/sCrypt-Inc/scryptTS-docs',
             label: 'Help us improve this page',
