@@ -340,13 +340,13 @@ ___
 
 ### methods
 
-• `get` **methods**(): `Record`<`string`, (...`args`: `any`) => `Promise`<[`ContractTransaction`](../interfaces/ContractTransaction.md)\>\>
+• `get` **methods**(): ``Record`<`string`, (...`args`: `any`) => `Promise`<[`ContractTransaction`]`(../interfaces/ContractTransaction.md)\>\>
 
 An object to access all public `@method`s
 
 #### Returns
 
-`Record`<`string`, (...`args`: `any`) => `Promise`<[`ContractTransaction`](../interfaces/ContractTransaction.md)\>\>
+`Record<string, (...args: any)` => `Promise<[ContractTransaction](../interfaces/ContractTransaction.md)>`\>
 
 #### Defined in
 
@@ -456,7 +456,9 @@ dist/smart-contract/contract.d.ts:475
 
 ### bindTxBuilder
 
+```ts
 ▸ **bindTxBuilder**(`methodName`, `txBuilder`): `void`
+```
 
 Bind a transation builder for a public `@method`
 
@@ -465,7 +467,7 @@ Bind a transation builder for a public `@method`
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `methodName` | `string` | the public `@method` name |
-| `txBuilder` | [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\> | a transation builder |
+| `txBuilder` | `[`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\>` | a transation builder |
 
 #### Returns
 
@@ -479,7 +481,9 @@ ___
 
 ### buildChangeOutput
 
+```ts
 ▸ **buildChangeOutput**(): [`ByteString`](../README.md#bytestring)
+```
 
 A built-in function to create an [change output][https://wiki.bitcoinsv.io/index.php/Change](https://wiki.bitcoinsv.io/index.php/Change).
 
@@ -497,7 +501,9 @@ ___
 
 ### buildContractInput
 
+```ts
 ▸ **buildContractInput**(`fromUTXO?`): [`Input`](bsv.Transaction.Input-1.md)
+```
 
 Build an input that includes the contract
 
@@ -521,7 +527,9 @@ ___
 
 ### buildDeployTransaction
 
+```ts
 ▸ **buildDeployTransaction**(`utxos`, `amount`, `changeAddress`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 creates a tx to deploy the contract. Users override it to cutomize a deployment tx as below.
 
@@ -559,7 +567,9 @@ override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddre
 
 #### Returns
 
+```ts
 `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 #### Defined in
 
@@ -569,7 +579,9 @@ ___
 
 ### buildStateOutput
 
+```ts
 ▸ **buildStateOutput**(`amount`): [`ByteString`](../README.md#bytestring)
+```
 
 A built-in function to create an output containing the new state. It takes an input: the number of satoshis in the output.
 
@@ -595,7 +607,9 @@ ___
 
 ### checkPreimage
 
+```ts
 ▸ **checkPreimage**(`txPreimage`): `boolean`
+```
 
 Using the [OP_PUSH_TX][https://medium.com/@xiaohuiliu/op-push-tx-3d3d279174c1](https://medium.com/@xiaohuiliu/op-push-tx-3d3d279174c1) technique, check if `txPreimage` is the preimage of the current transaction.
 
@@ -621,7 +635,9 @@ ___
 
 ### checkPreimageAdvanced
 
+```ts
 ▸ **checkPreimageAdvanced**(`txPreimage`, `privKey`, `pubKey`, `inverseK`, `r`, `rBigEndian`, `sigHashType`): `boolean`
+```
 
 Same as `checkPreimage`, but support customized more settings.
 
@@ -653,7 +669,9 @@ ___
 
 ### checkPreimageSigHashType
 
+```ts
 ▸ **checkPreimageSigHashType**(`txPreimage`, `sigHashType`): `boolean`
+```
 
 Same as `checkPreimage`, but support customized sighash type
 
@@ -680,7 +698,9 @@ ___
 
 ### connect
 
+```ts
 ▸ **connect**(`providerOrSigner`): `Promise`<`void`\>
+```
 
 connect a provider or a signer.
 
@@ -692,7 +712,9 @@ connect a provider or a signer.
 
 #### Returns
 
+```ts
 `Promise`<`void`\>
+```
 
 #### Defined in
 
@@ -702,7 +724,9 @@ ___
 
 ### deploy
 
+```ts
 ▸ **deploy**(`amount?`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+```
 
 Deploy the contract
 
@@ -717,7 +741,9 @@ Deploy the contract
 
 #### Returns
 
+```ts
 `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+```
 
 The transaction id of the successfully deployed contract
 
@@ -729,7 +755,9 @@ ___
 
 ### getStateScript
 
+```ts
 ▸ **getStateScript**(): [`ByteString`](../README.md#bytestring)
+```
 
 A built-in function to create a locking script containing the new state.
 
@@ -749,7 +777,9 @@ ___
 
 ### insertCodeSeparator
 
+```ts
 ▸ **insertCodeSeparator**(): `void`
+```
 
 Insert and OP_CODESEPARATOR at this point of the functions logic.
 More detail about [OP_CODESEPARATOR][https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR)
@@ -766,7 +796,9 @@ ___
 
 ### isStateful
 
+```ts
 ▸ **isStateful**(): `boolean`
+```
 
 Check if the contract is a stateful contract
 
@@ -784,7 +816,9 @@ ___
 
 ### markAsGenesis
 
+```ts
 ▸ **markAsGenesis**(): [`SmartContract`](SmartContract.md)
+```
 
 Mark the contract as genesis contracts
 
@@ -800,7 +834,9 @@ ___
 
 ### next
 
+```ts
 ▸ **next**(`opt?`): [`SmartContract`](SmartContract.md)
+```
 
 #### Parameters
 
@@ -823,7 +859,9 @@ ___
 
 ### setAsmVars
 
+```ts
 ▸ **setAsmVars**(`asmVarValues`): `void`
+```
 
 If the compiled contract contains any ASM variable templates (e.g. P2PKH.unlock.pubKeyHash),
 replace them with the passed values.
@@ -846,7 +884,9 @@ ___
 
 ### setDataPartInASM
 
+```ts
 ▸ **setDataPartInASM**(`dataPart`): `void`
+```
 
 set the data part of the contract in ASM format
 
@@ -868,7 +908,9 @@ ___
 
 ### setDataPartInHex
 
+```ts
 ▸ **setDataPartInHex**(`dataPart`): `void`
+```
 
 set the data part of the contract in hex format
 
@@ -890,7 +932,9 @@ ___
 
 ### sigTypeOfMethod
 
+```ts
 ▸ **sigTypeOfMethod**(`methodName`): `number`
+```
 
 Get [sigHash type][https://docs.scrypt.io/how-to-write-a-contract/scriptcontext#sighash-type](https://docs.scrypt.io/how-to-write-a-contract/scriptcontext#sighash-type) of the public `@method` function.
 
@@ -914,7 +958,9 @@ ___
 
 ### compile
 
+```ts
 ▸ `Static` **compile**(): `Promise`<[`Artifact`](../interfaces/Artifact.md)\>
+```
 
 compiling the scrypt source which is the output of transpiling. Calling this function to output the contract artifact file.
 only used for testing.
@@ -922,7 +968,9 @@ This function should not be called in production environment.
 
 #### Returns
 
+```ts
 `Promise`<[`Artifact`](../interfaces/Artifact.md)\>
+```
 
 if compiling succeed, otherwise it throws error.
 
@@ -934,7 +982,9 @@ ___
 
 ### fromTx
 
+```ts
 ▸ `Static` **fromTx**<`T`\>(`this`, `tx`, `atOutputIndex`, `offchainValues?`): `T`
+```
 
 recover a `SmartContract` instance from the transaction
 if the contract contains onchain properties of type `HashedMap` or `HashedSet`
@@ -944,7 +994,7 @@ it's required to pass all their offchain raw data at this transaction moment
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+| `T` | `extends [`SmartContract`](SmartContract.md)<`T`\>` |
 
 #### Parameters
 
@@ -953,7 +1003,7 @@ it's required to pass all their offchain raw data at this transaction moment
 | `this` | (...`args`: `any`[]) => `T` | - |
 | `tx` | [`Transaction`](bsv.Transaction-1.md) | transaction |
 | `atOutputIndex` | `number` | output index of `tx` |
-| `offchainValues?` | `Record`<`string`, `any`\> | the value of offchain properties, the raw data of onchain `HashedMap` and `HashedSet` properties, at this transaction moment |
+| `offchainValues?` | `Record<string, any>` | the value of offchain properties, the raw data of onchain `HashedMap` and `HashedSet` properties, at this transaction moment |
 
 #### Returns
 
@@ -1006,7 +1056,9 @@ ___
 
 ### multiContractCall
 
+```ts
 ▸ `Static` **multiContractCall**(`partialContractTx`, `signer`, `options?`): `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
+```
 
 When the `@method`s of multiple contracts is called in a transaction, this function signs and broadcasts the final transaction.
 
@@ -1020,7 +1072,9 @@ When the `@method`s of multiple contracts is called in a transaction, this funct
 
 #### Returns
 
+```ts
 `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
+```
 
 a `MultiContractTransation` with a signed transation.
 
@@ -1057,7 +1111,9 @@ ___
 
 ### checkMultiSig
 
+```ts
 ▸ **checkMultiSig**(`signatures`, `publickeys`): `boolean`
+```
 
 Compares the first signature against each public key until it finds an ECDSA match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result. All signatures need to match a public key. Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the scriptSig using the same order as their corresponding public keys were placed in the scriptPubKey or redeemScript. If all signatures are valid, 1 is returned, 0 otherwise. Due to a bug, one extra unused value is removed from the stack.
 
@@ -1086,7 +1142,9 @@ ___
 
 ### checkSig
 
+```ts
 ▸ **checkSig**(`signature`, `publickey`, `errorMsg?`): `boolean`
+```
 
 A built-in function verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with sighash flags. It outputs true or false on the stack based on whether the signature check passes or fails.
 

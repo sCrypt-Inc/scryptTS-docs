@@ -47,7 +47,9 @@ dist/client/apis/contract-api.d.ts:35
 
 ### getLatestInstance
 
+```ts
 ▸ **getLatestInstance**<`T`\>(`clazz`, `contractId`): `Promise`<`T`\>
+```
 
 Get a contract instance containing the latest state of the contract by the contract ID.
 The obtained contract instance may also be obtained by other users at the same time.
@@ -59,7 +61,7 @@ If this error occurs, you need to re-acquire the contract instance
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+| `T` | `extends [`SmartContract`](SmartContract.md)<`T`\>` |
 
 #### Parameters
 
@@ -70,7 +72,9 @@ If this error occurs, you need to re-acquire the contract instance
 
 #### Returns
 
+```ts
 `Promise`<`T`\>
+```
 
 a contract instance contains latest state
 
@@ -82,7 +86,9 @@ ___
 
 ### subscribe
 
+```ts
 ▸ **subscribe**<`T`\>(`options`, `cb`): [`SubScription`](../interfaces/SubScription.md)
+```
 
 Subscribe to notifications of contract status changes by contract ID,
 
@@ -90,14 +96,14 @@ Subscribe to notifications of contract status changes by contract ID,
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+| `T` | `extends [`SmartContract`](SmartContract.md)<`T`\>` |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`SubscribeOptions`](../interfaces/SubscribeOptions.md)<`T`\> | SubscribeOptions |
-| `cb` | (`e`: [`ContractCalledEvent`](../interfaces/ContractCalledEvent.md)<`T`\>) => `void` |  |
+| `options` | `[`SubscribeOptions`](../interfaces/SubscribeOptions.md)<`T`\>` | SubscribeOptions |
+| `cb` | (`e`: `[`ContractCalledEvent`](../interfaces/ContractCalledEvent.md)<`T`\>) => `void`` |  |
 
 #### Returns
 

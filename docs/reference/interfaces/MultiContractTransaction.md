@@ -16,7 +16,9 @@ A structure describing a transaction that invokes multiple contracts.
 
 ### atInputIndices
 
+```ts
 • **atInputIndices**: `number`[]
+```
 
 The input indices of previous contract UTXOs to spend in the method calling tx
 
@@ -28,7 +30,9 @@ ___
 
 ### nexts
 
+```ts
 • **nexts**: [`StatefulNext`](StatefulNext.md)<`any`\>[]
+```
 
 The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract
 
@@ -40,7 +44,9 @@ ___
 
 ### tx
 
+```ts
 • **tx**: [`Transaction`](../classes/bsv.Transaction-1.md)
+```
 
 The method calling tx
 

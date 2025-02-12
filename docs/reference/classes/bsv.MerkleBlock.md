@@ -44,7 +44,7 @@ node_modules/bsv/index.d.ts:1464
 | :------ | :------ |
 | `flags` | `number`[] |
 | `hashes` | `string`[] |
-| `header` | { `bits`: `number` ; `hash`: `string` ; `merkleRoot`: `string` ; `nonce`: `number` ; `prevHash`: `string` ; `time`: `number` ; `version`: `number`  } |
+| `header` | `{ `bits`: `number` ; `hash`: `string` ; `merkleRoot`: `string` ; `nonce`: `number` ; `prevHash`: `string` ; `time`: `number` ; `version`: `number`  }` |
 | `header.bits` | `number` |
 | `header.hash` | `string` |
 | `header.merkleRoot` | `string` |

@@ -51,11 +51,15 @@ dist/client/apis/bsv-api.d.ts:6
 
 ### connect
 
+```ts
 ▸ **connect**(): `Promise`<{ `error`: `string` ; `success`: `boolean`  }\>
+```
 
 #### Returns
 
+```ts
 `Promise`<{ `error`: `string` ; `success`: `boolean`  }\>
+```
 
 #### Defined in
 
@@ -65,7 +69,9 @@ ___
 
 ### getBalance
 
+```ts
 ▸ **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+```
 
 #### Parameters
 
@@ -75,7 +81,9 @@ ___
 
 #### Returns
 
+```ts
 `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+```
 
 #### Defined in
 
@@ -85,11 +93,15 @@ ___
 
 ### getFeePerKB
 
+```ts
 ▸ **getFeePerKB**(): `Promise`<`number`\>
+```
 
 #### Returns
 
+```ts
 `Promise`<`number`\>
+```
 
 #### Defined in
 
@@ -99,7 +111,9 @@ ___
 
 ### getTransaction
 
+```ts
 ▸ **getTransaction**(`txId`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 #### Parameters
 
@@ -109,7 +123,9 @@ ___
 
 #### Returns
 
+```ts
 `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 #### Defined in
 
@@ -119,7 +135,9 @@ ___
 
 ### listUnspent
 
+```ts
 ▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+```
 
 #### Parameters
 
@@ -130,7 +148,9 @@ ___
 
 #### Returns
 
+```ts
 `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+```
 
 #### Defined in
 
@@ -140,7 +160,9 @@ ___
 
 ### sendRawTransaction
 
+```ts
 ▸ **sendRawTransaction**(`txHex`): `Promise`<`string`\>
+```
 
 #### Parameters
 
@@ -150,7 +172,9 @@ ___
 
 #### Returns
 
+```ts
 `Promise`<`string`\>
+```
 
 #### Defined in
 

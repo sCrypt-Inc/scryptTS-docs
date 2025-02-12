@@ -168,7 +168,9 @@ node_modules/@types/node/events.d.ts:356
 
 ### addListener
 
+```ts
 ▸ **addListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+```
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -199,13 +201,17 @@ ___
 
 ### connect
 
+```ts
 ▸ `Abstract` **connect**(): `Promise`<[`Provider`](Provider.md)\>
+```
 
 Implement the connection provider, for example, verify the api key during the connection process.
 
 #### Returns
 
+```ts
 `Promise`<[`Provider`](Provider.md)\>
+```
 
 a connected provider. Throw an exception if the connection fails.
 
@@ -217,7 +223,9 @@ ___
 
 ### emit
 
+```ts
 ▸ **emit**(`eventName`, `...args`): `boolean`
+```
 
 Synchronously calls each of the listeners registered for the event named`eventName`, in the order they were registered, passing the supplied arguments
 to each.
@@ -284,7 +292,9 @@ ___
 
 ### eventNames
 
+```ts
 ▸ **eventNames**(): (`string` \| `symbol`)[]
+```
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -322,7 +332,9 @@ ___
 
 ### getBalance
 
-▸ `Abstract` **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+```ts
+```▸ `Abstract` **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `numb
+er`  }\>
 
 Get the balance of BSVs in satoshis for an address.
 
@@ -346,7 +358,9 @@ ___
 
 ### getEstimateFee
 
+```ts
 ▸ **getEstimateFee**(`tx`): `Promise`<`number`\>
+```
 
 Get a best guess of the fee for a transaction.
 
@@ -358,7 +372,9 @@ Get a best guess of the fee for a transaction.
 
 #### Returns
 
+```ts
 `Promise`<`number`\>
+```
 
 The estimated fee in satoshis.
 
@@ -370,11 +386,15 @@ ___
 
 ### getFeePerKb
 
+```ts
 ▸ `Abstract` **getFeePerKb**(): `Promise`<`number`\>
+```
 
 #### Returns
 
+```ts
 `Promise`<`number`\>
+```
 
 The fee rate for sending transactions through this provider.
 
@@ -386,7 +406,9 @@ ___
 
 ### getMaxListeners
 
+```ts
 ▸ **getMaxListeners**(): `number`
+```
 
 Returns the current max listener value for the `EventEmitter` which is either
 set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](Provider.md#defaultmaxlisteners).
@@ -411,7 +433,9 @@ ___
 
 ### getNetwork
 
+```ts
 ▸ `Abstract` **getNetwork**(): [`Network`](../interfaces/bsv.Networks.Network.md)
+```
 
 #### Returns
 
@@ -427,7 +451,9 @@ ___
 
 ### getTransaction
 
-▸ `Abstract` **getTransaction**(`txHash`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+```ts
+```▸ `Abstract` **getTransaction**(`txHash`): `Promise`<[`TransactionResponse`](../interfaces/Trans
+actionResponse.md)\>
 
 Get a transaction from the network.
 
@@ -451,7 +477,9 @@ ___
 
 ### isConnected
 
+```ts
 ▸ `Abstract` **isConnected**(): `boolean`
+```
 
 check if provider is ready
 
@@ -467,7 +495,9 @@ ___
 
 ### listUnspent
 
-▸ `Abstract` **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+```ts
+▸ `Abstract` **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/```bsv.T
+ransaction.IUnspentOutput.md)[]\>
 
 Get a list of the P2PKH UTXOs.
 
@@ -492,7 +522,9 @@ ___
 
 ### listenerCount
 
+```ts
 ▸ **listenerCount**(`eventName`, `listener?`): `number`
+```
 
 Returns the number of listeners listening to the event named `eventName`.
 
@@ -526,7 +558,9 @@ ___
 
 ### listeners
 
+```ts
 ▸ **listeners**(`eventName`): `Function`[]
+```
 
 Returns a copy of the array of listeners for the event named `eventName`.
 
@@ -564,7 +598,9 @@ ___
 
 ### off
 
+```ts
 ▸ **off**(`eventName`, `listener`): [`Provider`](Provider.md)
+```
 
 Alias for `emitter.removeListener()`.
 
@@ -595,7 +631,9 @@ ___
 
 ### on
 
+```ts
 ▸ **on**(`eventName`, `listener`): [`Provider`](Provider.md)
+```
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -650,7 +688,9 @@ ___
 
 ### once
 
+```ts
 ▸ **once**(`eventName`, `listener`): [`Provider`](Provider.md)
+```
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -703,7 +743,9 @@ ___
 
 ### prependListener
 
+```ts
 ▸ **prependListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+```
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -745,7 +787,9 @@ ___
 
 ### prependOnceListener
 
+```ts
 ▸ **prependOnceListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+```
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -785,7 +829,9 @@ ___
 
 ### rawListeners
 
+```ts
 ▸ **rawListeners**(`eventName`): `Function`[]
+```
 
 Returns a copy of the array of listeners for the event named `eventName`,
 including any wrappers (such as those created by `.once()`).
@@ -840,7 +886,9 @@ ___
 
 ### removeAllListeners
 
+```ts
 ▸ **removeAllListeners**(`event?`): [`Provider`](Provider.md)
+```
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -876,7 +924,9 @@ ___
 
 ### removeListener
 
+```ts
 ▸ **removeListener**(`eventName`, `listener`): [`Provider`](Provider.md)
+```
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -982,7 +1032,9 @@ ___
 
 ### sendRawTransaction
 
+```ts
 ▸ `Abstract` **sendRawTransaction**(`rawTxHex`): `Promise`<`string`\>
+```
 
 Send a raw transaction hex string.
 
@@ -994,7 +1046,9 @@ Send a raw transaction hex string.
 
 #### Returns
 
+```ts
 `Promise`<`string`\>
+```
 
 A promise which resolves to the hash of the transaction that has been sent.
 
@@ -1006,7 +1060,9 @@ ___
 
 ### sendTransaction
 
+```ts
 ▸ **sendTransaction**(`tx`): `Promise`<`string`\>
+```
 
 Send a transaction object.
 
@@ -1022,7 +1078,9 @@ If there is a problem with the `tx` object during serialization.
 
 #### Returns
 
+```ts
 `Promise`<`string`\>
+```
 
 A promise which resolves to the hash of the transaction that has been sent.
 
@@ -1034,7 +1092,9 @@ ___
 
 ### setMaxListeners
 
+```ts
 ▸ **setMaxListeners**(`n`): [`Provider`](Provider.md)
+```
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1069,7 +1129,9 @@ ___
 
 ### updateNetwork
 
+```ts
 ▸ `Abstract` **updateNetwork**(`network`): `void`
+```
 
 update provider network
 
@@ -1091,7 +1153,9 @@ ___
 
 ### getEventListeners
 
+```ts
 ▸ `Static` **getEventListeners**(`emitter`, `name`): `Function`[]
+```
 
 Returns a copy of the array of listeners for the event named `eventName`.
 
@@ -1145,7 +1209,9 @@ ___
 
 ### getMaxListeners
 
+```ts
 ▸ `Static` **getMaxListeners**(`emitter`): `number`
+```
 
 Returns the currently set max amount of listeners.
 
@@ -1199,7 +1265,9 @@ ___
 
 ### isProvider
 
+```ts
 ▸ `Static` **isProvider**(`value`): value is Provider
+```
 
 Check if an object is a `Provider`
 
@@ -1223,7 +1291,9 @@ ___
 
 ### listenerCount
 
+```ts
 ▸ `Static` **listenerCount**(`emitter`, `eventName`): `number`
+```
 
 A class method that returns the number of listeners for the given `eventName`registered on the given `emitter`.
 
@@ -1267,7 +1337,9 @@ ___
 
 ### on
 
+```ts
 ▸ `Static` **on**(`emitter`, `eventName`, `options?`): `AsyncIterableIterator`<`any`\>
+```
 
 ```js
 const { on, EventEmitter } = require('events');
@@ -1337,7 +1409,9 @@ v13.6.0, v12.16.0
 
 #### Returns
 
+```ts
 `AsyncIterableIterator`<`any`\>
+```
 
 that iterates `eventName` events emitted by the `emitter`
 
@@ -1353,7 +1427,9 @@ ___
 
 ### once
 
+```ts
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
+```
 
 Creates a `Promise` that is fulfilled when the `EventEmitter` emits the given
 event or that is rejected if the `EventEmitter` emits `'error'` while waiting.
@@ -1449,7 +1525,9 @@ v11.13.0, v10.16.0
 
 #### Returns
 
+```ts
 `Promise`<`any`[]\>
+```
 
 #### Inherited from
 
@@ -1459,7 +1537,9 @@ EventEmitter.once
 
 node_modules/@types/node/events.d.ts:194
 
+```ts
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
+```
 
 #### Parameters
 
@@ -1471,7 +1551,9 @@ node_modules/@types/node/events.d.ts:194
 
 #### Returns
 
+```ts
 `Promise`<`any`[]\>
+```
 
 #### Inherited from
 
@@ -1485,7 +1567,9 @@ ___
 
 ### setMaxListeners
 
+```ts
 ▸ `Static` **setMaxListeners**(`n?`, `...eventTargets`): `void`
+```
 
 ```js
 const {

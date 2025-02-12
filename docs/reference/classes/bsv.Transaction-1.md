@@ -206,7 +206,9 @@ node_modules/bsv/index.d.ts:900
 
 ### \_estimateFee
 
+```ts
 ▸ **_estimateFee**(): `number`
+```
 
 #### Returns
 
@@ -220,7 +222,9 @@ ___
 
 ### \_getUnspentValue
 
+```ts
 ▸ **_getUnspentValue**(): `number`
+```
 
 #### Returns
 
@@ -234,7 +238,9 @@ ___
 
 ### addData
 
+```ts
 ▸ **addData**(`value`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -254,7 +260,9 @@ ___
 
 ### addDummyInput
 
+```ts
 ▸ **addDummyInput**(`script`, `satoshis`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -275,7 +283,9 @@ ___
 
 ### addInput
 
+```ts
 ▸ **addInput**(`input`, `outputScript?`, `satoshis?`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -297,7 +307,9 @@ ___
 
 ### addInputFromPrevTx
 
+```ts
 ▸ **addInputFromPrevTx**(`prevTx`, `outputIndex?`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -318,7 +330,9 @@ ___
 
 ### addOutput
 
+```ts
 ▸ **addOutput**(`output`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -338,7 +352,9 @@ ___
 
 ### applySignature
 
+```ts
 ▸ **applySignature**(`sig`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -362,7 +378,9 @@ ___
 
 ### change
 
+```ts
 ▸ **change**(`address`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -382,7 +400,9 @@ ___
 
 ### checkFeeRate
 
+```ts
 ▸ **checkFeeRate**(`feePerKb?`): `boolean`
+```
 
 #### Parameters
 
@@ -402,7 +422,9 @@ ___
 
 ### dummyChange
 
+```ts
 ▸ **dummyChange**(): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Returns
 
@@ -416,7 +438,9 @@ ___
 
 ### enableRBF
 
+```ts
 ▸ **enableRBF**(): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Returns
 
@@ -430,7 +454,9 @@ ___
 
 ### fee
 
+```ts
 ▸ **fee**(`amount`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -450,7 +476,9 @@ ___
 
 ### feePerKb
 
+```ts
 ▸ **feePerKb**(`amount`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -470,7 +498,9 @@ ___
 
 ### from
 
+```ts
 ▸ **from**(`utxos`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -490,7 +520,9 @@ ___
 
 ### fromBuffer
 
+```ts
 ▸ **fromBuffer**(`buffer`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -510,7 +542,9 @@ ___
 
 ### fromString
 
+```ts
 ▸ **fromString**(`rawTxHex`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -530,7 +564,9 @@ ___
 
 ### getChangeAddress
 
+```ts
 ▸ **getChangeAddress**(): [`Address`](bsv.Address.md)
+```
 
 #### Returns
 
@@ -544,7 +580,9 @@ ___
 
 ### getChangeAmount
 
+```ts
 ▸ **getChangeAmount**(): `number`
+```
 
 #### Returns
 
@@ -558,7 +596,9 @@ ___
 
 ### getChangeOutput
 
+```ts
 ▸ **getChangeOutput**(): [`Output`](bsv.Transaction.Output.md)
+```
 
 #### Returns
 
@@ -572,7 +612,9 @@ ___
 
 ### getEstimateFee
 
+```ts
 ▸ **getEstimateFee**(): `number`
+```
 
 #### Returns
 
@@ -586,7 +628,9 @@ ___
 
 ### getFee
 
+```ts
 ▸ **getFee**(): `number`
+```
 
 #### Returns
 
@@ -600,7 +644,9 @@ ___
 
 ### getInputAmount
 
+```ts
 ▸ **getInputAmount**(`inputIndex`): `number`
+```
 
 #### Parameters
 
@@ -620,7 +666,9 @@ ___
 
 ### getLockTime
 
+```ts
 ▸ **getLockTime**(): `number` \| `Date`
+```
 
 #### Returns
 
@@ -634,7 +682,9 @@ ___
 
 ### getOutputAmount
 
+```ts
 ▸ **getOutputAmount**(`outputIndex`): `number`
+```
 
 #### Parameters
 
@@ -654,7 +704,9 @@ ___
 
 ### getPreimage
 
+```ts
 ▸ **getPreimage**(`inputIndex`, `sigtype?`, `isLowS?`): `string`
+```
 
 #### Parameters
 
@@ -676,7 +728,9 @@ ___
 
 ### getSerializationError
 
+```ts
 ▸ **getSerializationError**(`opts?`): `any`
+```
 
 #### Parameters
 
@@ -696,7 +750,9 @@ ___
 
 ### getSignature
 
+```ts
 ▸ **getSignature**(`inputIndex`, `privateKey?`, `sigtype?`): `string` \| `string`[]
+```
 
 #### Parameters
 
@@ -718,7 +774,9 @@ ___
 
 ### hasWitnesses
 
+```ts
 ▸ **hasWitnesses**(): `boolean`
+```
 
 #### Returns
 
@@ -732,7 +790,9 @@ ___
 
 ### inspect
 
+```ts
 ▸ **inspect**(): `string`
+```
 
 #### Returns
 
@@ -746,7 +806,9 @@ ___
 
 ### isCoinbase
 
+```ts
 ▸ **isCoinbase**(): `boolean`
+```
 
 #### Returns
 
@@ -760,7 +822,9 @@ ___
 
 ### isFullySigned
 
+```ts
 ▸ **isFullySigned**(): `boolean`
+```
 
 #### Returns
 
@@ -774,7 +838,9 @@ ___
 
 ### isRBF
 
+```ts
 ▸ **isRBF**(): `boolean`
+```
 
 #### Returns
 
@@ -788,7 +854,9 @@ ___
 
 ### isSealed
 
+```ts
 ▸ **isSealed**(): `boolean`
+```
 
 #### Returns
 
@@ -802,7 +870,9 @@ ___
 
 ### lockUntilBlockHeight
 
+```ts
 ▸ **lockUntilBlockHeight**(`height`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -822,7 +892,9 @@ ___
 
 ### lockUntilDate
 
+```ts
 ▸ **lockUntilDate**(`time`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -842,7 +914,9 @@ ___
 
 ### prevouts
 
+```ts
 ▸ **prevouts**(): `string`
+```
 
 #### Returns
 
@@ -856,7 +930,9 @@ ___
 
 ### seal
 
+```ts
 ▸ **seal**(): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Returns
 
@@ -870,11 +946,15 @@ ___
 
 ### sealAsync
 
+```ts
 ▸ **sealAsync**(): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 #### Returns
 
+```ts
 `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 #### Defined in
 
@@ -884,7 +964,9 @@ ___
 
 ### serialize
 
+```ts
 ▸ **serialize**(`opts?`): `string`
+```
 
 #### Parameters
 
@@ -904,13 +986,15 @@ ___
 
 ### setInputScript
 
+```ts
 ▸ **setInputScript**(`inputIndex`, `unlockingScript`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `inputIndex` | `number` \| { `inputIndex`: `number` ; `isLowS?`: `boolean` ; `privateKey?`: [`PrivateKey`](bsv.PrivateKey.md) \| [`PrivateKey`](bsv.PrivateKey.md)[] ; `sigtype?`: `number`  } |
+| `inputIndex` | `number` \| `{ `inputIndex`: `number` ; `isLowS?`: `boolean` ; `privateKey?`: [`PrivateKey`](bsv.PrivateKey.md) \| [`PrivateKey`](bsv.PrivateKey.md)[] ; `sigtype?`: `number`  }` |
 | `unlockingScript` | [`Script`](bsv.Script-1.md) \| (`tx`: [`Transaction`](bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](bsv.Transaction.Output.md)) => [`Script`](bsv.Script-1.md) |
 
 #### Returns
@@ -925,18 +1009,22 @@ ___
 
 ### setInputScriptAsync
 
+```ts
 ▸ **setInputScriptAsync**(`inputIndex`, `callback`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `inputIndex` | `number` \| { `inputIndex`: `number` ; `isLowS?`: `boolean` ; `sigtype?`: `number`  } |
-| `callback` | (`tx`: [`Transaction`](bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](bsv.Transaction.Output.md)) => `Promise`<[`Script`](bsv.Script-1.md)\> |
+| `inputIndex` | `number` \| `{ `inputIndex`: `number` ; `isLowS?`: `boolean` ; `sigtype?`: `number`  }` |
+| `callback` | (`tx`: `[`Transaction`](bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](bsv.Transaction.Output.md)) => `Promise`<[`Script`](bsv.Script-1.md)\>` |
 
 #### Returns
 
+```ts
 `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 #### Defined in
 
@@ -946,7 +1034,9 @@ ___
 
 ### setInputSequence
 
+```ts
 ▸ **setInputSequence**(`inputIndex`, `sequence`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -967,7 +1057,9 @@ ___
 
 ### setLockTime
 
+```ts
 ▸ **setLockTime**(`t`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -987,7 +1079,9 @@ ___
 
 ### setOutput
 
+```ts
 ▸ **setOutput**(`outputIndex`, `output`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -1008,7 +1102,9 @@ ___
 
 ### sign
 
+```ts
 ▸ **sign**(`privateKey`, `sigtype?`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -1029,7 +1125,9 @@ ___
 
 ### to
 
+```ts
 ▸ **to**(`address`, `amount`): [`Transaction`](bsv.Transaction-1.md)
+```
 
 #### Parameters
 
@@ -1050,7 +1148,9 @@ ___
 
 ### toBuffer
 
+```ts
 ▸ **toBuffer**(): `Buffer`
+```
 
 #### Returns
 
@@ -1064,7 +1164,9 @@ ___
 
 ### toObject
 
+```ts
 ▸ **toObject**(): `any`
+```
 
 #### Returns
 
@@ -1078,7 +1180,9 @@ ___
 
 ### uncheckedSerialize
 
+```ts
 ▸ **uncheckedSerialize**(): `string`
+```
 
 #### Returns
 
@@ -1092,7 +1196,9 @@ ___
 
 ### verify
 
+```ts
 ▸ **verify**(): `string` \| ``true``
+```
 
 #### Returns
 
@@ -1106,7 +1212,9 @@ ___
 
 ### verifyInputScript
 
+```ts
 ▸ **verifyInputScript**(`inputIndex`): `Object`
+```
 
 **`Deprecated`**
 
@@ -1136,7 +1244,9 @@ ___
 
 ### verifyScript
 
+```ts
 ▸ **verifyScript**(`inputIndex`): `Object`
+```
 
 #### Parameters
 
@@ -1162,7 +1272,9 @@ ___
 
 ### verifySignature
 
+```ts
 ▸ **verifySignature**(`sig`, `pubkey`, `nin`, `subscript`, `satoshisBN`, `flags`): `boolean`
+```
 
 #### Parameters
 

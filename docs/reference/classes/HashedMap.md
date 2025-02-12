@@ -1,6 +1,6 @@
 [scrypt-ts](../README.md) / HashedMap
 
-# Class: HashedMap<K, V\>
+# Class: HashedMap
 
 The `HashedMap` library provides a map/hashtable-like data structure. Unique keys and their corresponding values are hashed before being stored.
 Only the hash values of key and value are saved on the chain.
@@ -16,7 +16,7 @@ Only some of the specified functions can be called in the `@method` function of 
 
 ## Hierarchy
 
-- `Map`<`K`, `V`\>
+- `Map<K,V>`
 
   ↳ **`HashedMap`**
 
@@ -49,7 +49,9 @@ Only some of the specified functions can be called in the `@method` function of 
 
 ### constructor
 
+```ts
 • **new HashedMap**<`K`, `V`\>(`entries?`)
+```
 
 The constructor of `HashedMap` should not be called inside the contract.
 The `HashedMap` should be created outside the contract and passed to the contract via the contract's constructor.
@@ -121,7 +123,9 @@ node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:317
 
 ### canGet
 
+```ts
 ▸ **canGet**(`key`, `val`): `boolean`
+```
 
 Check whether we can get a (key, val) pair from the map
 Can be called in the `@method` function of a contract
@@ -147,7 +151,9 @@ ___
 
 ### clear
 
+```ts
 ▸ **clear**(): `void`
+```
 
 #### Returns
 
@@ -165,7 +171,9 @@ ___
 
 ### delete
 
+```ts
 ▸ **delete**(`key`): `boolean`
+```
 
 Remove a entry with a specified key from the map.
 Can be called in the `@method` function of a contract
@@ -194,7 +202,9 @@ ___
 
 ### get
 
+```ts
 ▸ **get**(`key`): `V`
+```
 
 Get value of a pair in the map by key
 Can not be called in the `@method` function of a contract
@@ -223,7 +233,9 @@ ___
 
 ### has
 
+```ts
 ▸ **has**(`key`): `boolean`
+```
 
 Check whether key exists in the map
 Can be called in the `@method` function of a contract
@@ -252,7 +264,9 @@ ___
 
 ### set
 
+```ts
 ▸ **set**(`key`, `value`): [`HashedMap`](HashedMap.md)<`K`, `V`\>
+```
 
 Insert or update a (key, val) pair to the HashedMap.
 If an element with the same key already exists, the element will be updated.
@@ -267,7 +281,9 @@ Can be called in the `@method` function of a contract
 
 #### Returns
 
+```ts
 [`HashedMap`](HashedMap.md)<`K`, `V`\>
+```
 
 this
 

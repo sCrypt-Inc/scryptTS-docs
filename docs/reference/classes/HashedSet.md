@@ -1,6 +1,6 @@
 [scrypt-ts](../README.md) / HashedSet
 
-# Class: HashedSet<T\>
+# Class: HashedSet
 
 The HashedSet library provides a set-like data structure.
 It can be regarded as a special HashedMap where a value is the same with its key and is thus omitted.
@@ -16,7 +16,7 @@ Only some of the specified functions can be called in the `@method` function of 
 
 ## Hierarchy
 
-- `Set`<`T`\>
+- `Set<T>`
 
   ↳ **`HashedSet`**
 
@@ -53,7 +53,9 @@ Only some of the specified functions can be called in the `@method` function of 
 
 ### constructor
 
+```ts
 • **new HashedSet**<`T`\>(`values?`)
+```
 
 The constructor of `HashedSet` should not be called inside the contract.
 The `HashedSet` should be created outside the contract and passed to the contract via the contract's constructor.
@@ -124,13 +126,17 @@ node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:320
 
 ### [iterator]
 
+```ts
 ▸ **[iterator]**(): `IterableIterator`<`T`\>
+```
 
 Iterates over values in the set.
 
 #### Returns
 
+```ts
 `IterableIterator`<`T`\>
+```
 
 #### Inherited from
 
@@ -144,7 +150,9 @@ ___
 
 ### add
 
+```ts
 ▸ **add**(`value`): [`HashedSet`](HashedSet.md)<`T`\>
+```
 
 Appends a new element with a specified value to the Set.
 Can be called in the `@method` function of a contract
@@ -157,7 +165,9 @@ Can be called in the `@method` function of a contract
 
 #### Returns
 
+```ts
 [`HashedSet`](HashedSet.md)<`T`\>
+```
 
 this set
 
@@ -173,7 +183,9 @@ ___
 
 ### clear
 
+```ts
 ▸ **clear**(): `void`
+```
 
 #### Returns
 
@@ -191,7 +203,9 @@ ___
 
 ### data
 
+```ts
 ▸ **data**(): `Bytes`
+```
 
 Returns the internal data representation of the set.
 Can be called in the `@method` function of a contract
@@ -208,7 +222,9 @@ ___
 
 ### delete
 
+```ts
 ▸ **delete**(`value`): `boolean`
+```
 
 Remove a element with a specified value from the Set.
 Can be called in the `@method` function of a contract
@@ -237,13 +253,17 @@ ___
 
 ### entries
 
+```ts
 ▸ **entries**(): `IterableIterator`<[`T`, `T`]\>
+```
 
 Returns an iterable of [v,v] pairs for every value `v` in the set.
 
 #### Returns
 
+```ts
 `IterableIterator`<[`T`, `T`]\>
+```
 
 #### Inherited from
 
@@ -257,7 +277,9 @@ ___
 
 ### forEach
 
+```ts
 ▸ **forEach**(`callbackfn`, `thisArg?`): `void`
+```
 
 Executes a provided function once per each value in the Set object, in insertion order.
 
@@ -265,7 +287,7 @@ Executes a provided function once per each value in the Set object, in insertion
 
 | Name | Type |
 | :------ | :------ |
-| `callbackfn` | (`value`: `T`, `value2`: `T`, `set`: `Set`<`T`\>) => `void` |
+| `callbackfn` | `(`value`: `T`, `value2`: `T`, `set`: `Set`<`T`\>) => `void`` |
 | `thisArg?` | `any` |
 
 #### Returns
@@ -284,7 +306,9 @@ ___
 
 ### has
 
+```ts
 ▸ **has**(`value`): `boolean`
+```
 
 Check whether element exists in the set
 Can be called in the `@method` function of a contract
@@ -313,13 +337,17 @@ ___
 
 ### keys
 
+```ts
 ▸ **keys**(): `IterableIterator`<`T`\>
+```
 
 Despite its name, returns an iterable of the values in the set.
 
 #### Returns
 
+```ts
 `IterableIterator`<`T`\>
+```
 
 #### Inherited from
 
@@ -333,13 +361,17 @@ ___
 
 ### values
 
+```ts
 ▸ **values**(): `IterableIterator`<`T`\>
+```
 
 Returns an iterable of values in the set.
 
 #### Returns
 
+```ts
 `IterableIterator`<`T`\>
+```
 
 #### Inherited from
 

@@ -238,7 +238,9 @@ dist/bsv/wallets/test-wallet.d.ts:22
 
 ### addPrivateKey
 
+```ts
 ▸ **addPrivateKey**(`privateKey`): [`TestWallet`](TestWallet.md)
+```
 
 #### Parameters
 
@@ -258,7 +260,9 @@ ___
 
 ### checkPrivateKeys
 
+```ts
 ▸ **checkPrivateKeys**(): [`Network`](../interfaces/bsv.Networks.Network.md)
+```
 
 #### Returns
 
@@ -272,7 +276,9 @@ ___
 
 ### connect
 
+```ts
 ▸ **connect**(`provider?`): `Promise`<[`TestWallet`](TestWallet.md)\>
+```
 
 Connect a provider to `this`. If a new provider is specified when connecting,
 a connection will be established for the new provider and then switched to the new provider.
@@ -287,7 +293,9 @@ If neither exists, an exception is thrown.
 
 #### Returns
 
+```ts
 `Promise`<[`TestWallet`](TestWallet.md)\>
+```
 
 #### Overrides
 
@@ -301,7 +309,9 @@ ___
 
 ### enableSplitFeeTx
 
+```ts
 ▸ **enableSplitFeeTx**(`on`): `void`
+```
 
 #### Parameters
 
@@ -321,7 +331,9 @@ ___
 
 ### getBalance
 
+```ts
 ▸ **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+```
 
 Get the balance of BSVs in satoshis for an address.
 
@@ -333,7 +345,9 @@ Get the balance of BSVs in satoshis for an address.
 
 #### Returns
 
+```ts
 `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+```
 
 A promise which resolves to the address balance status.
 
@@ -349,11 +363,15 @@ ___
 
 ### getDefaultAddress
 
+```ts
 ▸ **getDefaultAddress**(): `Promise`<[`Address`](bsv.Address.md)\>
+```
 
 #### Returns
 
+```ts
 `Promise`<[`Address`](bsv.Address.md)\>
+```
 
 A promise which resolves to the address to the default private key of the signer.
 
@@ -369,11 +387,15 @@ ___
 
 ### getDefaultPubKey
 
+```ts
 ▸ **getDefaultPubKey**(): `Promise`<[`PublicKey`](bsv.PublicKey.md)\>
+```
 
 #### Returns
 
+```ts
 `Promise`<[`PublicKey`](bsv.PublicKey.md)\>
+```
 
 A promise which resolves to the public key of the default private key of the signer.
 
@@ -389,7 +411,9 @@ ___
 
 ### getPubKey
 
+```ts
 ▸ **getPubKey**(`address`): `Promise`<[`PublicKey`](bsv.PublicKey.md)\>
+```
 
 **`Throws`**
 
@@ -403,7 +427,9 @@ If the private key for the address does not belong this signer.
 
 #### Returns
 
+```ts
 `Promise`<[`PublicKey`](bsv.PublicKey.md)\>
+```
 
 The public key result.
 
@@ -419,7 +445,9 @@ ___
 
 ### getSignatures
 
+```ts
 ▸ **getSignatures**(`rawTxHex`, `sigRequests`): `Promise`<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
+```
 
 Get the requested transaction signatures for the raw transaction.
 
@@ -432,7 +460,9 @@ Get the requested transaction signatures for the raw transaction.
 
 #### Returns
 
+```ts
 `Promise`<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
+```
 
 A promise which resolves to a list of `SignatureReponse` corresponding to `sigRequests`.
 
@@ -448,13 +478,17 @@ ___
 
 ### isAuthenticated
 
+```ts
 ▸ **isAuthenticated**(): `Promise`<`boolean`\>
+```
 
 Check if the wallet has been authenticated
 
 #### Returns
 
+```ts
 `Promise`<`boolean`\>
+```
 
 true | false
 
@@ -470,7 +504,9 @@ ___
 
 ### listUnspent
 
+```ts
 ▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+```
 
 Get a list of the P2PKH UTXOs.
 
@@ -483,7 +519,9 @@ Get a list of the P2PKH UTXOs.
 
 #### Returns
 
+```ts
 `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+```
 
 A promise which resolves to a list of UTXO for the query options.
 
@@ -499,13 +537,17 @@ ___
 
 ### requestAuth
 
+```ts
 ▸ **requestAuth**(): `Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+```
 
 Request wallet authentication
 
 #### Returns
 
+```ts
 `Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+```
 
 A promise which resolves to if the wallet has been authenticated and the authenticate error message
 
@@ -521,7 +563,9 @@ ___
 
 ### signAndsendTransaction
 
+```ts
 ▸ **signAndsendTransaction**(`tx`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+```
 
 Sign transaction and broadcast it
 
@@ -534,7 +578,9 @@ Sign transaction and broadcast it
 
 #### Returns
 
+```ts
 `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+```
 
 A promise which resolves to the transaction id.
 
@@ -550,7 +596,9 @@ ___
 
 ### signMessage
 
+```ts
 ▸ **signMessage**(`message`, `address?`): `Promise`<`string`\>
+```
 
 Sign a message string.
 
@@ -563,7 +611,9 @@ Sign a message string.
 
 #### Returns
 
+```ts
 `Promise`<`string`\>
+```
 
 A promise which resolves to the signautre of the message.
 
@@ -579,7 +629,9 @@ ___
 
 ### signRawTransaction
 
+```ts
 ▸ **signRawTransaction**(`rawTxHex`, `options`): `Promise`<`string`\>
+```
 
 Sign a raw transaction hex string.
 
@@ -596,7 +648,9 @@ If any input of the transaction can not be signed properly.
 
 #### Returns
 
+```ts
 `Promise`<`string`\>
+```
 
 A promise which resolves to the signed transaction hex string.
 
@@ -612,7 +666,9 @@ ___
 
 ### signTransaction
 
+```ts
 ▸ **signTransaction**(`tx`, `options?`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 Sign a transaction object.
 
@@ -625,7 +681,9 @@ Sign a transaction object.
 
 #### Returns
 
+```ts
 `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+```
 
 A promise which resolves to the signed transaction object.
 

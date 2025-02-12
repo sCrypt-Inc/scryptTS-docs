@@ -209,7 +209,9 @@ node_modules/bsv/index.d.ts:902
 
 ### \_estimateFee
 
+```ts
 ▸ **_estimateFee**(): `number`
+```
 
 #### Returns
 
@@ -227,7 +229,9 @@ ___
 
 ### \_getUnspentValue
 
+```ts
 ▸ **_getUnspentValue**(): `number`
+```
 
 #### Returns
 
@@ -245,7 +249,9 @@ ___
 
 ### addData
 
+```ts
 ▸ **addData**(`value`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -269,7 +275,9 @@ ___
 
 ### addDummyInput
 
+```ts
 ▸ **addDummyInput**(`script`, `satoshis`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -294,7 +302,9 @@ ___
 
 ### addInput
 
+```ts
 ▸ **addInput**(`input`, `outputScript?`, `satoshis?`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -320,7 +330,9 @@ ___
 
 ### addInputFromPrevTx
 
+```ts
 ▸ **addInputFromPrevTx**(`prevTx`, `outputIndex?`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -345,7 +357,9 @@ ___
 
 ### addOutput
 
+```ts
 ▸ **addOutput**(`output`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -369,7 +383,9 @@ ___
 
 ### applySignature
 
+```ts
 ▸ **applySignature**(`sig`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -1025,11 +1041,15 @@ ___
 
 ### sealAsync
 
+```ts
 ▸ **sealAsync**(): `Promise`<[`TransactionResponse`](TransactionResponse.md)\>
+```
 
 #### Returns
 
+```ts
 `Promise`<[`TransactionResponse`](TransactionResponse.md)\>
+```
 
 #### Inherited from
 
@@ -1043,7 +1063,9 @@ ___
 
 ### serialize
 
+```ts
 ▸ **serialize**(`opts?`): `string`
+```
 
 #### Parameters
 
@@ -1067,13 +1089,15 @@ ___
 
 ### setInputScript
 
+```ts
 ▸ **setInputScript**(`inputIndex`, `unlockingScript`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `inputIndex` | `number` \| { `inputIndex`: `number` ; `isLowS?`: `boolean` ; `privateKey?`: [`PrivateKey`](../classes/bsv.PrivateKey.md) \| [`PrivateKey`](../classes/bsv.PrivateKey.md)[] ; `sigtype?`: `number`  } |
+| `inputIndex` | `number` \| `{ `inputIndex`: `number` ; `isLowS?`: `boolean` ; `privateKey?`: [`PrivateKey`](../classes/bsv.PrivateKey.md) \| [`PrivateKey`](../classes/bsv.PrivateKey.md)[] ; `sigtype?`: `number`  }` |
 | `unlockingScript` | [`Script`](../classes/bsv.Script-1.md) \| (`tx`: [`Transaction`](../classes/bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](../classes/bsv.Transaction.Output.md)) => [`Script`](../classes/bsv.Script-1.md) |
 
 #### Returns
@@ -1092,18 +1116,22 @@ ___
 
 ### setInputScriptAsync
 
+```ts
 ▸ **setInputScriptAsync**(`inputIndex`, `callback`): `Promise`<[`TransactionResponse`](TransactionResponse.md)\>
+```
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `inputIndex` | `number` \| { `inputIndex`: `number` ; `isLowS?`: `boolean` ; `sigtype?`: `number`  } |
-| `callback` | (`tx`: [`Transaction`](../classes/bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](../classes/bsv.Transaction.Output.md)) => `Promise`<[`Script`](../classes/bsv.Script-1.md)\> |
+| `inputIndex` | `number` \| `{ `inputIndex`: `number` ; `isLowS?`: `boolean` ; `sigtype?`: `number`  }` |
+| `callback` | (`tx`: [`Transaction`](../classes/bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](../classes/bsv.Transaction.Output.md)) => `Promise<[`Script`](../classes/bsv.Script-1.md)>` |
 
 #### Returns
 
+```ts
 `Promise`<[`TransactionResponse`](TransactionResponse.md)\>
+```
 
 #### Inherited from
 
@@ -1117,7 +1145,9 @@ ___
 
 ### setInputSequence
 
+```ts
 ▸ **setInputSequence**(`inputIndex`, `sequence`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -1142,7 +1172,9 @@ ___
 
 ### setLockTime
 
+```ts
 ▸ **setLockTime**(`t`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -1166,7 +1198,9 @@ ___
 
 ### setOutput
 
+```ts
 ▸ **setOutput**(`outputIndex`, `output`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -1191,7 +1225,9 @@ ___
 
 ### sign
 
+```ts
 ▸ **sign**(`privateKey`, `sigtype?`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -1216,7 +1252,9 @@ ___
 
 ### to
 
+```ts
 ▸ **to**(`address`, `amount`): [`TransactionResponse`](TransactionResponse.md)
+```
 
 #### Parameters
 
@@ -1241,7 +1279,9 @@ ___
 
 ### toBuffer
 
+```ts
 ▸ **toBuffer**(): `Buffer`
+```
 
 #### Returns
 
@@ -1259,7 +1299,9 @@ ___
 
 ### toObject
 
+```ts
 ▸ **toObject**(): `any`
+```
 
 #### Returns
 
@@ -1277,7 +1319,9 @@ ___
 
 ### uncheckedSerialize
 
+```ts
 ▸ **uncheckedSerialize**(): `string`
+```
 
 #### Returns
 
@@ -1295,7 +1339,9 @@ ___
 
 ### verify
 
+```ts
 ▸ **verify**(): `string` \| ``true``
+```
 
 #### Returns
 
@@ -1313,7 +1359,9 @@ ___
 
 ### verifyInputScript
 
+```ts
 ▸ **verifyInputScript**(`inputIndex`): `Object`
+```
 
 **`Deprecated`**
 
@@ -1347,7 +1395,9 @@ ___
 
 ### verifyScript
 
+```ts
 ▸ **verifyScript**(`inputIndex`): `Object`
+```
 
 #### Parameters
 
@@ -1377,7 +1427,9 @@ ___
 
 ### verifySignature
 
+```ts
 ▸ **verifySignature**(`sig`, `pubkey`, `nin`, `subscript`, `satoshisBN`, `flags`): `boolean`
+```
 
 #### Parameters
 

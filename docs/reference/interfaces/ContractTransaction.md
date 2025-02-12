@@ -29,7 +29,9 @@ ___
 
 ### next
 
+```ts
 • `Optional` **next**: [`StatefulNext`](StatefulNext.md)<`any`\>
+```
 
 The first element of nexts, this value should be set for user convenience.
 
@@ -41,7 +43,9 @@ ___
 
 ### nexts
 
+```ts
 • **nexts**: [`StatefulNext`](StatefulNext.md)<`any`\>[]
+```
 
 The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract
 
@@ -53,7 +57,9 @@ ___
 
 ### tx
 
+```ts
 • **tx**: [`Transaction`](../classes/bsv.Transaction-1.md)
+```
 
 The method calling tx
 

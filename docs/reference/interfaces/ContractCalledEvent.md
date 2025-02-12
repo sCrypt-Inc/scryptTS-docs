@@ -1,6 +1,6 @@
 [scrypt-ts](../README.md) / ContractCalledEvent
 
-# Interface: ContractCalledEvent<T\>
+# Interface: ContractCalledEvent
 
 ContractCalledEvent is the relevant information when the contract is called, such as the public function name and function arguments when the call occurs.
 

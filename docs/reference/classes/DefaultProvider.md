@@ -225,13 +225,17 @@ ___
 
 ### connect
 
+```ts
 ▸ **connect**(): `Promise`<[`DefaultProvider`](DefaultProvider.md)\>
+```
 
 Implement the connection provider, for example, verify the api key during the connection process.
 
 #### Returns
 
+```ts
 `Promise`<[`DefaultProvider`](DefaultProvider.md)\>
+```
 
 a connected provider. Throw an exception if the connection fails.
 
@@ -352,7 +356,9 @@ ___
 
 ### getBalance
 
+```ts
 ▸ **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+```
 
 Get the balance of BSVs in satoshis for an address.
 
@@ -364,7 +370,9 @@ Get the balance of BSVs in satoshis for an address.
 
 #### Returns
 
+```ts
 `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+```
 
 A promise which resolves to the address balance status.
 
@@ -380,7 +388,9 @@ ___
 
 ### getEstimateFee
 
+```ts
 ▸ **getEstimateFee**(`tx`): `Promise`<`number`\>
+```
 
 Get a best guess of the fee for a transaction.
 
@@ -392,7 +402,9 @@ Get a best guess of the fee for a transaction.
 
 #### Returns
 
+```ts
 `Promise`<`number`\>
+```
 
 The estimated fee in satoshis.
 
@@ -408,11 +420,15 @@ ___
 
 ### getFeePerKb
 
+```ts
 ▸ **getFeePerKb**(): `Promise`<`number`\>
+```
 
 #### Returns
 
+```ts
 `Promise`<`number`\>
+```
 
 The fee rate for sending transactions through this provider.
 
@@ -473,7 +489,9 @@ ___
 
 ### getTransaction
 
+```ts
 ▸ **getTransaction**(`txHash`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+```
 
 Get a transaction from the network.
 
@@ -485,7 +503,9 @@ Get a transaction from the network.
 
 #### Returns
 
+```ts
 `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+```
 
 The query result with the transaction information.
 
@@ -521,7 +541,9 @@ ___
 
 ### listUnspent
 
+```ts
 ▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+```
 
 Get a list of the P2PKH UTXOs.
 
@@ -534,7 +556,9 @@ Get a list of the P2PKH UTXOs.
 
 #### Returns
 
+```ts
 `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+```
 
 A promise which resolves to a list of UTXO for the query options.
 
@@ -1040,7 +1064,9 @@ ___
 
 ### sendRawTransaction
 
+```ts
 ▸ **sendRawTransaction**(`rawTxHex`): `Promise`<`string`\>
+```
 
 Send a raw transaction hex string.
 
@@ -1052,7 +1078,9 @@ Send a raw transaction hex string.
 
 #### Returns
 
+```ts
 `Promise`<`string`\>
+```
 
 A promise which resolves to the hash of the transaction that has been sent.
 
@@ -1068,7 +1096,9 @@ ___
 
 ### sendTransaction
 
+```ts
 ▸ **sendTransaction**(`tx`): `Promise`<`string`\>
+```
 
 Send a transaction object.
 
@@ -1084,7 +1114,9 @@ If there is a problem with the `tx` object during serialization.
 
 #### Returns
 
+```ts
 `Promise`<`string`\>
+```
 
 A promise which resolves to the hash of the transaction that has been sent.
 
@@ -1341,7 +1373,9 @@ ___
 
 ### on
 
+```ts
 ▸ `Static` **on**(`emitter`, `eventName`, `options?`): `AsyncIterableIterator`<`any`\>
+```
 
 ```js
 const { on, EventEmitter } = require('events');
@@ -1411,7 +1445,9 @@ v13.6.0, v12.16.0
 
 #### Returns
 
+```ts
 `AsyncIterableIterator`<`any`\>
+```
 
 that iterates `eventName` events emitted by the `emitter`
 
@@ -1427,7 +1463,9 @@ ___
 
 ### once
 
+```ts
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
+```
 
 Creates a `Promise` that is fulfilled when the `EventEmitter` emits the given
 event or that is rejected if the `EventEmitter` emits `'error'` while waiting.
@@ -1523,7 +1561,9 @@ v11.13.0, v10.16.0
 
 #### Returns
 
+```ts
 `Promise`<`any`[]\>
+```
 
 #### Inherited from
 
@@ -1533,7 +1573,9 @@ v11.13.0, v10.16.0
 
 node_modules/@types/node/events.d.ts:194
 
+```ts
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
+```
 
 #### Parameters
 
@@ -1545,7 +1587,9 @@ node_modules/@types/node/events.d.ts:194
 
 #### Returns
 
+```ts
 `Promise`<`any`[]\>
+```
 
 #### Inherited from
 

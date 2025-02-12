@@ -1,6 +1,6 @@
 [scrypt-ts](../README.md) / SubscribeOptions
 
-# Interface: SubscribeOptions<T\>
+# Interface: SubscribeOptions
 
 A options can be used to subscribe
 

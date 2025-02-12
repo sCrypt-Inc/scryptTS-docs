@@ -1,6 +1,6 @@
 [scrypt-ts](../README.md) / MethodCallOptions
 
-# Interface: MethodCallOptions<T\>
+# Interface: MethodCallOptions
 
 A option type to call a contract public `@method` function.
 Used to specify the behavior of signers and transaction builders.
@@ -105,7 +105,9 @@ ___
 
 ### next
 
+```ts
 • `Optional` `Readonly` **next**: [`StatefulNext`](StatefulNext.md)<`T`\> \| [`StatefulNext`](StatefulNext.md)<`T`\>[]
+```
 
 The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract
 

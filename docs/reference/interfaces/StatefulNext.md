@@ -1,6 +1,6 @@
 [scrypt-ts](../README.md) / StatefulNext
 
-# Interface: StatefulNext<T\>
+# Interface: StatefulNext
 
 Contains information about the new state of a set of stateful contracts, used to construct transactions in the transaction builder.
 

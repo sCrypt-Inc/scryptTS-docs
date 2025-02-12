@@ -202,7 +202,10 @@ scrypt-ts
 
 ### FixedArray
 
-Ƭ **FixedArray**<`T`, `N`\>: `GrowToSize`<`T`, `N`, []\>
+```ts
+type FixedArray<T, N> = GrowToSize<T, N, []>;
+```
+
 
 An array is a fixed-size list of values of the same basic type.
 When you declare an array you have to declare it like this:
@@ -268,7 +271,9 @@ ___
 
 ### ByteString
 
+```ts
 Ƭ **ByteString**: `Flavor`<`string`, ``"bytes"``\>
+```
 
 a ByteString represents a byte array.
 
@@ -320,7 +325,9 @@ ___
 
 ### OpCodeType
 
+```ts
 Ƭ **OpCodeType**: `Bytes` & { `__type`: ``"OpCodeType"``  }
+```
 
 #### Defined in
 
@@ -332,7 +339,9 @@ ___
 
 ### PrivKey
 
+```ts
 Ƭ **PrivKey**: `Int` & { `__type`: ``"PrivKey"``  }
+```
 
 #### Defined in
 
@@ -458,7 +467,9 @@ ___
 
 ### SigHashPreimage
 
+```ts
 Ƭ **SigHashPreimage**: `Bytes` & { `__type`: ``"SigHashPreimage"``  }
+```
 
 #### Defined in
 
@@ -470,7 +481,9 @@ ___
 
 ### SigHashType
 
+```ts
 Ƭ **SigHashType**: `Bytes` & { `__type`: ``"SigHashType"``  }
+```
 
 #### Defined in
 
@@ -562,8 +575,8 @@ dist/smart-contract/builtins/types.d.ts:102
 | :------ | :------ |
 | `bsvApi` | [`BsvApi`](classes/BsvApi.md) |
 | `contractApi` | [`ContractApi`](classes/ContractApi.md) |
-| `getConfig` | <T\>(`name`: `string`, `defaultValue?`: `T`) => `T` |
-| `init` | (`config`: [`ScryptConfig`](interfaces/ScryptConfig.md)) => `void` |
+| `getConfig` | `\<T\>(name: string, defaultValue?: T) => T` |
+| `init` | `(config: [`ScryptConfig`](interfaces/ScryptConfig.md)) => void` |
 
 #### Defined in
 
@@ -722,7 +735,9 @@ ___
 
 ### equals
 
+```ts
 ▸ **equals**<`T`\>(`a`, `b`): `boolean`
+```
 
 Comparing two struct/FixedArray
 
@@ -1365,7 +1380,9 @@ ___
 
 ### fill
 
+```ts
 ▸ **fill**<`E`, `N`\>(`value`, `length`): [`FixedArray`](README.md#fixedarray)<`E`, `N`\>
+```
 
 Returns an `FixedArray` with all `size` elements set to `value`, where `value` can be any type.
 Note that `length` must be a numeric literal or a compiled-time constant
@@ -1386,7 +1403,9 @@ Note that `length` must be a numeric literal or a compiled-time constant
 
 #### Returns
 
+```ts
 [`FixedArray`](README.md#fixedarray)<`E`, `N`\>
+```
 
 #### Defined in
 
@@ -1538,7 +1557,9 @@ ___
 
 ### getSortedItem
 
+```ts
 ▸ **getSortedItem**<`K`, `V`\>(`collection`, `k`): `SortedItem`<`K`\>
+```
 
 #### Type parameters
 
@@ -1551,12 +1572,14 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `collection` | `Map`<`K`, `V`\> \| `Set`<`K`\> |
+| `collection` | `` Map<K, V> `` \| `` Set<K> `` |
 | `k` | `K` |
 
 #### Returns
 
+```ts
 `SortedItem`<`K`\>
+```
 
 #### Defined in
 
@@ -1600,7 +1623,9 @@ ___
 
 ### mapIter
 
+```ts
 ▸ **mapIter**<`T`\>(`iterable`, `callback`): `Generator`<`any`, `void`, `unknown`\>
+```
 
 #### Type parameters
 
@@ -1612,12 +1637,14 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `iterable` | `IterableIterator`<`T`\> |
-| `callback` | (`x`: `any`) => `any` |
+| `iterable` | `` IterableIterator<T> `` |
+| `callback` | `` (x: any) => any `` |
 
 #### Returns
 
+```ts
 `Generator`<`any`, `void`, `unknown`\>
+```
 
 #### Defined in
 
@@ -1669,7 +1696,9 @@ ___
 
 ### parseSignatureOption
 
+```ts
 ▸ **parseSignatureOption**(`signaturesOption`, `network`): { `address`: [`AddressOption`](README.md#addressoption) ; `sigHashType`: [`SignatureHashType`](enums/SignatureHashType.md)  }[]
+```
 
 #### Parameters
 
@@ -1680,7 +1709,12 @@ ___
 
 #### Returns
 
-{ `address`: [`AddressOption`](README.md#addressoption) ; `sigHashType`: [`SignatureHashType`](enums/SignatureHashType.md)  }[]
+```ts
+type TransactionInput = {
+  address: AddressOption;
+  sigHashType: SignatureHashType;
+}[];
+```
 
 #### Defined in
 
