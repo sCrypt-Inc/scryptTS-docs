@@ -1,95 +1,93 @@
-[scrypt-ts](../README.md) / VarIntWriter
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / VarIntWriter
 
 # Class: VarIntWriter
 
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1112
+
 A writer that serializes `ByteString`, `boolean`, `bigint`
-
-## Table of contents
-
-### Constructors
-
-- [constructor](VarIntWriter.md#constructor)
-
-### Methods
-
-- [writeBool](VarIntWriter.md#writebool)
-- [writeBytes](VarIntWriter.md#writebytes)
-- [writeInt](VarIntWriter.md#writeint)
 
 ## Constructors
 
-### constructor
+### new VarIntWriter()
 
-• **new VarIntWriter**()
+> **new VarIntWriter**(): [`VarIntWriter`](VarIntWriter.md)
+
+#### Returns
+
+[`VarIntWriter`](VarIntWriter.md)
 
 ## Methods
 
-### writeBool
+### writeBool()
 
-▸ `Static` **writeBool**(`x`): [`ByteString`](../README.md#bytestring)
+> `static` **writeBool**(`x`): [`ByteString`](../type-aliases/ByteString.md)
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1124
 
 serializes `boolean` with fixed 1 byte
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `x` | `boolean` | a boolean |
+##### x
+
+`boolean`
+
+a boolean
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 serialized `ByteString`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1124
+### writeBytes()
 
-___
+> `static` **writeBytes**(`buf`): [`ByteString`](../type-aliases/ByteString.md)
 
-### writeBytes
-
-▸ `Static` **writeBytes**(`buf`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1118
 
 serializes `ByteString` with `VarInt` encoding
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `buf` | [`ByteString`](../README.md#bytestring) | a `ByteString` |
+##### buf
+
+[`ByteString`](../type-aliases/ByteString.md)
+
+a `ByteString`
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 serialized `ByteString`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1118
+### writeInt()
 
-___
+> `static` **writeInt**(`x`): [`ByteString`](../type-aliases/ByteString.md)
 
-### writeInt
-
-▸ `Static` **writeInt**(`x`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1130
 
 serializes `bigint` with `VarInt` encoding
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `x` | `bigint` | a boolean |
+##### x
+
+`bigint`
+
+a boolean
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 serialized `ByteString`
-
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1130

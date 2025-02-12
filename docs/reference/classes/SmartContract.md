@@ -1,10 +1,16 @@
-[scrypt-ts](../README.md) / SmartContract
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / SmartContract
 
 # Class: SmartContract
 
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:99
+
 The main contract class. To write a contract, extend this class as such:
 
-**`Example`**
+## Example
 
 ```ts
 class YourSmartContract extends SmartContract {
@@ -12,528 +18,423 @@ class YourSmartContract extends SmartContract {
 }
 ```
 
-## Table of contents
+## Extended by
 
-### Constructors
-
-- [constructor](SmartContract.md#constructor)
-
-### Properties
-
-- [call](SmartContract.md#call)
-- [dummySignSingleCallTx](SmartContract.md#dummysignsinglecalltx)
-- [from](SmartContract.md#from)
-- [hasPrevouts](SmartContract.md#hasprevouts)
-- [multiContractCall](SmartContract.md#multicontractcall)
-- [signSingleCallTx](SmartContract.md#signsinglecalltx)
-- [singleContractCall](SmartContract.md#singlecontractcall)
-- [to](SmartContract.md#to)
-
-### Accessors
-
-- [asmArgs](SmartContract.md#asmargs)
-- [balance](SmartContract.md#balance)
-- [changeAddress](SmartContract.md#changeaddress)
-- [changeAmount](SmartContract.md#changeamount)
-- [codePart](SmartContract.md#codepart)
-- [ctx](SmartContract.md#ctx)
-- [dataPart](SmartContract.md#datapart)
-- [debug](SmartContract.md#debug)
-- [lockingScript](SmartContract.md#lockingscript)
-- [methods](SmartContract.md#methods)
-- [prevouts](SmartContract.md#prevouts)
-- [provider](SmartContract.md#provider)
-- [scriptHash](SmartContract.md#scripthash)
-- [scriptSize](SmartContract.md#scriptsize)
-- [signer](SmartContract.md#signer)
-- [utxo](SmartContract.md#utxo)
-
-### Other Methods
-
-- [bindTxBuilder](SmartContract.md#bindtxbuilder)
-- [buildChangeOutput](SmartContract.md#buildchangeoutput)
-- [buildContractInput](SmartContract.md#buildcontractinput)
-- [buildDeployTransaction](SmartContract.md#builddeploytransaction)
-- [buildStateOutput](SmartContract.md#buildstateoutput)
-- [checkPreimage](SmartContract.md#checkpreimage)
-- [checkPreimageAdvanced](SmartContract.md#checkpreimageadvanced)
-- [checkPreimageSigHashType](SmartContract.md#checkpreimagesighashtype)
-- [connect](SmartContract.md#connect)
-- [deploy](SmartContract.md#deploy)
-- [getStateScript](SmartContract.md#getstatescript)
-- [insertCodeSeparator](SmartContract.md#insertcodeseparator)
-- [isStateful](SmartContract.md#isstateful)
-- [markAsGenesis](SmartContract.md#markasgenesis)
-- [next](SmartContract.md#next)
-- [setAsmVars](SmartContract.md#setasmvars)
-- [setDataPartInASM](SmartContract.md#setdatapartinasm)
-- [setDataPartInHex](SmartContract.md#setdatapartinhex)
-- [sigTypeOfMethod](SmartContract.md#sigtypeofmethod)
-- [compile](SmartContract.md#compile)
-- [fromTx](SmartContract.md#fromtx)
-- [getArtifact](SmartContract.md#getartifact)
-- [loadArtifact](SmartContract.md#loadartifact)
-- [multiContractCall](SmartContract.md#multicontractcall-1)
-- [parseCallData](SmartContract.md#parsecalldata)
-
-### Signature Verification Methods
-
-- [checkMultiSig](SmartContract.md#checkmultisig)
-- [checkSig](SmartContract.md#checksig)
+- [`P2PKH`](P2PKH.md)
+- [`P2PK`](P2PK.md)
 
 ## Constructors
 
-### constructor
+### new SmartContract()
 
-• **new SmartContract**(`...args`)
+> **new SmartContract**(...`args`): [`SmartContract`](SmartContract.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:157
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
+##### args
 
-#### Defined in
+...`any`[]
 
-dist/smart-contract/contract.d.ts:149
+#### Returns
 
-## Properties
+[`SmartContract`](SmartContract.md)
 
-### call
+## Other
 
-• `Private` **call**: `any`
+### from?
 
-#### Defined in
+> `optional` **from**: [`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md) \| [`TxOutputRef`](../interfaces/TxOutputRef.md)
 
-dist/smart-contract/contract.d.ts:422
-
-___
-
-### dummySignSingleCallTx
-
-• `Private` **dummySignSingleCallTx**: `any`
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:426
-
-___
-
-### from
-
-• `Optional` **from**: [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md) \| [`TxOutputRef`](../interfaces/TxOutputRef.md)
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:104
 
 `from` is a reference to a transaction output where the props of `this` contract instance are located/stored on chain.
 In other words, it's the start point for the lifecycle of `this` instance.
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:100
+### to?
 
-___
+> `optional` **to**: [`TxInputRef`](../interfaces/TxInputRef.md)
 
-### hasPrevouts
-
-• `Private` **hasPrevouts**: `any`
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:317
-
-___
-
-### multiContractCall
-
-• `Private` **multiContractCall**: `any`
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:424
-
-___
-
-### signSingleCallTx
-
-• `Private` **signSingleCallTx**: `any`
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:425
-
-___
-
-### singleContractCall
-
-• `Private` **singleContractCall**: `any`
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:423
-
-___
-
-### to
-
-• `Optional` **to**: [`TxInputRef`](../interfaces/TxInputRef.md)
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:109
 
 `to` is a reference to a transaction input where a public method of `this` contract instance is called.
 In other words, it's the end point for the lifecycle of `this` instance.
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:105
-
-## Accessors
+***
 
 ### asmArgs
 
-• `get` **asmArgs**(): `AsmVarValues`
+#### Get Signature
+
+> **get** **asmArgs**(): `AsmVarValues`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:217
 
 Returns set ASM variable values.
 
-#### Returns
+##### Returns
 
 `AsmVarValues`
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:201
-
-___
+***
 
 ### balance
 
-• `get` **balance**(): `number`
+#### Get Signature
+
+> **get** **balance**(): `number`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:508
 
 Get the current locked balance of the contract
 
-#### Returns
+##### Returns
 
 `number`
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:471
-
-___
+***
 
 ### changeAddress
 
-• `get` **changeAddress**(): `Ripemd160`
+#### Get Signature
+
+> **get** **changeAddress**(): `Ripemd160`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:335
 
 Get the change address of the change output for `to.tx`.
 
-**`Onchain`**
+##### Onchain
 
-#### Returns
+##### Returns
 
 `Ripemd160`
 
 the change address of to.tx
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:304
-
-___
+***
 
 ### changeAmount
 
-• `get` **changeAmount**(): `bigint`
+#### Get Signature
+
+> **get** **changeAmount**(): `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:323
 
 Get the amount of the change output for `to.tx`.
 
-**`Onchain`**
+##### Onchain
 
-#### Returns
+##### Returns
 
 `bigint`
 
 amount in satoshis
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:292
-
-___
+***
 
 ### codePart
 
-• `get` **codePart**(): `string`
+#### Get Signature
+
+> **get** **codePart**(): `string`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:202
 
 Returns code part of the lockingScript, in hex format.
 
-#### Returns
+##### Returns
 
 `string`
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:186
-
-___
+***
 
 ### ctx
 
-• `get` **ctx**(): [`ScriptContext`](../interfaces/ScriptContext.md)
+#### Get Signature
+
+> **get** **ctx**(): [`ScriptContext`](../interfaces/ScriptContext.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:518
 
 You can directly access the context through `this.ctx` in any public @method.
 [ScriptContext][https://docs.scrypt.io/how-to-write-a-contract/scriptcontext](https://docs.scrypt.io/how-to-write-a-contract/scriptcontext) can be considered additional information a public method gets when called, besides its function parameters.
 
-**`Onchain`**
+##### Onchain
 
-#### Returns
+##### Returns
 
 [`ScriptContext`](../interfaces/ScriptContext.md)
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:481
-
-___
+***
 
 ### dataPart
 
-• `get` **dataPart**(): [`Script`](bsv.Script-1.md)
+#### Get Signature
 
-#### Returns
+> **get** **dataPart**(): [`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
-[`Script`](bsv.Script-1.md)
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:385
 
-#### Defined in
+##### Returns
 
-dist/smart-contract/contract.d.ts:354
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
-___
+***
 
 ### debug
 
-• `get` **debug**(): `DebugFunctions`
+#### Get Signature
+
+> **get** **debug**(): `DebugFunctions`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:504
 
 A set of functions for debugging contracts, which can only be called in `@method` methods.
 
-#### Returns
+##### Returns
 
 `DebugFunctions`
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:467
-
-___
+***
 
 ### lockingScript
 
-• `get` **lockingScript**(): [`Script`](bsv.Script-1.md)
+#### Get Signature
+
+> **get** **lockingScript**(): [`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:194
 
 Returns a lockingScript of contract.
 
-#### Returns
+##### Returns
 
-[`Script`](bsv.Script-1.md)
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:178
-
-___
+***
 
 ### methods
 
-• `get` **methods**(): ``Record`<`string`, (...`args`: `any`) => `Promise`<[`ContractTransaction`]`(../interfaces/ContractTransaction.md)\>\>
+#### Get Signature
+
+> **get** **methods**(): `Record`\<`string`, (...`args`) => `Promise`\<[`ContractTransaction`](../interfaces/ContractTransaction.md)\>\>
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:467
 
 An object to access all public `@method`s
 
-#### Returns
+##### Returns
 
-`Record<string, (...args: any)` => `Promise<[ContractTransaction](../interfaces/ContractTransaction.md)>`\>
+`Record`\<`string`, (...`args`) => `Promise`\<[`ContractTransaction`](../interfaces/ContractTransaction.md)\>\>
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:430
-
-___
+***
 
 ### prevouts
 
-• `get` **prevouts**(): [`ByteString`](../README.md#bytestring)
+#### Get Signature
+
+> **get** **prevouts**(): [`ByteString`](../type-aliases/ByteString.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:329
 
 Get the prevouts for `to.tx`.
 
-**`Onchain`**
+##### Onchain
 
-#### Returns
+##### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 prevouts in satoshis
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:298
-
-___
+***
 
 ### provider
 
-• `get` **provider**(): [`Provider`](Provider.md)
+#### Get Signature
+
+> **get** **provider**(): [`Provider`](Provider.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:415
 
 Get the connected [provider][https://docs.scrypt.io/how-to-test-a-contract#provider](https://docs.scrypt.io/how-to-test-a-contract#provider)
 
-#### Returns
+##### Returns
 
 [`Provider`](Provider.md)
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:379
-
-___
+***
 
 ### scriptHash
 
-• `get` **scriptHash**(): `string`
+#### Get Signature
+
+> **get** **scriptHash**(): `string`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:206
 
 Returns sha256 hash of the current locking script, formatted as a LE hex string.
 
-#### Returns
+##### Returns
 
 `string`
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:190
-
-___
+***
 
 ### scriptSize
 
-• `get` **scriptSize**(): `number`
+#### Get Signature
+
+> **get** **scriptSize**(): `number`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:198
 
 Returns script size of lockingScript.
 
-#### Returns
+##### Returns
 
 `number`
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:182
-
-___
+***
 
 ### signer
 
-• `get` **signer**(): [`Signer`](Signer.md)
+#### Get Signature
+
+> **get** **signer**(): [`Signer`](Signer.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:411
 
 Get the connected [signer][https://docs.scrypt.io/how-to-test-a-contract#signer](https://docs.scrypt.io/how-to-test-a-contract#signer)
 
-#### Returns
+##### Returns
 
 [`Signer`](Signer.md)
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:375
-
-___
+***
 
 ### utxo
 
-• `get` **utxo**(): [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)
+#### Get Signature
+
+> **get** **utxo**(): [`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:512
 
 Get the utxo where the contract is currently located
 
-#### Returns
+##### Returns
 
-[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)
+[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:475
+### bindTxBuilder()
 
-## Other Methods
+> **bindTxBuilder**(`methodName`, `txBuilder`): `void`
 
-### bindTxBuilder
-
-```ts
-▸ **bindTxBuilder**(`methodName`, `txBuilder`): `void`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:475
 
 Bind a transation builder for a public `@method`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `methodName` | `string` | the public `@method` name |
-| `txBuilder` | `[`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)<[`SmartContract`](SmartContract.md)\>` | a transation builder |
+##### methodName
+
+`string`
+
+the public `@method` name
+
+##### txBuilder
+
+[`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)\<[`SmartContract`](SmartContract.md)\>
+
+a transation builder
 
 #### Returns
 
 `void`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:438
+### buildChangeOutput()
 
-___
+> **buildChangeOutput**(): [`ByteString`](../type-aliases/ByteString.md)
 
-### buildChangeOutput
-
-```ts
-▸ **buildChangeOutput**(): [`ByteString`](../README.md#bytestring)
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:249
 
 A built-in function to create an [change output][https://wiki.bitcoinsv.io/index.php/Change](https://wiki.bitcoinsv.io/index.php/Change).
 
-**`Onchain`**
-
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:233
+***
 
-___
+### buildContractInput()
 
-### buildContractInput
+> **buildContractInput**(`fromUTXO`?): [`Input`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Input.md)
 
-```ts
-▸ **buildContractInput**(`fromUTXO?`): [`Input`](bsv.Transaction.Input-1.md)
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:485
 
 Build an input that includes the contract
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `fromUTXO?` | [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md) | A parameter to specify the `utxo` where the contract is located |
+##### fromUTXO?
+
+[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)
+
+A parameter to specify the `utxo` where the contract is located
 
 #### Returns
 
-[`Input`](bsv.Transaction.Input-1.md)
+[`Input`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Input.md)
 
 an input that includes the contract
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:448
+### buildDeployTransaction()
 
-___
+> **buildDeployTransaction**(`utxos`, `amount`, `changeAddress`): `Promise`\<[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)\>
 
-### buildDeployTransaction
-
-```ts
-▸ **buildDeployTransaction**(`utxos`, `amount`, `changeAddress`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:445
 
 creates a tx to deploy the contract. Users override it to cutomize a deployment tx as below.
 
-**`Example`**
+#### Parameters
+
+##### utxos
+
+[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)[]
+
+represents one or more P2PKH inputs for paying transaction fees.
+
+##### amount
+
+`number`
+
+the balance of contract output
+
+##### changeAddress
+
+a change address
+
+`string` | [`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+#### Returns
+
+`Promise`\<[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)\>
+
+#### Example
 
 ```ts
 override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddress?: bsv.Address | string): Promise<bsv.Transaction> {
@@ -557,69 +458,49 @@ override async buildDeployTransaction(utxos: UTXO[], amount: number, changeAddre
 }
 ```
 
-#### Parameters
+***
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `utxos` | [`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[] | represents one or more P2PKH inputs for paying transaction fees. |
-| `amount` | `number` | the balance of contract output |
-| `changeAddress` | `string` \| [`Address`](bsv.Address.md) | a change address |
+### buildStateOutput()
 
-#### Returns
+> **buildStateOutput**(`amount`): [`ByteString`](../type-aliases/ByteString.md)
 
-```ts
-`Promise`<[`Transaction`](bsv.Transaction-1.md)\>
-```
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:409
-
-___
-
-### buildStateOutput
-
-```ts
-▸ **buildStateOutput**(`amount`): [`ByteString`](../README.md#bytestring)
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:243
 
 A built-in function to create an output containing the new state. It takes an input: the number of satoshis in the output.
 
-**`Onchain`**
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `amount` | `bigint` | the number of satoshis in the output |
+##### amount
+
+`bigint`
+
+the number of satoshis in the output
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 an output containing the new state
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:227
+***
 
-___
+### checkPreimage()
 
-### checkPreimage
+> **checkPreimage**(`txPreimage`): `boolean`
 
-```ts
-▸ **checkPreimage**(`txPreimage`): `boolean`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:290
 
 Using the [OP_PUSH_TX][https://medium.com/@xiaohuiliu/op-push-tx-3d3d279174c1](https://medium.com/@xiaohuiliu/op-push-tx-3d3d279174c1) technique, check if `txPreimage` is the preimage of the current transaction.
 
-**`Onchain`**
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm) |
+##### txPreimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm)
 
 #### Returns
 
@@ -627,33 +508,61 @@ Using the [OP_PUSH_TX][https://medium.com/@xiaohuiliu/op-push-tx-3d3d279174c1](h
 
 true if `txPreimage` is the preimage of the current transaction. Otherwise false.
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:274
+***
 
-___
+### checkPreimageAdvanced()
 
-### checkPreimageAdvanced
+> **checkPreimageAdvanced**(`txPreimage`, `privKey`, `pubKey`, `inverseK`, `r`, `rBigEndian`, `sigHashType`): `boolean`
 
-```ts
-▸ **checkPreimageAdvanced**(`txPreimage`, `privKey`, `pubKey`, `inverseK`, `r`, `rBigEndian`, `sigHashType`): `boolean`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:275
 
 Same as `checkPreimage`, but support customized more settings.
 
-**`Onchain`**
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm) |
-| `privKey` | [`PrivKey`](../README.md#privkey) | private Key |
-| `pubKey` | `PubKey` | public key |
-| `inverseK` | `bigint` | inverseK |
-| `r` | `bigint` | r |
-| `rBigEndian` | `string` | must be mininally encoded, to conform to strict DER rule https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki#der-encoding |
-| `sigHashType` | [`SigHashType`](../README.md#sighashtype) | A SIGHASH flag is used to indicate which part of the transaction is signed by the ECDSA signature. |
+##### txPreimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm)
+
+##### privKey
+
+[`PrivKey`](../type-aliases/PrivKey.md)
+
+private Key
+
+##### pubKey
+
+`PubKey`
+
+public key
+
+##### inverseK
+
+`bigint`
+
+inverseK
+
+##### r
+
+`bigint`
+
+r
+
+##### rBigEndian
+
+`string`
+
+must be mininally encoded, to conform to strict DER rule https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki#der-encoding
+
+##### sigHashType
+
+[`SigHashType`](../type-aliases/SigHashType.md)
+
+A SIGHASH flag is used to indicate which part of the transaction is signed by the ECDSA signature.
 
 #### Returns
 
@@ -661,28 +570,31 @@ Same as `checkPreimage`, but support customized more settings.
 
 true if `txPreimage` is the preimage of the current transaction. Otherwise false.
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:259
+***
 
-___
+### checkPreimageSigHashType()
 
-### checkPreimageSigHashType
+> **checkPreimageSigHashType**(`txPreimage`, `sigHashType`): `boolean`
 
-```ts
-▸ **checkPreimageSigHashType**(`txPreimage`, `sigHashType`): `boolean`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:283
 
 Same as `checkPreimage`, but support customized sighash type
 
-**`Onchain`**
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `txPreimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm) |
-| `sigHashType` | [`SigHashType`](../README.md#sighashtype) | A SIGHASH flag is used to indicate which part of the transaction is signed by the ECDSA signature. |
+##### txPreimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+The format of the preimage is [specified][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm)
+
+##### sigHashType
+
+[`SigHashType`](../type-aliases/SigHashType.md)
+
+A SIGHASH flag is used to indicate which part of the transaction is signed by the ECDSA signature.
 
 #### Returns
 
@@ -690,115 +602,222 @@ Same as `checkPreimage`, but support customized sighash type
 
 true if `txPreimage` is the preimage of the current transaction. Otherwise false.
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:267
+***
 
-___
+### connect()
 
-### connect
+> **connect**(`signer`): `Promise`\<`void`\>
 
-```ts
-▸ **connect**(`providerOrSigner`): `Promise`<`void`\>
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:402
 
-connect a provider or a signer.
+connect a signer.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `providerOrSigner` | [`Provider`](Provider.md) \| [`Signer`](Signer.md) | a provider or a signer |
+##### signer
+
+[`Signer`](Signer.md)
+
+a signer
 
 #### Returns
 
-```ts
-`Promise`<`void`\>
-```
+`Promise`\<`void`\>
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:371
+### deploy()
 
-___
+> **deploy**(`amount`?, `options`?): `Promise`\<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
-### deploy
-
-```ts
-▸ **deploy**(`amount?`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:452
 
 Deploy the contract
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `amount?` | `number` | satoshis locked in the contract, 1 sat by default |
-| `options?` | `Object` | An optional parameter that can specify the change address |
-| `options.address?` | [`Address`](bsv.Address.md) | - |
-| `options.changeAddress?` | [`Address`](bsv.Address.md) | - |
+##### amount?
+
+`number`
+
+satoshis locked in the contract, 1 sat by default
+
+##### options?
+
+An optional parameter that can specify the change address and additional UTXOs
+
+###### address?
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+###### changeAddress?
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+###### utxos?
+
+[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)[]
 
 #### Returns
 
-```ts
-`Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
-```
+`Promise`\<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
 The transaction id of the successfully deployed contract
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:416
+### getDefaultTxBuilder()
 
-___
+> `protected` **getDefaultTxBuilder**\<`T`\>(`methodName`): [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)\<`T`\>
 
-### getStateScript
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:469
 
-```ts
-▸ **getStateScript**(): [`ByteString`](../README.md#bytestring)
-```
+#### Type Parameters
 
-A built-in function to create a locking script containing the new state.
+• **T** *extends* [`SmartContract`](SmartContract.md)
 
-**`Onchain`**
+#### Parameters
+
+##### methodName
+
+`string`
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)\<`T`\>
+
+***
+
+### getDelegateInstance()
+
+> `protected` **getDelegateInstance**(): `AbstractContract`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:155
+
+#### Returns
+
+`AbstractContract`
+
+***
+
+### getOffchainUpdates()
+
+> **getOffchainUpdates**\<`T`\>(): [`OffchainUpdates`](../type-aliases/OffchainUpdates.md)\<`T`\>
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:576
+
+Offchain update functions to apply when replaying a contract to the latest instance. This is used to populate
+properties which are tied to offchain values, such as `HashedMap` and `HashedSet`.
+
+#### Type Parameters
+
+• **T** *extends* [`SmartContract`](SmartContract.md)
+
+#### Returns
+
+[`OffchainUpdates`](../type-aliases/OffchainUpdates.md)\<`T`\>
+
+***
+
+### getPrependNOPScript()
+
+> **getPrependNOPScript**(): [`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:571
+
+#### Returns
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+***
+
+### getStateScript()
+
+> **getStateScript**(): [`ByteString`](../type-aliases/ByteString.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:255
+
+A built-in function to create a locking script containing the new state.
+
+#### Returns
+
+[`ByteString`](../type-aliases/ByteString.md)
 
 a locking script that containing the new state
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:239
+***
 
-___
+### getTxBuilder()
 
-### insertCodeSeparator
+> **getTxBuilder**\<`T`\>(`methodName`): [`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)\<`T`\>
 
-```ts
-▸ **insertCodeSeparator**(): `void`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:468
 
-Insert and OP_CODESEPARATOR at this point of the functions logic.
-More detail about [OP_CODESEPARATOR][https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR)
+#### Type Parameters
+
+• **T** *extends* [`SmartContract`](SmartContract.md)
+
+#### Parameters
+
+##### methodName
+
+`string`
+
+#### Returns
+
+[`MethodCallTxBuilder`](../interfaces/MethodCallTxBuilder.md)\<`T`\>
+
+***
+
+### init()
+
+> `protected` **init**(...`args`): `void`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:165
+
+Only inherited classes can call this function.
+Direct subclasses of `SmartContract` do not need to call this function.
+
+#### Parameters
+
+##### args
+
+...`any`[]
+
+constructor parameters of inherited classes
 
 #### Returns
 
 `void`
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:279
+***
 
-___
+### insertCodeSeparator()
 
-### isStateful
+> **insertCodeSeparator**(): `void`
 
-```ts
-▸ **isStateful**(): `boolean`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:295
+
+Insert and OP_CODESEPARATOR at this point of the functions logic.
+More detail about [OP_CODESEPARATOR][https://wiki.bitcoinsv.io/index.php/OP\_CODESEPARATOR](https://wiki.bitcoinsv.io/index.php/OP_CODESEPARATOR)
+
+#### Returns
+
+`void`
+
+***
+
+### isStateful()
+
+> **isStateful**(): `boolean`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:490
 
 Check if the contract is a stateful contract
 
@@ -808,141 +827,182 @@ Check if the contract is a stateful contract
 
 true if contract has a `@prop(true)` property
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:453
+### markAsGenesis()
 
-___
+> **markAsGenesis**(): `this`
 
-### markAsGenesis
-
-```ts
-▸ **markAsGenesis**(): [`SmartContract`](SmartContract.md)
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:236
 
 Mark the contract as genesis contracts
 
 #### Returns
 
-[`SmartContract`](SmartContract.md)
+`this`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:220
+### next()
 
-___
+> **next**(`opt`?): `this`
 
-### next
-
-```ts
-▸ **next**(`opt?`): [`SmartContract`](SmartContract.md)
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:230
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `opt?` | `Object` | properties that only references are copied, but not deep clone their values. |
-| `opt.refCloneProps?` | `string`[] | - |
+##### opt?
+
+properties that only references are copied, but not deep clone their values.
+
+###### refCloneProps?
+
+`string`[]
 
 #### Returns
 
-[`SmartContract`](SmartContract.md)
+`this`
 
 a cloned contract instance with `this.from = undefined` and `this.to = undefined`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:214
+### prependNOPScript()
 
-___
+> **prependNOPScript**(`nopScript`): `void`
 
-### setAsmVars
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:570
 
-```ts
-▸ **setAsmVars**(`asmVarValues`): `void`
-```
+#### Parameters
+
+##### nopScript
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+#### Returns
+
+`void`
+
+***
+
+### setAsmVars()
+
+> **setAsmVars**(`asmVarValues`): `void`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:213
 
 If the compiled contract contains any ASM variable templates (e.g. P2PKH.unlock.pubKeyHash),
 replace them with the passed values.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `asmVarValues` | `AsmVarValues` | type that contains the actual values. |
+##### asmVarValues
+
+`AsmVarValues`
+
+type that contains the actual values.
 
 #### Returns
 
 `void`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:197
+### setDataPartInASM()
 
-___
+> **setDataPartInASM**(`dataPart`): `void`
 
-### setDataPartInASM
-
-```ts
-▸ **setDataPartInASM**(`dataPart`): `void`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:379
 
 set the data part of the contract in ASM format
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `dataPart` | `string` |
+##### dataPart
+
+`string`
 
 #### Returns
 
 `void`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:348
+### setDataPartInHex()
 
-___
+> **setDataPartInHex**(`dataPart`): `void`
 
-### setDataPartInHex
-
-```ts
-▸ **setDataPartInHex**(`dataPart`): `void`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:384
 
 set the data part of the contract in hex format
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `dataPart` | `string` |
+##### dataPart
+
+`string`
 
 #### Returns
 
 `void`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:353
+### setDelegateInstance()
 
-___
+> `protected` **setDelegateInstance**(`delegateInstance`): `void`
 
-### sigTypeOfMethod
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:156
 
-```ts
-▸ **sigTypeOfMethod**(`methodName`): `number`
-```
+#### Parameters
+
+##### delegateInstance
+
+`AbstractContract`
+
+#### Returns
+
+`void`
+
+***
+
+### setProvider()
+
+> **setProvider**(`provider`): `void`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:407
+
+set a provider.
+
+#### Parameters
+
+##### provider
+
+[`Provider`](Provider.md)
+
+a provider
+
+#### Returns
+
+`void`
+
+***
+
+### sigTypeOfMethod()
+
+> **sigTypeOfMethod**(`methodName`): `number`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:496
 
 Get [sigHash type][https://docs.scrypt.io/how-to-write-a-contract/scriptcontext#sighash-type](https://docs.scrypt.io/how-to-write-a-contract/scriptcontext#sighash-type) of the public `@method` function.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `methodName` | `string` | name of the public `@method` function. |
+##### methodName
+
+`string`
+
+name of the public `@method` function.
 
 #### Returns
 
@@ -950,17 +1010,13 @@ Get [sigHash type][https://docs.scrypt.io/how-to-write-a-contract/scriptcontext#
 
 a sigHash type
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:459
+### compile()
 
-___
+> `static` **compile**(): `Promise`\<[`Artifact`](../interfaces/Artifact.md)\>
 
-### compile
-
-```ts
-▸ `Static` **compile**(): `Promise`<[`Artifact`](../interfaces/Artifact.md)\>
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:128
 
 compiling the scrypt source which is the output of transpiling. Calling this function to output the contract artifact file.
 only used for testing.
@@ -968,56 +1024,109 @@ This function should not be called in production environment.
 
 #### Returns
 
-```ts
-`Promise`<[`Artifact`](../interfaces/Artifact.md)\>
-```
+`Promise`\<[`Artifact`](../interfaces/Artifact.md)\>
 
 if compiling succeed, otherwise it throws error.
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:124
+### fromTx()
 
-___
+> `static` **fromTx**\<`T`\>(`this`, `tx`, `atOutputIndex`, `offchainValues`?, `nopScript`?): `T`
 
-### fromTx
-
-```ts
-▸ `Static` **fromTx**<`T`\>(`this`, `tx`, `atOutputIndex`, `offchainValues?`): `T`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:538
 
 recover a `SmartContract` instance from the transaction
 if the contract contains onchain properties of type `HashedMap` or `HashedSet`
 it's required to pass all their offchain raw data at this transaction moment
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `extends [`SmartContract`](SmartContract.md)<`T`\>` |
+• **T** *extends* [`SmartContract`](SmartContract.md)
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `this` | (...`args`: `any`[]) => `T` | - |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) | transaction |
-| `atOutputIndex` | `number` | output index of `tx` |
-| `offchainValues?` | `Record<string, any>` | the value of offchain properties, the raw data of onchain `HashedMap` and `HashedSet` properties, at this transaction moment |
+##### this
+
+(...`args`) => `T`
+
+##### tx
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+transaction
+
+##### atOutputIndex
+
+`number`
+
+output index of `tx`
+
+##### offchainValues?
+
+`Record`\<`string`, `any`\>
+
+the value of offchain properties, the raw data of onchain `HashedMap` and `HashedSet` properties, at this transaction moment
+
+##### nopScript?
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+a script if contract locking script startwiths a nopScript.
 
 #### Returns
 
 `T`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:499
+### fromUTXO()
 
-___
+> `static` **fromUTXO**\<`T`\>(`this`, `utxo`, `offchainValues`?, `nopScript`?): `T`
 
-### getArtifact
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:547
 
-▸ `Static` **getArtifact**(): [`Artifact`](../interfaces/Artifact.md)
+recover a `SmartContract` instance from the transaction
+if the contract contains onchain properties of type `HashedMap` or `HashedSet`
+it's required to pass all their offchain raw data at this transaction moment
+
+#### Type Parameters
+
+• **T** *extends* [`SmartContract`](SmartContract.md)
+
+#### Parameters
+
+##### this
+
+(...`args`) => `T`
+
+##### utxo
+
+[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)
+
+##### offchainValues?
+
+`Record`\<`string`, `any`\>
+
+the value of offchain properties, the raw data of onchain `HashedMap` and `HashedSet` properties, at this transaction moment
+
+##### nopScript?
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+a script if contract locking script startwiths a nopScript.
+
+#### Returns
+
+`T`
+
+***
+
+### getArtifact()
+
+> `static` **getArtifact**(): [`Artifact`](../interfaces/Artifact.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:142
 
 The contract class needs to call this function before instantiating.
 
@@ -1025,147 +1134,182 @@ The contract class needs to call this function before instantiating.
 
 [`Artifact`](../interfaces/Artifact.md)
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:138
+### loadArtifact()
 
-___
+> `static` **loadArtifact**(`artifactFile`?): `void`
 
-### loadArtifact
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:136
 
-▸ `Static` **loadArtifact**(`artifactFile?`): `void`
-
-This function is usually called on the front-end.
+This function is usually called on the frontend.
 The contract class needs to call this function before instantiating.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `artifactFile?` | `string` \| [`Artifact`](../interfaces/Artifact.md) | a merged contract artifact object, or its file path |
+##### artifactFile?
+
+a merged contract artifact object, or its file path
+
+`string` | [`Artifact`](../interfaces/Artifact.md)
 
 #### Returns
 
 `void`
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:132
+### multiContractCall()
 
-___
+> `static` **multiContractCall**(`partialContractTx`, `feeSigner`, `options`?): `Promise`\<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
 
-### multiContractCall
-
-```ts
-▸ `Static` **multiContractCall**(`partialContractTx`, `signer`, `options?`): `Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:560
 
 When the `@method`s of multiple contracts is called in a transaction, this function signs and broadcasts the final transaction.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `partialContractTx` | [`ContractTransaction`](../interfaces/ContractTransaction.md) | a `ContractTransation` with a unsigned transation. |
-| `signer` | [`Signer`](Signer.md) | a signer to sign the transation. |
-| `options?` | [`MultiContractCallOptions`](../interfaces/MultiContractCallOptions.md) | - |
+##### partialContractTx
+
+[`ContractTransaction`](../interfaces/ContractTransaction.md)
+
+a `ContractTransation` with a unsigned transation.
+
+##### feeSigner
+
+[`Signer`](Signer.md)
+
+a signer to sign the transation.
+
+##### options?
+
+[`MultiContractCallOptions`](../interfaces/MultiContractCallOptions.md)
 
 #### Returns
 
-```ts
-`Promise`<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
-```
+`Promise`\<[`MultiContractTransaction`](../interfaces/MultiContractTransaction.md)\>
 
 a `MultiContractTransation` with a signed transation.
 
-#### Defined in
+***
 
-dist/smart-contract/contract.d.ts:510
+### parseCallData()
 
-___
+> `static` **parseCallData**(`tx`, `inputIndex`): `CallData`
 
-### parseCallData
-
-▸ `Static` **parseCallData**(`tx`, `inputIndex`): `CallData`
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:567
 
 parse call data when a contract public method called in a transation.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) |
-| `inputIndex` | `number` |
+##### tx
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+##### inputIndex
+
+`number`
 
 #### Returns
 
 `CallData`
 
-#### Defined in
+## Signature Verification
 
-dist/smart-contract/contract.d.ts:517
+### checkMultiSig()
 
-___
+> **checkMultiSig**(`signatures`, `publickeys`): `boolean`
 
-## Signature Verification Methods
-
-### checkMultiSig
-
-```ts
-▸ **checkMultiSig**(`signatures`, `publickeys`): `boolean`
-```
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:302
 
 Compares the first signature against each public key until it finds an ECDSA match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result. All signatures need to match a public key. Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the scriptSig using the same order as their corresponding public keys were placed in the scriptPubKey or redeemScript. If all signatures are valid, 1 is returned, 0 otherwise. Due to a bug, one extra unused value is removed from the stack.
 
-**`Onchain`**
-
-**`See`**
-
-https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `signatures` | `Sig`[] |
-| `publickeys` | `PubKey`[] |
+##### signatures
+
+`Sig`[]
+
+##### publickeys
+
+`PubKey`[]
 
 #### Returns
 
 `boolean`
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:286
+#### See
 
-___
+https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
 
-### checkSig
+***
 
-```ts
-▸ **checkSig**(`signature`, `publickey`, `errorMsg?`): `boolean`
-```
+### checkSig()
+
+> **checkSig**(`signature`, `publickey`, `errorMsg`?): `boolean`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:262
 
 A built-in function verifies an ECDSA signature. It takes two inputs from the stack, a public key (on top of the stack) and an ECDSA signature in its DER_CANONISED format concatenated with sighash flags. It outputs true or false on the stack based on whether the signature check passes or fails.
 
-**`Onchain`**
-
-**`See`**
-
-https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `signature` | `Sig` |
-| `publickey` | `PubKey` |
-| `errorMsg?` | `string` |
+##### signature
+
+`Sig`
+
+##### publickey
+
+`PubKey`
+
+##### errorMsg?
+
+`string`
 
 #### Returns
 
 `boolean`
 
-#### Defined in
+#### Onchain
 
-dist/smart-contract/contract.d.ts:246
+#### See
+
+https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script
+
+## Time Lock
+
+### timeLock()
+
+> **timeLock**(`locktime`): `boolean`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:317
+
+Implements a time-based lock on a transaction until a specified `locktime` has been reached.
+The lock can be based on either block height or a UNIX timestamp.
+
+If the `locktime` is below 500,000,000, it's interpreted as a block height. Otherwise,
+it's interpreted as a UNIX timestamp. This function checks and ensures that the transaction's
+nSequence is less than `UINT_MAX`, and that the provided `locktime` has been reached or passed.
+
+#### Parameters
+
+##### locktime
+
+`bigint`
+
+The block height or timestamp until which the transaction should be locked.
+
+#### Returns
+
+`boolean`
+
+If `true` is returned, nlockTime and sequence in `this.ctx` are valid, otherwise they are invalid.
+
+#### Onchain
+
+#### See
+
+https://docs.scrypt.io/tutorials/timeLock

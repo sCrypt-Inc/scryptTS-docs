@@ -1,449 +1,310 @@
-[scrypt-ts](../README.md) / TransactionResponse
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / TransactionResponse
 
 # Interface: TransactionResponse
 
-## Hierarchy
+Defined in: scrypt-ts/dist/bsv/abstract-provider.d.ts:5
 
-- [`Transaction`](../classes/bsv.Transaction-1.md)
+## Extends
 
-  ↳ **`TransactionResponse`**
-
-## Table of contents
-
-### Properties
-
-- [\_estimateSize](TransactionResponse.md#_estimatesize)
-- [hash](TransactionResponse.md#hash)
-- [id](TransactionResponse.md#id)
-- [inputAmount](TransactionResponse.md#inputamount)
-- [inputs](TransactionResponse.md#inputs)
-- [nLockTime](TransactionResponse.md#nlocktime)
-- [nid](TransactionResponse.md#nid)
-- [outputAmount](TransactionResponse.md#outputamount)
-- [outputs](TransactionResponse.md#outputs)
-
-### Methods
-
-- [\_estimateFee](TransactionResponse.md#_estimatefee)
-- [\_getUnspentValue](TransactionResponse.md#_getunspentvalue)
-- [addData](TransactionResponse.md#adddata)
-- [addDummyInput](TransactionResponse.md#adddummyinput)
-- [addInput](TransactionResponse.md#addinput)
-- [addInputFromPrevTx](TransactionResponse.md#addinputfromprevtx)
-- [addOutput](TransactionResponse.md#addoutput)
-- [applySignature](TransactionResponse.md#applysignature)
-- [change](TransactionResponse.md#change)
-- [checkFeeRate](TransactionResponse.md#checkfeerate)
-- [dummyChange](TransactionResponse.md#dummychange)
-- [enableRBF](TransactionResponse.md#enablerbf)
-- [fee](TransactionResponse.md#fee)
-- [feePerKb](TransactionResponse.md#feeperkb)
-- [from](TransactionResponse.md#from)
-- [fromBuffer](TransactionResponse.md#frombuffer)
-- [fromString](TransactionResponse.md#fromstring)
-- [getChangeAddress](TransactionResponse.md#getchangeaddress)
-- [getChangeAmount](TransactionResponse.md#getchangeamount)
-- [getChangeOutput](TransactionResponse.md#getchangeoutput)
-- [getEstimateFee](TransactionResponse.md#getestimatefee)
-- [getFee](TransactionResponse.md#getfee)
-- [getInputAmount](TransactionResponse.md#getinputamount)
-- [getLockTime](TransactionResponse.md#getlocktime)
-- [getOutputAmount](TransactionResponse.md#getoutputamount)
-- [getPreimage](TransactionResponse.md#getpreimage)
-- [getSerializationError](TransactionResponse.md#getserializationerror)
-- [getSignature](TransactionResponse.md#getsignature)
-- [hasWitnesses](TransactionResponse.md#haswitnesses)
-- [inspect](TransactionResponse.md#inspect)
-- [isCoinbase](TransactionResponse.md#iscoinbase)
-- [isFullySigned](TransactionResponse.md#isfullysigned)
-- [isRBF](TransactionResponse.md#isrbf)
-- [isSealed](TransactionResponse.md#issealed)
-- [lockUntilBlockHeight](TransactionResponse.md#lockuntilblockheight)
-- [lockUntilDate](TransactionResponse.md#lockuntildate)
-- [prevouts](TransactionResponse.md#prevouts)
-- [seal](TransactionResponse.md#seal)
-- [sealAsync](TransactionResponse.md#sealasync)
-- [serialize](TransactionResponse.md#serialize)
-- [setInputScript](TransactionResponse.md#setinputscript)
-- [setInputScriptAsync](TransactionResponse.md#setinputscriptasync)
-- [setInputSequence](TransactionResponse.md#setinputsequence)
-- [setLockTime](TransactionResponse.md#setlocktime)
-- [setOutput](TransactionResponse.md#setoutput)
-- [sign](TransactionResponse.md#sign)
-- [to](TransactionResponse.md#to)
-- [toBuffer](TransactionResponse.md#tobuffer)
-- [toObject](TransactionResponse.md#toobject)
-- [uncheckedSerialize](TransactionResponse.md#uncheckedserialize)
-- [verify](TransactionResponse.md#verify)
-- [verifyInputScript](TransactionResponse.md#verifyinputscript)
-- [verifyScript](TransactionResponse.md#verifyscript)
-- [verifySignature](TransactionResponse.md#verifysignature)
+- [`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
 
 ## Properties
 
-### \_estimateSize
-
-• **\_estimateSize**: `number`
-
-#### Inherited from
-
-[Transaction](../classes/bsv.Transaction-1.md).[_estimateSize](../classes/bsv.Transaction-1.md#_estimatesize)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:963
-
-___
-
 ### hash
 
-• `Readonly` **hash**: `string`
+> `readonly` **hash**: `string`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:908
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[hash](../classes/bsv.Transaction-1.md#hash)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`hash`](../@scrypt-inc/bsv/classes/Transaction.md#hash)
 
-#### Defined in
-
-node_modules/bsv/index.d.ts:904
-
-___
+***
 
 ### id
 
-• `Readonly` **id**: `string`
+> `readonly` **id**: `string`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:907
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[id](../classes/bsv.Transaction-1.md#id)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`id`](../@scrypt-inc/bsv/classes/Transaction.md#id)
 
-#### Defined in
-
-node_modules/bsv/index.d.ts:903
-
-___
+***
 
 ### inputAmount
 
-• `Readonly` **inputAmount**: `number`
+> `readonly` **inputAmount**: `number`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:909
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[inputAmount](../classes/bsv.Transaction-1.md#inputamount)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`inputAmount`](../@scrypt-inc/bsv/classes/Transaction.md#inputamount)
 
-#### Defined in
-
-node_modules/bsv/index.d.ts:905
-
-___
+***
 
 ### inputs
 
-• **inputs**: [`Input`](../classes/bsv.Transaction.Input-1.md)[]
+> **inputs**: [`Input`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Input.md)[]
+
+Defined in: @scrypt-inc/bsv/index.d.ts:905
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[inputs](../classes/bsv.Transaction-1.md#inputs)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`inputs`](../@scrypt-inc/bsv/classes/Transaction.md#inputs)
 
-#### Defined in
-
-node_modules/bsv/index.d.ts:901
-
-___
-
-### nLockTime
-
-• **nLockTime**: `number`
-
-#### Inherited from
-
-[Transaction](../classes/bsv.Transaction-1.md).[nLockTime](../classes/bsv.Transaction-1.md#nlocktime)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:908
-
-___
+***
 
 ### nid
 
-• **nid**: `string`
+> **nid**: `string`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:911
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[nid](../classes/bsv.Transaction-1.md#nid)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`nid`](../@scrypt-inc/bsv/classes/Transaction.md#nid)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:907
+### nLockTime
 
-___
+> **nLockTime**: `number`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:912
+
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`nLockTime`](../@scrypt-inc/bsv/classes/Transaction.md#nlocktime)
+
+***
 
 ### outputAmount
 
-• `Readonly` **outputAmount**: `number`
+> `readonly` **outputAmount**: `number`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:910
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[outputAmount](../classes/bsv.Transaction-1.md#outputamount)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`outputAmount`](../@scrypt-inc/bsv/classes/Transaction.md#outputamount)
 
-#### Defined in
-
-node_modules/bsv/index.d.ts:906
-
-___
+***
 
 ### outputs
 
-• **outputs**: [`Output`](../classes/bsv.Transaction.Output.md)[]
+> **outputs**: [`Output`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Output.md)[]
+
+Defined in: @scrypt-inc/bsv/index.d.ts:906
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[outputs](../classes/bsv.Transaction-1.md#outputs)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:902
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`outputs`](../@scrypt-inc/bsv/classes/Transaction.md#outputs)
 
 ## Methods
 
-### \_estimateFee
+### addData()
 
-```ts
-▸ **_estimateFee**(): `number`
-```
+> **addData**(`value`): `this`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:938
+
+#### Parameters
+
+##### value
+
+`string` | `Buffer`\<`ArrayBufferLike`\>
 
 #### Returns
+
+`this`
+
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`addData`](../@scrypt-inc/bsv/classes/Transaction.md#adddata)
+
+***
+
+### addDummyInput()
+
+> **addDummyInput**(`script`, `satoshis`): `this`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:991
+
+#### Parameters
+
+##### script
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+##### satoshis
 
 `number`
 
+#### Returns
+
+`this`
+
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[_estimateFee](../classes/bsv.Transaction-1.md#_estimatefee)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`addDummyInput`](../@scrypt-inc/bsv/classes/Transaction.md#adddummyinput)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:962
+### addInput()
 
-___
+> **addInput**(`input`, `outputScript`?, `satoshis`?): `this`
 
-### \_getUnspentValue
+Defined in: @scrypt-inc/bsv/index.d.ts:931
 
-```ts
-▸ **_getUnspentValue**(): `number`
-```
+#### Parameters
 
-#### Returns
+##### input
+
+[`Input`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Input.md)
+
+##### outputScript?
+
+`string` | [`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+##### satoshis?
 
 `number`
 
+#### Returns
+
+`this`
+
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[_getUnspentValue](../classes/bsv.Transaction-1.md#_getunspentvalue)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`addInput`](../@scrypt-inc/bsv/classes/Transaction.md#addinput)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:961
+### addInputFromPrevTx()
 
-___
+> **addInputFromPrevTx**(`prevTx`, `outputIndex`?): `this`
 
-### addData
-
-```ts
-▸ **addData**(`value`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:990
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `string` \| `Buffer` |
+##### prevTx
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+##### outputIndex?
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[addData](../classes/bsv.Transaction-1.md#adddata)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`addInputFromPrevTx`](../@scrypt-inc/bsv/classes/Transaction.md#addinputfromprevtx)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:933
+### addOutput()
 
-___
+> **addOutput**(`output`): `this`
 
-### addDummyInput
-
-```ts
-▸ **addDummyInput**(`script`, `satoshis`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:937
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `script` | [`Script`](../classes/bsv.Script-1.md) |
-| `satoshis` | `number` |
+##### output
+
+[`Output`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Output.md)
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[addDummyInput](../classes/bsv.Transaction-1.md#adddummyinput)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`addOutput`](../@scrypt-inc/bsv/classes/Transaction.md#addoutput)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:987
+### applySignature()
 
-___
+> **applySignature**(`sig`): `this`
 
-### addInput
-
-```ts
-▸ **addInput**(`input`, `outputScript?`, `satoshis?`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:929
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `input` | [`Input`](../classes/bsv.Transaction.Input-1.md) |
-| `outputScript?` | `string` \| [`Script`](../classes/bsv.Script-1.md) |
-| `satoshis?` | `number` |
+##### sig
+
+###### inputIndex
+
+`number`
+
+###### publicKey
+
+[`PublicKey`](../@scrypt-inc/bsv/classes/PublicKey.md)
+
+###### signature
+
+[`Signature`](../@scrypt-inc/bsv/namespaces/crypto/classes/Signature.md)
+
+###### sigtype
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[addInput](../classes/bsv.Transaction-1.md#addinput)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`applySignature`](../@scrypt-inc/bsv/classes/Transaction.md#applysignature)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:927
+### change()
 
-___
+> **change**(`address`): `this`
 
-### addInputFromPrevTx
-
-```ts
-▸ **addInputFromPrevTx**(`prevTx`, `outputIndex?`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:922
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `prevTx` | [`Transaction`](../classes/bsv.Transaction-1.md) |
-| `outputIndex?` | `number` |
+##### address
+
+`string` | [`Address`](../@scrypt-inc/bsv/classes/Address.md)
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[addInputFromPrevTx](../classes/bsv.Transaction-1.md#addinputfromprevtx)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`change`](../@scrypt-inc/bsv/classes/Transaction.md#change)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:986
+### checkFeeRate()
 
-___
+> **checkFeeRate**(`feePerKb`?): `boolean`
 
-### addOutput
-
-```ts
-▸ **addOutput**(`output`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:986
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `output` | [`Output`](../classes/bsv.Transaction.Output.md) |
+##### feePerKb?
 
-#### Returns
-
-[`TransactionResponse`](TransactionResponse.md)
-
-#### Inherited from
-
-[Transaction](../classes/bsv.Transaction-1.md).[addOutput](../classes/bsv.Transaction-1.md#addoutput)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:932
-
-___
-
-### applySignature
-
-```ts
-▸ **applySignature**(`sig`): [`TransactionResponse`](TransactionResponse.md)
-```
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `sig` | `Object` |
-| `sig.inputIndex` | `number` |
-| `sig.publicKey` | [`PublicKey`](../classes/bsv.PublicKey.md) |
-| `sig.signature` | [`Signature`](../classes/bsv.crypto.Signature.md) |
-| `sig.sigtype` | `number` |
-
-#### Returns
-
-[`TransactionResponse`](TransactionResponse.md)
-
-#### Inherited from
-
-[Transaction](../classes/bsv.Transaction-1.md).[applySignature](../classes/bsv.Transaction-1.md#applysignature)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:925
-
-___
-
-### change
-
-▸ **change**(`address`): [`TransactionResponse`](TransactionResponse.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `address` | `string` \| [`Address`](../classes/bsv.Address.md) |
-
-#### Returns
-
-[`TransactionResponse`](TransactionResponse.md)
-
-#### Inherited from
-
-[Transaction](../classes/bsv.Transaction-1.md).[change](../classes/bsv.Transaction-1.md#change)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:918
-
-___
-
-### checkFeeRate
-
-▸ **checkFeeRate**(`feePerKb?`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `feePerKb?` | `number` |
+`number`
 
 #### Returns
 
@@ -451,191 +312,173 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[checkFeeRate](../classes/bsv.Transaction-1.md#checkfeerate)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`checkFeeRate`](../@scrypt-inc/bsv/classes/Transaction.md#checkfeerate)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:982
+### dummyChange()
 
-___
+> **dummyChange**(): `this`
 
-### dummyChange
-
-▸ **dummyChange**(): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:992
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[dummyChange](../classes/bsv.Transaction-1.md#dummychange)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`dummyChange`](../@scrypt-inc/bsv/classes/Transaction.md#dummychange)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:988
+### enableRBF()
 
-___
+> **enableRBF**(): `this`
 
-### enableRBF
-
-▸ **enableRBF**(): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:952
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[enableRBF](../classes/bsv.Transaction-1.md#enablerbf)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`enableRBF`](../@scrypt-inc/bsv/classes/Transaction.md#enablerbf)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:947
+### fee()
 
-___
+> **fee**(`amount`): `this`
 
-### fee
-
-▸ **fee**(`amount`): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:923
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `amount` | `number` |
+##### amount
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[fee](../classes/bsv.Transaction-1.md#fee)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`fee`](../@scrypt-inc/bsv/classes/Transaction.md#fee)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:919
+### feePerKb()
 
-___
+> **feePerKb**(`amount`): `this`
 
-### feePerKb
-
-▸ **feePerKb**(`amount`): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:924
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `amount` | `number` |
+##### amount
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[feePerKb](../classes/bsv.Transaction-1.md#feeperkb)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`feePerKb`](../@scrypt-inc/bsv/classes/Transaction.md#feeperkb-1)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:920
+### from()
 
-___
+> **from**(`utxos`): `this`
 
-### from
-
-▸ **from**(`utxos`): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:916
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `utxos` | [`IUnspentOutput`](bsv.Transaction.IUnspentOutput.md) \| [`IUnspentOutput`](bsv.Transaction.IUnspentOutput.md)[] |
+##### utxos
+
+[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md) | [`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)[]
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[from](../classes/bsv.Transaction-1.md#from)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`from`](../@scrypt-inc/bsv/classes/Transaction.md#from)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:912
+### fromBuffer()
 
-___
+> **fromBuffer**(`buffer`): `this`
 
-### fromBuffer
-
-▸ **fromBuffer**(`buffer`): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:920
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `buffer` | `Buffer` |
+##### buffer
+
+`Buffer`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[fromBuffer](../classes/bsv.Transaction-1.md#frombuffer)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`fromBuffer`](../@scrypt-inc/bsv/classes/Transaction.md#frombuffer)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:916
+### fromString()
 
-___
+> **fromString**(`rawTxHex`): `this`
 
-### fromString
-
-▸ **fromString**(`rawTxHex`): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:919
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `rawTxHex` | `string` |
+##### rawTxHex
+
+`string`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[fromString](../classes/bsv.Transaction-1.md#fromstring)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`fromString`](../@scrypt-inc/bsv/classes/Transaction.md#fromstring)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:915
+### getChangeAddress()
 
-___
+> **getChangeAddress**(): [`Address`](../@scrypt-inc/bsv/classes/Address.md)
 
-### getChangeAddress
-
-▸ **getChangeAddress**(): [`Address`](../classes/bsv.Address.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:945
 
 #### Returns
 
-[`Address`](../classes/bsv.Address.md)
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getChangeAddress](../classes/bsv.Transaction-1.md#getchangeaddress)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getChangeAddress`](../@scrypt-inc/bsv/classes/Transaction.md#getchangeaddress)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:940
+### getChangeAmount()
 
-___
+> **getChangeAmount**(): `number`
 
-### getChangeAmount
-
-▸ **getChangeAmount**(): `number`
+Defined in: @scrypt-inc/bsv/index.d.ts:983
 
 #### Returns
 
@@ -643,35 +486,31 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getChangeAmount](../classes/bsv.Transaction-1.md#getchangeamount)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getChangeAmount`](../@scrypt-inc/bsv/classes/Transaction.md#getchangeamount)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:980
+### getChangeOutput()
 
-___
+> **getChangeOutput**(): [`Output`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Output.md)
 
-### getChangeOutput
-
-▸ **getChangeOutput**(): [`Output`](../classes/bsv.Transaction.Output.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:944
 
 #### Returns
 
-[`Output`](../classes/bsv.Transaction.Output.md)
+[`Output`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Output.md)
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getChangeOutput](../classes/bsv.Transaction-1.md#getchangeoutput)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getChangeOutput`](../@scrypt-inc/bsv/classes/Transaction.md#getchangeoutput)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:939
+### getEstimateFee()
 
-___
+> **getEstimateFee**(): `number`
 
-### getEstimateFee
-
-▸ **getEstimateFee**(): `number`
+Defined in: @scrypt-inc/bsv/index.d.ts:985
 
 #### Returns
 
@@ -679,17 +518,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getEstimateFee](../classes/bsv.Transaction-1.md#getestimatefee)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getEstimateFee`](../@scrypt-inc/bsv/classes/Transaction.md#getestimatefee)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:981
+### getEstimateSize()
 
-___
+> **getEstimateSize**(): `number`
 
-### getFee
-
-▸ **getFee**(): `number`
+Defined in: @scrypt-inc/bsv/index.d.ts:984
 
 #### Returns
 
@@ -697,23 +534,37 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getFee](../classes/bsv.Transaction-1.md#getfee)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getEstimateSize`](../@scrypt-inc/bsv/classes/Transaction.md#getestimatesize)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:938
+### getFee()
 
-___
+> **getFee**(): `number`
 
-### getInputAmount
+Defined in: @scrypt-inc/bsv/index.d.ts:943
 
-▸ **getInputAmount**(`inputIndex`): `number`
+#### Returns
+
+`number`
+
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getFee`](../@scrypt-inc/bsv/classes/Transaction.md#getfee)
+
+***
+
+### getInputAmount()
+
+> **getInputAmount**(`inputIndex`): `number`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:1007
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` |
+##### inputIndex
+
+`number`
 
 #### Returns
 
@@ -721,17 +572,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getInputAmount](../classes/bsv.Transaction-1.md#getinputamount)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getInputAmount`](../@scrypt-inc/bsv/classes/Transaction.md#getinputamount)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:1003
+### getLockTime()
 
-___
+> **getLockTime**(): `number` \| `Date`
 
-### getLockTime
-
-▸ **getLockTime**(): `number` \| `Date`
+Defined in: @scrypt-inc/bsv/index.d.ts:946
 
 #### Returns
 
@@ -739,23 +588,21 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getLockTime](../classes/bsv.Transaction-1.md#getlocktime)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getLockTime`](../@scrypt-inc/bsv/classes/Transaction.md#getlocktime)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:941
+### getOutputAmount()
 
-___
+> **getOutputAmount**(`outputIndex`): `number`
 
-### getOutputAmount
-
-▸ **getOutputAmount**(`outputIndex`): `number`
+Defined in: @scrypt-inc/bsv/index.d.ts:1008
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `outputIndex` | `number` |
+##### outputIndex
+
+`number`
 
 #### Returns
 
@@ -763,25 +610,33 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getOutputAmount](../classes/bsv.Transaction-1.md#getoutputamount)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getOutputAmount`](../@scrypt-inc/bsv/classes/Transaction.md#getoutputamount)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:1004
+### getPreimage()
 
-___
+> **getPreimage**(`inputIndex`, `sigtype`?, `isLowS`?, `csIdx`?): `string`
 
-### getPreimage
-
-▸ **getPreimage**(`inputIndex`, `sigtype?`, `isLowS?`): `string`
+Defined in: @scrypt-inc/bsv/index.d.ts:989
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` |
-| `sigtype?` | `number` |
-| `isLowS?` | `boolean` |
+##### inputIndex
+
+`number`
+
+##### sigtype?
+
+`number`
+
+##### isLowS?
+
+`boolean`
+
+##### csIdx?
+
+`number`
 
 #### Returns
 
@@ -789,23 +644,21 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getPreimage](../classes/bsv.Transaction-1.md#getpreimage)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getPreimage`](../@scrypt-inc/bsv/classes/Transaction.md#getpreimage)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:985
+### getSerializationError()
 
-___
+> **getSerializationError**(`opts`?): `any`
 
-### getSerializationError
-
-▸ **getSerializationError**(`opts?`): `any`
+Defined in: @scrypt-inc/bsv/index.d.ts:964
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `opts?` | `object` |
+##### opts?
+
+`object`
 
 #### Returns
 
@@ -813,25 +666,29 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getSerializationError](../classes/bsv.Transaction-1.md#getserializationerror)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getSerializationError`](../@scrypt-inc/bsv/classes/Transaction.md#getserializationerror)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:959
+### getSignature()
 
-___
+> **getSignature**(`inputIndex`, `privateKey`?, `sigtype`?): `string` \| `string`[]
 
-### getSignature
-
-▸ **getSignature**(`inputIndex`, `privateKey?`, `sigtype?`): `string` \| `string`[]
+Defined in: @scrypt-inc/bsv/index.d.ts:988
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` |
-| `privateKey?` | [`PrivateKey`](../classes/bsv.PrivateKey.md) \| [`PrivateKey`](../classes/bsv.PrivateKey.md)[] |
-| `sigtype?` | `number` |
+##### inputIndex
+
+`number`
+
+##### privateKey?
+
+[`PrivateKey`](../@scrypt-inc/bsv/classes/PrivateKey.md) | [`PrivateKey`](../@scrypt-inc/bsv/classes/PrivateKey.md)[]
+
+##### sigtype?
+
+`number`
 
 #### Returns
 
@@ -839,17 +696,31 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[getSignature](../classes/bsv.Transaction-1.md#getsignature)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getSignature`](../@scrypt-inc/bsv/classes/Transaction.md#getsignature)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:984
+### getUnspentValue()
 
-___
+> **getUnspentValue**(): `number`
 
-### hasWitnesses
+Defined in: @scrypt-inc/bsv/index.d.ts:966
 
-▸ **hasWitnesses**(): `boolean`
+#### Returns
+
+`number`
+
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`getUnspentValue`](../@scrypt-inc/bsv/classes/Transaction.md#getunspentvalue)
+
+***
+
+### hasWitnesses()
+
+> **hasWitnesses**(): `boolean`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:942
 
 #### Returns
 
@@ -857,17 +728,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[hasWitnesses](../classes/bsv.Transaction-1.md#haswitnesses)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`hasWitnesses`](../@scrypt-inc/bsv/classes/Transaction.md#haswitnesses)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:937
+### inspect()
 
-___
+> **inspect**(): `string`
 
-### inspect
-
-▸ **inspect**(): `string`
+Defined in: @scrypt-inc/bsv/index.d.ts:955
 
 #### Returns
 
@@ -875,17 +744,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[inspect](../classes/bsv.Transaction-1.md#inspect)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`inspect`](../@scrypt-inc/bsv/classes/Transaction.md#inspect)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:950
+### isCoinbase()
 
-___
+> **isCoinbase**(): `boolean`
 
-### isCoinbase
-
-▸ **isCoinbase**(): `boolean`
+Defined in: @scrypt-inc/bsv/index.d.ts:950
 
 #### Returns
 
@@ -893,17 +760,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[isCoinbase](../classes/bsv.Transaction-1.md#iscoinbase)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`isCoinbase`](../@scrypt-inc/bsv/classes/Transaction.md#iscoinbase)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:945
+### isFullySigned()
 
-___
+> **isFullySigned**(): `boolean`
 
-### isFullySigned
-
-▸ **isFullySigned**(): `boolean`
+Defined in: @scrypt-inc/bsv/index.d.ts:962
 
 #### Returns
 
@@ -911,17 +776,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[isFullySigned](../classes/bsv.Transaction-1.md#isfullysigned)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`isFullySigned`](../@scrypt-inc/bsv/classes/Transaction.md#isfullysigned)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:957
+### isRBF()
 
-___
+> **isRBF**(): `boolean`
 
-### isRBF
-
-▸ **isRBF**(): `boolean`
+Defined in: @scrypt-inc/bsv/index.d.ts:953
 
 #### Returns
 
@@ -929,17 +792,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[isRBF](../classes/bsv.Transaction-1.md#isrbf)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`isRBF`](../@scrypt-inc/bsv/classes/Transaction.md#isrbf)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:948
+### isSealed()
 
-___
+> **isSealed**(): `boolean`
 
-### isSealed
-
-▸ **isSealed**(): `boolean`
+Defined in: @scrypt-inc/bsv/index.d.ts:982
 
 #### Returns
 
@@ -947,65 +808,59 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[isSealed](../classes/bsv.Transaction-1.md#issealed)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`isSealed`](../@scrypt-inc/bsv/classes/Transaction.md#issealed)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:979
+### lockUntilBlockHeight()
 
-___
+> **lockUntilBlockHeight**(`height`): `this`
 
-### lockUntilBlockHeight
-
-▸ **lockUntilBlockHeight**(`height`): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:940
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `height` | `number` |
+##### height
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[lockUntilBlockHeight](../classes/bsv.Transaction-1.md#lockuntilblockheight)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`lockUntilBlockHeight`](../@scrypt-inc/bsv/classes/Transaction.md#lockuntilblockheight)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:935
+### lockUntilDate()
 
-___
+> **lockUntilDate**(`time`): `this`
 
-### lockUntilDate
-
-▸ **lockUntilDate**(`time`): [`TransactionResponse`](TransactionResponse.md)
+Defined in: @scrypt-inc/bsv/index.d.ts:939
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `time` | `number` \| `Date` |
+##### time
+
+`number` | `Date`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[lockUntilDate](../classes/bsv.Transaction-1.md#lockuntildate)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`lockUntilDate`](../@scrypt-inc/bsv/classes/Transaction.md#lockuntildate)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:934
+### prevouts()
 
-___
+> **prevouts**(): `string`
 
-### prevouts
-
-▸ **prevouts**(): `string`
+Defined in: @scrypt-inc/bsv/index.d.ts:987
 
 #### Returns
 
@@ -1013,65 +868,79 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[prevouts](../classes/bsv.Transaction-1.md#prevouts)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`prevouts`](../@scrypt-inc/bsv/classes/Transaction.md#prevouts)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:983
+### removeInput()
 
-___
+> **removeInput**(`txId`, `outputIndex`): `void`
 
-### seal
-
-▸ **seal**(): [`TransactionResponse`](TransactionResponse.md)
-
-#### Returns
-
-[`TransactionResponse`](TransactionResponse.md)
-
-#### Inherited from
-
-[Transaction](../classes/bsv.Transaction-1.md).[seal](../classes/bsv.Transaction-1.md#seal)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:977
-
-___
-
-### sealAsync
-
-```ts
-▸ **sealAsync**(): `Promise`<[`TransactionResponse`](TransactionResponse.md)\>
-```
-
-#### Returns
-
-```ts
-`Promise`<[`TransactionResponse`](TransactionResponse.md)\>
-```
-
-#### Inherited from
-
-[Transaction](../classes/bsv.Transaction-1.md).[sealAsync](../classes/bsv.Transaction-1.md#sealasync)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:978
-
-___
-
-### serialize
-
-```ts
-▸ **serialize**(`opts?`): `string`
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:936
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `opts?` | `object` |
+##### txId
+
+`string`
+
+##### outputIndex
+
+`number`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`removeInput`](../@scrypt-inc/bsv/classes/Transaction.md#removeinput)
+
+***
+
+### seal()
+
+> **seal**(): `this`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:980
+
+#### Returns
+
+`this`
+
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`seal`](../@scrypt-inc/bsv/classes/Transaction.md#seal)
+
+***
+
+### sealAsync()
+
+> **sealAsync**(): `Promise`\<[`TransactionResponse`](TransactionResponse.md)\>
+
+Defined in: @scrypt-inc/bsv/index.d.ts:981
+
+#### Returns
+
+`Promise`\<[`TransactionResponse`](TransactionResponse.md)\>
+
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`sealAsync`](../@scrypt-inc/bsv/classes/Transaction.md#sealasync)
+
+***
+
+### serialize()
+
+> **serialize**(`opts`?): `string`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:956
+
+#### Parameters
+
+##### opts?
+
+`object`
 
 #### Returns
 
@@ -1079,209 +948,193 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[serialize](../classes/bsv.Transaction-1.md#serialize)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`serialize`](../@scrypt-inc/bsv/classes/Transaction.md#serialize)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:951
+### setInputScript()
 
-___
+> **setInputScript**(`inputIndex`, `unlockingScript`): `this`
 
-### setInputScript
-
-```ts
-▸ **setInputScript**(`inputIndex`, `unlockingScript`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:967
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` \| `{ `inputIndex`: `number` ; `isLowS?`: `boolean` ; `privateKey?`: [`PrivateKey`](../classes/bsv.PrivateKey.md) \| [`PrivateKey`](../classes/bsv.PrivateKey.md)[] ; `sigtype?`: `number`  }` |
-| `unlockingScript` | [`Script`](../classes/bsv.Script-1.md) \| (`tx`: [`Transaction`](../classes/bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](../classes/bsv.Transaction.Output.md)) => [`Script`](../classes/bsv.Script-1.md) |
+##### inputIndex
+
+`number` | \{ `inputIndex`: `number`; `isLowS`: `boolean`; `privateKey`: [`PrivateKey`](../@scrypt-inc/bsv/classes/PrivateKey.md) \| [`PrivateKey`](../@scrypt-inc/bsv/classes/PrivateKey.md)[]; `sigtype`: `number`; \}
+
+##### unlockingScript
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md) | (`tx`, `outputInPrevTx`) => [`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[setInputScript](../classes/bsv.Transaction-1.md#setinputscript)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`setInputScript`](../@scrypt-inc/bsv/classes/Transaction.md#setinputscript)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:964
+### setInputScriptAsync()
 
-___
+> **setInputScriptAsync**(`inputIndex`, `callback`): `Promise`\<[`TransactionResponse`](TransactionResponse.md)\>
 
-### setInputScriptAsync
-
-```ts
-▸ **setInputScriptAsync**(`inputIndex`, `callback`): `Promise`<[`TransactionResponse`](TransactionResponse.md)\>
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:973
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` \| `{ `inputIndex`: `number` ; `isLowS?`: `boolean` ; `sigtype?`: `number`  }` |
-| `callback` | (`tx`: [`Transaction`](../classes/bsv.Transaction-1.md), `outputInPrevTx`: [`Output`](../classes/bsv.Transaction.Output.md)) => `Promise<[`Script`](../classes/bsv.Script-1.md)>` |
+##### inputIndex
+
+`number` | \{ `inputIndex`: `number`; `isLowS`: `boolean`; `sigtype`: `number`; \}
+
+##### callback
+
+(`tx`, `outputInPrevTx`) => `Promise`\<[`Script`](../@scrypt-inc/bsv/classes/Script.md)\>
 
 #### Returns
 
-```ts
-`Promise`<[`TransactionResponse`](TransactionResponse.md)\>
-```
+`Promise`\<[`TransactionResponse`](TransactionResponse.md)\>
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[setInputScriptAsync](../classes/bsv.Transaction-1.md#setinputscriptasync)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`setInputScriptAsync`](../@scrypt-inc/bsv/classes/Transaction.md#setinputscriptasync)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:970
+### setInputSequence()
 
-___
+> **setInputSequence**(`inputIndex`, `sequence`): `this`
 
-### setInputSequence
-
-```ts
-▸ **setInputSequence**(`inputIndex`, `sequence`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:978
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` |
-| `sequence` | `number` |
+##### inputIndex
+
+`number`
+
+##### sequence
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[setInputSequence](../classes/bsv.Transaction-1.md#setinputsequence)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`setInputSequence`](../@scrypt-inc/bsv/classes/Transaction.md#setinputsequence)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:975
+### setLockTime()
 
-___
+> **setLockTime**(`t`): `this`
 
-### setLockTime
-
-```ts
-▸ **setLockTime**(`t`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:947
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `t` | `number` |
+##### t
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[setLockTime](../classes/bsv.Transaction-1.md#setlocktime)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`setLockTime`](../@scrypt-inc/bsv/classes/Transaction.md#setlocktime)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:942
+### setOutput()
 
-___
+> **setOutput**(`outputIndex`, `output`): `this`
 
-### setOutput
-
-```ts
-▸ **setOutput**(`outputIndex`, `output`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:979
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `outputIndex` | `number` |
-| `output` | [`Output`](../classes/bsv.Transaction.Output.md) \| (`tx`: [`Transaction`](../classes/bsv.Transaction-1.md)) => [`Output`](../classes/bsv.Transaction.Output.md) |
+##### outputIndex
+
+`number`
+
+##### output
+
+[`Output`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Output.md) | (`tx`) => [`Output`](../@scrypt-inc/bsv/namespaces/Transaction/classes/Output.md)
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[setOutput](../classes/bsv.Transaction-1.md#setoutput)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`setOutput`](../@scrypt-inc/bsv/classes/Transaction.md#setoutput)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:976
+### sign()
 
-___
+> **sign**(`privateKey`, `sigtype`?): `this`
 
-### sign
-
-```ts
-▸ **sign**(`privateKey`, `sigtype?`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:925
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `privateKey` | `string` \| `string`[] \| [`PrivateKey`](../classes/bsv.PrivateKey.md) \| [`PrivateKey`](../classes/bsv.PrivateKey.md)[] |
-| `sigtype?` | `number` |
+##### privateKey
+
+`string` | `string`[] | [`PrivateKey`](../@scrypt-inc/bsv/classes/PrivateKey.md) | [`PrivateKey`](../@scrypt-inc/bsv/classes/PrivateKey.md)[]
+
+##### sigtype?
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[sign](../classes/bsv.Transaction-1.md#sign)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`sign`](../@scrypt-inc/bsv/classes/Transaction.md#sign)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:921
+### to()
 
-___
+> **to**(`address`, `amount`): `this`
 
-### to
-
-```ts
-▸ **to**(`address`, `amount`): [`TransactionResponse`](TransactionResponse.md)
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:921
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address` | `string` \| [`Address`](../classes/bsv.Address.md) \| [`Address`](../classes/bsv.Address.md)[] |
-| `amount` | `number` |
+##### address
+
+`string` | [`Address`](../@scrypt-inc/bsv/classes/Address.md) | [`Address`](../@scrypt-inc/bsv/classes/Address.md)[]
+
+##### amount
+
+`number`
 
 #### Returns
 
-[`TransactionResponse`](TransactionResponse.md)
+`this`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[to](../classes/bsv.Transaction-1.md#to)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`to`](../@scrypt-inc/bsv/classes/Transaction.md#to)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:917
+### toBuffer()
 
-___
+> **toBuffer**(): `Buffer`
 
-### toBuffer
-
-```ts
-▸ **toBuffer**(): `Buffer`
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:960
 
 #### Returns
 
@@ -1289,19 +1142,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[toBuffer](../classes/bsv.Transaction-1.md#tobuffer)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`toBuffer`](../@scrypt-inc/bsv/classes/Transaction.md#tobuffer)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:955
+### toObject()
 
-___
+> **toObject**(): `any`
 
-### toObject
-
-```ts
-▸ **toObject**(): `any`
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:959
 
 #### Returns
 
@@ -1309,19 +1158,15 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[toObject](../classes/bsv.Transaction-1.md#toobject)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`toObject`](../@scrypt-inc/bsv/classes/Transaction.md#toobject)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:954
+### uncheckedSerialize()
 
-___
+> **uncheckedSerialize**(): `string`
 
-### uncheckedSerialize
-
-```ts
-▸ **uncheckedSerialize**(): `string`
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:957
 
 #### Returns
 
@@ -1329,118 +1174,129 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[uncheckedSerialize](../classes/bsv.Transaction-1.md#uncheckedserialize)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`uncheckedSerialize`](../@scrypt-inc/bsv/classes/Transaction.md#uncheckedserialize)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:952
+### verify()
 
-___
+> **verify**(): `string` \| `true`
 
-### verify
-
-```ts
-▸ **verify**(): `string` \| ``true``
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:949
 
 #### Returns
 
-`string` \| ``true``
+`string` \| `true`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[verify](../classes/bsv.Transaction-1.md#verify)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`verify`](../@scrypt-inc/bsv/classes/Transaction.md#verify)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:944
+### ~~verifyInputScript()~~
 
-___
+> **verifyInputScript**(`inputIndex`): `object`
 
-### verifyInputScript
+Defined in: @scrypt-inc/bsv/index.d.ts:997
 
-```ts
-▸ **verifyInputScript**(`inputIndex`): `Object`
-```
+#### Parameters
 
-**`Deprecated`**
+##### inputIndex
+
+`number`
+
+#### Returns
+
+`object`
+
+##### ~~error~~
+
+> **error**: `string`
+
+##### ~~failedAt~~
+
+> **failedAt**: `any`
+
+##### ~~success~~
+
+> **success**: `boolean`
+
+#### Deprecated
 
 please use `verifyScript` instead
 
+#### Inherited from
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`verifyInputScript`](../@scrypt-inc/bsv/classes/Transaction.md#verifyinputscript)
+
+***
+
+### verifyScript()
+
+> **verifyScript**(`inputIndex`): `object`
+
+Defined in: @scrypt-inc/bsv/index.d.ts:1002
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` |
+##### inputIndex
+
+`number`
 
 #### Returns
 
-`Object`
+`object`
 
-| Name | Type |
-| :------ | :------ |
-| `error` | `string` |
-| `failedAt` | `any` |
-| `success` | `boolean` |
+##### error
 
-#### Inherited from
+> **error**: `string`
 
-[Transaction](../classes/bsv.Transaction-1.md).[verifyInputScript](../classes/bsv.Transaction-1.md#verifyinputscript)
+##### failedAt
 
-#### Defined in
+> **failedAt**: `any`
 
-node_modules/bsv/index.d.ts:993
+##### success
 
-___
-
-### verifyScript
-
-```ts
-▸ **verifyScript**(`inputIndex`): `Object`
-```
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `inputIndex` | `number` |
-
-#### Returns
-
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `error` | `string` |
-| `failedAt` | `any` |
-| `success` | `boolean` |
+> **success**: `boolean`
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[verifyScript](../classes/bsv.Transaction-1.md#verifyscript)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`verifyScript`](../@scrypt-inc/bsv/classes/Transaction.md#verifyscript)
 
-#### Defined in
+***
 
-node_modules/bsv/index.d.ts:998
+### verifySignature()
 
-___
+> **verifySignature**(`sig`, `pubkey`, `nin`, `subscript`, `satoshisBN`, `flags`): `boolean`
 
-### verifySignature
-
-```ts
-▸ **verifySignature**(`sig`, `pubkey`, `nin`, `subscript`, `satoshisBN`, `flags`): `boolean`
-```
+Defined in: @scrypt-inc/bsv/index.d.ts:930
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `sig` | [`Signature`](../classes/bsv.crypto.Signature.md) |
-| `pubkey` | [`PublicKey`](../classes/bsv.PublicKey.md) |
-| `nin` | `number` |
-| `subscript` | [`Script`](../classes/bsv.Script-1.md) |
-| `satoshisBN` | [`BN`](../classes/bsv.crypto.BN.md) |
-| `flags` | `number` |
+##### sig
+
+[`Signature`](../@scrypt-inc/bsv/namespaces/crypto/classes/Signature.md)
+
+##### pubkey
+
+[`PublicKey`](../@scrypt-inc/bsv/classes/PublicKey.md)
+
+##### nin
+
+`number`
+
+##### subscript
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+##### satoshisBN
+
+[`BN`](../@scrypt-inc/bsv/namespaces/crypto/classes/BN.md)
+
+##### flags
+
+`number`
 
 #### Returns
 
@@ -1448,8 +1304,4 @@ ___
 
 #### Inherited from
 
-[Transaction](../classes/bsv.Transaction-1.md).[verifySignature](../classes/bsv.Transaction-1.md#verifysignature)
-
-#### Defined in
-
-node_modules/bsv/index.d.ts:926
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md).[`verifySignature`](../@scrypt-inc/bsv/classes/Transaction.md#verifysignature)

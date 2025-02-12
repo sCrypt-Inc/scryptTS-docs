@@ -1,178 +1,139 @@
-[scrypt-ts](../README.md) / MethodCallOptions
+[**scrypt-ts**](../README.md)
 
-# Interface: MethodCallOptions
+***
+
+[scrypt-ts](../globals.md) / MethodCallOptions
+
+# Interface: MethodCallOptions\<T\>
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:20
 
 A option type to call a contract public `@method` function.
 Used to specify the behavior of signers and transaction builders.
 For example, specifying a transaction builder to use a specific change address or specifying a signer to use a specific public key to sign.
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
-
-## Table of contents
-
-### Properties
-
-- [autoPayFee](MethodCallOptions.md#autopayfee)
-- [changeAddress](MethodCallOptions.md#changeaddress)
-- [exec](MethodCallOptions.md#exec)
-- [fromUTXO](MethodCallOptions.md#fromutxo)
-- [lockTime](MethodCallOptions.md#locktime)
-- [multiContractCall](MethodCallOptions.md#multicontractcall)
-- [next](MethodCallOptions.md#next)
-- [partialContractTx](MethodCallOptions.md#partialcontracttx)
-- [partiallySigned](MethodCallOptions.md#partiallysigned)
-- [pubKeyOrAddrToSign](MethodCallOptions.md#pubkeyoraddrtosign)
-- [sequence](MethodCallOptions.md#sequence)
-- [verify](MethodCallOptions.md#verify)
+• **T**
 
 ## Properties
 
-### autoPayFee
+### autoPayFee?
 
-• `Optional` `Readonly` **autoPayFee**: `boolean`
+> `readonly` `optional` **autoPayFee**: `boolean`
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:48
 
 auto add utxo to pay transaction fee, default is true
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:48
+### changeAddress?
 
-___
+> `readonly` `optional` **changeAddress**: [`Address`](../@scrypt-inc/bsv/classes/Address.md)
 
-### changeAddress
-
-• `Optional` `Readonly` **changeAddress**: [`Address`](../classes/bsv.Address.md)
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:36
 
 The P2PKH change output address
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:36
+### exec?
 
-___
+> `readonly` `optional` **exec**: `boolean`
 
-### exec
-
-• `Optional` `Readonly` **exec**: `boolean`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:46
 
 execute a contract's public method to to check if arguments are valid, default is true
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:46
+### fromUTXO?
 
-___
+> `readonly` `optional` **fromUTXO**: [`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)
 
-### fromUTXO
-
-• `Optional` `Readonly` **fromUTXO**: [`IUnspentOutput`](bsv.Transaction.IUnspentOutput.md)
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:34
 
 The previous contract UTXO to spend in the method calling tx
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:34
+### lockTime?
 
-___
+> `readonly` `optional` **lockTime**: `number`
 
-### lockTime
-
-• `Optional` `Readonly` **lockTime**: `number`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:30
 
 The `lockTime` of the method calling tx
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:30
+### multiContractCall?
 
-___
+> `readonly` `optional` **multiContractCall**: `boolean`
 
-### multiContractCall
-
-• `Optional` `Readonly` **multiContractCall**: `boolean`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:40
 
 Whether to call multiple contracts at the same time in one transaction
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:40
+### next?
 
-___
+> `readonly` `optional` **next**: [`StatefulNext`](StatefulNext.md)\<`T`\> \| [`StatefulNext`](StatefulNext.md)\<`T`\>[]
 
-### next
-
-```ts
-• `Optional` `Readonly` **next**: [`StatefulNext`](StatefulNext.md)<`T`\> \| [`StatefulNext`](StatefulNext.md)<`T`\>[]
-```
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:28
 
 The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:28
+### partialContractTx?
 
-___
+> `readonly` `optional` **partialContractTx**: [`ContractTransaction`](ContractTransaction.md)
 
-### partialContractTx
-
-• `Optional` `Readonly` **partialContractTx**: [`ContractTransaction`](ContractTransaction.md)
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:42
 
 Pass the `ContractTransaction` of the previous call as an argument to the next call, only used if `multiContractCall = true`.
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:42
+### partiallySigned?
 
-___
+> `readonly` `optional` **partiallySigned**: `boolean`
 
-### partiallySigned
-
-• `Optional` `Readonly` **partiallySigned**: `boolean`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:44
 
 signer does not contain all private keys, it is used when multiple parties are required to perform signature authorization, default is false， only work in single call
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:44
+### pubKeyOrAddrToSign?
 
-___
+> `readonly` `optional` **pubKeyOrAddrToSign**: [`PublicKeysOrAddressesOption`](../type-aliases/PublicKeysOrAddressesOption.md) \| [`SignaturesOption`](../type-aliases/SignaturesOption.md)
 
-### pubKeyOrAddrToSign
-
-• `Optional` `Readonly` **pubKeyOrAddrToSign**: [`PublicKeysOrAddressesOption`](../README.md#publickeysoraddressesoption) \| [`SignaturesOption`](../README.md#signaturesoption)
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:26
 
 The private key(s) associated with these address(es) or public key(s)
 must be used to sign the contract input,
 and the callback function will receive the results of the signatures as an argument named `sigResponses`
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:26
+### sequence?
 
-___
+> `readonly` `optional` **sequence**: `number`
 
-### sequence
-
-• `Optional` `Readonly` **sequence**: `number`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:32
 
 The `sequence` of the input spending previous contract UTXO in the method calling tx
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:32
+### verify?
 
-___
+> `readonly` `optional` **verify**: `boolean`
 
-### verify
-
-• `Optional` `Readonly` **verify**: `boolean`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:38
 
 verify transaction before send transaction
-
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:38

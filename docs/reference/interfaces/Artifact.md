@@ -1,222 +1,175 @@
-[scrypt-ts](../README.md) / Artifact
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / Artifact
 
 # Interface: Artifact
 
-## Table of contents
-
-### Properties
-
-- [abi](Artifact.md#abi)
-- [alias](Artifact.md#alias)
-- [asm](Artifact.md#asm)
-- [buildType](Artifact.md#buildtype)
-- [compilerVersion](Artifact.md#compilerversion)
-- [contract](Artifact.md#contract)
-- [file](Artifact.md#file)
-- [hex](Artifact.md#hex)
-- [library](Artifact.md#library)
-- [md5](Artifact.md#md5)
-- [sourceMap](Artifact.md#sourcemap)
-- [sourceMapFile](Artifact.md#sourcemapfile)
-- [sources](Artifact.md#sources)
-- [stateProps](Artifact.md#stateprops)
-- [structs](Artifact.md#structs)
-- [version](Artifact.md#version)
+Defined in: scryptlib/dist/contract.d.ts:30
 
 ## Properties
 
 ### abi
 
-• **abi**: `ABIEntity`[]
+> **abi**: `ABIEntity`[]
+
+Defined in: scryptlib/dist/contract.d.ts:50
 
 ABI of the contract: interfaces of its public functions and constructor
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:50
-
-___
+***
 
 ### alias
 
-• **alias**: `AliasEntity`[]
+> **alias**: `AliasEntity`[]
+
+Defined in: scryptlib/dist/contract.d.ts:48
 
 all typealias defined in the contracts, including dependent contracts
 
-#### Defined in
+***
 
-node_modules/scryptlib/dist/contract.d.ts:48
+### ~~asm?~~
 
-___
+> `optional` **asm**: `string`
 
-### asm
+Defined in: scryptlib/dist/contract.d.ts:52
 
-• `Optional` **asm**: `string`
-
-**`Deprecated`**
+#### Deprecated
 
 locking script of the contract in ASM format, including placeholders for constructor parameters
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:52
-
-___
+***
 
 ### buildType
 
-• **buildType**: `string`
+> **buildType**: `string`
+
+Defined in: scryptlib/dist/contract.d.ts:36
 
 build type, can be debug or release
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:36
-
-___
+***
 
 ### compilerVersion
 
-• **compilerVersion**: `string`
+> **compilerVersion**: `string`
+
+Defined in: scryptlib/dist/contract.d.ts:34
 
 version of compiler used to produce this file
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:34
-
-___
+***
 
 ### contract
 
-• **contract**: `string`
+> **contract**: `string`
+
+Defined in: scryptlib/dist/contract.d.ts:38
 
 name of the contract
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:38
-
-___
+***
 
 ### file
 
-• **file**: `string`
+> **file**: `string`
 
-file uri of the main contract source code file
+Defined in: scryptlib/dist/contract.d.ts:56
 
-#### Defined in
+relative file uri of the main contract source code file
 
-node_modules/scryptlib/dist/contract.d.ts:56
-
-___
+***
 
 ### hex
 
-• **hex**: `string`
+> **hex**: `string`
+
+Defined in: scryptlib/dist/contract.d.ts:54
 
 locking script of the contract in hex format, including placeholders for constructor parameters
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:54
-
-___
+***
 
 ### library
 
-• **library**: `LibraryEntity`[]
+> **library**: `LibraryEntity`[]
+
+Defined in: scryptlib/dist/contract.d.ts:46
 
 all library defined in the contracts, including dependent contracts
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:46
-
-___
+***
 
 ### md5
 
-• **md5**: `string`
+> **md5**: `string`
+
+Defined in: scryptlib/dist/contract.d.ts:40
 
 md5 of the contract source code
 
-#### Defined in
+***
 
-node_modules/scryptlib/dist/contract.d.ts:40
+### ~~sourceMap?~~
 
-___
+> `optional` **sourceMap**: `string`[]
 
-### sourceMap
+Defined in: scryptlib/dist/contract.d.ts:60
 
-• `Optional` **sourceMap**: `string`[]
-
-**`Deprecated`**
+#### Deprecated
 
 *
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:60
-
-___
+***
 
 ### sourceMapFile
 
-• **sourceMapFile**: `string`
+> **sourceMapFile**: `string`
+
+Defined in: scryptlib/dist/contract.d.ts:62
 
 file uri of source map file *
 
-#### Defined in
+***
 
-node_modules/scryptlib/dist/contract.d.ts:62
+### ~~sources?~~
 
-___
+> `optional` **sources**: `string`[]
 
-### sources
+Defined in: scryptlib/dist/contract.d.ts:58
 
-• `Optional` **sources**: `string`[]
-
-**`Deprecated`**
+#### Deprecated
 
 *
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:58
-
-___
+***
 
 ### stateProps
 
-• **stateProps**: `ParamEntity`[]
+> **stateProps**: `ParamEntity`[]
+
+Defined in: scryptlib/dist/contract.d.ts:42
 
 all stateful properties defined in the contracts
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:42
-
-___
+***
 
 ### structs
 
-• **structs**: `StructEntity`[]
+> **structs**: `StructEntity`[]
+
+Defined in: scryptlib/dist/contract.d.ts:44
 
 all structures defined in the contracts, including dependent contracts
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:44
-
-___
+***
 
 ### version
 
-• **version**: `number`
+> **version**: `number`
+
+Defined in: scryptlib/dist/contract.d.ts:32
 
 version of artifact file
-
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:32

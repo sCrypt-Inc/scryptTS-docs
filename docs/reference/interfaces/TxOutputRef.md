@@ -1,36 +1,31 @@
-[scrypt-ts](../README.md) / TxOutputRef
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / TxOutputRef
 
 # Interface: TxOutputRef
 
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:22
+
 A reference to an output of a transaction
-
-## Table of contents
-
-### Properties
-
-- [outputIndex](TxOutputRef.md#outputindex)
-- [tx](TxOutputRef.md#tx)
 
 ## Properties
 
 ### outputIndex
 
-• **outputIndex**: `number`
+> **outputIndex**: `number`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:26
 
 index of an output in this transaction
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:25
-
-___
+***
 
 ### tx
 
-• **tx**: [`Transaction`](../classes/bsv.Transaction-1.md)
+> **tx**: [`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:24
 
 transaction object
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:23

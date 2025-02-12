@@ -1,25 +1,21 @@
-[scrypt-ts](../README.md) / LogConfig
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / LogConfig
 
 # Interface: LogConfig
 
-## Hierarchy
+Defined in: scrypt-ts/dist/client/core/logger-controller.d.ts:3
 
-- **`LogConfig`**
+## Extended by
 
-  ↳ [`ScryptConfig`](ScryptConfig.md)
-
-## Table of contents
-
-### Properties
-
-- [logLevel](LogConfig.md#loglevel)
+- [`ScryptConfig`](ScryptConfig.md)
 
 ## Properties
 
-### logLevel
+### logLevel?
 
-• `Optional` **logLevel**: [`LogLevel`](../README.md#loglevel)
+> `optional` **logLevel**: [`LogLevel`](../type-aliases/LogLevel.md)
 
-#### Defined in
-
-dist/client/core/logger-controller.d.ts:4
+Defined in: scrypt-ts/dist/client/core/logger-controller.d.ts:4

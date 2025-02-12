@@ -1,124 +1,98 @@
-[scrypt-ts](../README.md) / SignatureRequest
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / SignatureRequest
 
 # Interface: SignatureRequest
 
-`SignatureRequest` contains required informations for a signer to sign a certain input of a transaction.
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:8
 
-## Table of contents
-
-### Properties
-
-- [address](SignatureRequest.md#address)
-- [csIdx](SignatureRequest.md#csidx)
-- [data](SignatureRequest.md#data)
-- [inputIndex](SignatureRequest.md#inputindex)
-- [outputIndex](SignatureRequest.md#outputindex)
-- [prevTxId](SignatureRequest.md#prevtxid)
-- [satoshis](SignatureRequest.md#satoshis)
-- [scriptHex](SignatureRequest.md#scripthex)
-- [sigHashType](SignatureRequest.md#sighashtype)
+`SignatureRequest` contains required information for a signer to sign a certain input of a transaction.
 
 ## Properties
 
 ### address
 
-• **address**: [`AddressesOption`](../README.md#addressesoption)
+> **address**: [`AddressesOption`](../type-aliases/AddressesOption.md)
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:16
 
 The address(es) of corresponding private key(s) required to sign the input.
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:15
+### csIdx?
 
-___
+> `optional` **csIdx**: `number`
 
-### csIdx
-
-• `Optional` **csIdx**: `number`
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:25
 
 Index of the OP_CODESEPARATOR to split the previous output script at during verification.
 If undefined, the whole script is used.
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:24
+### data?
 
-___
+> `optional` **data**: `unknown`
 
-### data
-
-• `Optional` **data**: `unknown`
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:27
 
 The extra information for signing.
 
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:26
-
-___
+***
 
 ### inputIndex
 
-• **inputIndex**: `number`
+> **inputIndex**: `number`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:12
 
 The index of input to sign.
 
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:11
-
-___
+***
 
 ### outputIndex
 
-• **outputIndex**: `number`
+> **outputIndex**: `number`
 
-#### Defined in
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:10
 
-dist/bsv/abstract-signer.d.ts:9
-
-___
+***
 
 ### prevTxId
 
-• **prevTxId**: `string`
+> **prevTxId**: `string`
 
-#### Defined in
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:9
 
-dist/bsv/abstract-signer.d.ts:8
-
-___
+***
 
 ### satoshis
 
-• **satoshis**: `number`
+> **satoshis**: `number`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:14
 
 The previous output satoshis value of the input to spend.
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:13
+### scriptHex?
 
-___
+> `optional` **scriptHex**: `string`
 
-### scriptHex
-
-• `Optional` **scriptHex**: `string`
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:18
 
 The previous output script of input, default value is a P2PKH locking script for the `address` if omitted.
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:17
+### sigHashType?
 
-___
+> `optional` **sigHashType**: `number`
 
-### sigHashType
-
-• `Optional` **sigHashType**: `number`
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:20
 
 The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted.
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:19

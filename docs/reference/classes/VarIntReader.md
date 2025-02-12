@@ -1,101 +1,80 @@
-[scrypt-ts](../README.md) / VarIntReader
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / VarIntReader
 
 # Class: VarIntReader
 
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1074
+
 A reader to parse a ByteString buffer
-
-## Table of contents
-
-### Constructors
-
-- [constructor](VarIntReader.md#constructor)
-
-### Properties
-
-- [buf](VarIntReader.md#buf)
-- [pos](VarIntReader.md#pos)
-- [StateLen](VarIntReader.md#statelen)
-- [Version](VarIntReader.md#version)
-- [VersionLen](VarIntReader.md#versionlen)
-
-### Methods
-
-- [eof](VarIntReader.md#eof)
-- [readBool](VarIntReader.md#readbool)
-- [readBytes](VarIntReader.md#readbytes)
-- [readInt](VarIntReader.md#readint)
 
 ## Constructors
 
-### constructor
+### new VarIntReader()
 
-• **new VarIntReader**(`buf`)
+> **new VarIntReader**(`buf`): [`VarIntReader`](VarIntReader.md)
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1080
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `buf` | [`ByteString`](../README.md#bytestring) |
+##### buf
 
-#### Defined in
+[`ByteString`](../type-aliases/ByteString.md)
 
-dist/smart-contract/builtins/functions.d.ts:1067
+#### Returns
+
+[`VarIntReader`](VarIntReader.md)
 
 ## Properties
 
 ### buf
 
-• **buf**: [`ByteString`](../README.md#bytestring)
+> **buf**: [`ByteString`](../type-aliases/ByteString.md)
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1078
 
-dist/smart-contract/builtins/functions.d.ts:1065
-
-___
+***
 
 ### pos
 
-• **pos**: `bigint`
+> **pos**: `bigint`
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1079
 
-dist/smart-contract/builtins/functions.d.ts:1066
-
-___
+***
 
 ### StateLen
 
-▪ `Static` `Readonly` **StateLen**: `bigint`
+> `readonly` `static` **StateLen**: `bigint`
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1075
 
-dist/smart-contract/builtins/functions.d.ts:1062
-
-___
+***
 
 ### Version
 
-▪ `Static` `Readonly` **Version**: `bigint`
+> `readonly` `static` **Version**: `bigint`
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1077
 
-dist/smart-contract/builtins/functions.d.ts:1064
-
-___
+***
 
 ### VersionLen
 
-▪ `Static` `Readonly` **VersionLen**: `bigint`
+> `readonly` `static` **VersionLen**: `bigint`
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1063
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1076
 
 ## Methods
 
-### eof
+### eof()
 
-▸ **eof**(): `boolean`
+> **eof**(): `boolean`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1085
 
 Check if all have been read
 
@@ -105,15 +84,13 @@ Check if all have been read
 
 true if all have been read
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1072
+### readBool()
 
-___
+> **readBool**(): `boolean`
 
-### readBool
-
-▸ **readBool**(): `boolean`
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1095
 
 read a byte as boolean
 
@@ -123,33 +100,29 @@ read a byte as boolean
 
 true if the read byte not equal to '00'
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1082
+### readBytes()
 
-___
+> **readBytes**(): [`ByteString`](../type-aliases/ByteString.md)
 
-### readBytes
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1090
 
-▸ **readBytes**(): [`ByteString`](../README.md#bytestring)
-
-read bytes which encoded with bitcoin [value-pushing words][https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script)
+read bytes which encoded with bitcoin [value-pushing words][https://wiki.bitcoinsv.io/index.php/Opcodes\_used\_in\_Bitcoin\_Script](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script)
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 true if all have been read
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1077
+### readInt()
 
-___
+> **readInt**(): `bigint`
 
-### readInt
-
-▸ **readInt**(): `bigint`
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1100
 
 read bytes as `readBytes` and convert it to a number with `byteString2Int`
 
@@ -158,7 +131,3 @@ read bytes as `readBytes` and convert it to a number with `byteString2Int`
 `bigint`
 
 a number
-
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1087
