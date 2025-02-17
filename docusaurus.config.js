@@ -61,7 +61,12 @@ const config = {
             type: "doc",
             docId: "overview",
             position: "left",
-            label: "Docs",
+            label: "BSV",
+          },
+          {
+            position: "left",
+            label: "BTC",
+            to: "/btc-docs/overview",
           },
           {
             /* Only visible under docs. See src/custom/custom.css */
@@ -95,40 +100,52 @@ const config = {
 
   plugins: [
     // use multi-instance to render open-api docs, see ref: https://docusaurus.io/docs/docs-multi-instance
+    // [
+    //   '@docusaurus/plugin-content-docs',
+    //   {
+    //     id: 'open-api',
+    //     path: 'open-api',
+    //     routeBasePath: 'open-api',
+    //     sidebarPath: './open-api/sidebars.js',
+    //     docLayoutComponent: "@theme/DocPage",
+    //     docItemComponent: "@theme/ApiItem" // derived from docusaurus-theme-openapi-docs
+    //   },
+    // ],
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'open-api',
-        path: 'open-api',
-        routeBasePath: 'open-api',
-        sidebarPath: './open-api/sidebars.js',
-        docLayoutComponent: "@theme/DocPage",
-        docItemComponent: "@theme/ApiItem" // derived from docusaurus-theme-openapi-docs
+        id: 'btc-docs',
+        path: 'btc-docs',
+        routeBasePath: 'btc-docs',
+        sidebarPath: './btc-docs/sidebars.js',
+        // showLastUpdateAuthor: true,
+        // showLastUpdateTime: true,
+        // ... other options
       },
     ],
-    [
-      'docusaurus-plugin-openapi-docs',
-      {
-        id: "open-api-doc-generator", // plugin id
-        docsPluginId: "open-api", // id of plugin-content-docs or preset for rendering docs
-        config: {
-          btcBlockhain: {
-            specPath: "open-api/btc-blockchain.yaml",
-            outputDir: "open-api/btc-blockchain",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-            },
-          },
-          btcToken: {
-            specPath: "open-api/btc-token.yaml",
-            outputDir: "open-api/btc-token",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-            },
-          },
-        },
-      },
-    ]
+    // [
+    //   'docusaurus-plugin-openapi-docs',
+    //   {
+    //     id: "open-api-doc-generator", // plugin id
+    //     docsPluginId: "open-api", // id of plugin-content-docs or preset for rendering docs
+    //     config: {
+    //       btcBlockhain: {
+    //         specPath: "open-api/btc-blockchain.yaml",
+    //         outputDir: "open-api/btc-blockchain",
+    //         sidebarOptions: {
+    //           groupPathsBy: "tag",
+    //         },
+    //       },
+    //       btcToken: {
+    //         specPath: "open-api/btc-token.yaml",
+    //         outputDir: "open-api/btc-token",
+    //         sidebarOptions: {
+    //           groupPathsBy: "tag",
+    //         },
+    //       },
+    //     },
+    //   },
+    // ]
   ],
   themes: ["docusaurus-theme-openapi-docs"], // export theme components
 };
