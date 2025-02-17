@@ -22,7 +22,7 @@ By default, the CLI tool will run a script named `deploy.ts` located in the root
 npx @scrypt-inc/cli-btc d -f myCustomDeploy.ts
 ```
 
-If the project was created using sCrypt CLI, it will already have a `deploy.ts` file present (except for [library](../how-to-publish-a-contract.md) projects). If not, the `deploy` command will generate a sample `deploy.ts` file.
+If the project was created using sCrypt CLI, it will already have a `deploy.ts` file present (except for library projects). If not, the `deploy` command will generate a sample `deploy.ts` file.
 
 Here's an example of such a deployment file:
 ```ts
@@ -56,9 +56,8 @@ main()
 Upon a successful execution you should see an output like the following:
 
 ```
-Demo contract deployed: 15b8055cfaf9554035f8d3b866f038a04e40b45e28109f1becfe4d0af9f743cd
+Demo contract deployed: 4080c16237b8d8e25af54a1d8b151fb5aa804410d70c0d1ba1fa6f7bb8d1ab25
 ```
 
-You can take a look at the deployed smart contract using the [WhatsOnChain block explorer](https://test.whatsonchain.com/tx/15b8055cfaf9554035f8d3b866f038a04e40b45e28109f1becfe4d0af9f743cd).
+You can take a look at the deployed smart contract using the [Mempool block explorer](https://mempool-testnet.fractalbitcoin.io/tx/4080c16237b8d8e25af54a1d8b151fb5aa804410d70c0d1ba1fa6f7bb8d1ab25).
 In our example, the first output contains the compiled smart contract code.
-It is indexed using the hash (double SHA-256) of the script: [eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def](https://test.whatsonchain.com/script/eb2f10b8f1bd12527f07a5d05b40f06137cbebe4e9ecfb6a4e0fd8a3437e1def).

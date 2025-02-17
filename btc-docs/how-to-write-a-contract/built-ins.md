@@ -135,7 +135,7 @@ Function `static loadArtifact(artifactFile: Artifact)` loads the contract artifa
 
 If no parameter is passed when calling, the function will load the artifact file from the default directory. This is generally used during [testing](../how-to-test-a-contract.md#load-artifact).
 
-You can also pass the artifact path directly. This is usually used when the method is called when [interacting with a contract at the front-end](../how-to-integrate-a-frontend/how-to-integrate-a-frontend.md).
+You can also pass the artifact path directly. This is usually used when the method is called when interacting with a contract at the front-end.
 
 ```ts
 import { TicTacToe } from './contracts/tictactoe';

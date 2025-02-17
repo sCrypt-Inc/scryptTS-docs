@@ -5,7 +5,7 @@ sidebar_position: 1
 
 sCrypt exports a submodule named `bitcoinjs-lib` which is an interface that helps you manage low-level things for the Bitcoin blockchain, such as creating key pairs, building, signing and serializing Bitcoin transactions, and more.
 
-In the context of sCrypt, the `bitcoinjs-lib` submodule is used primarily for managing key pairs and defining custom transaction builders, as demonstrated in the [How to Write a Contract](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md) section.
+In the context of sCrypt, the `bitcoinjs-lib` submodule is used primarily for managing key pairs and defining custom transaction.
 
 The goal of this section is to guide you through the basics of using the `bitcoinjs-lib` submodule.
 

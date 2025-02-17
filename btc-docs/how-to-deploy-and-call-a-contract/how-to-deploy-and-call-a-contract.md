@@ -79,12 +79,6 @@ const signer = new DefaultSigner(keyPair);
 ```
 
 
-### Tx Builders
-
-To deploy or interact with contracts, we must build transactions and broadcast them to Bitcoin.
-We have some built-in tx builders for the most common way to interact with contracts, so usually you don't have to implement them. If the default tx builder does not meet your specific requirements, such as having extra inputs or outputs in your tx, you can [customize it](./how-to-customize-a-contract-tx.md).
-
-
 #### Contract Deployment Transaction
 
 A Bitcoin transaction is required when deploying a contract to the blockchain. The transaction should have an output, whose script is compiled from the contract. This output is known as a contract UTXO and the contract instance comes from this UTXO.

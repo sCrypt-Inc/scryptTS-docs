@@ -59,4 +59,3 @@ One common failure is caused by IContext assertions, like
 ```typescript
 assert(this.ctx.shaOutputs == sha256(outputs), 'shaOutputs mismatch')
 ```
-Refer to [this guide](advanced/how-to-debug-scriptcontext.md) to debug such failures.
