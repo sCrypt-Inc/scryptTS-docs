@@ -297,19 +297,50 @@ const lockingScript = toByteString('01020304')
 Utils.buildOutput(lockingScript, toByteString('0100000000000000')) // '01000000000000000401020304'
 ```
 
-- `static buildPublicKeyHashScript(pubKeyHash: PubKeyHash ): ByteString` Build a [Pay to Public Key Hash (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash) script from a public key hash / address.
+- `static buildP2PKHScript(pubKeyHash: PubKeyHash ): ByteString` Build a [Pay to Public Key Hash (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash) script from a public key hash / address.
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
 Utils.buildP2PKHScript(address) // '76a914001122334455667788990011223344556677889988ac'
 ```
 
-- `static buildPublicKeyHashOutput(pubKeyHash: PubKeyHash, amount: bigint): ByteString` Build a P2PKH output from the public key hash.
+- `static buildP2PKHOutput(pubKeyHash: PubKeyHash, amount: ByteString): ByteString` Build a P2PKH output from the public key hash.
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
 Utils.buildP2PKHOutput(address, toByteString('0100000000000000')) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
 ```
+
+
+- `static buildP2WPKHScript(pubKeyHash: PubKeyHash ): ByteString` Build a [Pay to witness public-key hash (P2WPKH)](https://en.bitcoin.it/wiki/Bech32) script from a public key hash / address.
+
+```ts
+const address = Addr(toByteString('0011223344556677889900112233445566778899'))
+Utils.buildP2WPKHScript(address) // '00140011223344556677889900112233445566778899'
+```
+
+- `static buildP2WPKHOutput(pubKeyHash: PubKeyHash, amount: ByteString): ByteString` Build a P2PKH output from the public key hash.
+
+```ts
+const address = Addr(toByteString('0011223344556677889900112233445566778899'))
+Utils.buildP2WPKHOutput(address, toByteString('0100000000000000')) // '01000000000000003000140011223344556677889900112233445566778899'
+```
+
+
+- `static buildP2TRScript(pubKey: XOnlyPubKey): ByteString` Build a [Pay to witness public-key hash (P2WPKH)](https://en.bitcoin.it/wiki/Bech32) script from a public key hash / address.
+
+```ts
+const pubKey = XOnlyPubKey(toByteString('cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'))
+Utils.buildP2TRScript(pubKey) // '5120cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'
+```
+
+- `static buildP2TROutput(pubKey: XOnlyPubKey, amount: ByteString): ByteString` Build a P2PKH output from the public key hash.
+
+```ts
+const pubKey = XOnlyPubKey(toByteString('cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'))
+Utils.buildP2TROutput(pubKey, toByteString('0100000000000000')) // '0100000000000000445120cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'
+```
+
 
 - `static buildOpreturnOutput(data: ByteString): ByteString` Build a data-carrying [OP_RETURN](https://en.bitcoin.it/wiki/OP_RETURN) script from `data` payload.
 
