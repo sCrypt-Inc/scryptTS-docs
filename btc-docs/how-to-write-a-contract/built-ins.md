@@ -208,25 +208,6 @@ class MultiSigPayment extends SmartContract {
 }
 ```
 
-### `buildStateOutput`
-
-Function `buildStateOutput(amount: bigint): ByteString` creates an output containing the latest state. It takes an input: the number of satoshis in the output.
-
-```ts
-class Counter extends SmartContract {
-  // ...
-
-  @method()
-  public incOnChain() {
-    // ... update state
-
-    // construct the new state output
-    const output: ByteString = this.buildStateOutput(this.ctx.utxo.value)
-
-    // ... verify outputs of current tx
-  }
-}
-```
 
 ### `buildChangeOutput`
 
@@ -320,14 +301,14 @@ Utils.buildOutput(lockingScript, toByteString('0100000000000000')) // '010000000
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildPublicKeyHashScript(address) // '76a914001122334455667788990011223344556677889988ac'
+Utils.buildP2PKHScript(address) // '76a914001122334455667788990011223344556677889988ac'
 ```
 
 - `static buildPublicKeyHashOutput(pubKeyHash: PubKeyHash, amount: bigint): ByteString` Build a P2PKH output from the public key hash.
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildPublicKeyHashOutput(address, 1n) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
+Utils.buildP2PKHOutput(address, toByteString('0100000000000000')) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
 ```
 
 - `static buildOpreturnOutput(data: ByteString): ByteString` Build a data-carrying [OP_RETURN](https://en.bitcoin.it/wiki/OP_RETURN) script from `data` payload.
