@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "yarn run gen-api-docs && docusaurus build",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -13,7 +13,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "clean-api-docs": "docusaurus clean-api-docs all",
-    "gen-api-docs": "yarn run clean-api-docs && docusaurus gen-api-docs all && python3 scripts/render_open_api_docs.py"
+    "gen-api-docs": "yarn run clean-api-docs && docusaurus gen-api-docs all"
   },
   "dependencies": {
     "@babel/helper-environment-visitor": "^7.24.7",
