@@ -1,143 +1,125 @@
-[scrypt-ts](../README.md) / ScriptContext
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / ScriptContext
 
 # Interface: ScriptContext
 
-ScriptContext contains all the information in the transaction's [preimage](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm).
-The preimage is automatically generated during the user's construction of the transaction, and the user does not need to calculate it explicitly.
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:42
 
-## Table of contents
-
-### Properties
-
-- [hashOutputs](ScriptContext.md#hashoutputs)
-- [hashPrevouts](ScriptContext.md#hashprevouts)
-- [hashSequence](ScriptContext.md#hashsequence)
-- [locktime](ScriptContext.md#locktime)
-- [sequence](ScriptContext.md#sequence)
-- [sigHashType](ScriptContext.md#sighashtype)
-- [utxo](ScriptContext.md#utxo)
-- [version](ScriptContext.md#version)
-
-### Methods
-
-- [serialize](ScriptContext.md#serialize)
+ScriptContext contains all the information in the transaction's [preimage][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#digest-algorithm).
+The preimage is automatically generated during the user's construction of the transaction,
+and the user does not need to calculate it explicitly
 
 ## Properties
 
 ### hashOutputs
 
-• **hashOutputs**: [`ByteString`](../README.md#bytestring)
+> **hashOutputs**: [`ByteString`](../type-aliases/ByteString.md)
 
-double-SHA256 hash of the serialization of some/all output amount with its locking script, see [hashOutputs](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs)
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:61
 
-#### Defined in
+double-SHA256 hash of the serialization of some/all output amount with its locking script, see [hashOutputs][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashoutputs)
 
-dist/smart-contract/contract.d.ts:61
-
-___
+***
 
 ### hashPrevouts
 
-• **hashPrevouts**: [`ByteString`](../README.md#bytestring)
+> **hashPrevouts**: [`ByteString`](../type-aliases/ByteString.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:55
 
 double-SHA256 hash of the serialization of some/all input outpoints, see [hashPrevouts][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashprevouts](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashprevouts)
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:55
-
-___
+***
 
 ### hashSequence
 
-• **hashSequence**: [`ByteString`](../README.md#bytestring)
+> **hashSequence**: [`ByteString`](../type-aliases/ByteString.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:57
 
 double-SHA256 hash of the serialization of some/all input sequence values, see [hashSequence][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashsequence](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md#hashsequence)
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:57
-
-___
+***
 
 ### locktime
 
-• **locktime**: `bigint`
+> **locktime**: `bigint`
 
-locktime of [transaction][https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction)
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:63
 
-#### Defined in
+locktime of [transaction][https://wiki.bitcoinsv.io/index.php/Bitcoin\_Transactions#General\_format\_of\_a\_Bitcoin\_transaction](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction)
 
-dist/smart-contract/contract.d.ts:63
-
-___
+***
 
 ### sequence
 
-• **sequence**: `bigint`
+> **sequence**: `bigint`
 
-sequence number of [transaction input][https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Format_of_a_Transaction_Input](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Format_of_a_Transaction_Input)
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:59
 
-#### Defined in
+sequence number of [transaction input][https://wiki.bitcoinsv.io/index.php/Bitcoin\_Transactions#Format\_of\_a\_Transaction\_Input](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#Format_of_a_Transaction_Input)
 
-dist/smart-contract/contract.d.ts:59
-
-___
+***
 
 ### sigHashType
 
-• **sigHashType**: [`SigHashType`](../README.md#sighashtype)
+> **sigHashType**: [`SigHashType`](../type-aliases/SigHashType.md)
 
-[SIGHASH flag][https://wiki.bitcoinsv.io/index.php/SIGHASH_flags](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) used by this input
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:65
 
-#### Defined in
+[SIGHASH flag][https://wiki.bitcoinsv.io/index.php/SIGHASH\_flags](https://wiki.bitcoinsv.io/index.php/SIGHASH_flags) used by this input
 
-dist/smart-contract/contract.d.ts:65
-
-___
+***
 
 ### utxo
 
-• **utxo**: `Object`
+> **utxo**: `object`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:46
 
 the specific UTXO spent by this transaction input
 
-#### Type declaration
+#### outpoint
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `outpoint` | [`Outpoint`](Outpoint.md) | outpoint referenced by this UTXO |
-| `script` | [`ByteString`](../README.md#bytestring) | locking script |
-| `value` | `bigint` | amount in satoshis |
+> **outpoint**: [`Outpoint`](Outpoint.md)
 
-#### Defined in
+outpoint referenced by this UTXO
 
-dist/smart-contract/contract.d.ts:46
+#### script
 
-___
+> **script**: [`ByteString`](../type-aliases/ByteString.md)
+
+locking script
+
+#### value
+
+> **value**: `bigint`
+
+amount in satoshis
+
+***
 
 ### version
 
-• **version**: [`ByteString`](../README.md#bytestring)
+> **version**: [`ByteString`](../type-aliases/ByteString.md)
 
-version number of [transaction][https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction)
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:44
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:44
+version number of [transaction][https://wiki.bitcoinsv.io/index.php/Bitcoin\_Transactions#General\_format\_of\_a\_Bitcoin\_transaction](https://wiki.bitcoinsv.io/index.php/Bitcoin_Transactions#General_format_of_a_Bitcoin_transaction)
 
 ## Methods
 
-### serialize
+### serialize()
 
-▸ **serialize**(): [`SigHashPreimage`](../README.md#sighashpreimage)
+> **serialize**(): [`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:67
 
 get the whole serialized sighash preimage
 
 #### Returns
 
-[`SigHashPreimage`](../README.md#sighashpreimage)
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:67
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)

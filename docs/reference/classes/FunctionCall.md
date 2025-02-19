@@ -1,242 +1,197 @@
-[scrypt-ts](../README.md) / FunctionCall
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / FunctionCall
 
 # Class: FunctionCall
 
-## Table of contents
-
-### Constructors
-
-- [constructor](FunctionCall.md#constructor)
-
-### Properties
-
-- [\_lockingScript](FunctionCall.md#_lockingscript)
-- [\_unlockingScript](FunctionCall.md#_unlockingscript)
-- [args](FunctionCall.md#args)
-- [contract](FunctionCall.md#contract)
-- [methodName](FunctionCall.md#methodname)
-
-### Accessors
-
-- [lockingScript](FunctionCall.md#lockingscript)
-- [unlockingScript](FunctionCall.md#unlockingscript)
-
-### Methods
-
-- [genLaunchConfig](FunctionCall.md#genlaunchconfig)
-- [toASM](FunctionCall.md#toasm)
-- [toHex](FunctionCall.md#tohex)
-- [toScript](FunctionCall.md#toscript)
-- [toString](FunctionCall.md#tostring)
-- [verify](FunctionCall.md#verify)
+Defined in: scryptlib/dist/abi.d.ts:32
 
 ## Constructors
 
-### constructor
+### new FunctionCall()
 
-• **new FunctionCall**(`methodName`, `binding`)
+> **new FunctionCall**(`methodName`, `binding`): [`FunctionCall`](FunctionCall.md)
+
+Defined in: scryptlib/dist/abi.d.ts:41
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `methodName` | `string` |
-| `binding` | `Object` |
-| `binding.args` | `Arguments` |
-| `binding.contract` | `AbstractContract` |
-| `binding.lockingScript?` | [`Script`](bsv.Script-1.md) |
-| `binding.unlockingScript?` | [`Script`](bsv.Script-1.md) |
+##### methodName
 
-#### Defined in
+`string`
 
-node_modules/scryptlib/dist/abi.d.ts:41
+##### binding
+
+###### args
+
+`Arguments`
+
+###### contract
+
+`AbstractContract`
+
+###### lockingScript?
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+###### unlockingScript?
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+#### Returns
+
+[`FunctionCall`](FunctionCall.md)
 
 ## Properties
 
-### \_lockingScript
-
-• `Private` `Optional` **\_lockingScript**: `any`
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:37
-
-___
-
-### \_unlockingScript
-
-• `Private` `Optional` **\_unlockingScript**: `any`
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:36
-
-___
-
 ### args
 
-• `Readonly` **args**: `Arguments`
+> `readonly` **args**: `Arguments`
 
-#### Defined in
+Defined in: scryptlib/dist/abi.d.ts:35
 
-node_modules/scryptlib/dist/abi.d.ts:35
-
-___
+***
 
 ### contract
 
-• `Readonly` **contract**: `AbstractContract`
+> `readonly` **contract**: `AbstractContract`
 
-#### Defined in
+Defined in: scryptlib/dist/abi.d.ts:34
 
-node_modules/scryptlib/dist/abi.d.ts:34
-
-___
+***
 
 ### methodName
 
-• **methodName**: `string`
+> **methodName**: `string`
 
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:33
+Defined in: scryptlib/dist/abi.d.ts:33
 
 ## Accessors
 
 ### lockingScript
 
-• `get` **lockingScript**(): [`Script`](bsv.Script-1.md)
+#### Get Signature
 
-#### Returns
+> **get** **lockingScript**(): [`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
-[`Script`](bsv.Script-1.md)
+Defined in: scryptlib/dist/abi.d.ts:39
 
-#### Defined in
+##### Returns
 
-node_modules/scryptlib/dist/abi.d.ts:39
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
-• `set` **lockingScript**(`s`): `void`
+#### Set Signature
 
-#### Parameters
+> **set** **lockingScript**(`s`): `void`
 
-| Name | Type |
-| :------ | :------ |
-| `s` | [`Script`](bsv.Script-1.md) |
+Defined in: scryptlib/dist/abi.d.ts:40
 
-#### Returns
+##### Parameters
+
+###### s
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+##### Returns
 
 `void`
 
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:40
-
-___
+***
 
 ### unlockingScript
 
-• `get` **unlockingScript**(): [`Script`](bsv.Script-1.md)
+#### Get Signature
 
-#### Returns
+> **get** **unlockingScript**(): [`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
-[`Script`](bsv.Script-1.md)
+Defined in: scryptlib/dist/abi.d.ts:38
 
-#### Defined in
+##### Returns
 
-node_modules/scryptlib/dist/abi.d.ts:38
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
 
 ## Methods
 
-### genLaunchConfig
+### genLaunchConfig()
 
-▸ **genLaunchConfig**(`txContext?`): `string`
+> **genLaunchConfig**(`txContext`?): `string`
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `txContext?` | [`TxContext`](../interfaces/TxContext.md) |
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:51
-
-___
-
-### toASM
-
-▸ **toASM**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:47
-
-___
-
-### toHex
-
-▸ **toHex**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:50
-
-___
-
-### toScript
-
-▸ **toScript**(): [`Script`](bsv.Script-1.md)
-
-#### Returns
-
-[`Script`](bsv.Script-1.md)
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:49
-
-___
-
-### toString
-
-▸ **toString**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:48
-
-___
-
-### verify
-
-▸ **verify**(`txContext?`): [`VerifyResult`](../interfaces/VerifyResult.md)
+Defined in: scryptlib/dist/abi.d.ts:51
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `txContext?` | [`TxContext`](../interfaces/TxContext.md) |
+##### txContext?
+
+[`TxContext`](../interfaces/TxContext.md)
+
+#### Returns
+
+`string`
+
+***
+
+### toASM()
+
+> **toASM**(): `string`
+
+Defined in: scryptlib/dist/abi.d.ts:47
+
+#### Returns
+
+`string`
+
+***
+
+### toHex()
+
+> **toHex**(): `string`
+
+Defined in: scryptlib/dist/abi.d.ts:50
+
+#### Returns
+
+`string`
+
+***
+
+### toScript()
+
+> **toScript**(): [`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+Defined in: scryptlib/dist/abi.d.ts:49
+
+#### Returns
+
+[`Script`](../@scrypt-inc/bsv/classes/Script.md)
+
+***
+
+### toString()
+
+> **toString**(): `string`
+
+Defined in: scryptlib/dist/abi.d.ts:48
+
+#### Returns
+
+`string`
+
+***
+
+### verify()
+
+> **verify**(`txContext`?): [`VerifyResult`](../interfaces/VerifyResult.md)
+
+Defined in: scryptlib/dist/abi.d.ts:52
+
+#### Parameters
+
+##### txContext?
+
+[`TxContext`](../interfaces/TxContext.md)
 
 #### Returns
 
 [`VerifyResult`](../interfaces/VerifyResult.md)
-
-#### Defined in
-
-node_modules/scryptlib/dist/abi.d.ts:52

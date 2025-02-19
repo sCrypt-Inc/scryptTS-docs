@@ -1,36 +1,31 @@
-[scrypt-ts](../README.md) / TxInputRef
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / TxInputRef
 
 # Interface: TxInputRef
 
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:13
+
 A reference to an input of a transaction
-
-## Table of contents
-
-### Properties
-
-- [inputIndex](TxInputRef.md#inputindex)
-- [tx](TxInputRef.md#tx)
 
 ## Properties
 
 ### inputIndex
 
-• **inputIndex**: `number`
+> **inputIndex**: `number`
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:17
 
 an index indicating the position of inputs in this transaction
 
-#### Defined in
-
-dist/smart-contract/contract.d.ts:17
-
-___
+***
 
 ### tx
 
-• **tx**: [`Transaction`](../classes/bsv.Transaction-1.md)
+> **tx**: [`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+Defined in: scrypt-ts/dist/smart-contract/contract.d.ts:15
 
 transaction object
-
-#### Defined in
-
-dist/smart-contract/contract.d.ts:15

@@ -1,157 +1,127 @@
-[scrypt-ts](../README.md) / BsvApi
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / BsvApi
 
 # Class: BsvApi
 
-## Table of contents
-
-### Constructors
-
-- [constructor](BsvApi.md#constructor)
-
-### Properties
-
-- [\_core](BsvApi.md#_core)
-
-### Methods
-
-- [connect](BsvApi.md#connect)
-- [getBalance](BsvApi.md#getbalance)
-- [getFeePerKB](BsvApi.md#getfeeperkb)
-- [getTransaction](BsvApi.md#gettransaction)
-- [listUnspent](BsvApi.md#listunspent)
-- [sendRawTransaction](BsvApi.md#sendrawtransaction)
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:5
 
 ## Constructors
 
-### constructor
+### new BsvApi()
 
-• **new BsvApi**(`_core`)
+> **new BsvApi**(`_core`): [`BsvApi`](BsvApi.md)
+
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:7
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `_core` | `Core` |
+##### \_core
 
-#### Defined in
+`Core`
 
-dist/client/apis/bsv-api.d.ts:7
+#### Returns
 
-## Properties
-
-### \_core
-
-• `Private` `Readonly` **\_core**: `any`
-
-#### Defined in
-
-dist/client/apis/bsv-api.d.ts:6
+[`BsvApi`](BsvApi.md)
 
 ## Methods
 
-### connect
+### connect()
 
-▸ **connect**(): `Promise`<{ `error`: `string` ; `success`: `boolean`  }\>
+> **connect**(): `Promise`\<\{ `error`: `string`; `success`: `boolean`; \}\>
+
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:14
 
 #### Returns
 
-`Promise`<{ `error`: `string` ; `success`: `boolean`  }\>
+`Promise`\<\{ `error`: `string`; `success`: `boolean`; \}\>
 
-#### Defined in
+***
 
-dist/client/apis/bsv-api.d.ts:14
+### getBalance()
 
-___
+> **getBalance**(`address`): `Promise`\<\{ `confirmed`: `number`; `unconfirmed`: `number`; \}\>
 
-### getBalance
-
-▸ **getBalance**(`address`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:9
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address` | [`Address`](bsv.Address.md) |
+##### address
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
 
 #### Returns
 
-`Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+`Promise`\<\{ `confirmed`: `number`; `unconfirmed`: `number`; \}\>
 
-#### Defined in
+***
 
-dist/client/apis/bsv-api.d.ts:9
+### getFeePerKB()
 
-___
+> **getFeePerKB**(): `Promise`\<`number`\>
 
-### getFeePerKB
-
-▸ **getFeePerKB**(): `Promise`<`number`\>
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:13
 
 #### Returns
 
-`Promise`<`number`\>
+`Promise`\<`number`\>
 
-#### Defined in
+***
 
-dist/client/apis/bsv-api.d.ts:13
+### getTransaction()
 
-___
+> **getTransaction**(`txId`): `Promise`\<[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)\>
 
-### getTransaction
-
-▸ **getTransaction**(`txId`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:8
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `txId` | `string` |
+##### txId
+
+`string`
 
 #### Returns
 
-`Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+`Promise`\<[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)\>
 
-#### Defined in
+***
 
-dist/client/apis/bsv-api.d.ts:8
+### listUnspent()
 
-___
+> **listUnspent**(`address`, `options`?): `Promise`\<[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)[]\>
 
-### listUnspent
-
-▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:19
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `address` | [`Address`](bsv.Address.md) |
-| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) |
+##### address
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+##### options?
+
+[`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md)
 
 #### Returns
 
-`Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+`Promise`\<[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)[]\>
 
-#### Defined in
+***
 
-dist/client/apis/bsv-api.d.ts:19
+### sendRawTransaction()
 
-___
+> **sendRawTransaction**(`txHex`): `Promise`\<`string`\>
 
-### sendRawTransaction
-
-▸ **sendRawTransaction**(`txHex`): `Promise`<`string`\>
+Defined in: scrypt-ts/dist/client/apis/bsv-api.d.ts:18
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `txHex` | `string` |
+##### txHex
+
+`string`
 
 #### Returns
 
-`Promise`<`string`\>
-
-#### Defined in
-
-dist/client/apis/bsv-api.d.ts:18
+`Promise`\<`string`\>

@@ -1,47 +1,39 @@
-[scrypt-ts](../README.md) / MultiContractCallOptions
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / MultiContractCallOptions
 
 # Interface: MultiContractCallOptions
 
-## Table of contents
-
-### Properties
-
-- [autoPayFee](MultiContractCallOptions.md#autopayfee)
-- [partiallySigned](MultiContractCallOptions.md#partiallysigned)
-- [verify](MultiContractCallOptions.md#verify)
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:50
 
 ## Properties
 
-### autoPayFee
+### autoPayFee?
 
-• `Optional` `Readonly` **autoPayFee**: `boolean`
+> `readonly` `optional` **autoPayFee**: `boolean`
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:56
 
 auto add utxo to pay transaction fee, default is true
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:56
+### partiallySigned?
 
-___
+> `readonly` `optional` **partiallySigned**: `boolean`
 
-### partiallySigned
-
-• `Optional` `Readonly` **partiallySigned**: `boolean`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:54
 
 signer does not contain all private keys, it is used when multiple parties are required to perform signature authorization, default is false， only work in single call
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:54
+### verify?
 
-___
+> `readonly` `optional` **verify**: `boolean`
 
-### verify
-
-• `Optional` `Readonly` **verify**: `boolean`
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:52
 
 verify transaction before send transaction
-
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:52

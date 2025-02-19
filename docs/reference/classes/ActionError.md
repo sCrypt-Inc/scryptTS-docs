@@ -1,168 +1,162 @@
-[scrypt-ts](../README.md) / ActionError
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / ActionError
 
 # Class: ActionError
 
-## Hierarchy
+Defined in: scrypt-ts/dist/client/core/action-resolver.d.ts:4
+
+## Extends
 
 - `Error`
 
-  ↳ **`ActionError`**
-
-## Table of contents
-
-### Constructors
-
-- [constructor](ActionError.md#constructor)
-
-### Properties
-
-- [message](ActionError.md#message)
-- [name](ActionError.md#name)
-- [stack](ActionError.md#stack)
-- [statusCode](ActionError.md#statuscode)
-- [prepareStackTrace](ActionError.md#preparestacktrace)
-- [stackTraceLimit](ActionError.md#stacktracelimit)
-
-### Methods
-
-- [captureStackTrace](ActionError.md#capturestacktrace)
-
 ## Constructors
 
-### constructor
+### new ActionError()
 
-• **new ActionError**(`statusCode`, `message`)
+> **new ActionError**(`statusCode`, `message`): [`ActionError`](ActionError.md)
+
+Defined in: scrypt-ts/dist/client/core/action-resolver.d.ts:7
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `statusCode` | `number` |
-| `message` | `string` |
+##### statusCode
+
+`number`
+
+##### message
+
+`string`
+
+#### Returns
+
+[`ActionError`](ActionError.md)
 
 #### Overrides
 
-Error.constructor
-
-#### Defined in
-
-dist/client/core/action-resolver.d.ts:7
+`Error.constructor`
 
 ## Properties
 
+### cause?
+
+> `optional` **cause**: `unknown`
+
+Defined in: typescript/lib/lib.es2022.error.d.ts:26
+
+#### Inherited from
+
+`Error.cause`
+
+***
+
 ### message
 
-• **message**: `string`
+> **message**: `string`
+
+Defined in: scrypt-ts/dist/client/core/action-resolver.d.ts:6
 
 #### Overrides
 
-Error.message
+`Error.message`
 
-#### Defined in
-
-dist/client/core/action-resolver.d.ts:6
-
-___
+***
 
 ### name
 
-• **name**: `string`
+> **name**: `string`
+
+Defined in: typescript/lib/lib.es5.d.ts:1076
 
 #### Inherited from
 
-Error.name
+`Error.name`
 
-#### Defined in
+***
 
-node_modules/typescript/lib/lib.es5.d.ts:1053
+### stack?
 
-___
+> `optional` **stack**: `string`
 
-### stack
-
-• `Optional` **stack**: `string`
+Defined in: typescript/lib/lib.es5.d.ts:1078
 
 #### Inherited from
 
-Error.stack
+`Error.stack`
 
-#### Defined in
-
-node_modules/typescript/lib/lib.es5.d.ts:1055
-
-___
+***
 
 ### statusCode
 
-• **statusCode**: `number`
+> **statusCode**: `number`
 
-#### Defined in
+Defined in: scrypt-ts/dist/client/core/action-resolver.d.ts:5
 
-dist/client/core/action-resolver.d.ts:5
+***
 
-___
+### prepareStackTrace()?
 
-### prepareStackTrace
+> `static` `optional` **prepareStackTrace**: (`err`, `stackTraces`) => `any`
 
-▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
-
-#### Type declaration
-
-▸ (`err`, `stackTraces`): `any`
+Defined in: @types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
-**`See`**
+#### Parameters
 
-https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+##### err
 
-##### Parameters
+`Error`
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `Error` |
-| `stackTraces` | `CallSite`[] |
+##### stackTraces
 
-##### Returns
+`CallSite`[]
+
+#### Returns
 
 `any`
 
+#### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
 #### Inherited from
 
-Error.prepareStackTrace
+`Error.prepareStackTrace`
 
-#### Defined in
-
-node_modules/@types/node/globals.d.ts:11
-
-___
+***
 
 ### stackTraceLimit
 
-▪ `Static` **stackTraceLimit**: `number`
+> `static` **stackTraceLimit**: `number`
+
+Defined in: @types/node/globals.d.ts:145
 
 #### Inherited from
 
-Error.stackTraceLimit
-
-#### Defined in
-
-node_modules/@types/node/globals.d.ts:13
+`Error.stackTraceLimit`
 
 ## Methods
 
-### captureStackTrace
+### captureStackTrace()
 
-▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+> `static` **captureStackTrace**(`targetObject`, `constructorOpt`?): `void`
+
+Defined in: @types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `targetObject` | `object` |
-| `constructorOpt?` | `Function` |
+##### targetObject
+
+`object`
+
+##### constructorOpt?
+
+`Function`
 
 #### Returns
 
@@ -170,8 +164,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-Error.captureStackTrace
-
-#### Defined in
-
-node_modules/@types/node/globals.d.ts:4
+`Error.captureStackTrace`

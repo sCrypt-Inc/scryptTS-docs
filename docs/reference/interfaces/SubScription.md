@@ -1,29 +1,23 @@
-[scrypt-ts](../README.md) / SubScription
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / SubScription
 
 # Interface: SubScription
 
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:15
+
 SubScription can be used to unsubscribe
-
-## Table of contents
-
-### Properties
-
-- [unsubscribe](SubScription.md#unsubscribe)
 
 ## Properties
 
-### unsubscribe
+### unsubscribe()
 
-• **unsubscribe**: () => `void`
+> **unsubscribe**: () => `void`
 
-#### Type declaration
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:16
 
-▸ (): `void`
-
-##### Returns
+#### Returns
 
 `void`
-
-#### Defined in
-
-dist/client/apis/contract-api.d.ts:16

@@ -1,223 +1,224 @@
-[scrypt-ts](../README.md) / Utils
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / Utils
 
 # Class: Utils
 
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:908
+
 The Utils library provides a set of commonly used utility functions.
-
-## Table of contents
-
-### Constructors
-
-- [constructor](Utils.md#constructor)
-
-### Properties
-
-- [OutputValueLen](Utils.md#outputvaluelen)
-- [PubKeyHashLen](Utils.md#pubkeyhashlen)
-
-### Methods
-
-- [buildAddressOutput](Utils.md#buildaddressoutput)
-- [buildAddressScript](Utils.md#buildaddressscript)
-- [buildOpreturnScript](Utils.md#buildopreturnscript)
-- [buildOutput](Utils.md#buildoutput)
-- [buildPublicKeyHashOutput](Utils.md#buildpublickeyhashoutput)
-- [buildPublicKeyHashScript](Utils.md#buildpublickeyhashscript)
-- [fromLEUnsigned](Utils.md#fromleunsigned)
-- [readVarint](Utils.md#readvarint)
-- [toLEUnsigned](Utils.md#toleunsigned)
-- [writeVarint](Utils.md#writevarint)
 
 ## Constructors
 
-### constructor
+### new Utils()
 
-• **new Utils**()
+> **new Utils**(): [`Utils`](Utils.md)
+
+#### Returns
+
+[`Utils`](Utils.md)
 
 ## Properties
 
 ### OutputValueLen
 
-▪ `Static` `Readonly` **OutputValueLen**: `bigint`
+> `readonly` `static` **OutputValueLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:910
 
 number of string to denote output value
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:910
-
-___
+***
 
 ### PubKeyHashLen
 
-▪ `Static` `Readonly` **PubKeyHashLen**: `bigint`
+> `readonly` `static` **PubKeyHashLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:912
 
 number of string to denote a public key hash
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:912
-
 ## Methods
 
-### buildAddressOutput
+### buildAddressOutput()
 
-▸ `Static` **buildAddressOutput**(`addr`, `amount`): [`ByteString`](../README.md#bytestring)
+> `static` **buildAddressOutput**(`addr`, `amount`): [`ByteString`](../type-aliases/ByteString.md)
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:970
 
 constructs a standard payment (P2PKH) output from a given address and satoshi amount
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `addr` | `Ripemd160` | the recipient's address |
-| `amount` | `bigint` | the satoshi amount |
+##### addr
+
+`Ripemd160`
+
+the recipient's address
+
+##### amount
+
+`bigint`
+
+the satoshi amount
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 a `ByteString` representing the P2PKH output
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:970
+### buildAddressScript()
 
-___
+> `static` **buildAddressScript**(`addr`): [`ByteString`](../type-aliases/ByteString.md)
 
-### buildAddressScript
-
-▸ `Static` **buildAddressScript**(`addr`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:963
 
 constructs a standard payment (P2PKH) script from a given address
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `addr` | `Ripemd160` | the recipient's address |
+##### addr
+
+`Ripemd160`
+
+the recipient's address
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 a `ByteString` representing the P2PKH script
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:963
+### buildOpreturnScript()
 
-___
+> `static` **buildOpreturnScript**(`data`): [`ByteString`](../type-aliases/ByteString.md)
 
-### buildOpreturnScript
-
-▸ `Static` **buildOpreturnScript**(`data`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:976
 
 build `OP_FALSE OP_RETURN` script from data payload
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | [`ByteString`](../README.md#bytestring) | the data payload |
+##### data
+
+[`ByteString`](../type-aliases/ByteString.md)
+
+the data payload
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 a ByteString contains the data payload
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:976
+### buildOutput()
 
-___
+> `static` **buildOutput**(`outputScript`, `outputSatoshis`): [`ByteString`](../type-aliases/ByteString.md)
 
-### buildOutput
-
-▸ `Static` **buildOutput**(`outputScript`, `outputSatoshis`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:944
 
 build a tx output from its script and satoshi amount
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `outputScript` | [`ByteString`](../README.md#bytestring) | the locking script |
-| `outputSatoshis` | `bigint` | the satoshi amount |
+##### outputScript
+
+[`ByteString`](../type-aliases/ByteString.md)
+
+the locking script
+
+##### outputSatoshis
+
+`bigint`
+
+the satoshi amount
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 a `ByteString` that represents an output
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:944
+### buildPublicKeyHashOutput()
 
-___
+> `static` **buildPublicKeyHashOutput**(`pubKeyHash`, `amount`): [`ByteString`](../type-aliases/ByteString.md)
 
-### buildPublicKeyHashOutput
-
-▸ `Static` **buildPublicKeyHashOutput**(`pubKeyHash`, `amount`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:957
 
 constructs a P2PKH output from a given PubKeyHash and satoshi amount
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `pubKeyHash` | `Ripemd160` | the recipient's public key hash |
-| `amount` | `bigint` | the satoshi amount |
+##### pubKeyHash
+
+`Ripemd160`
+
+the recipient's public key hash
+
+##### amount
+
+`bigint`
+
+the satoshi amount
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 a `ByteString` representing the P2PKH output
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:957
+### buildPublicKeyHashScript()
 
-___
+> `static` **buildPublicKeyHashScript**(`pubKeyHash`): [`ByteString`](../type-aliases/ByteString.md)
 
-### buildPublicKeyHashScript
-
-▸ `Static` **buildPublicKeyHashScript**(`pubKeyHash`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:950
 
 constructs a P2PKH script from a given PubKeyHash
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `pubKeyHash` | `Ripemd160` | the recipient's public key hash |
+##### pubKeyHash
+
+`Ripemd160`
+
+the recipient's public key hash
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 a `ByteString` representing the P2PKH script
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:950
+### fromLEUnsigned()
 
-___
+> `static` **fromLEUnsigned**(`bytes`): `bigint`
 
-### fromLEUnsigned
-
-▸ `Static` **fromLEUnsigned**(`bytes`): `bigint`
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:925
 
 convert `ByteString` to unsigned integer, in sign-magnitude little endian
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | [`ByteString`](../README.md#bytestring) | the `ByteString` to be converted |
+##### bytes
+
+[`ByteString`](../type-aliases/ByteString.md)
+
+the `ByteString` to be converted
 
 #### Returns
 
@@ -225,79 +226,80 @@ convert `ByteString` to unsigned integer, in sign-magnitude little endian
 
 returns a number
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:925
+### readVarint()
 
-___
+> `static` **readVarint**(`buf`): [`ByteString`](../type-aliases/ByteString.md)
 
-### readVarint
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:931
 
-▸ `Static` **readVarint**(`buf`): [`ByteString`](../README.md#bytestring)
-
-read a [VarInt (variable integer)][https://learnmeabitcoin.com/technical/varint](https://learnmeabitcoin.com/technical/varint) field from the beginning of 'buf'
+read [VarInt (variable integer)][https://learnmeabitcoin.com/technical/general/compact-size/](https://learnmeabitcoin.com/technical/general/compact-size/)-encoded data from the beginning of 'buf'
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `buf` | [`ByteString`](../README.md#bytestring) | a buffer `ByteString` |
+##### buf
+
+[`ByteString`](../type-aliases/ByteString.md)
+
+a buffer `ByteString` of format: [prefix FD/FE/FF +] length + data
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
-return a `ByteString` of the VarInt field
+return data
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:931
+### toLEUnsigned()
 
-___
+> `static` **toLEUnsigned**(`n`, `l`): [`ByteString`](../type-aliases/ByteString.md)
 
-### toLEUnsigned
-
-▸ `Static` **toLEUnsigned**(`n`, `l`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:919
 
 convert signed integer `n` to unsigned integer of `l` string, in little endian
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `n` | `bigint` | the number to be converted |
-| `l` | `bigint` | expected length |
+##### n
+
+`bigint`
+
+the number to be converted
+
+##### l
+
+`bigint`
+
+expected length
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 returns a `ByteString`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:919
+### writeVarint()
 
-___
+> `static` **writeVarint**(`buf`): [`ByteString`](../type-aliases/ByteString.md)
 
-### writeVarint
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:937
 
-▸ `Static` **writeVarint**(`buf`): [`ByteString`](../README.md#bytestring)
-
-convert 'b' to a [VarInt (variable integer)][https://learnmeabitcoin.com/technical/varint](https://learnmeabitcoin.com/technical/varint) field, including the preceding length
+encode data in 'buf' to a [VarInt (variable integer)][https://learnmeabitcoin.com/technical/general/compact-size/](https://learnmeabitcoin.com/technical/general/compact-size/) format; opposite of readVarint
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `buf` | [`ByteString`](../README.md#bytestring) | a buffer `ByteString` |
+##### buf
+
+[`ByteString`](../type-aliases/ByteString.md)
+
+a buffer `ByteString` containing the data
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
-return a `ByteString` appended the VarInt
-
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:937
+return format: [prefix FD/FE/FF +] length + data

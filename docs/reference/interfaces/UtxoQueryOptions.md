@@ -1,54 +1,43 @@
-[scrypt-ts](../README.md) / UtxoQueryOptions
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / UtxoQueryOptions
 
 # Interface: UtxoQueryOptions
 
+Defined in: scrypt-ts/dist/bsv/abstract-provider.d.ts:12
+
 The optional conditions for querying P2PKH UTXO.
-
-## Table of contents
-
-### Properties
-
-- [additional](UtxoQueryOptions.md#additional)
-- [estimateSize](UtxoQueryOptions.md#estimatesize)
-- [feePerKb](UtxoQueryOptions.md#feeperkb)
-- [unspentValue](UtxoQueryOptions.md#unspentvalue)
 
 ## Properties
 
-### additional
+### additional?
 
-• `Optional` **additional**: `number`
+> `optional` **additional**: `number`
 
-#### Defined in
+Defined in: scrypt-ts/dist/bsv/abstract-provider.d.ts:16
 
-dist/bsv/abstract-provider.d.ts:16
-
-___
+***
 
 ### estimateSize
 
-• **estimateSize**: `number`
+> **estimateSize**: `number`
 
-#### Defined in
+Defined in: scrypt-ts/dist/bsv/abstract-provider.d.ts:14
 
-dist/bsv/abstract-provider.d.ts:14
-
-___
+***
 
 ### feePerKb
 
-• **feePerKb**: `number`
+> **feePerKb**: `number`
 
-#### Defined in
+Defined in: scrypt-ts/dist/bsv/abstract-provider.d.ts:15
 
-dist/bsv/abstract-provider.d.ts:15
-
-___
+***
 
 ### unspentValue
 
-• **unspentValue**: `number`
+> **unspentValue**: `number`
 
-#### Defined in
-
-dist/bsv/abstract-provider.d.ts:13
+Defined in: scrypt-ts/dist/bsv/abstract-provider.d.ts:13

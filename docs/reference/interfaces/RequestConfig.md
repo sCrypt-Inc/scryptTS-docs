@@ -1,58 +1,45 @@
-[scrypt-ts](../README.md) / RequestConfig
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / RequestConfig
 
 # Interface: RequestConfig
 
-## Hierarchy
+Defined in: scrypt-ts/dist/client/core/request-controller.d.ts:11
 
-- **`RequestConfig`**
+## Extended by
 
-  ↳ [`ScryptConfig`](ScryptConfig.md)
-
-## Table of contents
-
-### Properties
-
-- [apiKey](RequestConfig.md#apikey)
-- [maxRetries](RequestConfig.md#maxretries)
-- [network](RequestConfig.md#network)
-- [timeout](RequestConfig.md#timeout)
+- [`ScryptConfig`](ScryptConfig.md)
 
 ## Properties
 
 ### apiKey
 
-• **apiKey**: `string`
+> **apiKey**: `string`
 
-#### Defined in
+Defined in: scrypt-ts/dist/client/core/request-controller.d.ts:12
 
-dist/client/core/request-controller.d.ts:12
+***
 
-___
+### maxRetries?
 
-### maxRetries
+> `optional` **maxRetries**: `number`
 
-• `Optional` **maxRetries**: `number`
+Defined in: scrypt-ts/dist/client/core/request-controller.d.ts:15
 
-#### Defined in
+***
 
-dist/client/core/request-controller.d.ts:15
+### network?
 
-___
+> `optional` **network**: [`Network`](../@scrypt-inc/bsv/namespaces/Networks/interfaces/Network.md)
 
-### network
+Defined in: scrypt-ts/dist/client/core/request-controller.d.ts:13
 
-• `Optional` **network**: [`Network`](bsv.Networks.Network.md)
+***
 
-#### Defined in
+### timeout?
 
-dist/client/core/request-controller.d.ts:13
+> `optional` **timeout**: `number`
 
-___
-
-### timeout
-
-• `Optional` **timeout**: `number`
-
-#### Defined in
-
-dist/client/core/request-controller.d.ts:14
+Defined in: scrypt-ts/dist/client/core/request-controller.d.ts:14
