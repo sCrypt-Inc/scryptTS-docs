@@ -75,7 +75,7 @@ This command will generate a contract artifact file at `/artifacts/helloworld.js
 
 
 ```ts
-const artifact = readArtifact(Helloworld);
+import artifact from '../artifacts/contracts/helloworld.json'
 Helloworld.loadArtifact(artifact)
 ```
 
@@ -110,15 +110,12 @@ Next, start deploying and calling the contract:
 For this example, overwrite `deploy.ts` in the root of the project with the following code to deploy and call the `Helloworld` contract:
 
 ```ts
-import { Helloworld } from './src/contracts/helloworld'
+import { Helloworld } from 'helloworld'
 import { getDefaultProvider, getDefaultSigner } from './tests/utils/txHelper';
-import { readArtifact } from '@scrypt-inc/scrypt-ts-transpiler-btc';
 import { call, Covenant, deploy, sha256, toByteString } from '@scrypt-inc/scrypt-ts-btc';
 
 (async () => {
 
-    const artifact = readArtifact(Helloworld);
-    Helloworld.loadArtifact(artifact)
     const covenant = Covenant.createCovenant(new Helloworld(sha256(toByteString("hello world", true))))
 
     const provider = getDefaultProvider();
@@ -142,7 +139,7 @@ import { call, Covenant, deploy, sha256, toByteString } from '@scrypt-inc/scrypt
 Run the following command to deploy AND call our example contract.
 
 ```
-npx ts-node deploy.ts
+npx tsx deploy.ts
 ```
 
 You will see some output like:

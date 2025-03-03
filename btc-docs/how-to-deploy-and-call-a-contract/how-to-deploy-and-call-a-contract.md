@@ -22,7 +22,6 @@ This will create an artifact json file of your contract in the `/artifacts` fold
 Next, call [loadArtifact](../how-to-write-a-contract/built-ins.md#loadartifact) to load the json file, so you have a smart contract class ready to be instantiated.
 ```ts
 import artifact from '../artifacts/mycontract.json'
-
 MyContract.loadArtifact(artifact)
 ```
 
@@ -217,10 +216,9 @@ In general, if your `@method` needs `Sig`-typed arguments, you could obtain them
 Here is the complete sample code for the deployment and call of a P2PKH contract.
 
 ```ts
-import { P2PKH } from './src/contracts/p2pkh'
+import { P2PKH } from 'p2pkh'
 import * as dotenv from 'dotenv'
 import { getDefaultProvider, getDefaultSigner } from './tests/utils/txHelper';
-import { readArtifact } from '@scrypt-inc/scrypt-ts-transpiler-btc';
 import { call, Covenant, deploy, hash160, IExtPsbt, PubKey, toXOnly, uint8ArrayToHex } from '@scrypt-inc/scrypt-ts-btc';
 import { address as Address } from '@scrypt-inc/bitcoinjs-lib';
 // Load the .env file
@@ -228,10 +226,6 @@ dotenv.config()
 
 async function main() {
 
-
-    const artifact = readArtifact(P2PKH);
-    P2PKH.loadArtifact(artifact)
-    
     // setup signer
     const signer = getDefaultSigner();
     
