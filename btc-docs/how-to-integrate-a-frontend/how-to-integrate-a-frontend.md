@@ -42,7 +42,7 @@ cd ..
 npx create-react-app frontend --template typescript
 ```
 
-![](../../static/img/react-scaffold.png)
+![](../../static/img/react-scaffold-btc.png)
 
 We will do most work under the `src` directory.
 
@@ -54,8 +54,6 @@ Run the following command to create a [Next.js](https://nextjs.org/) project.
 npx create-next-app frontend --typescript --use-npm
 ```
 
-![](../../static/img/create-next-app.png)
-
 ### Vue.js
 
 #### Vite
@@ -66,15 +64,11 @@ Run the following command to create a [Vue](https://vuejs.org/) 3.x project bund
 npm create vue@3
 ```
 
-![](../../static/img/create-vue3-vite-app.png)
-
 If you'd like to use Vue 2.x, run the following command to initialize the project scaffold.
 
 ```bash
 npm create vue@2
 ```
-
-![](../../static/img/create-vue2-vite-app.png)
 
 #### Webpack
 
@@ -90,10 +84,6 @@ Vue 3.x and 2.x bundled with Webpack are both supported.
 
 When setting up the project, select `Manually select features` and enable TypeScript.
 
-![](../../static/img/vue-cli-1.png)
-
-![](../../static/img/vue-cli-2.png)
-
 ### Angular
 
 Run the following command to create an [Angular](https://angular.io/) project.
@@ -102,8 +92,6 @@ Run the following command to create an [Angular](https://angular.io/) project.
 npx @angular/cli new frontend
 ```
 
-![](../../static/img/create-angular-app.png)
-
 ### Svelte
 
 Run the following command to create a [Svelte](https://svelte.dev/) project.
@@ -111,8 +99,6 @@ Run the following command to create a [Svelte](https://svelte.dev/) project.
 ```bash
 npm create svelte@latest frontend
 ```
-
-![](../../static/img/create-svelte-app.png)
 
 :::note
 Currently, we support front-end frameworks [React](https://react.dev), [Next.js](https://nextjs.org/), [Vue](https://vuejs.org/), [Angular](https://angular.io/), and [Svelte](https://svelte.dev/). We anticipate to add support for other frameworks over time.
@@ -128,6 +114,8 @@ npm install ../helloworld
 
 This command installs the dependencies and configures the contract development environment.
 After this, we are ready to go!
+
+![](../../static/img/frontend-dependency.png)
 
 ## Integrate Wallet
 
