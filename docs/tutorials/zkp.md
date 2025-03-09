@@ -4,13 +4,13 @@ sidebar_position: 5
 
 # Tutorial 5: Zero Knowledge Proofs
 
-## Overview 
+## Overview
 
 In this tutorial we will go over how to create a zero-knowledge proof (ZKP) and verify it on Bitcoin using sCrypt.
 
 ### What are zk-SNARKS?
 
-SNARK (zero-knowledge Succinct Non-interactive ARguments of Knowledge) is a type of ZKP that is amenable for blockchains. The generated proof is “succinct” and “non-interactive”: a proof is only a few hundred bytes and can be verified in constant time and within a few milliseconds, without needing to ask additional questions of the prover. Together, these properties make zk-SNARK especially suitable for blockchains, where on-chain storage and computation can be expensive and senders often go offline after sending a transaction. 
+SNARK (zero-knowledge Succinct Non-interactive ARguments of Knowledge) is a type of ZKP that is amenable for blockchains. The generated proof is “succinct” and “non-interactive”: a proof is only a few hundred bytes and can be verified in constant time and within a few milliseconds, without needing to ask additional questions of the prover. Together, these properties make zk-SNARK especially suitable for blockchains, where on-chain storage and computation can be expensive and senders often go offline after sending a transaction.
 
 A proof is constructed off-chain by a prover who generates the proof using a secret input (often referred to as the "witness") and a public input. The prover can then use this proof as an input for an sCrypt smart contract, which can verify the validity of the proof using a verification key and the public input.
 
@@ -19,7 +19,7 @@ A proof is constructed off-chain by a prover who generates the proof using a sec
 [Credit: altoros](https://www.altoros.com/blog/securing-a-blockchain-with-a-noninteractive-zero-knowledge-proof/)
 
 
-There are many tools for creating such proofs, [ZoKrates](https://github.com/sCrypt-Inc/zokrates) and [SnarkJS](https://github.com/sCrypt-Inc/snarkjs) are among the most popular. 
+There are many tools for creating such proofs, [ZoKrates](https://github.com/sCrypt-Inc/zokrates) and [SnarkJS](https://github.com/sCrypt-Inc/snarkjs) are among the most popular.
 
 In this example we will use ZoKrates. It provides a python-like higher-level language for developers to code the computational problem they want to prove.
 
@@ -135,7 +135,7 @@ Using our version of ZoKrates, we can export a project template, which will cont
 
 ```sh
 zokrates export-verifier-scrypt
-``` 
+```
 
 This will create a directory named `verifier`, containing the project. Let's set it up. Run the following:
 
@@ -156,7 +156,7 @@ Let's take a look at the implementation of `Verifier`:
 
 ```ts
 export class Verifier extends SmartContract {
-    
+
     @prop()
     vk: VerifyingKey
 
@@ -171,7 +171,7 @@ export class Verifier extends SmartContract {
         this.vk = vk
         this.publicInputs = publicInputs
     }
-    
+
     @method()
     public verifyProof(
         proof: Proof
@@ -182,7 +182,7 @@ export class Verifier extends SmartContract {
 }
 ```
 
-As we can see, the contract has two properties, namely the verification key and the value(s) of the public inputs to our ZK program. 
+As we can see, the contract has two properties, namely the verification key and the value(s) of the public inputs to our ZK program.
 
 The contract also has a public method named `verifyProof`. As the name implies it verifies a ZK proof and can be unlocked by a valid one. The proof is passed as a parameter. The method calls the proof verification function:
 
@@ -197,7 +197,7 @@ The generated project will also contain a deployment script `deploy.ts`. Let's t
 ```ts
 async function main() {
     await Verifier.loadArtifact()
-    
+
     // TODO: Adjust the amount of satoshis locked in the smart contract:
     const amount = 100
 
@@ -261,7 +261,7 @@ export async function call(txId: string, proofPath: PathLike) {
     const provider = new DefaultProvider()
     const tx = await provider.getTransaction(txId)
     const verifier = Verifier.fromTx(tx, 0)
-    
+
     // Connect signer
     await verifier.connect(getDefaultSigner())
 
@@ -299,7 +299,7 @@ Take a look at it using [a block explorer](https://test.whatsonchain.com/tx/3012
 
 Congratulations! You have successfully created a zk-SNARK and verified it on-chain!
 
-If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, take a look at our free [course](https://academy.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-64187ae0d1a6cb859d18d72a), which will teach you how to create a ZK Battleship game.
+If you want to learn how you can integrate zk-SNARKS into a fully fledged Bitcoin web application, take a look at our free [course](https://academy.scrypt.io/en/courses/Build-a-zkSNARK-based-Battleship-Game-on-Bitcoin-6594f5d81bfaad396835bd33), which will teach you how to create a ZK Battleship game.
 Additionally, it teaches you to use [snarkjs/circom](https://github.com/sCrypt-Inc/snarkjs).
 
 To know more about ZKP, you can refer to [this awesome list](https://github.com/sCrypt-Inc/awesome-zero-knowledge-proofs).

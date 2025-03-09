@@ -1,75 +1,61 @@
-[scrypt-ts](../README.md) / SignatureResponse
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / SignatureResponse
 
 # Interface: SignatureResponse
 
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:32
+
 `SignatureResponse` contains the signing result corresponding to a `SignatureRequest`.
-
-## Table of contents
-
-### Properties
-
-- [csIdx](SignatureResponse.md#csidx)
-- [inputIndex](SignatureResponse.md#inputindex)
-- [publicKey](SignatureResponse.md#publickey)
-- [sig](SignatureResponse.md#sig)
-- [sigHashType](SignatureResponse.md#sighashtype)
 
 ## Properties
 
-### csIdx
+### csIdx?
 
-• `Optional` **csIdx**: `number`
+> `optional` **csIdx**: `number`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:42
 
 The index of the OP_CODESEPARATOR to split the previous output script at.
 
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:41
-
-___
+***
 
 ### inputIndex
 
-• **inputIndex**: `number`
+> **inputIndex**: `number`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:34
 
 The index of input.
 
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:33
-
-___
+***
 
 ### publicKey
 
-• **publicKey**: `string`
+> **publicKey**: `string`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:38
 
 The public key bound with the `sig`.
 
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:37
-
-___
+***
 
 ### sig
 
-• **sig**: `string`
+> **sig**: `string`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:36
 
 The signature.
 
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:35
-
-___
+***
 
 ### sigHashType
 
-• **sigHashType**: `number`
+> **sigHashType**: `number`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:40
 
 The sighash type, default value is `SIGHASH_ALL | SIGHASH_FORKID` if omitted.
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:39

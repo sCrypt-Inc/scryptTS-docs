@@ -1,193 +1,164 @@
-[scrypt-ts](../README.md) / SigHash
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / SigHash
 
 # Class: SigHash
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:984
 
 A library to access various fields in the [preimage][https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md](https://github.com/bitcoin-sv/bitcoin-sv/blob/master/doc/abc/replay-protected-sighash.md).
 For example, we usually use `SigHash.scriptCode(preimage: SigHashPreimage)` to access the scriptCode of the preimage,
 and use `SigHash.value(preimage: SigHashPreimage)` to access the value field of the preimage, which is the value of the number of bitcoins spent in this contract.
 
-## Table of contents
-
-### Constructors
-
-- [constructor](SigHash.md#constructor)
-
-### Properties
-
-- [ALL](SigHash.md#all)
-- [ANYONECANPAY\_ALL](SigHash.md#anyonecanpay_all)
-- [ANYONECANPAY\_NONE](SigHash.md#anyonecanpay_none)
-- [ANYONECANPAY\_SINGLE](SigHash.md#anyonecanpay_single)
-- [NONE](SigHash.md#none)
-- [SINGLE](SigHash.md#single)
-
-### Methods
-
-- [hashOutputs](SigHash.md#hashoutputs)
-- [hashPrevouts](SigHash.md#hashprevouts)
-- [hashSequence](SigHash.md#hashsequence)
-- [nLocktime](SigHash.md#nlocktime)
-- [nLocktimeRaw](SigHash.md#nlocktimeraw)
-- [nSequence](SigHash.md#nsequence)
-- [nSequenceRaw](SigHash.md#nsequenceraw)
-- [nVersion](SigHash.md#nversion)
-- [outpoint](SigHash.md#outpoint)
-- [scriptCode](SigHash.md#scriptcode)
-- [sigHashType](SigHash.md#sighashtype)
-- [value](SigHash.md#value)
-- [valueRaw](SigHash.md#valueraw)
-
 ## Constructors
 
-### constructor
+### new SigHash()
 
-• **new SigHash**()
+> **new SigHash**(): [`SigHash`](SigHash.md)
+
+#### Returns
+
+[`SigHash`](SigHash.md)
 
 ## Properties
 
 ### ALL
 
-▪ `Static` `Readonly` **ALL**: [`SigHashType`](../README.md#sighashtype)
+> `readonly` `static` **ALL**: [`SigHashType`](../type-aliases/SigHashType.md)
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:985
 
-dist/smart-contract/builtins/functions.d.ts:985
-
-___
+***
 
 ### ANYONECANPAY\_ALL
 
-▪ `Static` `Readonly` **ANYONECANPAY\_ALL**: [`SigHashType`](../README.md#sighashtype)
+> `readonly` `static` **ANYONECANPAY\_ALL**: [`SigHashType`](../type-aliases/SigHashType.md)
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:988
 
-dist/smart-contract/builtins/functions.d.ts:988
-
-___
+***
 
 ### ANYONECANPAY\_NONE
 
-▪ `Static` `Readonly` **ANYONECANPAY\_NONE**: [`SigHashType`](../README.md#sighashtype)
+> `readonly` `static` **ANYONECANPAY\_NONE**: [`SigHashType`](../type-aliases/SigHashType.md)
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:989
 
-dist/smart-contract/builtins/functions.d.ts:989
-
-___
+***
 
 ### ANYONECANPAY\_SINGLE
 
-▪ `Static` `Readonly` **ANYONECANPAY\_SINGLE**: [`SigHashType`](../README.md#sighashtype)
+> `readonly` `static` **ANYONECANPAY\_SINGLE**: [`SigHashType`](../type-aliases/SigHashType.md)
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:990
 
-dist/smart-contract/builtins/functions.d.ts:990
-
-___
+***
 
 ### NONE
 
-▪ `Static` `Readonly` **NONE**: [`SigHashType`](../README.md#sighashtype)
+> `readonly` `static` **NONE**: [`SigHashType`](../type-aliases/SigHashType.md)
 
-#### Defined in
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:986
 
-dist/smart-contract/builtins/functions.d.ts:986
-
-___
+***
 
 ### SINGLE
 
-▪ `Static` `Readonly` **SINGLE**: [`SigHashType`](../README.md#sighashtype)
+> `readonly` `static` **SINGLE**: [`SigHashType`](../type-aliases/SigHashType.md)
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:987
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:987
 
 ## Methods
 
-### hashOutputs
+### hashOutputs()
 
-▸ `Static` **hashOutputs**(`preimage`): [`ByteString`](../README.md#bytestring)
+> `static` **hashOutputs**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1050
 
 get hashOutputs of the transaction from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return hashOutputs `ByteString` in 32-byte hash
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1050
+### hashPrevouts()
 
-___
+> `static` **hashPrevouts**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### hashPrevouts
-
-▸ `Static` **hashPrevouts**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1002
 
 get hashPrevouts of the transaction from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return hashPrevouts `ByteString` in 32-byte little endian
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1002
+### hashSequence()
 
-___
+> `static` **hashSequence**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### hashSequence
-
-▸ `Static` **hashSequence**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1008
 
 get hashSequence of the transaction from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return hashSequence `ByteString` in 32-byte little endian
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1008
+### nLocktime()
 
-___
+> `static` **nLocktime**(`preimage`): `bigint`
 
-### nLocktime
-
-▸ `Static` **nLocktime**(`preimage`): `bigint`
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1062
 
 get nLocktime of the transaction from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
@@ -195,47 +166,47 @@ get nLocktime of the transaction from the preimage
 
 return nLocktime
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1062
+### nLocktimeRaw()
 
-___
+> `static` **nLocktimeRaw**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### nLocktimeRaw
-
-▸ `Static` **nLocktimeRaw**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1056
 
 get nLocktime of the transaction from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return nLocktime `ByteString` in 4-byte little endian
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1056
+### nSequence()
 
-___
+> `static` **nSequence**(`preimage`): `bigint`
 
-### nSequence
-
-▸ `Static` **nSequence**(`preimage`): `bigint`
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1044
 
 nSequence of the input from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
@@ -243,143 +214,143 @@ nSequence of the input from the preimage
 
 return nSequence
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1044
+### nSequenceRaw()
 
-___
+> `static` **nSequenceRaw**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### nSequenceRaw
-
-▸ `Static` **nSequenceRaw**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1038
 
 nSequence of the input from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return nSequence `ByteString` in 4-byte little endian
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1038
+### nVersion()
 
-___
+> `static` **nVersion**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### nVersion
-
-▸ `Static` **nVersion**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:996
 
 get version of the transaction from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return version `ByteString` in 4-byte little endian
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:996
+### outpoint()
 
-___
+> `static` **outpoint**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### outpoint
-
-▸ `Static` **outpoint**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1014
 
 get outpoint of the transaction from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return outpoint `ByteString` in 32-byte hash + 4-byte little endian
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1014
+### scriptCode()
 
-___
+> `static` **scriptCode**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### scriptCode
-
-▸ `Static` **scriptCode**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1020
 
 get scriptCode of the transaction from the preimage. scriptCode is just scriptPubKey if there is no CODESEPARATOR in the latter
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return scriptCode `ByteString`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1020
+### sigHashType()
 
-___
+> `static` **sigHashType**(`preimage`): [`SigHashType`](../type-aliases/SigHashType.md)
 
-### sigHashType
-
-▸ `Static` **sigHashType**(`preimage`): [`SigHashType`](../README.md#sighashtype)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1068
 
 sighash type of the signature from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`SigHashType`](../README.md#sighashtype)
+[`SigHashType`](../type-aliases/SigHashType.md)
 
 return sighash type
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1068
+### value()
 
-___
+> `static` **value**(`preimage`): `bigint`
 
-### value
-
-▸ `Static` **value**(`preimage`): `bigint`
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1032
 
 get value of the output spent by this input from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
@@ -387,30 +358,26 @@ get value of the output spent by this input from the preimage
 
 return value
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/functions.d.ts:1032
+### valueRaw()
 
-___
+> `static` **valueRaw**(`preimage`): [`ByteString`](../type-aliases/ByteString.md)
 
-### valueRaw
-
-▸ `Static` **valueRaw**(`preimage`): [`ByteString`](../README.md#bytestring)
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1026
 
 get value of the output spent by this input from the preimage
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `preimage` | [`SigHashPreimage`](../README.md#sighashpreimage) | the preimage |
+##### preimage
+
+[`SigHashPreimage`](../type-aliases/SigHashPreimage.md)
+
+the preimage
 
 #### Returns
 
-[`ByteString`](../README.md#bytestring)
+[`ByteString`](../type-aliases/ByteString.md)
 
 return value `ByteString` in 8-byte little endian
-
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1026

@@ -1,36 +1,31 @@
-[scrypt-ts](../README.md) / SignTransactionOptions
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / SignTransactionOptions
 
 # Interface: SignTransactionOptions
 
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:47
+
 `SignTransactionOptions` is the options can be provided when signing a transaction.
-
-## Table of contents
-
-### Properties
-
-- [address](SignTransactionOptions.md#address)
-- [sigRequests](SignTransactionOptions.md#sigrequests)
 
 ## Properties
 
-### address
+### address?
 
-• `Optional` **address**: [`AddressesOption`](../README.md#addressesoption)
+> `optional` **address**: [`AddressesOption`](../type-aliases/AddressesOption.md)
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:51
 
 The address(es) whose corresponding private key(s) should be used to sign the tx.
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:50
+### sigRequests?
 
-___
+> `optional` **sigRequests**: [`SignatureRequest`](SignatureRequest.md)[]
 
-### sigRequests
-
-• `Optional` **sigRequests**: [`SignatureRequest`](SignatureRequest.md)[]
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:49
 
 The `SignatureRequest` for the some inputs of the transaction.
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:48

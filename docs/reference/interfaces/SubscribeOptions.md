@@ -1,65 +1,55 @@
-[scrypt-ts](../README.md) / SubscribeOptions
+[**scrypt-ts**](../README.md)
 
-# Interface: SubscribeOptions<T\>
+***
+
+[scrypt-ts](../globals.md) / SubscribeOptions
+
+# Interface: SubscribeOptions\<T\>
+
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:6
 
 A options can be used to subscribe
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
-
-## Table of contents
-
-### Properties
-
-- [clazz](SubscribeOptions.md#clazz)
-- [id](SubscribeOptions.md#id)
-- [methodNames](SubscribeOptions.md#methodnames)
+• **T**
 
 ## Properties
 
-### clazz
+### clazz()
 
-• **clazz**: (...`args`: `any`) => `T`
+> **clazz**: (...`args`) => `T`
 
-#### Type declaration
-
-• **new clazz**(`...args`)
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:10
 
 Contract typescript class
 
-##### Parameters
+#### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any` |
+##### args
 
-#### Defined in
+...`any`
 
-dist/client/apis/contract-api.d.ts:10
+#### Returns
 
-___
+`T`
+
+***
 
 ### id
 
-• **id**: [`ContractId`](../README.md#contractid)
+> **id**: [`ContractId`](../type-aliases/ContractId.md)
+
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:8
 
 Contract id
 
-#### Defined in
+***
 
-dist/client/apis/contract-api.d.ts:8
+### methodNames?
 
-___
+> `optional` **methodNames**: `string`[]
 
-### methodNames
-
-• `Optional` **methodNames**: `string`[]
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:12
 
 Use `methodNames` to specify that only receive events when specific methods are called. The default is to notify when all methods are called
-
-#### Defined in
-
-dist/client/apis/contract-api.d.ts:12

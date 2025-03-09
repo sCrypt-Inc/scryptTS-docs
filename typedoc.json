@@ -1,0 +1,9 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["node_modules/scrypt-ts/dist/index.d.ts"],
+  "out": "docs/reference",
+  "plugin": ["typedoc-plugin-markdown"],
+  "excludePrivate": true,
+  "excludeExternals": false,
+  "hideGenerator": true
+}
