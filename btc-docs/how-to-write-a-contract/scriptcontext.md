@@ -191,7 +191,7 @@ You can directly access the context through `this.ctx` in any public `@method`. 
 The example below accesses the [spentScript](https://learnmeabitcoin.com/technical/locktime) of the spending transaction. 
 
 ```ts
-import { assert, ByteString, sha256, method, SmartContract, Utils } from '@scrypt-inc/scrypt-ts-btc';
+import { assert, ByteString, sha256, method, SmartContract, TxUtils } from '@scrypt-inc/scrypt-ts-btc';
 
 export class Clone extends SmartContract {
   constructor() {
@@ -208,7 +208,7 @@ export class Clone extends SmartContract {
 
 
     // output containing the latest state
-    const output: ByteString = Utils.buildOutput(script, amount);
+    const output: ByteString = TxUtils.buildOutput(script, amount);
     // verify current tx has this single output
     assert(this.ctx.shaOutputs == sha256(output), 'shaOutputs mismatch');
   }
@@ -223,7 +223,7 @@ The following example ensures both Alice and Bob get 1000 satoshis from the cont
 
 ```ts
 
-import { method, prop, SmartContract, assert, Addr, ByteString, Utils, sha256 } from '@scrypt-inc/scrypt-ts-btc';
+import { method, prop, SmartContract, assert, Addr, ByteString, TxUtils, sha256 } from '@scrypt-inc/scrypt-ts-btc';
 
 export class DesignatedReceivers extends SmartContract {
     @prop()
@@ -240,8 +240,8 @@ export class DesignatedReceivers extends SmartContract {
 
     @method()
     public payout() {
-        const aliceOutput: ByteString = Utils.buildP2PKHOutput(this.alice, Utils.toSatoshis(1000n))
-        const bobOutput: ByteString = Utils.buildP2PKHOutput(this.bob, Utils.toSatoshis(1000n))
+        const aliceOutput: ByteString = TxUtils.buildP2PKHOutput(this.alice, TxUtils.toSatoshis(1000n))
+        const bobOutput: ByteString = TxUtils.buildP2PKHOutput(this.bob, TxUtils.toSatoshis(1000n))
         let outputs = aliceOutput + bobOutput
 
         // require a change output

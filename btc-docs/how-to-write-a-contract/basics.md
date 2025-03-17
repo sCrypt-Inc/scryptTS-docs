@@ -485,6 +485,40 @@ function printCoord(pt: Point2) {
 
 ```
 
+#### `state`
+
+The state of a contract is a User-defined `interface`, but it must extend `StructObject`.
+
+```ts
+export interface CounterState extends StructObject {
+    count: Int32;
+}
+```
+
+Use this User-defined type as a generic parameter when defining a [stateful](./stateful-contract.md) `SmartContract`.
+
+```ts
+export class Counter extends SmartContract<CounterState> {
+    @method()
+    public increase() {
+        this.state.count++;
+
+        this.appendStateOutput(
+            // new output of the contract
+            TxUtils.buildOutput(this.ctx.spentScript, this.ctx.spentAmount),
+            // new state hash of the contract
+            Counter.stateHash(this.state),
+        );
+
+        const outputs = this.buildStateOutputs() + this.buildChangeOutput();
+
+        assert(sha256(outputs) === this.ctx.shaOutputs, `output hash mismatch`);
+    }
+}
+
+```
+
+
 [^2]: A user-defined type is also passed by value on chain, and by reference off chain, same as a `FixedArray`. It is thus strongly recommended to NEVER mutate the field of a parameter, which is of a user-defined type, inside a function.
 
 #### `enum`
@@ -512,41 +546,17 @@ export enum Status {
 }
 
 
-// export class Enum extends SmartContract {
-//     @prop(true)
-//     status: Status
+export class Enum extends SmartContract {
 
-//     constructor() {
-//         super(...arguments)
-//         this.status = Status.Pending
-//     }
+    constructor() {
+        super(...arguments)
+    }
 
-//     @method()
-//     get(): Status {
-//         return this.status
-//     }
-
-//     // Update status by passing Int into input
-//     @method()
-//     set(status: Status): void {
-//         this.status = status
-//     }
-
-//     @method()
-//     public unlock() {
-//         let s = this.get()
-//         assert(s == Status.Pending, 'invalid status')
-
-//         this.set(Status.Accepted)
-
-//         s = this.get()
-
-//         assert(s == Status.Accepted, 'invalid status')
-
-//         assert(this.ctx.shaOutputs == hash256(this.buildStateOutput(this.ctx.utxo.value)),
-//                 'hashOutputs check failed')
-//     }
-// }
+    @method()
+    public unlock(s: Status) {
+        assert(s == Status.Accepted, 'invalid status')
+    }
+}
 ```
 
 :::note
