@@ -210,7 +210,7 @@ export class Clone extends SmartContract {
     // output containing the latest state
     const output: ByteString = TxUtils.buildOutput(script, amount);
     // verify current tx has this single output
-    assert(this.ctx.shaOutputs == sha256(output), 'shaOutputs mismatch');
+    assert(this.checkOutputs(output), 'Outputs mismatch with the transaction context')
   }
 }
 ```

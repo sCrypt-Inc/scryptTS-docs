@@ -117,8 +117,86 @@ export class Counter extends SmartContract<CounterState> {
 
         const outputs = this.buildStateOutputs() + this.buildChangeOutput();
 
-        assert(sha256(outputs) === this.ctx.shaOutputs, `output hash mismatch`);
+        assert(sha256(outputs) === this.ctx.shaOutputs, `outputs hash mismatch`);
     }
+}
+```
+
+## Common state in diffrent contract
+
+But when you access the same state in different contracts, you need to use `StateLib` instead of `Counter.stateHash(this.state)`.
+
+
+```ts
+export class CounterStateLib extends StateLib<CounterState> {
+  @method()
+  static checkState(s: CounterState): void {
+    assert(s.count >= 0n, 'Invalid count');
+  }
+}
+```
+
+
+Next, we modify the `Counter` contract. When the `count` state increases to `10`, we hand over the state of the contract to another contract `UnCounter` for maintenance. 
+
+
+```ts
+
+export class Counter extends SmartContract<CounterState> {
+
+  unCounterScript: ByteString;
+  @method()
+  public increase() {
+
+
+    if (this.state.count < 10) {
+      this.state.count++;
+
+
+      this.appendStateOutput(
+        // new output of the contract
+        TxUtils.buildOutput(this.ctx.spentScript, this.ctx.spentAmount),
+        // new state hash of the contract
+        // CounterStateLib.stateHash(this.state),
+        CounterStateLib.stateHash(this.state),
+      );
+
+      const outputs = this.buildStateOutputs() + this.buildChangeOutput();
+
+      assert(this.checkOutputs(outputs), 'Outputs mismatch with the transaction context')
+    } else {
+      assert(this.ctx.spentScripts[1] === this.unCounterScript);
+    }
+
+  }
+}
+```
+
+`UnCounter` counts down the `count` state.
+
+```ts
+
+export class UnCounter extends SmartContract<CounterState> {
+
+  @method()
+  public decrease(
+    counterState: CounterState,
+  ) {
+    const counterInputVal = 0n;
+    // check the counter state
+    this.checkInputState(counterInputVal, CounterStateLib.stateHash(counterState));
+    
+    counterState.count--;
+
+    this.appendStateOutput(
+      TxUtils.buildOutput(this.ctx.spentScripts[Number(counterInputVal)], this.ctx.spentAmounts[Number(counterInputVal)]),
+      CounterStateLib.stateHash(counterState),
+    );
+
+    const outputs = this.buildStateOutputs() + this.buildChangeOutput();
+
+    assert(this.checkOutputs(outputs), 'Outputs mismatch with the transaction context')
+  }
 }
 ```
 
