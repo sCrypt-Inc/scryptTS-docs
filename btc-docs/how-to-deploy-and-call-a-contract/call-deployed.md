@@ -56,9 +56,7 @@ console.log(`Counter deployed: ${deployTx.id}, the count is: ${counter.state.cou
 
 The function deploys the contract with a initial state `0n` and returns the transaction of the deployed contract.
 
-## Interact with buildins function `call()`
-
-### Default
+## Interact with call feature
 
 Next, we update our deployed smart contract by calling the `call()` function:
 
@@ -145,7 +143,7 @@ Counter covenant called: 68da33af2c64657de41dfcd9c525f3f8c37cffd28be8a4a5374bc8e
 Counter covenant called: 24033524f0bceb18172f9bbb4c3baecdcf8f04e233bd13ed27c9061e0f224d4d, the count now is: 5
 ```
 
-### Customize
+## Interact with customize transaction
 
 For more complex covenants, you may need to build your own transaction to complete the call to covenant. The following code shows how to construct a transaction to call the `Counter` covenant:
 
