@@ -154,8 +154,6 @@ public bid(bidder: Addr, bid: Int32, spentAmountVal: Int32) {
 
     const outputs: ByteString = this.buildStateOutputs() + refundOutput + this.buildChangeOutput();
 
-    this.debug.diffOutputs(outputs)
-
     assert(this.checkOutputs(outputs), 'mismatch outputs');
 }
 ```
@@ -197,13 +195,11 @@ public close(sig: Sig) {
 
 ## Customize tx for `bid`
 
-Using [default tx builder](../how-to-deploy-and-call-a-contract/how-to-customize-a-contract-tx.md#default-1) cannot meet our demand when calling `bid`, since the second output - the refund P2PKH output - is not a new contract instance.
+Using [default call feature](../how-to-deploy-and-call-a-contract/call-deployed#interact-with-call-feature) cannot meet our demand when calling `bid`, since the second output - the refund P2PKH output - is not a new contract instance.
 
 In below function, we add all three outputs as designed.
 
 ```ts
-
-
 
 export async function call(
     signer: Signer,
@@ -216,15 +212,16 @@ export async function call(
 
     const utxos = await provider.getUtxos(address);
 
+    // add contract input
     const psbt = new ExtPsbt().addCovenantInput(covenant).spendUTXO(utxos);
 
     const highest = BigInt(covenant.utxo!.satoshis)
 
     const bid = highest + 100n;
     const newCovenant = covenant.next({ bidder: newbidder });
-
+    // build next covenant output
     psbt.addCovenantOutput(newCovenant, Number(bid));
-
+    // build refund output
     psbt.addOutput({
         script: hexToUint8Array(TxUtils.buildP2PKHScript(newbidder)),
         value: BigInt(highest),
@@ -233,11 +230,10 @@ export async function call(
 
     psbt.updateCovenantInput(0, covenant, {
         invokeMethod: (contract: Auction) => {
-
             contract.bid(newbidder, bid, highest)
         },
     });
-
+    // build change output
     psbt.change(address, feeRate).seal();
 
     const options = psbt.psbtOptions() || {
