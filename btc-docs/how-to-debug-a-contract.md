@@ -57,5 +57,8 @@ You can use VS Code to debug sCrypt contracts, the same way as any other TypeScr
 ## Debug a ScriptContext Failure
 One common failure is caused by IContext assertions, like
 ```typescript
-assert(this.ctx.shaOutputs == sha256(outputs), 'shaOutputs mismatch')
+assert(this.checkOutputs(outputs), 'mismatch outputs');
 ```
+
+Refer to [this guide](advanced/how-to-debug-scriptcontext.md) to debug such failures.
+

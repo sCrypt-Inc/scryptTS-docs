@@ -80,17 +80,20 @@ const outputs = this.buildStateOutputs() + this.buildChangeOutput();
 assert(sha256(outputs) === this.ctx.shaOutputs, `output hash mismatch`);
 ```
 
+This line of code will ensure that the contract locking script remains unchanged:
 
-```TxUtils.buildOutput(this.ctx.spentScript, this.ctx.spentAmount)``` This line of tokens will ensure that the contract lock script does not change.
+```ts
+TxUtils.buildOutput(this.ctx.spentScript, this.ctx.spentAmount)
+```
 
-The built-in function `Counter.stateHash()` can calculate the hash value of the contract state. This hash value will be stored in an `OP_RETURN` output.
+The built-in function `Counter.stateHash()` calculates the hash value of the contract state, which will then be stored in an OP_RETURN output.
 
-The built-in function `this.appendStateOutput()` creates two outputs:
+The built-in function `appendStateOutput()` creates two outputs:
 
-1. an `OP_RETURN` output containing the latest state hash.
-2. an output containing the same locking script of the contract
+1. an `OP_RETURN` output that holds the latest state hash.
+2. an output containing the contract's locking script.
 
-The built-in function `this.buildStateOutputs()` returns these two outputs.  The built-in function `this.buildChangeOutput()` creates a P2TR change output when necessary. It will calculate the change amount automatically, and use the signer's address by default.
+The built-in function `buildStateOutputs()` returns these two outputs.  The built-in function `buildChangeOutput()` creates a change output when necessary. It will calculate the change amount automatically, and use the signer's address by default.
 
 If all outputs we create in the contract hashes to `shaOutputs` in [ScriptContext](scriptcontext.md), we can be sure they are the outputs of the current transaction. Therefore, the updated state is propagated.
 
@@ -117,15 +120,14 @@ export class Counter extends SmartContract<CounterState> {
 
         const outputs = this.buildStateOutputs() + this.buildChangeOutput();
 
-        assert(sha256(outputs) === this.ctx.shaOutputs, `outputs hash mismatch`);
+        assert(this.checkOutputs(outputs), 'outputs mismatch')
     }
 }
 ```
 
-## Common state in diffrent contract
+## Shared state across different contracts
 
-But when you access the same state in different contracts, you need to use `StateLib` instead of `Counter.stateHash(this.state)`.
-
+When you access the same state in different contracts, you need to use `StateLib` instead of `Counter.stateHash(this.state)`.
 
 ```ts
 export class CounterStateLib extends StateLib<CounterState> {
@@ -137,8 +139,7 @@ export class CounterStateLib extends StateLib<CounterState> {
 ```
 
 
-Next, we modify the `Counter` contract. When the `count` state increases to `10`, we hand over the state of the contract to another contract `UnCounter` for maintenance. 
-
+Next, we modify the `Counter` contract. When the `count` state reaches `10`, we transfer the contract's state to another contract, `UnCounter`, for maintenance.
 
 ```ts
 
@@ -163,7 +164,7 @@ export class Counter extends SmartContract<CounterState> {
 
       const outputs = this.buildStateOutputs() + this.buildChangeOutput();
 
-      assert(this.checkOutputs(outputs), 'Outputs mismatch with the transaction context')
+      assert(this.checkOutputs(outputs), 'outputs mismatch')
     } else {
       assert(this.ctx.spentScripts[1] === this.unCounterScript);
     }
@@ -172,7 +173,7 @@ export class Counter extends SmartContract<CounterState> {
 }
 ```
 
-`UnCounter` counts down the `count` state.
+`UnCounter` decrements the `count` state.
 
 ```ts
 
@@ -195,7 +196,7 @@ export class UnCounter extends SmartContract<CounterState> {
 
     const outputs = this.buildStateOutputs() + this.buildChangeOutput();
 
-    assert(this.checkOutputs(outputs), 'Outputs mismatch with the transaction context')
+    assert(this.checkOutputs(outputs), 'outputs mismatch')
   }
 }
 ```
