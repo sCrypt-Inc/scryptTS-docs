@@ -236,19 +236,7 @@ export async function call(
     // build change output
     psbt.change(address, feeRate).seal();
 
-    const options = psbt.psbtOptions() || {
-        autoFinalized: false,
-        toSignInputs: [],
-    };
-
-    utxos.forEach((_, index) => {
-        options.toSignInputs.push({
-            index: index + 1,
-            address: address,
-        });
-    });
-
-    const signedPsbtHex = await signer.signPsbt(psbt.toHex(), options);
+    const signedPsbtHex = await signer.signPsbt(psbt.toHex(), psbt.psbtOptions());
     const signedPsbt = psbt.combine(ExtPsbt.fromHex(signedPsbtHex)).finalizeAllInputs();
     const callTx = signedPsbt.extractTransaction();
     markSpent(provider, callTx);
@@ -303,8 +291,8 @@ export class Auction extends SmartContract<AuctionState> {
 
         // auction continues with a higher bidder
         this.appendStateOutput(
-        TxUtils.buildOutput(this.ctx.spentScript, TxUtils.toSatoshis(bid)),
-        Auction.stateHash(this.state),
+            TxUtils.buildOutput(this.ctx.spentScript, TxUtils.toSatoshis(bid)),
+            Auction.stateHash(this.state),
         );
 
         const refundScript: ByteString = TxUtils.buildP2PKHScript(hash160(highestBidder));
