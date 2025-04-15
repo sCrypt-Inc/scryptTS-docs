@@ -111,15 +111,16 @@ export type SHPreimage = {
   codeSepPos: ByteString;
 
   /**
-   * @ignore
-   * e without last byte
+   * 31 bytes
+   * e is sha256 of the sighash, but without last byte
    */
-  _e: ByteString;
+  _eWithoutLastByte: ByteString;
 
   /**
-   * @ignore
+   * 1 bytes
+   * last byte of e
    */
-  eLastByte: Int32;
+  _eLastByte: Int32;
 };
 
 /**
@@ -174,15 +175,133 @@ export type SpentScriptsCtx = FixedArray<ByteString, typeof MAX_INPUT>;
  */
 export type SpentAmountsCtx = FixedArray<ByteString, typeof MAX_INPUT>;
 
-export interface IContext extends SHPreimage, PrevoutsCtx {
+
+/**
+ * Same as `CompactTxHashPreimage`, but can more easily parse out the HashRoot contained in the transaction
+ */
+export type HashRootTxHashPreimage = {
+  // version
+  version: ByteString;
+  // the number of inputs
+  inputCountVal: Int32;
+  // input list, each element represents an individual input
+  inputList: FixedArray<ByteString, typeof TX_INPUT_COUNT_MAX>;
+  // the number of outputs
+  outputCountVal: Int32;
+  // state hash root, used to build the first output
+  hashRoot: ByteString;
+  // suffixes, including outputs except for the first output, and lock time,
+  // elements are split by byte length
+  suffixList: FixedArray<ByteString, typeof TX_HASH_PREIMAGE2_SUFFIX_ARRAY_SIZE>;
+};
+
+/**
+ * A structure used to verify the contract state contained in the input
+ */
+export type InputStateProof = {
   /**
-   * @type {SpentScriptsCtx}
+   * @type {HashRootTxHashPreimage}
+   * the preimage of the previous transaction
    */
-  spentScripts: SpentScriptsCtx;
+  txHashPreimage: HashRootTxHashPreimage;
+
   /**
-   * @type {SpentAmountsCtx}
+   * @type {Int32}
+   * index of this output in the transaction output vector. Starts from 0.
    */
-  spentAmounts: SpentScriptsCtx;
+  outputIndexVal: Int32;
+
+  /**
+   * @type {StateHashes}
+   * the txo state hashes of the previous transaction
+   */
+  stateHashes: StateHashes;
+};
+
+
+/**
+ * A array representing all input state proofs
+ */
+export type InputStateProofs = FixedArray<InputStateProof, typeof TX_INPUT_COUNT_MAX>;
+
+
+/**
+ * The context derived from other context for the current input.
+ */
+type DerivedCtx = {
+  /**
+   * @type {Int32}
+   * input count of the current transaction
+   */
+  inputCount: Int32;
+
+  /**
+   * @type {Outpoint}
+   * The outpoint of the current input.
+   */
+  prevout: Outpoint;
+
+  /**
+   * @type {ByteString}
+   * The locking script of the current input.
+   */
+  spentScript: ByteString;
+
+  /**
+   * @type {ByteString}
+   * The amount of the current input.
+   */
+  spentAmount: ByteString;
+
+  /**
+   * @type {InputStateProof}
+   * The state proof of the current input.
+   */
+  inputStateProof: InputStateProof;
+};
+
+
+
+/**
+ * The context of the current contract, can be accessed by `this.ctx` in the contract.
+ */
+export interface IContext extends SHPreimage, DerivedCtx {
+  /**
+   * @type {Int32}
+   * Index of this input in the transaction input vector. Starts from 0.
+   */
+  inputIndexVal: Int32;
+
+  /**
+   * @type {FixedArray<Outpoint, typeof TX_INPUT_COUNT_MAX>}
+   * prevouts is an array of the previous outpoints.
+   * each non-empty element is a ByteString of 36 bytes, which is the concatenation of txid and index.
+   */
+  prevouts: Prevouts;
+
+  /**
+   * @type {SpentScripts}
+   *
+   */
+  spentScripts: SpentScripts;
+
+  /**
+   * @type {SpentAmounts}
+   *
+   */
+  spentAmounts: SpentAmounts;
+
+  /**
+   * @type {StateHashes}
+   * The hashes of the next(new) states in the outputs of the current transaction.
+   */
+  nextStateHashes: StateHashes;
+
+  /**
+   * @type {InputStateProofs}
+   * The state proofs of the inputs.
+   */
+  inputStateProofs: InputStateProofs;
 }
 ```
 
@@ -191,7 +310,7 @@ You can directly access the context through `this.ctx` in any public `@method`. 
 The example below accesses the [spentScript](https://learnmeabitcoin.com/technical/locktime) of the spending transaction. 
 
 ```ts
-import { assert, ByteString, sha256, method, SmartContract, Utils } from '@scrypt-inc/scrypt-ts-btc';
+import { assert, ByteString, sha256, method, SmartContract, TxUtils } from '@scrypt-inc/scrypt-ts-btc';
 
 export class Clone extends SmartContract {
   constructor() {
@@ -208,9 +327,9 @@ export class Clone extends SmartContract {
 
 
     // output containing the latest state
-    const output: ByteString = Utils.buildOutput(script, amount);
+    const output: ByteString = TxUtils.buildOutput(script, amount);
     // verify current tx has this single output
-    assert(this.ctx.shaOutputs == sha256(output), 'shaOutputs mismatch');
+    assert(this.checkOutputs(output), 'Outputs mismatch with the transaction context')
   }
 }
 ```
@@ -223,7 +342,7 @@ The following example ensures both Alice and Bob get 1000 satoshis from the cont
 
 ```ts
 
-import { method, prop, SmartContract, assert, Addr, ByteString, Utils, sha256 } from '@scrypt-inc/scrypt-ts-btc';
+import { method, prop, SmartContract, assert, Addr, ByteString, TxUtils, sha256 } from '@scrypt-inc/scrypt-ts-btc';
 
 export class DesignatedReceivers extends SmartContract {
     @prop()
@@ -240,8 +359,8 @@ export class DesignatedReceivers extends SmartContract {
 
     @method()
     public payout() {
-        const aliceOutput: ByteString = Utils.buildP2PKHOutput(this.alice, Utils.toSatoshis(1000n))
-        const bobOutput: ByteString = Utils.buildP2PKHOutput(this.bob, Utils.toSatoshis(1000n))
+        const aliceOutput: ByteString = TxUtils.buildP2PKHOutput(this.alice, TxUtils.toSatoshis(1000n))
+        const bobOutput: ByteString = TxUtils.buildP2PKHOutput(this.bob, TxUtils.toSatoshis(1000n))
         let outputs = aliceOutput + bobOutput
 
         // require a change output

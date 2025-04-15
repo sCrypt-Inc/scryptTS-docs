@@ -285,30 +285,30 @@ To learn more about time locks, see the [dedicated doc section](../advanced/time
 
 `sCrypt` comes with standard libraries that define many commonly used functions.
 
-### `Utils`
+### `TxUtils`
 
-The `Utils` library provides a set of commonly used utility functions.
+The `TxUtils` library provides a set of commonly used utility functions.
 
 
 - `static buildOutput(outputScript: ByteString, outputSatoshis: ByteString): ByteString` Build a transaction output with the specified script and satoshi amount.
 
 ```ts
 const lockingScript = toByteString('01020304')
-Utils.buildOutput(lockingScript, toByteString('0100000000000000')) // '01000000000000000401020304'
+TxUtils.buildOutput(lockingScript, toByteString('0100000000000000')) // '01000000000000000401020304'
 ```
 
 - `static buildP2PKHScript(pubKeyHash: PubKeyHash ): ByteString` Build a [Pay to Public Key Hash (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash) script from a public key hash / address.
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildP2PKHScript(address) // '76a914001122334455667788990011223344556677889988ac'
+TxUtils.buildP2PKHScript(address) // '76a914001122334455667788990011223344556677889988ac'
 ```
 
 - `static buildP2PKHOutput(pubKeyHash: PubKeyHash, amount: ByteString): ByteString` Build a P2PKH output from the public key hash.
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildP2PKHOutput(address, toByteString('0100000000000000')) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
+TxUtils.buildP2PKHOutput(address, toByteString('0100000000000000')) // '01000000000000001976a914001122334455667788990011223344556677889988ac'
 ```
 
 
@@ -316,14 +316,14 @@ Utils.buildP2PKHOutput(address, toByteString('0100000000000000')) // '0100000000
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildP2WPKHScript(address) // '00140011223344556677889900112233445566778899'
+TxUtils.buildP2WPKHScript(address) // '00140011223344556677889900112233445566778899'
 ```
 
 - `static buildP2WPKHOutput(pubKeyHash: PubKeyHash, amount: ByteString): ByteString` Build a P2PKH output from the public key hash.
 
 ```ts
 const address = Addr(toByteString('0011223344556677889900112233445566778899'))
-Utils.buildP2WPKHOutput(address, toByteString('0100000000000000')) // '01000000000000003000140011223344556677889900112233445566778899'
+TxUtils.buildP2WPKHOutput(address, toByteString('0100000000000000')) // '01000000000000003000140011223344556677889900112233445566778899'
 ```
 
 
@@ -331,14 +331,14 @@ Utils.buildP2WPKHOutput(address, toByteString('0100000000000000')) // '010000000
 
 ```ts
 const pubKey = XOnlyPubKey(toByteString('cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'))
-Utils.buildP2TRScript(pubKey) // '5120cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'
+TxUtils.buildP2TRScript(pubKey) // '5120cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'
 ```
 
 - `static buildP2TROutput(pubKey: XOnlyPubKey, amount: ByteString): ByteString` Build a P2PKH output from the public key hash.
 
 ```ts
 const pubKey = XOnlyPubKey(toByteString('cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'))
-Utils.buildP2TROutput(pubKey, toByteString('0100000000000000')) // '0100000000000000445120cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'
+TxUtils.buildP2TROutput(pubKey, toByteString('0100000000000000')) // '0100000000000000445120cb83ce14e6fcca547b00aaa64b99a533c3354bb24d49ceefca7b0cf856d13b64'
 ```
 
 
@@ -346,5 +346,5 @@ Utils.buildP2TROutput(pubKey, toByteString('0100000000000000')) // '010000000000
 
 ```ts
 const data = toByteString('hello world', true)
-Utils.buildOpreturnOutput(data) // '6a0b68656c6c6f20776f726c64'
+TxUtils.buildOpreturnOutput(data) // '6a0b68656c6c6f20776f726c64'
 ```

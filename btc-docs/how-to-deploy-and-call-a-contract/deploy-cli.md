@@ -29,7 +29,6 @@ Here's an example of such a deployment file:
 import { Demo } from './src/contracts/demo'
 import * as dotenv from 'dotenv'
 import { getDefaultProvider, getDefaultSigner } from './tests/utils/txHelper';
-import { readArtifact } from '@scrypt-inc/scrypt-ts-transpiler-btc';
 import { Covenant, deploy, sha256, toByteString } from '@scrypt-inc/scrypt-ts-btc';
 
 import * as dotenv from 'dotenv'
@@ -38,8 +37,6 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 async function main() {
-    const artifact = readArtifact(Demo);
-    Demo.loadArtifact(artifact)
     const covenant = Covenant.createCovenant(new Demo(sha256(toByteString("hello world", true))))
 
     const provider = getDefaultProvider();
