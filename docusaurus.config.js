@@ -33,8 +33,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
-          sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/bsv-docs',
+          sidebarPath: require.resolve('./docs/sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -58,15 +58,14 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "overview",
             position: "left",
-            label: "BSV",
+            to: "/overview",
+            label: "BTC",
           },
           {
             position: "left",
-            label: "BTC",
-            to: "/btc-docs/overview",
+            to: "/bsv-docs/overview",
+            label: "BSV",
           },
           {
             /* Only visible under docs. See src/custom/custom.css */
@@ -115,8 +114,8 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'btc-docs',
-        path: 'btc-docs',
-        routeBasePath: 'btc-docs',
+        path: './btc-docs',
+        routeBasePath: '/',
         sidebarPath: './btc-docs/sidebars.js',
         // showLastUpdateAuthor: true,
         // showLastUpdateTime: true,

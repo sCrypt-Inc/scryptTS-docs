@@ -1,5 +1,6 @@
 ---
-slug: /overview
+slug: /
+id: btc-overview
 sidebar_position: 1
 ---
 

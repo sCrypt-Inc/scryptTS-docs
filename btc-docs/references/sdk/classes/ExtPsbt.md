@@ -8,7 +8,7 @@
 
 Defined in: [packages/scrypt-ts-btc/src/psbt/extPsbt.ts:91](https://github.com/sCrypt-Inc/scrypt-btc-mono/blob/7d2760b2d3565565fcb011792878d3764e0701be/packages/scrypt-ts-btc/src/psbt/extPsbt.ts#L91)
 
-Extended [Psbt][https://docs.scrypt.io/btc-docs/references/bitcoinjs-lib/classes/Psbt](https://docs.scrypt.io/btc-docs/references/bitcoinjs-lib/classes/Psbt) class.
+Extended [Psbt][https://docs.scrypt.io/references/bitcoinjs-lib/classes/Psbt](https://docs.scrypt.io/references/bitcoinjs-lib/classes/Psbt) class.
 Used to construct transactions to unlock smart contracts.
 
 ## Extends

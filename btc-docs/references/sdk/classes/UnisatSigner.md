@@ -8,7 +8,7 @@
 
 Defined in: [packages/scrypt-ts-btc/src/signers/unisatSigner.ts:29](https://github.com/sCrypt-Inc/scrypt-btc-mono/blob/7d2760b2d3565565fcb011792878d3764e0701be/packages/scrypt-ts-btc/src/signers/unisatSigner.ts#L29)
 
-a [signer][https://docs.scrypt.io/btc-docs/how-to-deploy-and-call-a-contract/#signer](https://docs.scrypt.io/btc-docs/how-to-deploy-and-call-a-contract/#signer) which implemented the protocol with the [Unisat wallet][https://unisat.io](https://unisat.io),
+a [signer][https://docs.scrypt.io/how-to-deploy-and-call-a-contract/#signer](https://docs.scrypt.io/how-to-deploy-and-call-a-contract/#signer) which implemented the protocol with the [Unisat wallet][https://unisat.io](https://unisat.io),
 and dapps can use to interact with the Unisat wallet
 
 ## Implements
