@@ -1,53 +1,38 @@
-[scrypt-ts](../README.md) / ContractApi
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / ContractApi
 
 # Class: ContractApi
 
-## Table of contents
-
-### Constructors
-
-- [constructor](ContractApi.md#constructor)
-
-### Properties
-
-- [\_core](ContractApi.md#_core)
-
-### Methods
-
-- [getLatestInstance](ContractApi.md#getlatestinstance)
-- [subscribe](ContractApi.md#subscribe)
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:34
 
 ## Constructors
 
-### constructor
+### new ContractApi()
 
-• **new ContractApi**(`_core`)
+> **new ContractApi**(`_core`): [`ContractApi`](ContractApi.md)
+
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:36
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `_core` | `Core` |
+##### \_core
 
-#### Defined in
+`Core`
 
-dist/client/apis/contract-api.d.ts:36
+#### Returns
 
-## Properties
-
-### \_core
-
-• `Private` `Readonly` **\_core**: `any`
-
-#### Defined in
-
-dist/client/apis/contract-api.d.ts:35
+[`ContractApi`](ContractApi.md)
 
 ## Methods
 
-### getLatestInstance
+### getLatestInstance()
 
-▸ **getLatestInstance**<`T`\>(`clazz`, `contractId`): `Promise`<`T`\>
+> **getLatestInstance**\<`T`\>(`clazz`, `contractId`): `Promise`\<`T`\>
+
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:49
 
 Get a contract instance containing the latest state of the contract by the contract ID.
 The obtained contract instance may also be obtained by other users at the same time.
@@ -55,56 +40,54 @@ If other users call this contract instance. Then the contract instance will be i
 At this time, calling the contract will cause a `txn-mempool-conflict` error (that is, UTXO double spending).
 If this error occurs, you need to re-acquire the contract instance
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+• **T** *extends* [`SmartContract`](SmartContract.md)
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `clazz` | (...`args`: `any`) => `T` |
-| `contractId` | [`ContractId`](../README.md#contractid) |
+##### clazz
+
+(...`args`) => `T`
+
+##### contractId
+
+[`ContractId`](../type-aliases/ContractId.md)
 
 #### Returns
 
-`Promise`<`T`\>
+`Promise`\<`T`\>
 
 a contract instance contains latest state
 
-#### Defined in
+***
 
-dist/client/apis/contract-api.d.ts:49
+### subscribe()
 
-___
+> **subscribe**\<`T`\>(`options`, `cb`): [`SubScription`](../interfaces/SubScription.md)
 
-### subscribe
-
-▸ **subscribe**<`T`\>(`options`, `cb`): [`SubScription`](../interfaces/SubScription.md)
+Defined in: scrypt-ts/dist/client/apis/contract-api.d.ts:56
 
 Subscribe to notifications of contract status changes by contract ID,
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`SmartContract`](SmartContract.md)<`T`\> |
+• **T** *extends* [`SmartContract`](SmartContract.md)
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | [`SubscribeOptions`](../interfaces/SubscribeOptions.md)<`T`\> | SubscribeOptions |
-| `cb` | (`e`: [`ContractCalledEvent`](../interfaces/ContractCalledEvent.md)<`T`\>) => `void` |  |
+##### options
+
+[`SubscribeOptions`](../interfaces/SubscribeOptions.md)\<`T`\>
+
+SubscribeOptions
+
+##### cb
+
+(`e`) => `void`
 
 #### Returns
 
 [`SubScription`](../interfaces/SubScription.md)
 
 a SubScription, which can be used to unsubscribe
-
-#### Defined in
-
-dist/client/apis/contract-api.d.ts:56

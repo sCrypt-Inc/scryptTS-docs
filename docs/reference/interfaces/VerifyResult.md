@@ -1,30 +1,25 @@
-[scrypt-ts](../README.md) / VerifyResult
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / VerifyResult
 
 # Interface: VerifyResult
 
-## Table of contents
-
-### Properties
-
-- [error](VerifyResult.md#error)
-- [success](VerifyResult.md#success)
+Defined in: scryptlib/dist/contract.d.ts:24
 
 ## Properties
 
-### error
+### error?
 
-• `Optional` **error**: `string`
+> `optional` **error**: `string`
 
-#### Defined in
+Defined in: scryptlib/dist/contract.d.ts:26
 
-node_modules/scryptlib/dist/contract.d.ts:26
-
-___
+***
 
 ### success
 
-• **success**: `boolean`
+> **success**: `boolean`
 
-#### Defined in
-
-node_modules/scryptlib/dist/contract.d.ts:25
+Defined in: scryptlib/dist/contract.d.ts:25

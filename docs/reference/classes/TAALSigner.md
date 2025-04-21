@@ -1,155 +1,86 @@
-[scrypt-ts](../README.md) / TAALSigner
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / TAALSigner
 
 # Class: TAALSigner
 
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:10
+
 A `Signer` is a class which in some way directly or indirectly has access to a private key, which can sign messages and transactions to authorize the network to perform operations.
 
-## Hierarchy
+## Extends
 
 - [`Signer`](Signer.md)
 
-  ↳ **`TAALSigner`**
-
-## Table of contents
-
-### Constructors
-
-- [constructor](TAALSigner.md#constructor)
-
-### Properties
-
-- [\_app\_name](TAALSigner.md#_app_name)
-- [\_isSigner](TAALSigner.md#_issigner)
-- [\_port](TAALSigner.md#_port)
-- [assertIsAuthenticated](TAALSigner.md#assertisauthenticated)
-- [provider](TAALSigner.md#provider)
-- [signCustomInput](TAALSigner.md#signcustominput)
-
-### Accessors
-
-- [connectedProvider](TAALSigner.md#connectedprovider)
-
-### Methods
-
-- [connect](TAALSigner.md#connect)
-- [getBalance](TAALSigner.md#getbalance)
-- [getDefaultAddress](TAALSigner.md#getdefaultaddress)
-- [getDefaultPubKey](TAALSigner.md#getdefaultpubkey)
-- [getNetwork](TAALSigner.md#getnetwork)
-- [getPubKey](TAALSigner.md#getpubkey)
-- [getSignatures](TAALSigner.md#getsignatures)
-- [isAuthenticated](TAALSigner.md#isauthenticated)
-- [listUnspent](TAALSigner.md#listunspent)
-- [requestAuth](TAALSigner.md#requestauth)
-- [signAndsendTransaction](TAALSigner.md#signandsendtransaction)
-- [signMessage](TAALSigner.md#signmessage)
-- [signRawTransaction](TAALSigner.md#signrawtransaction)
-- [signTransaction](TAALSigner.md#signtransaction)
-- [updateInputsWithInfo](TAALSigner.md#updateinputswithinfo)
-- [isSigner](TAALSigner.md#issigner)
-
 ## Constructors
 
-### constructor
+### new TAALSigner()
 
-• **new TAALSigner**(`provider`, `app_name?`)
+> **new TAALSigner**(`provider`, `app_name`?): [`TAALSigner`](TAALSigner.md)
+
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:13
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `provider` | [`Provider`](Provider.md) |
-| `app_name?` | `string` |
+##### provider
+
+[`Provider`](Provider.md)
+
+##### app\_name?
+
+`string`
+
+#### Returns
+
+[`TAALSigner`](TAALSigner.md)
 
 #### Overrides
 
-[Signer](Signer.md).[constructor](Signer.md#constructor)
-
-#### Defined in
-
-dist/bsv/signers/taal-signer/index.d.ts:14
+[`Signer`](Signer.md).[`constructor`](Signer.md#constructors)
 
 ## Properties
 
-### \_app\_name
-
-• `Private` **\_app\_name**: `any`
-
-#### Defined in
-
-dist/bsv/signers/taal-signer/index.d.ts:13
-
-___
-
 ### \_isSigner
 
-• `Readonly` **\_isSigner**: `boolean`
+> `readonly` **\_isSigner**: `boolean`
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:58
 
 #### Inherited from
 
-[Signer](Signer.md).[_isSigner](Signer.md#_issigner)
+[`Signer`](Signer.md).[`_isSigner`](Signer.md#_issigner)
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:57
+### provider?
 
-___
+> `optional` **provider**: [`Provider`](Provider.md)
 
-### \_port
-
-• `Private` **\_port**: `any`
-
-#### Defined in
-
-dist/bsv/signers/taal-signer/index.d.ts:12
-
-___
-
-### assertIsAuthenticated
-
-• `Private` **assertIsAuthenticated**: `any`
-
-#### Defined in
-
-dist/bsv/signers/taal-signer/index.d.ts:20
-
-___
-
-### provider
-
-• `Optional` **provider**: [`Provider`](Provider.md)
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:57
 
 #### Inherited from
 
-[Signer](Signer.md).[provider](Signer.md#provider)
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:56
-
-___
-
-### signCustomInput
-
-• `Private` **signCustomInput**: `any`
-
-#### Defined in
-
-dist/bsv/signers/taal-signer/index.d.ts:41
+[`Signer`](Signer.md).[`provider`](Signer.md#provider-1)
 
 ## Accessors
 
 ### connectedProvider
 
-• `get` **connectedProvider**(): [`Provider`](Provider.md)
+#### Get Signature
+
+> **get** **connectedProvider**(): [`Provider`](Provider.md)
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:132
 
 Get the connected provider.
 
-**`Throws`**
+##### Throws
 
 if no provider is connected to `this`.
 
-#### Returns
+##### Returns
 
 [`Provider`](Provider.md)
 
@@ -157,420 +88,456 @@ the connected provider.
 
 #### Inherited from
 
-Signer.connectedProvider
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:133
+[`Signer`](Signer.md).[`connectedProvider`](Signer.md#connectedprovider)
 
 ## Methods
 
-### connect
+### alignProviderNetwork()
 
-▸ **connect**(`provider?`): `Promise`<[`TAALSigner`](TAALSigner.md)\>
+> **alignProviderNetwork**(): `Promise`\<`void`\>
 
-Connect a provider to `this`. If a new provider is specified when connecting,
-a connection will be established for the new provider and then switched to the new provider.
-If no new provider is specified, a connection is established for signer's built-in provider.
-If neither exists, an exception is thrown.
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:165
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `provider?` | [`Provider`](Provider.md) | The target provider. |
+Align provider's network after the signer is authenticated
 
 #### Returns
 
-`Promise`<[`TAALSigner`](TAALSigner.md)\>
+`Promise`\<`void`\>
 
-#### Overrides
+#### Inherited from
 
-[Signer](Signer.md).[connect](Signer.md#connect)
+[`Signer`](Signer.md).[`alignProviderNetwork`](Signer.md#alignprovidernetwork)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:21
+### getBalance()
 
-___
+> **getBalance**(`address`?): `Promise`\<\{ `confirmed`: `number`; `unconfirmed`: `number`; \}\>
 
-### getBalance
-
-▸ **getBalance**(`address?`): `Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:35
 
 Get the balance of BSVs in satoshis for an address.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `address?` | [`Address`](bsv.Address.md) | The query address. |
+##### address?
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+The query address.
 
 #### Returns
 
-`Promise`<{ `confirmed`: `number` ; `unconfirmed`: `number`  }\>
+`Promise`\<\{ `confirmed`: `number`; `unconfirmed`: `number`; \}\>
 
 A promise which resolves to the address balance status.
 
 #### Overrides
 
-[Signer](Signer.md).[getBalance](Signer.md#getbalance)
+[`Signer`](Signer.md).[`getBalance`](Signer.md#getbalance)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:37
+### getDefaultAddress()
 
-___
+> **getDefaultAddress**(): `Promise`\<[`Address`](../@scrypt-inc/bsv/classes/Address.md)\>
 
-### getDefaultAddress
-
-▸ **getDefaultAddress**(): `Promise`<[`Address`](bsv.Address.md)\>
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:21
 
 #### Returns
 
-`Promise`<[`Address`](bsv.Address.md)\>
+`Promise`\<[`Address`](../@scrypt-inc/bsv/classes/Address.md)\>
 
 A promise which resolves to the address to the default private key of the signer.
 
 #### Overrides
 
-[Signer](Signer.md).[getDefaultAddress](Signer.md#getdefaultaddress)
+[`Signer`](Signer.md).[`getDefaultAddress`](Signer.md#getdefaultaddress)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:22
+### getDefaultPubKey()
 
-___
+> **getDefaultPubKey**(): `Promise`\<[`PublicKey`](../@scrypt-inc/bsv/classes/PublicKey.md)\>
 
-### getDefaultPubKey
-
-▸ **getDefaultPubKey**(): `Promise`<[`PublicKey`](bsv.PublicKey.md)\>
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:22
 
 #### Returns
 
-`Promise`<[`PublicKey`](bsv.PublicKey.md)\>
+`Promise`\<[`PublicKey`](../@scrypt-inc/bsv/classes/PublicKey.md)\>
 
 A promise which resolves to the public key of the default private key of the signer.
 
 #### Overrides
 
-[Signer](Signer.md).[getDefaultPubKey](Signer.md#getdefaultpubkey)
+[`Signer`](Signer.md).[`getDefaultPubKey`](Signer.md#getdefaultpubkey)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:23
+### getNetwork()
 
-___
+> **getNetwork**(): `Promise`\<[`Network`](../@scrypt-inc/bsv/namespaces/Networks/interfaces/Network.md)\>
 
-### getNetwork
-
-▸ **getNetwork**(): `Promise`<`any`\>
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:24
 
 #### Returns
 
-`Promise`<`any`\>
-
-#### Defined in
-
-dist/bsv/signers/taal-signer/index.d.ts:26
-
-___
-
-### getPubKey
-
-▸ **getPubKey**(`address`): `Promise`<[`PublicKey`](bsv.PublicKey.md)\>
-
-**`Throws`**
-
-If the private key for the address does not belong this signer.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `address` | [`Address`](bsv.Address.md) | The request address, using the default address if omitted. |
-
-#### Returns
-
-`Promise`<[`PublicKey`](bsv.PublicKey.md)\>
-
-The public key result.
+`Promise`\<[`Network`](../@scrypt-inc/bsv/namespaces/Networks/interfaces/Network.md)\>
 
 #### Overrides
 
-[Signer](Signer.md).[getPubKey](Signer.md#getpubkey)
+[`Signer`](Signer.md).[`getNetwork`](Signer.md#getnetwork)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:24
+### getPubKey()
 
-___
+> **getPubKey**(`address`): `Promise`\<[`PublicKey`](../@scrypt-inc/bsv/classes/PublicKey.md)\>
 
-### getSignatures
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:23
 
-▸ **getSignatures**(`rawTxHex`, `sigRequests`): `Promise`<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
+#### Parameters
+
+##### address
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+The request address, using the default address if omitted.
+
+#### Returns
+
+`Promise`\<[`PublicKey`](../@scrypt-inc/bsv/classes/PublicKey.md)\>
+
+The public key result.
+
+#### Throws
+
+If the private key for the address does not belong this signer.
+
+#### Overrides
+
+[`Signer`](Signer.md).[`getPubKey`](Signer.md#getpubkey)
+
+***
+
+### getSignatures()
+
+> **getSignatures**(`rawTxHex`, `sigRequests`): `Promise`\<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
+
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:33
 
 Get signatures with api
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `rawTxHex` | `string` | a transation raw hex |
-| `sigRequests` | [`SignatureRequest`](../interfaces/SignatureRequest.md)[] | a `SignatureRequest` array for the some inputs of the transaction. |
+##### rawTxHex
+
+`string`
+
+a transation raw hex
+
+##### sigRequests
+
+[`SignatureRequest`](../interfaces/SignatureRequest.md)[]
+
+a `SignatureRequest` array for the some inputs of the transaction.
 
 #### Returns
 
-`Promise`<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
+`Promise`\<[`SignatureResponse`](../interfaces/SignatureResponse.md)[]\>
 
 a `SignatureResponse` array
 
 #### Overrides
 
-[Signer](Signer.md).[getSignatures](Signer.md#getsignatures)
+[`Signer`](Signer.md).[`getSignatures`](Signer.md#getsignatures)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:35
+### isAuthenticated()
 
-___
+> **isAuthenticated**(): `Promise`\<`boolean`\>
 
-### isAuthenticated
-
-▸ **isAuthenticated**(): `Promise`<`boolean`\>
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:14
 
 Check if the wallet has been authenticated
 
 #### Returns
 
-`Promise`<`boolean`\>
+`Promise`\<`boolean`\>
 
 true | false
 
 #### Overrides
 
-[Signer](Signer.md).[isAuthenticated](Signer.md#isauthenticated)
+[`Signer`](Signer.md).[`isAuthenticated`](Signer.md#isauthenticated)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:15
+### listUnspent()
 
-___
+> **listUnspent**(`address`, `options`?): `Promise`\<[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)[]\>
 
-### listUnspent
-
-▸ **listUnspent**(`address`, `options?`): `Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:146
 
 Get a list of the P2PKH UTXOs.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `address` | [`Address`](bsv.Address.md) | The address of the returned UTXOs belongs to. |
-| `options?` | [`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md) | The optional query conditions, see details in `UtxoQueryOptions`. |
+##### address
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+The address of the returned UTXOs belongs to.
+
+##### options?
+
+[`UtxoQueryOptions`](../interfaces/UtxoQueryOptions.md)
+
+The optional query conditions, see details in `UtxoQueryOptions`.
 
 #### Returns
 
-`Promise`<[`IUnspentOutput`](../interfaces/bsv.Transaction.IUnspentOutput.md)[]\>
+`Promise`\<[`IUnspentOutput`](../@scrypt-inc/bsv/namespaces/Transaction/interfaces/IUnspentOutput.md)[]\>
 
 A promise which resolves to a list of UTXO for the query options.
 
 #### Inherited from
 
-[Signer](Signer.md).[listUnspent](Signer.md#listunspent)
+[`Signer`](Signer.md).[`listUnspent`](Signer.md#listunspent)
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:147
+### requestAuth()
 
-___
+> **requestAuth**(): `Promise`\<\{ `error`: `string`; `isAuthenticated`: `boolean`; \}\>
 
-### requestAuth
-
-▸ **requestAuth**(): `Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:15
 
 Request wallet authentication
 
 #### Returns
 
-`Promise`<{ `error`: `string` ; `isAuthenticated`: `boolean`  }\>
+`Promise`\<\{ `error`: `string`; `isAuthenticated`: `boolean`; \}\>
 
 A promise which resolves to if the wallet has been authenticated and the authenticate error message
 
 #### Overrides
 
-[Signer](Signer.md).[requestAuth](Signer.md#requestauth)
+[`Signer`](Signer.md).[`requestAuth`](Signer.md#requestauth)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:16
+### setProvider()
 
-___
+> **setProvider**(`provider`): `void`
 
-### signAndsendTransaction
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:20
 
-▸ **signAndsendTransaction**(`tx`, `options?`): `Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+swith provider
+
+#### Parameters
+
+##### provider
+
+[`Provider`](Provider.md)
+
+The target provider.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[`Signer`](Signer.md).[`setProvider`](Signer.md#setprovider)
+
+***
+
+### signAndsendTransaction()
+
+> **signAndsendTransaction**(`tx`, `options`?): `Promise`\<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:139
 
 Sign transaction and broadcast it
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) | A transaction is signed and broadcast |
-| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) | The options for signing, see the details of `SignTransactionOptions`. |
+##### tx
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+A transaction is signed and broadcast
+
+##### options?
+
+[`SignTransactionOptions`](../interfaces/SignTransactionOptions.md)
+
+The options for signing, see the details of `SignTransactionOptions`.
 
 #### Returns
 
-`Promise`<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
+`Promise`\<[`TransactionResponse`](../interfaces/TransactionResponse.md)\>
 
 A promise which resolves to the transaction id.
 
 #### Inherited from
 
-[Signer](Signer.md).[signAndsendTransaction](Signer.md#signandsendtransaction)
+[`Signer`](Signer.md).[`signAndsendTransaction`](Signer.md#signandsendtransaction)
 
-#### Defined in
+***
 
-dist/bsv/abstract-signer.d.ts:140
+### signMessage()
 
-___
+> **signMessage**(`message`, `address`?): `Promise`\<`string`\>
 
-### signMessage
-
-▸ **signMessage**(`message`, `address?`): `Promise`<`string`\>
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:34
 
 Sign a message string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `message` | `string` | The message to be signed. |
-| `address?` | [`Address`](bsv.Address.md) | The optional address whose private key will be used to sign `message`, using the default private key if omitted. |
+##### message
+
+`string`
+
+The message to be signed.
+
+##### address?
+
+[`Address`](../@scrypt-inc/bsv/classes/Address.md)
+
+The optional address whose private key will be used to sign `message`, using the default private key if omitted.
 
 #### Returns
 
-`Promise`<`string`\>
+`Promise`\<`string`\>
 
 A promise which resolves to the signautre of the message.
 
 #### Overrides
 
-[Signer](Signer.md).[signMessage](Signer.md#signmessage)
+[`Signer`](Signer.md).[`signMessage`](Signer.md#signmessage)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:36
+### signRawTransaction()
 
-___
+> **signRawTransaction**(`rawTxHex`, `options`): `Promise`\<`string`\>
 
-### signRawTransaction
-
-▸ **signRawTransaction**(`rawTxHex`, `options`): `Promise`<`string`\>
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:105
 
 Sign a raw transaction hex string.
 
-**`Throws`**
-
-If any input of the transaction can not be signed properly.
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `rawTxHex` | `string` | The raw transaction hex to sign. |
-| `options` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) | The options for signing, see the details of `SignTransactionOptions`. |
+##### rawTxHex
+
+`string`
+
+The raw transaction hex to sign.
+
+##### options
+
+[`SignTransactionOptions`](../interfaces/SignTransactionOptions.md)
+
+The options for signing, see the details of `SignTransactionOptions`.
 
 #### Returns
 
-`Promise`<`string`\>
+`Promise`\<`string`\>
 
 A promise which resolves to the signed transaction hex string.
 
-#### Overrides
+#### Throws
 
-[Signer](Signer.md).[signRawTransaction](Signer.md#signrawtransaction)
+If any input of the transaction can not be signed properly.
 
-#### Defined in
+#### Inherited from
 
-dist/bsv/signers/taal-signer/index.d.ts:25
+[`Signer`](Signer.md).[`signRawTransaction`](Signer.md#signrawtransaction)
 
-___
+***
 
-### signTransaction
+### signTransaction()
 
-▸ **signTransaction**(`tx`, `options?`): `Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+> **signTransaction**(`tx`, `options`?): `Promise`\<[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)\>
 
-Sign a transaction object.
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:26
+
+Sign a transaction object. By default only signs inputs, which are unlocking P2PKH UTXO's.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) | The transaction object to sign. |
-| `options?` | [`SignTransactionOptions`](../interfaces/SignTransactionOptions.md) | The options for signing, see the details of `SignTransactionOptions`. |
+##### tx
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+The transaction object to sign.
+
+##### options?
+
+[`SignTransactionOptions`](../interfaces/SignTransactionOptions.md)
+
+The options for signing, see the details of `SignTransactionOptions`.
 
 #### Returns
 
-`Promise`<[`Transaction`](bsv.Transaction-1.md)\>
+`Promise`\<[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)\>
 
 A promise which resolves to the signed transaction object.
 
 #### Overrides
 
-[Signer](Signer.md).[signTransaction](Signer.md#signtransaction)
+[`Signer`](Signer.md).[`signTransaction`](Signer.md#signtransaction)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:28
+### updateInputsWithInfo()
 
-___
+> **updateInputsWithInfo**(`tx`, `inputInfos`): [`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
 
-### updateInputsWithInfo
-
-▸ **updateInputsWithInfo**(`tx`, `inputInfos`): [`Transaction`](bsv.Transaction-1.md)
+Defined in: scrypt-ts/dist/bsv/signers/taal-signer/index.d.ts:25
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `tx` | [`Transaction`](bsv.Transaction-1.md) |
-| `inputInfos` | `InputInfo`[] |
+##### tx
+
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+##### inputInfos
+
+`InputInfo`[]
 
 #### Returns
 
-[`Transaction`](bsv.Transaction-1.md)
+[`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
 
-#### Defined in
+***
 
-dist/bsv/signers/taal-signer/index.d.ts:27
+### isSigner()
 
-___
+> `static` **isSigner**(`value`): `value is Signer`
 
-### isSigner
-
-▸ `Static` **isSigner**(`value`): value is Signer
+Defined in: scrypt-ts/dist/bsv/abstract-signer.d.ts:161
 
 Check if an object is a `Signer`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `any` | The target object |
+##### value
+
+`any`
+
+The target object
 
 #### Returns
 
-value is Signer
+`value is Signer`
 
 Returns `true` if and only if `object` is a Provider.
 
 #### Inherited from
 
-[Signer](Signer.md).[isSigner](Signer.md#issigner)
-
-#### Defined in
-
-dist/bsv/abstract-signer.d.ts:162
+[`Signer`](Signer.md).[`isSigner`](Signer.md#issigner)

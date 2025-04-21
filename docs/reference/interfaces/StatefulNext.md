@@ -1,55 +1,45 @@
-[scrypt-ts](../README.md) / StatefulNext
+[**scrypt-ts**](../README.md)
 
-# Interface: StatefulNext<T\>
+***
+
+[scrypt-ts](../globals.md) / StatefulNext
+
+# Interface: StatefulNext\<T\>
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:7
 
 Contains information about the new state of a set of stateful contracts, used to construct transactions in the transaction builder.
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
-
-## Table of contents
-
-### Properties
-
-- [atOutputIndex](StatefulNext.md#atoutputindex)
-- [balance](StatefulNext.md#balance)
-- [instance](StatefulNext.md#instance)
+• **T**
 
 ## Properties
 
 ### atOutputIndex
 
-• **atOutputIndex**: `number`
+> **atOutputIndex**: `number`
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:13
 
 The index of the subsequent contract output in the method calling tx
 
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:13
-
-___
+***
 
 ### balance
 
-• **balance**: `number`
+> **balance**: `number`
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:11
 
 Satoshis of the subsequent contract output in the method calling tx
 
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:11
-
-___
+***
 
 ### instance
 
-• **instance**: `T`
+> **instance**: `T`
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:9
 
 The subsequent stateful contract instance
-
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:9

@@ -1,10 +1,16 @@
-[scrypt-ts](../README.md) / SmartContractLib
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / SmartContractLib
 
 # Class: SmartContractLib
 
+Defined in: scrypt-ts/dist/smart-contract/library.d.ts:13
+
 The contract library class. To write a contract library, extend this class as such:
 
-**`Example`**
+## Example
 
 ```ts
 class YourSmartContractLib extends SmartContractLib {
@@ -12,38 +18,28 @@ class YourSmartContractLib extends SmartContractLib {
 }
 ```
 
-## Table of contents
-
-### Constructors
-
-- [constructor](SmartContractLib.md#constructor)
-
-### Properties
-
-- [args](SmartContractLib.md#args)
-
 ## Constructors
 
-### constructor
+### new SmartContractLib()
 
-• **new SmartContractLib**(`...args`)
+> **new SmartContractLib**(...`args`): [`SmartContractLib`](SmartContractLib.md)
+
+Defined in: scrypt-ts/dist/smart-contract/library.d.ts:15
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
+##### args
 
-#### Defined in
+...`any`[]
 
-dist/smart-contract/library.d.ts:15
+#### Returns
+
+[`SmartContractLib`](SmartContractLib.md)
 
 ## Properties
 
 ### args
 
-• **args**: `any`[]
+> **args**: `any`[]
 
-#### Defined in
-
-dist/smart-contract/library.d.ts:14
+Defined in: scrypt-ts/dist/smart-contract/library.d.ts:14

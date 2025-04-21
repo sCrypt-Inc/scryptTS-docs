@@ -1,137 +1,117 @@
-[scrypt-ts](../README.md) / HashedMap
+[**scrypt-ts**](../README.md)
 
-# Class: HashedMap<K, V\>
+***
+
+[scrypt-ts](../globals.md) / HashedMap
+
+# Class: HashedMap\<K, V\>
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/hashed-map.d.ts:12
 
 The `HashedMap` library provides a map/hashtable-like data structure. Unique keys and their corresponding values are hashed before being stored.
 Only the hash values of key and value are saved on the chain.
 `HashedMap` is a wrapper for `Map` in javascript.
 Only some of the specified functions can be called in the `@method` function of a contract, but there is no restriction on other places.
 
-## Type parameters
+## Extends
 
-| Name | Type |
-| :------ | :------ |
-| `K` | extends `SupportedParamType` |
-| `V` | extends `SupportedParamType` |
+- `Map`\<`K`, `V`\>
 
-## Hierarchy
+## Type Parameters
 
-- `Map`<`K`, `V`\>
+• **K** *extends* `SupportedParamType`
 
-  ↳ **`HashedMap`**
+• **V** *extends* `SupportedParamType`
 
 ## Implements
 
 - `SortedItemAccessTraceable`
 
-## Table of contents
-
-### Constructors
-
-- [constructor](HashedMap.md#constructor)
-
-### Properties
-
-- [[toStringTag]](HashedMap.md#[tostringtag])
-- [size](HashedMap.md#size)
-- [[species]](HashedMap.md#[species])
-
-### Methods
-
-- [canGet](HashedMap.md#canget)
-- [clear](HashedMap.md#clear)
-- [delete](HashedMap.md#delete)
-- [get](HashedMap.md#get)
-- [has](HashedMap.md#has)
-- [set](HashedMap.md#set)
-
 ## Constructors
 
-### constructor
+### new HashedMap()
 
-• **new HashedMap**<`K`, `V`\>(`entries?`)
+> **new HashedMap**\<`K`, `V`\>(`entries`?): [`HashedMap`](HashedMap.md)\<`K`, `V`\>
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/hashed-map.d.ts:27
 
 The constructor of `HashedMap` should not be called inside the contract.
 The `HashedMap` should be created outside the contract and passed to the contract via the contract's constructor.
 
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `K` | extends `SupportedParamType` |
-| `V` | extends `SupportedParamType` |
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `entries?` | readonly readonly [`K`, `V`][] |
+##### entries?
+
+readonly readonly \[`K`, `V`\][]
+
+#### Returns
+
+[`HashedMap`](HashedMap.md)\<`K`, `V`\>
 
 #### Overrides
 
-Map&lt;K, V\&gt;.constructor
-
-#### Defined in
-
-dist/smart-contract/builtins/hashed-map.d.ts:27
+`Map<K, V>.constructor`
 
 ## Properties
 
-### [toStringTag]
+### \[toStringTag\]
 
-• `Readonly` **[toStringTag]**: `string`
+> `readonly` **\[toStringTag\]**: `string`
+
+Defined in: typescript/lib/lib.es2015.symbol.wellknown.d.ts:137
 
 #### Inherited from
 
-Map.[toStringTag]
+`Map.[toStringTag]`
 
-#### Defined in
-
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:135
-
-___
+***
 
 ### size
 
-• `Readonly` **size**: `number`
+> `readonly` **size**: `number`
+
+Defined in: typescript/lib/lib.es2015.collection.d.ts:45
+
+#### Returns
+
+the number of elements in the Map.
 
 #### Inherited from
 
-Map.size
+`Map.size`
 
-#### Defined in
+***
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:48
+### \[species\]
 
-___
+> `readonly` `static` **\[species\]**: `MapConstructor`
 
-### [species]
-
-▪ `Static` `Readonly` **[species]**: `MapConstructor`
+Defined in: typescript/lib/lib.es2015.symbol.wellknown.d.ts:319
 
 #### Inherited from
 
-Map.[species]
-
-#### Defined in
-
-node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:317
+`Map.[species]`
 
 ## Methods
 
-### canGet
+### canGet()
 
-▸ **canGet**(`key`, `val`): `boolean`
+> **canGet**(`key`, `val`): `boolean`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/hashed-map.d.ts:71
 
 Check whether we can get a (key, val) pair from the map
 Can be called in the `@method` function of a contract
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `K` |
-| `val` | `V` |
+##### key
+
+`K`
+
+##### val
+
+`V`
 
 #### Returns
 
@@ -139,15 +119,13 @@ Can be called in the `@method` function of a contract
 
 true if the HashedMap has the specified key and value pair in it, otherwise returns false.
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/hashed-map.d.ts:71
+### clear()
 
-___
+> **clear**(): `void`
 
-### clear
-
-▸ **clear**(): `void`
+Defined in: typescript/lib/lib.es2015.collection.d.ts:20
 
 #### Returns
 
@@ -155,26 +133,24 @@ ___
 
 #### Inherited from
 
-Map.clear
+`Map.clear`
 
-#### Defined in
+***
 
-node_modules/typescript/lib/lib.es2015.collection.d.ts:23
+### delete()
 
-___
+> **delete**(`key`): `boolean`
 
-### delete
-
-▸ **delete**(`key`): `boolean`
+Defined in: scrypt-ts/dist/smart-contract/builtins/hashed-map.d.ts:55
 
 Remove a entry with a specified key from the map.
 Can be called in the `@method` function of a contract
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `K` |
+##### key
+
+`K`
 
 #### Returns
 
@@ -184,26 +160,26 @@ true if an element in the HashedMap existed and has been removed, or false if th
 
 #### Overrides
 
-Map.delete
+`Map.delete`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/hashed-map.d.ts:55
+### get()
 
-___
+> **get**(`key`): `V`
 
-### get
-
-▸ **get**(`key`): `V`
+Defined in: scrypt-ts/dist/smart-contract/builtins/hashed-map.d.ts:43
 
 Get value of a pair in the map by key
 Can not be called in the `@method` function of a contract
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | `K` | key |
+##### key
+
+`K`
+
+key
 
 #### Returns
 
@@ -213,26 +189,24 @@ value if key exists. Otherwise undefined.
 
 #### Overrides
 
-Map.get
+`Map.get`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/hashed-map.d.ts:43
+### has()
 
-___
+> **has**(`key`): `boolean`
 
-### has
-
-▸ **has**(`key`): `boolean`
+Defined in: scrypt-ts/dist/smart-contract/builtins/hashed-map.d.ts:49
 
 Check whether key exists in the map
 Can be called in the `@method` function of a contract
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `K` |
+##### key
+
+`K`
 
 #### Returns
 
@@ -242,17 +216,15 @@ true if the HashedMap has the specified key in it, otherwise returns false.
 
 #### Overrides
 
-Map.has
+`Map.has`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/hashed-map.d.ts:49
+### set()
 
-___
+> **set**(`key`, `value`): `this`
 
-### set
-
-▸ **set**(`key`, `value`): [`HashedMap`](HashedMap.md)<`K`, `V`\>
+Defined in: scrypt-ts/dist/smart-contract/builtins/hashed-map.d.ts:36
 
 Insert or update a (key, val) pair to the HashedMap.
 If an element with the same key already exists, the element will be updated.
@@ -260,21 +232,62 @@ Can be called in the `@method` function of a contract
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | `K` | key |
-| `value` | `V` | value |
+##### key
+
+`K`
+
+key
+
+##### value
+
+`V`
+
+value
 
 #### Returns
 
-[`HashedMap`](HashedMap.md)<`K`, `V`\>
+`this`
 
 this
 
 #### Overrides
 
-Map.set
+`Map.set`
 
-#### Defined in
+***
 
-dist/smart-contract/builtins/hashed-map.d.ts:36
+### groupBy()
+
+> `static` **groupBy**\<`K`, `T`\>(`items`, `keySelector`): `Map`\<`K`, `T`[]\>
+
+Defined in: typescript/lib/lib.es2024.collection.d.ts:25
+
+Groups members of an iterable according to the return value of the passed callback.
+
+#### Type Parameters
+
+• **K**
+
+• **T**
+
+#### Parameters
+
+##### items
+
+`Iterable`\<`T`\>
+
+An iterable.
+
+##### keySelector
+
+(`item`, `index`) => `K`
+
+A callback which will be invoked for each item in items.
+
+#### Returns
+
+`Map`\<`K`, `T`[]\>
+
+#### Inherited from
+
+`Map.groupBy`

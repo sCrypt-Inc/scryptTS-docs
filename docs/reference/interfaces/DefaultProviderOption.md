@@ -1,71 +1,57 @@
-[scrypt-ts](../README.md) / DefaultProviderOption
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / DefaultProviderOption
 
 # Interface: DefaultProviderOption
 
-## Table of contents
-
-### Properties
-
-- [gorillapool](DefaultProviderOption.md#gorillapool)
-- [network](DefaultProviderOption.md#network)
-- [scrypt](DefaultProviderOption.md#scrypt)
-- [sensible](DefaultProviderOption.md#sensible)
-- [taal](DefaultProviderOption.md#taal)
+Defined in: scrypt-ts/dist/providers/default-provider.d.ts:5
 
 ## Properties
 
-### gorillapool
+### gorillapool?
 
-• `Optional` **gorillapool**: `string`
+> `optional` **gorillapool**: `string`
+
+Defined in: scrypt-ts/dist/providers/default-provider.d.ts:9
 
 api key of gorillapool
 
-#### Defined in
+***
 
-dist/providers/default-provider.d.ts:9
+### network?
 
-___
+> `optional` **network**: [`Network`](../@scrypt-inc/bsv/namespaces/Networks/interfaces/Network.md)
 
-### network
+Defined in: scrypt-ts/dist/providers/default-provider.d.ts:14
 
-• `Optional` **network**: [`Network`](bsv.Networks.Network.md)
+***
 
-#### Defined in
+### scrypt?
 
-dist/providers/default-provider.d.ts:14
+> `optional` **scrypt**: [`ScryptConfig`](ScryptConfig.md)
 
-___
-
-### scrypt
-
-• `Optional` **scrypt**: [`ScryptConfig`](ScryptConfig.md)
+Defined in: scrypt-ts/dist/providers/default-provider.d.ts:13
 
 api key of scrypt
 
-#### Defined in
+***
 
-dist/providers/default-provider.d.ts:13
+### sensible?
 
-___
+> `optional` **sensible**: `string`
 
-### sensible
-
-• `Optional` **sensible**: `string`
+Defined in: scrypt-ts/dist/providers/default-provider.d.ts:11
 
 api key of sensible
 
-#### Defined in
+***
 
-dist/providers/default-provider.d.ts:11
+### taal?
 
-___
+> `optional` **taal**: `string`
 
-### taal
-
-• `Optional` **taal**: `string`
+Defined in: scrypt-ts/dist/providers/default-provider.d.ts:7
 
 api key of taal
-
-#### Defined in
-
-dist/providers/default-provider.d.ts:7

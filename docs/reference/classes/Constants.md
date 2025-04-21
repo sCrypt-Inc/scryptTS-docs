@@ -1,98 +1,81 @@
-[scrypt-ts](../README.md) / Constants
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / Constants
 
 # Class: Constants
 
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1166
+
 A library than contains some commonly used constant values
-
-## Table of contents
-
-### Constructors
-
-- [constructor](Constants.md#constructor)
-
-### Properties
-
-- [InputSeqLen](Constants.md#inputseqlen)
-- [OutpointLen](Constants.md#outpointlen)
-- [OutputValueLen](Constants.md#outputvaluelen)
-- [PubKeyHashLen](Constants.md#pubkeyhashlen)
-- [PubKeyLen](Constants.md#pubkeylen)
-- [TxIdLen](Constants.md#txidlen)
 
 ## Constructors
 
-### constructor
+### new Constants()
 
-• **new Constants**()
+> **new Constants**(): [`Constants`](Constants.md)
+
+#### Returns
+
+[`Constants`](Constants.md)
 
 ## Properties
 
 ### InputSeqLen
 
-▪ `Static` `Readonly` **InputSeqLen**: `bigint`
+> `readonly` `static` **InputSeqLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1168
 
 length of `ByteString` to denote input sequence
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1168
-
-___
+***
 
 ### OutpointLen
 
-▪ `Static` `Readonly` **OutpointLen**: `bigint`
+> `readonly` `static` **OutpointLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1178
 
 length of `ByteString` to denote a outpoint
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1178
-
-___
+***
 
 ### OutputValueLen
 
-▪ `Static` `Readonly` **OutputValueLen**: `bigint`
+> `readonly` `static` **OutputValueLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1170
 
 length of `ByteString` to denote output value
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1170
-
-___
+***
 
 ### PubKeyHashLen
 
-▪ `Static` `Readonly` **PubKeyHashLen**: `bigint`
+> `readonly` `static` **PubKeyHashLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1174
 
 length of `ByteString` to denote a public key hash
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1174
-
-___
+***
 
 ### PubKeyLen
 
-▪ `Static` `Readonly` **PubKeyLen**: `bigint`
+> `readonly` `static` **PubKeyLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1172
 
 length of `ByteString` to denote a public key (compressed)
 
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1172
-
-___
+***
 
 ### TxIdLen
 
-▪ `Static` `Readonly` **TxIdLen**: `bigint`
+> `readonly` `static` **TxIdLen**: `bigint`
+
+Defined in: scrypt-ts/dist/smart-contract/builtins/functions.d.ts:1176
 
 length of `ByteString` to denote a tx id
-
-#### Defined in
-
-dist/smart-contract/builtins/functions.d.ts:1176

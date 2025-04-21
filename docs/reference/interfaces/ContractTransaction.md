@@ -1,62 +1,51 @@
-[scrypt-ts](../README.md) / ContractTransaction
+[**scrypt-ts**](../README.md)
+
+***
+
+[scrypt-ts](../globals.md) / ContractTransaction
 
 # Interface: ContractTransaction
 
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:59
+
 A structure describing a transaction that invokes a single contract.
-
-## Table of contents
-
-### Properties
-
-- [atInputIndex](ContractTransaction.md#atinputindex)
-- [next](ContractTransaction.md#next)
-- [nexts](ContractTransaction.md#nexts)
-- [tx](ContractTransaction.md#tx)
 
 ## Properties
 
 ### atInputIndex
 
-• **atInputIndex**: `number`
+> **atInputIndex**: `number`
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:63
 
 The input index of previous contract UTXO to spend in the method calling tx
 
-#### Defined in
+***
 
-dist/smart-contract/types/contract-call.d.ts:63
+### next?
 
-___
+> `optional` **next**: [`StatefulNext`](StatefulNext.md)\<`any`\>
 
-### next
-
-• `Optional` **next**: [`StatefulNext`](StatefulNext.md)<`any`\>
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:67
 
 The first element of nexts, this value should be set for user convenience.
 
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:67
-
-___
+***
 
 ### nexts
 
-• **nexts**: [`StatefulNext`](StatefulNext.md)<`any`\>[]
+> **nexts**: [`StatefulNext`](StatefulNext.md)\<`any`\>[]
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:65
 
 The subsequent contract instance(s) produced in the outputs of the method calling tx in a stateful contract
 
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:65
-
-___
+***
 
 ### tx
 
-• **tx**: [`Transaction`](../classes/bsv.Transaction-1.md)
+> **tx**: [`Transaction`](../@scrypt-inc/bsv/classes/Transaction.md)
+
+Defined in: scrypt-ts/dist/smart-contract/types/contract-call.d.ts:61
 
 The method calling tx
-
-#### Defined in
-
-dist/smart-contract/types/contract-call.d.ts:61
